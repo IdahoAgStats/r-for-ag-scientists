@@ -1,0 +1,23 @@
+
+###### Windows
+# to render a file in the terminal: 
+quarto.cmd render index.qmd --to html
+
+# to render the site:
+quarto.cmd render r-for-ag-scientists
+
+
+# to preview the site
+quarto.cmd preview r-for-ag-scientists
+
+
+
+###### everything eelse
+# to render a file
+quarto render file.qmd --to html
+
+# to render the site:
+quarto render r-for-ag-scientists
+
+# to preview the site
+quarto preview r-for-ag-scientists
