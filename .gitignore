@@ -3,4 +3,16 @@
 .RData
 .Ruserdata
 
+
+library/
+local/
+cellar/
+lock/
+python/
+staging/
+
+
 /.quarto/
+_site/
+*.key
+*speaker.html
