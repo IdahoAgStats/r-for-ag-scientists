@@ -1,19 +1,39 @@
 project:
   type: website
 
+
 website:
-  title: "r-for-ag-scientists"
+  page-navigation: true
+  title: "R for Ag Sci"
+  description: "Homepage for Introduction to R for Agricultural Scientists, Spring 2023."
+  site-url: ""
+
+  repo-url: https://github.com/IdahoAgStats/r-for-ag-scientists
+  repo-actions: [edit, issue]
+
+  open-graph: true
+  
   navbar:
     left:
       - href: index.qmd
         text: Home
-      - about.qmd
+      - schedule.qmd
+
+page-footer:
+    right: "This page is built with [Quarto](https://quarto.org/), themed by Mine Çetinkaya-Rundel"
+    left: "&copy; Copyright 2023, Julia Piaskowski"
+    background: "#D9E3E4"
 
 format:
   html:
-    theme: cosmo
+    theme: 
+      light: [cosmo, theme.scss]
+      dark: [cosmo, theme-dark.scss]
+    mainfont: "Atkinson Hyperlegible"
+    code-copy: true
+    code-overflow: wrap
     css: styles.css
     toc: true
 
-editor: visual
+editor: source
 
