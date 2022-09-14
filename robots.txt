@@ -1,1 +1,1 @@
-Sitemap: /sitemap.xml
+Sitemap: https://idahoagstats.github.io/r-for-ag-scientists/sitemap.xml
