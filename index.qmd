@@ -26,11 +26,11 @@ This workshop is intended for beginner R users. No previous experience in R or a
 
 Computer with a stable internet connection. A camera for zoom.
 
-#### When:
+#### When
 
-Jan 17 - February 9    
-Tuesday/Thursdays     
-2 - 4 pm Pacific time    
+Jan 17 - February 9\
+Tuesday/Thursdays\
+2 - 4 pm Pacific time
 
 All sessions will take place over Zoom so students across time zones can participate.
 

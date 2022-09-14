@@ -27,8 +27,8 @@ page-footer:
 format:
   html:
     theme: 
-      light: [cosmo, theme.scss]
-      dark: [cosmo, theme-dark.scss]
+      light: [lux, theme.scss]
+      dark: [lux, theme-dark.scss]
     mainfont: "Atkinson Hyperlegible"
     code-copy: true
     code-overflow: wrap
