@@ -1,12 +1,12 @@
 project:
   type: website
-  output-dir: docs
+  #output-dir: docs
 
 website:
   page-navigation: true
   title: "R for Ag Sci"
   description: "Homepage for Introduction to R for Agricultural Scientists, Spring 2023."
-  site-url: ""
+  site-url: "https://idahoagstats.github.io/r-for-ag-scientists/"
 
   repo-url: https://github.com/IdahoAgStats/r-for-ag-scientists
   repo-actions: [edit, issue]
