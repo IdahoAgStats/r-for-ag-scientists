@@ -15,7 +15,7 @@ jobs:
   build-website:
     runs-on: ubuntu-latest
     env:
-      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+      GITHUB_PAT: ${{ secrets.SUPERSECRET }}
     steps:
       - uses: actions/checkout@v2
 
