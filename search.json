@@ -1,16 +1,16 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "An Introduction to R for Agricultural Scientists",
-    "section": "",
-    "text": "This workshop will take you from zero to hero over the course of 16 hours of instruction and practice. It will introduce the R programming language, the graphical user interface RStudio and how R can be used to manage and analyse your data. At the end of this workshop, you will be able to:\n\nimport & export data\nunderstand data types and object types\nfilter, reshape, merge and manipulate your data\nmathematically transform data\ndo repeat actions in R\nplot data\nnavigate R help files\n\n\nWho is This workshop for?\nThis workshop is intended for beginner R users. No previous experience in R or any other programming or statistical language is expected (although previous R users whose skills have lapsed are welcomed!)\n\n\nWhat this workshop will not cover\n\ngit, GitHub, or any version control\nusage of the terminal (e.g. bash)\nstatistical analysis\n\n\nRequirements\nComputer with a stable internet connection. A camera for zoom.\n\n\nWhen\nJan 17 - February 9\nTuesday/Thursdays\n2 - 4 pm Pacific time\nAll sessions will take place over Zoom so students across time zones can participate.\n\n\nInstructors:\nJulia Piaskowski | GitHub\n\nSign up Coming Soon"
-  },
-  {
     "objectID": "schedule.html",
     "href": "schedule.html",
     "title": "Course Schedule",
     "section": "",
     "text": "This class will meet Tuesdays and Thursdays, 2 - 4 pm Pacific Time over Zoom.\nDetailed course schedule TBA.\nJanuary 17\nJanuary 19\nJanuary 24\nJanuary 26\nJanuary 31\nFebruary 2\nFebruary 7\nFebruary 9"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "An Introduction to R for Agricultural Scientists",
+    "section": "",
+    "text": "This workshop will take you from zero to hero over the course of 16 hours of instruction and practice. It will introduce the R programming language, the graphical user interface RStudio and how R can be used to manage and analyse your data. At the end of this workshop, you will be able to:\n\nimport & export data\nunderstand data types and object types\nfilter, reshape, merge and manipulate your data\nmathematically transform data\ndo repeat actions in R\nplot data\nnavigate R help files\n\n\nWho is This workshop for?\nThis workshop is intended for beginner R users. No previous experience in R or any other programming or statistical language is expected (although previous R users whose skills have lapsed are welcomed!)\n\n\nWhat this workshop will not cover\n\ngit, GitHub, or any version control\nusage of the terminal (e.g. bash)\nstatistical analysis\n\n\nRequirements\nComputer with a stable internet connection. A camera for zoom.\n\n\nWhen\nJan 17 - February 9\nTuesday/Thursdays\n2 - 4 pm Pacific time\nAll sessions will take place over Zoom so students across time zones can participate.\n\n\nInstructors:\nJulia Piaskowski | GitHub\n\nSign up Coming Soon"
   }
 ]
