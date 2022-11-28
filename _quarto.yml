@@ -5,7 +5,7 @@ project:
 website:
   page-navigation: true
   title: "R for Ag Sci"
-  description: "Homepage for Introduction to R for Agricultural Scientists, Spring 2023."
+  description: "Homepage for Introduction to R for Scientists, Spring 2023."
   site-url: "https://idahoagstats.github.io/r-for-ag-scientists/"
 
   repo-url: https://github.com/IdahoAgStats/r-for-ag-scientists
@@ -17,7 +17,8 @@ website:
     left:
       - href: index.qmd
         text: Home
-      - schedule.qmd
+      - href: schedule.qmd
+        text: Schedule
 
 page-footer:
     right: "This page is built with [Quarto](https://quarto.org/), themed by Mine Çetinkaya-Rundel"

@@ -21,3 +21,4 @@ quarto render r-for-ag-scientists
 
 # to preview the site
 quarto preview r-for-ag-scientists
+

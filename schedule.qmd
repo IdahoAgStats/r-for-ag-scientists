@@ -4,15 +4,26 @@ title: "Course Schedule"
 
 This class will meet Tuesdays and Thursdays, 2 - 4 pm Pacific Time over Zoom.
 
-**Detailed course schedule TBA.**
+**Draft Plan**
 
-January 17    
-January 19   
-January 24   
-January 26     
-January 31    
-February 2   
-February 7    
-February 9    
+*(this will be adjusted as needed)*
+
+
+| Date            |   Topics          |
+|-----------------|-------------------|
+| January 17 | Lesson 1: RStudio\
+                  Lesson 2: math operators\    
+                  Lesson 3: vectorization  |
+| January 19 | Lesson 4: objects\
+                  Lesson 5: data structures\
+                  Lesson 6: data import |
+| January 24 | Lesson 7: data wrangling |
+| January 26   | Lesson 8: reshaping data sets |
+| January 31  | Lesson 9: combining data sets |
+| February 2  | Lesson 10: Your R set-up\
+                Lesson 11: exporting data\
+                Lesson 12: basic plotting |
+| February 7 | Lesson 13: ggplotting   |
+| February 9 | Lesson 14: repeating actions |
 
 
