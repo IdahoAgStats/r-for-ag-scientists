@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>R for Ag Sci - An Introduction to R for Agricultural Scientists</title>
+<title>R for Ag Sci - Lesson 1: Introduction to RStudio</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -63,8 +63,8 @@ ul.task-list li input[type="checkbox"] {
 
 
 <link rel="stylesheet" href="styles.css">
-<meta property="og:title" content="R for Ag Sci - An Introduction to R for Agricultural Scientists">
-<meta property="og:description" content="This workshop will take you from zero to hero over the course of 16 hours of instruction and practice.">
+<meta property="og:title" content="R for Ag Sci - Lesson 1: Introduction to RStudio">
+<meta property="og:description" content="RStudio is more than a graphical user interface for R. It is an integrated development environment (IDE), that is a full service application for supporting software development.">
 <meta property="og:site-name" content="R for Ag Sci">
 </head>
 
@@ -85,7 +85,7 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page">
+    <a class="nav-link" href="./index.html">
  <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
@@ -110,17 +110,36 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#who-is-this-workshop-for" id="toc-who-is-this-workshop-for" class="nav-link active" data-scroll-target="#who-is-this-workshop-for">Who is This workshop for?</a></li>
-  <li><a href="#what-this-workshop-will-not-cover" id="toc-what-this-workshop-will-not-cover" class="nav-link" data-scroll-target="#what-this-workshop-will-not-cover">What this workshop will not cover</a></li>
+  <li><a href="#the-panes" id="toc-the-panes" class="nav-link active" data-scroll-target="#the-panes">The Panes</a>
+  <ul class="collapse">
+  <li><a href="#the-consoleterminalbackground-jobs" id="toc-the-consoleterminalbackground-jobs" class="nav-link" data-scroll-target="#the-consoleterminalbackground-jobs">The Console/Terminal/Background Jobs</a></li>
+  <li><a href="#filesplotspackageshelpviewerpresentation" id="toc-filesplotspackageshelpviewerpresentation" class="nav-link" data-scroll-target="#filesplotspackageshelpviewerpresentation">Files/Plots/Packages/Help/Viewer/Presentation</a></li>
+  <li><a href="#environmenthistoryconnectionsbuildgittutorial" id="toc-environmenthistoryconnectionsbuildgittutorial" class="nav-link" data-scroll-target="#environmenthistoryconnectionsbuildgittutorial">Environment/History/Connections/Build/Git/Tutorial</a></li>
+  <li><a href="#our-scripts-pane" id="toc-our-scripts-pane" class="nav-link" data-scroll-target="#our-scripts-pane">Our Scripts Pane</a></li>
+  </ul></li>
+  <li><a href="#the-upper-menu-items" id="toc-the-upper-menu-items" class="nav-link" data-scroll-target="#the-upper-menu-items">The Upper Menu Items</a>
+  <ul class="collapse">
+  <li><a href="#file" id="toc-file" class="nav-link" data-scroll-target="#file">File</a></li>
+  <li><a href="#edit" id="toc-edit" class="nav-link" data-scroll-target="#edit">Edit</a></li>
+  <li><a href="#code" id="toc-code" class="nav-link" data-scroll-target="#code">Code</a></li>
+  <li><a href="#view" id="toc-view" class="nav-link" data-scroll-target="#view">View</a></li>
+  <li><a href="#plots" id="toc-plots" class="nav-link" data-scroll-target="#plots">Plots</a></li>
+  <li><a href="#session" id="toc-session" class="nav-link" data-scroll-target="#session">Session</a></li>
+  <li><a href="#build" id="toc-build" class="nav-link" data-scroll-target="#build">Build</a></li>
+  <li><a href="#debug" id="toc-debug" class="nav-link" data-scroll-target="#debug">Debug</a></li>
+  <li><a href="#profile" id="toc-profile" class="nav-link" data-scroll-target="#profile">Profile</a></li>
+  <li><a href="#tools" id="toc-tools" class="nav-link" data-scroll-target="#tools">Tools</a></li>
+  <li><a href="#help" id="toc-help" class="nav-link" data-scroll-target="#help">Help</a></li>
+  </ul></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/IdahoAgStats/r-for-ag-scientists/edit/main/index.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/IdahoAgStats/r-for-ag-scientists/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/IdahoAgStats/r-for-ag-scientists/edit/main/Lesson01.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/IdahoAgStats/r-for-ag-scientists/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">An Introduction to R for Agricultural Scientists</h1>
+<h1 class="title">Lesson 1: Introduction to RStudio</h1>
 </div>
 
 
@@ -135,41 +154,214 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>This workshop will take you from zero to hero over the course of 16 hours of instruction and practice. It will introduce the <a href="https://www.r-project.org/">R programming language</a>, the graphical user interface <a href="https://www.rstudio.com/products/rstudio/">RStudio</a> and how R can be used to manage and analyse your data. At the end of this workshop, you will be able to:</p>
+<p>RStudio is more than a graphical user interface for R. It is an integrated development environment (IDE), that is a full service application for supporting software development. It can perform multitudes, so more than most people need. It is the supermarket of R functionality. Like a supermarket, there are parts of RStudio you will visit frequently and parts you will rarely if ever use. After 10+ years of using RStudio on a near daily basis, there are several parts of it that I continue to be unfamiliar with! Ths is okay - clearly, I have not needed those parts. You will come to find what sections youn will need most over time and practice.</p>
+<p>Still, it helps to have a guided tour. Let’s dive into this.</p>
+<section id="the-panes" class="level2">
+<h2 class="anchored" data-anchor-id="the-panes">The Panes</h2>
+<section id="the-consoleterminalbackground-jobs" class="level3">
+<h3 class="anchored" data-anchor-id="the-consoleterminalbackground-jobs">The Console/Terminal/Background Jobs</h3>
+<p>Default location: left or bottom left</p>
+<table class="table">
+<colgroup>
+<col style="width: 52%">
+<col style="width: 47%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Tab</th>
+<th>Function</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Console</td>
+<td>where R commands are actually done</td>
+</tr>
+<tr class="even">
+<td>Terminal</td>
+<td>use a terminal language such as bash or the windows command prompt</td>
+</tr>
+<tr class="odd">
+<td>Background jobs</td>
+<td>usual pacakage installation</td>
+</tr>
+<tr class="even">
+<td>Render</td>
+<td>for building markdown or quarto documents (only present when actively rendering)</td>
+</tr>
+</tbody>
+</table>
+<p>In this workshop, we will only be using the Console.</p>
+</section>
+<section id="filesplotspackageshelpviewerpresentation" class="level3">
+<h3 class="anchored" data-anchor-id="filesplotspackageshelpviewerpresentation">Files/Plots/Packages/Help/Viewer/Presentation</h3>
+<p>Default location: bottom right</p>
+<p>Probably the most useful pane - we will be here frequently!</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Tab</th>
+<th>Function</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Plots</td>
+<td>view plots</td>
+</tr>
+<tr class="even">
+<td>Files</td>
+<td>explore your file system</td>
+</tr>
+<tr class="odd">
+<td>Packages</td>
+<td>install, update and load packages</td>
+</tr>
+<tr class="even">
+<td>Help</td>
+<td>helps files &amp; examples</td>
+</tr>
+<tr class="odd">
+<td>Viewer</td>
+<td>for previewing websites</td>
+</tr>
+<tr class="even">
+<td>Presentation</td>
+<td>for previewing presentations</td>
+</tr>
+</tbody>
+</table>
+<p>We will not be using the Viewer or Presentations tabs in this workshop.</p>
+<p>What are Packages?</p>
+<p>These make the world go around in R. All of R consists of packages or libraries that have certain functionality associated with them. Some of are maintained by the R core team, others are maintained by outsiders. All packages are open source and most are a volunteer effort. When you open R, several packages are loaded automatically: base, datasets, graphics, grDevices, methods, stats, utils.</p>
+</section>
+<section id="environmenthistoryconnectionsbuildgittutorial" class="level3">
+<h3 class="anchored" data-anchor-id="environmenthistoryconnectionsbuildgittutorial">Environment/History/Connections/Build/Git/Tutorial</h3>
+<table class="table">
+<colgroup>
+<col style="width: 52%">
+<col style="width: 47%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Tab</th>
+<th>Function</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Environment</td>
+<td>objects created and existing in your current R session</td>
+</tr>
+<tr class="even">
+<td>History</td>
+<td>previous R command run</td>
+</tr>
+<tr class="odd">
+<td>Connections</td>
+<td>to connect to an external database</td>
+</tr>
+<tr class="even">
+<td>Build</td>
+<td>for building R packages and other large projects</td>
+</tr>
+<tr class="odd">
+<td>Git</td>
+<td>only visible if you’ve initialized a git repository</td>
+</tr>
+<tr class="even">
+<td>Tutorial</td>
+<td>tutorials build by Posit (very helpful)</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="our-scripts-pane" class="level3">
+<h3 class="anchored" data-anchor-id="our-scripts-pane">Our Scripts Pane</h3>
+<p>default location: upper left</p>
+<p>These are all the files we create and edit: <code>.R</code>, <code>.Rmd</code>, <code>.txt</code>, …</p>
+<p>when we open files from the “Files” pane, this is where it shows up</p>
+</section>
+</section>
+<section id="the-upper-menu-items" class="level2">
+<h2 class="anchored" data-anchor-id="the-upper-menu-items">The Upper Menu Items</h2>
+<section id="file" class="level3">
+<h3 class="anchored" data-anchor-id="file">File</h3>
 <ul>
-<li>import &amp; export data</li>
-<li>understand data types and object types</li>
-<li>filter, reshape, merge and manipulate your data</li>
-<li>mathematically transform data</li>
-<li>do repeat actions in R</li>
-<li>plot data</li>
-<li>navigate R help files</li>
+<li>opening and/or creating files<br>
+</li>
+<li>opening and/or creating projects<br>
+</li>
+<li>recent files, recent project<br>
+</li>
+<li>(standard file functionality)</li>
 </ul>
-<section id="who-is-this-workshop-for" class="level3">
-<h3 class="anchored" data-anchor-id="who-is-this-workshop-for">Who is This workshop for?</h3>
-<p>This workshop is intended for beginner R users. No previous experience in R or any other programming or statistical language is expected (although previous R users whose skills have lapsed are welcomed!)</p>
 </section>
-<section id="what-this-workshop-will-not-cover" class="level3">
-<h3 class="anchored" data-anchor-id="what-this-workshop-will-not-cover">What this workshop will not cover</h3>
+<section id="edit" class="level3">
+<h3 class="anchored" data-anchor-id="edit">Edit</h3>
 <ul>
-<li>git, GitHub, or any version control</li>
-<li>usage of the terminal (e.g.&nbsp;bash)</li>
-<li>statistical analysis</li>
+<li>copy, paste, find</li>
+<li>very handy “find in files” feature!</li>
 </ul>
-<section id="requirements" class="level4">
-<h4 class="anchored" data-anchor-id="requirements">Requirements</h4>
-<p>Computer with a stable internet connection. A camera for zoom.</p>
 </section>
-<section id="when" class="level4">
-<h4 class="anchored" data-anchor-id="when">When</h4>
-<p>Jan 17 - February 9<br>
-Tuesday/Thursdays<br>
-2 - 4 pm Pacific time</p>
-<p>All sessions will take place over Zoom so students across different timezones can participate.</p>
+<section id="code" class="level3">
+<h3 class="anchored" data-anchor-id="code">Code</h3>
+<ul>
+<li>incredible useful set of commands</li>
+<li>some are very simple (“comment lines”), others are complex (“rename in scope”)</li>
+<li>over time, you will learn what some (or all) of these mean and perhaps make use of them (if you don’t, that is okay)</li>
+</ul>
 </section>
-<section id="instructors" class="level4">
-<h4 class="anchored" data-anchor-id="instructors">Instructors:</h4>
-<p><a href="https://jpiaskowski.gitlab.io/">Julia Piaskowski</a> | <a href="https://github.com/jpiaskowski">GitHub</a></p>
+<section id="view" class="level3">
+<h3 class="anchored" data-anchor-id="view">View</h3>
+<ul>
+<li>rearrange panes</li>
+<li>zoom in/out</li>
+<li>overall not that useful, except for the shortcuts</li>
+</ul>
+</section>
+<section id="plots" class="level3">
+<h3 class="anchored" data-anchor-id="plots">Plots</h3>
+<ul>
+<li>meh</li>
+</ul>
+</section>
+<section id="session" class="level3">
+<h3 class="anchored" data-anchor-id="session">Session</h3>
+<ul>
+<li>very handy for restarting your R session</li>
+<li>manually set the working directory (we will do this in a few weeks)</li>
+</ul>
+</section>
+<section id="build" class="level3">
+<h3 class="anchored" data-anchor-id="build">Build</h3>
+<ul>
+<li>advanced tools for building packages, websites, et cetera. I’ve never visited this part of the supermarket.</li>
+</ul>
+</section>
+<section id="debug" class="level3">
+<h3 class="anchored" data-anchor-id="debug">Debug</h3>
+<ul>
+<li>tools for debugging code (removing errors). We will not use this in the workshop! But you can learn more about it <a href="">here</a>.</li>
+</ul>
+</section>
+<section id="profile" class="level3">
+<h3 class="anchored" data-anchor-id="profile">Profile</h3>
+<ul>
+<li>for code profiling (checking how long it takes your code to run). We will also not be using this in the workshop. This is part of the supermarket I rarely visit.</li>
+</ul>
+</section>
+<section id="tools" class="level3">
+<h3 class="anchored" data-anchor-id="tools">Tools</h3>
+<ul>
+<li>some handy utility function. I mostly use this menu item to set preferences via “Global Options”.</li>
+</ul>
+</section>
+<section id="help" class="level3">
+<h3 class="anchored" data-anchor-id="help">Help</h3>
+<ul>
+<li>more utility functions. You can check for RStudio updates here, access community help forum, and othern forms of documentation in addition to standard help files.</li>
+</ul>
 
 
 </section>
