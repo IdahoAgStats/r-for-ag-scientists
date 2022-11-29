@@ -103,7 +103,7 @@ when we open files from the "Files" pane, this is where it shows up
 
 ### Debug
 
-- tools for debugging code (removing errors). We will not use this in the workshop! But you can learn more about it [here](). 
+- tools for debugging code (removing errors). We will not use this in the workshop! But you can learn more about it [here](https://support.posit.co/hc/en-us/articles/205612627-Debugging-with-the-RStudio-IDE). 
 
 ### Profile
 

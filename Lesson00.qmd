@@ -1,0 +1,6 @@
+---
+title: "Preparing for this Class"
+---
+
+You should have received an invitation to a RStudio cloud instance I am running (email me ASAP if you have not). You'll need to create an account on Rstudio cloud using that email. 
+
