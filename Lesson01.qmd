@@ -117,3 +117,6 @@ when we open files from the "Files" pane, this is where it shows up
 
 - more utility functions. You can check for RStudio updates here, access community help forum, and othern forms of documentation in addition to standard help files. 
 
+### more
+
+Rstudio has a massive number of keyboard shortcuts. You can find them in the menu and summarized in this [cheatsheet](https://github.com/rstudio/cheatsheets/blob/master/rstudio-ide.pdf)

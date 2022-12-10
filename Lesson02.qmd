@@ -2,4 +2,100 @@
 title: "Lesson 2: Math Operators"
 ---
 
+### Use R as a calculator:
+
+Addition, substraction, multiplication, division
+```{r}
+1 + 3
+10 - 15
+2*8
+60/12
+```
+
+exponentiate
+```{r}
+3^2
+2^4
+9^0
+2^-2
+```
+
+square root
+```{r}
+sqrt(4)
+```
+
+logs
+```{r}
+log(10)
+```
+(base e)
+
+log with base 10
+
+```{r}
+log10
+```
+
+### Order of operations.
+
+What results from this?
+```{r}
+2*6 - 6*9 + 3*30 /7
+```
+
+The rules:  
+
+1. operations go left to right
+2. multiplication and division before substraction and/or Addition
+....
+
+There's more: 
+
+integer division (the remainder is discarded)
+```{r}
+5 %%/ 3
+```
+
+modulus operator (return the remainder after division)
+```{r}
+5/3
+```
+....and so much more 
+
+### Some notes on R syntax
+
+- most often, the amount of white space does not matter. 
+- These are the same:
+
+```{r}
+4/3
+4/    3
+4    /  3
+```
+
+- these are also the same
+```{r}
+log(10)
+log( 10 )
+log ( 10)
+
+- a hard return between lines of code is enough to separate the commands
+- exception: unclosed parentheses, brackets, or quotes. R will wait for these to be completed. A single quote must always be complemented by a second single quote, and a double quote likewise must always have a second quote to complete it. Left parentheses, curly braces, or brackets much also be accompanying by their right-sided complement. 
+- good examples
+```
+{ }
+( )
+[ ]
+"  "
+' '
+` `
+```
+
+- bad examples
+```
+(  } ] ' "
+```
+
+- there is no difference between double and single quotes on a practical level, but R will interpret them as different commands (so a single quote cannot close a double quote). This is useful when there is nested levels of quoting (rare), and yet, it happens now and then. 
 
