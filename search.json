@@ -1,10 +1,80 @@
 [
   {
+    "objectID": "Lesson03.html",
+    "href": "Lesson03.html",
+    "title": "Lesson 3: Vectorizing Operations",
+    "section": "",
+    "text": "Using R as a calculator between a few numbers is handy, but typically we are hoping to do so much more with it, such as performing a calculations across a long list of numbers.\nR is naturally vectorized, which means that you can easily perform a mathematical operation across a vector of numbers (no need to write loops!)\nSay we have a collection of numbers from 10 to 20 and we want to multiple them all by 12. We can create a sequence of numbers by wrapping them all in c() command (for “concatenate”) and separating each with a comma.\n\nc(10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20)\n\n [1] 10 11 12 13 14 15 16 17 18 19 20\n\n\nThen those numbers can be operated on by any math operator:\n\nc(10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20) * 10 - 1\n\n [1]  99 109 119 129 139 149 159 169 179 189 199\n\n\nThere’s also a quicker way to specify a sequence of integers using the notation start:end:\n\n1:10\n\n [1]  1  2  3  4  5  6  7  8  9 10\n\n\nIt also counts down:\n\n20:10\n\n [1] 20 19 18 17 16 15 14 13 12 11 10\n\n\nAnd works with negative integers:\n\n-5:5\n\n [1] -5 -4 -3 -2 -1  0  1  2  3  4  5\n\n\nThese can be operated on:\n\n(-5:5)^2\n\n [1] 25 16  9  4  1  0  1  4  9 16 25"
+  },
+  {
+    "objectID": "Lesson03.html#putting-it-all-together",
+    "href": "Lesson03.html#putting-it-all-together",
+    "title": "Lesson 3: Vectorizing Operations",
+    "section": "Putting it all together",
+    "text": "Putting it all together\nCheck the environment pane. These are the object you created during the session. This is where you will see all objects created, unless you have choosen to render the objects invisible by starting their object names with a .."
+  },
+  {
+    "objectID": "Lesson03.html#learning-recap",
+    "href": "Lesson03.html#learning-recap",
+    "title": "Lesson 3: Vectorizing Operations",
+    "section": "Learning Recap",
+    "text": "Learning Recap\nAt the end of this lesson, you should:\n\nunderstand how to assign variables and collections of numbers to an object name\nknown the rules for how to name objects\nunderstand reserved words in R and how to find them\nbe able to create a sequence of numbers in R using any starting value and any ending value"
+  },
+  {
+    "objectID": "Lesson01.html",
+    "href": "Lesson01.html",
+    "title": "Lesson 1: Introduction to RStudio",
+    "section": "",
+    "text": "# get Rstudio whole \nknitr::include_graphics(\"images/rstudio_console_pane.png\")\nRStudio is more than a graphical user interface for R. It is an integrated development environment (IDE), that is a full service application for supporting software development. It can perform multitudes, so more than most people need. It is the supermarket of R functionality. Like a supermarket, there are parts of RStudio you will visit frequently and parts you will rarely if ever use. After 10+ years of using RStudio on a near daily basis, there are several parts of it that I continue to be unfamiliar with! Ths is okay - clearly, I have not needed those parts. You will come to find what sections youn will need most over time and practice.\nStill, it helps to have a guided tour. Let’s dive into this."
+  },
+  {
+    "objectID": "Lesson01.html#the-panes",
+    "href": "Lesson01.html#the-panes",
+    "title": "Lesson 1: Introduction to RStudio",
+    "section": "The Panes",
+    "text": "The Panes\n\nThe Console/Terminal/Background Jobs\n\nknitr::include_graphics(\"images/rstudio_console_pane.png\")\n\n\n\n\nDefault location: left or bottom left\n\n\n\n\n\n\n\nTab\nFunction\n\n\n\n\nConsole\nwhere R commands are actually done\n\n\nTerminal\nuse a terminal language such as bash or the windows command prompt\n\n\nBackground jobs\nusual pacakage installation\n\n\nRender\nfor building markdown or quarto documents (only present when actively rendering)\n\n\n\nIn this workshop, we will only be using the Console.\n\n\nFiles/Plots/Packages/Help/Viewer/Presentation\n\nknitr::include_graphics(\"images/rstudio_file_pane.png\")\n\n\n\n\nDefault location: bottom right\nProbably the most useful pane - we will be here frequently!\n\n\n\nTab\nFunction\n\n\n\n\nPlots\nview plots\n\n\nFiles\nexplore your file system\n\n\nPackages\ninstall, update and load packages\n\n\nHelp\nhelps files & examples\n\n\nViewer\nfor previewing websites\n\n\nPresentation\nfor previewing presentations\n\n\n\nWe will not be using the Viewer or Presentations tabs in this workshop.\nWhat are Packages?\nThese make the world go around in R. All of R consists of packages or libraries that have certain functionality associated with them. Some of are maintained by the R core team, others are maintained by outsiders. All packages are open source and most are a volunteer effort. When you open R, several packages are loaded automatically: base, datasets, graphics, grDevices, methods, stats, utils.\nWe will talk about package installation and usage later in this course/workshop.\n\n\nEnvironment/History/Connections/Build/Git/Tutorial\n\nknitr::include_graphics(\"images/rstudio_envir_pane.png\")\n\n\n\n\n\n\n\n\n\n\n\nTab\nFunction\n\n\n\n\nEnvironment\nobjects created and existing in your current R session\n\n\nHistory\nprevious R command run\n\n\nConnections\nto connect to an external database\n\n\nBuild\nfor building R packages and other large projects\n\n\nGit\nonly visible if you’ve initialized a git repository\n\n\nTutorial\ntutorials build by Posit (very helpful)\n\n\n\nhere\n\n\nOur Scripts Pane\n\nknitr::include_graphics(\"images/rstudio_editor_pane.png\")\n\n\n\n\ndefault location: upper left\nThese are all the files we create and edit: .R, .Rmd, .txt, …\nwhen we open files from the “Files” pane, this is where it shows up"
+  },
+  {
+    "objectID": "Lesson01.html#the-upper-menu-items",
+    "href": "Lesson01.html#the-upper-menu-items",
+    "title": "Lesson 1: Introduction to RStudio",
+    "section": "The Upper Menu Items",
+    "text": "The Upper Menu Items\n\nknitr::include_graphics(\"images/rstudio_ribbon.png\")\n\n\n\n\n\nFile\n\nopening and/or creating files\n\nopening and/or creating projects\n\nrecent files, recent project\n\n(standard file functionality)\n\n\n\nEdit\n\ncopy, paste, find\nvery handy “find in files” feature!\n\n\n\nCode\n\nincredible useful set of commands\nsome are very simple (“comment lines”), others are complex (“rename in scope”)\nover time, you will learn what some (or all) of these mean and perhaps make use of them (if you don’t, that is okay)\n\n\n\nView\n\nrearrange panes\nzoom in/out\noverall not that useful, except for the shortcuts\n\n\n\nPlots\n\nmeh\n\n\n\nSession\n\nvery handy for restarting your R session\nmanually set the working directory (we will do this in a few weeks)\n\n\n\nBuild\n\nadvanced tools for building packages, websites, et cetera. I’ve never visited this part of the supermarket.\n\n\n\nDebug\n\ntools for debugging code (removing scripting errors). We will not use this in the workshop! But you can learn more about it here.\n\n\n\nProfile\n\nfor code profiling (checking how long it takes your code to run). We will also not be using this in the workshop. This is part of the supermarket I rarely visit.\n\n\n\nTools\n\nsome handy utility function. I mostly use this menu item to set preferences via “Global Options”.\n\n\n\nHelp\n\nmore utility functions. You can check for RStudio updates here, access community help forum, and other forms of documentation in addition to standard help files.\n\n\n\nmore\nRstudio has a massive number of keyboard shortcuts. You can find them in the menu (Help –> Cheat Sheets) and summarized in this cheat sheet"
+  },
+  {
+    "objectID": "Lesson01.html#learning-recap",
+    "href": "Lesson01.html#learning-recap",
+    "title": "Lesson 1: Introduction to RStudio",
+    "section": "Learning Recap",
+    "text": "Learning Recap\nAt the end of this lesson, you should understand:\n\nWhat the different tabs in each of the panes of RStudio do\nWhat is in each menu item in Rstudio and have a general sense of functionality available"
+  },
+  {
     "objectID": "schedule.html",
     "href": "schedule.html",
     "title": "Course Schedule",
     "section": "",
     "text": "This class will meet Tuesdays and Thursdays, 2 - 4 pm Pacific Time over Zoom.\nDraft Plan\n(this will be adjusted as needed)\n\n\n\n\n\n\n\nDate\nTopics\n\n\n\n\nJanuary 17\nLesson 1: RStudio\nLesson 2: math operators\\\n\n\nLesson 3: vectorization\n\n\n\nJanuary 19\nLesson 4: objects\nLesson 5: data structures\nLesson 6: data import\n\n\nJanuary 24\nLesson 7: data wrangling\n\n\nJanuary 26\nLesson 8: reshaping data sets\n\n\nJanuary 31\nLesson 9: combining data sets\n\n\nFebruary 2\nLesson 10: Your R set-up\nLesson 11: exporting data\nLesson 12: basic plotting\n\n\nFebruary 7\nLesson 13: ggplotting\n\n\nFebruary 9\nLesson 14: repeating actions"
+  },
+  {
+    "objectID": "Lesson02.html",
+    "href": "Lesson02.html",
+    "title": "Lesson 2: Math Operators",
+    "section": "",
+    "text": "Addition, substraction, multiplication, division\n\n1 + 3\n\n[1] 4\n\n10 - 15\n\n[1] -5\n\n2*8\n\n[1] 16\n\n60/12\n\n[1] 5\n\n\nexponentiate\n\n3^2\n\n[1] 9\n\n2^4\n\n[1] 16\n\n9^0\n\n[1] 1\n\n2^-2\n\n[1] 0.25\n\n\nroots (square, cube, ….)\n\n4^(1/2)\n\n[1] 2\n\n8^(1/3)\n\n[1] 2\n\n\nlogs\n\nlog(10)\n\n[1] 2.302585\n\n\n(base e)\nlog with base 10\n\nlog10(10)\n\n[1] 1\n\n\nUsing sign:\n\n3*-4\n\n[1] -12\n\n\nLike in standard math, only negatively signed numbers need to be specified.\nThere’s more:\ninteger division (the remainder is discarded)\n\n5 %/% 3\n\n[1] 1\n\n\nmodulus operator (return the remainder after division)\n\n5 %% 3\n\n[1] 2\n\n\n….and so much more\nLogical Operators\nThese test for conditions and return either a TRUE or FALSE\n\n\n\nsyntax\nFunction\n\n\n\n\n==\nequal\n\n\n!=\ndoes not equal\n\n\n<\nless than\n\n\n>\ngreater than\n\n\n<=, >=\nless than and equal to, and greater than equivalent\n\n\n\n\n1 == 1\n\n[1] TRUE\n\n1 == 2\n\n[1] FALSE\n\n1 != 2\n\n[1] TRUE\n\n1 < 1\n\n[1] FALSE\n\n1 > 1\n\n[1] FALSE\n\n1 <= 1\n\n[1] TRUE\n\n1 >= 1\n\n[1] TRUE\n\n\nUse & if two things must be true and | if one of two things must be true:\n\n1 < 2 & 1 != 1\n\n[1] FALSE\n\n1 < 2 | 1 != 1\n\n[1] TRUE"
+  },
+  {
+    "objectID": "Lesson02.html#putting-it-all-together",
+    "href": "Lesson02.html#putting-it-all-together",
+    "title": "Lesson 2: Math Operators",
+    "section": "Putting it all together",
+    "text": "Putting it all together\nCheck the “History” tab in the upper right hand pane (this should be to the right of the “Environment” tab). What is there?\nIf you followed along and coded the above examples, you should see the command you ran previously (including any mistakes). This is your command history. There are several icons directly above your history - explore what those do (hoover before clicking any icon to make sure you are okay with action before performing it)."
+  },
+  {
+    "objectID": "Lesson02.html#learning-recap",
+    "href": "Lesson02.html#learning-recap",
+    "title": "Lesson 2: Math Operators",
+    "section": "Learning Recap",
+    "text": "Learning Recap\nAt the end of this lesson, you should:\n\nUnderstand sorts of math operators available in R and how to use them\nUnderstand logical operators in R\nBe aware of the order of operations\nBe aware of how whitespace is interpreted in R\nUnderstand how to use parentheses, brackets, braces and quotations in R"
   },
   {
     "objectID": "index.html",
@@ -14,24 +84,10 @@
     "text": "This workshop will take you from zero to hero over the course of 16 hours of instruction and practice. It will introduce the R programming language, the graphical user interface RStudio and how R can be used to manage and analyse your data. At the end of this workshop, you will be able to:\n\nimport & export data\nunderstand data types and object types\nfilter, reshape, merge and manipulate your data\nmathematically transform data\ndo repeat actions in R\nplot data\nnavigate R help files\n\n\nWho is This workshop for?\nThis workshop is intended for beginner R users. No previous experience in R or any other programming or statistical language is expected (although previous R users whose skills have lapsed are welcomed!)\n\n\nWhat this workshop will not cover\n\ngit, GitHub, or any version control\nusage of the terminal (e.g. bash)\nstatistical analysis\n\n\nRequirements\nComputer with a stable internet connection. A camera for zoom.\n\n\nWhen\nJan 17 - February 9\nTuesday/Thursdays\n2 - 4 pm Pacific time\nAll sessions will take place over Zoom so students across different timezones can participate.\n\n\nInstructors:\nJulia Piaskowski | GitHub"
   },
   {
-    "objectID": "Lesson01.html",
-    "href": "Lesson01.html",
-    "title": "Lesson 1: Introduction to RStudio",
+    "objectID": "Lesson00.html",
+    "href": "Lesson00.html",
+    "title": "Preparing for this Class",
     "section": "",
-    "text": "RStudio is more than a graphical user interface for R. It is an integrated development environment (IDE), that is a full service application for supporting software development. It can perform multitudes, so more than most people need. It is the supermarket of R functionality. Like a supermarket, there are parts of RStudio you will visit frequently and parts you will rarely if ever use. After 10+ years of using RStudio on a near daily basis, there are several parts of it that I continue to be unfamiliar with! Ths is okay - clearly, I have not needed those parts. You will come to find what sections youn will need most over time and practice.\nStill, it helps to have a guided tour. Let’s dive into this."
-  },
-  {
-    "objectID": "Lesson01.html#the-panes",
-    "href": "Lesson01.html#the-panes",
-    "title": "Lesson 1: Introduction to RStudio",
-    "section": "The Panes",
-    "text": "The Panes\n\nThe Console/Terminal/Background Jobs\nDefault location: left or bottom left\n\n\n\n\n\n\n\nTab\nFunction\n\n\n\n\nConsole\nwhere R commands are actually done\n\n\nTerminal\nuse a terminal language such as bash or the windows command prompt\n\n\nBackground jobs\nusual pacakage installation\n\n\nRender\nfor building markdown or quarto documents (only present when actively rendering)\n\n\n\nIn this workshop, we will only be using the Console.\n\n\nFiles/Plots/Packages/Help/Viewer/Presentation\nDefault location: bottom right\nProbably the most useful pane - we will be here frequently!\n\n\n\nTab\nFunction\n\n\n\n\nPlots\nview plots\n\n\nFiles\nexplore your file system\n\n\nPackages\ninstall, update and load packages\n\n\nHelp\nhelps files & examples\n\n\nViewer\nfor previewing websites\n\n\nPresentation\nfor previewing presentations\n\n\n\nWe will not be using the Viewer or Presentations tabs in this workshop.\nWhat are Packages?\nThese make the world go around in R. All of R consists of packages or libraries that have certain functionality associated with them. Some of are maintained by the R core team, others are maintained by outsiders. All packages are open source and most are a volunteer effort. When you open R, several packages are loaded automatically: base, datasets, graphics, grDevices, methods, stats, utils.\n\n\nEnvironment/History/Connections/Build/Git/Tutorial\n\n\n\n\n\n\n\nTab\nFunction\n\n\n\n\nEnvironment\nobjects created and existing in your current R session\n\n\nHistory\nprevious R command run\n\n\nConnections\nto connect to an external database\n\n\nBuild\nfor building R packages and other large projects\n\n\nGit\nonly visible if you’ve initialized a git repository\n\n\nTutorial\ntutorials build by Posit (very helpful)\n\n\n\n\n\nOur Scripts Pane\ndefault location: upper left\nThese are all the files we create and edit: .R, .Rmd, .txt, …\nwhen we open files from the “Files” pane, this is where it shows up"
-  },
-  {
-    "objectID": "Lesson01.html#the-upper-menu-items",
-    "href": "Lesson01.html#the-upper-menu-items",
-    "title": "Lesson 1: Introduction to RStudio",
-    "section": "The Upper Menu Items",
-    "text": "The Upper Menu Items\n\nFile\n\nopening and/or creating files\n\nopening and/or creating projects\n\nrecent files, recent project\n\n(standard file functionality)\n\n\n\nEdit\n\ncopy, paste, find\nvery handy “find in files” feature!\n\n\n\nCode\n\nincredible useful set of commands\nsome are very simple (“comment lines”), others are complex (“rename in scope”)\nover time, you will learn what some (or all) of these mean and perhaps make use of them (if you don’t, that is okay)\n\n\n\nView\n\nrearrange panes\nzoom in/out\noverall not that useful, except for the shortcuts\n\n\n\nPlots\n\nmeh\n\n\n\nSession\n\nvery handy for restarting your R session\nmanually set the working directory (we will do this in a few weeks)\n\n\n\nBuild\n\nadvanced tools for building packages, websites, et cetera. I’ve never visited this part of the supermarket.\n\n\n\nDebug\n\ntools for debugging code (removing errors). We will not use this in the workshop! But you can learn more about it here.\n\n\n\nProfile\n\nfor code profiling (checking how long it takes your code to run). We will also not be using this in the workshop. This is part of the supermarket I rarely visit.\n\n\n\nTools\n\nsome handy utility function. I mostly use this menu item to set preferences via “Global Options”.\n\n\n\nHelp\n\nmore utility functions. You can check for RStudio updates here, access community help forum, and othern forms of documentation in addition to standard help files."
+    "text": "You will receive an invitation to join a our online classroom on Posit Cloud, where you will need to sign up for an account using your email, or you can connect it to a gmail or GitHub account (any of these choices will work fine for the class).\nFor all lessons, please follow along in your RStudio cloud session and type + run the same code that I will demonstrate.\nI will record each day’s lessons and make it available through email and Canvas and post the notes shortly after class ends. It is important that you read through notes and watch the video if (1) you had to miss some or all of a class or (2) there is material you do not understand. Please use the time between courses to ensure you understand the material."
   }
 ]

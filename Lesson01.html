@@ -20,6 +20,69 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -130,7 +193,9 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#profile" id="toc-profile" class="nav-link" data-scroll-target="#profile">Profile</a></li>
   <li><a href="#tools" id="toc-tools" class="nav-link" data-scroll-target="#tools">Tools</a></li>
   <li><a href="#help" id="toc-help" class="nav-link" data-scroll-target="#help">Help</a></li>
+  <li><a href="#more" id="toc-more" class="nav-link" data-scroll-target="#more">more</a></li>
   </ul></li>
+  <li><a href="#learning-recap" id="toc-learning-recap" class="nav-link" data-scroll-target="#learning-recap">Learning Recap</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/IdahoAgStats/r-for-ag-scientists/edit/main/Lesson01.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/IdahoAgStats/r-for-ag-scientists/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
@@ -154,12 +219,22 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># get Rstudio whole </span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"images/rstudio_console_pane.png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>RStudio is more than a graphical user interface for R. It is an integrated development environment (IDE), that is a full service application for supporting software development. It can perform multitudes, so more than most people need. It is the supermarket of R functionality. Like a supermarket, there are parts of RStudio you will visit frequently and parts you will rarely if ever use. After 10+ years of using RStudio on a near daily basis, there are several parts of it that I continue to be unfamiliar with! Ths is okay - clearly, I have not needed those parts. You will come to find what sections youn will need most over time and practice.</p>
 <p>Still, it helps to have a guided tour. Let’s dive into this.</p>
 <section id="the-panes" class="level2">
 <h2 class="anchored" data-anchor-id="the-panes">The Panes</h2>
 <section id="the-consoleterminalbackground-jobs" class="level3">
 <h3 class="anchored" data-anchor-id="the-consoleterminalbackground-jobs">The Console/Terminal/Background Jobs</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"images/rstudio_console_pane.png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="images/rstudio_console_pane.png" class="img-fluid"></p>
+</div>
+</div>
 <p>Default location: left or bottom left</p>
 <table class="table">
 <colgroup>
@@ -195,6 +270,12 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="filesplotspackageshelpviewerpresentation" class="level3">
 <h3 class="anchored" data-anchor-id="filesplotspackageshelpviewerpresentation">Files/Plots/Packages/Help/Viewer/Presentation</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"images/rstudio_file_pane.png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="images/rstudio_file_pane.png" class="img-fluid"></p>
+</div>
+</div>
 <p>Default location: bottom right</p>
 <p>Probably the most useful pane - we will be here frequently!</p>
 <table class="table">
@@ -234,9 +315,16 @@ ul.task-list li input[type="checkbox"] {
 <p>We will not be using the Viewer or Presentations tabs in this workshop.</p>
 <p>What are Packages?</p>
 <p>These make the world go around in R. All of R consists of packages or libraries that have certain functionality associated with them. Some of are maintained by the R core team, others are maintained by outsiders. All packages are open source and most are a volunteer effort. When you open R, several packages are loaded automatically: base, datasets, graphics, grDevices, methods, stats, utils.</p>
+<p>We will talk about package installation and usage later in this course/workshop.</p>
 </section>
 <section id="environmenthistoryconnectionsbuildgittutorial" class="level3">
 <h3 class="anchored" data-anchor-id="environmenthistoryconnectionsbuildgittutorial">Environment/History/Connections/Build/Git/Tutorial</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"images/rstudio_envir_pane.png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="images/rstudio_envir_pane.png" class="img-fluid"></p>
+</div>
+</div>
 <table class="table">
 <colgroup>
 <col style="width: 52%">
@@ -275,9 +363,16 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody>
 </table>
+<p><a href="more">here</a></p>
 </section>
 <section id="our-scripts-pane" class="level3">
 <h3 class="anchored" data-anchor-id="our-scripts-pane">Our Scripts Pane</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"images/rstudio_editor_pane.png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="images/rstudio_editor_pane.png" class="img-fluid"></p>
+</div>
+</div>
 <p>default location: upper left</p>
 <p>These are all the files we create and edit: <code>.R</code>, <code>.Rmd</code>, <code>.txt</code>, …</p>
 <p>when we open files from the “Files” pane, this is where it shows up</p>
@@ -285,6 +380,12 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="the-upper-menu-items" class="level2">
 <h2 class="anchored" data-anchor-id="the-upper-menu-items">The Upper Menu Items</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"images/rstudio_ribbon.png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="images/rstudio_ribbon.png" class="img-fluid"></p>
+</div>
+</div>
 <section id="file" class="level3">
 <h3 class="anchored" data-anchor-id="file">File</h3>
 <ul>
@@ -342,7 +443,7 @@ ul.task-list li input[type="checkbox"] {
 <section id="debug" class="level3">
 <h3 class="anchored" data-anchor-id="debug">Debug</h3>
 <ul>
-<li>tools for debugging code (removing errors). We will not use this in the workshop! But you can learn more about it <a href="">here</a>.</li>
+<li>tools for debugging code (removing scripting errors). We will not use this in the workshop! But you can learn more about it <a href="https://support.posit.co/hc/en-us/articles/205612627-Debugging-with-the-RStudio-IDE">here</a>.</li>
 </ul>
 </section>
 <section id="profile" class="level3">
@@ -360,11 +461,23 @@ ul.task-list li input[type="checkbox"] {
 <section id="help" class="level3">
 <h3 class="anchored" data-anchor-id="help">Help</h3>
 <ul>
-<li>more utility functions. You can check for RStudio updates here, access community help forum, and othern forms of documentation in addition to standard help files.</li>
+<li>more utility functions. You can check for RStudio updates here, access community help forum, and other forms of documentation in addition to standard help files.</li>
+</ul>
+</section>
+<section id="more" class="level3">
+<h3 class="anchored" data-anchor-id="more">more</h3>
+<p>Rstudio has a massive number of keyboard shortcuts. You can find them in the menu (Help –&gt; Cheat Sheets) and summarized in this <a href="https://github.com/rstudio/cheatsheets/blob/master/rstudio-ide.pdf">cheat sheet</a></p>
+</section>
+</section>
+<section id="learning-recap" class="level2">
+<h2 class="anchored" data-anchor-id="learning-recap">Learning Recap</h2>
+<p>At the end of this lesson, you should understand:</p>
+<ul>
+<li>What the different tabs in each of the panes of RStudio do</li>
+<li>What is in each menu item in Rstudio and have a general sense of functionality available</li>
 </ul>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
