@@ -2,5 +2,9 @@
 title: "Preparing for this Class"
 ---
 
-You should have received an invitation to a RStudio cloud instance I am running (email me ASAP if you have not). You'll need to create an account on Rstudio cloud using that email. 
+You will receive an invitation to join a our online classroom on [Posit Cloud](https://login.posit.cloud/login), where you will need to sign up for an account using your email, or you can connect it to a gmail or GitHub account (any of these choices will work fine for the class).
 
+
+For all lessons, please follow along in your RStudio cloud session and type + run the same code that I will demonstrate. 
+
+I will record each day's lessons and make it available through email and Canvas and post the notes shortly after class ends. It is important that you read through notes and watch the video if (1) you had to miss some or all of a class or (2) there is material you do not understand. Please use the time between courses to ensure you understand the material. 
