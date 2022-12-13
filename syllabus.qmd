@@ -1,27 +1,29 @@
 ---
 title: "Syllabus"
+author: "BCB 503: Introduction to Scientific Programming in R"
+format: docx
+date: "Spring, 2023"
 ---
 
-### Meeting Times
+## Meeting Times
 
 Jan 17 - February 9\
 Tuesday/Thursdays\
 2 - 4 pm Pacific time
 
-All courses will be recorded and made available after class is over through email. 
+All courses will be recorded and made available after class is over through email. All materials will be posted on the [course website](https://idahoagstats.github.io/r-for-ag-scientists/). 
 
-### Instructor
+## Instructor
 
 [Julia Piaskowski](https://jpiaskowski.gitlab.io/) \| [GitHub](https://github.com/jpiaskowski)
 
-#### Office Hours
+## Office Hours/Drop-In Zoom Hours
 
-Friday, 1-3 pm over zoom or by appointment if you cannot make that time. 
+Wednesday/Friday, 1-2 pm over Zoom. Email me if you have questions but are unavailable at that time.  
 
+## Course Outline
 
-### Course Outline
-
-This is an introductory course for the [R programming language](https://www.r-project.org/), the graphical user interface [RStudio](https://www.rstudio.com/products/rstudio/) and how R can be used to manage and analyse your data. At the end of this course, with dilligent study and application,  you will be able to:
+This is an introductory course for the [R programming language](https://www.r-project.org/), the graphical user interface [RStudio](https://www.rstudio.com/products/rstudio/) and how R can be used to manage and analyse your data. At the end of this course, with diligent study and application,  you will be able to:
 
 -   import & export data
 -   understand data types and object types
@@ -31,27 +33,36 @@ This is an introductory course for the [R programming language](https://www.r-pr
 -   plot data
 -   navigate R help files
 
-This course will not address: 
+#### This course will not address: 
 
 -   git, GitHub, or any version control
 -   usage of the terminal (e.g. bash)
 -   statistical analysis
 
-### Prerequesites
+## Prerequisites
 
 This course is intended for beginner R users. No previous experience in R or any other programming/statistical language is expected (although previous R users whose skills have lapsed are welcomed!)
 
-### Course requirements
+## Course Requirements
 
-Computer with a stable internet connection. A camera and microphone for Zoom.
+* Computer with a stable internet connection 
+* A camera and microphone for Zoom
 
-### Grades policy
+## Grades Policy
 
-This is a pass/fail class that is largely participation driven. Your 'grade' will be a direct reflection of your attendance and participation during class. Attendance of 5 classes, or 62.% of the total instruction time will constitute a passing grade. Participating means attending and following along with the coding demonstration on your own computer. 
+This is a pass/fail class that is largely participation driven. Your 'grade' will be a direct reflection of your attendance and participation during class. Attendance and participation of 5 classes, or 62.% of the total instruction time, will constitute a passing grade. Participating means attending and following along with the coding demonstration on your own computer. 
 
-Some of you have already communicated with me regarding time you will miss due to scheduling conflicts. Your time away will not count against your grade, but, please be sure to watch the videos and read the notes for the class time you miss. 
+Some of you have already communicated with me regarding time you will miss due to scheduling conflicts with other courses. Your time away will not count against your attendance record and final grade. Please be sure to watch the videos and read the notes for the class time you miss so you do not fall behind in the course content. 
 
-### Course accomodations
+## Inclusivity & Accessibility 
+
+I have attempted to create a course/workshop, course website and learning resources that are accessible and inclusive as possible. I welcome feedback on how to improve on this. If you need additional accommodations, I am happy to help. For official accommodations, University of Idaho policy requires that you work with the [Center for Disability and Access Resources](https://www.uidaho.edu/current-students/cdar). 
+
+
+## Cheating and Plagiarism
+
+This is not likely to be an issue in this course given that we have no true assignments that are graded. For reference, you can read about the University of Idaho plagiarism policy [here](https://www.uidaho.edu/student-affairs/dean-of-students/student-conduct/academic-integrity).
+
 
 
 
