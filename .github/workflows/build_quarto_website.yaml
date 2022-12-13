@@ -5,11 +5,11 @@ on:
     branches: main
   pull_request:
     branches: main
-  schedule:
+  #schedule:
     # * is a special character in YAML so you have to quote this string
     # Trigger once a week, on a Sunday (0)
-    - cron:  '0 0 * * 0'
-  workflow_dispatch:
+  #  - cron:  '0 0 * * 0'
+  #workflow_dispatch:
 
 name: Build Site
 
@@ -28,6 +28,7 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y libcurl4-openssl-dev
+          
       - name: Put pandoc in PATH
         run: |
           mkdir -p ~/.local/bin
@@ -47,6 +48,7 @@ jobs:
       - name: Build site 🔧
         run: |
           R -e 'quarto::quarto_render(".", as_job = FALSE)'
+          
       - name: Deploy 🚀
         if: github.event_name != 'pull_request'
         uses: JamesIves/github-pages-deploy-action@4.1.7
