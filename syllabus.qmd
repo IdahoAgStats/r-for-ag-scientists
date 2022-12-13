@@ -1,0 +1,57 @@
+---
+title: "Syllabus"
+---
+
+### Meeting Times
+
+Jan 17 - February 9\
+Tuesday/Thursdays\
+2 - 4 pm Pacific time
+
+All courses will be recorded and made available after class is over through email. 
+
+### Instructor
+
+[Julia Piaskowski](https://jpiaskowski.gitlab.io/) \| [GitHub](https://github.com/jpiaskowski)
+
+#### Office Hours
+
+Friday, 1-3 pm over zoom or by appointment if you cannot make that time. 
+
+
+### Course Outline
+
+This is an introductory course for the [R programming language](https://www.r-project.org/), the graphical user interface [RStudio](https://www.rstudio.com/products/rstudio/) and how R can be used to manage and analyse your data. At the end of this course, with dilligent study and application,  you will be able to:
+
+-   import & export data
+-   understand data types and object types
+-   filter, reshape, merge and manipulate your data
+-   mathematically transform data
+-   do repeat actions in R
+-   plot data
+-   navigate R help files
+
+This course will not address: 
+
+-   git, GitHub, or any version control
+-   usage of the terminal (e.g. bash)
+-   statistical analysis
+
+### Prerequesites
+
+This course is intended for beginner R users. No previous experience in R or any other programming/statistical language is expected (although previous R users whose skills have lapsed are welcomed!)
+
+### Course requirements
+
+Computer with a stable internet connection. A camera and microphone for Zoom.
+
+### Grades policy
+
+This is a pass/fail class that is largely participation driven. Your 'grade' will be a direct reflection of your attendance and participation during class. Attendance of 5 classes, or 62.% of the total instruction time will constitute a passing grade. Participating means attending and following along with the coding demonstration on your own computer. 
+
+Some of you have already communicated with me regarding time you will miss due to scheduling conflicts. Your time away will not count against your grade, but, please be sure to watch the videos and read the notes for the class time you miss. 
+
+### Course accomodations
+
+
+
