@@ -105,6 +105,8 @@ log(0)
 
 ## Putting it all together
 
+Check the environment pane. These are the object you created during the session. This is where you will see all objects created, unless you have choosen to render the objects invisible by starting their object names with a `.`. 
+
 ## Learning Recap
 
 At the end of this lesson, you should: 
