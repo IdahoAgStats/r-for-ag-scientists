@@ -96,5 +96,12 @@
     "title": "Preparing for this Class",
     "section": "",
     "text": "You will receive an invitation to join a our online classroom on Posit Cloud, where you will need to sign up for an account using your email, or you can connect it to a gmail or GitHub account (any of these choices will work fine for the class).\nFor all lessons, please follow along in your RStudio cloud session and type + run the same code that I will demonstrate.\nI will record each day’s lessons and make it available through email and Canvas and post the notes shortly after class ends. It is important that you read through notes and watch the video if (1) you had to miss some or all of a class or (2) there is material you do not understand. Please use the time between courses to ensure you understand the material."
+  },
+  {
+    "objectID": "Lesson04.html",
+    "href": "Lesson04.html",
+    "title": "Lesson 4: Introduction to R object types",
+    "section": "",
+    "text": "Previously, we created an object in R that was a collection or ssequence of numbers.\n\nx1 <- 1:10\nx2 <- c(3, 5, 11)\n\nThese can also be created for character variables:\n\nx3 <- \"apple\"\nx4 <- c(\"orange\", \"banana\")"
   }
 ]
