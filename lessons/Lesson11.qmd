@@ -1,5 +1,5 @@
 ---
-title: "Lesson 8: Reshaping Data Sets"
+title: "Special Lesson 12: Setting up R for Reproducible Research"
 ---
 
 
@@ -15,4 +15,4 @@ title: "Lesson 8: Reshaping Data Sets"
 At the end of this lesson, you should: 
 
 * 
-:::
+::: s

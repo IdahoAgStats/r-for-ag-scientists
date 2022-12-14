@@ -1,0 +1,17 @@
+---
+title: "Solutions to Practice #2"
+---
+
+If you convert it using as.integer, it will look rather funky:
+
+```{r}
+myvar <- factor(c(2010:2022))
+as.integer(myvar)
+```
+
+It must first be converted to a character to preserve the information in the levels and then an integer
+
+```{r}
+as.integer(as.character(myvar))
+```
+

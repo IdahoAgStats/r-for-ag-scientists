@@ -1,0 +1,109 @@
+---
+title: "Lesson 4: Introduction to R object types"
+---
+
+## Object types
+
+### Numeric
+
+Previously, we created an object in R that was a collection or sequence of numbers.
+
+```{r}
+x1 <- 1:10
+```
+
+These numbers are technically integers. We can also create "floating point numbers" (e.g. with precision past the decimal point):
+
+```{r}
+x2 <- c(1.25, 2.718, 10.000)
+```
+
+### Character
+These can also be created for character variables:
+
+```{r}
+x3 <- "apple"
+x4 <- c("orange", "banana")
+```
+
+Let's check the class for each R object
+```{r}
+class(x1)
+class(x2)
+class(x3)
+class(x4)
+```
+
+::: {.callout-note}
+You can force a number to be a integer by adding an `L` to a number as long as it does not contain a decimal pont (e.g. `c(0L, 1L, 2L)`)
+:::
+
+There are two other special classes:
+ 
+### Logical 
+
+* consisting of TRUE and FALSE values
+```{r}
+x5 <- c(TRUE, FALSE, FALSE, TRUE)
+class(x5)
+```
+
+### Factor
+```{r}
+x6 <- factor(c("one", "two", "three"))
+class(x6)
+x6
+```
+Factors often look like character objects, except there exists several pre-defined levels which exist regardless if they are found in the object. 
+
+```{r}
+x7 <- factor(c("one", "two", "three"), 
+             levels = c("one", "two", "three", "four"))
+x7
+```
+
+Factors are complicated and take some time to fully understand. At this time, we are going to put the topic of factors aside and focus on other more important things. 
+
+
+## Object type coercion
+
+* R will automatically an assign an object type based on the items present within object. It will try to assign the simplest type possible. Here are the types from simplest to most complex: 
+
+$$logical < integer < numeric < character$$
+(Factors are not listed because they are technically integers. Factors are *weird*!)
+
+What classes do you think results from each of these? 
+```{r, eval= FALSE}
+x8 <- c(8, 9.2)
+x9 <- c(0, 0, 0, 0)
+x10 <- c(TRUE, FALSE, 1L, 0L)
+x11 <- c(1, 2, "pear", -6:2, TRUE)
+```
+
+Objects can be coerced with these functions:
+
+```{r, eval=FALSE}
+as.character(x8)
+as.factor(x10)
+as.logical(x10)
+as.numeric(x11)
+```
+
+
+::: {.callout-tip}
+## Putting it all together
+
+Look at the object created in the lesson in the Global Environment pane. For each object, the object class and the first few values will be listed. When is it not listed? 
+:::
+
+::: {.callout-caution collapse="true"}
+## Learning Goals
+
+At the end of this lesson, you should: 
+
+* Understand what object class means and how to determine and object's class
+* Understand the difference between the 5 main object classes: logical, integer, numeric, character and factors. 
+* know how to coerce objects from one class to another
+
+:::
+

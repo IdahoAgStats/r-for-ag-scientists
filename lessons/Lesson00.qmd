@@ -8,3 +8,20 @@ You will receive an invitation to join a our online classroom on [Posit Cloud](h
 For all lessons, please follow along in your RStudio cloud session and type + run the same code that I will demonstrate. 
 
 I will record each day's lessons and make it available through email and Canvas and post the notes shortly after class ends. It is important that you read through notes and watch the video if (1) you had to miss some or all of a class or (2) there is material you do not understand. Please use the time between courses to ensure you understand the material. 
+
+**At the end of most lectures, this is included**
+
+::: {.callout-tip}
+## Putting it all together
+
+Where there tips designed to weave together information from multiple lessons. 
+:::
+
+**This is at the end of learning materials**
+
+::: {.callout-caution collapse="true"}
+## Learning Goals
+
+What each lesson is intended to teach. If you do not think you have met the learning goals, please review the notes, rewatch the videos and if the material is still unclear, contact the instructor. It's important you understand the basic lessons of each section before moving on. 
+:::
+

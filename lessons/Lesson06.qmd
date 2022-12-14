@@ -1,0 +1,34 @@
+---
+title: "Special Lesson 6: R Functions & R Help"
+---
+
+## The Mechanics of R Functions
+
+We have thus far used a few R functions without explicity stating how they work exactly. 
+
+
+## Using R Help
+
+
+
+
+
+## Concluding Thoughts
+
+This is the last section with a major focus on 'base R', that is the set of functions that come automatically loaded when you install and open R. 
+
+Take a loook at this [long-ish cheat sheet](https://cran.r-project.org/doc/contrib/Short-refcard.pdf) (4 pages long!) of the many useful commands in base R.  Skim through this and see if there is anything useful for you. It is meant to periodically skimmed,  not studied in great detail (you'll put yourself to sleep if you try to read it beginning to end). 
+
+::: {.callout-tip}
+## Putting it all together
+
+
+:::
+
+::: {.callout-caution collapse="true"}
+## Learning Goals
+
+At the end of this lesson, you should: 
+
+* 
+:::
