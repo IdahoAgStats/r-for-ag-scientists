@@ -141,15 +141,18 @@ log ( 10)
 ' "
 ```
 
-- there is no difference between double and single quotes on a practical level, but R will interpret them as different commands (so a single quote cannot close a double quote). This is useful when there is nested levels of quoting (rare), and yet, it happens now and then. 
+- there is no difference between double and single quotes on a practical level, but R will interpret them as different commands (so a single quote cannot close a double quote). This is useful when there is nested levels of quoting (rare), and yet, it happens now and then.
 
+::: {.callout-tip}
 ## Putting it all together
 
 Check the "History" tab in the upper right hand pane (this should be to the right of the "Environment" tab). What is there?
 
 If you followed along and coded the above examples, you should see the command you ran previously (including any mistakes). This is your command history. There are several icons directly above your history - explore what those do (hoover before clicking any icon to make sure you are okay with action before performing it). 
+:::
 
-## Learning Recap
+::: {.callout-caution collapse="true"}
+## Learning Goals
 
 At the end of this lesson, you should: 
 
@@ -158,5 +161,4 @@ At the end of this lesson, you should:
 * Be aware of the order of operations
 * Be aware of how whitespace is interpreted in R
 * Understand how to use parentheses, brackets, braces and quotations in R
-
-
+:::

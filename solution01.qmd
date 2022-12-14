@@ -1,0 +1,53 @@
+---
+title: "Solutions to Practice #1"
+---
+
+
+$$ \frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{1}{2}(\frac{x-\mu}{\sigma})^2}$$
+
+$\pi$ = 3.14
+$e$ = 2.718
+$\mu$ = 50
+$\sigma$ = 5
+$x$ = 20
+
+1. For this problem, there are several possible solutions:
+
+* Manual the whole way down:
+
+```{r}
+1/(5*(2*3.14)^0.5)*2.718^(-0.5*((20-50)/5)^2)
+```
+
+* Employing a few shortcuts
+
+```{r}
+1/(5*sqrt(2*pi))*exp(-0.5*((20-50)/5)^2)
+```
+
+*  R function that estimates the [standard normal density](https://en.wikipedia.org/wiki/Normal_distribution) (the equation above is the probability density function for the normal distribution)
+
+```{r}
+dnorm(x = 20, mean = 50, sd = 5)
+```
+
+
+::: callout-note
+It's not expected you would be aware of the second and third solutions given what has been taught thus far, but it's helpful to be aware that many shortcuts exist in R to make coding easier. 
+:::
+
+
+
+2. Using the manual approach:
+
+```{r}
+x = c(10, 20, 30, 40, 50)
+1/(5*(2*3.14)^0.5)*2.718^(-0.5*((x-50)/5)^2)
+```
+
+
+
+
+
+
+

@@ -3,3 +3,16 @@ title: "Lesson 12: Exploratory Plotting in R"
 ---
 
 
+::: {.callout-tip}
+## Putting it all together
+
+
+:::
+
+::: {.callout-caution collapse="true"}
+## Learning Goals
+
+At the end of this lesson, you should: 
+
+* 
+:::

@@ -2,6 +2,7 @@
 title: "Lesson 3: Vectorizing Operations"
 ---
 
+
 ### Vectorizing operations
 
 Using R as a calculator between a few numbers is handy, but typically we are hoping to do so much more with it, such as performing a calculations across a long list of numbers. 
@@ -92,7 +93,7 @@ It is your choice (mostly) about what to name R objects. There are a few rules t
 | `if` `else` `while` `break` `next` `repeat` | control flow  |
 | `NA_integer_` `NA_real_`	`NA_complex_` `NA_character_` | missing data by class
 
-It's easy to forgot these. Run `?reserved` in R session to remind yourself if need be. 
+It's easy to forgot these. Run `?reserved` in an R console to remind yourself if need be. 
 
 Some examples of reserved words in the wild: 
 
@@ -102,12 +103,14 @@ log(0)
 2/0
 ```
 
-
+::: {.callout-tip}
 ## Putting it all together
 
-Check the environment pane. These are the object you created during the session. This is where you will see all objects created, unless you have choosen to render the objects invisible by starting their object names with a `.`. 
+Check the environment pane. These are the object you created during the session. This is where you will see all objects created, unless you have choosen to render the objects invisible by starting their object names with a `.`, a period.  
+:::
 
-## Learning Recap
+::: {.callout-caution collapse="true"}
+## Learning Goals
 
 At the end of this lesson, you should: 
 
@@ -115,3 +118,5 @@ At the end of this lesson, you should:
 * known the rules for how to name objects
 * understand reserved words in R and how to find them
 * be able to create a sequence of numbers in R using any starting value and any ending value
+:::
+

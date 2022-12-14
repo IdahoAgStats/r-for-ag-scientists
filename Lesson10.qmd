@@ -3,3 +3,16 @@ title: "Lesson 10: Setting up R for Reproducible Research"
 ---
 
 
+::: {.callout-tip}
+## Putting it all together
+
+
+:::
+
+::: {.callout-caution collapse="true"}
+## Learning Goals
+
+At the end of this lesson, you should: 
+
+* 
+::: s
