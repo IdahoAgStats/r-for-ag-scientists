@@ -67,7 +67,7 @@ The left arrow assignment `<-` takes everything on the right side of the arrow a
 It is your choice (mostly) about what to name R objects. There are a few rules to follow:
 
 
-* spaces are generally not allowed and a huge pain (avoid) 
+* spaces are generally not allowed and a huge pain - avoid at all costs! 
 * Don't start with a number or symbol! (this is technically possible, but a huge pain)
 * choose a name that is short, yet descriptive
 * R is case sensitive, so `test` is different from `Test` and `TEST`. Be mindful of this! It trips many folks up.  
