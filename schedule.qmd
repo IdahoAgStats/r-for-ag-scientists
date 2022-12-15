@@ -7,19 +7,21 @@ title: "Course Schedule"
 
 | Date            |   Topics          |
 |-----------------|-------------------|
+| Before January 17 | Watch Welcome Video |
 | January 17 | Lesson 1: RStudio\
-                  Lesson 2: math operators\    
-                  Lesson 3: vectorization  |
+                  Lesson 2: math operators\
+                  Lesson 3: vectorization |
 | January 19 | Lesson 4: objects\
                   Lesson 5: data structures\
-                  Lesson 6: data import |
-| January 24 | Lesson 7: data wrangling |
-| January 26   | Lesson 8: reshaping data sets |
-| January 31  | Lesson 9: combining data sets |
-| February 2  | Lesson 10: Your R set-up\
-                Lesson 11: exporting data\
-                Lesson 12: basic plotting |
-| February 7 | Lesson 13: ggplotting   |
-| February 9 | Lesson 14: repeating actions |
+                  Lesson 6: R functions & help |
+| January 24 | Lesson 7: data import\
+                Lesson 8: data wrangling |
+| January 26   | Lesson 9: reshaping data sets |
+| January 31  | Lesson 10: combining data sets |
+| February 2  | Lesson 11: Your R set-up\
+                Lesson 12: exporting data\
+                Lesson 13: basic plotting |
+| February 7 | Lesson 14: ggplotting   |
+| February 9 | Lesson 15: repeating actions |
 
 

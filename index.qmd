@@ -1,5 +1,5 @@
 ---
-title: "An Introduction to R for Agricultural Scientists"
+title: "An Introduction to R for Scientists"
 ---
 
 ```{r echo=FALSE,include=FALSE}
@@ -29,7 +29,9 @@ This workshop is intended for beginner R users. No previous experience in R or a
 
 #### Requirements
 
-Computer with a stable internet connection. A camera for zoom.
+* a computer with a reliable internet connection
+* A camera and microphone for Zoom 
+* A Zoom account (the free version is sufficient)
 
 #### When
 
