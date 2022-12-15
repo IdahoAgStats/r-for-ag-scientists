@@ -80,7 +80,7 @@ It is your choice (mostly) about what to name R objects. There are a few rules t
 ```
 
 
-[More](https://intro2r.com/objects-in-r.html) on object naming. 
+Here is [some discussion](https://intro2r.com/objects-in-r.html) on object naming in R. 
 
 |-------------|----------------|
 |reserved word | meaning       |

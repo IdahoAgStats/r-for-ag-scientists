@@ -150,8 +150,7 @@ knitr::include_graphics(here::here("images", "rstudio_ribbon.png"))
 
 ### more
 
-Rstudio has a massive number of keyboard shortcuts. You can find them in the menu (Help --> Cheat Sheets) and summarized in this [cheat
-sheet](https://github.com/rstudio/cheatsheets/blob/master/rstudio-ide.pdf)
+Rstudio has a massive number of keyboard shortcuts. You can find them in the menu (Help --> Cheat Sheets) and summarized in this [cheat sheet](https://github.com/rstudio/cheatsheets/blob/master/rstudio-ide.pdf)
 
 ::: {.callout-caution collapse="true"}
 ## Learning Recap
