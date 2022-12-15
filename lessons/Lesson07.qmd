@@ -6,6 +6,18 @@ title: "Lesson 7: Importing Data into R"
 
 
 
+Things frequently go wrong when importing data. This can sometimes be corrected by changing the import arguments, but often it indicates problems with the incoming data.
+
+Some possible errors and how to fix them:
+
+1. **Some variables which should be numeric are characters instead.**
+*At least one item contains an unexpected character that renders that observation - and the rest of the vector - as a character. This might be two decimal points, a comma, or a "O" instead of "0". If possible, manually inspect the data and correct the error. *
+
+1. **Missing data are not coded as missing.**
+*Import functions have default values for what is interpreted as missing. Check the documentation and adjust the arguments as needed to capture what code a data sets is using to indicate missing data.*
+
+The best thing is to properly arrange your data set prior to import. [Broman & Woo (2018)](https://www.tandfonline.com/doi/full/10.1080/00031305.2017.1375989) provides some straightforward recommendations on how to manage data in spreadsheets. 
+
 ::: {.callout-tip}
 ## Putting it all together
 

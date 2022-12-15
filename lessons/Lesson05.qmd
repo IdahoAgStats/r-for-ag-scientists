@@ -52,7 +52,6 @@ names(v3) <- c("Moscow", "Plummer", "Tensed", "Worley")
 v3
 ```
 
-
 ### The data frame
 
 A collection of vectors all of the name length. Each vector is a single data type, but different columns can be different data types. This is similar to a typical workbook you might open in Excel or another spreadsheet program. These can be only one column wide, but they often consist of more than that.  
@@ -68,6 +67,10 @@ It has attributes for:
 * `ncol` number of columns
 * `colnames` column names
 * `rownames` row names (if none are provided, R will generate integer row names starting at 1)
+
+:::{.callout-note}
+While vector names can be duplicated, column names in a data frame must be unique. 
+:::
 
 ```{r}
 nrow(d1)
@@ -142,11 +145,38 @@ rm(old)
 
 ### vectors
 
+Items in a vector can be accessed by referencing the numeric position in the vector, starting at 1 and ending at the vector length.  
 
+`x[1]` will access the first item in the vector, while `x[5]` will access the 5th element. Multiple item can be indexed: `x[c(1,5)]`. If an index position, it repeated, that item will be returned as often as it is called:
 
+```{r}
+v1[1]
+v1[5]
+v1[c(1,5)]
+v1[c(1,1)]
+```
+
+Any collection of numbers can be used to index items in a vector:
+```{r}
+v1[c(1, 1:5)]
+```
+
+What happens if a negative number is used? 
+```{r}
+v1[-1]
+```
+
+Items in a vector can also be accessed by their name:
+
+```{r}
+v3["Tensed"]
+```
+
+What happens if there are replicate names? 
 
 ### data frames
 
+Like vectors, data frames can be indexed 
 
 ### matrix
 
@@ -163,6 +193,10 @@ rm(old)
 
 :::
 
+More resources:
+
+* For a deeper look into vectors, read [this chapter](https://r4ds.had.co.nz/vectors.html) from *R 4 Data Science*. 
+* To learn more about subsetting, read [this chapter](https://adv-r.hadley.nz/subsetting.html) from *Advanced R* (warning: it is advanced!)
 ::: {.callout-caution collapse="true"}
 ## Learning Goals
 

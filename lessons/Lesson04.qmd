@@ -26,12 +26,12 @@ x3 <- "apple"
 x4 <- c("orange", "banana")
 ```
 
-Let's check the class for each R object
+Check the type for each R object
 ```{r}
-class(x1)
-class(x2)
-class(x3)
-class(x4)
+typeof(x1)
+typeof(x2)
+typeof(x3)
+typeof(x4)
 ```
 
 ::: {.callout-note}
@@ -45,13 +45,13 @@ There are two other special classes:
 * consisting of TRUE and FALSE values
 ```{r}
 x5 <- c(TRUE, FALSE, FALSE, TRUE)
-class(x5)
+typeof(x5)
 ```
 
 ### Factor
 ```{r}
 x6 <- factor(c("one", "two", "three"))
-class(x6)
+typeof(x6)
 x6
 ```
 Factors often look like character objects, except there exists several pre-defined levels which exist regardless if they are found in the object. 
@@ -70,6 +70,7 @@ Factors are complicated and take some time to fully understand. At this time, we
 * R will automatically an assign an object type based on the items present within object. It will try to assign the simplest type possible. Here are the types from simplest to most complex: 
 
 $$logical < integer < numeric < character$$
+
 (Factors are not listed because they are technically integers. Factors are *weird*!)
 
 What classes do you think results from each of these? 
