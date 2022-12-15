@@ -65,8 +65,10 @@ ul.task-list li input[type="checkbox"] {
 
 <link rel="stylesheet" href="../styles.css">
 <meta property="og:title" content="R for Scientists - Lesson 7: Importing Data into R">
+<meta property="og:description" content="Things frequently go wrong when importing data. This can sometimes be corrected by changing the import arguments, but often it indicates problems with the incoming data.">
 <meta property="og:site-name" content="R for Scientists">
 <meta name="twitter:title" content="R for Scientists - Lesson 7: Importing Data into R">
+<meta name="twitter:description" content="Things frequently go wrong when importing data. This can sometimes be corrected by changing the import arguments, but often it indicates problems with the incoming data.">
 <meta name="twitter:card" content="summary">
 </head>
 
@@ -174,6 +176,13 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
+<p>Things frequently go wrong when importing data. This can sometimes be corrected by changing the import arguments, but often it indicates problems with the incoming data.</p>
+<p>Some possible errors and how to fix them:</p>
+<ol type="1">
+<li><p><strong>Some variables which should be numeric are characters instead.</strong> <em>At least one item contains an unexpected character that renders that observation - and the rest of the vector - as a character. This might be two decimal points, a comma, or a “O” instead of “0”. If possible, manually inspect the data and correct the error. </em></p></li>
+<li><p><strong>Missing data are not coded as missing.</strong> <em>Import functions have default values for what is interpreted as missing. Check the documentation and adjust the arguments as needed to capture what code a data sets is using to indicate missing data.</em></p></li>
+</ol>
+<p>The best thing is to properly arrange your data set prior to import. <a href="https://www.tandfonline.com/doi/full/10.1080/00031305.2017.1375989">Broman &amp; Woo (2018)</a> provides some straightforward recommendations on how to manage data in spreadsheets.</p>
 <div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
