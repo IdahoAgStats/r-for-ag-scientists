@@ -2,6 +2,160 @@
 title: "Lesson 5: Data Structures"
 ---
 
+## Introduction to Common Data Structures
+
+Previously, we looked at data types. Now we need to consider how those types are arranged into complex structures we can access and manipulate. 
+
+There are several data structures commonly used in R
+
+1. scalar
+1. vector
+1. data.frame
+1. matrix
+1. list
+
+### Scalar
+
+An object consisting of single value
+```{r}
+s1 <- 3
+s2 <- "violets"
+s3 <- TRUE
+```
+
+Its length is always 1. And it has a data type associated with it (character, numberic, etc). These are not complicated!
+
+```{r}
+length(s1)
+class(s2)
+```
+
+*(we have already created these)* 
+
+### The vector
+
+A collection of items all coerced to be the same type. 
+
+```{r}
+v1 <- 1:10
+v2 <- c("apples", "pears", "oranges")
+v3 <- c(1, 5, 7, 85)
+```
+
+It has the attribute length and each item in a vector can also be named.
+
+```{r}
+length(v1); length(v2); length(v3)
+```
+```{r}
+names(v3) <- c("Moscow", "Plummer", "Tensed", "Worley")
+v3
+```
+
+
+### The data frame
+
+A collection of vectors all of the name length. Each vector is a single data type, but different columns can be different data types. This is similar to a typical workbook you might open in Excel or another spreadsheet program. These can be only one column wide, but they often consist of more than that.  
+
+```{r}
+d1 <- data.frame(var1 = 1:5,
+                 var2 = c("a", "b", "a", "b", "c"))
+d1
+```
+It has attributes for:
+
+* `nrow` number of rows
+* `ncol` number of columns
+* `colnames` column names
+* `rownames` row names (if none are provided, R will generate integer row names starting at 1)
+
+```{r}
+nrow(d1)
+ncol(d1)
+dim(d1) # tells us rows and columns in one command!
+```
+
+```{r}
+rownames(d1)
+colnames(d1)
+```
+
+What does `length(d1)` return? How about `names(d1)`?
+
+We can look at the overall structure of a data.frame with `str()`: 
+```{r}
+str(d1)
+```
+
+This the data structure most commonly used in R. 
+
+
+
+### The matrix
+
+Like a data.frame: it is a collection of vectors all the same length, except all vector must be the same data type. 
+
+```{r}
+m1 <- as.matrix(d1)
+m1
+```
+
+This has no relationship to the mathemetical concept of a matrix, although if you make an R matrix consisting only of numbers, it can be used like a mathematical matrix. It can take a rownames and and column names attribute, but those are optional. 
+
+```{r}
+colnames(m1)
+rownames(m1)
+```
+
+
+### The list
+
+This is the wildest and least structured data structure that exists. This is a collection of items with no formal rules. A vector, scalar and data frame can all be combined into a list.
+
+```{r}
+L1 <- list(s1, s2, s3, d1, m1)
+str(L1)
+```
+Each list item can have a name. Or not. 
+```{r}
+L1 <- list("number" = s1, "flower" = s2, s3, "df" = d1, m1)
+names(L1)
+str(L1)
+```
+
+:::{.callout-note}
+If you end up with too many objects, you can always delete them with the `rm()` function: 
+```
+rm(myvar)
+rm(var1, var2, var3)
+```
+If one object ends up with the wrong name, you can copy the object to its new name and delete the old version:
+```
+new <- old
+rm(old)
+```
+:::
+
+## Accessing Items in Data Structures
+
+*Scalars don't have a heading because there is nothing to do with these since they have only one value. Use them, or reassign them, or create a new one with a different name. 
+
+### vectors
+
+
+
+
+### data frames
+
+
+### matrix
+
+
+### list
+
+
+
+
 
 ::: {.callout-tip}
 ## Putting it all together

@@ -7,6 +7,9 @@ website:
   title: "R for Ag Sci"
   description: "Homepage for Introduction to R for Scientists, Spring 2023."
   site-url: "https://idahoagstats.github.io/r-for-ag-scientists/"
+  # favicon: [site favicon]
+  # image: [site image]
+  twitter-card: true
 
   repo-url: https://github.com/IdahoAgStats/r-for-ag-scientists
   repo-actions: [edit, issue]
@@ -19,8 +22,43 @@ website:
         text: Home
       - href: schedule.qmd
         text: Schedule
+  
+  sidebar:
+    background: "#D9E3E4"
+    logo: "images/logo.png"
+    pinned: true
+    align: center
+    tools:
+      - icon: github
+        href: https://github.com/IdahoAgStats/r-for-ag-scientists
+        text: "GitHub Repository"
+      - icon: code-square
+        href: https://posit.cloud/
+        text: Posit Cloud
+      - icon: landmark
+        href: https://www.canvas.uidaho.edu
+        text: Canvas
+      
+    style: "docked"
+    search: true
+    collapse-level: 1
+    contents:
+      - section: "Course Information"
+        contents: 
+          - href: index.qmd
+            text: Course Outline
+          - href: schedule.qmd
+            text: Schedule
+      - section: "Lessons"
+        contents:
+          - href: lessons/Lesson00.qmd
+            text: Lesson Zero
+            #contents: 
+              #- href: practice/practice01.qmd
+               #test: Practice Problems
 
-page-footer:
+
+  page-footer:
     right: "This page is built with [Quarto](https://quarto.org/), themed by Mine Çetinkaya-Rundel"
     left: "&copy; Copyright 2023, Julia Piaskowski"
     background: "#D9E3E4"
@@ -37,4 +75,3 @@ format:
     toc: true
 
 editor: source
-

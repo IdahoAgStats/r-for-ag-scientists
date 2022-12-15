@@ -1,0 +1,75 @@
+---
+title: "Code of Conduct"
+---
+
+University of Idaho Carpentries is dedicated to providing a harassment-free experience for participants of the conference regardless of age, gender, sexual orientation, disability, physical appearance, race, or religion (or lack thereof). 
+
+We encourage the open exchange of ideas and expression and thus require an environment that recognizes the inherent worth of every person and group. An inclusive space free of harassment encourages interaction among diverse groups. We want to make certain our workshops and courses are welcoming, and encourages participants to be involved moving forward.
+
+All participants (including organizers, attendees, presenters, sponsors, and volunteers) at UI Carpentries Workshops are required to agree to the following code of conduct. Reports of violation to this Code of Conduct should be addressed to the course instructor.
+
+This Code of Conduct (CoC) applies to any participant in a University of Idaho Carpentries Workshop. This CoC generally applies to conference and pre-conference events. Note that this code augments rather than replaces legal rights and obligations pertaining to any particular situation.
+
+### Expected Behavior
+
+All workshop/course participants are expected to behave in accordance with professional standards, with both this Code of Conduct as well as their respective employer's policies governing appropriate workplace behavior, and all applicable laws.
+
+We’re committed to providing welcome environments where people behave according to professional standards. We expect everyone at any UI Carpentries-affiliated event to contribute to a welcoming, civil, safe, and tolerant environment.
+
+Examples of encouraged behavior that contributes to a positive environment include:
+
+- Using welcoming and inclusive language
+
+- Being respectful of differing viewpoints and experiences
+
+- Gracefully accepting constructive criticism
+
+- Focusing on what is best for everyone at the event
+
+- Showing empathy towards other participants
+
+
+### Unacceptable Behavior
+
+Harassment will not be tolerated in any form, including but not limited to:
+
+- Intimidation or harassment of any kind.
+
+- Offensive comments related to gender, gender identity and expression, sexual orientation, disability, physical appearance, body size, race, age, religion or any other status protected by laws in which the conference or program is being held.
+
+- Unwelcome comments regarding a person's lifestyle choices and practices, including those related to food, health, parenting, drugs, and employment.
+
+- Deliberate misgendering, “outing,” or use of "dead" or rejected names.
+
+- Gratuitous or off-topic blatant sexual images or behavior in spaces where they are not appropriate.
+
+- Not respecting the privacy of other participants
+
+### Harassment in online channels
+
+Some of our workshops are online event. Please use these guidelines when engaging with participants. The above Code of Conduct applies to an online event, with the addition of:
+
+- Avoid using overtly sexual or offensive usernames or profile photos which might detract from a friendly, safe and welcoming environment for all.
+
+- Do not publish text/screenshots of anything shared in private communication channels without explicit consent from the author. This includes screenshots of private messages to public channels, as well as conversations on public channels to anywhere outside of UI Carpentries Workshop.
+
+- Do not direct message someone without their permission.
+
+- Do not record sessions without the presenter’s permission.
+
+- The meeting host/organizer should be aware of privacy concerns for different tools. For tips on security, a good place to start is: [Securing Your Zoom Meetings](https://explore.zoom.us/docs/doc/Securing%20Your%20Zoom%20Meetings.pdf.
+
+This CoC applies to all University of Idaho Carpentries online spaces. 
+
+### Responses to Code of Conduct Violations
+
+.... (I'm not sure what we have authority to do)
+
+
+### What To Do If You Witness or Are Subject To Unacceptable Behavior
+
+If you are being harassed, notice that someone else is being harassed, or have any other concerns relating to harassment, please contact the lead instructor immediately.
+
+### Acknowledgements
+
+This CoC is adapted from [RConsortium CoC](https://github.com/RConsortium/IDEA-WG/blob/master/conduct/code-of-conduct.md). This policy is licensed under a [Creative Commons Attribution 4.0 International license](https://creativecommons.org/licenses/by/4.0/).

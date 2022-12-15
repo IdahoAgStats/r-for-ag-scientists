@@ -3,7 +3,7 @@ title: "An Introduction to R for Agricultural Scientists"
 ---
 
 ```{r echo=FALSE,include=FALSE}
-library(quarto)
+library(quarto); library(here)
 ```
 
 

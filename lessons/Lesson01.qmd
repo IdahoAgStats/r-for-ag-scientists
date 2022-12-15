@@ -1,11 +1,10 @@
 ---
 title: "Lesson 1: Introduction to RStudio"
+echo: FALSE
 ---
 
-
-```{r eval=FALSE}
-# get Rstudio whole 
-knitr::include_graphics("images/rstudio_console_pane.png")
+```{r}
+knitr::include_graphics(here::here("images", "rstudio.png"))
 ```
 
 
@@ -18,7 +17,7 @@ Still, it helps to have a guided tour.  Let's dive into this.
 ### The Console/Terminal/Background Jobs
 
 ```{r}
-knitr::include_graphics("images/rstudio_console_pane.png")
+knitr::include_graphics(here::here("images", "rstudio_console_pane.png"))
 ```
 
 
@@ -36,7 +35,7 @@ In this workshop, we will only be using the Console.
 ### Files/Plots/Packages/Help/Viewer/Presentation
 
 ```{r}
-knitr::include_graphics("images/rstudio_file_pane.png")
+knitr::include_graphics(here::here("images", "rstudio_file_pane.png"))
 ```
 
 Default location: bottom right
@@ -63,7 +62,7 @@ We will talk about package installation and usage later in this course/workshop.
 ### Environment/History/Connections/Build/Git/Tutorial
 
 ```{r}
-knitr::include_graphics("images/rstudio_envir_pane.png")
+knitr::include_graphics(here::here("images","rstudio_envir_pane.png"))
 ```
 
 | Tab  | Function |
@@ -80,7 +79,7 @@ knitr::include_graphics("images/rstudio_envir_pane.png")
 ### Our Scripts Pane
 
 ```{r}
-knitr::include_graphics("images/rstudio_editor_pane.png")
+knitr::include_graphics(here::here("images","rstudio_editor_pane.png"))
 ```
 
 default location: upper left
@@ -92,7 +91,7 @@ when we open files from the "Files" pane, this is where it shows up
 ## The Upper Menu Items
 
 ```{r}
-knitr::include_graphics("images/rstudio_ribbon.png")
+knitr::include_graphics(here::here("images", "rstudio_ribbon.png"))
 ```
 
 ### File

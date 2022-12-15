@@ -19,7 +19,7 @@ Where there tips designed to weave together information from multiple lessons.
 
 **This is at the end of learning materials**
 
-::: {.callout-caution collapse="true"}
+::: {.callout-caution collapse="false"}
 ## Learning Goals
 
 What each lesson is intended to teach. If you do not think you have met the learning goals, please review the notes, rewatch the videos and if the material is still unclear, contact the instructor. It's important you understand the basic lessons of each section before moving on. 
