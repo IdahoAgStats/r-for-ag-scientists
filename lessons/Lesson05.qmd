@@ -6,7 +6,7 @@ title: "Lesson 5: Data Structures"
 
 Previously, we looked at data types. Now we need to consider how those types are arranged into complex structures we can access and manipulate. 
 
-There are several data structures commonly used in R
+There are several data structures commonly used in R: 
 
 1. scalar
 1. vector
@@ -27,7 +27,7 @@ Its length is always 1. And it has a data type associated with it (character, nu
 
 ```{r}
 length(s1)
-class(s2)
+typeof(s2)
 ```
 
 *(we have already created these)* 
@@ -48,7 +48,7 @@ It has the attribute length and each item in a vector can also be named.
 length(v1); length(v2); length(v3)
 ```
 ```{r}
-names(v3) <- c("Moscow", "Plummer", "Tensed", "Worley")
+names(v3) <- c("A", "B", "C", "D")
 v3
 ```
 
@@ -132,7 +132,7 @@ If you end up with too many objects, you can always delete them with the `rm()` 
 rm(myvar)
 rm(var1, var2, var3)
 ```
-If one object ends up with the wrong name, you can copy the object to its new name and delete the old version:
+If one object ends up with the wrong name, you can copy the object to a new name and delete the old version:
 ```
 new <- old
 rm(old)
@@ -166,17 +166,40 @@ What happens if a negative number is used?
 v1[-1]
 ```
 
+* Everything but that index position is returned.*
+
+What if you index a position that does not exist? 
+```{r}
+v1[0]
+v1[20]
+```
+
+
 Items in a vector can also be accessed by their name:
 
 ```{r}
-v3["Tensed"]
+v3["A"]
 ```
 
 What happens if there are replicate names? 
 
+```{r}
+names(v3) <- c("A", "B", "C", "A")
+v3
+v3["A"]
+```
+
+*Only the first instance of a name is returned* 
+
+
 ### data frames
 
-Like vectors, data frames can be indexed 
+Like vectors, data frames can be indexed by position, except now we have two dimensions to consider. You can extract individual elements in a data frame by references the row and columsn position, `my_dataframe[row, column].
+
+```{r}
+
+```
+
 
 ### matrix
 
@@ -200,7 +223,10 @@ More resources:
 ::: {.callout-caution collapse="true"}
 ## Learning Goals
 
+This is a big lesson teaching many foundation concepts! It's very very important you understand what was taught at this phase before moving forward. 
+
 At the end of this lesson, you should: 
 
-* 
+* Understand the difference between a vector, data.frame, matrix and list
+* Understand how to index items in a vector
 :::
