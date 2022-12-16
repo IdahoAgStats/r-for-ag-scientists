@@ -262,7 +262,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="introduction-to-common-data-structures" class="level2">
 <h2 class="anchored" data-anchor-id="introduction-to-common-data-structures">Introduction to Common Data Structures</h2>
 <p>Previously, we looked at data types. Now we need to consider how those types are arranged into complex structures we can access and manipulate.</p>
-<p>There are several data structures commonly used in R</p>
+<p>There are several data structures commonly used in R:</p>
 <ol type="1">
 <li>scalar</li>
 <li>vector</li>
@@ -284,7 +284,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(s2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(s2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "character"</code></pre>
 </div>
@@ -313,11 +313,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(v3) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Moscow"</span>, <span class="st">"Plummer"</span>, <span class="st">"Tensed"</span>, <span class="st">"Worley"</span>)</span>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(v3) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>, <span class="st">"D"</span>)</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>v3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> Moscow Plummer  Tensed  Worley 
-      1       5       7      85 </code></pre>
+<pre><code> A  B  C  D 
+ 1  5  7 85 </code></pre>
 </div>
 </div>
 </section>
@@ -475,7 +475,7 @@ Note
 <p>If you end up with too many objects, you can always delete them with the <code>rm()</code> function:</p>
 <pre><code>rm(myvar)
 rm(var1, var2, var3)</code></pre>
-<p>If one object ends up with the wrong name, you can copy the object to its new name and delete the old version:</p>
+<p>If one object ends up with the wrong name, you can copy the object to a new name and delete the old version:</p>
 <pre><code>new &lt;- old
 rm(old)</code></pre>
 </div>
@@ -521,19 +521,50 @@ rm(old)</code></pre>
 <pre><code>[1]  2  3  4  5  6  7  8  9 10</code></pre>
 </div>
 </div>
+<ul>
+<li>Everything but that index position is returned.*</li>
+</ul>
+<p>What if you index a position that does not exist?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>v1[<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>integer(0)</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>v1[<span class="dv">20</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] NA</code></pre>
+</div>
+</div>
 <p>Items in a vector can also be accessed by their name:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>v3[<span class="st">"Tensed"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>v3[<span class="st">"A"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Tensed 
-     7 </code></pre>
+<pre><code>A 
+1 </code></pre>
 </div>
 </div>
 <p>What happens if there are replicate names?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(v3) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>, <span class="st">"A"</span>)</span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>v3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> A  B  C  A 
+ 1  5  7 85 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>v3[<span class="st">"A"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>A 
+1 </code></pre>
+</div>
+</div>
+<p><em>Only the first instance of a name is returned</em></p>
 </section>
 <section id="data-frames" class="level3">
 <h3 class="anchored" data-anchor-id="data-frames">data frames</h3>
-<p>Like vectors, data frames can be indexed</p>
+<p>Like vectors, data frames can be indexed by position, except now we have two dimensions to consider. You can extract individual elements in a data frame by references the row and columsn position, `my_dataframe[row, column].</p>
+<div class="cell">
+
+</div>
 </section>
 <section id="matrix" class="level3">
 <h3 class="anchored" data-anchor-id="matrix">matrix</h3>
@@ -558,9 +589,11 @@ Putting it all together
 <li>For a deeper look into vectors, read <a href="https://r4ds.had.co.nz/vectors.html">this chapter</a> from <em>R 4 Data Science</em>.</li>
 <li>To learn more about subsetting, read <a href="https://adv-r.hadley.nz/subsetting.html">this chapter</a> from <em>Advanced R</em> (warning: it is advanced!) ::: {.callout-caution collapse=“true”} ## Learning Goals</li>
 </ul>
+<p>This is a big lesson teaching many foundation concepts! It’s very very important you understand what was taught at this phase before moving forward.</p>
 <p>At the end of this lesson, you should:</p>
 <ul>
-<li>:::</li>
+<li>Understand the difference between a vector, data.frame, matrix and list</li>
+<li>Understand how to index items in a vector :::</li>
 </ul>
 
 
