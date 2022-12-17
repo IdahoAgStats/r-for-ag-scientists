@@ -1,11 +1,10 @@
 ---
-title: "An Introduction to R for Scientists"
+title: "Overview"
 ---
 
 ```{r echo=FALSE,include=FALSE}
 library(quarto); library(here)
 ```
-
 
 This workshop will take you from zero to hero over the course of 16 hours of instruction and practice. It will introduce the [R programming language](https://www.r-project.org/), the graphical user interface [RStudio](https://www.rstudio.com/products/rstudio/) and how R can be used to manage and analyse your data. At the end of this workshop, you will be able to:
 

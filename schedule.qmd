@@ -1,5 +1,5 @@
 ---
-title: "Course Schedule"
+title: "Schedule"
 ---
 
 *This schedule is best understood as a draft that will be adjusted as needed.* 
