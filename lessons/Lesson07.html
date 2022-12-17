@@ -65,10 +65,10 @@ ul.task-list li input[type="checkbox"] {
 
 <link rel="stylesheet" href="../styles.css">
 <meta property="og:title" content="R for Scientists - Lesson 7: Importing Data into R">
-<meta property="og:description" content="There are many way to import data into R.">
+<meta property="og:description" content="While you can simulate data or load existing data sets associated with packages for your research, most of you will need to load pre-existing data sets from you computer, or a cloud server, some…">
 <meta property="og:site-name" content="R for Scientists">
 <meta name="twitter:title" content="R for Scientists - Lesson 7: Importing Data into R">
-<meta name="twitter:description" content="There are many way to import data into R.">
+<meta name="twitter:description" content="While you can simulate data or load existing data sets associated with packages for your research, most of you will need to load pre-existing data sets from you computer, or a cloud server, some…">
 <meta name="twitter:card" content="summary">
 </head>
 
@@ -161,7 +161,16 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#working-directory-and-file-paths" id="toc-working-directory-and-file-paths" class="nav-link active" data-scroll-target="#working-directory-and-file-paths">Working directory and file paths</a></li>
+  <li><a href="#how-to-import" id="toc-how-to-import" class="nav-link" data-scroll-target="#how-to-import">How to Import</a></li>
+  <li><a href="#troubleshooting-import-errors" id="toc-troubleshooting-import-errors" class="nav-link" data-scroll-target="#troubleshooting-import-errors">Troubleshooting Import errors</a></li>
+  <li><a href="#importing-other-data-types" id="toc-importing-other-data-types" class="nav-link" data-scroll-target="#importing-other-data-types">Importing Other Data types</a></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/IdahoAgStats/r-for-ag-scientists/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -183,19 +192,67 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>There are many way to import data into R.</p>
+<section id="working-directory-and-file-paths" class="level3">
+<h3 class="anchored" data-anchor-id="working-directory-and-file-paths">Working directory and file paths</h3>
+<p>While you can simulate data or load existing data sets associated with packages for your research, most of you will need to load pre-existing data sets from you computer, or a cloud server, some other external device.</p>
+<p>The first thing you’ll need to understand is the working directory and file paths.</p>
+<p>When an R session is initiated, it ascertains what the root working directory is based on the default settings for your R installation and any other</p>
+</section>
+<section id="how-to-import" class="level3">
+<h3 class="anchored" data-anchor-id="how-to-import">How to Import</h3>
+<p>There are several ways to import data into R.</p>
 <ol type="1">
 <li><p>Use the “Import Dataset” tool in the Environment pane.</p></li>
 <li><p>Use the Files pane in RStudio</p></li>
 <li><p>Manual command line import</p></li>
 </ol>
-<p>(the first two options are generating code for a command-line import).</p>
+<p>Ultimately, this is how anything is imported into R. The first two options listed above are actually tools for generating code that will import a data set through the command-line!</p>
+<p>There’s 4 common approaches for importing data into R:</p>
 <ul>
-<li><code>read.csv</code></li>
-<li><code>read_csv</code></li>
-<li><code>read_excel</code></li>
-<li><code>read_delim</code></li>
+<li><code>read.csv()</code></li>
+<li><code>read_csv()</code></li>
+<li><code>read_excel()</code></li>
+<li><code>read_delim()</code></li>
 </ul>
+<section id="read.csv" class="level4">
+<h4 class="anchored" data-anchor-id="read.csv"><code>read.csv()</code></h4>
+<p>A very commonly used funtion for reading in “comma separated values” (CSV) files. I personally like this format because it is not proprietary and is compatable across many operating systems. It also limitts all sorts of extraneous formatting that itself is a barrier to reproducible research (e.g.&nbsp;highlighting is discarded once a CSV file is closed).</p>
+<p><strong>Example usage:</strong></p>
+<pre><code>mycsv &lt;- read.csv("....")</code></pre>
+<p><strong>Result:</strong></p>
+<pre><code>str(mycsv)</code></pre>
+<p><strong>Under the hood:</strong></p>
+<p><code>read.csv()</code> is actually a “wrapper” for another function, <code>read.table()</code>. It has taken <code>read.table()</code> and set the default arguments to work with CSV files. <code>read.table()</code> is a more generalized form providing more flexibility.</p>
+<p>The default arguments include: * <code>colnames = TRUE</code>: the first row of data is assumed to be the column names * nothing in the data set will be used for rownames unless we explicitly indicate so * <code>sep = ","</code>: each data point is separated from another by a comma * a newline indicator is used to separate rows of data * <code>na.strings = c("NA", "")</code>: cells with a either no data (““) or an”NA” will be treated as missing. * if something consists of non-numeric characters, that column vector will be treated as character and not a factor</p>
+</section>
+<section id="read_csv" class="level4">
+<h4 class="anchored" data-anchor-id="read_csv"><code>read_csv()</code></h4>
+<p>This function is part of <strong>readr</strong>. It has very similar functionality to <code>read.csv()</code>, but it parses the data a wee bit different.</p>
+</section>
+<section id="read_excel" class="level4">
+<h4 class="anchored" data-anchor-id="read_excel"><code>read_excel()</code></h4>
+<p>This function will read in MS Excel files (reliably)! It is truly amazing. For many many years, it was cumbersome and/or impossible to read Excel files direclty into R.</p>
+<p>The main argument are the file</p>
+</section>
+<section id="read_delim" class="level4">
+<h4 class="anchored" data-anchor-id="read_delim"><code>read_delim()</code></h4>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>It’s very important to understand how R has read a dataset into an R session. R has opened a connection to the file that you have specified, read file information into the R session using system memory (your computer’s RAM), and then closed the connection. This is a one-way process (file —&gt; R). Once a file is loaded and the connection closed, there is no longer <em>any link</em> between the object loaded into memory in R and its origin file (located on on your computer, a cloud server, etc). Any changes made to the object in R will not change the file on your computer unless you explicitly run scripts to overwrite that file. This is good thing; it gives you freedom to experiment with and manipulate an object without worrying about messing up the original file. We will discuss later how to export R objects to your file system when you want to capture changes made to an object.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="troubleshooting-import-errors" class="level3">
+<h3 class="anchored" data-anchor-id="troubleshooting-import-errors">Troubleshooting Import errors</h3>
 <p>Things frequently go wrong when importing data. This can sometimes be corrected by changing the import arguments, but often it indicates problems with the incoming data.</p>
 <p>Some possible errors and how to fix them:</p>
 <ol type="1">
@@ -203,6 +260,21 @@ ul.task-list li input[type="checkbox"] {
 <li><p><strong>Missing data are not coded as missing.</strong> <em>Import functions have default values for what is interpreted as missing. Check the documentation and adjust the arguments as needed to capture what code a data sets is using to indicate missing data.</em></p></li>
 </ol>
 <p>The best thing is to properly arrange your data set prior to import. <a href="https://www.tandfonline.com/doi/full/10.1080/00031305.2017.1375989">Broman &amp; Woo (2018)</a> provides some straightforward recommendations on how to manage data in spreadsheets.</p>
+</section>
+<section id="importing-other-data-types" class="level3">
+<h3 class="anchored" data-anchor-id="importing-other-data-types">Importing Other Data types</h3>
+<p>The instructions provided above are for importing tabular data that is generally not “big data”.</p>
+<p>Big data is a subjective term that is system-dependent (and is rapidly changing as PC computing power and memory increases). Some personal computers can easily handle a 50 Mb file, while others cannot. If you are waiting more than 5 seconds for your data to import, then consider other options. A deep discussion about how to handle large data sets are beyond the scope of this workshop, but at the very minimum, consider the package <strong><a href="">data.table</a></strong> and its high-performance functions for reading and writing data, <code>fread()</code> and <code>fwrite()</code>. If your data sets are too big to load directly into R, consider <strong><a href="">arrow</a></strong>.</p>
+<p>You may also be working with data types that are not strictly tabular, at least in the form they are stored on a computer. Here are some common non-tabular data types and packages to handle import of those.</p>
+<ul>
+<li>spatial data: <strong><a href="">sf</a></strong>, <strong><a href="">sp</a></strong>, <strong><a href="">raster</a></strong></li>
+<li>SAS data sets: <strong><a href="">haven</a></strong>, <code>haven::read_sas()</code></li>
+<li>SPSS data sets: <strong><a href="">haven</a></strong>, <code>haven::read_sav()</code></li>
+<li>file on a Google drive: <strong><a href="">googledrive</a></strong></li>
+<li>image files: <strong><a href="">magick</a></strong></li>
+<li>text collections: <strong><a href="">tm</a></strong> MAYBE???</li>
+<li>audio files: <strong><a href="">tuneR</a></strong></li>
+</ul>
 <div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -217,7 +289,7 @@ Putting it all together
 </div>
 </div>
 <div class="callout-caution callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -226,7 +298,7 @@ Learning Goals
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>At the end of this lesson, you should:</p>
 <ul>
@@ -237,6 +309,7 @@ Learning Goals
 </div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
