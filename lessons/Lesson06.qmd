@@ -56,7 +56,10 @@ Let's check out the help file for `sample()`, a function designed to randomly sa
 
 Here is a screenshot of the window that hopefully popped up in your RStudio help pane:
 
-![screenshot of an R helpful file for 'sample']("images/help_sample_ex.png")
+```{r, alt="screenshot of an R help file for the function 'sample'"}
+knitr::include_graphics(here::here("images", "help_sample_ex.png"))
+```
+
 All help files follow this format
 
 * **Description** what the function does

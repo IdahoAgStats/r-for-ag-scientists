@@ -3,6 +3,20 @@ title: "Lesson 7: Importing Data into R"
 ---
 
 
+There are many way to import data into R.
+
+1. Use the "Import Dataset" tool in the Environment pane.
+
+1. Use the Files pane in RStudio
+
+1. Manual command line import
+
+(the first two options are generating code for a command-line import). 
+
+* `read.csv`
+* `read_csv`
+* `read_excel`
+* `read_delim`
 
 
 
