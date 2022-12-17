@@ -46,7 +46,7 @@ website:
     collapse-level: 1
     contents:
       - section: "Course Info"
-        content:
+        contents:
           - href: syllabus.qmd
           - text: Syllabus
           - href: schedule.qmd
