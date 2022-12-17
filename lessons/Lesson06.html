@@ -231,7 +231,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#the-mechanics-of-r-functions" id="toc-the-mechanics-of-r-functions" class="nav-link active" data-scroll-target="#the-mechanics-of-r-functions">The Mechanics of R Functions</a></li>
   <li><a href="#using-r-help" id="toc-using-r-help" class="nav-link" data-scroll-target="#using-r-help">Using R Help</a></li>
   <li><a href="#back-to-functions" id="toc-back-to-functions" class="nav-link" data-scroll-target="#back-to-functions">Back to functions</a></li>
-  <li><a href="#concluding-thoughts" id="toc-concluding-thoughts" class="nav-link" data-scroll-target="#concluding-thoughts">Concluding Thoughts</a></li>
+  <li><a href="#base-r-and-contributed-libraries" id="toc-base-r-and-contributed-libraries" class="nav-link" data-scroll-target="#base-r-and-contributed-libraries">Base R and Contributed Libraries</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/IdahoAgStats/r-for-ag-scientists/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
@@ -255,8 +255,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
-<section id="the-mechanics-of-r-functions" class="level2">
-<h2 class="anchored" data-anchor-id="the-mechanics-of-r-functions">The Mechanics of R Functions</h2>
+<section id="the-mechanics-of-r-functions" class="level3">
+<h3 class="anchored" data-anchor-id="the-mechanics-of-r-functions">The Mechanics of R Functions</h3>
 <p>We have thus far used a few R functions without explicitly stating how to call them properly.</p>
 <p>The majority of functions in R follow this format:</p>
 <div class="cell">
@@ -282,8 +282,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>In this case, arg2 has been completed ommitted. When an argument is not specified, that implies the default arguments for that function will be used instead. In order to find out the default argument values for a function, we need to consult the R help files.</p>
 </section>
-<section id="using-r-help" class="level2">
-<h2 class="anchored" data-anchor-id="using-r-help">Using R Help</h2>
+<section id="using-r-help" class="level3">
+<h3 class="anchored" data-anchor-id="using-r-help">Using R Help</h3>
 <p>You can search for a function directly using the search windows in the upper right of the “Help” pane.</p>
 <p>You can also search using this notation: <code>?function_name</code>.</p>
 <p>Let’s check out the help file for <code>sample()</code>, a function designed to randomly sample items and return that random sample to us.</p>
@@ -330,23 +330,201 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(x, <span class="dv">10</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] 20 99 62 37 68 50 20 19 43 52</code></pre>
+<pre><code> [1] 79 72 53 51 15 45 44 74 28 15</code></pre>
+</div>
+</div>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>It is normal to struggle with R code. Newer users of R struggle more than seasoned users, but we all end up experiencing an apparently intractable problem, one that we cannot solve despite our best efforts. The first response may be to Google that problem (which may yield helpful information), but there are also more efficient search strategies you can employ to solve your R coding problem. <a href="https://agstats.io/post/help-in-r/">Here</a> is a blog post addressing that very topic: how to find help when we are stuck.</p>
 </div>
 </div>
 </section>
-<section id="back-to-functions" class="level2">
-<h2 class="anchored" data-anchor-id="back-to-functions">Back to functions</h2>
+<section id="back-to-functions" class="level3">
+<h3 class="anchored" data-anchor-id="back-to-functions">Back to functions</h3>
 <p>Functions can return exactly one object (or none at all). If it does return an object, that can be assigned to a new object:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>new <span class="ot">&lt;-</span> <span class="fu">function_name</span>(value1, <span class="at">arg3 =</span> value3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>If the output from a function is not assigned, it will be sent to the console instead (we’ve done this plenty during this workshop). Sometimes, this is fine! Maybe it is a small amount of output we are running to check data integrity. Or maybe it’s a giant data frame we deeply regret printing in the console.</p>
 </section>
-<section id="concluding-thoughts" class="level2">
-<h2 class="anchored" data-anchor-id="concluding-thoughts">Concluding Thoughts</h2>
+<section id="base-r-and-contributed-libraries" class="level3">
+<h3 class="anchored" data-anchor-id="base-r-and-contributed-libraries">Base R and Contributed Libraries</h3>
 <p>This is the last section with a major focus on ‘base R’, that is the set of functions that come automatically loaded when you install and open R.</p>
 <p>Take a look at this <a href="https://cran.r-project.org/doc/contrib/Short-refcard.pdf">long-ish cheat sheet</a> (4 pages long!) of the many useful commands in base R. Skim through this and see if there is anything useful for you. It is meant to periodically skimmed, not studied in great detail (you’ll put yourself to sleep if you try to read it beginning to end).</p>
 <p>Additionally, here is the <a href="https://cran.r-project.org/doc/manuals/r-release/R-lang.html">ultimate guide</a> to working with the R language. This is a long, highly technical document, but it is also incredibly detailed and informative. Reading this is like reading an encyclopedia - only read a a small section at a time. I do not recommend reading this beginning to end.</p>
+<section id="libraries" class="level4">
+<h4 class="anchored" data-anchor-id="libraries">Libraries</h4>
+<p>{{{ sokka to the library? }}} One of R’s great strengths is its user dommunity. We are legion.</p>
+<p>{{{ awesome image of legions }}}</p>
+<p>https://data.1freewallpapers.com/download/azog-the-defiler-in-the-hobbit-2014-1600x900.jpg</p>
+<p>But also, the community keeps R humming and current by writing packages that extend R’s functionality. This is both awesome (the latest greatest tool is now enabled!) and bad (quality of implementation is not guaranteed and these packages are often not maintained over the long run).</p>
+<p>These packages are often made availabe on <a href="">CRAN</a>, the comprehensive R archive network. You can access those by first installing them, <code>install.packages("package_name")</code> and then loading the package into an R session, <code>library(package_name)</code>. Here’s an example using <strong>readr</strong> and *readxl**, packages we will use for data importation.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">"readr"</span>, <span class="st">"readxl"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Retrieving 'https://packagemanager.rstudio.com/all/__linux__/jammy/latest/src/contrib/readr_2.1.3.tar.gz' ...
+    OK [downloaded 3.1 Mb in 0.3 secs]
+Retrieving 'https://packagemanager.rstudio.com/all/__linux__/jammy/latest/src/contrib/cli_3.4.1.tar.gz' ...
+    OK [downloaded 1.2 Mb in 0.3 secs]
+Retrieving 'https://packagemanager.rstudio.com/all/__linux__/jammy/latest/src/contrib/clipr_0.8.0.tar.gz' ...
+    OK [downloaded 48.8 Kb in 0.3 secs]
+Retrieving 'https://packagemanager.rstudio.com/all/__linux__/jammy/latest/src/contrib/crayon_1.5.2.tar.gz' ...
+    OK [downloaded 154.9 Kb in 0.3 secs]
+Retrieving 'https://packagemanager.rstudio.com/all/__linux__/jammy/latest/src/contrib/hms_1.1.2.tar.gz' ...
+    OK [downloaded 94.2 Kb in 0.3 secs]
+Retrieving 'https://packagemanager.rstudio.com/all/__linux__/jammy/latest/src/contrib/ellipsis_0.3.2.tar.gz' ...
+    OK [downloaded 37.5 Kb in 0.2 secs]
+Retrieving 'https://packagemanager.rstudio.com/all/__linux__/jammy/latest/src/contrib/lifecycle_1.0.3.tar.gz' ...
+    OK [downloaded 119.1 Kb in 0.3 secs]
+Retrieving 'https://packagemanager.rstudio.com/all/__linux__/jammy/latest/src/contrib/pkgconfig_2.0.3.tar.gz' ...
+    OK [downloaded 17.1 Kb in 0.3 secs]
+Retrieving 'https://packagemanager.rstudio.com/all/__linux__/jammy/latest/src/contrib/vctrs_0.5.1.tar.gz' ...
+    OK [downloaded 1.2 Mb in 0.3 secs]
+Retrieving 'https://packagemanager.rstudio.com/all/__linux__/jammy/latest/src/contrib/tibble_3.1.8.tar.gz' ...
+    OK [downloaded 706.7 Kb in 0.3 secs]
+Retrieving 'https://packagemanager.rstudio.com/all/__linux__/jammy/latest/src/contrib/fansi_1.0.3.tar.gz' ...
+    OK [downloaded 400.2 Kb in 0.2 secs]
+Retrieving 'https://packagemanager.rstudio.com/all/__linux__/jammy/latest/src/contrib/pillar_1.8.1.tar.gz' ...
+    OK [downloaded 657.7 Kb in 0.3 secs]
+Retrieving 'https://packagemanager.rstudio.com/all/__linux__/jammy/latest/src/contrib/utf8_1.2.2.tar.gz' ...
+    OK [downloaded 227.1 Kb in 0.3 secs]
+Retrieving 'https://packagemanager.rstudio.com/all/__linux__/jammy/latest/src/contrib/vroom_1.6.0.tar.gz' ...
+    OK [downloaded 7 Mb in 0.3 secs]
+Retrieving 'https://packagemanager.rstudio.com/all/__linux__/jammy/latest/src/contrib/bit64_4.0.5.tar.gz' ...
+    OK [downloaded 561.4 Kb in 0.3 secs]
+Retrieving 'https://packagemanager.rstudio.com/all/__linux__/jammy/latest/src/contrib/bit_4.0.5.tar.gz' ...
+    OK [downloaded 1.1 Mb in 0.2 secs]
+Retrieving 'https://packagemanager.rstudio.com/all/__linux__/jammy/latest/src/contrib/tidyselect_1.2.0.tar.gz' ...
+    OK [downloaded 214.3 Kb in 0.2 secs]
+Retrieving 'https://packagemanager.rstudio.com/all/__linux__/jammy/latest/src/contrib/withr_2.5.0.tar.gz' ...
+    OK [downloaded 220.4 Kb in 0.3 secs]
+Retrieving 'https://packagemanager.rstudio.com/all/__linux__/jammy/latest/src/contrib/tzdb_0.3.0.tar.gz' ...
+    OK [downloaded 1.5 Mb in 0.3 secs]
+Retrieving 'https://packagemanager.rstudio.com/all/__linux__/jammy/latest/src/contrib/cpp11_0.4.3.tar.gz' ...
+    OK [downloaded 292.4 Kb in 0.3 secs]
+Retrieving 'https://packagemanager.rstudio.com/all/__linux__/jammy/latest/src/contrib/progress_1.2.2.tar.gz' ...
+    OK [downloaded 81.5 Kb in 0.3 secs]
+Retrieving 'https://packagemanager.rstudio.com/all/__linux__/jammy/latest/src/contrib/prettyunits_1.1.1.tar.gz' ...
+    OK [downloaded 33.5 Kb in 0.3 secs]
+Retrieving 'https://packagemanager.rstudio.com/all/__linux__/jammy/latest/src/contrib/readxl_1.4.1.tar.gz' ...
+    OK [downloaded 2.1 Mb in 0.3 secs]
+Retrieving 'https://packagemanager.rstudio.com/all/__linux__/jammy/latest/src/contrib/cellranger_1.1.0.tar.gz' ...
+    OK [downloaded 98.3 Kb in 0.3 secs]
+Retrieving 'https://packagemanager.rstudio.com/all/__linux__/jammy/latest/src/contrib/rematch_1.0.1.tar.gz' ...
+    OK [downloaded 11.7 Kb in 0.3 secs]
+Installing cli [3.4.1] ...
+    OK [installed binary]
+Moving cli [3.4.1] into the cache ...
+    OK [moved to cache in 0.45 milliseconds]
+Installing clipr [0.8.0] ...
+    OK [installed binary]
+Moving clipr [0.8.0] into the cache ...
+    OK [moved to cache in 0.36 milliseconds]
+Installing crayon [1.5.2] ...
+    OK [installed binary]
+Moving crayon [1.5.2] into the cache ...
+    OK [moved to cache in 0.36 milliseconds]
+Installing ellipsis [0.3.2] ...
+    OK [installed binary]
+Moving ellipsis [0.3.2] into the cache ...
+    OK [moved to cache in 0.35 milliseconds]
+Installing lifecycle [1.0.3] ...
+    OK [installed binary]
+Moving lifecycle [1.0.3] into the cache ...
+    OK [moved to cache in 0.36 milliseconds]
+Installing pkgconfig [2.0.3] ...
+    OK [installed binary]
+Moving pkgconfig [2.0.3] into the cache ...
+    OK [moved to cache in 0.34 milliseconds]
+Installing vctrs [0.5.1] ...
+    OK [installed binary]
+Moving vctrs [0.5.1] into the cache ...
+    OK [moved to cache in 0.42 milliseconds]
+Installing hms [1.1.2] ...
+    OK [installed binary]
+Moving hms [1.1.2] into the cache ...
+    OK [moved to cache in 0.37 milliseconds]
+Installing fansi [1.0.3] ...
+    OK [installed binary]
+Moving fansi [1.0.3] into the cache ...
+    OK [moved to cache in 0.33 milliseconds]
+Installing utf8 [1.2.2] ...
+    OK [installed binary]
+Moving utf8 [1.2.2] into the cache ...
+    OK [moved to cache in 0.36 milliseconds]
+Installing pillar [1.8.1] ...
+    OK [installed binary]
+Moving pillar [1.8.1] into the cache ...
+    OK [moved to cache in 0.38 milliseconds]
+Installing tibble [3.1.8] ...
+    OK [installed binary]
+Moving tibble [3.1.8] into the cache ...
+    OK [moved to cache in 0.39 milliseconds]
+Installing bit [4.0.5] ...
+    OK [installed binary]
+Moving bit [4.0.5] into the cache ...
+    OK [moved to cache in 0.37 milliseconds]
+Installing bit64 [4.0.5] ...
+    OK [installed binary]
+Moving bit64 [4.0.5] into the cache ...
+    OK [moved to cache in 0.34 milliseconds]
+Installing withr [2.5.0] ...
+    OK [installed binary]
+Moving withr [2.5.0] into the cache ...
+    OK [moved to cache in 0.39 milliseconds]
+Installing tidyselect [1.2.0] ...
+    OK [installed binary]
+Moving tidyselect [1.2.0] into the cache ...
+    OK [moved to cache in 0.36 milliseconds]
+Installing cpp11 [0.4.3] ...
+    OK [installed binary]
+Moving cpp11 [0.4.3] into the cache ...
+    OK [moved to cache in 0.45 milliseconds]
+Installing tzdb [0.3.0] ...
+    OK [installed binary]
+Moving tzdb [0.3.0] into the cache ...
+    OK [moved to cache in 0.39 milliseconds]
+Installing prettyunits [1.1.1] ...
+    OK [installed binary]
+Moving prettyunits [1.1.1] into the cache ...
+    OK [moved to cache in 0.34 milliseconds]
+Installing progress [1.2.2] ...
+    OK [installed binary]
+Moving progress [1.2.2] into the cache ...
+    OK [moved to cache in 0.36 milliseconds]
+Installing vroom [1.6.0] ...
+    OK [installed binary]
+Moving vroom [1.6.0] into the cache ...
+    OK [moved to cache in 0.37 milliseconds]
+Installing readr [2.1.3] ...
+    OK [installed binary]
+Moving readr [2.1.3] into the cache ...
+    OK [moved to cache in 0.37 milliseconds]
+Installing rematch [1.0.1] ...
+    OK [installed binary]
+Moving rematch [1.0.1] into the cache ...
+    OK [moved to cache in 0.39 milliseconds]
+Installing cellranger [1.1.0] ...
+    OK [installed binary]
+Moving cellranger [1.1.0] into the cache ...
+    OK [moved to cache in 0.33 milliseconds]
+Installing readxl [1.4.1] ...
+    OK [installed binary]
+Moving readxl [1.4.1] into the cache ...
+    OK [moved to cache in 0.34 milliseconds]</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Note that multiple packages can be listed in the <code>install.packages()</code> command, but not <code>library()</code>. Also, packages only need to be installed once, not repeatedly (unless a package needs to be a updated to the latest version). However, packages must be loaded in every R session or their functionality (including the help files) is not available.</p>
 <div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -361,7 +539,7 @@ Putting it all together
 </div>
 </div>
 <div class="callout-caution callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -370,7 +548,7 @@ Learning Goals
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>At the end of this lesson, you should:</p>
 <ul>
@@ -382,6 +560,7 @@ Learning Goals
 </div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
