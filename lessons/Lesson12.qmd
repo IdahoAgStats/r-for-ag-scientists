@@ -1,7 +1,8 @@
 ---
-title: "Lesson 11: Exporting Data"
+title: "Lesson 12: Exporting Data"
 ---
 
+This is a very short lesson because exporting data is quite similar to data import. 
 
 ::: {.callout-tip}
 ## Putting it all together

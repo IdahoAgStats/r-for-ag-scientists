@@ -2,23 +2,86 @@
 title: "Lesson 7: Importing Data into R"
 ---
 
+### Working directory and file paths
 
-There are many way to import data into R.
+While you can simulate data or load existing data sets associated with packages for your research, most of you will need to load pre-existing data sets from you computer, or a cloud server, some other external device. 
+
+The first thing you'll need to understand is the working directory and file paths. 
+
+When an R session is initiated, it ascertains what the root working directory is based on the default settings for your R installation and any other 
+
+### How to Import
+
+There are several ways to import data into R.
 
 1. Use the "Import Dataset" tool in the Environment pane.
 
 1. Use the Files pane in RStudio
 
-1. Manual command line import
+1. Manual command line import 
 
-(the first two options are generating code for a command-line import). 
+Ultimately, this is how anything is imported into R. The first two options listed above are actually tools for generating code that will import a data set through the command-line! 
 
-* `read.csv`
-* `read_csv`
-* `read_excel`
-* `read_delim`
+There's 4 common approaches for importing data into R:
+
+* `read.csv()`
+* `read_csv()`
+* `read_excel()`
+* `read_delim()`
+
+#### `read.csv()`
+
+A very commonly used funtion for reading in "comma separated values" (CSV) files. I personally like this format because it is not proprietary and is compatable across many operating systems. It also limitts all sorts of extraneous formatting that itself is a barrier to reproducible research (e.g. highlighting is discarded once a CSV file is closed). 
+
+**Example usage:**
+
+```
+mycsv <- read.csv("....")
+```
+
+**Result:**
+```
+str(mycsv)
+```
+
+**Under the hood:**
+
+`read.csv()` is actually a "wrapper" for another function, `read.table()`. It has taken `read.table()` and set the default arguments to work with CSV files. `read.table()` is a more generalized form providing more flexibility. 
+
+The default arguments include:
+    * `colnames = TRUE`: the first row of data is assumed to be the column names
+    * nothing in the data set will be used for rownames unless we explicitly indicate so
+    * `sep = ","`: each data point is separated from another by a comma
+    * a newline indicator is used to separate rows of data
+    * `na.strings = c("NA", "")`: cells with a either no data ("") or an "NA" will be treated as missing. 
+    * if something consists of non-numeric characters, that column vector will be treated as character and not a factor
 
 
+
+#### `read_csv()`
+
+This function is part of **readr**. It has very similar functionality to `read.csv()`, but it parses the data a wee bit different.
+
+
+
+#### `read_excel()`
+
+This function will read in MS Excel files (reliably)! It is truly amazing. For many many years, it was cumbersome and/or impossible to read Excel files direclty into R. 
+
+The main argument are the file
+
+#### `read_delim()`
+
+
+
+
+
+:::{.callout-note}
+It's very important to understand how R has read a dataset into an R session. R has opened a connection to the file that you have specified, read file information into the R session using system memory (your computer's RAM), and then closed the connection. This is a one-way process (file ---> R). Once a file is loaded and the connection closed, there is no longer *any link* between the object loaded into memory in R and its origin file (located on on your computer, a cloud server, etc). Any changes made to the object in R will not change the file on your computer unless you explicitly run scripts to overwrite that file. This is good thing; it gives you freedom to experiment with and manipulate an object without worrying about messing up the original file.  We will discuss later how to export R objects to your file system when you want to capture changes made to an object.   
+
+:::
+
+### Troubleshooting Import errors
 
 Things frequently go wrong when importing data. This can sometimes be corrected by changing the import arguments, but often it indicates problems with the incoming data.
 
@@ -31,6 +94,23 @@ Some possible errors and how to fix them:
 *Import functions have default values for what is interpreted as missing. Check the documentation and adjust the arguments as needed to capture what code a data sets is using to indicate missing data.*
 
 The best thing is to properly arrange your data set prior to import. [Broman & Woo (2018)](https://www.tandfonline.com/doi/full/10.1080/00031305.2017.1375989) provides some straightforward recommendations on how to manage data in spreadsheets. 
+
+### Importing Other Data types
+
+The instructions provided above are for importing tabular data that is generally not "big data". 
+
+Big data is a subjective term that is system-dependent (and is rapidly changing as PC computing power and memory increases). Some personal computers can easily handle a 50 Mb file, while others cannot. If you are waiting more than 5 seconds for your data to import, then consider other options. A deep discussion about how to handle large data sets are beyond the scope of this workshop, but at the very minimum, consider the package **[data.table]()** and its high-performance functions for reading and writing data, `fread()` and `fwrite()`. If your data sets are too big to load directly into R, consider **[arrow]()**.  
+
+You may also be working with data types that are not strictly tabular, at least in the form they are stored on a computer. Here are some common non-tabular data types and packages to handle import of those.
+
+* spatial data: **[sf]()**, **[sp]()**, **[raster]()**
+* SAS data sets: **[haven]()**, `haven::read_sas()`
+* SPSS data sets: **[haven]()**, `haven::read_sav()`
+* file on a Google drive: **[googledrive]()** 
+* image files: **[magick]()**
+* text collections: **[tm]()**   MAYBE???
+* audio files: **[tuneR]()**
+
 
 ::: {.callout-tip}
 ## Putting it all together
