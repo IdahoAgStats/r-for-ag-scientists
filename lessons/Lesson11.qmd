@@ -2,6 +2,18 @@
 title: "Special Lesson 11: Setting up R for Reproducible Research"
 ---
 
+Install R & RStudio on your personal computer.
+
+Check your installation and adjust RStudio settings
+
+Use projects!
+
+Install packages
+
+Discuss reproducible Research
+
+
+{{{ link to RR slides }}}
 
 ::: {.callout-tip}
 ## Putting it all together
