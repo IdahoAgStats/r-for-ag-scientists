@@ -1,0 +1,10 @@
+---
+title: "Practice Problems #3"
+---
+
+(for lessons on data structures)
+
+
+1. What do you do if you want all the columns, but only values 1:50? 
+
+1. What happens if you don't have enough values to make a completed filled rectangle (e.g. you have 99 observations rather than 100)?

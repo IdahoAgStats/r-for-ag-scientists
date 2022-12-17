@@ -2,6 +2,9 @@
 title: "Lesson 5: Data Structures"
 ---
 
+The longest and most important lesson of them all!
+
+
 ## Introduction to Common Data Structures
 
 Previously, we looked at data types. Now we need to consider how those types are arranged into complex structures we can access and manipulate. 
@@ -58,7 +61,8 @@ A collection of vectors all of the name length. Each vector is a single data typ
 
 ```{r}
 d1 <- data.frame(var1 = 1:5,
-                 var2 = c("a", "b", "a", "b", "c"))
+                 var2 = c("a", "b", "a", "b", "c"),
+                 var3 = "alpha")
 d1
 ```
 It has attributes for:
@@ -70,6 +74,8 @@ It has attributes for:
 
 :::{.callout-note}
 While vector names can be duplicated, column names in a data frame must be unique. 
+
+If a single value is given for column, that value will be repeated for the entire column. 
 :::
 
 ```{r}
@@ -103,7 +109,20 @@ m1 <- as.matrix(d1)
 m1
 ```
 
-This has no relationship to the mathemetical concept of a matrix, although if you make an R matrix consisting only of numbers, it can be used like a mathematical matrix. It can take a rownames and and column names attribute, but those are optional. 
+This has no relationship to the mathemetical concept of a matrix, although if you make an R matrix consisting only of numbers, it can be used like a mathematical matrix. An R matrix can take a rownames and and column names attributes, but those are optional. 
+
+
+A matrix can be created by providing a vector of numbers and telling it to populate a table of given dimensions:
+
+```{r}
+x = 1:100
+m2 <- matrix(data = x, nrow = 5, ncol = 20, byrow = TRUE)
+m2
+```
+Since the row and column names were no set when making the matrix, default names are giving indicating the numeric position. 
+
+Practice: try out the previous command, except changing the `byrow` argument to `FALSE`. 
+
 
 ```{r}
 colnames(m1)
@@ -113,7 +132,7 @@ rownames(m1)
 
 ### The list
 
-This is the wildest and least structured data structure that exists. This is a collection of items with no formal rules. A vector, scalar and data frame can all be combined into a list.
+This is the wildest and least structured data structure that exists. A list is like a closet that happens to be filled with other objects. A vector, scalar and data frame can all be combined into a list. A list can contain other lists inside of it (although this list nesting can be cumbersome to deal with). 
 
 ```{r}
 L1 <- list(s1, s2, s3, d1, m1)
@@ -194,26 +213,144 @@ v3["A"]
 
 ### data frames
 
-Like vectors, data frames can be indexed by position, except now we have two dimensions to consider. You can extract individual elements in a data frame by references the row and columsn position, `my_dataframe[row, column].
+#### Indexing
+
+Like vectors, data frames can be indexed by position, except now we have two dimensions to consider. You can extract individual elements in a data frame by references the row and column position, `my_dataframe[row, column].
+
+Extract the item located in row 1, column 2: 
+```{r}
+d1[1,2]
+```
+
+Extract the entire first row: 
+```{r}
+d1[1, ]
+```
+*When the column position is left empty, all columns are returned.*
+
+Extract the entire first column: 
+```{r}
+d1[ ,1]
+```
+*When the row position is left empty, all rows are returned.*
+
+Extract the values located in the first 2 rows and first two columns:
 
 ```{r}
+d1[1:2, 1:2]
+```
 
+Return everything except the third columns
+```{r}
+d1[ ,-3]
+```
+
+Return everything except the first 2 rows:
+```{r}
+d1[-(1:2),  ]
 ```
 
 
+:::{.callout-note}
+When indexing positions in a vector or data frame (or anything else), the amount of whitespace does not affect the outcome. These are equivalent:
+`d[1,2]`, `d[1, 2]`, `d[ 1, 2]`
+:::
+
+#### Column Referencing
+
+Data in R data frames can also be referred to by their column names using the notation `dataframe$column_name`:
+
+```{r}
+d1$var1
+```
+
+The data are returned as a vector (with the typical attributes of a vector: length and names). 
+
+Another alternative (less commonly used in the wild) is this notation: `dataframe[["column_name"]]`
+
+```{r}
+d1[["var1"]]
+```
+
 ### matrix
 
+Matrices can be indexed in the same fashion as data frames using this notation `matrix[row, column]`. The matrix we created earlier conveniently already has default row and column names telling us their numeric position: 
+
+```{r}
+m2
+```
+
+So, to pull out the columns for numbers divisible by 5, we can reference every 5th column: 
+
+```{r}
+m2[ , c(5, 10, 15, 20)]
+```
+
+
+```{r}
+matrix(1:99, nrow = 5, ncol = 20)
+```
+
+
+
+Matrices cannot be indexed by their name like in dataframes: `matrix$name`
+
+```{r}
+colnames(m2) <- LETTERS[1:20]
+m2
+```
+```{r error=TRUE, cache=FALSE}
+m2$A
+```
+Under the hood, a matrix is basically a vector that is being forced into rectangular dimensions. 
 
 ### list
 
+As mentioned earlier, lists are relatively unstructured and follow fewer rules. You can access list items by their numeric position, `list[[1]]`, or their name (if it exsits), `list$name`. 
 
+```{r}
+L1[[1]]
+L1$df
+```
+
+Once a list item is accessed, the normal indexing rules apply. The 4th item in the list called "L1" is a data frame. 
+```{r}
+L1[[4]]
+L1[[4]]$var1
+L1[[4]][1:2,]
+```
+
+
+## Checking the class of a data structure
+
+Use the `class()` command. 
+```{r}
+class(d1)
+class(m2)
+class(L1)
+```
+
+You can also explicity ask if it is one class or another:
+
+```{r}
+is.data.frame(d1)
+is.list(L1)
+is.matrix(m2)
+is.data.frame(m2)
+is.list(d1)
+```
+A data frame is also list. You can think of each row being a list containing potentially different data types. 
 
 
 
 ::: {.callout-tip}
 ## Putting it all together
+When information is extracted from a vector, data.frame, matrix or list using these tools, the returned information can always be assigned to a new object:
 
-
+```{r, eval=FALSE}
+new <- d1[1:2, -3]
+```
+Sometimes, we need that information assigned to a new object so we can it use later. Other times, printing the extracted information to the console is sufficient for meeting researcher needs. 
 :::
 
 More resources:

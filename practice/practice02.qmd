@@ -4,7 +4,7 @@ title: "Practice Problems #2"
 
 
 
-1. This was a year variable that we once wanted defined as a factor, but no longer. Convert this back to an integer. 
+1. This was a year variable that we once wanted defined as a factor, but no longer. Convert this back to an integer and make sure the output is what you expect. 
 
 ```{r, eval=FALSE}
 myvar <- factor(c(2010:2022))
