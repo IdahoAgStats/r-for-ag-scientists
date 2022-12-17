@@ -1,5 +1,5 @@
 ---
-title: "Page Not Found"
+title: "There's nothing here"
 ---
 
 !["404 page"](images/404.png)
