@@ -1,7 +1,9 @@
 ---
-title: "Lesson 9: Combining Data Sets"
+title: "Lesson 10: Combining Data Sets"
 ---
 
+
+The simplest way to 
 
 ::: {.callout-tip}
 ## Putting it all together

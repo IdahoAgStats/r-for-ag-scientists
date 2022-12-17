@@ -1,5 +1,5 @@
 ---
-title: "Publication-Quality Plots with ggplot2"
+title: "Lesson 14: Publication-Quality Plots with ggplot2"
 ---
 
 

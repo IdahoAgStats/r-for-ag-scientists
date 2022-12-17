@@ -1,5 +1,5 @@
 ---
-title: "Special Lesson 12: Setting up R for Reproducible Research"
+title: "Special Lesson 11: Setting up R for Reproducible Research"
 ---
 
 
