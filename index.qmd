@@ -27,13 +27,13 @@ This workshop is intended for beginner R users. No previous experience in R or a
 -   usage of the terminal (e.g. bash)
 -   statistical analysis
 
-#### Requirements
+### Requirements
 
 * a computer with a reliable internet connection
 * A camera and microphone for Zoom 
 * A Zoom account (the free version is sufficient)
 
-#### When
+### When
 
 Jan 17 - February 9\
 Tuesday/Thursdays\
@@ -41,7 +41,7 @@ Tuesday/Thursdays\
 
 All sessions will take place over Zoom so students across different timezones can participate.
 
-#### Instructors:
+### Instructors:
 
 [Julia Piaskowski](https://jpiaskowski.gitlab.io/) \| [GitHub](https://github.com/jpiaskowski)
 

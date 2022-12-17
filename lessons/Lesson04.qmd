@@ -99,7 +99,7 @@ Look at the object created in the lesson in the Global Environment pane. For eac
 
 ::: {.callout-caution collapse="true"}
 
-For a *very* comprehensive guide to R object types, check out the [official R language manual](https://cran.r-project.org/doc/manuals/r-release/R-lang.html#Basic-types). Warning: this manual is very technical. If you choose to check it out, read like a Wikipedia entry on a statistics topic; that is, you will understand some of it but not all of it.
+For a *very comprehensive* guide to R object types, check out the [official R language manual](https://cran.r-project.org/doc/manuals/r-release/R-lang.html#Basic-types). Warning: this manual is extremely technical. If you choose to check it out, read like a Wikipedia entry on a statistics topic; that is, you will not likely understand everything in the first read. It will take time and experience to full understand the content.
 
 ## Learning Goals
 
