@@ -8,7 +8,7 @@ We encourage the open exchange of ideas and expression and thus require an envir
 
 All participants (including organizers, attendees, presenters, sponsors, and volunteers) at UI Carpentries Workshops are required to agree to the following code of conduct. Reports of violation to this Code of Conduct should be addressed to the course instructor.
 
-This Code of Conduct (CoC) applies to any participant in a University of Idaho Carpentries Workshop. This CoC generally applies to conference and pre-conference events. Note that this code augments rather than replaces legal rights and obligations pertaining to any particular situation.
+This Code of Conduct (CoC) applies to any participant in a University of Idaho Carpentries Workshop. Note that this code augments rather than replaces legal rights and obligations pertaining to any particular situation.
 
 ### Expected Behavior
 
@@ -39,7 +39,7 @@ Harassment will not be tolerated in any form, including but not limited to:
 
 - Unwelcome comments regarding a person's lifestyle choices and practices, including those related to food, health, parenting, drugs, and employment.
 
-- Deliberate misgendering, “outing,” or use of "dead" or rejected names.
+- Deliberate misgendering, “outing," or use of "dead" or rejected names.
 
 - Gratuitous or off-topic blatant sexual images or behavior in spaces where they are not appropriate.
 
@@ -63,7 +63,7 @@ This CoC applies to all University of Idaho Carpentries online spaces.
 
 ### Responses to Code of Conduct Violations
 
-.... (I'm not sure what we have authority to do)
+We will follow all University of Idaho and Idaho State requirements regarding how to handle incidents of harassment. 
 
 
 ### What To Do If You Witness or Are Subject To Unacceptable Behavior
@@ -72,4 +72,4 @@ If you are being harassed, notice that someone else is being harassed, or have a
 
 ### Acknowledgements
 
-This CoC is adapted from [RConsortium CoC](https://github.com/RConsortium/IDEA-WG/blob/master/conduct/code-of-conduct.md). This policy is licensed under a [Creative Commons Attribution 4.0 International license](https://creativecommons.org/licenses/by/4.0/).
+This CoC is adapted from [RConsortium CoC](https://github.com/RConsortium/IDEA-WG/blob/master/conduct/code-of-conduct.md) and the [Carpentries CoC](https://docs.carpentries.org/topic_folders/policies/code-of-conduct.html) This policy is licensed under a [Creative Commons Attribution 4.0 International license](https://creativecommons.org/licenses/by/4.0/).

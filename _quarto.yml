@@ -8,7 +8,7 @@ website:
   description: "Homepage for Introduction to R for Scientists, Spring 2023."
   site-url: "https://idahoagstats.github.io/r-for-ag-scientists/"
   favicon: "images/logo_transparent.png"
-  #image: "images/logo_transparent.png"
+  image: "images/R_intro_logo.png"
   twitter-card: true
 
   repo-url: https://github.com/IdahoAgStats/r-for-ag-scientists
@@ -16,16 +16,16 @@ website:
 
   open-graph: true
   
-  navbar: 
-    left:
-      - href: index.qmd
-        text: Home
-      - href: schedule.qmd
-        text: Schedule
+  #navbar: 
+  #  left:
+  #    - href: index.qmd
+  #      text: Home
+  #    - href: schedule.qmd
+  #      text: Schedule
   
   sidebar:
     background: "#D9E3E4"
-    logo: "images/logo_transparent.png"
+    logo: "images/R_intro_logo.png"
     logo-href: index.qmd
     pinned: false
     align: center
@@ -34,6 +34,7 @@ website:
       - icon: github
         href: https://github.com/IdahoAgStats/r-for-ag-scientists
         text: "GitHub Repository"
+       # target: "_blank"
       - icon: code-square
         href: https://posit.cloud/
         text: Posit Cloud
@@ -45,6 +46,14 @@ website:
     search: true
     collapse-level: 0
     contents:
+      - section: "Course Info"
+        content:
+          - href: syllabus.qmd
+          - text: Syllabus
+          - href: schedule.qmd
+          - text: Schedule
+          - href: Coc.qmd
+          - text: Code of Conduct
       - section: "Lessons"
         contents:
           - href: lessons/Lesson00.qmd
