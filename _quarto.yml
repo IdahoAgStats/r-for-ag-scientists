@@ -31,12 +31,12 @@ website:
     align: center
     tools:
     # uses bootstrap5 icons: https://icons.getbootstrap.com/
+      - icon: code-square
+        text: Posit Cloud
+        href: https://posit.cloud/
       - icon: github
         href: https://github.com/IdahoAgStats/r-for-ag-scientists
         text: "GitHub Repository"
-      - icon: code-square
-        href: https://posit.cloud/
-        text: Posit Cloud
       - icon: bank
         href: https://canvas.uidaho.edu
         text: Canvas
@@ -65,6 +65,8 @@ website:
   page-footer:
     right: "This page is built with [Quarto](https://quarto.org/), themed by [Mine Çetinkaya-Rundel](https://github.com/sta210-s22/website)"
     left: "&copy; Copyright 2023 by Julia Piaskowski"
+    center: |
+      [![](images/uidaho_logo.png){fig-alt="Uidaho Logo" width=200px}](https://www.uidaho.edu)
     background: "#D9E3E4"
 
 format:
