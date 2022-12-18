@@ -48,11 +48,11 @@ website:
       - section: "Course Info"
         contents:
           - href: index.qmd
-          - text: Overview
+            text: Overview
           - href: schedule.qmd
-          - text: Schedule
+            text: Schedule
           - href: CoC.qmd
-          - text: Code of Conduct
+            text: Code of Conduct
       - section: "Lessons"
         contents:
           - href: lessons/Lesson00.qmd

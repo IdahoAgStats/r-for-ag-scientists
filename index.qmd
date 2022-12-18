@@ -1,5 +1,6 @@
 ---
-title: "Overview"
+title: "Introductory R for Scientists"
+subtitle: "Course Overview"
 ---
 
 ```{r echo=FALSE,include=FALSE}
