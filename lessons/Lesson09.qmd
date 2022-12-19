@@ -3,6 +3,8 @@ title: "Lesson 9: Reshaping Data Sets"
 ---
 
 
+
+
 This is the end of lessons on data wrangling. There is additional functionality that we have touched on that you may find useful to know. 
 
 [R 4 Data Science](https://r4ds.had.co.nz/) by Hadley Wickam and Garret Grolemund

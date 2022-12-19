@@ -2,8 +2,52 @@
 title: "Lesson 10: Combining Data Sets"
 ---
 
+```{r, include=FALSE}
+library(dplyr)
+```
 
-The simplest way to 
+Need to add some data sets
+
+## Bind rows
+
+Data sets are assumed to have a single observation in each row, and each column is a variable describing each observation in some way. 
+
+If you have two data sets of different observations and the same columns, you can do a row bind to stack the data sets:
+
+```{r, eval=FALSE}
+new1 <- bind_rows(x, y)
+```
+
+The column names are match and ordered according to the first data frame listed. The default behavior is to return all unique columns from both data sets and fill in with missing data as needed. 
+
+## Joins
+
+Merging two data sets when it goes beyond a row bind can take an effort. 
+
+All joins follow this syntax: 
+
+```{r, eval=FALSE}
+xxx_join(left_dataset, right_dataset)
+```
+
+"left" and "right" correspond to the left and right ....
+
+
+### Left join
+
+Return a merged data set with all the observations
+
+### Right join
+
+### Full join
+
+All observations are returned, regardless if matched. 
+
+### inner join
+
+### 
+
+Only observations found in both data sets are kept. 
 
 ::: {.callout-tip}
 ## Putting it all together

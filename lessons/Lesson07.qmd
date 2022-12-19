@@ -16,11 +16,23 @@ There are several ways to import data into R.
 
 1. Use the "Import Dataset" tool in the Environment pane.
 
+```{r}
+#knitr::include_graphics(here::here("images", "import_dataset.png"))
+```
+
 1. Use the Files pane in RStudio
+
+```{r}
+#knitr::include_graphics(here::here("images", "files_import.png"))
+```
+
+:::{.callout-warning}
+While these point-and-click interfaces are very convenient, they don't automatically leave a trail of breadcrumbs to help you repeat the process in the future.  These are tools for generating R code that you can capture and resuse.  
+:::
 
 1. Manual command line import 
 
-Ultimately, this is how anything is imported into R. The first two options listed above are actually tools for generating code that will import a data set through the command-line! 
+Ultimately, this is how anything is imported into R. As mentioned, first two options listed above are actually tools for generating code that will import a data set through the command-line! 
 
 There's 4 common approaches for importing data into R:
 
@@ -35,8 +47,8 @@ A very commonly used funtion for reading in "comma separated values" (CSV) files
 
 **Example usage:**
 
-```
-mycsv <- read.csv("....")
+```{r, eval=FALSE}
+mydata1 <- read.csv("....")
 ```
 
 **Result:**
@@ -62,22 +74,41 @@ The default arguments include:
 
 This function is part of **readr**. It has very similar functionality to `read.csv()`, but it parses the data a wee bit different.
 
+**Example Usage:**
+
+```{r, eval=FALSE}
+mydata2 <- read_csv(...)
+```
+
+**Result:**
+```{r}
+#str(mydata2)
+```
+
+**Under the Hood:**
+
+This function takes similar arguments to `read.csv()`:
+
+* 
+*
+*
+*
 
 
 #### `read_excel()`
 
 This function will read in MS Excel files (reliably)! It is truly amazing. For many many years, it was cumbersome and/or impossible to read Excel files direclty into R. 
 
-The main argument are the file
+**Example Usage:**
+
+**Results:**
+
 
 #### `read_delim()`
 
 
-
-
-
 :::{.callout-note}
-It's very important to understand how R has read a dataset into an R session. R has opened a connection to the file that you have specified, read file information into the R session using system memory (your computer's RAM), and then closed the connection. This is a one-way process (file ---> R). Once a file is loaded and the connection closed, there is no longer *any link* between the object loaded into memory in R and its origin file (located on on your computer, a cloud server, etc). Any changes made to the object in R will not change the file on your computer unless you explicitly run scripts to overwrite that file. This is good thing; it gives you freedom to experiment with and manipulate an object without worrying about messing up the original file.  We will discuss later how to export R objects to your file system when you want to capture changes made to an object.   
+It's useful to understand how R has read a dataset into an R session. R has opened a connection to the file that you have specified, read file information into the R session using system memory (your computer's RAM), and then closed the connection. This is a one-way process (file ---> R). Once a file is loaded and the connection closed, there is no longer *any link* between the object loaded into memory in R and its origin file (located on on your computer, a cloud server, etc). Any changes made to the object in R will not change the file on your computer unless you explicitly run scripts to overwrite that file. This is good thing; it gives you freedom to experiment with and manipulate an object without worrying about messing up the original file.  We will discuss later how to export R objects to your file system when you want to capture changes made to an object.   
 
 :::
 
@@ -109,7 +140,6 @@ You may also be working with data types that are not strictly tabular, at least 
 * file on a Google drive: **[googledrive]()** 
 * image files: **[magick]()**
 * text collections: **[tm]()**   MAYBE???
-* audio files: **[tuneR]()**
 
 
 ::: {.callout-tip}

@@ -2,7 +2,7 @@
 title: "Lesson 12: Exporting Data"
 ---
 
-This is a very short lesson because exporting data is quite similar to data import. 
+This is a very short lesson because exporting data is quite similar to importing data. 
 
 ::: {.callout-tip}
 ## Putting it all together

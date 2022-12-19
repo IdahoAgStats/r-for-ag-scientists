@@ -29,9 +29,10 @@ This is an introductory course for the [R programming language](https://www.r-pr
 -   understand data types and object types
 -   filter, reshape, merge and manipulate your data
 -   mathematically transform data
--   do repeat actions in R
 -   plot data
 -   navigate R help files
+
+** This course should provide 
 
 #### This course will not address: 
 
@@ -50,7 +51,7 @@ This course is intended for beginner R users. No previous experience in R or any
 
 ## Grades Policy
 
-This is a pass/fail class that is largely participation driven. Your 'grade' will be a direct reflection of your attendance and participation during class. Attendance and participation of 5 classes, or 62.% of the total instruction time, will constitute a passing grade. Participating means attending and following along with the coding demonstration on your own computer. 
+This is a pass/fail class that is largely participation driven. Your 'grade' will be a direct reflection of your attendance and participation during class. Attendance and participation of 5 classes, or 62.5% of the total instruction time, will constitute a passing grade. Participating means attending and following along with the coding demonstration on your own computer. 
 
 Some of you have already communicated with me regarding time you will miss due to scheduling conflicts with other courses. Your time away will not count against your attendance record and final grade. Please be sure to watch the videos and read the notes for the class time you miss so you do not fall behind in the course content. 
 

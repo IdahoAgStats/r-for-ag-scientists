@@ -2,7 +2,11 @@
 title: "Preparing for this Class"
 ---
 
-Welcome & salutations. I have fully revamped this curriculum, doing my best to recreate "beginner's mind", and am quite excited to teach this material. We have very limited time, so order to conserve class time and have us all ready for the first day of class, please read through this "Lesson Zero", watch the video and follow the instructions below.  
+Welcome & salutations!
+
+I excited to teach this course. I have fully revamped this curriculum, doing my best to recreate "beginner's mind". 
+
+We have very limited time, so order to conserve class time and have us all ready for the first day of class, please read through this "Lesson Zero", watch the video and follow the instructions below.  
 
 {{{ video placeholder }}}
 
