@@ -3,7 +3,19 @@ title: "Lesson 9: Reshaping Data Sets"
 ---
 
 
+::: {.callout-caution collapse="true"}
+## Learning Goals
 
+At the end of this lesson, you should: 
+
+* be able to convert long data set to wide and the reverse
+:::
+
+
+
+
+
+## Final Notes
 
 This is the end of lessons on data wrangling. There is additional functionality that we have touched on that you may find useful to know. 
 
@@ -17,10 +29,3 @@ This is the end of lessons on data wrangling. There is additional functionality 
 
 :::
 
-::: {.callout-caution collapse="true"}
-## Learning Goals
-
-At the end of this lesson, you should: 
-
-* 
-:::

@@ -3,11 +3,7 @@ title: "Lesson 15: Repeating Actions with Purrr"
 ---
 
 
-::: {.callout-tip}
-## Putting it all together
 
-
-:::
 
 ::: {.callout-caution collapse="true"}
 ## Learning Goals
@@ -15,4 +11,10 @@ title: "Lesson 15: Repeating Actions with Purrr"
 At the end of this lesson, you should: 
 
 * 
+:::
+
+::: {.callout-tip}
+## Putting it all together
+
+
 :::

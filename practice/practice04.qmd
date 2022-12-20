@@ -1,0 +1,17 @@
+---
+title: "Practice #4"
+---
+
+(for data import lesson)
+
+1. Import one of your data sets using two of the functions taught:
+
+(save your data in different format to enable this)
+
+* `read.csv()`
+* `read_csv()`
+* `read_excel()`
+* `read.delim()`
+
+1. Examine the data using the tools you have learned thus far. Did everything import as expected? Are your variables coded as they should be? Are numeric variables numeric? Are missing data detected as thus? 
+

@@ -1,0 +1,98 @@
+---
+title: "Solutions to Practice #3"
+---
+
+
+1. There is no difference. 
+
+1. Here is the list
+
+```{r}
+mylist = list(x1 = "snow", x2 = 45:65, x3 = rep(letters[1:3], each = 3), x4 = matrix(1:100, nrow = 10))
+mylist
+```
+
+There are two ways to remove x3. The First is to create a new list from the object 'mylist' and don't include x3:
+
+```{r}
+mylist2 <- list(mylist[[1]], mylist[[2]], mylist[[4]])
+mylist2
+```
+
+Lists also let you declare a list item as `NULL` which makes it completely go away!
+
+```{r}
+mylist[[3]] <- NULL
+mylist
+```
+1. Here is the data frame: 
+
+
+```{r}
+df <- data.frame(one = 1:10,
+                 two = rnorm(10))
+df$three <- df$two + rnorm(10)
+df$four <- sample(c("A", "B"), 10, replace = TRUE)
+```
+
+```{r}
+df$five <- sample(c("apple", "huckleberry"), 10, replace = TRUE)
+df$six <- as.factor(df$five)
+```
+
+```{r}
+new_df <- df[,c(5, 1, 4, 2, 3)]
+new_df
+```
+
+
+
+
+
+
+
+1. Here is the matrix: 
+
+```{r}
+m100 = matrix(1:100, ncol = 05, nrow = 20)
+m100
+```
+Solution #1 if you want to maintain the original size of the matrix:
+```{r}
+m100_1 <- m100
+m100_1[,4:5] <- NA
+m100_1[11:20,3] <- NA
+m100_1
+```
+
+
+Solution #2 if you want remove columns from the matrix that are composed only of missing data. 
+
+```{r}
+m100_2 <- m100[, 1:3]
+m100_2[11:20, 3] <- NA
+m100_2
+```
+
+1. The values are recycled, starting at the beginning of the specificed data:
+
+```{r}
+matrix(1:9, ncol = 5, nrow = 2, byrow = TRUE)
+```
+If you don't want that to happen, pad your input data with NA:
+
+```{r}
+matrix(c(1:9, NA), ncol = 5, byrow = TRUE)
+```
+
+
+**Meta-lesson: always always always check your object to make sure it looks like what you expected it to**
+
+Common checks: 
+
+  * the dimensions (row number, column number, length, etc) are what you expect
+  * the data types are what you expect
+  * the values are what you expect
+
+  
+  

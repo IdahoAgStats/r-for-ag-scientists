@@ -1,0 +1,36 @@
+---
+title: "Welcome to Introductory R"
+subtitle: "for Scientists"
+author: "Julia Piaskowski"
+date: "Spring, 2023"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    mathjax: null
+    nature:
+      highlightStyle: github
+      countIncrementalSlides: false
+---
+
+```{r setup, include=FALSE}
+#library(xarnigan)
+options(htmltools.dir.version = FALSE)
+```
+
+background-image: images/tui_la.jpg
+
+---
+class: center, middle
+
+# https://posit.cloud/
+
+
+---
+# Practice is key
+
+![](images/nailed_it_gingerbread.jpeg)
+---
+background-image: images/music.jpg
+
+
+

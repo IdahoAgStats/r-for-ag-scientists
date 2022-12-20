@@ -3,6 +3,15 @@ title: "Lesson 1: Introduction to RStudio"
 echo: FALSE
 ---
 
+::: {.callout-caution collapse="true"}
+## Learning Recap
+
+At the end of this lesson, you should understand: 
+
+* What the different tabs in each of the panes of RStudio do
+* What is in each menu item in Rstudio and have a general sense of functionality available
+:::
+
 ```{r}
 knitr::include_graphics(here::here("images", "rstudio.png"))
 ```
@@ -152,11 +161,4 @@ knitr::include_graphics(here::here("images", "rstudio_ribbon.png"))
 
 Rstudio has a massive number of keyboard shortcuts. You can find them in the menu (Help --> Cheat Sheets) and summarized in this [cheat sheet](https://github.com/rstudio/cheatsheets/blob/master/rstudio-ide.pdf)
 
-::: {.callout-caution collapse="true"}
-## Learning Recap
 
-At the end of this lesson, you should understand: 
-
-* What the different tabs in each of the panes of RStudio do
-* What is in each menu item in Rstudio and have a general sense of functionality available
-:::

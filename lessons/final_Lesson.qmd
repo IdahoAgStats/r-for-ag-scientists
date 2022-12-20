@@ -1,0 +1,15 @@
+---
+title: "Moving on"
+---
+
+If you made this far, congratulations! Learning any programming language takes a big effort. 
+
+This is only the beginning. You will probably need more R knowledge, both generalized and specialized, to accomplish your research goals. Here are a few resources to develope general data science skills in R. 
+
+* [Data Science in a Box](https://datasciencebox.org/) is a online course by Mine Çetinkaya-Rundel with videos for further development of R skills. 
+* [R 4 Data Science](https://r4ds.had.co.nz/) by Hadley Wickham and Garret Grolemund is a comprehensive book providing guidance on leveraging R for data science aims
+* [What They Forgot to Teach you about R](https://rstats.wtf/) (and [workshop version](https://imci-idaho.github.io/2022-03-01-WhatTheyForgot/)) describes some meta processes for ensuring a repeatable workflow.
+
+There are many other resources to help develop skills in genetics, bioinformatics, geospatial analysis, Bayesian statistics, ....you name it. Look for the resources that will help you develop skills in R. One very reliable place to start are [CRAN Task Views](https://cran.rstudio.com/web/views/) which provide a list of packages and other relevant R resources specific for a given topic such as [environmetrics](https://CRAN.R-project.org/view=Environmetrics) (ecology), [spatial tools](https://CRAN.R-project.org/view=Spatial) and [agriculture](https://CRAN.R-project.org/view=Agriculture). 
+
+Another good source for keeping up with major developments in R, contributed R packages and other R resources is [R Weekly](https://rweekly.org/) which puts out a weekly blog post (also available in a weekly podcast and an RSS feed).

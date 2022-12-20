@@ -19,4 +19,5 @@ To do:
 * standardize heading levels
 * create a simplied schematic of the RStudio window
 * create pre survey 
+* need a presentation for lesson zero
 

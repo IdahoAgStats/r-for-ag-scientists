@@ -2,11 +2,20 @@
 title: "Lesson 10: Combining Data Sets"
 ---
 
+::: {.callout-caution collapse="true"}
+## Learning Goals
+
+At the end of this lesson, you should: 
+
+* understand the concept of a "key" for merging
+* be able to merge two data sets together
+
+:::
+
 ```{r, include=FALSE}
 library(dplyr)
 ```
 
-Need to add some data sets
 
 ## Bind rows
 
@@ -49,16 +58,11 @@ All observations are returned, regardless if matched.
 
 Only observations found in both data sets are kept. 
 
+## Final Thoughts
+
 ::: {.callout-tip}
 ## Putting it all together
 
 
 :::
 
-::: {.callout-caution collapse="true"}
-## Learning Goals
-
-At the end of this lesson, you should: 
-
-* 
-:::

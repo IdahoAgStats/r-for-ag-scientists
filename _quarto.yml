@@ -57,16 +57,64 @@ website:
         contents:
           - href: lessons/Lesson00.qmd
             text: Lesson Zero
-            #contents: 
-              #- href: practice/practice01.qmd
-               #test: Practice Problems
-
+          - href: lessons/lesson01.qmd
+            text: RStudio Tour
+          - href: lessons/lesson02.qmd
+            text: Math Operators
+          - href: lessons/lesson03.qmd
+            text: Vectorizing
+            contents: 
+              - href: practice/practice01.qmd
+                text: "practice #1"
+              - href: practice/solution01.qmd
+                text: "solution #1"
+          - href: lessons/lesson04.qmd
+            text: R objects
+            contents: 
+              - href: practice/practice02.qmd
+                text: "practice #2"
+              - href: practice/solution02.qmd
+                text: "solution #2"
+          - href: lessons/lesson05.qmd
+            text: Data structures
+            contents: 
+              - href: practice/practice03.qmd
+                text: "practice #3"
+              - href: practice/solution03.qmd
+                text: "solution #3"
+          - href: lessons/lesson06.qmd
+            text: Documentation
+          - href: lessons/lesson07.qmd
+            text: Data Import
+            contents: 
+              - href: practice/practice04.qmd
+                text: "practice #4"
+              - href: practice/solution04.qmd
+                text: "solution #4"
+          - href: lessons/lesson08.qmd
+            text: Data wrangling
+          - href: lessons/lesson09.qmd
+            text: Reshaping data
+          - href: lessons/lesson10.qmd
+            text: Data merging
+          - href: lessons/lesson11.qmd
+            text: R Set-up
+          - href: lessons/lesson12.qmd
+            text: Data export
+          - href: lessons/lesson13.qmd
+            text: Exploratory plotting
+          - href: lessons/lesson14.qmd
+            text: ggplotting
+          - href: lessons/lesson15.qmd
+            text: Repeating operations
+          - href: lessons/final_Lesson.qmd
+            text: final thoughts
 
   page-footer:
-    right: "This page is built with [Quarto](https://quarto.org/), themed by [Mine Çetinkaya-Rundel](https://github.com/sta210-s22/website)"
+    right: "[Quarto Website](https://quarto.org/), template by [Mine Çetinkaya-Rundel](https://github.com/sta210-s22/website)"
     left: "&copy; Copyright 2023 by Julia Piaskowski"
     center: |
-      [![](images/uidaho_logo.png){fig-alt="Uidaho Logo" width=200px}](https://www.uidaho.edu)
+      [![](images/UI_Main_horizontal_4c.png){fig-alt="Uidaho Logo" width=200px}](https://www.uidaho.edu)
     background: "#D9E3E4"
 
 format:
