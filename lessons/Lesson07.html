@@ -20,6 +20,69 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -145,6 +208,146 @@ ul.task-list li input[type="checkbox"] {
   <a href="../lessons/Lesson00.html" class="sidebar-item-text sidebar-link">Lesson Zero</a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lessons/lesson01.qmd" class="sidebar-item-text sidebar-link">RStudio Tour</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lessons/lesson02.qmd" class="sidebar-item-text sidebar-link">Math Operators</a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../lessons/lesson03.qmd" class="sidebar-item-text sidebar-link">Vectorizing</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../practice/practice01.html" class="sidebar-item-text sidebar-link">practice #1</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../practice/solution01.html" class="sidebar-item-text sidebar-link">solution #1</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../lessons/lesson04.qmd" class="sidebar-item-text sidebar-link">R objects</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../practice/practice02.html" class="sidebar-item-text sidebar-link">practice #2</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../practice/solution02.html" class="sidebar-item-text sidebar-link">solution #2</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../lessons/lesson05.qmd" class="sidebar-item-text sidebar-link">Data structures</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../practice/practice03.html" class="sidebar-item-text sidebar-link">practice #3</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../practice/solution03.html" class="sidebar-item-text sidebar-link">solution #3</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lessons/lesson06.qmd" class="sidebar-item-text sidebar-link">Documentation</a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../lessons/lesson07.qmd" class="sidebar-item-text sidebar-link">Data Import</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../practice/practice04.html" class="sidebar-item-text sidebar-link">practice #4</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../practice/solution04.html" class="sidebar-item-text sidebar-link">solution #4</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lessons/lesson08.qmd" class="sidebar-item-text sidebar-link">Data wrangling</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lessons/lesson09.qmd" class="sidebar-item-text sidebar-link">Reshaping data</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lessons/lesson10.qmd" class="sidebar-item-text sidebar-link">Data merging</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lessons/lesson11.qmd" class="sidebar-item-text sidebar-link">R Set-up</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lessons/lesson12.qmd" class="sidebar-item-text sidebar-link">Data export</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lessons/lesson13.qmd" class="sidebar-item-text sidebar-link">Exploratory plotting</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lessons/lesson14.qmd" class="sidebar-item-text sidebar-link">ggplotting</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lessons/lesson15.qmd" class="sidebar-item-text sidebar-link">Repeating operations</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lessons/final_Lesson.html" class="sidebar-item-text sidebar-link">final thoughts</a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -157,9 +360,15 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#working-directory-and-file-paths" id="toc-working-directory-and-file-paths" class="nav-link active" data-scroll-target="#working-directory-and-file-paths">Working directory and file paths</a></li>
-  <li><a href="#how-to-import" id="toc-how-to-import" class="nav-link" data-scroll-target="#how-to-import">How to Import</a></li>
+  <li><a href="#how-to-import" id="toc-how-to-import" class="nav-link" data-scroll-target="#how-to-import">How to Import</a>
+  <ul class="collapse">
+  <li><a href="#read.csv" id="toc-read.csv" class="nav-link" data-scroll-target="#read.csv"><code>read.csv()</code></a></li>
+  <li><a href="#read_csv" id="toc-read_csv" class="nav-link" data-scroll-target="#read_csv"><code>read_csv()</code></a></li>
+  <li><a href="#read_excel" id="toc-read_excel" class="nav-link" data-scroll-target="#read_excel"><code>read_excel()</code></a></li>
+  <li><a href="#read_delim" id="toc-read_delim" class="nav-link" data-scroll-target="#read_delim"><code>read_delim()</code></a></li>
   <li><a href="#troubleshooting-import-errors" id="toc-troubleshooting-import-errors" class="nav-link" data-scroll-target="#troubleshooting-import-errors">Troubleshooting Import errors</a></li>
   <li><a href="#importing-other-data-types" id="toc-importing-other-data-types" class="nav-link" data-scroll-target="#importing-other-data-types">Importing Other Data types</a></li>
+  </ul></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/IdahoAgStats/r-for-ag-scientists/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
@@ -183,21 +392,79 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="working-directory-and-file-paths" class="level3">
-<h3 class="anchored" data-anchor-id="working-directory-and-file-paths">Working directory and file paths</h3>
+<div class="callout-caution callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Learning Goals
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>At the end of this lesson, you should:</p>
+<ul>
+<li>know how to set your working directory</li>
+<li>know how to specify a file path</li>
+<li>Be able to import CSV and Excel files into R</li>
+<li>understand the main arguments for importing .xlsx, .xls and .csv files</li>
+</ul>
+</div>
+</div>
+</div>
+<section id="working-directory-and-file-paths" class="level2">
+<h2 class="anchored" data-anchor-id="working-directory-and-file-paths">Working directory and file paths</h2>
 <p>While you can simulate data or load existing data sets associated with packages for your research, most of you will need to load pre-existing data sets from you computer, or a cloud server, some other external device.</p>
-<p>The first thing you’ll need to understand is the working directory and file paths.</p>
+<p>The first thing you need to understand is the working directory and file paths.</p>
 <p>When an R session is initiated, it ascertains what the root working directory is based on the default settings for your R installation and any other</p>
 </section>
-<section id="how-to-import" class="level3">
-<h3 class="anchored" data-anchor-id="how-to-import">How to Import</h3>
+<section id="how-to-import" class="level2">
+<h2 class="anchored" data-anchor-id="how-to-import">How to Import</h2>
 <p>There are several ways to import data into R.</p>
 <ol type="1">
-<li><p>Use the “Import Dataset” tool in the Environment pane.</p></li>
-<li><p>Use the Files pane in RStudio</p></li>
-<li><p>Manual command line import</p></li>
+<li>Use the “Import Dataset” tool in the Environment pane.</li>
 </ol>
-<p>Ultimately, this is how anything is imported into R. The first two options listed above are actually tools for generating code that will import a data set through the command-line!</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"images"</span>, <span class="st">"import_dataset_enviro.png"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="../images/import_dataset_enviro.png" class="img-fluid"></p>
+</div>
+</div>
+<ol type="1">
+<li>Use the Files pane in RStudio</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"images"</span>, <span class="st">"import_dataset_file.png"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="../images/import_dataset_file.png" class="img-fluid"></p>
+</div>
+</div>
+<p>Both of them open a new window that looks like this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"images"</span>, <span class="st">"import_dataset_window.png"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="../images/import_dataset_window.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="callout-warning callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>While these point-and-click interfaces are very convenient, they don’t automatically leave a trail of breadcrumbs to help you repeat the process in the future. <em>But</em>, they do generate R code that we can capture and reuse. They are handy shortcuts that I have found especially helpful when trying to import file formats I work with rarely.</p>
+</div>
+</div>
+<ol type="1">
+<li>Manual command line import</li>
+</ol>
+<p>Ultimately, this is how anything is imported into R. As mentioned, first two options listed above are actually tools for generating code that will import a data set through the command-line!</p>
 <p>There’s 4 common approaches for importing data into R:</p>
 <ul>
 <li><code>read.csv()</code></li>
@@ -205,28 +472,237 @@ ul.task-list li input[type="checkbox"] {
 <li><code>read_excel()</code></li>
 <li><code>read_delim()</code></li>
 </ul>
-<section id="read.csv" class="level4">
-<h4 class="anchored" data-anchor-id="read.csv"><code>read.csv()</code></h4>
+<section id="read.csv" class="level3">
+<h3 class="anchored" data-anchor-id="read.csv"><code>read.csv()</code></h3>
 <p>A very commonly used funtion for reading in “comma separated values” (CSV) files. I personally like this format because it is not proprietary and is compatable across many operating systems. It also limitts all sorts of extraneous formatting that itself is a barrier to reproducible research (e.g.&nbsp;highlighting is discarded once a CSV file is closed).</p>
 <p><strong>Example usage:</strong></p>
-<pre><code>mycsv &lt;- read.csv("....")</code></pre>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>mycsv1 <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/trial_metadata.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+
+</div>
 <p><strong>Result:</strong></p>
-<pre><code>str(mycsv)</code></pre>
-<p><strong>Under the hood:</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(mycsv1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'data.frame':   28 obs. of  30 variables:
+ $ trial             : chr  "SWIdahoCereals_HWW_PAR_2020" "SWIdahoCereals_SWW_PAR_2020" "SWIdahoCereals_H_W_PAR_2018" "SWIdahoCereals_SWW_PAR_2018" ...
+ $ program           : chr  "SWIdahoCereals" "SWIdahoCereals" "SWIdahoCereals" "SWIdahoCereals" ...
+ $ pi                : chr  "OWalsh" "OWalsh" "OWalsh" "OWalsh" ...
+ $ nursery           : chr  "HWW" "SWW" "H_W" "SWW" ...
+ $ year              : int  2020 2020 2018 2018 2018 2018 2016 2016 2016 2017 ...
+ $ location          : chr  "Parma" "Parma" "Parma" "Parma" ...
+ $ grower_cooperator : chr  "UI Parma REE Center" "UI Parma REE Center" "UI Parma REE Center" "UI Parma REE Center" ...
+ $ irrigation        : chr  "irrigated" "irrigated" "irrigated" "irrigated" ...
+ $ latitude          : num  43.8 43.8 43.8 43.8 43.8 ...
+ $ longitude         : num  -117 -117 -117 -117 -117 ...
+ $ planting_date     : chr  "2019-10-07" "2019-10-07" "2017-10-25" "2017-10-25" ...
+ $ harvest_date      : chr  "2020-07-21" "2020-07-21" "2018-07-17" "2018-07-17" ...
+ $ plot_length       : int  17 17 17 17 17 17 17 17 17 17 ...
+ $ plot_width        : int  5 5 5 5 5 5 5 5 5 5 ...
+ $ agronomic_notes   : logi  NA NA NA NA NA NA ...
+ $ chemical_trts     : logi  NA NA NA NA NA NA ...
+ $ free_lime_pct     : logi  NA NA NA NA NA NA ...
+ $ k_ppm             : logi  NA NA NA NA NA NA ...
+ $ n_lbs_acre        : logi  NA NA NA NA NA NA ...
+ $ npks_lb_acre      : logi  NA NA NA NA NA NA ...
+ $ p_ppm             : logi  NA NA NA NA NA NA ...
+ $ ph                : logi  NA NA NA NA NA NA ...
+ $ previous_crop     : logi  NA NA NA NA NA NA ...
+ $ row_spacing_in    : logi  NA NA NA NA NA NA ...
+ $ s_ppm             : logi  NA NA NA NA NA NA ...
+ $ seed_rate_per_acre: logi  NA NA NA NA NA NA ...
+ $ seed_trt          : logi  NA NA NA NA NA NA ...
+ $ soil.type         : logi  NA NA NA NA NA NA ...
+ $ soil_om           : logi  NA NA NA NA NA NA ...
+ $ exp_design        : chr  "RCBD" "RCBD" "RCBD" "RCBD" ...</code></pre>
+</div>
+</div>
+<p><strong>Details:</strong></p>
 <p><code>read.csv()</code> is actually a “wrapper” for another function, <code>read.table()</code>. It has taken <code>read.table()</code> and set the default arguments to work with CSV files. <code>read.table()</code> is a more generalized form providing more flexibility.</p>
 <p>The default arguments include: * <code>colnames = TRUE</code>: the first row of data is assumed to be the column names * nothing in the data set will be used for rownames unless we explicitly indicate so * <code>sep = ","</code>: each data point is separated from another by a comma * a newline indicator is used to separate rows of data * <code>na.strings = c("NA", "")</code>: cells with a either no data (““) or an”NA” will be treated as missing. * if something consists of non-numeric characters, that column vector will be treated as character and not a factor</p>
 </section>
-<section id="read_csv" class="level4">
-<h4 class="anchored" data-anchor-id="read_csv"><code>read_csv()</code></h4>
+<section id="read_csv" class="level3">
+<h3 class="anchored" data-anchor-id="read_csv"><code>read_csv()</code></h3>
 <p>This function is part of <strong>readr</strong>. It has very similar functionality to <code>read.csv()</code>, but it parses the data a wee bit different.</p>
+<p><strong>Example Usage:</strong></p>
+<p>First, load the package that contains the function <code>read_csv()</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>mycsv2 <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/trial_metadata.csv"</span>, <span class="at">trim_ws =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 28 Columns: 30
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr   (8): trial, program, pi, nursery, location, grower_cooperator, irrigat...
+dbl   (5): year, latitude, longitude, plot_length, plot_width
+lgl  (15): agronomic_notes, chemical_trts, free_lime_pct, k_ppm, n_lbs_acre,...
+date  (2): planting_date, harvest_date
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+</div>
+<p><strong>Result:</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(mycsv2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>spc_tbl_ [28 × 30] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+ $ trial             : chr [1:28] "SWIdahoCereals_HWW_PAR_2020" "SWIdahoCereals_SWW_PAR_2020" "SWIdahoCereals_H_W_PAR_2018" "SWIdahoCereals_SWW_PAR_2018" ...
+ $ program           : chr [1:28] "SWIdahoCereals" "SWIdahoCereals" "SWIdahoCereals" "SWIdahoCereals" ...
+ $ pi                : chr [1:28] "OWalsh" "OWalsh" "OWalsh" "OWalsh" ...
+ $ nursery           : chr [1:28] "HWW" "SWW" "H_W" "SWW" ...
+ $ year              : num [1:28] 2020 2020 2018 2018 2018 ...
+ $ location          : chr [1:28] "Parma" "Parma" "Parma" "Parma" ...
+ $ grower_cooperator : chr [1:28] "UI Parma REE Center" "UI Parma REE Center" "UI Parma REE Center" "UI Parma REE Center" ...
+ $ irrigation        : chr [1:28] "irrigated" "irrigated" "irrigated" "irrigated" ...
+ $ latitude          : num [1:28] 43.8 43.8 43.8 43.8 43.8 ...
+ $ longitude         : num [1:28] -117 -117 -117 -117 -117 ...
+ $ planting_date     : Date[1:28], format: "2019-10-07" "2019-10-07" ...
+ $ harvest_date      : Date[1:28], format: "2020-07-21" "2020-07-21" ...
+ $ plot_length       : num [1:28] 17 17 17 17 17 17 17 17 17 17 ...
+ $ plot_width        : num [1:28] 5 5 5 5 5 5 5 5 5 5 ...
+ $ agronomic_notes   : logi [1:28] NA NA NA NA NA NA ...
+ $ chemical_trts     : logi [1:28] NA NA NA NA NA NA ...
+ $ free_lime_pct     : logi [1:28] NA NA NA NA NA NA ...
+ $ k_ppm             : logi [1:28] NA NA NA NA NA NA ...
+ $ n_lbs_acre        : logi [1:28] NA NA NA NA NA NA ...
+ $ npks_lb_acre      : logi [1:28] NA NA NA NA NA NA ...
+ $ p_ppm             : logi [1:28] NA NA NA NA NA NA ...
+ $ ph                : logi [1:28] NA NA NA NA NA NA ...
+ $ previous_crop     : logi [1:28] NA NA NA NA NA NA ...
+ $ row_spacing_in    : logi [1:28] NA NA NA NA NA NA ...
+ $ s_ppm             : logi [1:28] NA NA NA NA NA NA ...
+ $ seed_rate_per_acre: logi [1:28] NA NA NA NA NA NA ...
+ $ seed_trt          : logi [1:28] NA NA NA NA NA NA ...
+ $ soil type         : logi [1:28] NA NA NA NA NA NA ...
+ $ soil_om           : logi [1:28] NA NA NA NA NA NA ...
+ $ exp_design        : chr [1:28] "RCBD" "RCBD" "RCBD" "RCBD" ...
+ - attr(*, "spec")=
+  .. cols(
+  ..   trial = col_character(),
+  ..   program = col_character(),
+  ..   pi = col_character(),
+  ..   nursery = col_character(),
+  ..   year = col_double(),
+  ..   location = col_character(),
+  ..   grower_cooperator = col_character(),
+  ..   irrigation = col_character(),
+  ..   latitude = col_double(),
+  ..   longitude = col_double(),
+  ..   planting_date = col_date(format = ""),
+  ..   harvest_date = col_date(format = ""),
+  ..   plot_length = col_double(),
+  ..   plot_width = col_double(),
+  ..   agronomic_notes = col_logical(),
+  ..   chemical_trts = col_logical(),
+  ..   free_lime_pct = col_logical(),
+  ..   k_ppm = col_logical(),
+  ..   n_lbs_acre = col_logical(),
+  ..   npks_lb_acre = col_logical(),
+  ..   p_ppm = col_logical(),
+  ..   ph = col_logical(),
+  ..   previous_crop = col_logical(),
+  ..   row_spacing_in = col_logical(),
+  ..   s_ppm = col_logical(),
+  ..   seed_rate_per_acre = col_logical(),
+  ..   seed_trt = col_logical(),
+  ..   `soil type` = col_logical(),
+  ..   soil_om = col_logical(),
+  ..   exp_design = col_character()
+  .. )
+ - attr(*, "problems")=&lt;externalptr&gt; </code></pre>
+</div>
+</div>
+<p><strong>Details:</strong></p>
+<p>This function takes similar arguments to <code>read.csv()</code>, although the output is more extensive.</p>
+<ul>
+<li>Like in <code>read.csv()</code>, the default seperator is “,”, missing datea are coded as empty string <code>""</code> or <code>NA</code> and the first line is assumed to be the column header</li>
+<li>it does not bother with a row names attribute</li>
+<li>the argument <code>trim_ws</code> will remove leading and trailing whitespace for data entries. So the column header ” soil pH” will become “soil pH”.</li>
+<li>Column are preserved more clearly than <code>read.csv()</code> (including spaces and special characters). I’m honestly not fond of this behavior and usually clean up weird column names with <code>janitor::clean_names()</code>.</li>
+</ul>
+<p>The output is largely similar, although <code>read_csv()</code> actually parses dates, unlike <code>read.csv()</code>.</p>
 </section>
-<section id="read_excel" class="level4">
-<h4 class="anchored" data-anchor-id="read_excel"><code>read_excel()</code></h4>
+<section id="read_excel" class="level3">
+<h3 class="anchored" data-anchor-id="read_excel"><code>read_excel()</code></h3>
 <p>This function will read in MS Excel files (reliably)! It is truly amazing. For many many years, it was cumbersome and/or impossible to read Excel files direclty into R.</p>
-<p>The main argument are the file</p>
+<p><strong>Example Usage:</strong></p>
+<p>Load the package that contains the function <code>read_excel()</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>myxl <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"data/field_trial_2009.xlsx"</span>, <span class="at">sheet =</span> <span class="st">"site_02"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+
+</div>
+<p><strong>Results:</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(myxl)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>tibble [80 × 30] (S3: tbl_df/tbl/data.frame)
+ $ plot    : num [1:80] 1 2 3 4 5 6 7 8 9 10 ...
+ $ bloc    : num [1:80] 1 1 1 1 1 1 1 1 1 1 ...
+ $ rep     : num [1:80] 1 1 1 1 1 1 1 1 1 1 ...
+ $ Ptrt    : chr [1:80] "high" "high" "high" "high" ...
+ $ inoc    : chr [1:80] "myco" "myco" "myco" "myco" ...
+ $ Cv      : chr [1:80] "OTIS" "ALPOWA" "BlancaG" "WALWORTH" ...
+ $ order   : num [1:80] 1 2 3 4 5 17 18 16 20 19 ...
+ $ height  : num [1:80] 49 48.7 40.3 45.7 59 ...
+ $ spikes  : num [1:80] NA 240 192 360 216 340 220 228 208 256 ...
+ $ tstwt   : num [1:80] 61.9 61.2 61.3 60.6 61.7 60.2 61.2 61.2 62.1 62.1 ...
+ $ HI      : num [1:80] 0.385 0.375 0.444 0.385 0.481 0.387 0.5 0.5 0.474 0.409 ...
+ $ YieldKg : num [1:80] 1144 1274 1026 1026 922 ...
+ $ YieldBu : num [1:80] 16.5 18.5 14.9 15.1 13.3 ...
+ $ tkw     : num [1:80] 35.1 32.2 37.6 30.8 40.1 ...
+ $ myco    : num [1:80] 37.5 30 35.7 15.4 14.3 ...
+ $ PT1     : num [1:80] 4391 4500 4546 3436 4121 ...
+ $ PT2     : num [1:80] 1040 726 605 702 1036 ...
+ $ PT3     : num [1:80] 375 85.5 315.6 247.4 161.9 ...
+ $ Pseeds  : num [1:80] 3182 2523 3156 3389 2473 ...
+ $ cruc    : num [1:80] 6 10 4 5 2 3 9 7 39 66 ...
+ $ Cu      : num [1:80] 6.11 4.72 5.99 5.69 4.48 ...
+ $ Fe      : num [1:80] 46.4 27.2 46.8 36.5 34.2 ...
+ $ Mn      : num [1:80] 28 21.5 28.2 28.4 23.8 ...
+ $ Zn      : num [1:80] 16.2 14.2 18.3 22.1 15.1 ...
+ $ Protein : num [1:80] 14.3 12.7 14.7 16.3 12 ...
+ $ SDS     : num [1:80] 9.9 9.9 13.1 12.5 9.6 13.7 13.4 9.3 9.6 10.2 ...
+ $ PT1_2   : num [1:80] 4371 4455 4442 3481 4146 ...
+ $ PT2_2   : num [1:80] 968 659 544 635 965 ...
+ $ PT3_2   : num [1:80] 387 104 328 262 179 ...
+ $ Pseeds_2: num [1:80] 3103 2482 3083 3296 2434 ...</code></pre>
+</div>
+</div>
+<p><strong>Details</strong></p>
+<ul>
+<li>By default, <code>read_excel()</code> will import the first sheet unless it named by position (e.g.&nbsp;1, 2, 3) or name (like in the previous example).</li>
+<li>The default argument for missing values is only an empty string <code>""</code></li>
+<li>It returns results very similar to <code>read_csv()</code>.</li>
+<li>There is also an argument, <code>range</code> for setting a custom range of cells to read in.</li>
+</ul>
 </section>
-<section id="read_delim" class="level4">
-<h4 class="anchored" data-anchor-id="read_delim"><code>read_delim()</code></h4>
+<section id="read_delim" class="level3">
+<h3 class="anchored" data-anchor-id="read_delim"><code>read_delim()</code></h3>
+<p>For reading in text files! It’s pretty simple. Text files are not used terribly frequently, but I see them now and then with really huge files, such as genotyping data.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">#mytxt &lt;- read.delim("data/genotypic_data.txt")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+
+</div>
+<p><strong>Results</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co">#str(mytxt)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>Details</strong></p>
+<p>Not much to say here - it’s basically like <code>read.csv()</code>!</p>
 <div class="callout-note callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -237,10 +713,12 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>It’s very important to understand how R has read a dataset into an R session. R has opened a connection to the file that you have specified, read file information into the R session using system memory (your computer’s RAM), and then closed the connection. This is a one-way process (file —&gt; R). Once a file is loaded and the connection closed, there is no longer <em>any link</em> between the object loaded into memory in R and its origin file (located on on your computer, a cloud server, etc). Any changes made to the object in R will not change the file on your computer unless you explicitly run scripts to overwrite that file. This is good thing; it gives you freedom to experiment with and manipulate an object without worrying about messing up the original file. We will discuss later how to export R objects to your file system when you want to capture changes made to an object.</p>
+<p>It’s useful to understand how R has read a data set into an R session. R has opened a connection to the file that you have specified, read file information into the R session using system memory (your computer’s RAM), and then closed the connection.</p>
+<p><strong>This is a one-way process from your file to R</strong></p>
+<p>Once a file is loaded and the connection closed, there is no longer <em>any link</em> between the object loaded into memory in R and its origin file (located on on your computer, a cloud server, etc). Any changes made to the object in R will not change the file on your computer unless you explicitly run scripts to overwrite that file. This is good thing; it gives you freedom to experiment with and manipulate an object without worrying about messing up the original file.</p>
+<p>We will discuss later how to export R objects to your file system when you want to capture changes made to an object.</p>
 </div>
 </div>
-</section>
 </section>
 <section id="troubleshooting-import-errors" class="level3">
 <h3 class="anchored" data-anchor-id="troubleshooting-import-errors">Troubleshooting Import errors</h3>
@@ -250,22 +728,21 @@ Note
 <li><p><strong>Some variables which should be numeric are characters instead.</strong> <em>At least one item contains an unexpected character that renders that observation - and the rest of the vector - as a character. This might be two decimal points, a comma, or a “O” instead of “0”. If possible, manually inspect the data and correct the error. </em></p></li>
 <li><p><strong>Missing data are not coded as missing.</strong> <em>Import functions have default values for what is interpreted as missing. Check the documentation and adjust the arguments as needed to capture what code a data sets is using to indicate missing data.</em></p></li>
 </ol>
-<p>The best thing is to properly arrange your data set prior to import. <a href="https://www.tandfonline.com/doi/full/10.1080/00031305.2017.1375989">Broman &amp; Woo (2018)</a> provides some straightforward recommendations on how to manage data in spreadsheets.</p>
+<p>The best choice is to properly arrange your data set prior to import. <a href="https://www.tandfonline.com/doi/full/10.1080/00031305.2017.1375989">Broman &amp; Woo (2018)</a> provides some straightforward recommendations on how to manage data in spreadsheets.</p>
 </section>
 <section id="importing-other-data-types" class="level3">
 <h3 class="anchored" data-anchor-id="importing-other-data-types">Importing Other Data types</h3>
 <p>The instructions provided above are for importing tabular data that is generally not “big data”.</p>
-<p>Big data is a subjective term that is system-dependent (and is rapidly changing as PC computing power and memory increases). Some personal computers can easily handle a 50 Mb file, while others cannot. If you are waiting more than 5 seconds for your data to import, then consider other options. A deep discussion about how to handle large data sets are beyond the scope of this workshop, but at the very minimum, consider the package <strong><a href="">data.table</a></strong> and its high-performance functions for reading and writing data, <code>fread()</code> and <code>fwrite()</code>. If your data sets are too big to load directly into R, consider <strong><a href="">arrow</a></strong>.</p>
+<p>Big data is a subjective term that is system-dependent (and is rapidly changing as PC computing power and memory increases). Some personal computers can easily handle a 50 Mb file, while others cannot. If you are waiting more than 5 seconds for your data to import, then consider other options. A deep discussion about how to handle large data sets are beyond the scope of this workshop, but at the very minimum, consider the package <strong><a href="https://rdatatable.gitlab.io/data.table/">data.table</a></strong> and its high-performance functions for reading and writing data, <code>fread()</code> and <code>fwrite()</code>. If your data sets are too big to load directly into R, consider <strong><a href="https://arrow.apache.org/docs/r/">arrow</a></strong>.</p>
 <p>You may also be working with data types that are not strictly tabular, at least in the form they are stored on a computer. Here are some common non-tabular data types and packages to handle import of those.</p>
 <ul>
-<li>spatial data: <strong><a href="">sf</a></strong>, <strong><a href="">sp</a></strong>, <strong><a href="">raster</a></strong></li>
-<li>SAS data sets: <strong><a href="">haven</a></strong>, <code>haven::read_sas()</code></li>
-<li>SPSS data sets: <strong><a href="">haven</a></strong>, <code>haven::read_sav()</code></li>
-<li>file on a Google drive: <strong><a href="">googledrive</a></strong></li>
-<li>image files: <strong><a href="">magick</a></strong></li>
-<li>text collections: <strong><a href="">tm</a></strong> MAYBE???</li>
-<li>audio files: <strong><a href="">tuneR</a></strong></li>
+<li>spatial data: <strong><a href="https://r-spatial.github.io/sf/">sf</a></strong>, <strong><a href="https://CRAN.R-project.org/package=sp">sp</a></strong>, <strong><a href="https://rspatial.github.io/raster/">raster</a></strong></li>
+<li>SAS data sets: <strong><a href="https://haven.tidyverse.org/">haven</a></strong>, <code>haven::read_sas()</code></li>
+<li>SPSS data sets: <strong><a href="https://haven.tidyverse.org/">haven</a></strong>, <code>haven::read_sav()</code></li>
+<li>tabular files on Google drive: <strong><a href="https://googledrive.tidyverse.org/">googledrive</a></strong></li>
+<li>image files: <strong><a href="https://docs.ropensci.org/magick/articles/intro.html">magick</a></strong></li>
 </ul>
+<p>…and so much more.</p>
 <div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -279,27 +756,9 @@ Putting it all together
 
 </div>
 </div>
-<div class="callout-caution callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Learning Goals
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>At the end of this lesson, you should:</p>
-<ul>
-<li></li>
-</ul>
-</div>
-</div>
-</div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -555,8 +1014,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">© Copyright 2023 by Julia Piaskowski</div>   
-      <div class="nav-footer-center"><a href="https://www.uidaho.edu"><img src="images/uidaho_logo.png" class="img-fluid" alt="Uidaho Logo" width="200"></a></div>
-    <div class="nav-footer-right">This page is built with <a href="https://quarto.org/">Quarto</a>, themed by <a href="https://github.com/sta210-s22/website">Mine Çetinkaya-Rundel</a></div>
+      <div class="nav-footer-center"><a href="https://www.uidaho.edu"><img src="images/UI_Main_horizontal_4c.png" class="img-fluid" alt="Uidaho Logo" width="200"></a></div>
+    <div class="nav-footer-right"><a href="https://quarto.org/">Quarto Website</a>, template by <a href="https://github.com/sta210-s22/website">Mine Çetinkaya-Rundel</a></div>
   </div>
 </footer>
 

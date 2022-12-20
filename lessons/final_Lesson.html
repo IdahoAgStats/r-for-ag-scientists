@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>R for Scientists - Solutions to Practice #2</title>
+<title>R for Scientists - Moving on</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,69 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -93,8 +30,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../lessons/lesson05.qmd" rel="next">
-<link href="../practice/practice02.html" rel="prev">
+<link href="../lessons/lesson15.qmd" rel="prev">
 <link href="../images/logo_transparent.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -129,11 +65,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 <link rel="stylesheet" href="../styles.css">
-<meta property="og:title" content="R for Scientists - Solutions to Practice #2">
-<meta property="og:description" content="If you convert it using as.integer, it will look rather funky:">
+<meta property="og:title" content="R for Scientists - Moving on">
+<meta property="og:description" content="If you made this far, congratulations! Learning any programming language takes a big effort.">
 <meta property="og:site-name" content="R for Scientists">
-<meta name="twitter:title" content="R for Scientists - Solutions to Practice #2">
-<meta name="twitter:description" content="If you convert it using as.integer, it will look rather funky:">
+<meta name="twitter:title" content="R for Scientists - Moving on">
+<meta name="twitter:description" content="If you made this far, congratulations! Learning any programming language takes a big effort.">
 <meta name="twitter:card" content="summary">
 </head>
 
@@ -143,7 +79,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Solutions to Practice #2</h1>
+      <h1 class="quarto-secondary-nav-title">Moving on</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -243,11 +179,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="../lessons/lesson04.qmd" class="sidebar-item-text sidebar-link">R objects</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="true">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="" class="collapse list-unstyled sidebar-section depth2 show">  
+      <ul id="" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../practice/practice02.html" class="sidebar-item-text sidebar-link">practice #2</a>
@@ -255,7 +191,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../practice/solution02.html" class="sidebar-item-text sidebar-link active">solution #2</a>
+  <a href="../practice/solution02.html" class="sidebar-item-text sidebar-link">solution #2</a>
   </div>
 </li>
       </ul>
@@ -347,7 +283,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../lessons/final_Lesson.html" class="sidebar-item-text sidebar-link">final thoughts</a>
+  <a href="../lessons/final_Lesson.html" class="sidebar-item-text sidebar-link active">final thoughts</a>
   </div>
 </li>
       </ul>
@@ -364,7 +300,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Solutions to Practice #2</h1>
+<h1 class="title d-none d-lg-block">Moving on</h1>
 </div>
 
 
@@ -379,21 +315,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
-<p>If you convert it using as.integer, it will look rather funky:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>myvar <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="dv">2010</span><span class="sc">:</span><span class="dv">2022</span>))</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">as.integer</span>(myvar)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> [1]  1  2  3  4  5  6  7  8  9 10 11 12 13</code></pre>
-</div>
-</div>
-<p>It must first be converted to a character to preserve the information in the levels and then an integer</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as.integer</span>(<span class="fu">as.character</span>(myvar))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> [1] 2010 2011 2012 2013 2014 2015 2016 2017 2018 2019 2020 2021 2022</code></pre>
-</div>
-</div>
+<p>If you made this far, congratulations! Learning any programming language takes a big effort.</p>
+<p>This is only the beginning. You will probably need more R knowledge, both generalized and specialized, to accomplish your research goals. Here are a few resources to develope general data science skills in R.</p>
+<ul>
+<li><a href="https://datasciencebox.org/">Data Science in a Box</a> is a online course by Mine Çetinkaya-Rundel with videos for further development of R skills.</li>
+<li><a href="https://r4ds.had.co.nz/">R 4 Data Science</a> by Hadley Wickham and Garret Grolemund is a comprehensive book providing guidance on leveraging R for data science aims</li>
+<li><a href="https://rstats.wtf/">What They Forgot to Teach you about R</a> (and <a href="https://imci-idaho.github.io/2022-03-01-WhatTheyForgot/">workshop version</a>) describes some meta processes for ensuring a repeatable workflow.</li>
+</ul>
+<p>There are many other resources to help develop skills in genetics, bioinformatics, geospatial analysis, Bayesian statistics, ….you name it. Look for the resources that will help you develop skills in R. One very reliable place to start are <a href="https://cran.rstudio.com/web/views/">CRAN Task Views</a> which provide a list of packages and other relevant R resources specific for a given topic such as <a href="https://CRAN.R-project.org/view=Environmetrics">environmetrics</a> (ecology), <a href="https://CRAN.R-project.org/view=Spatial">spatial tools</a> and <a href="https://CRAN.R-project.org/view=Agriculture">agriculture</a>.</p>
+<p>Another good source for keeping up with major developments in R, contributed R packages and other R resources is <a href="https://rweekly.org/">R Weekly</a> which puts out a weekly blog post (also available in a weekly podcast and an RSS feed).</p>
 
 
 
@@ -648,14 +578,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../practice/practice02.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">practice #2</span>
+      <a href="../lessons/lesson15.qmd" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Repeating operations</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../lessons/lesson05.qmd" class="pagination-link">
-        <span class="nav-page-text">Data structures</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>R for Scientists - Lesson 4: Introduction to R object types</title>
+<title>R for Scientists - Lesson 4: Introduction to R data types</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -128,11 +128,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="../styles.css">
-<meta property="og:title" content="R for Scientists - Lesson 4: Introduction to R object types">
-<meta property="og:description" content="\[logical < integer < numeric < character\]">
+<meta property="og:title" content="R for Scientists - Lesson 4: Introduction to R data types">
+<meta property="og:description" content="::: {.callout-caution, collapse = TRUE} ## Learning Goals">
 <meta property="og:site-name" content="R for Scientists">
-<meta name="twitter:title" content="R for Scientists - Lesson 4: Introduction to R object types">
-<meta name="twitter:description" content="\[logical < integer < numeric < character\]">
+<meta name="twitter:title" content="R for Scientists - Lesson 4: Introduction to R data types">
+<meta name="twitter:description" content="::: {.callout-caution, collapse = TRUE} ## Learning Goals">
 <meta name="twitter:card" content="summary">
 </head>
 
@@ -142,7 +142,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Lesson 4: Introduction to R object types</h1>
+      <h1 class="quarto-secondary-nav-title">Lesson 4: Introduction to R data types</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -209,6 +209,146 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <a href="../lessons/Lesson00.html" class="sidebar-item-text sidebar-link">Lesson Zero</a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lessons/lesson01.qmd" class="sidebar-item-text sidebar-link">RStudio Tour</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lessons/lesson02.qmd" class="sidebar-item-text sidebar-link">Math Operators</a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../lessons/lesson03.qmd" class="sidebar-item-text sidebar-link">Vectorizing</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../practice/practice01.html" class="sidebar-item-text sidebar-link">practice #1</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../practice/solution01.html" class="sidebar-item-text sidebar-link">solution #1</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../lessons/lesson04.qmd" class="sidebar-item-text sidebar-link">R objects</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../practice/practice02.html" class="sidebar-item-text sidebar-link">practice #2</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../practice/solution02.html" class="sidebar-item-text sidebar-link">solution #2</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../lessons/lesson05.qmd" class="sidebar-item-text sidebar-link">Data structures</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../practice/practice03.html" class="sidebar-item-text sidebar-link">practice #3</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../practice/solution03.html" class="sidebar-item-text sidebar-link">solution #3</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lessons/lesson06.qmd" class="sidebar-item-text sidebar-link">Documentation</a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../lessons/lesson07.qmd" class="sidebar-item-text sidebar-link">Data Import</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../practice/practice04.html" class="sidebar-item-text sidebar-link">practice #4</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../practice/solution04.html" class="sidebar-item-text sidebar-link">solution #4</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lessons/lesson08.qmd" class="sidebar-item-text sidebar-link">Data wrangling</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lessons/lesson09.qmd" class="sidebar-item-text sidebar-link">Reshaping data</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lessons/lesson10.qmd" class="sidebar-item-text sidebar-link">Data merging</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lessons/lesson11.qmd" class="sidebar-item-text sidebar-link">R Set-up</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lessons/lesson12.qmd" class="sidebar-item-text sidebar-link">Data export</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lessons/lesson13.qmd" class="sidebar-item-text sidebar-link">Exploratory plotting</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lessons/lesson14.qmd" class="sidebar-item-text sidebar-link">ggplotting</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lessons/lesson15.qmd" class="sidebar-item-text sidebar-link">Repeating operations</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lessons/final_Lesson.html" class="sidebar-item-text sidebar-link">final thoughts</a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -220,7 +360,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#object-types" id="toc-object-types" class="nav-link active" data-scroll-target="#object-types">Object types</a>
+  <li><a href="#data-types" id="toc-data-types" class="nav-link active" data-scroll-target="#data-types">Data types</a>
   <ul class="collapse">
   <li><a href="#numeric" id="toc-numeric" class="nav-link" data-scroll-target="#numeric">Numeric</a></li>
   <li><a href="#character" id="toc-character" class="nav-link" data-scroll-target="#character">Character</a></li>
@@ -236,7 +376,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Lesson 4: Introduction to R object types</h1>
+<h1 class="title d-none d-lg-block">Lesson 4: Introduction to R data types</h1>
 </div>
 
 
@@ -251,8 +391,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
-<section id="object-types" class="level2">
-<h2 class="anchored" data-anchor-id="object-types">Object types</h2>
+<p>::: {.callout-caution, collapse = TRUE} ## Learning Goals</p>
+<p>At the end of this lesson, you should:</p>
+<ul>
+<li>Understand what object class means and how to determine and object’s class</li>
+<li>Understand the difference between the 5 main object classes: logical, integer, numeric, character and factors.</li>
+<li>know how to coerce objects from one class to another</li>
+</ul>
+<p>:::</p>
+<p>R is a programming language and like all programming languages, it has special conventions for defining how information is classified on your computer and what types of actions can be performed on different object types. This is related to your computer hardware, how computer memory is allocated for R processes nd so forth. You don’t need to understand the guts of this to use R. (But should you ever want to learn, this is fascinating material).</p>
+<p>The most common object types and the rules that govern them are described in this lesson.</p>
+<section id="data-types" class="level2">
+<h2 class="anchored" data-anchor-id="data-types">Data types</h2>
 <section id="numeric" class="level3">
 <h3 class="anchored" data-anchor-id="numeric">Numeric</h3>
 <p>Previously, we created an object in R that was a collection or sequence of numbers.</p>
@@ -342,7 +492,7 @@ Levels: one three two</code></pre>
 Levels: one two three four</code></pre>
 </div>
 </div>
-<p>Factors are complicated and take some time to fully understand. At this time, we are going to put the topic of factors aside and focus on other more important things.</p>
+<p>Factors are complicated and take some time to fully understand. At this time, we are going to put the topic of factors aside and focus on other more immediately relevant topics.</p>
 </section>
 </section>
 <section id="object-type-coercion" class="level2">
@@ -376,32 +526,7 @@ Putting it all together
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Look at the object created in the lesson in the Global Environment pane. For each object, the object class and the first few values will be listed. When is it not listed?</p>
-</div>
-</div>
-<div class="callout-caution callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Danger
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>For a <em>very comprehensive</em> guide to R object types, check out the <a href="https://cran.r-project.org/doc/manuals/r-release/R-lang.html#Basic-types">official R language manual</a>. Warning: this manual is extremely technical. If you choose to check it out, read like a Wikipedia entry on a statistics topic; that is, you will not likely understand everything in the first read. It will take time and experience to full understand the content.</p>
-<section id="learning-goals" class="level2">
-<h2 class="anchored" data-anchor-id="learning-goals">Learning Goals</h2>
-<p>At the end of this lesson, you should:</p>
-<ul>
-<li>Understand what object class means and how to determine and object’s class</li>
-<li>Understand the difference between the 5 main object classes: logical, integer, numeric, character and factors.</li>
-<li>know how to coerce objects from one class to another</li>
-</ul>
-</section>
-</div>
+<p>Look at the object created in the lesson in the Global Environment pane. For each object, the object class and the first few values will be listed.</p>
 </div>
 </div>
 
@@ -661,8 +786,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">© Copyright 2023 by Julia Piaskowski</div>   
-      <div class="nav-footer-center"><a href="https://www.uidaho.edu"><img src="images/uidaho_logo.png" class="img-fluid" alt="Uidaho Logo" width="200"></a></div>
-    <div class="nav-footer-right">This page is built with <a href="https://quarto.org/">Quarto</a>, themed by <a href="https://github.com/sta210-s22/website">Mine Çetinkaya-Rundel</a></div>
+      <div class="nav-footer-center"><a href="https://www.uidaho.edu"><img src="images/UI_Main_horizontal_4c.png" class="img-fluid" alt="Uidaho Logo" width="200"></a></div>
+    <div class="nav-footer-right"><a href="https://quarto.org/">Quarto Website</a>, template by <a href="https://github.com/sta210-s22/website">Mine Çetinkaya-Rundel</a></div>
   </div>
 </footer>
 
