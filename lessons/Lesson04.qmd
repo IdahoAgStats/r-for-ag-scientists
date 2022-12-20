@@ -2,7 +2,7 @@
 title: "Lesson 4: Introduction to R data types"
 ---
 
-::: {.callout-caution, collapse = TRUE}
+::: {.callout-caution, collapse=false}
 ## Learning Goals
 
 At the end of this lesson, you should: 

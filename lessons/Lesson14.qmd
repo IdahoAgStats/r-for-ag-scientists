@@ -2,12 +2,12 @@
 title: "Lesson 14: Publication-Quality Plots with ggplot2"
 ---
 
-::: {.callout-caution collapse="true"}
+::: {.callout-caution collapse="false"}
 ## Learning Goals
 
 At the end of this lesson, you should: 
 
-* 
+
 :::
 
 ::: {.callout-tip}
