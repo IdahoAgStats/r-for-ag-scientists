@@ -57,55 +57,55 @@ website:
         contents:
           - href: lessons/Lesson00.qmd
             text: Lesson Zero
-          - href: lessons/lesson01.qmd
+          - href: lessons/Lesson01.qmd
             text: RStudio Tour
-          - href: lessons/lesson02.qmd
+          - href: lessons/Lesson02.qmd
             text: Math Operators
-          - href: lessons/lesson03.qmd
+          - href: lessons/Lesson03.qmd
             text: Vectorizing
             contents: 
               - href: practice/practice01.qmd
                 text: "practice #1"
               - href: practice/solution01.qmd
                 text: "solution #1"
-          - href: lessons/lesson04.qmd
+          - href: lessons/Lesson04.qmd
             text: R objects
             contents: 
               - href: practice/practice02.qmd
                 text: "practice #2"
               - href: practice/solution02.qmd
                 text: "solution #2"
-          - href: lessons/lesson05.qmd
+          - href: lessons/Lesson05.qmd
             text: Data structures
             contents: 
               - href: practice/practice03.qmd
                 text: "practice #3"
               - href: practice/solution03.qmd
                 text: "solution #3"
-          - href: lessons/lesson06.qmd
+          - href: lessons/Lesson06.qmd
             text: Documentation
-          - href: lessons/lesson07.qmd
+          - href: lessons/Lesson07.qmd
             text: Data Import
             contents: 
               - href: practice/practice04.qmd
                 text: "practice #4"
               - href: practice/solution04.qmd
                 text: "solution #4"
-          - href: lessons/lesson08.qmd
+          - href: lessons/Lesson08.qmd
             text: Data wrangling
-          - href: lessons/lesson09.qmd
+          - href: lessons/Lesson09.qmd
             text: Reshaping data
-          - href: lessons/lesson10.qmd
+          - href: lessons/Lesson10.qmd
             text: Data merging
-          - href: lessons/lesson11.qmd
+          - href: lessons/Lesson11.qmd
             text: R Set-up
-          - href: lessons/lesson12.qmd
+          - href: lessons/Lesson12.qmd
             text: Data export
-          - href: lessons/lesson13.qmd
+          - href: lessons/Lesson13.qmd
             text: Exploratory plotting
-          - href: lessons/lesson14.qmd
+          - href: lessons/Lesson14.qmd
             text: ggplotting
-          - href: lessons/lesson15.qmd
+          - href: lessons/Lesson15.qmd
             text: Repeating operations
           - href: lessons/final_Lesson.qmd
             text: final thoughts
