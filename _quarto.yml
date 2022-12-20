@@ -112,9 +112,9 @@ website:
 
   page-footer:
     right: "[Quarto Website](https://quarto.org/), template by [Mine Çetinkaya-Rundel](https://github.com/sta210-s22/website)"
-    left: "&copy; Copyright 2023 by Julia Piaskowski"
+    left: "&copy; 2023 by Julia Piaskowski"
     center: |
-      [![](images/UI_Main_horizontal_4c.png){fig-alt="Uidaho Logo" width=200px}](https://www.uidaho.edu)
+      [![](https://github.com/IdahoAgStats/r-for-ag-scientists/raw/main/images/UI_Main_horizontal_4c.png){fig-alt="Uidaho Logo" width=200px}](https://www.uidaho.edu)
     background: "#D9E3E4"
 
 format:
