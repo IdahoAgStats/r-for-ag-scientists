@@ -118,8 +118,8 @@ knitr::include_graphics(here::here("images", "rstudio_ribbon.png"))
 ### Code
 
 - incredible useful set of commands
-- some are very simple ("comment lines"), others are complex ("rename in scope")
-- over time, you will learn what some (or all) of these mean and perhaps make use of them (if you don't, that is okay)
+- some are very simple (e.g. "comment lines"), others are complex (e.g. "rename in scope")
+- over time, you will learn what these mean and perhaps make use of them (if you don't, that is okay)
 
 
 ### View

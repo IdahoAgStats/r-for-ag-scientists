@@ -6,7 +6,7 @@ University of Idaho Carpentries is dedicated to providing a harassment-free expe
 
 We encourage the open exchange of ideas and expression and thus require an environment that recognizes the inherent worth of every person and group. An inclusive space free of harassment encourages interaction among diverse groups. We want to make certain our workshops and courses are welcoming, and encourages participants to be involved moving forward.
 
-All participants (including organizers, attendees, presenters, sponsors, and volunteers) at UI Carpentries Workshops are required to agree to the following code of conduct. Reports of violation to this Code of Conduct should be addressed to the course instructor.
+All participants (including organizers, attendees, instructors and volunteers) at UI Carpentries Workshops are required to agree to the following code of conduct. Reports of violation to this Code of Conduct should be addressed to the course/workshop lead instructor.
 
 This Code of Conduct (CoC) applies to any participant in a University of Idaho Carpentries Workshop. Note that this code augments rather than replaces legal rights and obligations pertaining to any particular situation.
 
@@ -57,7 +57,7 @@ Some of our workshops are online event. Please use these guidelines when engagin
 
 - Do not record sessions without the presenter’s permission.
 
-- The meeting host/organizer should be aware of privacy concerns for different tools. For tips on security, a good place to start is: [Securing Your Zoom Meetings](https://explore.zoom.us/docs/doc/Securing%20Your%20Zoom%20Meetings.pdf.
+- The meeting host/organizer should be aware of privacy concerns for different tools. For tips on security, a good place to start is: [Securing Your Zoom Meetings](https://explore.zoom.us/docs/doc/Securing%20Your%20Zoom%20Meetings.pdf).
 
 This CoC applies to all University of Idaho Carpentries online spaces. 
 
