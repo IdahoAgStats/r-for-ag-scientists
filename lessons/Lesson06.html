@@ -320,7 +320,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(x, <span class="dv">10</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1]  91  17  22  63  43  24  21  90 100  90</code></pre>
+<pre><code> [1] 42 69 65 84 95 18 66 67 68 89</code></pre>
 </div>
 </div>
 <div class="callout-note callout callout-style-default callout-captioned">
@@ -358,24 +358,12 @@ Note
 <div class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">"readr"</span>, <span class="st">"readxl"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Retrieving 'https://packagemanager.rstudio.com/all/__linux__/jammy/latest/src/contrib/readr_2.1.3.tar.gz' ...
-    OK [downloaded 3.1 Mb in 0.4 secs]
-Retrieving 'https://packagemanager.rstudio.com/all/__linux__/jammy/latest/src/contrib/vroom_1.6.0.tar.gz' ...
-    OK [downloaded 7 Mb in 0.4 secs]
-Retrieving 'https://packagemanager.rstudio.com/all/__linux__/jammy/latest/src/contrib/readxl_1.4.1.tar.gz' ...
-    OK [downloaded 2.1 Mb in 0.4 secs]
-Installing vroom [1.6.0] ...
-    OK [installed binary]
-Moving vroom [1.6.0] into the cache ...
-    OK [moved to cache in 0.36 milliseconds]
+<pre><code>Installing vroom [1.6.0] ...
+    OK [linked cache]
 Installing readr [2.1.3] ...
-    OK [installed binary]
-Moving readr [2.1.3] into the cache ...
-    OK [moved to cache in 0.3 milliseconds]
+    OK [linked cache]
 Installing readxl [1.4.1] ...
-    OK [installed binary]
-Moving readxl [1.4.1] into the cache ...
-    OK [moved to cache in 0.31 milliseconds]</code></pre>
+    OK [linked cache]</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
