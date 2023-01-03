@@ -7,7 +7,7 @@ title: "Course Schedule"
 
 | Date            |   Topics          |
 |-----------------|-------------------|
-| Before January 17 | [Watch Welcome Video](lessons/Lesson00.qmd) |
+| Before January 17 | [Do Lesson Zero + Watch Video](lessons/Lesson00.qmd) |
 | January 17 | Lesson 1: RStudio\
                   Lesson 2: math operators\
                   Lesson 3: vectorization |

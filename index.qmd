@@ -41,10 +41,9 @@ Tuesday/Thursdays\
 
 All sessions will take place over Zoom so students across different timezones can participate.
 
-### Instructors:
+### Instructor
 
-[Julia Piaskowski](https://jpiaskowski.gitlab.io/) \| [GitHub](https://github.com/jpiaskowski)
-
+[Julia Piaskowski](https://www.uidaho.edu/cals/statistical-programs/people/julia-piaskowski) | [training website](agstats.io) | [GitHub](https://github.com/jpiaskowski) | [personal website](https://jpiaskowski.gitlab.io/)
 
 
 

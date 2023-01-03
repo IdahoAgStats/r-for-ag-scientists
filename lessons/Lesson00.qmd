@@ -55,6 +55,6 @@ Tips designed to weave together information from multiple lessons.
 
 ### Your very first R lesson!
 
-* R is case-sensitive! ("data" is different from "Data" and "DATA"). This means when typing commands, exercise great care and attention to detail so your code works. 
+* R is case-sensitive! (`data` is different from `Data` and `DATA`). This means when typing commands, exercise great care and attention to detail so your code works. 
 * There is no "undo" button in R. Once a command is run, you can't undo it! (this is not as bad as it sounds)
 
