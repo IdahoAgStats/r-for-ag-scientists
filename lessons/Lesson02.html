@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>R for Scientists - Lesson 2: Math Operators</title>
+<title>R for Scientists - Lesson 2: Introduction to RStudio</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,69 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -93,8 +30,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../lessons/Lesson03.html" rel="next">
-<link href="../lessons/Lesson01.html" rel="prev">
 <link href="../images/logo_transparent.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -129,11 +64,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 <link rel="stylesheet" href="../styles.css">
-<meta property="og:title" content="R for Scientists - Lesson 2: Math Operators">
-<meta property="og:description" content="Addition, substraction, multiplication, division">
+<meta property="og:title" content="R for Scientists - Lesson 2: Introduction to RStudio">
+<meta property="og:description" content="RStudio is more than a graphical user interface for R. It is an integrated development environment (IDE), that is a full service application for supporting software development.">
 <meta property="og:site-name" content="R for Scientists">
-<meta name="twitter:title" content="R for Scientists - Lesson 2: Math Operators">
-<meta name="twitter:description" content="Addition, substraction, multiplication, division">
+<meta name="twitter:title" content="R for Scientists - Lesson 2: Introduction to RStudio">
+<meta name="twitter:description" content="RStudio is more than a graphical user interface for R. It is an integrated development environment (IDE), that is a full service application for supporting software development.">
 <meta name="twitter:card" content="summary">
 </head>
 
@@ -143,7 +78,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Lesson 2: Math Operators</h1>
+      <h1 class="quarto-secondary-nav-title">Lesson 2: Introduction to RStudio</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -160,7 +95,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       </a>
       <div class="sidebar-tools-main tools-wide">
     <a href="https://posit.cloud/" title="Posit Cloud" class="sidebar-tool px-1"><i class="bi bi-code-square"></i></a>
-    <a href="https://github.com/IdahoAgStats/r-for-ag-scientists" title="GitHub Repository" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
     <a href="https://canvas.uidaho.edu" title="Canvas" class="sidebar-tool px-1"><i class="bi bi-bank"></i></a>
   <a href="" class="quarto-color-scheme-toggle sidebar-tool" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
@@ -210,146 +144,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <a href="../lessons/Lesson00.html" class="sidebar-item-text sidebar-link">Lesson Zero</a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../lessons/Lesson01.html" class="sidebar-item-text sidebar-link">RStudio Tour</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../lessons/Lesson02.html" class="sidebar-item-text sidebar-link active">Math Operators</a>
-  </div>
-</li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a href="../lessons/Lesson03.html" class="sidebar-item-text sidebar-link">Vectorizing</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="" class="collapse list-unstyled sidebar-section depth2 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../practice/practice01.html" class="sidebar-item-text sidebar-link">practice #1</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../practice/solution01.html" class="sidebar-item-text sidebar-link">solution #1</a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a href="../lessons/Lesson04.html" class="sidebar-item-text sidebar-link">R objects</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="" class="collapse list-unstyled sidebar-section depth2 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../practice/practice02.html" class="sidebar-item-text sidebar-link">practice #2</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../practice/solution02.html" class="sidebar-item-text sidebar-link">solution #2</a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a href="../lessons/Lesson05.html" class="sidebar-item-text sidebar-link">Data structures</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="" class="collapse list-unstyled sidebar-section depth2 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../practice/practice03.html" class="sidebar-item-text sidebar-link">practice #3</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../practice/solution03.html" class="sidebar-item-text sidebar-link">solution #3</a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../lessons/Lesson06.html" class="sidebar-item-text sidebar-link">Documentation</a>
-  </div>
-</li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a href="../lessons/Lesson07.html" class="sidebar-item-text sidebar-link">Data Import</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="" class="collapse list-unstyled sidebar-section depth2 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../practice/practice04.html" class="sidebar-item-text sidebar-link">practice #4</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../practice/solution04.html" class="sidebar-item-text sidebar-link">solution #4</a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../lessons/Lesson08.html" class="sidebar-item-text sidebar-link">Data wrangling</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../lessons/Lesson09.html" class="sidebar-item-text sidebar-link">Reshaping data</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../lessons/Lesson10.html" class="sidebar-item-text sidebar-link">Data merging</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../lessons/Lesson11.html" class="sidebar-item-text sidebar-link">R Set-up</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../lessons/Lesson12.html" class="sidebar-item-text sidebar-link">Data export</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../lessons/Lesson13.html" class="sidebar-item-text sidebar-link">Exploratory plotting</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../lessons/Lesson14.html" class="sidebar-item-text sidebar-link">ggplotting</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../lessons/Lesson15.html" class="sidebar-item-text sidebar-link">Repeating operations</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../lessons/final_Lesson.html" class="sidebar-item-text sidebar-link">final thoughts</a>
-  </div>
-</li>
       </ul>
   </li>
     </ul>
@@ -361,9 +155,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#use-r-as-a-calculator" id="toc-use-r-as-a-calculator" class="nav-link active" data-scroll-target="#use-r-as-a-calculator">Use R as a calculator:</a></li>
-  <li><a href="#order-of-operations." id="toc-order-of-operations." class="nav-link" data-scroll-target="#order-of-operations.">Order of operations.</a></li>
-  <li><a href="#some-notes-on-r-syntax" id="toc-some-notes-on-r-syntax" class="nav-link" data-scroll-target="#some-notes-on-r-syntax">Some notes on R syntax</a></li>
+  <li><a href="#the-panes" id="toc-the-panes" class="nav-link active" data-scroll-target="#the-panes">The Panes</a>
+  <ul class="collapse">
+  <li><a href="#the-consoleterminalbackground-jobs" id="toc-the-consoleterminalbackground-jobs" class="nav-link" data-scroll-target="#the-consoleterminalbackground-jobs">The Console/Terminal/Background Jobs</a></li>
+  <li><a href="#filesplotspackageshelpviewerpresentation" id="toc-filesplotspackageshelpviewerpresentation" class="nav-link" data-scroll-target="#filesplotspackageshelpviewerpresentation">Files/Plots/Packages/Help/Viewer/Presentation</a></li>
+  <li><a href="#environmenthistoryconnectionsbuildgittutorial" id="toc-environmenthistoryconnectionsbuildgittutorial" class="nav-link" data-scroll-target="#environmenthistoryconnectionsbuildgittutorial">Environment/History/Connections/Build/Git/Tutorial</a></li>
+  <li><a href="#our-scripts-pane" id="toc-our-scripts-pane" class="nav-link" data-scroll-target="#our-scripts-pane">Our Scripts Pane</a></li>
+  </ul></li>
+  <li><a href="#the-upper-menu-items" id="toc-the-upper-menu-items" class="nav-link" data-scroll-target="#the-upper-menu-items">The Upper Menu Items</a>
+  <ul class="collapse">
+  <li><a href="#file" id="toc-file" class="nav-link" data-scroll-target="#file">File</a></li>
+  <li><a href="#edit" id="toc-edit" class="nav-link" data-scroll-target="#edit">Edit</a></li>
+  <li><a href="#code" id="toc-code" class="nav-link" data-scroll-target="#code">Code</a></li>
+  <li><a href="#view" id="toc-view" class="nav-link" data-scroll-target="#view">View</a></li>
+  <li><a href="#plots" id="toc-plots" class="nav-link" data-scroll-target="#plots">Plots</a></li>
+  <li><a href="#session" id="toc-session" class="nav-link" data-scroll-target="#session">Session</a></li>
+  <li><a href="#build" id="toc-build" class="nav-link" data-scroll-target="#build">Build</a></li>
+  <li><a href="#debug" id="toc-debug" class="nav-link" data-scroll-target="#debug">Debug</a></li>
+  <li><a href="#profile" id="toc-profile" class="nav-link" data-scroll-target="#profile">Profile</a></li>
+  <li><a href="#tools" id="toc-tools" class="nav-link" data-scroll-target="#tools">Tools</a></li>
+  <li><a href="#help" id="toc-help" class="nav-link" data-scroll-target="#help">Help</a></li>
+  <li><a href="#more" id="toc-more" class="nav-link" data-scroll-target="#more">more</a></li>
+  </ul></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/IdahoAgStats/r-for-ag-scientists/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
@@ -372,7 +185,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Lesson 2: Math Operators</h1>
+<h1 class="title d-none d-lg-block">Lesson 2: Introduction to RStudio</h1>
 </div>
 
 
@@ -393,277 +206,267 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <i class="callout-icon"></i>
 </div>
 <div class="callout-caption-container flex-fill">
-Learning Goals
+Learning Recap
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
-<p>At the end of this lesson, you should:</p>
+<p>At the end of this lesson, you should understand:</p>
 <ul>
-<li>Understand sorts of math operators available in R and how to use them</li>
-<li>Understand logical operators in R</li>
-<li>Be aware of the order of operations</li>
-<li>Be aware of how whitespace is interpreted in R</li>
-<li>Understand how to use parentheses, brackets, braces and quotations in R</li>
+<li>What the different tabs in each of the panes of RStudio do</li>
+<li>What is in each menu item in Rstudio and have a general sense of functionality available</li>
 </ul>
 </div>
 </div>
 </div>
-<section id="use-r-as-a-calculator" class="level3">
-<h3 class="anchored" data-anchor-id="use-r-as-a-calculator">Use R as a calculator:</h3>
-<p>Addition, substraction, multiplication, division</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 4</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span> <span class="sc">-</span> <span class="dv">15</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] -5</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">*</span><span class="dv">8</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 16</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="dv">60</span><span class="sc">/</span><span class="dv">12</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 5</code></pre>
+<div class="cell-output-display">
+<p><img src="../images/rstudio.png" class="img-fluid"></p>
 </div>
 </div>
-<p>exponentiate</p>
+<p>RStudio is more than a graphical user interface for R. It is an integrated development environment (IDE), that is a full service application for supporting software development. It can perform multitudes, so more than most people need. It is the supermarket of R functionality. Like a supermarket, there are parts of RStudio you will visit frequently and parts you will rarely if ever use. After 10+ years of using RStudio on a near daily basis, there are several parts of it that I continue to be unfamiliar with! Ths is okay - clearly, I have not needed those parts. You will come to find what sections youn will need most over time and practice.</p>
+<p>Still, it helps to have a guided tour. Let’s dive into this.</p>
+<section id="the-panes" class="level2">
+<h2 class="anchored" data-anchor-id="the-panes">The Panes</h2>
+<section id="the-consoleterminalbackground-jobs" class="level3">
+<h3 class="anchored" data-anchor-id="the-consoleterminalbackground-jobs">The Console/Terminal/Background Jobs</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span><span class="sc">^</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 9</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">^</span><span class="dv">4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 16</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="dv">9</span><span class="sc">^</span><span class="dv">0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 1</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">^-</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.25</code></pre>
+<div class="cell-output-display">
+<p><img src="../images/rstudio_console_pane.png" class="img-fluid"></p>
 </div>
 </div>
-<p>roots (square, cube, ….)</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span><span class="sc">^</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 2</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="dv">8</span><span class="sc">^</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 2</code></pre>
-</div>
-</div>
-<p>logs</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">log</span>(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 2.302585</code></pre>
-</div>
-</div>
-<p>(base e)</p>
-<p>log with base 10</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">log10</span>(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 1</code></pre>
-</div>
-</div>
-<p>Using sign:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span><span class="sc">*-</span><span class="dv">4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] -12</code></pre>
-</div>
-</div>
-<p>Like in standard math, only negatively signed numbers need to be specified.</p>
-<p>There’s more:</p>
-<p>integer division (the remainder is discarded)</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span> <span class="sc">%/%</span> <span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 1</code></pre>
-</div>
-</div>
-<p>modulus operator (return the remainder after division)</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span> <span class="sc">%%</span> <span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 2</code></pre>
-</div>
-</div>
-<p>….and so much more</p>
-<p><strong>Logical Operators</strong></p>
-<p>These test for conditions and return either a <code>TRUE</code> or <code>FALSE</code></p>
+<p>Default location: left or bottom left</p>
 <table class="table">
+<colgroup>
+<col style="width: 52%">
+<col style="width: 47%">
+</colgroup>
 <thead>
 <tr class="header">
-<th>syntax</th>
+<th>Tab</th>
 <th>Function</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>==</td>
-<td>equal</td>
+<td>Console</td>
+<td>where R commands are actually done</td>
 </tr>
 <tr class="even">
-<td>!=</td>
-<td>does not equal</td>
+<td>Terminal</td>
+<td>use a terminal language such as bash or the windows command prompt</td>
 </tr>
 <tr class="odd">
-<td>&lt;</td>
-<td>less than</td>
+<td>Background jobs</td>
+<td>usual pacakage installation</td>
 </tr>
 <tr class="even">
-<td>&gt;</td>
-<td>greater than</td>
-</tr>
-<tr class="odd">
-<td>&lt;=, &gt;=</td>
-<td>less than and equal to, and greater than equivalent</td>
+<td>Render</td>
+<td>for building markdown or quarto documents (only present when actively rendering)</td>
 </tr>
 </tbody>
 </table>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">==</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] TRUE</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">==</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] FALSE</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">!=</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] TRUE</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">&lt;</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] FALSE</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">&gt;</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] FALSE</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">&lt;=</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] TRUE</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">&gt;=</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] TRUE</code></pre>
-</div>
-</div>
-<p>Use <code>&amp;</code> if two things must be true and <code>|</code> if one of two things must be true:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">&lt;</span> <span class="dv">2</span> <span class="sc">&amp;</span> <span class="dv">1</span> <span class="sc">!=</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] FALSE</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">&lt;</span> <span class="dv">2</span> <span class="sc">|</span> <span class="dv">1</span> <span class="sc">!=</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] TRUE</code></pre>
-</div>
-</div>
+<p>In this workshop, we will only be using the Console.</p>
 </section>
-<section id="order-of-operations." class="level3">
-<h3 class="anchored" data-anchor-id="order-of-operations.">Order of operations.</h3>
-<p>What results from this?</p>
+<section id="filesplotspackageshelpviewerpresentation" class="level3">
+<h3 class="anchored" data-anchor-id="filesplotspackageshelpviewerpresentation">Files/Plots/Packages/Help/Viewer/Presentation</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">*</span><span class="dv">6</span> <span class="sc">-</span> <span class="dv">6</span><span class="sc">*</span><span class="dv">9</span> <span class="sc">+</span> <span class="dv">3</span><span class="sc">*</span><span class="dv">30</span> <span class="sc">/</span><span class="dv">7</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="../images/rstudio_file_pane.png" class="img-fluid"></p>
 </div>
-<p>The rules:</p>
-<ol type="1">
-<li>operations go left to right</li>
-<li>exponents are first, followed by ‘unary operators’ (that is, variable signs)</li>
-<li>multiplication and division before subtraction and/or addition</li>
-<li>logical operators come after all mathematical transformations</li>
-<li>Parentheses overall all other rules!</li>
-</ol>
-<p><a href="https://stat.ethz.ch/R-manual/R-devel/library/base/html/Syntax.html">Here</a> is the official R guide to order of operations (warning: this is complicated and refers to functions beyond mathematical operations).</p>
+</div>
+<p>Default location: bottom right</p>
+<p>Probably the most useful pane - we will be here frequently!</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Tab</th>
+<th>Function</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Plots</td>
+<td>view plots</td>
+</tr>
+<tr class="even">
+<td>Files</td>
+<td>explore your file system</td>
+</tr>
+<tr class="odd">
+<td>Packages</td>
+<td>install, update and load packages</td>
+</tr>
+<tr class="even">
+<td>Help</td>
+<td>helps files &amp; examples</td>
+</tr>
+<tr class="odd">
+<td>Viewer</td>
+<td>for previewing websites</td>
+</tr>
+<tr class="even">
+<td>Presentation</td>
+<td>for previewing presentations</td>
+</tr>
+</tbody>
+</table>
+<p>We will not be using the Viewer or Presentations tabs in this workshop.</p>
+<p>What are Packages?</p>
+<p>These make the world go around in R. All of R consists of packages or libraries that have certain functionality associated with them. Some of are maintained by the R core team, others are maintained by outsiders. All packages are open source and most are a volunteer effort. When you open R, several packages are loaded automatically: base, datasets, graphics, grDevices, methods, stats, utils.</p>
+<p>We will talk about package installation and usage later in this course/workshop.</p>
 </section>
-<section id="some-notes-on-r-syntax" class="level3">
-<h3 class="anchored" data-anchor-id="some-notes-on-r-syntax">Some notes on R syntax</h3>
-<ul>
-<li>most often, the amount of white space does not matter.</li>
-<li>These are the same:</li>
-</ul>
+<section id="environmenthistoryconnectionsbuildgittutorial" class="level3">
+<h3 class="anchored" data-anchor-id="environmenthistoryconnectionsbuildgittutorial">Environment/History/Connections/Build/Git/Tutorial</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span><span class="sc">/</span><span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 1.333333</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span><span class="sc">/</span>    <span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 1.333333</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span>    <span class="sc">/</span>  <span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 1.333333</code></pre>
+<div class="cell-output-display">
+<p><img src="../images/rstudio_envir_pane.png" class="img-fluid"></p>
 </div>
 </div>
-<ul>
-<li>these are also the same</li>
-</ul>
+<table class="table">
+<colgroup>
+<col style="width: 52%">
+<col style="width: 47%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Tab</th>
+<th>Function</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Environment</td>
+<td>objects created and existing in your current R session</td>
+</tr>
+<tr class="even">
+<td>History</td>
+<td>previous R command run</td>
+</tr>
+<tr class="odd">
+<td>Connections</td>
+<td>to connect to an external database</td>
+</tr>
+<tr class="even">
+<td>Build</td>
+<td>for building R packages and other large projects</td>
+</tr>
+<tr class="odd">
+<td>Git</td>
+<td>only visible if you’ve initialized a git repository</td>
+</tr>
+<tr class="even">
+<td>Tutorial</td>
+<td>tutorials build by Posit (very helpful)</td>
+</tr>
+</tbody>
+</table>
+<p><a href="more">here</a></p>
+</section>
+<section id="our-scripts-pane" class="level3">
+<h3 class="anchored" data-anchor-id="our-scripts-pane">Our Scripts Pane</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">log</span>(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 2.302585</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">log</span>( <span class="dv">10</span> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 2.302585</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">log</span> ( <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 2.302585</code></pre>
+<div class="cell-output-display">
+<p><img src="../images/rstudio_editor_pane.png" class="img-fluid"></p>
 </div>
 </div>
+<p>default location: upper left</p>
+<p>These are all the files we create and edit: <code>.R</code>, <code>.Rmd</code>, <code>.txt</code>, …</p>
+<p>when we open files from the “Files” pane, this is where it shows up</p>
+</section>
+</section>
+<section id="the-upper-menu-items" class="level2">
+<h2 class="anchored" data-anchor-id="the-upper-menu-items">The Upper Menu Items</h2>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="../images/rstudio_ribbon.png" class="img-fluid"></p>
+</div>
+</div>
+<section id="file" class="level3">
+<h3 class="anchored" data-anchor-id="file">File</h3>
 <ul>
-<li>a hard return between lines of code is enough to separate the commands</li>
-<li>exception: unclosed parentheses, brackets, or quotes. R will wait for these to be completed. A single quote must always be complemented by a second single quote, and a double quote likewise must always have a second quote to complete it. Left parentheses, curly braces, or brackets much also be accompanying by their right-sided complement.</li>
-<li>good examples</li>
+<li>opening and/or creating files<br>
+</li>
+<li>opening and/or creating projects<br>
+</li>
+<li>recent files, recent project<br>
+</li>
+<li>(standard file functionality)</li>
 </ul>
-<pre><code>{ }
-( )
-[ ]
-"  "
-' '
-` `</code></pre>
+</section>
+<section id="edit" class="level3">
+<h3 class="anchored" data-anchor-id="edit">Edit</h3>
 <ul>
-<li>bad examples</li>
+<li>copy, paste, find</li>
+<li>very handy “find in files” feature!</li>
 </ul>
-<pre><code>'
-(  } ] 
-"
-' "</code></pre>
+</section>
+<section id="code" class="level3">
+<h3 class="anchored" data-anchor-id="code">Code</h3>
 <ul>
-<li>there is no difference between double and single quotes on a practical level, but R will interpret them as different commands (so a single quote cannot close a double quote). This is useful when there is nested levels of quoting (rare), and yet, it happens now and then.</li>
+<li>incredible useful set of commands</li>
+<li>some are very simple (e.g.&nbsp;“comment lines”), others are complex (e.g.&nbsp;“rename in scope”)</li>
+<li>over time, you will learn what these mean and perhaps make use of them (if you don’t, that is okay)</li>
 </ul>
-<div class="callout-tip callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Putting it all together
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Check the “History” tab in the upper right hand pane (this should be to the right of the “Environment” tab). What is there?</p>
-<p>If you followed along and coded the above examples, you should see the command you ran previously (including any mistakes). This is your command history. There are several icons directly above your history - explore what those do (hoover before clicking any icon to make sure you are okay with action before performing it).</p>
-</div>
-</div>
+</section>
+<section id="view" class="level3">
+<h3 class="anchored" data-anchor-id="view">View</h3>
+<ul>
+<li>rearrange panes</li>
+<li>zoom in/out</li>
+<li>overall not that useful, except for the shortcuts</li>
+</ul>
+</section>
+<section id="plots" class="level3">
+<h3 class="anchored" data-anchor-id="plots">Plots</h3>
+<ul>
+<li>meh</li>
+</ul>
+</section>
+<section id="session" class="level3">
+<h3 class="anchored" data-anchor-id="session">Session</h3>
+<ul>
+<li>very handy for restarting your R session</li>
+<li>manually set the working directory (we will do this in a few weeks)</li>
+</ul>
+</section>
+<section id="build" class="level3">
+<h3 class="anchored" data-anchor-id="build">Build</h3>
+<ul>
+<li>advanced tools for building packages, websites, et cetera. I’ve never visited this part of the supermarket.</li>
+</ul>
+</section>
+<section id="debug" class="level3">
+<h3 class="anchored" data-anchor-id="debug">Debug</h3>
+<ul>
+<li>tools for debugging code (removing scripting errors). We will not use this in the workshop! But you can learn more about it <a href="https://support.posit.co/hc/en-us/articles/205612627-Debugging-with-the-RStudio-IDE">here</a>.</li>
+</ul>
+</section>
+<section id="profile" class="level3">
+<h3 class="anchored" data-anchor-id="profile">Profile</h3>
+<ul>
+<li>for code profiling (checking how long it takes your code to run). We will also not be using this in the workshop. This is part of the supermarket I rarely visit.</li>
+</ul>
+</section>
+<section id="tools" class="level3">
+<h3 class="anchored" data-anchor-id="tools">Tools</h3>
+<ul>
+<li>some handy utility function. I mostly use this menu item to set preferences via “Global Options”.</li>
+</ul>
+</section>
+<section id="help" class="level3">
+<h3 class="anchored" data-anchor-id="help">Help</h3>
+<ul>
+<li>more utility functions. You can check for RStudio updates here, access community help forum, and other forms of documentation in addition to standard help files.</li>
+</ul>
+</section>
+<section id="more" class="level3">
+<h3 class="anchored" data-anchor-id="more">more</h3>
+<p>Rstudio has a massive number of keyboard shortcuts. You can find them in the menu (Help –&gt; Cheat Sheets) and summarized in this <a href="https://github.com/rstudio/cheatsheets/blob/master/rstudio-ide.pdf">cheat sheet</a></p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -915,18 +718,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="../lessons/Lesson01.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">RStudio Tour</span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="../lessons/Lesson03.html" class="pagination-link">
-        <span class="nav-page-text">Vectorizing</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
