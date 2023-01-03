@@ -32,8 +32,6 @@ This is an introductory course for the [R programming language](https://www.r-pr
 -   plot data
 -   navigate R help files
 
-** This course should provide 
-
 #### This course will not address: 
 
 -   git, GitHub, or any version control

@@ -34,9 +34,9 @@ website:
       - icon: code-square
         text: Posit Cloud
         href: https://posit.cloud/
-      - icon: github
-        href: https://github.com/IdahoAgStats/r-for-ag-scientists
-        text: "GitHub Repository"
+      # - icon: github
+      #   href: https://github.com/IdahoAgStats/r-for-ag-scientists
+      #   text: "GitHub Repository"
       - icon: bank
         href: https://canvas.uidaho.edu
         text: Canvas
@@ -57,58 +57,58 @@ website:
         contents:
           - href: lessons/Lesson00.qmd
             text: Lesson Zero
-          - href: lessons/Lesson01.qmd
-            text: RStudio Tour
-          - href: lessons/Lesson02.qmd
-            text: Math Operators
-          - href: lessons/Lesson03.qmd
-            text: Vectorizing
-            contents: 
-              - href: practice/practice01.qmd
-                text: "practice #1"
-              - href: practice/solution01.qmd
-                text: "solution #1"
-          - href: lessons/Lesson04.qmd
-            text: R objects
-            contents: 
-              - href: practice/practice02.qmd
-                text: "practice #2"
-              - href: practice/solution02.qmd
-                text: "solution #2"
-          - href: lessons/Lesson05.qmd
-            text: Data structures
-            contents: 
-              - href: practice/practice03.qmd
-                text: "practice #3"
-              - href: practice/solution03.qmd
-                text: "solution #3"
-          - href: lessons/Lesson06.qmd
-            text: Documentation
-          - href: lessons/Lesson07.qmd
-            text: Data Import
-            contents: 
-              - href: practice/practice04.qmd
-                text: "practice #4"
-              - href: practice/solution04.qmd
-                text: "solution #4"
-          - href: lessons/Lesson08.qmd
-            text: Data wrangling
-          - href: lessons/Lesson09.qmd
-            text: Reshaping data
-          - href: lessons/Lesson10.qmd
-            text: Data merging
-          - href: lessons/Lesson11.qmd
-            text: R Set-up
-          - href: lessons/Lesson12.qmd
-            text: Data export
-          - href: lessons/Lesson13.qmd
-            text: Exploratory plotting
-          - href: lessons/Lesson14.qmd
-            text: ggplotting
-          - href: lessons/Lesson15.qmd
-            text: Repeating operations
-          - href: lessons/final_Lesson.qmd
-            text: final thoughts
+          # - href: lessons/Lesson01.qmd
+          #   text: Math Operators
+          # - href: lessons/Lesson02.qmd
+          #   text: RStudio Tour
+          # - href: lessons/Lesson03.qmd
+          #   text: Vectorizing
+          #   contents: 
+          #     - href: practice/practice01.qmd
+          #       text: "practice #1"
+          #     - href: practice/solution01.qmd
+          #       text: "solution #1"
+          # - href: lessons/Lesson04.qmd
+          #   text: R objects
+          #   contents: 
+          #     - href: practice/practice02.qmd
+          #       text: "practice #2"
+          #     - href: practice/solution02.qmd
+          #       text: "solution #2"
+          # - href: lessons/Lesson05.qmd
+          #   text: Data structures
+          #   contents: 
+          #     - href: practice/practice03.qmd
+          #       text: "practice #3"
+          #     - href: practice/solution03.qmd
+          #       text: "solution #3"
+          # - href: lessons/Lesson06.qmd
+          #   text: Documentation
+          # - href: lessons/Lesson07.qmd
+          #   text: Data Import
+          #   contents: 
+          #     - href: practice/practice04.qmd
+          #       text: "practice #4"
+          #     - href: practice/solution04.qmd
+          #       text: "solution #4"
+          # - href: lessons/Lesson08.qmd
+          #   text: Data wrangling
+          # - href: lessons/Lesson09.qmd
+          #   text: Reshaping data
+          # - href: lessons/Lesson10.qmd
+          #   text: Data merging
+          # - href: lessons/Lesson11.qmd
+          #   text: R Set-up
+          # - href: lessons/Lesson12.qmd
+          #   text: Data export
+          # - href: lessons/Lesson13.qmd
+          #   text: Exploratory plotting
+          # - href: lessons/Lesson14.qmd
+          #   text: ggplotting
+          # - href: lessons/Lesson15.qmd
+          #   text: Repeating operations
+          # - href: lessons/final_Lesson.qmd
+          #   text: final thoughts
 
   page-footer:
     right: "[Quarto Website](https://quarto.org/), template by [Mine Çetinkaya-Rundel](https://github.com/sta210-s22/website)"

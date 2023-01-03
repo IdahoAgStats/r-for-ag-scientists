@@ -8,21 +8,23 @@ I excited to teach this course. I have fully revamped this curriculum, doing my 
 
 We have very limited time, so order to conserve class time and have us all ready for the first day of class, please read through this "Lesson Zero", watch the video and follow the instructions below.  
 
-{{{ video placeholder }}}
+#### <<< *video coming soon!* >>>
 
 ### Join Posit Cloud
 
-You will receive an invitation to join a our online classroom on [Posit Cloud](https://login.posit.cloud/login), where you will need to sign up for an account using your email, or you can connect it to a gmail or GitHub account (any of these choices will work fine for the class). If do you not have a gmail or GitHub account, use your email instead. 
+You will receive an invitation to join a our online classroom on [Posit Cloud](https://login.posit.cloud/login), where you will need to sign up for an account using your email, or you can connect it to a Gmail or GitHub account (any of these choices will work fine for the class). If do you not have a Gmail or GitHub account, use your normal email instead. If you are taking this for course credit, please use your official UI email. 
 
 ### Class Structure
 
-For all lessons, please follow along in your RStudio cloud session and type + run the same code that I will demonstrate. 
+For all lessons, please follow along in your RStudio cloud session. In most instances, you will type and run the same code that I will demonstrate.
 
-I will record each day's lessons and make it available through email and Canvas. Additionally, all code generated that day will be posted on this course website shortly after each class ends. It is important that you read through notes and watch the video if (1) you had to miss some or all of a class, or (2) there is material you do not understand. **It is very important that you use the time between courses to ensure you understand the material.**
+I will record each day's lessons and make it available through email and Canvas. Additionally, all code generated that day will be posted on this course website shortly after each class ends. It is important that you read through notes and watch the video if (1) you had to miss some or all of a class, or (2) there is material you do not understand. 
+
+**It is very important that you use the time between class sessions to ensure you understand the material.**
 
 ### Class Notes Structure 
 
-As mentioned, all code run will be captured in class notes that will be posted. While you can read those notes and not attend class, many find it helpful to attend a live course and receive live instruction and feedback from an expert. Additionally, those of you formally registered for **BCB 503** are required to attend at least 60% of the classes per the [syllabus](../syllabus.qmd) in order to pass. 
+As mentioned, all code run will be captured in class notes that will be posted. While you can read those notes and not attend class, many find it helpful to attend a live course and receive live instruction and feedback from an expert. Additionally, those of you formally registered for **BCB 502** are required to attend at least 60% of the classes per the [syllabus](../syllabus.qmd) in order to pass. 
 
 **At the beginning of each lesson, this box will be included:**
 
@@ -44,11 +46,11 @@ Tips designed to weave together information from multiple lessons.
 
 ### How to Suceed in Learning R
 
-- At the end of each class, review the learning goals and decide if you met those goals. These are designed to be the bare minimum of knowwledge to competently use R. Later workshop/course content builds on this knowledge.  
+- At the end of each class, review the learning goals and decide if you met those goals. These are designed to be the bare minimum of knowledge to competently use R. Later workshop/course content builds on this knowledge.  
 - Review what we have covered between classes - refresh your knowledge. 
 - If there are practice problems, do them. 
 - Experiment in the R console using what you learned. Really, nothing can go wrong. 
-- If some material is not clear, re-run the code from class and reread the notes here; watch the videos. 
+- If class material is not clear, re-run the code from class and reread the notes; watch the videos. If it's still not clear, contact me. 
 - Come to me with specific questions! I’m here to help. 
 
 ### Your very first R lesson!
