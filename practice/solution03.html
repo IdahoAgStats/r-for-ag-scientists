@@ -160,6 +160,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <a href="https://posit.cloud/" title="Posit Cloud" class="sidebar-tool px-1"><i class="bi bi-code-square"></i></a>
     <a href="https://canvas.uidaho.edu" title="Canvas" class="sidebar-tool px-1"><i class="bi bi-bank"></i></a>
   <a href="" class="quarto-color-scheme-toggle sidebar-tool" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+  <a href="" class="quarto-reader-toggle sidebar-tool" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
 </div>
       </div>
       <div class="mt-2 flex-shrink-0 align-items-center">
@@ -334,17 +339,17 @@ $x4
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>new_df <span class="ot">&lt;-</span> df[,<span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">3</span>)]</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>new_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>          five one four         two       three
-1  huckleberry   1    B  2.25652590  1.52530350
-2  huckleberry   2    A  0.16607439  0.60440876
-3  huckleberry   3    A  0.14377737  1.05285282
-4  huckleberry   4    A  0.03083951 -0.83357993
-5  huckleberry   5    B -1.79557713 -1.51524835
-6  huckleberry   6    A -0.30405331 -0.42979236
-7        apple   7    B -0.90138884 -0.39308019
-8        apple   8    B -1.02887923 -0.92422240
-9        apple   9    B  0.21689046 -0.07762654
-10       apple  10    B  0.70314380  0.13105823</code></pre>
+<pre><code>          five one four        two      three
+1  huckleberry   1    A -0.6939607 -1.5889417
+2        apple   2    B  0.3018152  0.6109923
+3        apple   3    B  1.1303563 -0.4724269
+4  huckleberry   4    B -0.3765704 -2.2074265
+5        apple   5    B -0.3968924 -0.1804137
+6        apple   6    B  2.1238933  2.5154978
+7  huckleberry   7    B  0.2239113  0.2229117
+8        apple   8    B -1.6399079 -0.7155834
+9  huckleberry   9    A  1.6657901  0.5969627
+10       apple  10    A  0.6941211  1.1256078</code></pre>
 </div>
 </div>
 <ol type="1">

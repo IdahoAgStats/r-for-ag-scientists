@@ -128,10 +128,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <link rel="stylesheet" href="../styles.css">
 <meta property="og:title" content="R for Scientists - Lesson 1: Math Operators">
-<meta property="og:description" content="Addition, substraction, multiplication, division">
+<meta property="og:description" content="These test for conditions (“is this true?”) and return either a TRUE or FALSE">
 <meta property="og:site-name" content="R for Scientists">
 <meta name="twitter:title" content="R for Scientists - Lesson 1: Math Operators">
-<meta name="twitter:description" content="Addition, substraction, multiplication, division">
+<meta name="twitter:description" content="These test for conditions (“is this true?”) and return either a TRUE or FALSE">
 <meta name="twitter:card" content="summary">
 </head>
 
@@ -160,6 +160,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <a href="https://posit.cloud/" title="Posit Cloud" class="sidebar-tool px-1"><i class="bi bi-code-square"></i></a>
     <a href="https://canvas.uidaho.edu" title="Canvas" class="sidebar-tool px-1"><i class="bi bi-bank"></i></a>
   <a href="" class="quarto-color-scheme-toggle sidebar-tool" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+  <a href="" class="quarto-reader-toggle sidebar-tool" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
 </div>
       </div>
       <div class="mt-2 flex-shrink-0 align-items-center">
@@ -218,7 +223,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#use-r-as-a-calculator" id="toc-use-r-as-a-calculator" class="nav-link active" data-scroll-target="#use-r-as-a-calculator">Use R as a calculator:</a></li>
+  <li><a href="#r-as-a-calculator" id="toc-r-as-a-calculator" class="nav-link active" data-scroll-target="#r-as-a-calculator">R as a calculator</a></li>
+  <li><a href="#logical-operators" id="toc-logical-operators" class="nav-link" data-scroll-target="#logical-operators">Logical Operators</a></li>
   <li><a href="#order-of-operations." id="toc-order-of-operations." class="nav-link" data-scroll-target="#order-of-operations.">Order of operations.</a></li>
   <li><a href="#some-notes-on-r-syntax" id="toc-some-notes-on-r-syntax" class="nav-link" data-scroll-target="#some-notes-on-r-syntax">Some notes on R syntax</a></li>
   </ul>
@@ -267,9 +273,10 @@ Learning Goals
 </div>
 </div>
 </div>
-<section id="use-r-as-a-calculator" class="level3">
-<h3 class="anchored" data-anchor-id="use-r-as-a-calculator">Use R as a calculator:</h3>
-<p>Addition, substraction, multiplication, division</p>
+<section id="r-as-a-calculator" class="level3">
+<h3 class="anchored" data-anchor-id="r-as-a-calculator">R as a calculator</h3>
+<section id="addition-subtraction-multiplication-division" class="level4">
+<h4 class="anchored" data-anchor-id="addition-subtraction-multiplication-division">Addition, subtraction, multiplication, division</h4>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -288,7 +295,9 @@ Learning Goals
 <pre><code>[1] 5</code></pre>
 </div>
 </div>
-<p>exponentiate</p>
+</section>
+<section id="exponentiation" class="level4">
+<h4 class="anchored" data-anchor-id="exponentiation">Exponentiation</h4>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span><span class="sc">^</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -307,7 +316,9 @@ Learning Goals
 <pre><code>[1] 0.25</code></pre>
 </div>
 </div>
-<p>roots (square, cube, ….)</p>
+</section>
+<section id="roots-square-cube-." class="level4">
+<h4 class="anchored" data-anchor-id="roots-square-cube-.">Roots (square, cube, ….)</h4>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span><span class="sc">^</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -318,7 +329,9 @@ Learning Goals
 <pre><code>[1] 2</code></pre>
 </div>
 </div>
-<p>logs</p>
+</section>
+<section id="logs" class="level4">
+<h4 class="anchored" data-anchor-id="logs">Logs</h4>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">log</span>(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -333,7 +346,10 @@ Learning Goals
 <pre><code>[1] 1</code></pre>
 </div>
 </div>
-<p>Using sign:</p>
+</section>
+<section id="operations-with-sign" class="level4">
+<h4 class="anchored" data-anchor-id="operations-with-sign">Operations with sign</h4>
+<p><em>(positive and negative signs are called “unary operators”)</em></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span><span class="sc">*-</span><span class="dv">4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -341,15 +357,18 @@ Learning Goals
 </div>
 </div>
 <p>Like in standard math, only negatively signed numbers need to be specified.</p>
-<p>There’s more:</p>
-<p>integer division (the remainder is discarded)</p>
+</section>
+<section id="integer-division-the-remainder-is-discarded" class="level4">
+<h4 class="anchored" data-anchor-id="integer-division-the-remainder-is-discarded">Integer division (the remainder is discarded)</h4>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span> <span class="sc">%/%</span> <span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1</code></pre>
 </div>
 </div>
-<p>modulus operator (return the remainder after division)</p>
+</section>
+<section id="modulus-operator-return-the-remainder-after-division" class="level4">
+<h4 class="anchored" data-anchor-id="modulus-operator-return-the-remainder-after-division">Modulus operator (return the remainder after division)</h4>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span> <span class="sc">%%</span> <span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -357,8 +376,11 @@ Learning Goals
 </div>
 </div>
 <p>….and so much more</p>
-<p><strong>Logical Operators</strong></p>
-<p>These test for conditions and return either a <code>TRUE</code> or <code>FALSE</code></p>
+</section>
+</section>
+<section id="logical-operators" class="level3">
+<h3 class="anchored" data-anchor-id="logical-operators">Logical Operators</h3>
+<p>These test for conditions (“is this true?”) and return either a <code>TRUE</code> or <code>FALSE</code></p>
 <table class="table">
 <thead>
 <tr class="header">
@@ -389,6 +411,7 @@ Learning Goals
 </tr>
 </tbody>
 </table>
+<p><strong>Examples</strong></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">==</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -419,9 +442,9 @@ Learning Goals
 <pre><code>[1] TRUE</code></pre>
 </div>
 </div>
-<p>Use <code>&amp;</code> if two things must be true and <code>|</code> if one of two things must be true:</p>
+<p>When testing multiple conditions: use <code>&amp;</code> (‘and’) if two things must be true and <code>|</code> (‘or’) if one of two things must be true:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">&lt;</span> <span class="dv">2</span> <span class="sc">&amp;</span> <span class="dv">1</span> <span class="sc">!=</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">&lt;</span> <span class="dv">2</span> <span class="sc">&amp;</span> <span class="dv">1</span> <span class="sc">!=</span> <span class="dv">1</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] FALSE</code></pre>
 </div>
@@ -435,17 +458,17 @@ Learning Goals
 <h3 class="anchored" data-anchor-id="order-of-operations.">Order of operations.</h3>
 <p>What results from this?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">*</span><span class="dv">6</span> <span class="sc">-</span> <span class="dv">6</span><span class="sc">*</span><span class="dv">9</span> <span class="sc">+</span> <span class="dv">3</span><span class="sc">*</span><span class="dv">30</span> <span class="sc">/</span><span class="dv">7</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">*</span><span class="dv">6-6</span><span class="sc">*</span><span class="dv">9</span><span class="sc">+</span><span class="dv">12</span><span class="sc">*</span><span class="dv">7</span><span class="sc">/</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The rules:</p>
 <ol type="1">
 <li>operations go left to right</li>
-<li>exponents are first, followed by ‘unary operators’ (that is, variable signs)</li>
+<li>exponents are first, followed by ‘unary operators’ (+/- signs)</li>
 <li>multiplication and division before subtraction and/or addition</li>
 <li>logical operators come after all mathematical transformations</li>
 <li>Parentheses overall all other rules!</li>
 </ol>
-<p><a href="https://stat.ethz.ch/R-manual/R-devel/library/base/html/Syntax.html">Here</a> is the official R guide to order of operations (warning: this is complicated and refers to functions beyond mathematical operations).</p>
+<p><a href="https://stat.ethz.ch/R-manual/R-devel/library/base/html/Syntax.html">Here</a> is the official R guide to order of operations (warning: this is complicated and refers to functions beyond mathematical operators).</p>
 </section>
 <section id="some-notes-on-r-syntax" class="level3">
 <h3 class="anchored" data-anchor-id="some-notes-on-r-syntax">Some notes on R syntax</h3>
