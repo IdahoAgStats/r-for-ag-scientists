@@ -4,6 +4,7 @@ project:
 
 website:
   page-navigation: true
+  reader-mode: true
   title: "R for Scientists"
   description: "Homepage for Introduction to R for Scientists, Spring 2023."
   site-url: "https://idahoagstats.github.io/r-for-ag-scientists/"
