@@ -14,9 +14,9 @@ At the end of this lesson, you should:
 :::
 
 
-### Use R as a calculator:
+### R as a calculator
 
-Addition, substraction, multiplication, division
+#### Addition, subtraction, multiplication, division
 ```{r}
 1 + 3
 10 - 15
@@ -24,7 +24,7 @@ Addition, substraction, multiplication, division
 60/12
 ```
 
-exponentiate
+#### Exponentiation
 ```{r}
 3^2
 2^4
@@ -32,14 +32,14 @@ exponentiate
 2^-2
 ```
 
-roots (square, cube, ....)
+#### Roots (square, cube, ....)
 
 ```{r}
 4^(1/2)
 8^(1/3)
 ```
 
-logs
+#### Logs
 ```{r}
 log(10)
 ```
@@ -50,28 +50,30 @@ log with base 10
 ```{r}
 log10(10)
 ```
-Using sign: 
+
+#### Operations with sign
+
+*(positive and negative signs are called "unary operators")*
 ```{r}
 3*-4
 ```
 Like in standard math, only negatively signed numbers need to be specified. 
 
-There's more: 
 
-integer division (the remainder is discarded)
+#### Integer division (the remainder is discarded)
 ```{r}
 5 %/% 3
 ```
 
-modulus operator (return the remainder after division)
+#### Modulus operator (return the remainder after division)
 ```{r}
 5 %% 3
 ```
 ....and so much more 
 
-**Logical Operators**
+### Logical Operators
 
-These test for conditions and return either a `TRUE` or `FALSE`
+These test for conditions ("is this true?") and return either a `TRUE` or `FALSE`
 
 | syntax  | Function |
 |----------|---------|
@@ -81,6 +83,7 @@ These test for conditions and return either a `TRUE` or `FALSE`
 | >    | greater than |
 | <=, >=   | less than and equal to, and greater than equivalent |
 
+**Examples**
 ```{r}
 1 == 1
 1 == 2
@@ -90,9 +93,10 @@ These test for conditions and return either a `TRUE` or `FALSE`
 1 <= 1
 1 >= 1
 ```
-Use `&` if two things must be true and `|` if one of two things must be true: 
+
+When testing multiple conditions: use `&` ('and') if two things must be true and `|` ('or') if one of two things must be true: 
 ```{r}
-1 < 2 & 1 != 1
+1 < 2 & 1 != 1 
 1 < 2 | 1 != 1
 ```
 
@@ -101,19 +105,19 @@ Use `&` if two things must be true and `|` if one of two things must be true:
 
 What results from this?
 ```{r, eval=FALSE}
-2*6 - 6*9 + 3*30 /7
+2*6-6*9+12*7/2
 ```
 
 The rules:  
 
 1. operations go left to right
-2. exponents are first, followed by 'unary operators' (that is, variable signs)
+2. exponents are first, followed by 'unary operators' (+/- signs)
 2. multiplication and division before subtraction and/or addition
 3. logical operators come after all mathematical transformations
 4. Parentheses overall all other rules!
 
 
-[Here](https://stat.ethz.ch/R-manual/R-devel/library/base/html/Syntax.html) is the official R guide to order of operations (warning: this is complicated and refers to functions beyond mathematical operations). 
+[Here](https://stat.ethz.ch/R-manual/R-devel/library/base/html/Syntax.html) is the official R guide to order of operations (warning: this is complicated and refers to functions beyond mathematical operators). 
 
 ### Some notes on R syntax
 

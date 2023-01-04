@@ -125,7 +125,7 @@ A data frame has attributes for:
 * `rownames` row names (if none are provided, R will generate integer row names starting at 1)
 
 :::{.callout-note}
-While duplicate column names in a data frame are allowed, they are not advised, and will throw an error during data import. 
+While duplicate column names in a data frame are allowed, they are not advised, and may throw an error during data import, depending on the import function used. 
 :::
 
 ```{r}

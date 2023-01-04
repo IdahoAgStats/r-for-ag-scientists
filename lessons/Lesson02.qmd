@@ -1,164 +1,126 @@
 ---
-title: "Lesson 2: Introduction to RStudio"
-echo: FALSE
+title: "Lesson 2: Vectorizing Operations"
 ---
 
 ::: {.callout-caution collapse="false"}
-## Learning Recap
+## Learning Goals
 
-At the end of this lesson, you should understand: 
+At the end of this lesson, you should: 
 
-* What the different tabs in each of the panes of RStudio do
-* What is in each menu item in Rstudio and have a general sense of functionality available
+* understand how to assign variables and collections of numbers to an object name
+* known the rules for how to name objects
+* understand reserved words in R and how to find them
+* be able to create a sequence of numbers in R using any starting value and any ending value
 :::
 
+
+### Vectorizing operations
+
+Using R as a calculator between a few numbers is handy, but typically we are hoping to do so much more with it, such as performing a calculations across a long list of numbers. 
+
+R is naturally vectorized, which means that you can easily perform a mathematical operation across a vector of numbers (no need to write loops!) 
+
+Say we have a collection of numbers from 10 to 20 and we want to multiple them all by 12. We can create a sequence of numbers by wrapping them all in `c()` command (for "concatenate") and separating each with a comma. 
+
 ```{r}
-knitr::include_graphics(here::here("images", "rstudio.png"))
+c(10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20)
+```
+Then those numbers can be operated on by any math operator:
+
+```{r}
+c(10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20) * 10 - 1
+```
+
+There's also a quicker way to specify a sequence of integers using the notation `start:end`:
+
+```{r}
+1:10
+```
+
+It also counts down: 
+```{r}
+20:10
+```
+
+And works with negative integers:
+```{r}
+-5:5
+```
+
+These can be operated on: 
+
+```{r}
+(-5:5)^2
+```
+
+### Object assignment
+
+It is rather cumbersome to continually retype numbers, even while using a shortcut. There's a general rule of "DRY" when coding, which means "Don't repeat yourself". We can avoid this by assigning these numbers to an R object. 
+
+Traditionally, the left arrow is used for object assignment, `<-` (less than symbol + a dash), but the standard equals sign, `=` also works. These are equivalent: 
+
+```{r}
+x <- 1
+x = 1
+```
+
+We can assign multiple numbers to an object
+```{r}
+x_vector <- 1:10
+y_vector <- c(2, 4, 6, 8, 10)
 ```
 
 
-RStudio is more than a graphical user interface for R. It is an integrated development environment (IDE), that is a full service application for supporting software development. It can perform multitudes, so more than most people need. It is the supermarket of R functionality. Like a supermarket, there are parts of RStudio you will visit frequently and parts you will rarely if ever use. After 10+ years of using RStudio on a near daily basis, there are several parts of it that I continue to be unfamiliar with! Ths is okay - clearly, I have not needed those parts. You will come to find what sections youn will need most over time and practice. 
+The left arrow assignment `<-` takes everything on the right side of the arrow and assigns it the object name on the left. 
 
-Still, it helps to have a guided tour.  Let's dive into this. 
+### Object naming
 
-## The Panes
+It is your choice (mostly) about what to name R objects. There are a few rules to follow:
 
-### The Console/Terminal/Background Jobs
+
+* spaces are generally not allowed and a huge pain - avoid at all costs! 
+* Don't start with a number or symbol! (this is technically possible, but a huge pain)
+* choose a name that is short, yet descriptive
+* R is case sensitive, so `test` is different from `Test` and `TEST`. Be mindful of this! It trips many folks up.  
+* It's possible that you will thank yourself for using lowercase and avoiding special symbols (aside from `.` and `_`)
+* if you start a function name with a "." (e.g. `.variable`), you won't see it listed in the global environment (which can be frustrating)
+* you cannot use "reserved words" from the R language (terms set aside for very specific purposes in R). When typing these in an R console, they usually light up in a special colors.
 
 ```{r}
-knitr::include_graphics(here::here("images", "rstudio_console_pane.png"))
+.z <- 1:10
 ```
 
 
-Default location: left or bottom left
+Here is [some discussion](https://intro2r.com/objects-in-r.html) on object naming in R. 
 
-| Tab  | Function |
-|----------|---------|
-| Console    | where R commands are actually done |
-| Terminal    | use a terminal language such as bash or the windows command prompt |
-| Background jobs | usual pacakage installation  |
-| Render  | for building markdown or quarto documents (only present when actively rendering)|
+### Reserved words
 
-In this workshop, we will only be using the Console. 
+|-------------|----------------|
+|reserved word | meaning       |
+| `TRUE` `FALSE`  | logical     |
+| `NA`            | missing value |
+| `NaN`          | not a number/undefined  |
+| `NULL`         | no value/undefined   |
+| `Inf`, `-Inf`       | infinity    |
+| `for` `in`    | for loops   |
+| `if` `else` `while` `break` `next` `repeat` | control flow  |
+| `NA_integer_` `NA_real_`	`NA_complex_` `NA_character_` | missing data by class
 
-### Files/Plots/Packages/Help/Viewer/Presentation
+It's easy to forgot these. Run `?reserved` in an R console to remind yourself if need be. 
 
-```{r}
-knitr::include_graphics(here::here("images", "rstudio_file_pane.png"))
-```
-
-Default location: bottom right
-
-Probably the most useful pane - we will be here frequently! 
-
-| Tab  | Function |
-|----------|---------|
-| Plots    | view plots |
-| Files    | explore your file system |
-| Packages | install, update and load packages |
-| Help     | helps files & examples |
-| Viewer   | for previewing websites |
-| Presentation | for previewing presentations |
-
-We will not be using the Viewer or Presentations tabs in this workshop.
-
-What are Packages?
-
-These make the world go around in R. All of R consists of packages or libraries that have certain functionality associated with them. Some of are maintained by the R core team, others are maintained by outsiders. All packages are open source and most are a volunteer effort. When you open R, several packages are loaded automatically: base, datasets, graphics, grDevices, methods, stats, utils.
-
-We will talk about package installation and usage later in this course/workshop. 
-
-### Environment/History/Connections/Build/Git/Tutorial
+Some examples of reserved words in the wild: 
 
 ```{r}
-knitr::include_graphics(here::here("images","rstudio_envir_pane.png"))
+log(0)
+0/0
+2/0
 ```
 
-| Tab  | Function |
-|----------|---------|
-| Environment    | objects created and existing in your current R session |
-| History    | previous R command run |
-| Connections | to connect to an external database |
-| Build    | for building R packages and other large projects |
-| Git   | only visible if you've initialized a git repository |
-| Tutorial | tutorials build by Posit (very helpful) |
+::: {.callout-tip}
+## Putting it all together
 
-[here](more)
+Check the environment pane. These are the object you created during the session. This is where you will see all objects created, unless you have choosen to render the objects invisible by starting their object names with a `.`, a period.  
+:::
 
-### Our Scripts Pane
-
-```{r}
-knitr::include_graphics(here::here("images","rstudio_editor_pane.png"))
-```
-
-default location: upper left
-
-These are all the files we create and edit: `.R`, `.Rmd`, `.txt`, ...
-
-when we open files from the "Files" pane, this is where it shows up
-
-## The Upper Menu Items
-
-```{r}
-knitr::include_graphics(here::here("images", "rstudio_ribbon.png"))
-```
-
-### File
-
--  opening and/or creating files  
--  opening and/or creating projects  
--  recent files, recent project  
--  (standard file functionality)  
-
-### Edit
-
-- copy, paste, find
-- very handy "find in files" feature!
-
-### Code
-
-- incredible useful set of commands
-- some are very simple (e.g. "comment lines"), others are complex (e.g. "rename in scope")
-- over time, you will learn what these mean and perhaps make use of them (if you don't, that is okay)
-
-
-### View
-
-- rearrange panes
-- zoom in/out
-- overall not that useful, except for the shortcuts
-
-### Plots
-
-- meh
-
-### Session
-
-- very handy for restarting your R session
-- manually set the working directory (we will do this in a few weeks)
-
-### Build
-
-- advanced tools for building packages, websites, et cetera. I've never visited this part of the supermarket. 
-
-### Debug
-
-- tools for debugging code (removing scripting errors). We will not use this in the workshop! But you can learn more about it [here](https://support.posit.co/hc/en-us/articles/205612627-Debugging-with-the-RStudio-IDE). 
-
-### Profile
-
-- for code profiling (checking how long it takes your code to run). We will also not be using this in the workshop. This is part of the supermarket I rarely visit. 
-
-### Tools
-
-- some handy utility function. I mostly use this menu item to set preferences via "Global Options".
-
-### Help
-
-- more utility functions. You can check for RStudio updates here, access community help forum, and other forms of documentation in addition to standard help files. 
-
-### more
-
-Rstudio has a massive number of keyboard shortcuts. You can find them in the menu (Help --> Cheat Sheets) and summarized in this [cheat sheet](https://github.com/rstudio/cheatsheets/blob/master/rstudio-ide.pdf)
 
 
