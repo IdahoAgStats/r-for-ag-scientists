@@ -1,7 +1,10 @@
 project:
   type: website
   output-dir: _site
-
+  render:
+    - "*.qmd"
+    - "!internal/"
+  
 website:
   page-navigation: true
   reader-mode: true

@@ -15,6 +15,13 @@ At the end of this lesson, you should:
 * be able to aggregate data and perform actions on those aggregated data
 :::
 
+
+*First, import data*
+```{r}
+
+```
+
+
 ### Selecting columns
 
 ### Filtering a data set
