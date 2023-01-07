@@ -143,6 +143,21 @@ mutate1$yield_protein <- mutate1$yield + mutate1$grain_protein
 
 This can be a bit longer and cumbersome compared to `mutate` statements, but it does work. 
 
+#### `case_when()` a special type of `mutate`
+
+Occasionally, you will need a define a variable conditionally, based on information from other variables. 
+
+One exmple is growing degrees days. It is based on daily minimum and maximum temperatures, but there are also maximum and minimum allowable values:
+
+```{r, eval= FALSE}
+# load data set
+weather <- mutate(weather, new_min = case_when())
+```
+
+If you want to bin continuous data into intervals (e.g. "low", "medium", "high), use the base function `cut()` which can bin data into groups based on equal groups, or specific cut-off values you provide. 
+
+If you have a categorical variable that needs further refinement (e.g. collapsing of multiple levels into one), check out the package [forcats](https://forcats.tidyverse.org/), which provides many functions for manipulating categorical (factor or character) variables. 
+
 ### Renaming Variables
 
 Compared to `mutate()`, the function for renaming variables, `rename()` is a breeze!
@@ -183,11 +198,6 @@ Example;
 ```{r}
 arrange1 <- arrange(variety_trials, variety, yield)
 ```
-
-
-### Aggregating & Summarizing Data
-
-{{move this into its own lesson?}}
 
 ### The pipe 
 
