@@ -20,28 +20,235 @@ At the end of this lesson, you should:
 library(dplyr); library(tidyr)
 ```
 
-
 **Next, import data:**
 
 ```{r}
 variety_trials <- read.csv(here::here("data", "trial_data.csv"))
-trial_metadata <- readr::read_csv(here::here("data", "trial_metadata.csv"))
+#trial_metadata <- readr::read_csv(here::here("data", "trial_metadata.csv"))
 ```
 
-### Selecting columns
+### Tidyverse notes
+
+This lesson relies on group of packages called the "Tidyverse", in particular **dplyr** and **tidyr**. 
+
+These packages follow a special set of rules called "non-standard evaluation" (sometimes abbreviated "NSE"). 
+
+All functions in the Tidyverse follow this structure:
+
+```function(dataset, action)```
+
+Where "dataset" is the data framed being input and "action" is whatever action is being taken. 
+
+NSE uses quotes far less often than "base R" (base R are package that are installed automatically when R is updated). 
+
+### Selection columns
+
+The function `select` is used to specify *column* you want to keep (all rows are returned). Columns can be specified by name or position (i.e. the first two columsn in the data set would be `1:2`).
+
+Select by name: 
+```{r}
+select1 <- select(variety_trials, variety, yield, grain_protein)
+head(select1)
+```
+You can also select on what columns you do *not* want: 
+```{r}
+select2 <- select(variety_trials, -trial)
+select3 <- select(variety_trials, -c(trial, plot))
+```
+:::{.callout-note}
+The variables specified in `select()` will appear in the new data frame in exactly the order they were listed in the function call.
+:::
 
 
+sometimes, you might want to select many columns that share something common about their name:
+```{r}
+select4 <- select(variety_trials, starts_with("r"))
+```
+This particular example is not all that useful, but you might have a large data set, with several dozen variables that all start with "snp" followed by some alphanumberic code (e.g. "snp4738). This function will enable you to select these column more efficiently than naming every single one. 
 
-### Filtering a data set
+There are more options for pattenr matching on column names: 
+```{r, eval=FALSE}
+?starts_with #another option for searching help from the R console
+```
 
-### Creating New Variables
+```{r, echo=FALSE}
+#knitr::include_graphics(here::here("images", "starts_with.png"))
+```
+
+### Filtering rows
+
+The function `filter` is used to specify *rows* you want to keep (all columns are returned). This command uses logical operators for deciding what to keep. 
+```{r}
+fiter1 <- filter(variety_trials, variety == "Stephens")) # match one name
+filter2 <- filter(variety_trials, variety %in% c("Stephens", "Xerpha")) # match multiple names
+filter3 <- filter(variety_trials, yield > 50 & grain_protein <= 14) # filter on multiple conditions
+```
+
+::: {.callout-note}
+
+It is also possible to select or filter by numeric position: 
+
+```{r, eval=FALSE}
+select(variety_trials, c(1:3, 4))
+filter(variety_trials, c(1:100, 201:300))
+```
+
+While filtering and selecting (but especially filtering) by numeric position works, it is an unreliable choice because it depends on column order or row order being exactly as you expect it. This may work the first time you write + run code, but it is likely to fail over time as you sort, augment or change data sets. 
+:::
+
+
+### Creating new variables
+
+You can quite create new variables with a `mutate()` function call:
+
+```
+mutate(dataset, var_name = variable)
+```
+ 
+Examples: 
+```{r}
+new_var <- rbinom(nrow(variety_trials))
+
+mutate1 <- mutate(variety_trials, 
+                    dataset = "example",
+                    row_position = 1:n(),
+                    range_new = range,
+                    random_yield = yield + rnorm(),
+                    binom_var = new_var, 
+                    yield_protein = yield + grain_protein)
+```
+
+This created 6 new variables:
+
+- **dateset** which is a character with the value "example" for all rows
+- **row_position** providing the row number, starting at 1 and ending at `n()`, a function that returns the total nubmer of rows in the data frame
+- **range_new** which is a copy of the variable "range"
+- **random_yield** which is the sum of the value for yield plus a random deviation from the function `rnorm`. This operation is vectorized, using the 'yield' measurement for each row and generating a new random deviate for each row. 
+- **binom_var** the binomical outcomes variable created in the `new_var ....` statement. 
+- **yield_protein** the addition of two variables in the data set (this is also vectorized, calculating this for each row)
+
+These example cover the majority of what you are likely to experience: creating a constant, calculating new variables from existing variables, pulling in an external variables, and so forth. 
+
+This is equivalent to what was taught earlier using "$" notation:
+
+```{r, eval=FALSE}
+mutate1 <- variety_trials # first, copy the data frame
+mutate1$dateset <- "example"
+mutate1$row_position <- 1:nrow(mutate1)
+mutate1$range_new <- mutate1$range_new # note that NSE cannot be used
+mutate1$random_yield <- mutate1$yield + rnorm(nrow(mutate1))
+mutate1$binom_var = new_var
+mutate1$yield_protein <- mutate1$yield + mutate1$grain_protein
+```
+
+This can be a bit longer and cumbersome compared to `mutate` statements, but it does work. 
 
 ### Renaming Variables
 
+Compared to `mutate()`, the function for renaming variables, `rename()` is a breeze!
+
+```
+rename(dataset, new_name = "old_name")
+```
+This is similar to variable assignment:
+```
+new <- old
+```
+
+(Except that quotes are always used when specifying the old variable name)
+
+Example: 
+```{r}
+rename1 <- rename(variety_trials, cultivar = "variety")
+head(rename1, 3)
+```
+
+Fun fact: you can use `rename` notation in `select` statements:
+```{r}
+rename2 <- select(variety_trials, cultivar = "variety", yield, protein = "grain_protein")
+```
+
+This function selected the columns "variety", "yield" and "grain_protein", while renaming "variety to "cultivar" and "grain_protein" to "protein". A handy shortcut!
+
 ### Sorting a data set
+
+Prior to dplyr, sorting in R was a nightmare. Excel makes this so easy! Why was R torturing us??? But, dplyr has made this much easier:
+
+```
+arrange(dataset, variable1, variable2, ....)
+```
+You can sort on as many variables as you like! It will sort on the first variables listed and within that, the second variable listed, and so on.
+
+Example; 
+```{r}
+arrange1 <- arrange(variety_trials, variety, yield)
+```
+
 
 ### Aggregating & Summarizing Data
 
+{{move this into its own lesson?}}
+
+### The pipe 
+
+The pipe operator `%>%` or its newer replacement `|>` are magic, or at least, they make our (data wranging) lives so much easier.
+
+The pipe operator works as thus:
+```
+operation_1 %>% operation_2
+```
+
+One operation can be performed (e.g. a `select()` command), and that resulting data frame is passed on to the next operation (e.g. `filter()`).
+
+Example: filter then sort
+```{r}
+pipe1 <- filter(variety_trials, yield < 75) %>% arrange(variety)
+```
+
+The data set is not named in the second operation because it is assumed to be dataset provided in the first operation. Whatever is being output directly left of the pipe operator is in the input data set. 
+
+We can take this even further by making the first operation only the data set:
+
+```{r}
+pipe2 <- variety_trials %>% filter(yield < 75) %>% arrange(variety)
+```
+
+The pipe has made datawrangling so much easier! Before the pipe, each of these operations can be specificied separately with its own object. So when you were done, you had roughly 50 objects in your environment, 48 of which were not needed anymore. 
+
+It also saved us from the "parentheses cascade" where you nest operations within another and no longer had any sense of which set of parentheses belong to which operation.
+
+```{r, echo=FALSE}
+#knitr::include_graphics(here::here("images", "....png"))
+```
+
+### The tibble
+
+I have not been entirely honest with you. While I've talking about all the "data frame" operations we are doing, we are technically using more than a data frame. 
+
+```{r}
+class(select1)
+```
+
+The tibble is very similar to a data frame. The main difference that is likely to affect you is the row names attribute. In general, tibbles are supportive of row names and may remove them (without warning!) after certain operations. This can be avoid by making row names a standard column during import or by manually assigning the row names as a new variable:
+
+```{r}
+rownames_1 <- tibble::rownames_to_column(variety_trials)
+```
+
+[more information](https://tibble.tidyverse.org/reference/rownames.html)
+
 ::: callout-tip
 ## Putting it all together
+
+What going on this notation?
+```
+tibble::rownames_to_column()
+```
+
+This is a normal function call (the function being `rownames_to_column()`), and it is specifyin that the package where this function resides is "tibble". 
+
+You want to use this notation in 2 circumstance:
+* You don't want to load the entire package with a `library()` call, especially if you only need one function from it
+* The name of the function you want to call from a package conflicts with function names from another package. A very common example is `filter()` - this is a dplyr function, but it is also a base R function. Sometimes, you may receive a very puzzling error when using `filter()` that essentially is indicating that the wrong package was used. Using notation like `dplyr::filter()` clarified to R that you want to use the dplyr version of `filter()`. By default, the most recent package loaded overrides other function name conflicts, but sometiimes, it's helpful to be unambiguous in your R function calls. 
+
 :::
