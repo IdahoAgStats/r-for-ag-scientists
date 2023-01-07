@@ -16,12 +16,14 @@ title: "Course Schedule"
                   Lesson 6: R functions & help |
 | January 24 | Lesson 7: data import\
                 Lesson 8: data wrangling |
-| January 26   | Lesson 9: reshaping data sets |
-| January 31  | Lesson 10: combining data sets |
-| February 2  | Lesson 11: Your R set-up\
-                Lesson 12: exporting data\
-                Lesson 13: basic plotting |
-| February 7 | Lesson 14: ggplotting   |
-| February 9 | Lesson 15: repeating actions |
+| January 26   | Lesson 9: reshaping data sets\
+                 Lesson 10: data aggregation & summary |
+| January 31  | Lesson 11: combining data sets |
+| February 2  | Lesson 12: Your R set-up\
+                Lesson 13: exporting data\
+                Lesson 14: basic plotting |
+| February 7 | Lesson 15: ggplotting   |
+| February 9 | Lesson 16: repeating actions\
+               Final Lesson: Your R Future |
 
 
