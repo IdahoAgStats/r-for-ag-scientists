@@ -9,7 +9,7 @@ At the end of this lesson, you should:
 
 * understand the concept of a "key" for merging
 * be able to merge two data sets together
-
+* know the difference beween left join, right join, full join, semi-join and anti-join
 :::
 
 ```{r, include=FALSE}
