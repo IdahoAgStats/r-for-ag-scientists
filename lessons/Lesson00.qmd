@@ -8,7 +8,7 @@ I excited to teach this course. I have fully revamped this curriculum, doing my 
 
 We have very limited time, so order to conserve class time and have us all ready for the first day of class, please read through this "Lesson Zero", watch the video and follow the instructions below.  
 
-#### <<< *video coming soon!* >>>
+{{< video https://youtu.be/xmnPh0qref8 >}}
 
 ### Join Posit Cloud
 
