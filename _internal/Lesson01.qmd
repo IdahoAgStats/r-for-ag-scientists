@@ -24,6 +24,8 @@ At the end of this lesson, you should:
 60/12
 ```
 
+A hard return between lines of code is sufficient to separate the commands. 
+
 #### Exponentiation
 ```{r}
 3^2
@@ -31,6 +33,8 @@ At the end of this lesson, you should:
 9^0
 2^-2
 ```
+
+add notes on scientific notations
 
 #### Roots (square, cube, ....)
 
@@ -51,6 +55,19 @@ log with base 10
 log10(10)
 ```
 
+log with base 2
+
+```{r}
+log2(4)
+```
+
+If you have other bases:
+
+```{r}
+log(10, base = 4)
+```
+
+
 #### Operations with sign
 
 *(positive and negative signs are called "unary operators")*
@@ -69,7 +86,7 @@ Like in standard math, only negatively signed numbers need to be specified.
 ```{r}
 5 %% 3
 ```
-....and so much more 
+....and so much [more](https://stat.ethz.ch/R-manual/R-devel/library/base/html/00Index.html) 
 
 ### Logical Operators
 
@@ -103,11 +120,6 @@ When testing multiple conditions: use `&` ('and') if two things must be true and
 
 ### Order of operations.
 
-What results from this?
-```{r, eval=FALSE}
-2*6-6*9+12*7/2
-```
-
 The rules:  
 
 1. operations go left to right
@@ -116,13 +128,21 @@ The rules:
 3. logical operators come after all mathematical transformations
 4. Parentheses overall all other rules!
 
+What results from this?
+```{r, eval=FALSE}
+2^3+4+12*7/2 <= -6*9
+```
+
+**When in doubt about the order of operations use parentheses!**
+
 
 [Here](https://stat.ethz.ch/R-manual/R-devel/library/base/html/Syntax.html) is the official R guide to order of operations (warning: this is complicated and refers to functions beyond mathematical operators). 
 
 ### Some notes on R syntax
 
-- most often, the amount of white space does not matter. 
-- These are the same:
+* most often, the amount of white space does not matter. 
+
+These are the same:
 
 ```{r}
 4/3
@@ -130,17 +150,23 @@ The rules:
 4    /  3
 ```
 
-- these are also the same
+These are also the same: 
 ```{r}
 log(10)
 log( 10 )
 log ( 10)
 ```
-- a hard return between lines of code is enough to separate the commands
-- exception: unclosed parentheses, brackets, or quotes. R will wait for these to be completed. A single quote must always be complemented by a second single quote, and a double quote likewise must always have a second quote to complete it. Left parentheses, curly braces, or brackets much also be accompanying by their right-sided complement. 
+
+
+* R expects certain things to be paired or completed before it will send it to the interpreter
+
+- As mentioned, earlier a hard return is sufficient to send a command to the R interpreter. 
+- Exceptions: binary operators (= those expecting 2 numbers): `+`, `-`, `*`, `/`, `^`, `==`, etc
+- Exceptions: unclosed parentheses `()`, brackets `[]` `{}`, or quotes `' '` `" "`. R will wait for these to be completed. A single quote must always be complemented by a second single quote, and a double quote likewise must always have a second quote to complete it. Left parentheses, curly braces, or brackets much also be accompanying by their right-sided complement. 
 - good examples
 
 ```
+1 + 2
 { }
 ( )
 [ ]
@@ -149,8 +175,11 @@ log ( 10)
 ` `
 ```
 
+
+
 - bad examples
 ```
+1 + 
 '
 (  } ] 
 "
@@ -158,6 +187,11 @@ log ( 10)
 ```
 
 - there is no difference between double and single quotes on a practical level, but R will interpret them as different commands (so a single quote cannot close a double quote). This is useful when there is nested levels of quoting (rare), and yet, it happens now and then.
+
+::: {.callout-note}
+If you become stuck with an unfinished command, you can use the escape key, `ESC`, to get out of it. 
+:::
+
 
 ::: {.callout-tip}
 ## Putting it all together

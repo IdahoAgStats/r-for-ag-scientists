@@ -37,7 +37,6 @@ Default location: left or bottom left
 | Console    | where R commands are actually done |
 | Terminal    | use a terminal language such as bash or the windows command prompt |
 | Background jobs | usual pacakage installation  |
-| Render  | for building markdown or quarto documents (only present when actively rendering)|
 
 In this workshop, we will only be using the Console. 
 

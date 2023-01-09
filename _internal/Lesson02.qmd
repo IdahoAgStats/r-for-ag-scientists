@@ -83,12 +83,8 @@ It is your choice (mostly) about what to name R objects. There are a few rules t
 * choose a name that is short, yet descriptive
 * R is case sensitive, so `test` is different from `Test` and `TEST`. Be mindful of this! It trips many folks up.  
 * It's possible that you will thank yourself for using lowercase and avoiding special symbols (aside from `.` and `_`)
-* if you start a function name with a "." (e.g. `.variable`), you won't see it listed in the global environment (which can be frustrating)
+* if you start a function name with a "." (e.g. `.variable`), you won't see it listed in the global environment (which can be frustrating), this is not recommended for newer R users
 * you cannot use "reserved words" from the R language (terms set aside for very specific purposes in R). When typing these in an R console, they usually light up in a special colors.
-
-```{r}
-.z <- 1:10
-```
 
 
 Here is [some discussion](https://intro2r.com/objects-in-r.html) on object naming in R. 
@@ -106,7 +102,7 @@ Here is [some discussion](https://intro2r.com/objects-in-r.html) on object namin
 | `if` `else` `while` `break` `next` `repeat` | control flow  |
 | `NA_integer_` `NA_real_`	`NA_complex_` `NA_character_` | missing data by class
 
-It's easy to forgot these. Run `?reserved` in an R console to remind yourself if need be. 
+It's easy to forgot these. Run `?reserved` in an R console or [check here](https://stat.ethz.ch/R-manual/R-devel/library/base/html/Reserved.html) to remind yourself if need be. 
 
 Some examples of reserved words in the wild: 
 
