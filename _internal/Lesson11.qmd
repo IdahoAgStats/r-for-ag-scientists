@@ -2,18 +2,24 @@
 title: "Special Lesson 11: Setting up R for Reproducible Research"
 ---
 
-Install R & RStudio on your personal computer.
+This lesson assumes you have installed R and RStudio ([instructions]()). 
 
-Check your installation and adjust RStudio settings
+### Install R & RStudio
 
-Use projects!
+*(on your personal computer)*
+{{ turn this into an assignment}}
 
-Install packages
+### Optimal Set-up for Reproducible Research
 
-Discuss reproducible Research
+[Slide set](https://imci-idaho.github.io/2022-03-01-WhatTheyForgot/slides/basic-best-practices.html#1)
 
+### What is Reproducible Research? 
 
-{{{ link to RR slides }}}
+[Slide set](https://imci-idaho.github.io/2022-03-01-WhatTheyForgot/slides/research-reproducibility.html#1)
+
+*(navigate through the slides with your keyboard arrows)*
+
+**[Learn More](https://imci-idaho.github.io/2022-03-01-WhatTheyForgot/course-materials/)**
 
 ::: {.callout-tip}
 ## Putting it all together
@@ -26,5 +32,6 @@ Discuss reproducible Research
 
 At the end of this lesson, you should: 
 
-* 
-::: s
+* Know to disable saving .Rdata
+* Know to set up an R Project
+::: 
