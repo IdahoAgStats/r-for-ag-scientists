@@ -1,5 +1,5 @@
 ---
-title: "Lesson 13: Exploratory Plotting in R"
+title: "Lesson 13: Exporting Data"
 ---
 
 ::: {.callout-caution collapse="false"}
@@ -7,9 +7,36 @@ title: "Lesson 13: Exploratory Plotting in R"
 
 At the end of this lesson, you should: 
 
-
+* Be able to export data from R
 :::
 
+This is a very short lesson because exporting data is quite similar to importing data. 
+
+This lesson is focused on exporting tabular data. 
+
+### `write.csv()`
+
+### `write.table()`
+
+### `write.delim()`
+
+### `write_csv()`
+
+### `save()`
+
+This is special option to save objects in your environment to file. These can only be used by R, but are convenient if you plan to return to these object:
+
+Save one object: 
+```{r, eval=FALSE}
+save(object1)
+save(object1, object2)
+```
+
+Save multiple objects: 
+```{r, eval=FALSE}
+save(object1, file = "mydata.RData")
+save(object1, object2, object3,...)
+```
 
 ::: {.callout-tip}
 ## Putting it all together

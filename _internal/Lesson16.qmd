@@ -1,19 +1,19 @@
 ---
-title: "Lesson 14: Exploratory Plotting in R"
+title: "Lesson 16: Repeating Actions with Purrr"
 ---
+
+
+
 
 ::: {.callout-caution collapse="false"}
 ## Learning Goals
 
 At the end of this lesson, you should: 
-
-
+ 
 :::
-
 
 ::: {.callout-tip}
 ## Putting it all together
 
 
 :::
-
