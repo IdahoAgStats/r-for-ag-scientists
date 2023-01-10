@@ -37,9 +37,9 @@ website:
       - icon: code-square
         text: Posit Cloud
         href: https://posit.cloud/
-      # - icon: github
-      #   href: https://github.com/IdahoAgStats/r-for-ag-scientists
-      #   text: "GitHub Repository"
+      - icon: github
+        href: https://github.com/IdahoAgStats/r-for-ag-scientists
+        text: "GitHub Repository"
       - icon: bank
         href: https://canvas.uidaho.edu
         text: Canvas
