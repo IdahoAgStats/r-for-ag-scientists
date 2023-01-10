@@ -1,11 +1,11 @@
 
 :::Pre-survey:::
 
-What is your current R programming knowledge? 
-- nothing
-- not nothing
+1. What is your current R programming knowledge? 
+- zero
+- not zero
 
-Are your data....
+2. Are your data....
 (or will your data...)
 (check all that apply)
 
@@ -18,13 +18,21 @@ Are your data....
 - include any image data?
 - from web scraping?
 - from a third party database (e.g. Federal databases, NCBI)?
-- requires some level of data cleaning and preparing prior to usage? 
-- spread out across several files
-- relying on formatting to communicate information (e.g. yellow cells mean the data are suspect)
+- require some level of data cleaning a
+- spread out across several files?
+- relying on formatting to communicate information (e.g. yellow cells mean the data are suspect)? 
 
-What do want to do in R once you become a competent R user?
+3. What do want to do in R once you become a competent R user?
 
 :::Daily surveys:::
 
+Green Sticky note??
 
+1. Write one thing you learned in this session that you found useful.
+2. Write one thing you really liked about the workshop so far.
+
+Red Sticky note??
+
+3. Write one question you still have about the material covered today.
+4. Write one suggestion to improve this workshop.
 
