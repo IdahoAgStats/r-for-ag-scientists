@@ -1,7 +1,7 @@
 ---
 title: "Syllabus"
 author: "BCB 503: Introduction to Scientific Programming in R"
-#format: docx
+format: docx
 date: "Spring, 2023"
 ---
 
