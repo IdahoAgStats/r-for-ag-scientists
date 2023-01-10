@@ -2,6 +2,10 @@
 title: "Instructions for Accessing the Posit Classroom Project"
 ---
 
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
 Once you have created a login for [Posit Cloud](https://posit.cloud/), you can join the classroom. You will or should have received an invitation to join this classroom. Once you follow the link (and log in to Posit), you should see this screen:
 
 ```{r}
