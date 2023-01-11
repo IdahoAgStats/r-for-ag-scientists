@@ -15,7 +15,7 @@ geno3[1:10, 1:5]
 ### Extra
 
 
-```{r}
+```{r, eval=FALSE}
 geno3$individual <- gsub("[.]", " ", geno3$individual) 
 ```
 

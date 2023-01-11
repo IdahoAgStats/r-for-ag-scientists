@@ -16,27 +16,26 @@ https://idahoagstats.github.io/r-for-ag-scientists/
 
 #### Using Posit Cloud
 
-A posit classroom is set up with only one project. 
+* A posit classroom is set up with only one project. 
 
-All tidyverse packages are installed. 
+* All tidyverse packages are installed. 
 
-In the initial set-up, the project contains these directories and files:
+* In the initial set-up, the project contains these directories and files:
 
+├── data
+│   ├── field_trial_2009.xlsx
+│   ├── genotypic_data.txt
+│   ├── genotypic_data_rotated.txt
+│   ├── trial_data.csv
+│   ├── trial_metadata.csv
+│   ├── weather_data.csv
+├── outputs
+│   ├── plots
+├── scripts
+│   ├── example_quarto_file.qmd
+└── .project.Rproj
 
-|- data
-|-|-field_trial_2009.xlsx  
-|-|-genotypic_data_rotated.txt  
-|-|-trial_metadata.csv
-|-|-genotypic_data.txt  
-|-|-trial_data.csv
-|-|-weather_data.csv
-|- outputs
-|-|- plots
-|- scripts
-|-|-example_quarto_file.qmd
-|- project.Rproj
-
-Every student should make a permanent copy of this project. Over time, we will create more files and save them to this project. 
+* Every student should make a permanent copy of this project. Over time, we will create more files and save them to this project. 
 
 #### Other notes:
 
