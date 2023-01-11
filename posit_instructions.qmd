@@ -1,0 +1,33 @@
+---
+title: "Instructions for Accessing the Posit Classroom Project"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+Once you have created a login for [Posit Cloud](https://posit.cloud/), you can join the classroom. You will or should have received an invitation to join this classroom. Once you follow the link (and log in to Posit), you should see this screen:
+
+```{r}
+knitr::include_graphics(here::here("images", "posit_1.png"))
+```
+Click on "Intro to R Class", and the project will load. This may take a few minutes.  
+```{r}
+knitr::include_graphics(here::here("images", "posit_2.png"))
+```
+Once it is finished loading, this is what you should see:
+
+```{r}
+knitr::include_graphics(here::here("images", "posit_3.png"))
+```
+
+This has created a temporary copy of the project (hence the blinking red label that says "TEMPORARY COPY"). Click on "Save a Permanent Copy" to copy the project. This also may take a few minutes to complete. When you're done, if you return to the R Classroom, you should see something similar to this. It will list your name instead of "Julia Test" and there may be other students with the same project copied. 
+
+
+```{r}
+knitr::include_graphics(here::here("images", "posit_4.png"))
+```
+
+Only the instructors and you can access your project. We, the instructors, will not access student Posit classroom projects unless a student requests we look at it to help troubleshoot an R coding issue. 
+
+This project is where you should save all of your R scripts. You can access this project at anytime, including when the class is not meeting from now until Feb 10th, 2022. When the course is done, the classroom will be deleted, so be certain to download your project in case you want to revisit it. The course instructors will send a reminder email to do this if you forget. 

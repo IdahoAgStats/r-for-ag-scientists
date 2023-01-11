@@ -12,7 +12,7 @@ We have very limited time, so order to conserve class time and have us all ready
 
 ### Join Posit Cloud
 
-You will receive an invitation to join a our online classroom on [Posit Cloud](https://login.posit.cloud/login), where you will need to sign up for an account using your email, or you can connect it to a Gmail or GitHub account (any of these choices will work fine for the class). If do you not have a Gmail or GitHub account, use your normal email instead. If you are taking this for course credit, please use your official UI email. 
+You will receive an invitation to join a our online classroom on [Posit Cloud](https://login.posit.cloud/login), where you will need to sign up for an account using your email, or you can connect it to a Gmail or GitHub account (any of these choices will work fine for the class). If do you not have a Gmail or GitHub account, use your normal email instead. If you are taking this for course credit, please use your official UI email. Once you receive the invitation and have created an account, follow [these instructions](../posit_instructions.qmd) for accessing the classroom. 
 
 ### Class Structure
 

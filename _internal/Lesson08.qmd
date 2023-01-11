@@ -24,7 +24,7 @@ library(dplyr); library(tidyr)
 
 ```{r}
 variety_trials <- read.csv(here::here("data", "trial_data.csv"))
-#trial_metadata <- readr::read_csv(here::here("data", "trial_metadata.csv"))
+weather <- read.csv(here::here("data", "weather_data.csv"))
 ```
 
 ::: {.callout-note}
@@ -46,7 +46,8 @@ All functions in the Tidyverse follow this structure:
 
 Where "dataset" is the data framed being input and "action" is whatever action is being taken. 
 
-NSE uses quotes far less often than "base R" (base R are package that are installed automatically when R is updated). 
+Tidyverse non-standard evaluation uses quotes far less often than "base R" (base R are package that are installed automatically when R is updated). It also uses indexing `$` less frequently. You can name a variable directly instead of using `dataset$var`.
+
 
 ### Selection columns
 
@@ -61,6 +62,8 @@ You can also select on what columns you do *not* want:
 ```{r}
 select2 <- select(variety_trials, -trial)
 select3 <- select(variety_trials, -c(trial, plot))
+
+head(select2); head(select3)
 ```
 :::{.callout-note}
 The variables specified in `select()` will appear in the new data frame in exactly the order they were listed in the function call.
@@ -70,25 +73,28 @@ The variables specified in `select()` will appear in the new data frame in exact
 sometimes, you might want to select many columns that share something common about their name:
 ```{r}
 select4 <- select(variety_trials, starts_with("r"))
+head(select4)
 ```
-This particular example is not all that useful, but you might have a large data set, with several dozen variables that all start with "snp" followed by some alphanumberic code (e.g. "snp4738). This function will enable you to select these column more efficiently than naming every single one. 
+This particular example is not all that useful, but you might have a large data set, with several dozen variables that all start with "snp" followed by some alpha-numeric code (e.g. "snp4738"). This function will enable you to select these column more efficiently than naming every single one. 
 
-There are more options for pattenr matching on column names: 
+There are more options for pattern matching on column names: 
 ```{r, eval=FALSE}
-?starts_with #another option for searching help from the R console
+?tidyselect::starts_with #another option for searching help from the R console
 ```
 
 ```{r, echo=FALSE}
-#knitr::include_graphics(here::here("images", "starts_with.png"))
+knitr::include_graphics(here::here("images", "starts_with.png"))
 ```
 
 ### Filtering rows
 
 The function `filter` is used to specify *rows* you want to keep (all columns are returned). This command uses logical operators for deciding what to keep. 
 ```{r}
-fiter1 <- filter(variety_trials, variety == "Stephens")) # match one name
-filter2 <- filter(variety_trials, variety %in% c("Stephens", "Xerpha")) # match multiple names
+filter1 <- filter(variety_trials, variety == "Stephens") # match one name
+filter2 <- filter(variety_trials, variety %in% c("Stephens", "Bobtail")) # match multiple names
 filter3 <- filter(variety_trials, yield > 50 & grain_protein <= 14) # filter on multiple conditions
+
+dim(filter1); dim(filter2); dim(filter3)
 ```
 
 ::: {.callout-note}
@@ -114,15 +120,18 @@ mutate(dataset, var_name = variable)
  
 Examples: 
 ```{r}
-new_var <- rbinom(nrow(variety_trials))
+new_var <- rbinom(n = nrow(variety_trials), size = 1, prob = 0.5)
 
 mutate1 <- mutate(variety_trials, 
                     dataset = "example",
                     row_position = 1:n(),
                     range_new = range,
-                    random_yield = yield + rnorm(),
+                    random_yield = yield + rnorm(n = n()),
                     binom_var = new_var, 
                     yield_protein = yield + grain_protein)
+
+table(new_var)
+head(mutate1)
 ```
 
 This created 6 new variables:
@@ -154,10 +163,9 @@ This can be a bit longer and cumbersome compared to `mutate` statements, but it 
 
 Occasionally, you will need a define a variable conditionally, based on information from other variables. 
 
-One exmple is growing degrees days. It is based on daily minimum and maximum temperatures, but there are also maximum and minimum allowable values:
+One example is growing degrees days. It is based on daily minimum and maximum temperatures, but there are also maximum and minimum allowable values:
 
 ```{r, eval= FALSE}
-# load data set
 weather <- mutate(weather, new_min = case_when())
 ```
 
@@ -235,16 +243,13 @@ The pipe has made datawrangling so much easier! Before the pipe, each of these o
 It also saved us from the "parentheses cascade" where you nest operations within another and no longer had any sense of which set of parentheses belong to which operation.
 
 ```{r, echo=FALSE}
-#knitr::include_graphics(here::here("images", "....png"))
+knitr::include_graphics(here::here("images", "nest_vs_pipe.jpg"))
 ```
 
 ### The tibble
 
 I have not been entirely honest with you. While I've talking about all the "data frame" operations we are doing, we are technically using more than a data frame. 
 
-```{r}
-class(select1)
-```
 
 The tibble is very similar to a data frame. The main difference that is likely to affect you is the row names attribute. In general, tibbles are supportive of row names and may remove them (without warning!) after certain operations. This can be avoid by making row names a standard column during import or by manually assigning the row names as a new variable:
 
@@ -265,7 +270,9 @@ tibble::rownames_to_column()
 This is a normal function call (the function being `rownames_to_column()`), and it is specifyin that the package where this function resides is "tibble". 
 
 You want to use this notation in 2 circumstance:
-* You don't want to load the entire package with a `library()` call, especially if you only need one function from it
-* The name of the function you want to call from a package conflicts with function names from another package. A very common example is `filter()` - this is a dplyr function, but it is also a base R function. Sometimes, you may receive a very puzzling error when using `filter()` that essentially is indicating that the wrong package was used. Using notation like `dplyr::filter()` clarified to R that you want to use the dplyr version of `filter()`. By default, the most recent package loaded overrides other function name conflicts, but sometiimes, it's helpful to be unambiguous in your R function calls. 
+
+- You don't want to load the entire package with a `library()` call, especially if you only need one function from it
+
+- The name of the function you want to call from a package conflicts with function names from another package. A very common example is `filter()` - this is a dplyr function, but it is also a base R function. Sometimes, you may receive a very puzzling error when using `filter()` that essentially is indicating that the wrong package was used. Using notation like `dplyr::filter()` clarified to R that you want to use the dplyr version of `filter()`. By default, the most recent package loaded overrides other function name conflicts, but sometiimes, it's helpful to be unambiguous in your R function calls. 
 
 :::
