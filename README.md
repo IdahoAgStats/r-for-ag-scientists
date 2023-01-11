@@ -9,14 +9,41 @@ https://idahoagstats.github.io/r-for-ag-scientists/
 
 * Main goal: teach lessons 1-13
 * If time is running out, skip lesson 14, do lesson 15, then decide if there is time to cover 14 or lesson 16. Poll the class to see what they want. 
-* Lessons 3, 6 and 12 are special lessons that are lecture-based (no live coding) and to impart larger lessons on R prorgramming (RStudio, R functions & documentation, reproducible research)
+* Lessons 3, 6 and 12 are special lessons that are lecture-based (no live coding) and to impart larger lessons on R programming (RStudio, R functions & documentation, reproducible research)
 * in lesson 01, use the console 
-* In lesson 02 - 07, introduce .R files
-* Introduce .qmd files in lesson 8 and use that for the remainder of the class
+* In lesson 02 - 08, introduce .R files
+* Introduce .qmd files in lesson 9 and use that for the remainder of the class
+
+#### Using Posit Cloud
+
+A posit classroom is set up with only one project. 
+
+All tidyverse packages are installed. 
+
+In the initial set-up, the project contains these directories and files:
+
+
+|- data
+|-|-field_trial_2009.xlsx  
+|-|-genotypic_data_rotated.txt  
+|-|-trial_metadata.csv
+|-|-genotypic_data.txt  
+|-|-trial_data.csv
+|-|-weather_data.csv
+|- outputs
+|-|- plots
+|- scripts
+|-|-example_quarto_file.qmd
+|- project.Rproj
+
+Every student should make a permanent copy of this project. Over time, we will create more files and save them to this project. 
 
 #### Other notes:
 
-* this is intended to be delivered as a live coded class
-* 
+* This is intended to be delivered as a live coded class
+* There are special lessons that are largely lecture and hence exceptions to the live-coded format: 
+  * RStudio (lesson 3)
+  * R functions & R help (lesson 6)
+  * R for reproducible reserach (Lesson 13)
 
 

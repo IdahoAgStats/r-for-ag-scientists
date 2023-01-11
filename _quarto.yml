@@ -63,55 +63,100 @@ website:
           # - href: lessons/Lesson01.qmd
           #   text: Math Operators
           # - href: lessons/Lesson02.qmd
-          #   text: RStudio Tour
-          # - href: lessons/Lesson03.qmd
           #   text: Vectorizing
+          # - href: lessons/Lesson03.qmd
+          #   text: RStudio Tour
           #   contents: 
-          #     - href: practice/practice01.qmd
-          #       text: "practice #1"
-          #     - href: practice/solution01.qmd
-          #       text: "solution #1"
+          #     - href: practice/practice-A.qmd
+          #       text: "practice"
+          #     - href: practice/solution-A.qmd
+          #       text: "solution"
           # - href: lessons/Lesson04.qmd
           #   text: R objects
           #   contents: 
-          #     - href: practice/practice02.qmd
-          #       text: "practice #2"
-          #     - href: practice/solution02.qmd
-          #       text: "solution #2"
+          #     - href: practice/practice-B.qmd
+          #       text: "practice"
+          #     - href: practice/solution-B.qmd
+          #       text: "solution"
           # - href: lessons/Lesson05.qmd
           #   text: Data structures
           #   contents: 
-          #     - href: practice/practice03.qmd
-          #       text: "practice #3"
-          #     - href: practice/solution03.qmd
-          #       text: "solution #3"
+          #     - href: practice/practice-C.qmd
+          #       text: "practice"
+          #     - href: practice/solution-C.qmd
+          #       text: "solution"
           # - href: lessons/Lesson06.qmd
-          #   text: Documentation
+          #   text: R documentation
           # - href: lessons/Lesson07.qmd
           #   text: Data Import
           #   contents: 
-          #     - href: practice/practice04.qmd
-          #       text: "practice #4"
-          #     - href: practice/solution04.qmd
-          #       text: "solution #4"
+          #     - href: practice/practice-D.qmd
+          #       text: "practice"
+          #     - href: practice/solution-D.qmd
+          #       text: "solution"
           # - href: lessons/Lesson08.qmd
-          #   text: Data wrangling
-          # - href: lessons/Lesson09.qmd
-          #   text: Reshaping data
-          # - href: lessons/Lesson10.qmd
-          #   text: Data merging
-          # - href: lessons/Lesson11.qmd
-          #   text: R Set-up
-          # - href: lessons/Lesson12.qmd
           #   text: Data export
+          #   contents: 
+          #     - href: practice/practice-E.qmd
+          #       text: "practice"
+          #     - href: practice/solution-E.qmd
+          #       text: "solution"
+          # - href: lessons/Lesson09.qmd
+          #   text: Data wrangling
+          #   contents: 
+          #     - href: practice/practice-F.qmd
+          #       text: "practice"
+          #     - href: practice/solution-F.qmd
+          #       text: "solution"
+          # - href: lessons/Lesson10.qmd
+          #   text: Data Aggregation
+          #   contents:
+          #     - href: practice/practice-G.qmd
+          #       text: "practice"
+          #     - href: practice/solution-G.qmd
+          #       text: "solution"
+          # - href: lessons/Lesson11.qmd
+          #   text: Reshaping data
+          #   contents:   
+          #     - href: practice/practice-H.qmd
+          #       text: "practice"
+          #     - href: practice/solution-H.qmd
+          #       text: "solution"
+          # - href: lessons/Lesson12.qmd
+          #   text: Data merging
+          #   contents: 
+          #     - href: practice/practice-I.qmd
+          #     - text: "practice"
+          #     - href: practice/solution-I.qmd
+          #     - text: "solution"
           # - href: lessons/Lesson13.qmd
-          #   text: Exploratory plotting
+          #   text: R Set-up
+          #   contents:
+          #     - href: install_R_instructions.qmd
+          #     - text: Install R + Rstudio
           # - href: lessons/Lesson14.qmd
-          #   text: ggplotting
+          #   text: Exploratory plotting
+          #   contents: 
+          #     - href: practice/practice-J.qmd
+          #       text: "practice"
+          #     - href: practice/solution-J.qmd
+          #       text: "solution"
           # - href: lessons/Lesson15.qmd
+          #   text: ggplotting
+          #   contents: 
+          #     - href: practice/practice-K.qmd
+          #       text: "practice"
+          #     - href: practice/solution-K.qmd
+          #       text: "solution"
+          # - href: lessons/Lesson16.qmd
           #   text: Repeating operations
+          #   contents: 
+          #     - href: practice/practice-L.qmd
+          #       text: "practice"
+          #     - href: practice/solution-L.qmd
+          #       text: "solution"
           # - href: lessons/final_Lesson.qmd
-          #   text: final thoughts
+          #   text: Final thoughts
 
   page-footer:
     right: "[Quarto Website](https://quarto.org/), template by [Mine Çetinkaya-Rundel](https://github.com/sta210-s22/website)"

@@ -1,5 +1,5 @@
 ---
-title: "Practice #3"
+title: "Practice C"
 ---
 
 (for lessons on data structures)

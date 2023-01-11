@@ -1,5 +1,5 @@
 ---
-title: "Solutions to Practice #2"
+title: "Solutions to Practice B"
 ---
 
 If you convert it using as.integer, it will look rather funky:

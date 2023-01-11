@@ -1,5 +1,5 @@
 ---
-title: "Solutions to Practice #3"
+title: "Solutions to Practice C"
 ---
 
 

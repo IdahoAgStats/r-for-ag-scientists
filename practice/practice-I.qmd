@@ -1,0 +1,21 @@
+---
+title: "Practice I"
+---
+
+In the class project, there are two files with similar names in the "data" directory: 
+
+### Main problem
+
+* "genotypic_data.txt"
+* "genotypic_data_rotated.txt"
+
+As the file names indicates, "genotypic_data_rotated.txt" is a rotated version of "genotypic_data.txt".
+
+Import  "genotypic_data.txt" into R and use R commands to recreate "genotypic_data_rotated.txt".
+
+
+### Extra!
+
+This is very much outside what has been taught, so only proceed if you don't mind a foray into the unknown. 
+
+The column "individual" no longer has periods in the listed names, but the original file had periods in those names since they were column headers. Write code to remove those periods from the column "individual" in your transformed column (hint: look at the documentation for `gsub()`). 
