@@ -10,12 +10,15 @@ At the end of this lesson, you should:
 * be able to aggregate data and perform actions on those aggregated data
 :::
 
+You may find yourself wanting to calculate summary statistics across a grouping variable. To do this, a data set needs to be split up by that variable, a summary statistic calculated, and the resulting data recombined, or 'split-apply'combine'. There's some nice tools to do this in the **dplyr** package. 
+
+
 **First, load libraries & Import Data**
 ```{r, }
-library(dplyr); library(tidyr)
+library(dplyr)
 
 variety_trials <- read.csv(here::here("data", "trial_data.csv"))
-#trial_metadata <- readr::read_csv(here::here("data", "trial_metadata.csv"))
+trial_metadata <- readr::read_csv(here::here("data", "trial_metadata.csv"))
 ```
 
 

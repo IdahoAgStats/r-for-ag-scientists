@@ -10,6 +10,27 @@ At the end of this lesson, you should:
 
 :::
 
+Base R has some plain yet effective plotting techniques. These can be made publication quality or can be used for exploratory purposes. I find base plotting in R to be a very convenient for exploration of data.
+
+## X-Y bivariate plots
+
+
+## Histograms
+
+
+## Boxplots
+
+## Barplots
+
+
+
+
+## Saving plots
+
+
+
+
+
 
 ::: {.callout-tip}
 ## Putting it all together
