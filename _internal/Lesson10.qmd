@@ -1,66 +1,35 @@
 ---
-title: "Lesson 10: Reshaping Data Sets"
+title: "Lesson 10: Aggregating & Summarising Data"
 ---
-
 
 ::: {.callout-caution collapse="false"}
 ## Learning Goals
 
-At the end of this lesson, you should: 
+At the end of this lesson, you should:
 
-* be able to convert long data set to wide and the reverse
+* be able to aggregate data and perform actions on those aggregated data
 :::
 
-There are circumstances when a wide data set are needed and circumstances when a long data set are needed, for analysis, plotting, data wrangling, et cetera.
+You may find yourself wanting to calculate summary statistics across a grouping variable. To do this, a data set needs to be split up by that variable, a summary statistic calculated, and the resulting data recombined, or 'split-apply'combine'. There's some nice tools to do this in the **dplyr** package. 
 
-Doing this manually in a spreadsheet program is extremely cumbersome and very susceptible to errors! You are much better off doing this in R (or another programming language). 
 
-These wide-to-long and long-to-wide conversions are also called 'pivoting'. 
+**First, load libraries & Import Data**
+```{r, }
+library(dplyr)
 
-```{r, echo=FALSE}
-knitr::include_graphics(here::here("images", "wide_v_long.png"))
+variety_trials <- read.csv(here::here("data", "trial_data.csv"))
+trial_metadata <- readr::read_csv(here::here("data", "trial_metadata.csv"))
 ```
 
-Load the weather data:
-```{r}
-weather <- read.csv(here::here("data", "weather_data.csv"))
-```
-## Long to Wide
-
-Convert from long to wide. This data set includes many years of data. Let's take the maximum temperature and spread it out by year in order to compare how maximum temperatures have changed over the years. 
-
-It's possible to pivot across multiple variables, but we will start with pivoting across one variable. 
-```{r}
-weather_max <- weather %>% pivot_wider()
-```
-
-## Wide to Long
-Another option is to combine all traits into a single column along side identifying variables. 
-
-## Final Notes
-
-This is the end of lessons on data wrangling. There is additional functionality that we have not touched on that you may find useful to know. 
-
-
-| function name | what it does |
-|---------------|--------------|
-| `tidyr::drop_na()`     | remove rows with missing data |
-| `dplyr::pull()`        | extracts a single column and converts it to a vector | 
-| `dplyr::distinct()`   | return rows with distinct observations (removes duplicates) |
-| `dplyr::na_if()`      | converts a specificed value to NA |
-| dplyr::relocate()     | move columns to another position |
-| `tidyr::fill()`       | fill is missing data based on surrounding data |
-
-Complete list of [dplyr functions](https://dplyr.tidyverse.org/reference/index.html) and [tidyr functions](https://tidyr.tidyverse.org/reference/index.html).
-
-
-[R 4 Data Science](https://r4ds.had.co.nz/) by Hadley Wickam and Garret Grolemund
 
 
 
-::: {.callout-tip}
+
+
+
+::: callout-tip
 ## Putting it all together
 
 
-:::
 
+:::

@@ -1,42 +1,23 @@
 ---
-title: "Lesson 13: Exporting Data"
+title: "Special Lesson 13: Setting up R for Reproducible Research"
 ---
 
-::: {.callout-caution collapse="false"}
-## Learning Goals
+This lesson assumes you have installed R and RStudio ([instructions]("../install_R_instructions.qmd")). 
 
-At the end of this lesson, you should: 
 
-* Be able to export data from R
-:::
+### What is Reproducible Research? 
 
-This is a very short lesson because exporting data is quite similar to importing data. 
+[Slide set](https://imci-idaho.github.io/2022-03-01-WhatTheyForgot/slides/research-reproducibility.html#1)
 
-This lesson is focused on exporting tabular data. 
+*(navigate through the slides with your keyboard arrows)*
 
-### `write.csv()`
+**[Learn More](https://imci-idaho.github.io/2022-03-01-WhatTheyForgot/course-materials/)**
 
-### `write.table()`
+### Optimal Set-up for Reproducible Research
 
-### `write.delim()`
+[Slide set](https://imci-idaho.github.io/2022-03-01-WhatTheyForgot/slides/basic-best-practices.html#1)
 
-### `write_csv()`
 
-### `save()`
-
-This is special option to save objects in your environment to file. These can only be used by R, but are convenient if you plan to return to these object:
-
-Save one object: 
-```{r, eval=FALSE}
-save(object1)
-save(object1, object2)
-```
-
-Save multiple objects: 
-```{r, eval=FALSE}
-save(object1, file = "mydata.RData")
-save(object1, object2, object3,...)
-```
 
 ::: {.callout-tip}
 ## Putting it all together
@@ -44,3 +25,11 @@ save(object1, object2, object3,...)
 
 :::
 
+::: {.callout-caution collapse="true"}
+## Learning Goals
+
+At the end of this lesson, you should: 
+
+* Know to disable saving .Rdata
+* Know to set up an R Project
+::: 
