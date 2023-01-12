@@ -6,12 +6,29 @@ title: "Instructions for Accessing the Posit Classroom Project"
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-Once you have created a login for [Posit Cloud](https://posit.cloud/), you can join the classroom. You will or should have received an invitation to join this classroom. Once you follow the link (and log in to Posit), you should see this screen:
+
+Follow the link provided in the mail to join the classroom. 
+
+Once you have created a login for [Posit Cloud](https://posit.cloud/), you can join the classroom. Once you follow the link and log in to Posit, you should see this screen:
+
+```{r}
+knitr::include_graphics(here::here("images", "posit_1_alt.png"))
+```
+
+Click "Yes".
+
+Once you join, navigate to the classroom on the left sidebar:
+
+```{r}
+knitr::include_graphics(here::here("images", "posit_2_alt.png"))
+```
+When you open "R Classroom", you should see this: 
 
 ```{r}
 knitr::include_graphics(here::here("images", "posit_1.png"))
 ```
 Click on "Intro to R Class", and the project will load. This may take a few minutes.  
+
 ```{r}
 knitr::include_graphics(here::here("images", "posit_2.png"))
 ```
