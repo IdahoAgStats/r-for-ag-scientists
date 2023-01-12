@@ -14,6 +14,12 @@ We have very limited time, so order to conserve class time and have us all ready
 
 You will receive an invitation to join a our online classroom on [Posit Cloud](https://login.posit.cloud/login), where you will need to sign up for an account using your email, or you can connect it to a Gmail or GitHub account (any of these choices will work fine for the class). If do you not have a Gmail or GitHub account, use your normal email instead. If you are taking this for course credit, please use your official UI email. Once you receive the invitation and have created an account, follow [these instructions](../posit_instructions.qmd) for accessing the classroom. 
 
+::: {.callout-important}
+## Important!!! 
+
+If you use any other email for your Posit account than the one associated with your UI account, please notify me ASAP so I can invite you to join the classroom. 
+:::
+
 ### Class Structure
 
 For all lessons, please follow along in your RStudio cloud session. In most instances, you will type and run the same code that I will demonstrate.
