@@ -267,7 +267,7 @@ What going on this notation?
 tibble::rownames_to_column()
 ```
 
-This is a normal function call (the function being `rownames_to_column()`), and it is specifyin that the package where this function resides is "tibble". 
+This is a normal function call (the function being `rownames_to_column()`), and it is specifying that the package where this function resides is "tibble". 
 
 You want to use this notation in 2 circumstance:
 
