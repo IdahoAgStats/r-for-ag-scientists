@@ -23,18 +23,22 @@ Still, it helps to have a guided tour.  Let's dive into this.
 
 ## The Panes
 
+Here is a simplified schematic: 
+
+
+```{r,eval=FALSE}
+knitr::include_graphics(here::here("images", "rstudio_schematic.png"))
+```
+
+These can be rearranged, but for this class, we will use the default arrangement. 
+
 ### The Console/Terminal/Background Jobs
 
 ```{r,eval=FALSE}
 knitr::include_graphics(here::here("images", "rstudio_console_pane.png"))
 ```
 
-A simplified schematic: 
 
-
-```{r,eval=FALSE}
-knitr::include_graphics(here::here("images", "rstudio_schematic.png"))
-```
 
 Default location: left or bottom left
 
