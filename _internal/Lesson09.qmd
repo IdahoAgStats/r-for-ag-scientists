@@ -246,19 +246,6 @@ It also saved us from the "parentheses cascade" where you nest operations within
 knitr::include_graphics(here::here("images", "nest_vs_pipe.jpg"))
 ```
 
-### The tibble
-
-I have not been entirely honest with you. While I've talking about all the "data frame" operations we are doing, we are technically using more than a data frame. 
-
-
-The tibble is very similar to a data frame. The main difference that is likely to affect you is the row names attribute. In general, tibbles are supportive of row names and may remove them (without warning!) after certain operations. This can be avoid by making row names a standard column during import or by manually assigning the row names as a new variable:
-
-```{r}
-rownames_1 <- tibble::rownames_to_column(variety_trials)
-```
-
-[more information](https://tibble.tidyverse.org/reference/rownames.html)
-
 ::: callout-tip
 ## Putting it all together
 
@@ -267,7 +254,7 @@ What going on this notation?
 tibble::rownames_to_column()
 ```
 
-This is a normal function call (the function being `rownames_to_column()`), and it is specifying that the package where this function resides is "tibble". 
+This is a normal function call (the function being `rownames_to_column()`), and it is specifying that the package where this function resides is [tibble](https://tibble.tidyverse.org/reference/tibble-package.html) (a tibble is the Tidyverse alternative to the data farme). 
 
 You want to use this notation in 2 circumstance:
 
