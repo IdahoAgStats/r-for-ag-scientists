@@ -161,13 +161,17 @@ This can be a bit longer and cumbersome compared to `mutate` statements, but it 
 
 #### `case_when()` a special type of `mutate`
 
-Occasionally, you will need a define a variable conditionally, based on information from other variables. 
-
-One example is growing degrees days. It is based on daily minimum and maximum temperatures, but there are also maximum and minimum allowable values:
+Occasionally, you will need a define a variable conditionally, based on information from other variables. Here is an example for weather data. Here, a special minimum value is created where all data for "tmin_F" less than 50°F are set at 50: 
 
 ```{r, eval= FALSE}
-weather <- mutate(weather, new_min = case_when())
+weather <- mutate(weather, new_min = case_when(
+  tmin_F <= 50 ~ 50,
+  TRUE ~ tmin_F))
 ```
+
+Everything to the left of the tilde `~` is a logical expression to evaluate. Everything to the right of the tilde is the value to put if the logical expression evaluates to TRUE. 
+
+This can easily become more complex! 
 
 If you want to bin continuous data into intervals (e.g. "low", "medium", "high), use the base function `cut()` which can bin data into groups based on equal groups, or specific cut-off values you provide. 
 

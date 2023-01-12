@@ -37,25 +37,6 @@ weather_max <- weather %>% pivot_wider()
 ## Wide to Long
 Another option is to combine all traits into a single column along side identifying variables. 
 
-## Final Notes
-
-This is the end of lessons on data wrangling. There is additional functionality that we have not touched on that you may find useful to know. 
-
-
-| function name | what it does |
-|---------------|--------------|
-| `tidyr::drop_na()`     | remove rows with missing data |
-| `dplyr::pull()`        | extracts a single column and converts it to a vector | 
-| `dplyr::distinct()`   | return rows with distinct observations (removes duplicates) |
-| `dplyr::na_if()`      | converts a specificed value to NA |
-| dplyr::relocate()     | move columns to another position |
-| `tidyr::fill()`       | fill is missing data based on surrounding data |
-
-Complete list of [dplyr functions](https://dplyr.tidyverse.org/reference/index.html) and [tidyr functions](https://tidyr.tidyverse.org/reference/index.html).
-
-
-[R 4 Data Science](https://r4ds.had.co.nz/) by Hadley Wickam and Garret Grolemund
-
 
 
 ::: {.callout-tip}
