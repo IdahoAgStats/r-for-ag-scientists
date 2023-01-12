@@ -13,6 +13,7 @@ https://idahoagstats.github.io/r-for-ag-scientists/
 * in lessons 01 & 02, use the console 
 * introduce and use .R files for lessons 14 & 15
 * Introduce .qmd files in lesson 03 and use that for the remainder of the class (except the plotting lessons)
+* Starting at lesson 13, switch to using R on people's systems. 
 
 
 #### Using Posit Cloud

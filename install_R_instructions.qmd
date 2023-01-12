@@ -9,14 +9,14 @@ You may already have R installed on your computer. However, if the installation 
 First, navigate to the Cloud mirror of the R Project for Statistical computing, and download R](https://cran.rstudio.com/): 
 
 
-```{r}
+```{r, echo=FALSE}
 knitr::include_graphics(here::here("images", "install_R_3.png"))
 ```
 #### Windows
 
 Use the link circled in red regardless if you have R installed or not. It's just easier. 
 
-```{r}
+```{r, echo=FALSE}
 knitr::include_graphics(here::here("images", "install_R_win.jpg"))
 ```
 
@@ -24,7 +24,7 @@ knitr::include_graphics(here::here("images", "install_R_win.jpg"))
 
 Download the installation bundle. Check that your operating system version is compatible (the text to the right of the download link will indicate this). 
 
-```{r}
+```{r, echo=FALSE}
 knitr::include_graphics(here::here("images", "install_R_mac.jpg"))
 ```
 
@@ -40,5 +40,6 @@ You do not need to follow "Step 1: install R" indicated on the Posit site if you
 
 1. Open RStudio on your personal or work computer. It should look very similar to Posit Cloud. 
 1. Run a command in the console to make sure all installed properly. 
+1. Install the Tidyverse packages: `install.packages("tidyverse")` (this will take a few minutes)
 
 
