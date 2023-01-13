@@ -2,34 +2,33 @@
 title: "Lesson 5: Data Structures"
 ---
 
-The longest and most important lesson of them all! These are the foundation of everything you are likely to do R as a scientists. Understanding these will take time and practice, so you may find yourself returning to this page to remind yourself of these data structures. 
+The longest and most important lesson of them all! These are the foundation of everything you are likely to do R as a scientists. Understanding these will take time and practice, so you may find yourself returning to this page to remind yourself of these data structures.
 
 ::: {.callout-caution collapse="false"}
 ## Learning Goals
 
-This is a big lesson teaching many foundation concepts! It's very very important you understand what was taught at this phase before moving forward. 
+This is a big lesson teaching many foundation concepts! It's very very important you understand what was taught at this phase before moving forward.
 
-At the end of this lesson, you should: 
+At the end of this lesson, you should:
 
-* Understand the difference between a vector, data.frame, matrix and list
-* Understand how to index items in a vector
+-   Understand the difference between a vector, data.frame, matrix and list
+-   Understand how to index items in a vector
 :::
-
 
 ## Introduction to Common Data Structures
 
-Previously, we looked at data types. Now we need to consider how those types are arranged into complex structures (that is, objects) we can access and manipulate. 
+Previously, we looked at data types. Now we need to consider how those types are arranged into complex structures (that is, objects) we can access and manipulate.
 
-There are several data structures commonly used in R: 
+There are several data structures commonly used in R:
 
-1. vector
-1. data.frame
-1. matrix
-1. list
+1.  vector
+2.  data.frame
+3.  matrix
+4.  list
 
 ### The vector
 
-A collection of items all coerced to be the same data type that we learned about in the previous lesson. These are sometimes called "atomic vectors" in the R documentation. 
+A collection of items all coerced to be the same data type that we learned about in the previous lesson. These are sometimes called "atomic vectors" in the R documentation.
 
 ```{r}
 v1 <- 1:10
@@ -37,12 +36,12 @@ v2 <- c("apples", "pears", "oranges")
 v3 <- c(1, 5, 7, 85)
 ```
 
-A vector can also consist of only one value or no value. 
+A vector can also consist of only one value or no value.
+
 ```{r}
 v4 <- "violets"
 v5 <- TRUE
 v6 <- NA
-v7 <- NULL
 ```
 
 It has the attribute length and each item in a vector can also be named.
@@ -58,7 +57,7 @@ v3
 
 #### Accessing items
 
-Items in a vector can be accessed by referencing the numeric position in the vector, starting at 1 and ending at the vector length. If a vector has length of one, it not necessary to index that.  
+Items in a vector can be accessed by referencing the numeric position in the vector, starting at 1 and ending at the vector length. If a vector has length of one, it not necessary to index that.
 
 `x[1]` will access the first item in the vector, while `x[5]` will access the 5th element. Multiple item can be indexed: `x[c(1,5)]`. If an index position, it repeated, that item will be returned as often as it is called:
 
@@ -70,18 +69,21 @@ v1[c(1,1)]
 ```
 
 Any collection of numbers can be used to index items in a vector:
+
 ```{r}
 v1[c(1, 1:5)]
 ```
 
-What happens if a negative number is used? 
+What happens if a negative number is used?
+
 ```{r}
 v1[-1]
 ```
 
-* Everything but that index position is returned.*
+-   Everything but that index position is returned.\*
 
-What if you index a position that does not exist? 
+What if you index a position that does not exist?
+
 ```{r}
 v1[0]
 v1[20]
@@ -93,7 +95,7 @@ Items in a vector can also be accessed by their name:
 v3["A"]
 ```
 
-What happens if there are replicate names in a vector and you try to index (extract a value) for that name? 
+What happens if there are replicate names in a vector and you try to index (extract a value) for that name?
 
 ```{r}
 names(v3) <- c("A", "B", "C", "A")
@@ -101,13 +103,11 @@ v3
 v3["A"]
 ```
 
-* **Answer** (Only the first instance of a name is returned)* 
-
+-   **Answer** (Only the first instance of a name is returned)\*
 
 ### The data frame
 
-
-A collection of vectors all of the name length. Each vector is a single data type, but different columns can be different data types. This is similar to a typical workbook you might open in Excel or another spreadsheet program. These can be only one column wide, but they often consist of more than that.  
+A collection of vectors all of the name length. Each vector is a single data type, but different columns can be different data types. This is similar to a typical workbook you might open in Excel or another spreadsheet program. These can be only one column wide, but they often consist of more than that.
 
 ```{r}
 d1 <- data.frame(var1 = 1:5,
@@ -115,17 +115,18 @@ d1 <- data.frame(var1 = 1:5,
                  var3 = "alpha")
 d1
 ```
+
 Notes that is a single value is supplied for a column, it will be repeated for the entire column.
 
 A data frame has attributes for:
 
-* `nrow` number of rows
-* `ncol` number of columns
-* `colnames` column names
-* `rownames` row names (if none are provided, R will generate integer row names starting at 1)
+-   `nrow` number of rows
+-   `ncol` number of columns
+-   `colnames` column names
+-   `rownames` row names (if none are provided, R will generate integer row names starting at 1)
 
-:::{.callout-note}
-While duplicate column names in a data frame are allowed, they are not advised, and may throw an error during data import, depending on the import function used. 
+::: callout-note
+While duplicate column names in a data frame are allowed, they are not advised, and may throw an error during data import, depending on the import function used.
 :::
 
 ```{r}
@@ -141,32 +142,38 @@ colnames(d1)
 
 What does `length(d1)` return? How about `names(d1)`?
 
-We can look at the overall structure of a data.frame with `str()`: 
+DROP DOWN ARROW We can look at the overall structure of a data.frame with `str()`:
+
 ```{r}
 str(d1)
 ```
 
-------> This is the data structure most commonly used in R <------
+------\> This is the data structure most commonly used in R \<------
 
 #### Accessing items
 
-Like vectors, data frames can be indexed by position, except now we have two dimensions to consider. You can extract individual elements in a data frame by references the row and column position, `my_dataframe[row, column].
+Like vectors, data frames can be indexed by position, except now we have two dimensions to consider. You can extract individual elements in a data frame by references the row and column position, \`my_dataframe\[row, column\].
 
-Extract the item located in row 1, column 2: 
+Extract the item located in row 1, column 2:
+
 ```{r}
 d1[1,2]
 ```
 
-Extract the entire first row: 
+Extract the entire first row:
+
 ```{r}
 d1[1, ]
 ```
+
 *When the column position is left empty, all columns are returned.*
 
-Extract the entire first column: 
+Extract the entire first column:
+
 ```{r}
 d1[ ,1]
 ```
+
 *When the row position is left empty, all rows are returned.*
 
 Extract the values located in the first 2 rows and first two columns:
@@ -176,19 +183,19 @@ d1[1:2, 1:2]
 ```
 
 Return everything except the third columns
+
 ```{r}
 d1[ ,-3]
 ```
 
 Return everything except the first 2 rows:
+
 ```{r}
 d1[-(1:2),  ]
 ```
 
-
-:::{.callout-note}
-When indexing positions in a vector or data frame (or anything else), the amount of whitespace does not affect the outcome. These are equivalent:
-`d[1,2]`, `d[1, 2]`, `d[ 1, 2]`
+::: callout-note
+When indexing positions in a vector or data frame (or anything else), the amount of whitespace does not affect the outcome. These are equivalent: `d[1,2]`, `d[1, 2]`, `d[ 1, 2]`
 :::
 
 #### Column Referencing
@@ -199,26 +206,21 @@ Data in R data frames can also be referred to by their column names using the no
 d1$var1
 ```
 
-The data are returned as a vector (with the typical attributes of a vector: length and names). 
+The data are returned as a vector (with the typical attributes of a vector: length and names).
 
-Another alternative (less commonly used in the wild) is this notation: `dataframe[["column_name"]]`
-
-```{r}
-d1[["var1"]]
-```
-
+VALUE REPLACEMENT
 
 ### The matrix
 
-Like a data.frame: it is a collection of vectors all the same length, except all vector must be the same data type. 
+Like a data.frame: it is a collection of vectors all the same length, except all vector must be the same data type.
 
 ```{r}
 m1 <- as.matrix(d1)
 m1
 ```
 
-:::{.callout-note}
-An R matrix is not strictly to the mathematical concept of a matrix, but if you make an R matrix consisting only of numbers, it can be used like a mathematical matrix. Furthermore, there several mathematical operations that are intended to only work on matrices such as matrix multiplication (e.g. `%*%`, `upper.tri()`, `diag()`). 
+::: callout-note
+An R matrix is not strictly to the mathematical concept of a matrix, but if you make an R matrix consisting only of numbers, it can be used like a mathematical matrix. Furthermore, there several mathematical operations that are intended to only work on matrices such as matrix multiplication (e.g. `%*%`, `upper.tri()`, `diag()`).
 :::
 
 A matrix can be created by providing a vector of numbers and telling it to populate a table of given dimensions:
@@ -228,10 +230,10 @@ x = 1:100
 m2 <- matrix(data = x, nrow = 5, ncol = 20, byrow = TRUE)
 m2
 ```
-Since the row and column names were no set when making the matrix, default names are giving indicating the numeric position. An R matrix can take row and column names attributes, but those are optional (and as we will soon, useless for indexing). 
 
-Practice: try out the previous command, except changing the `byrow` argument to `FALSE`. 
+Since the row and column names were no set when making the matrix, default names are giving indicating the numeric position. An R matrix can take row and column names attributes, but those are optional (and as we will soon, useless for indexing).
 
+Practice: try out the previous command, except changing the `byrow` argument to `FALSE`.
 
 ```{r}
 colnames(m1)
@@ -240,25 +242,23 @@ rownames(m1)
 
 #### Accessing items
 
-Matrices can be indexed in the same fashion as data frames using this notation `matrix[row, column]`. The matrix we created earlier conveniently already has default row and column names telling us their numeric position: 
+Matrices can be indexed in the same fashion as data frames using this notation `matrix[row, column]`. The matrix we created earlier conveniently already has default row and column names telling us their numeric position:
 
 ```{r}
 m2
 ```
 
-So, to pull out the columns for numbers divisible by 5, we can reference every 5th column: 
+So, to pull out the columns for numbers divisible by 5, we can reference every 5th column:
 
 ```{r}
 m2[ , c(5, 10, 15, 20)]
 ```
 
-
 ```{r}
 matrix(1:99, nrow = 5, ncol = 20)
 ```
 
-
-Matrices cannot be indexed by their name like in data frames; `matrix$name` will return an error. 
+Matrices cannot be indexed by their name like in data frames; `matrix$name` will return an error.
 
 ```{r}
 colnames(m2) <- LETTERS[1:20]
@@ -268,57 +268,59 @@ m2
 ```{r error=TRUE, cache=FALSE}
 m2$A
 ```
-Under the hood, a matrix is basically a vector that is being forced into rectangular dimensions. 
 
+Under the hood, a matrix is basically a vector that is being forced into rectangular dimensions.
 
 ### The list
 
-This is the wildest and least structured data structure that exists. A list is like a closet that happens to be filled with other objects. A vector, scalar and data frame can all be combined into a list. A list can contain other lists inside of it (although this list nesting can be cumbersome to deal with). 
+This is the wildest and least structured data structure that exists. A list is like a closet that happens to be filled with other objects. A vector, scalar and data frame can all be combined into a list. A list can contain other lists inside of it (although this list nesting can be cumbersome to deal with).
 
 ```{r}
 L1 <- list(v1, v2, v3, d1, m1)
 str(L1)
 ```
-Each list item can have a name. Or not. 
+
+Each list item can have a name. Or not.
+
 ```{r}
 L1 <- list("number" = v1, "flower" = v3, v4, "df" = d1, m1)
 names(L1)
 str(L1)
 ```
 
-:::{.callout-note}
-If you end up with too many objects, you can always delete them with the `rm()` function: 
-```
-rm(myvar)
-rm(var1, var2, var3)
-```
+::: callout-note
+If you end up with too many objects, you can always delete them with the `rm()` function:
+
+    rm(myvar)
+    rm(var1, var2, var3)
+
 If one object ends up with the wrong name, you can copy the object to a new name and delete the old version:
-```
-new <- old
-rm(old)
-```
+
+    new <- old
+    rm(old)
 :::
 
 #### Accessing items
 
-As mentioned earlier, lists are relatively unstructured and follow fewer rules. You can access list items by their numeric position, `list[[1]]`, or their name (if it exsits), `list$name`. 
+As mentioned earlier, lists are relatively unstructured and follow fewer rules. You can access list items by their numeric position, `list[[1]]`, or their name (if it exsits), `list$name`.
 
 ```{r}
 L1[[1]]
 L1$df
 ```
 
-Once a list item is accessed, the normal indexing rules apply. The 4th item in the list called "L1" is a data frame. 
+Once a list item is accessed, the normal indexing rules apply. The 4th item in the list called "L1" is a data frame.
+
 ```{r}
 L1[[4]]
 L1[[4]]$var1
 L1[[4]][1:2,]
 ```
 
-
 ## Checking the class of a data structure
 
-Use the `class()` command. 
+Use the `class()` command.
+
 ```{r}
 class(d1)
 class(m2)
@@ -334,28 +336,30 @@ is.matrix(m2)
 is.data.frame(m2)
 is.list(d1)
 ```
-A data frame is also list. You can think of each row being a list containing potentially different data types. 
+
+A data frame is also list. You can think of each row being a list containing potentially different data types.
 
 ## Final Notes
 
-There are actually several more object types, but these are by far the ones you are most likely to encounter and use. 
+There are actually several more object types, but these are by far the ones you are most likely to encounter and use.
 
 ### More resources:
 
-* For a deeper look into vectors, read [this chapter](https://r4ds.had.co.nz/vectors.html) from *R 4 Data Science* 
-* To learn more about subsetting, read [this chapter](https://adv-r.hadley.nz/subsetting.html) from *Advanced R* (warning: it is advanced!)
+-   For a deeper look into vectors, read [this chapter](https://r4ds.had.co.nz/vectors.html) from *R 4 Data Science*
+-   To learn more about subsetting, read [this chapter](https://adv-r.hadley.nz/subsetting.html) from *Advanced R* (warning: it is advanced!)
 
-For a *very comprehensive* guide to R object types, check out the [official R language manual](https://cran.r-project.org/doc/manuals/r-release/R-lang.html#Basic-types). **Warning:** this manual is extremely technical. If you choose to check it out, be patient with yourself. It may take several readings to fully understand the content. 
+For a *very comprehensive* guide to R object types, check out the [official R language manual](https://cran.r-project.org/doc/manuals/r-release/R-lang.html#Basic-types). **Warning:** this manual is extremely technical. If you choose to check it out, be patient with yourself. It may take several readings to fully understand the content.
 
-
-::: {.callout-tip}
+::: callout-tip
 ## Putting it all together
+
 When information is extracted from a vector, data.frame, matrix or list using these tools, the returned information can always be assigned to a new object:
 
 ```{r, eval=FALSE}
 new <- d1[1:2, -3]
 ```
-Sometimes, we need that information assigned to a new object so we can it use later. Other times, printing the extracted information to the console is sufficient for meeting researcher needs. 
+
+Sometimes, we need that information assigned to a new object so we can it use later. Other times, printing the extracted information to the console is sufficient for meeting researcher needs.
 
 We can also use indexing to assign new information. What if we wanted to assign an `NA` to position instead of its current value?
 
@@ -363,7 +367,3 @@ We can also use indexing to assign new information. What if we wanted to assign 
 new[2,2] <- NA
 ```
 :::
-
-
-
-

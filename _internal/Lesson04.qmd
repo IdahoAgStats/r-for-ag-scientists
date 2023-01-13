@@ -81,6 +81,12 @@ x7
 
 Factors are complicated and take some time to fully understand. At this time, we are going to put the topic of factors aside and focus on other more immediately relevant topics. 
 
+```{r}
+typeof(x7)
+class(x7)
+```
+....MORE
+Move factors to next section
 
 ### Object type coercion
 
@@ -94,9 +100,13 @@ What classes do you think results from each of these?
 ```{r, eval= FALSE}
 x8 <- c(8, 9.2)
 x9 <- c(0, 0, 0, 0)
-x10 <- c(TRUE, FALSE, 1L, 0L)
+x10 <- c(TRUE, FALSE, 1, 0)
 x11 <- c(1, 2, "pear", -6:2, TRUE)
 ```
+
+this can happen in your data resulting data import errors
+c(1.3, 8, 23, "0 (error)")
+
 
 Objects can be coerced with these functions:
 
