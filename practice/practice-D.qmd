@@ -13,5 +13,5 @@ title: "Practice D"
 * `read_excel()`
 * `read.delim()`
 
-1. Examine the data using the tools you have learned thus far. Did everything import as expected? Are your variables coded as they should be? Are numeric variables numeric? Are missing data detected as thus? 
+1. Examine the data imported using `View(imported_data)`. Did everything import as expected? Are your variables coded as they should be? Are numeric variables numeric? Are missing data detected as thus? 
 

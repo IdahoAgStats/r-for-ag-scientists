@@ -2,16 +2,24 @@
 title: "Solutions to Practice B"
 ---
 
-If you convert it using as.integer, it will look rather funky:
+The variable "x"
 
 ```{r}
-myvar <- factor(c(2010:2022))
-as.integer(myvar)
+x <- c(-2:3, TRUE, FALSE, 1L, 0L, "zero")
+x
 ```
 
-It must first be converted to a character to preserve the information in the levels and then an integer
+This is a character variable. 
+
+When converted:
 
 ```{r}
-as.integer(as.character(myvar))
+as.logical(x)
+as.character(x)
+as.numeric(x)
 ```
+Items which did not the expected object type could not be converted (or "coerced"), so they were set to `NA`. 
+
+
+
 

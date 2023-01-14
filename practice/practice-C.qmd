@@ -21,7 +21,5 @@ df$four <- sample(c("A", "B"), 10, replace = TRUE)
 * Make a new data frame with the columns in this order: five, one, four, two, three
 
 
-1. You have this object in R session: `m100 = matrix(1:100, ncol = 20, nrow = 5)`. What do you do if you want all the rows from this matrix, but only values 1:50? 
 
-1. What happens if you don't have enough values to make a completed filled matrix (e.g. you have 99 observations rather than 100)?
 
