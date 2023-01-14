@@ -13,14 +13,21 @@ https://idahoagstats.github.io/r-for-ag-scientists/
 * in lessons 01 & 02, use the console 
 * introduce and use .R files for lessons 14 & 15
 * Introduce .qmd files in lesson 03 and use that for the remainder of the class (except the plotting lessons)
-* Starting at lesson 13, switch to using R on people's systems. 
+* regarding teaching quarto: 
+  - first start with the example file provided for lessons 04 & 05
+  - for lesson 07, have them make a new quarto file. Mention the visual editor and yaml header
+  
+* Starting at lesson 13, switch to using R on people's systems (rather than Posit cloud)
 
 
 #### Using Posit Cloud
 
-* A posit classroom is set up with only one project. 
+* A posit classroom is set up with only one project. At the time of writing this, we will use that project for the entire class.
+* The R session should be restarted at the end of each lesson / beginning of the following lesson to wipe objects, packages loaded, etc
 
-* All tidyverse packages are installed. 
+* All tidyverse packages were installed to the project prior to sharing it.
+
+* currently, invitations can only be sent one-at-a-time. The workaround is to share an open link, then later change the access setting to "invitation only"
 
 * In the initial set-up, the project contains these directories and files:
 
@@ -45,6 +52,6 @@ https://idahoagstats.github.io/r-for-ag-scientists/
 * There are special lessons that are largely lecture and hence exceptions to the live-coded format: 
   * RStudio (lesson 3)
   * R functions & R help (lesson 6)
-  * R for reproducible reserach (Lesson 13)
+  * R for reproducible research (Lesson 13)
 
 

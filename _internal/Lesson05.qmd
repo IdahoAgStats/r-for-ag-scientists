@@ -103,7 +103,7 @@ v3
 v3["A"]
 ```
 
--   **Answer** (Only the first instance of a name is returned)\*
+-   ***Answer*** (Only the first instance of a name is returned)\*
 
 ### The data frame
 
@@ -142,11 +142,20 @@ colnames(d1)
 
 What does `length(d1)` return? How about `names(d1)`?
 
-DROP DOWN ARROW We can look at the overall structure of a data.frame with `str()`:
+We can look at the overall structure of a data.frame with `View()`:
+
+```{r, eval=FALSE}
+View(d1)
+```
+
+
+If a particularily large file is loaded into R, using `View()` may be very slow. In that case, you can use `str()` to look a data frame structure:
 
 ```{r}
 str(d1)
 ```
+
+Or we open the file 
 
 ------\> This is the data structure most commonly used in R \<------
 
@@ -208,72 +217,47 @@ d1$var1
 
 The data are returned as a vector (with the typical attributes of a vector: length and names).
 
-VALUE REPLACEMENT
+#### Value replacement
+
+There are likely to be moments when you want to replace values in a data frame or vector with something else. You can do that with indexing and variable assignment. 
+
+
+Let's image that we want to assign the third value in the second column as `NA`. First, we index the that position, then we assign a value to it:
+
+```{r}
+d1[3, 2] <- NA
+```
+
+
 
 ### The matrix
 
-Like a data.frame: it is a collection of vectors all the same length, except all vector must be the same data type.
+A very mile-high view of the matrix is given here because you may encounter this, but it's less commonly used data structure in R. 
 
-```{r}
-m1 <- as.matrix(d1)
-m1
-```
+Like a data frame, a matrix is a collection of vectors all the same length, **except** all vectors must be the same data type (e.g. numeric, character, etc).
 
-::: callout-note
-An R matrix is not strictly to the mathematical concept of a matrix, but if you make an R matrix consisting only of numbers, it can be used like a mathematical matrix. Furthermore, there several mathematical operations that are intended to only work on matrices such as matrix multiplication (e.g. `%*%`, `upper.tri()`, `diag()`).
-:::
+An R matrix is not strictly identical to the mathematical concept of a matrix, but if you make an R matrix consisting only of numbers, it can be used like a mathematical matrix. Furthermore, there several mathematical operations that are intended to only work on matrices such as matrix pre-multiplication `%*%` or extraction of a diagonal from a square matrix, `diag()`. 
+
+A matrix lacks some of the attributes and functionality that are possible for data.frames. Colnames can be given, but they cannot be used to index columns (i.e. `my_matrix$col` will throw an error). 
+
+Matrices are not commonly seen in user-facing functions in R, but within R internals, they are widely used. You may occasionally come across a package requiring a matrix or perhaps you work in a math-intensive discipline where matrix operations are part of your regular work. 
+
+::: {.callout-note, collapse="true"}
+## FYI: how to make a matrix
 
 A matrix can be created by providing a vector of numbers and telling it to populate a table of given dimensions:
 
-```{r}
+```{r, eval=FALSE}
 x = 1:100
 m2 <- matrix(data = x, nrow = 5, ncol = 20, byrow = TRUE)
-m2
 ```
 
-Since the row and column names were no set when making the matrix, default names are giving indicating the numeric position. An R matrix can take row and column names attributes, but those are optional (and as we will soon, useless for indexing).
+:::
 
-Practice: try out the previous command, except changing the `byrow` argument to `FALSE`.
-
-```{r}
-colnames(m1)
-rownames(m1)
-```
-
-#### Accessing items
-
-Matrices can be indexed in the same fashion as data frames using this notation `matrix[row, column]`. The matrix we created earlier conveniently already has default row and column names telling us their numeric position:
-
-```{r}
-m2
-```
-
-So, to pull out the columns for numbers divisible by 5, we can reference every 5th column:
-
-```{r}
-m2[ , c(5, 10, 15, 20)]
-```
-
-```{r}
-matrix(1:99, nrow = 5, ncol = 20)
-```
-
-Matrices cannot be indexed by their name like in data frames; `matrix$name` will return an error.
-
-```{r}
-colnames(m2) <- LETTERS[1:20]
-m2
-```
-
-```{r error=TRUE, cache=FALSE}
-m2$A
-```
-
-Under the hood, a matrix is basically a vector that is being forced into rectangular dimensions.
 
 ### The list
 
-This is the wildest and least structured data structure that exists. A list is like a closet that happens to be filled with other objects. A vector, scalar and data frame can all be combined into a list. A list can contain other lists inside of it (although this list nesting can be cumbersome to deal with).
+This is the least structured and hence most flexible data structure that exists in R. A list is like a closet that happens to be filled with other objects, or your kitchen sink, or the trunk of your car. It's a collection of objects of varying sizes, types, and so on. A vector, scalar and data frame can all be combined into a list. A list can contain other lists inside of it (although this list nesting can be cumbersome to deal with).
 
 ```{r}
 L1 <- list(v1, v2, v3, d1, m1)
@@ -339,6 +323,14 @@ is.list(d1)
 
 A data frame is also list. You can think of each row being a list containing potentially different data types.
 
+Coercion is also possible. If you find yourself working with matrices, you can convert a data.frame to a matrix. Or a function may return a matrix that you need converted back to a data frame:
+```{r, eval=FALSE}
+as.data.frame()
+as.matrix()
+as.list()
+```
+
+
 ## Final Notes
 
 There are actually several more object types, but these are by far the ones you are most likely to encounter and use.
@@ -361,9 +353,4 @@ new <- d1[1:2, -3]
 
 Sometimes, we need that information assigned to a new object so we can it use later. Other times, printing the extracted information to the console is sufficient for meeting researcher needs.
 
-We can also use indexing to assign new information. What if we wanted to assign an `NA` to position instead of its current value?
-
-```{r, eval=FALSE}
-new[2,2] <- NA
-```
 :::

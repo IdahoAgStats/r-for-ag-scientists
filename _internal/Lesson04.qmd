@@ -45,10 +45,10 @@ x4 <- c("orange", "banana")
 
 Check the type for each R object
 ```{r}
-typeof(x1)
-typeof(x2)
-typeof(x3)
-typeof(x4)
+ class(x1)
+ class(x2)
+ class(x3)
+ class(x4)
 ```
 
 ::: {.callout-note}
@@ -62,31 +62,8 @@ There are two other special classes:
 * consisting of TRUE and FALSE values
 ```{r}
 x5 <- c(TRUE, FALSE, FALSE, TRUE)
-typeof(x5)
+class(x5)
 ```
-
-#### Factor
-```{r}
-x6 <- factor(c("one", "two", "three"))
-typeof(x6)
-x6
-```
-Factors often look like character objects, except there exists several pre-defined levels which exist regardless if they are found in the object. 
-
-```{r}
-x7 <- factor(c("one", "two", "three"), 
-             levels = c("one", "two", "three", "four"))
-x7
-```
-
-Factors are complicated and take some time to fully understand. At this time, we are going to put the topic of factors aside and focus on other more immediately relevant topics. 
-
-```{r}
-typeof(x7)
-class(x7)
-```
-....MORE
-Move factors to next section
 
 ### Object type coercion
 
@@ -94,7 +71,6 @@ Move factors to next section
 
 $$logical < integer < numeric < character$$
 
-(Factors are not listed because they are technically integers. Factors are *weird*!)
 
 What classes do you think results from each of these? 
 ```{r, eval= FALSE}
@@ -104,8 +80,33 @@ x10 <- c(TRUE, FALSE, 1, 0)
 x11 <- c(1, 2, "pear", -6:2, TRUE)
 ```
 
-this can happen in your data resulting data import errors
-c(1.3, 8, 23, "0 (error)")
+::: {.callout-warning, collapse = "true"}
+## Answers
+
+```{r}
+class(x8)
+class(x9)
+class(x10)
+class(x11)
+```
+:::
+
+When you start importing data, you may notice variables did not come in as expected. This is due to the values in the original data file. For example, there may be a column that is only supposed to contain numeric values, yet it imported as character. The column in the file may contain something like this: 
+
+```{r, eval= TRUE}
+c(1.3, 8, 23, "0 (error)", 100, 84)
+```
+
+This would import as character because of that one single value that is not numeric!  
+
+You can check if items are classified as specific types:  
+```{r}
+is.numeric(x10)
+is.logical(x10)
+is.logical(x5)
+is.character(x4)
+```
+
 
 
 Objects can be coerced with these functions:

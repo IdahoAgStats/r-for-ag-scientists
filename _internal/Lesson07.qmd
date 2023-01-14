@@ -231,5 +231,10 @@ You may also be working with data types that are not strictly tabular, at least 
 ## Putting it all together
 
 Note how easy it is to import data from the 'Files' pane; navigate to the file and click on it! It's important that that the code generated is saved so (1) you can reuse the code; and (2) so you can link the data set loaded to a set of R commands you ran should you ever need to rerun them (which is highly likely). 
+
+
+
+
+
 :::
 

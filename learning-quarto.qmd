@@ -1,0 +1,13 @@
+---
+title: "Working with Quarto Documents"
+---
+
+[Quarto](https://quarto.org/) is a file format for weaving togther code (R, python, and others), output, and text into a single notebook. It's a nice tool for putting together reports or doing analysis for yourself. Quarto also has applications for building websites (this website is build with Quarto!), formatting books, and making slideshow presentations. These are advanced applications that over time, you may want to try out yourself. 
+
+It follows some of the [standard syntax of markdown](https://quarto.org/docs/authoring/markdown-basics.html), which is a highly simplified version of HTML ("hypertext *markup* language"). 
+
+A .qmd document can simply exist as is (and is highly useful), or you can choose to output it to many enabled formats such as .html (the easiest!), .pdf, .docx and more. 
+
+There is a rich array of possibilities for [quarto documents](https://quarto.org/docs/guide/), the majority of which we will not addres in this class. Take a look at this [gallery](https://quarto.org/docs/gallery/) to get a better sense of what you can do with quarto and decide for yourself if it's worth the effor to learn better. 
+
+I started learning standard documents, then made a few presentations with quarto (I'm not sure this is worth the effort), and run many many website with quarto and/or its predecessor, Rmarkdown (this has been great!). 
