@@ -128,10 +128,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <link rel="stylesheet" href="../styles.css">
 <meta property="og:title" content="R for Scientists - Practice B">
-<meta property="og:description" content="(from introduction to R objects lesson)">
+<meta property="og:description" content="(from introduction to R types and objects lesson)">
 <meta property="og:site-name" content="R for Scientists">
 <meta name="twitter:title" content="R for Scientists - Practice B">
-<meta name="twitter:description" content="(from introduction to R objects lesson)">
+<meta name="twitter:description" content="(from introduction to R types and objects lesson)">
 <meta name="twitter:card" content="summary">
 </head>
 
@@ -237,13 +237,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
-<p>(from introduction to R objects lesson)</p>
+<p>(from introduction to R types and objects lesson)</p>
 <ol type="1">
-<li>This was a year variable that we once wanted defined as a factor, but no longer. Convert this back to an integer and make sure the output is what you expect.</li>
+<li>You have this collection of items:</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>myvar <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="dv">2010</span><span class="sc">:</span><span class="dv">2022</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>, 1L, 0L, <span class="st">"zero"</span>). </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<ol type="1">
+<li>What data type is this?</li>
+<li>Convert this object to these types:</li>
+</ol>
+<ul>
+<li>logical</li>
+<li>numeric</li>
+<li>character</li>
+</ul>
+<ol type="1">
+<li>Inspect the results. What happened?</li>
+</ol>
 
 
 
