@@ -28,6 +28,10 @@ I will record each day's lessons and make it available through email and Canvas.
 
 **It is very important that you use the time between class sessions to ensure you understand the material.**
 
+### Class absences
+
+It's okay to miss classes - we all have stuff going on. There is no need to tell me in advance. As mentioned above, if you miss class, please be sure to catch up on the course material you missed by reading the course notes, running the content and watching the video. If you are registered for course credit and will miss more than 3 classes, consider switching to the workshop mode, which is the same content, but no course credit. 
+
 ### Class Notes Structure 
 
 As mentioned, all code run will be captured in class notes that will be posted. While you can read those notes and not attend class, many find it helpful to attend a live course and receive live instruction and feedback from an expert. Additionally, those of you formally registered for **BCB 502** are required to attend at least 60% of the classes per the [syllabus](../syllabus.qmd) in order to pass. 

@@ -60,8 +60,8 @@ website:
         contents:
           - href: lessons/Lesson00.qmd
             text: Lesson Zero
-          # - href: lessons/Lesson01.qmd
-          #   text: Math Operators
+          - href: lessons/Lesson01.qmd
+            text: Math Operators
           # - href: lessons/Lesson02.qmd
           #   text: Vectorizing
           # - href: lessons/Lesson03.qmd
