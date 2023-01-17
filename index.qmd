@@ -7,6 +7,8 @@ subtitle: "Course Overview"
 library(quarto); library(here)
 ```
 
+## Our [Class Playlist](https://open.spotify.com/playlist/4gM3IDE3th5sk3vdosHNfO?si=97f2ab1043444224)
+
 This workshop will take you from zero to hero over the course of 16 hours of instruction and practice. It will introduce the [R programming language](https://www.r-project.org/), the graphical user interface [RStudio](https://www.rstudio.com/products/rstudio/) and how R can be used to manage and analyse your data. At the end of this workshop, you will be able to:
 
 -   import & export data
