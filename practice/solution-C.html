@@ -213,6 +213,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <a href="../lessons/Lesson01.html" class="sidebar-item-text sidebar-link">Math Operators</a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lessons/Lesson02.html" class="sidebar-item-text sidebar-link">Vectorizing</a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../lessons/Lesson03.html" class="sidebar-item-text sidebar-link">RStudio Tour</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../practice/practice-A.html" class="sidebar-item-text sidebar-link">practice</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../practice/solution-A.html" class="sidebar-item-text sidebar-link">solution</a>
+  </div>
+</li>
+      </ul>
+  </li>
       </ul>
   </li>
     </ul>
@@ -340,17 +365,17 @@ $x4
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>new_df <span class="ot">&lt;-</span> df[,<span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">3</span>)]</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>new_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>          five one four         two       three
-1        apple   1    B  0.49392784 -1.07329095
-2        apple   2    B  0.49023450 -0.04471551
-3  huckleberry   3    B  1.15152087  2.93591110
-4        apple   4    A -0.21226249  0.35068497
-5        apple   5    B  0.62294771 -0.88502438
-6        apple   6    B  0.26458401  0.84540673
-7        apple   7    A  0.05791458  2.54744124
-8        apple   8    A  1.30869033  1.39514984
-9  huckleberry   9    B  0.55517033 -0.63678178
-10       apple  10    B -1.45091606 -1.36220216</code></pre>
+<pre><code>          five one four        two      three
+1  huckleberry   1    B  1.0452356 -0.7405878
+2        apple   2    B  0.7160254  0.4704401
+3        apple   3    A  1.0397333  1.4993579
+4  huckleberry   4    A  1.0135147  2.0868092
+5  huckleberry   5    A -0.7365204  0.1227796
+6  huckleberry   6    A  0.8894815  0.2107904
+7  huckleberry   7    A  0.8035435  1.6303052
+8        apple   8    A  1.0238463  0.8993583
+9  huckleberry   9    B -0.5474051 -0.1604035
+10       apple  10    A -0.1177552  0.7785962</code></pre>
 </div>
 </div>
 <ol type="1">

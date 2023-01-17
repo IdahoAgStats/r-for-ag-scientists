@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>R for Scientists - Solutions to Practice I</title>
+<title>R for Scientists - Lesson 2: Vectorizing Operations</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -93,6 +93,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<link href="../lessons/Lesson03.html" rel="next">
+<link href="../lessons/Lesson01.html" rel="prev">
 <link href="../images/logo_transparent.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -127,11 +129,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 <link rel="stylesheet" href="../styles.css">
-<meta property="og:title" content="R for Scientists - Solutions to Practice I">
-<meta property="og:description" content="gsub() is relatively straightforward to use, but . without any modifiers is actually for wildcard matching (it matches everything)! Regular expressions are crazy!">
+<meta property="og:title" content="R for Scientists - Lesson 2: Vectorizing Operations">
+<meta property="og:description" content="Using R as a calculator between a few numbers is handy, but typically we are hoping to do so much more with it, such as performing a calculations across a long list of numbers.">
 <meta property="og:site-name" content="R for Scientists">
-<meta name="twitter:title" content="R for Scientists - Solutions to Practice I">
-<meta name="twitter:description" content="gsub() is relatively straightforward to use, but . without any modifiers is actually for wildcard matching (it matches everything)! Regular expressions are crazy!">
+<meta name="twitter:title" content="R for Scientists - Lesson 2: Vectorizing Operations">
+<meta name="twitter:description" content="Using R as a calculator between a few numbers is handy, but typically we are hoping to do so much more with it, such as performing a calculations across a long list of numbers.">
 <meta name="twitter:card" content="summary">
 </head>
 
@@ -141,7 +143,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Solutions to Practice I</h1>
+      <h1 class="quarto-secondary-nav-title">Lesson 2: Vectorizing Operations</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -215,7 +217,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../lessons/Lesson02.html" class="sidebar-item-text sidebar-link">Vectorizing</a>
+  <a href="../lessons/Lesson02.html" class="sidebar-item-text sidebar-link active">Vectorizing</a>
   </div>
 </li>
           <li class="sidebar-item sidebar-item-section">
@@ -249,8 +251,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#main-problem" id="toc-main-problem" class="nav-link active" data-scroll-target="#main-problem">Main Problem</a></li>
-  <li><a href="#extra" id="toc-extra" class="nav-link" data-scroll-target="#extra">Extra</a></li>
+  <li><a href="#vectorizing-operations" id="toc-vectorizing-operations" class="nav-link active" data-scroll-target="#vectorizing-operations">Vectorizing operations</a></li>
+  <li><a href="#object-assignment" id="toc-object-assignment" class="nav-link" data-scroll-target="#object-assignment">Object assignment</a></li>
+  <li><a href="#object-naming" id="toc-object-naming" class="nav-link" data-scroll-target="#object-naming">Object naming</a></li>
+  <li><a href="#reserved-words" id="toc-reserved-words" class="nav-link" data-scroll-target="#reserved-words">Reserved words</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/IdahoAgStats/r-for-ag-scientists/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
@@ -259,7 +263,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Solutions to Practice I</h1>
+<h1 class="title d-none d-lg-block">Lesson 2: Vectorizing Operations</h1>
 </div>
 
 
@@ -274,23 +278,137 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
-<section id="main-problem" class="level3">
-<h3 class="anchored" data-anchor-id="main-problem">Main Problem</h3>
+<div class="callout-caution callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Learning Goals
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<p>At the end of this lesson, you should:</p>
+<ul>
+<li>understand how to assign variables and collections of numbers to an object name</li>
+<li>known the rules for how to name objects</li>
+<li>understand reserved words in R and how to find them</li>
+<li>be able to create a sequence of numbers in R using any starting value and any ending value</li>
+</ul>
+</div>
+</div>
+</div>
+<section id="vectorizing-operations" class="level3">
+<h3 class="anchored" data-anchor-id="vectorizing-operations">Vectorizing operations</h3>
+<p>Using R as a calculator between a few numbers is handy, but typically we are hoping to do so much more with it, such as performing a calculations across a long list of numbers.</p>
+<p>R is naturally vectorized, which means that you can easily perform a mathematical operation across a vector of numbers (no need to write loops!)</p>
+<p>Say we have a collection of numbers from 10 to 20 and we want to multiple them all by 12. We can create a sequence of numbers by wrapping them all in <code>c()</code> command (for “concatenate”) and separating each with a comma.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>geno <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(<span class="st">"data/genotypic_data.txt"</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>geno2 <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">select</span>(geno, <span class="sc">-</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>))</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>geno3 <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">t</span>(geno2)) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">individual =</span> <span class="fu">colnames</span>(geno2)) <span class="sc">%&gt;%</span> <span class="fu">relocate</span>(individual)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(geno3)[<span class="dv">2</span><span class="sc">:</span><span class="fu">nrow</span>(geno3)] <span class="ot">&lt;-</span> geno<span class="sc">$</span>Markers</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>geno3[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>, <span class="dv">13</span>, <span class="dv">14</span>, <span class="dv">15</span>, <span class="dv">16</span>, <span class="dv">17</span>, <span class="dv">18</span>, <span class="dv">19</span>, <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] 10 11 12 13 14 15 16 17 18 19 20</code></pre>
+</div>
+</div>
+<p>Then those numbers can be operated on by any math operator:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>, <span class="dv">13</span>, <span class="dv">14</span>, <span class="dv">15</span>, <span class="dv">16</span>, <span class="dv">17</span>, <span class="dv">18</span>, <span class="dv">19</span>, <span class="dv">20</span>) <span class="sc">*</span> <span class="dv">10</span> <span class="sc">-</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1]  99 109 119 129 139 149 159 169 179 189 199</code></pre>
+</div>
+</div>
+<p>There’s also a quicker way to specify a sequence of integers using the notation <code>start:end</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
+</div>
+</div>
+<p>It also counts down:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="dv">20</span><span class="sc">:</span><span class="dv">10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] 20 19 18 17 16 15 14 13 12 11 10</code></pre>
+</div>
+</div>
+<p>And works with negative integers:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="sc">-</span><span class="dv">5</span><span class="sc">:</span><span class="dv">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] -5 -4 -3 -2 -1  0  1  2  3  4  5</code></pre>
+</div>
+</div>
+<p>These can be operated on:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>(<span class="sc">-</span><span class="dv">5</span><span class="sc">:</span><span class="dv">5</span>)<span class="sc">^</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] 25 16  9  4  1  0  1  4  9 16 25</code></pre>
+</div>
 </div>
 </section>
-<section id="extra" class="level3">
-<h3 class="anchored" data-anchor-id="extra">Extra</h3>
+<section id="object-assignment" class="level3">
+<h3 class="anchored" data-anchor-id="object-assignment">Object assignment</h3>
+<p>It is rather cumbersome to continually retype numbers, even while using a shortcut. There’s a general rule of “DRY” when coding, which means “Don’t repeat yourself”. We can avoid this by assigning these numbers to an R object.</p>
+<p>Traditionally, the left arrow is used for object assignment, <code>&lt;-</code> (less than symbol + a dash), but the standard equals sign, <code>=</code> also works. These are equivalent:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>geno3<span class="sc">$</span>individual <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">"[.]"</span>, <span class="st">" "</span>, geno3<span class="sc">$</span>individual) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><code>gsub()</code> is relatively straightforward to use, but <code>.</code> without any modifiers is actually for wildcard matching (it matches <em>everything</em>)! <a href="https://www.regular-expressions.info/">Regular expressions</a> are crazy!</p>
-<p>So use <code>[.]</code> instead to specify that you in fact are referring to a period and not simply any character (including whitespace!).</p>
+<p>We can assign multiple numbers to an object</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>x_vector <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>y_vector <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">8</span>, <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The left arrow assignment <code>&lt;-</code> takes everything on the right side of the arrow and assigns it the object name on the left.</p>
+</section>
+<section id="object-naming" class="level3">
+<h3 class="anchored" data-anchor-id="object-naming">Object naming</h3>
+<p>It is your choice (mostly) about what to name R objects. There are a few rules to follow:</p>
+<ul>
+<li>spaces are generally not allowed and a huge pain - avoid at all costs!</li>
+<li>Don’t start with a number or symbol! (this is technically possible, but a huge pain)</li>
+<li>choose a name that is short, yet descriptive</li>
+<li>R is case sensitive, so <code>test</code> is different from <code>Test</code> and <code>TEST</code>. Be mindful of this! It trips many folks up.<br>
+</li>
+<li>It’s possible that you will thank yourself for using lowercase and avoiding special symbols (aside from <code>.</code> and <code>_</code>)</li>
+<li>if you start a function name with a “.” (e.g.&nbsp;<code>.variable</code>), you won’t see it listed in the global environment (which can be frustrating), this is not recommended for newer R users</li>
+<li>you cannot use “reserved words” from the R language (terms set aside for very specific purposes in R). When typing these in an R console, they usually light up in a special colors.</li>
+</ul>
+<p>Here is <a href="https://intro2r.com/objects-in-r.html">some discussion</a> on object naming in R.</p>
+</section>
+<section id="reserved-words" class="level3">
+<h3 class="anchored" data-anchor-id="reserved-words">Reserved words</h3>
+<p>|————-|—————-| |reserved word | meaning | | <code>TRUE</code> <code>FALSE</code> | logical | | <code>NA</code> | missing value | | <code>NaN</code> | not a number/undefined | | <code>NULL</code> | no value/undefined | | <code>Inf</code>, <code>-Inf</code> | infinity | | <code>for</code> <code>in</code> | for loops | | <code>if</code> <code>else</code> <code>while</code> <code>break</code> <code>next</code> <code>repeat</code> | control flow | | <code>NA_integer_</code> <code>NA_real_</code> <code>NA_complex_</code> <code>NA_character_</code> | missing data by class</p>
+<p>It’s easy to forgot these. Run <code>?reserved</code> in an R console or <a href="https://stat.ethz.ch/R-manual/R-devel/library/base/html/Reserved.html">check here</a> to remind yourself if need be.</p>
+<p>Some examples of reserved words in the wild:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">log</span>(<span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -Inf</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="dv">0</span><span class="sc">/</span><span class="dv">0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] NaN</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">/</span><span class="dv">0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] Inf</code></pre>
+</div>
+</div>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Putting it all together
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Check the environment pane. These are the object you created during the session. This is where you will see all objects created, unless you have choosen to render the objects invisible by starting their object names with a <code>.</code>, a period.</p>
+</div>
+</div>
 
 
 </section>
@@ -544,6 +662,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../lessons/Lesson01.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Math Operators</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../lessons/Lesson03.html" class="pagination-link">
+        <span class="nav-page-text">RStudio Tour</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
