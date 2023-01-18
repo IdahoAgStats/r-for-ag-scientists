@@ -17,4 +17,4 @@ $x$ = 20
 $x$ = {10, 20, 30, 40, 50, 60}
 
 
-#### [*The Solution*](practice/solution-A.qmd)
+[***The Solution***](../practice/solution-A.qmd)
