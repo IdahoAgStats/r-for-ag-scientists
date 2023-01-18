@@ -8,9 +8,10 @@ title: "Course Schedule"
 | Date            |   Topics          |
 |-----------------|-------------------|
 | Before January 17 | [Do Lesson Zero + Watch Video](lessons/Lesson00.qmd) |
-| January 17 | Lesson 1: math operators\
-                  Lesson 2: vectorization\
-                  Lesson 3: RStudio |
+| January 17 | Lesson 1: [math operators](lessons/Lesson01.qmd)\
+                  Lesson 2: [vectorization](lessons/Lesson02.qmd)\
+                  [*practice problem set for Lessons 1 & 2*](practice/practice-A.qmd) \
+                  Lesson 3: [RStudio](lessons/Lesson03.qmd) |
 | January 19 | Lesson 4: objects\
                   Lesson 5: data structures\
                   Lesson 6: R functions & help |

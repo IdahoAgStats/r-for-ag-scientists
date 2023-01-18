@@ -120,12 +120,16 @@ object naming in R.
 
 ### Reserved words
 
-\|-------------\|----------------\| \|reserved word \| meaning \| \|
-`TRUE` `FALSE` \| logical \| \| `NA` \| missing value \| \| `NaN` \| not
-a number/undefined \| \| `NULL` \| no value/undefined \| \| `Inf`,
-`-Inf` \| infinity \| \| `for` `in` \| for loops \| \| `if` `else`
-`while` `break` `next` `repeat` \| control flow \| \| `NA_integer_`
-`NA_real_` `NA_complex_` `NA_character_` \| missing data by class
+| reserved word | meaning      |
+|-------------|----------------| 
+|`TRUE` `FALSE` | logical | 
+| `NA` | missing value | 
+| `NaN` | not a number/undefined | 
+| `NULL` | no value/undefined | 
+| `Inf`  `-Inf` | infinity | 
+| `for` `in` | for loops |
+| `if` `else` `while` `break` `next` `repeat` | control flow | 
+| `NA_integer_` `NA_real_` `NA_complex_` `NA_character_` | missing data by data type |
 
 It's easy to forgot these. Run `?reserved` in an R console or [check
 here](https://stat.ethz.ch/R-manual/R-devel/library/base/html/Reserved.html)

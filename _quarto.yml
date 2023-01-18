@@ -64,13 +64,14 @@ website:
             text: Math Operators
           - href: lessons/Lesson02.qmd
             text: Vectorizing
-          - href: lessons/Lesson03.qmd
-            text: RStudio Tour
             contents: 
               - href: practice/practice-A.qmd
-                text: "practice"
+                text: "practice problem A"
               - href: practice/solution-A.qmd
-                text: "solution"
+                text: "solution to A"
+          - href: lessons/Lesson03.qmd
+            text: RStudio Tour
+
           # - href: lessons/Lesson04.qmd
           #   text: R objects
           #   contents: 

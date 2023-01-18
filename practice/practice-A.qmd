@@ -16,3 +16,5 @@ $x$ = 20
 2. Repeat this calculation except for 
 $x$ = {10, 20, 30, 40, 50, 60}
 
+
+#### [*The Solution*](practice/solution-A.qmd)
