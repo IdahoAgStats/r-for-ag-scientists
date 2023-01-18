@@ -7,14 +7,10 @@ title: "Practice A"
 1. Make this calculation using R math operators
 
 $$ \frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{1}{2}(\frac{x-\mu}{\sigma})^2}$$
-$\pi$ = 3.14
-$e$ = 2.718
-$\mu$ = 50
-$\sigma$ = 5
-$x$ = 20
+Where: $\pi$ = 3.14, $e$ = 2.718, $\mu$ = 50, $\sigma$ = 5, $x$ = 20
 
-2. Repeat this calculation except for 
-$x$ = {10, 20, 30, 40, 50, 60}
+2. Repeat this calculation where 
+$x$ = {10, 30, 40, 50, 60}
 
 
 [***The Solution***](../practice/solution-A.qmd)
