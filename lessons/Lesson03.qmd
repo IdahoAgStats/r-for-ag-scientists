@@ -24,7 +24,7 @@ Still, it helps to have a guided tour. Let's dive into this.
 
 Here is a simplified schematic:
 
-```{r,eval=FALSE}
+```{r}
 knitr::include_graphics(here::here("images", "rstudio_schematic.png"))
 ```
 
