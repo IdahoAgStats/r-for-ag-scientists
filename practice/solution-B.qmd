@@ -2,24 +2,51 @@
 title: "Solutions to Practice B"
 ---
 
-The variable "x"
+1. The variable `x` is a character variable: 
 
 ```{r}
 x <- c(-2:3, TRUE, FALSE, 1L, 0L, "zero")
-x
+class(x)
 ```
-
 This is a character variable. 
 
-When converted:
-
+1. When converted:
 ```{r}
 as.logical(x)
 as.character(x)
 as.numeric(x)
 ```
 Items which did not the expected object type could not be converted (or "coerced"), so they were set to `NA`. 
-
-
-
-
+1. The way to do this shown in class:
+```{r}
+v1 = c("a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z")
+v1
+```
+An easier way:
+```{r}
+v1 <- c(letters[1:13], LETTERS[14:26])
+v1
+```
+*remember: if something seems tedious and slow in R, there is probably a shortcut!*
+1. The vector:
+```{r}
+v2 <- c(1:10, 2:50)
+```
+1. A possible data frame: 
+```{r}
+d1 <- data.frame(var1 = c(TRUE, TRUE, TRUE, FALSE, FALSE, FALSE),
+                 var2 = c(1:6),
+                 var3 = "orange",
+                 var4 = as.factor(c("red", "blue", "blue", "orange", "green", "green"))
+```
+1. The list:
+```{r}
+l1 <- list(v1, v2, d1)
+l1[[1]][4] <- NA
+```
+You can index a vector inside of a list by indexing the list first, then the vector. 
+1. Remove list item: 
+```{r}
+l1[[2]] <- NULL
+```
+When an item is set to `NULL` in a list, it disappears!
