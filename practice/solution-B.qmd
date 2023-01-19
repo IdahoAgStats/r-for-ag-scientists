@@ -35,9 +35,9 @@ v2 <- c(1:10, 2:50)
 1. A possible data frame: 
 ```{r}
 d1 <- data.frame(var1 = c(TRUE, TRUE, TRUE, FALSE, FALSE, FALSE),
-                 var2 = c(1:6),
+                 var2 = 1:6,
                  var3 = "orange",
-                 var4 = as.factor(c("red", "blue", "blue", "orange", "green", "green"))
+                 var4 = as.factor(c("red", "blue", "blue", "purple", "green", "green")))
 ```
 1. The list:
 ```{r}
