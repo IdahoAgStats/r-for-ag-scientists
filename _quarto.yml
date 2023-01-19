@@ -71,7 +71,6 @@ website:
                 text: "solution to A"
           - href: lessons/Lesson03.qmd
             text: RStudio Tour
-
           - href: lessons/Lesson04.qmd
             text: R objects
            # contents: 
@@ -79,15 +78,15 @@ website:
           #       text: "practice"
           #     - href: practice/solution-B.qmd
           #       text: "solution"
-           - href: lessons/Lesson05.qmd
-             text: Data structures
+          - href: lessons/Lesson05.qmd
+            text: Data structures
             # contents: 
             #   - href: practice/practice-C.qmd
             #     text: "practice"
             #   - href: practice/solution-C.qmd
             #     text: "solution"
-           - href: lessons/Lesson06.qmd
-             text: R documentation
+          - href: lessons/Lesson06.qmd
+            text: R documentation
           # - href: lessons/Lesson07.qmd
           #   text: Data Import
           #   contents: 
