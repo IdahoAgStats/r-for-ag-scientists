@@ -1,0 +1,28 @@
+Day 1:
+
+- start class zoom room 10 minutes prior to official start time, run Spotify playment
+- introductions: myself & course TA's
+- course announcement: 
+    - absence policy: it's fine to miss class, no need to email me
+    - reminder that video will be sent out after every class and notes will be posted online and that it is important students understand the content after each class (or do the work to learn the content)
+    - reminder of open office hours 
+    - stll accepting songs for the playlist! 
+    - notes regarding learning R: it starts hard and then gets easier
+- Show example rmd/qmd report, briefly describe it and emphasize that this is where we want to bring folks to: a point where they can make reports like this and learn new thing in R to mo do their work
+- pair & share: put people in groups of 4-5 folks, have them introduce themselves to each other
+- remember to start recording!!!!
+- go through Lessons 1-3
+- 10 minute break halfway through the class, run spotify playlist
+- end class with reminder about class notes online, video will be sent out, and there are practice problems online
+
+Day 2:
+
+- start class 10 minutes prior to official start time, run spotify playlist
+- ask if anyone had trouble accessing the videos
+- ask if there are any questions about the previous content or the practice problem
+- course annoucements: 
+    - todays lesssons (4 & 5) are among the most important and the most challenging. They form the foundation for much of R programming -- understanding this is important
+    - reminder of *flow* - just keep listening, keep trying, and this material will make sense over time
+- go through lessons 4 & 5 (RECORD!!)
+- 10 break halfway through
+

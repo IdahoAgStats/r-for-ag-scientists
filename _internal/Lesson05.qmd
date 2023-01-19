@@ -324,12 +324,12 @@ is.list(d1)
 A data frame is also list. You can think of each row being a list containing potentially different data types.
 
 Coercion is also possible. If you find yourself working with matrices, you can convert a data.frame to a matrix. Or a function may return a matrix that you need converted back to a data frame:
+
 ```{r, eval=FALSE}
 as.data.frame()
 as.matrix()
 as.list()
 ```
-
 
 ## Final Notes
 

@@ -16,6 +16,7 @@ name: Build Site
 jobs:
   build-website:
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     env:
       GITHUB_PAT: ${{ secrets.SUPERSECRET }}
     steps:
