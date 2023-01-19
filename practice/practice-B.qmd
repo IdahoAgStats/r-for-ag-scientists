@@ -27,7 +27,7 @@ Inspect the results. What happened?
 (@) For the list created in the previous problem, delete the second item. 
 
 ::: {.callout-tip collapse="true"}
-## Hint
+## Hints
 * the functions `letters()` and `LETTERS()` provide a shortcut for problem #3. 
 * try using `NULL` for the last problem.
 :::

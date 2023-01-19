@@ -8,7 +8,6 @@ title: "Solutions to Practice B"
 x <- c(-2:3, TRUE, FALSE, 1L, 0L, "zero")
 class(x)
 ```
-This is a character variable. 
 
 (@) When converted:
 ```{r}
@@ -24,13 +23,19 @@ v1 = c("a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "N", "O"
 v1
 ```
 
-An easier way:
+This is rather cumbersome. An easier way is to use the preset vectors `letters` and `LETTERS` which are the english alphabet in lowercase and uppercase, respectively. The index position 1 of each corresponds to the first letter of the alphabet, "a" or "A". 
 
 ```{r}
 v1 <- c(letters[1:13], LETTERS[14:26])
 v1
 ```
-*remember: if something seems tedious and slow in R, there is probably a shortcut!*
+
+::: {.callout-note}
+## FYI
+
+If something seems tedious and slow in R, there is probably a shortcut.
+:::
+
 
 (@) The vector:
 
@@ -45,7 +50,11 @@ d1 <- data.frame(var1 = c(TRUE, TRUE, TRUE, FALSE, FALSE, FALSE),
                  var2 = 1:6,
                  var3 = "orange",
                  var4 = as.factor(c("red", "blue", "blue", "purple", "green", "green")))
+
+str(d1)
 ```
+The function `str()` is for checking the structure of an object. For a data frame, it will iterate over every column and give us the data type and some sample values. 
+
 
 (@) The list:
 
