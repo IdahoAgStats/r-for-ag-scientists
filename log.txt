@@ -21,8 +21,10 @@ Day 2:
 - ask if anyone had trouble accessing the videos
 - ask if there are any questions about the previous content or the practice problem
 - course annoucements: 
-    - todays lesssons (4 & 5) are among the most important and the most challenging. They form the foundation for much of R programming -- understanding this is important
+    - todays lesssons (4 & 5) are among the most important and the most challenging. They form the foundation for much of R programming -- understanding this is important. 
+    - if we have time: do lesson 6, this is a lecture on R functions & help files, no coding
     - reminder of *flow* - just keep listening, keep trying, and this material will make sense over time
-- go through lessons 4 & 5 (RECORD!!)
-- 10 break halfway through
+- go through lessons 4, 5 & 6 (RECORD!!)
+- 10 minute break halfway through
+- reminder of practice problems
 
