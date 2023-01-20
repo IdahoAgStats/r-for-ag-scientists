@@ -13,6 +13,7 @@ website:
   favicon: "images/logo_transparent.png"
   image: "images/R_intro_logo.png"
   twitter-card: true
+  google-analytics: "G-ZZST40VXE1"
 
   repo-url: https://github.com/IdahoAgStats/r-for-ag-scientists
   repo-actions: [issue]
