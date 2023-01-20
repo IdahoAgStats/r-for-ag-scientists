@@ -69,6 +69,7 @@ x5 <- c(TRUE, FALSE, FALSE, TRUE)
 class(x5)
 ```
 
+
 ### Object type coercion
 
 -   R will automatically an assign an object type based on the items present within object. It will try to assign the simplest type possible. Here are the types from simplest to most complex:
@@ -84,7 +85,9 @@ x10 <- c(TRUE, FALSE, 1, 0)
 x11 <- c(1, 2, "pear", -6:2, TRUE)
 ```
 
-::: {.callout-warning, collapse = "true"} \## Answers
+::: {.callout-warning, collapse = "true"} 
+
+## Answers
 
 ```{r}
 class(x8)
@@ -116,10 +119,49 @@ Objects can be coerced with these functions:
 
 ```{r, eval=FALSE}
 as.character(x8)
-as.factor(x10)
 as.logical(x10)
 as.numeric(x11)
 ```
+
+### Special object type: The Factor
+
+This is a very unusual data type that is specific to R and its history as a language for statistical analysis. 
+
+::: {.fun collapse="true"}
+## FUN Fact
+
+R's predecessor, "S", was [invented at Bell Labs](https://sas.uwaterloo.ca/~rwoldfor/software/R-code/historyOfS.pdf) for doing data analysis
+::: 
+
+This data type looks like a character variable:
+
+```{r}
+f1 <- factor(c("blue", "blue", "purple", "green", "green", "yellow", "green"))
+f1
+```
+
+It is a character variable, with pre-defined levels that are alphabetized. The text "Levels: ..." are the predefined levels associated with that factor. Let's compare this to a character variable by manually converting it to character.
+
+```{r}
+as.character(f1)
+```
+
+In the character type, all the observations are in quotes and there is no "Level" information. 
+
+Like other data types, you can manually coerce a fabric as thus:
+
+```{r}
+as.factor(x4)
+```
+
+
+Under the hood, deep in the R internals, these are integers. The first factor level is designated `1`, the second level is designated `2` and so forth. This order is set alphanumerically, but it can be manipulated by hand (run `?factor` in the console for more information on how to do this). 
+
+```{r}
+as.integer(f1)
+```
+
+Factors are used in statistical analysis and can be manipulated in several ways. To a large extent, you can ignore factors. However, you will see them referred to in R functions occasionally. It's good to know they exist and the very basics of how they work. 
 
 ::: callout-tip
 ## Putting it all together
