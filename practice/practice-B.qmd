@@ -4,6 +4,7 @@ title: "Practice B"
 
 (from introduction to R types and objects lesson)
 
+
 (@) You have this collection of items:
 ```{r, eval=FALSE}
 x <- c(-2:3, TRUE, FALSE, 1L, 0L, "zero"). 
@@ -16,20 +17,5 @@ What data type is this?
   * character
 Inspect the results. What happened? 
 
-(@) Make a vector of letters "a" to "m" (all lowercase) and letters "N" to "Z" (all uppercase).
-
-(@) Make a vector of numbers 1 to 10 and 2 to 50. 
-
-(@) Make a data frame consisting of 6 rows and 4 columns, where one is a character variable, another is numberic, another is logical and the another is a factor. Verify that each column type is what you intended it to be. 
-
-(@) Put all your vectors and the data frame into a list. For the first list item that has a vector, change the forth item of that vector to missing.
-
-(@) For the list created in the previous problem, delete the second item. 
-
-::: {.callout-tip collapse="true"}
-## Hints
-* the functions `letters()` and `LETTERS()` provide a shortcut for problem #3. 
-* try using `NULL` for the last problem.
-:::
 
 [***Solution***](../practice/solution-B.qmd)

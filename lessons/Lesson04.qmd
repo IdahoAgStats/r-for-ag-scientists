@@ -2,7 +2,9 @@
 title: "Lesson 4: Introduction to R data types"
 ---
 
-::: {.callout-caution collapse="false"} \## Learning Goals
+::: {.callout-caution collapse="false"} 
+
+## Learning Goals
 
 At the end of this lesson, you should:
 
@@ -14,7 +16,7 @@ At the end of this lesson, you should:
 
 R is a programming language and like all programming languages, it has special conventions for defining how information is classified on your computer and what types of actions can be performed on different data types.
 
-Much of this is related to your computer hardware, how [computer memory is allocated](http://adv-r.had.co.nz/memory.html) for \[R objects\] and processes\](https://cran.r-project.org/doc/manuals/R-ints.html) and so forth. You don't need to understand the guts of this to use R (but should you ever want to learn, this is fascinating material).
+Much of this is related to your computer hardware, how [computer memory is allocated](http://adv-r.had.co.nz/memory.html) for [R objects and processes](https://cran.r-project.org/doc/manuals/R-ints.html) and so forth. You don't need to understand the guts of this to use R (but should you ever want to learn, this is fascinating material).
 
 The most common object types and the rules that govern them are described in this lesson.
 
@@ -85,7 +87,7 @@ x10 <- c(TRUE, FALSE, 1, 0)
 x11 <- c(1, 2, "pear", -6:2, TRUE)
 ```
 
-::: {.callout-warning, collapse = "true"} 
+::: {.callout-warning collapse="true"} 
 
 ## Answers
 
@@ -127,13 +129,14 @@ as.numeric(x11)
 
 This is a very unusual data type that is specific to R and its history as a language for statistical analysis. 
 
-::: {.fun collapse="true"}
-## FUN Fact
+::: {.fun}
+### FUN Fact
 
 R's predecessor, "S", was [invented at Bell Labs](https://sas.uwaterloo.ca/~rwoldfor/software/R-code/historyOfS.pdf) for doing data analysis
 ::: 
+\n
 
-This data type looks like a character variable:
+Factors look like a character variable:
 
 ```{r}
 f1 <- factor(c("blue", "blue", "purple", "green", "green", "yellow", "green"))

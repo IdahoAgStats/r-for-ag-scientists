@@ -144,7 +144,7 @@ colnames(d1)
 
 ::: {.callout-note}
 
-The `rownames` attribute can be set, but if it is not, it automatically created within R from 1 to the total number of rows. Row names are a tricky attribute than many packages in R do not support. A function may toss of your row names without any warning! 
+The `rownames` attribute can be set, but if it is not, it is automatically created within R from 1 to the total number of rows. Row names are a tricky attribute than many packages in R do not support. A function may toss out your row names without any warning! 
 
 In general, I do not recommend setting the row names attribute in data frames to anything other than the default values unless a package function specifically requires it. 
 :::
@@ -178,7 +178,7 @@ Like vectors, data frames can be indexed by position, except now we have two dim
 ```{r, echo=FALSE,out.height="50%",out.width="50%"}
 knitr::include_graphics("../images/index_ex1.png")
 ```
-*(This graphic is an overlay of green over blue, creating a dark teal color. The green represents rows indexed, the blue is columns indexed and the teal is the intersection between those two. If a color is missing, it is presumed to be under the teal overlay.)* 
+*(This graphic is an overlay of green over blue, creating a dark teal color. The green represents rows indexed, the blue is columns indexed and the teal is the intersection between those two. If a color is not visible, that is because it is under the teal overlay.)* 
 
 ```{r}
 d1[1:2, 2:3]
@@ -295,7 +295,7 @@ A matrix lacks some of the attributes and functionality that are possible for da
 
 Matrices are not commonly seen in user-facing functions in R, but within R internals, they are widely used. You may occasionally come across a package requiring a matrix or perhaps you work in a math-intensive discipline where matrix operations are part of your regular work. 
 
-::: {.callout-note, collapse="true"}
+::: {.callout-note collapse="true"}
 ## FYI: how to make a matrix
 
 A matrix can be created by providing a vector of numbers and telling it to populate a table of given dimensions:
@@ -390,7 +390,7 @@ There are several more object types, but these are--by far--the ones you are mos
 -   For a deeper look into vectors, read [this chapter](https://r4ds.had.co.nz/vectors.html) from *R 4 Data Science*
 -   To learn more about subsetting, read [this chapter](https://adv-r.hadley.nz/subsetting.html) from *Advanced R* (warning: it is advanced!)
 
-For a *very comprehensive* guide to R object types, check out the [official R language manual](https://cran.r-project.org/doc/manuals/r-release/R-lang.html#Basic-types). **Warning:** this manual is extremely technical. If you choose to check it out, be patient with yourself. It may take several readings to fully understand the content.
+For a *very comprehensive* guide to R object types, check out the [official R language manual](https://cran.r-project.org/doc/manuals/r-release/R-lang.html#Basic-types). **Warning:** this manual is extremely technical! If you choose to check it out, be patient with yourself. It may take several readings to fully understand the content.
 
 ::: callout-tip
 ## Putting it all together
