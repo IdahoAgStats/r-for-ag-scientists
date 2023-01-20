@@ -204,6 +204,39 @@ rename2 <- select(variety_trials, cultivar = "variety", yield, protein = "grain_
 
 This function selected the columns "variety", "yield" and "grain_protein", while renaming "variety to "cultivar" and "grain_protein" to "protein". A handy shortcut!
 
+### Split up variables
+
+You may encounter variables with information about multiple things. In agriculture, I see variables like "Moscow_2021", "Moscow_2022", "StJohn_2021", "StJohn_2022" which is communicating a data set collected in different locations (Moscow and St. John) in different years (2021 and 2022). This is a useful variable, but we might want to separate out location and year. The ***tidyr*** function `separate()` can do that.
+
+The first column of "variety_trials" contains considerable information, all separated by an underscore: 
+
+```{r}
+variety_trials$trial[1]
+```
+
+The first term is the program conducting the trial, the second is the crop grown, the third term is a location code, and the last term is the year. Let's separate those terms into separate columns/variables.
+
+These terms use an underscore to separate them, which we will use in the function. However, one of the term does have an underscore inside of it, which will interpreted incorrectly as a term separator. 
+
+```{r}
+variety_trials$trial
+```
+
+```{r}
+variety_trials$trial <- gsub(pattern = "_H_", replacement = "_H-", x = variety_trials$trial )
+```
+
+```{r}
+variety_trials <- separate(variety_trials, trial, 
+                           into = c("program", "crop", "location", "year"),
+                           sep = "_", 
+                           remove = FALSE)
+```
+ 
+The argument `remove = FALSE` indicates that we want to keep the input variable ("trial"). By default, it would be removed. 
+
+The opposite function is `tidyr::unite()` which will paste these variable together, separate by any character string you specify. `unite()` also can ignore missing data when pasting information together, avoiding this unfortunate result: "somevar_NA_NA_anothervar". You would get "somevar_anothervar" instead.
+
 ### Sorting a data set
 
 Prior to dplyr, sorting in R was a nightmare. Excel makes this so easy! Why was R torturing us??? But, dplyr has made this much easier:
@@ -218,9 +251,18 @@ Example;
 arrange1 <- arrange(variety_trials, variety, yield)
 ```
 
+#### Output file
+
+Let's output this object to file so we can use it later.
+
+```{r, eval=FALSE}
+write.csv(variety_trials, here::here("outputs", "variety_trials_clean.csv"), row.names = FALSE)
+```
+
+
 ### The pipe 
 
-The pipe operator `%>%` or its newer replacement `|>` are magic, or at least, they make our (data wranging) lives so much easier.
+The pipe operator `%>%` or its newer replacement `|>` are magic, or at least, they make our (data wrangling) lives so much easier.
 
 The pipe operator works as thus:
 ```
@@ -236,17 +278,17 @@ pipe1 <- filter(variety_trials, yield < 75) %>% arrange(variety)
 
 The data set is not named in the second operation because it is assumed to be dataset provided in the first operation. Whatever is being output directly left of the pipe operator is in the input data set. 
 
-We can take this even further by making the first operation only the data set:
+We can take this even further by making the first operation our addition of the data set to the pipes: 
 
 ```{r}
 pipe2 <- variety_trials %>% filter(yield < 75) %>% arrange(variety)
 ```
 
-The pipe has made datawrangling so much easier! Before the pipe, each of these operations can be specificied separately with its own object. So when you were done, you had roughly 50 objects in your environment, 48 of which were not needed anymore. 
+The pipe has made data wrangling so much easier! Before the pipe, each of these operations can be specified separately with its own object. So when you were done, you had roughly 50 objects in your environment, 48 of which were not needed anymore. 
 
 It also saved us from the "parentheses cascade" where you nest operations within another and no longer had any sense of which set of parentheses belong to which operation.
 
-```{r, echo=FALSE}
+```{r, echo=FALSE} 
 knitr::include_graphics(here::here("images", "nest_vs_pipe.jpg"))
 ```
 
@@ -258,7 +300,7 @@ What going on this notation?
 tibble::rownames_to_column()
 ```
 
-This is a normal function call (the function being `rownames_to_column()`), and it is specifying that the package where this function resides is [tibble](https://tibble.tidyverse.org/reference/tibble-package.html) (a tibble is the Tidyverse alternative to the data farme). 
+This is a normal function call (the function being `rownames_to_column()`), and it is specifying that the package where this function resides is [tibble](https://tibble.tidyverse.org/reference/tibble-package.html) (a tibble is the Tidyverse alternative to the data frame). 
 
 You want to use this notation in 2 circumstance:
 
