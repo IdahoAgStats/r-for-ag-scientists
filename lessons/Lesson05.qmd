@@ -383,14 +383,14 @@ as.list()
 
 ## Final Notes
 
-There are several more object types, but these are--by far--the ones you are most likely to encounter and use.
+There are several more object types, but these are **by far** the ones you are most likely to encounter and use.
 
 ### More resources:
 
 -   For a deeper look into vectors, read [this chapter](https://r4ds.had.co.nz/vectors.html) from *R 4 Data Science*
--   To learn more about subsetting, read [this chapter](https://adv-r.hadley.nz/subsetting.html) from *Advanced R* (warning: it is advanced!)
+-   To learn more about subsetting, read [this chapter](https://adv-r.hadley.nz/subsetting.html) from *Advanced R* (they are not kidding; this book is advanced.)
 
-For a *very comprehensive* guide to R object types, check out the [official R language manual](https://cran.r-project.org/doc/manuals/r-release/R-lang.html#Basic-types). **Warning:** this manual is extremely technical! If you choose to check it out, be patient with yourself. It may take several readings to fully understand the content.
+For a *very comprehensive* guide to R object types, check out the [official R language manual](https://cran.r-project.org/doc/manuals/r-release/R-lang.html#Basic-types). ***Warning: this manual is extremely technical!*** If you choose to check it out, be patient with yourself. It may take several readings to fully understand the content.
 
 ::: callout-tip
 ## Putting it all together
