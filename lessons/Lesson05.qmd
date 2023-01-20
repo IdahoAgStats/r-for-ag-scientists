@@ -12,7 +12,7 @@ This is a big lesson teaching many foundation concepts! It's very very important
 At the end of this lesson, you should:
 
 -   Understand the difference between a vector, data.frame, matrix and list
--   Understand how to index items in a vector
+-   Understand how to index items in a vector, data frame and list
 :::
 
 ## Introduction to Common Data Structures
@@ -80,7 +80,7 @@ What happens if a negative number is used?
 v1[-1]
 ```
 
--   Everything but that index position is returned.\*
+*Everything but that index position is returned.*
 
 What if you index a position that does not exist?
 
@@ -103,7 +103,7 @@ v3
 v3["A"]
 ```
 
--   ***Answer*** (Only the first instance of a name is returned)\*
+*Only the first instance of a name is returned.*
 
 ### The data frame
 
@@ -112,7 +112,7 @@ A collection of vectors all of the name length. Each vector is a single data typ
 ```{r}
 d1 <- data.frame(var1 = 1:5,
                  var2 = c("a", "b", "a", "b", "c"),
-                 var3 = "alpha")
+                 var3 = c("alpha", "beta", "gamma", "zeta", "psi"))
 d1
 ```
 
@@ -129,16 +129,25 @@ A data frame has attributes for:
 While duplicate column names in a data frame are allowed, they are not advised, and may throw an error during data import, depending on the import function used.
 :::
 
+Check the number of rows and columns: 
 ```{r}
 nrow(d1)
 ncol(d1); length(d1)
-dim(d1) # tells us rows and columns in one command!
+dim(d1) # tells us row and column lengths in one command
 ```
 
+Look at the `rownames` and `colnames` atrributes: 
 ```{r}
 rownames(d1)
 colnames(d1)
 ```
+
+::: {.callout-note}
+
+The `rownames` attribute can be set, but if it is not, it automatically created within R from 1 to the total number of rows. Row names are a tricky attribute than many packages in R do not support. A function may toss of your row names without any warning! 
+
+In general, I do not recommend setting the row names attribute in data frames to anything other than the default values unless a package function specifically requires it. 
+:::
 
 What does `length(d1)` return? How about `names(d1)`?
 
@@ -149,62 +158,92 @@ View(d1)
 ```
 
 
-If a particularily large file is loaded into R, using `View()` may be very slow. In that case, you can use `str()` to look a data frame structure:
+If a particularly large file is loaded into R, using `View()` may be very slow (if you have a large number of rows) and provide an incomplete view (if you have a large number of columns). In that case, you can use `str()` to look at a data frame's structure:
 
 ```{r}
 str(d1)
 ```
 
-Or we open the file 
 
-------\> This is the data structure most commonly used in R \<------
+***The data frame is the most common data structure scientists use in R***
 
 #### Accessing items
 
-Like vectors, data frames can be indexed by position, except now we have two dimensions to consider. You can extract individual elements in a data frame by references the row and column position, \`my_dataframe\[row, column\].
+Like vectors, data frames can be indexed by position, except now we have two dimensions to consider. You can extract individual elements in a data frame by references the row and column position, `my_dataframe[row, column]`.
 
-Extract the item located in row 1, column 2:
+* Extract the items located in the first 2 row2 and last 2 columns: 
+
+**Visual of what we want:**
+
+```{r, echo=FALSE,out.height="50%",out.width="50%"}
+knitr::include_graphics("../images/index_ex1.png")
+```
+*(This graphic is an overlay of green over blue, creating a dark teal color. The green represents rows indexed, the blue is columns indexed and the teal is the intersection between those two. If a color is missing, it is presumed to be under the teal overlay.)* 
 
 ```{r}
-d1[1,2]
+d1[1:2, 2:3]
 ```
 
-Extract the entire first row:
+* Extract the first two rows and all of the columns:
+
+```{r, echo=FALSE,out.height="50%",out.width="50%"}
+knitr::include_graphics("../images/index_ex2.png")
+```
 
 ```{r}
-d1[1, ]
+d1[1:2, ]
 ```
 
-*When the column position is left empty, all columns are returned.*
+*When the column position is left empty, all columns are returned*
 
-Extract the entire first column:
+* Extract the entire first column and all rows:
+
+```{r, echo=FALSE,out.height="50%",out.width="50%"}
+knitr::include_graphics("../images/index_ex3.png")
+```
 
 ```{r}
 d1[ ,1]
 ```
 
-*When the row position is left empty, all rows are returned.*
+*When the row position is left empty, all rows are returned*
 
-Extract the values located in the first 2 rows and first two columns:
+* Extract the values located in the first 2 rows and first two columns:
+
+```{r, echo=FALSE,out.height="50%",out.width="50%"}
+knitr::include_graphics("../images/index_ex4.png")
+```
 
 ```{r}
 d1[1:2, 1:2]
 ```
 
-Return everything except the third columns
+* Return everything except the third columns
+
+```{r, echo=FALSE,out.height="50%",out.width="50%"}
+knitr::include_graphics("../images/index_ex5.png")
+```
 
 ```{r}
 d1[ ,-3]
 ```
 
-Return everything except the first 2 rows:
+* Return everything except the first 2 rows:
+
+```{r, echo=FALSE,out.height="50%",out.width="50%"}
+knitr::include_graphics("../images/index_ex6.png")
+```
 
 ```{r}
 d1[-(1:2),  ]
 ```
 
 ::: callout-note
-When indexing positions in a vector or data frame (or anything else), the amount of whitespace does not affect the outcome. These are equivalent: `d[1,2]`, `d[1, 2]`, `d[ 1, 2]`
+## Things to note
+
+Indexing accepts numeric/integer vectors, so you can use a sequence (`3:10`), or concatenated positions (`c(1, 2, 5, 10)`), or a combination of both (`c(1:10, 13)`). 
+
+When indexing positions in a vector or data frame (or anything else), the amount of white space does not affect the outcome. These are equivalent: `d[1,2]`, `d[1, 2]`, `d[ 1, 2]`
 :::
 
 #### Column Referencing
@@ -217,12 +256,26 @@ d1$var1
 
 The data are returned as a vector (with the typical attributes of a vector: length and names).
 
+This can also be used to create a new column in the data frame:
+
+```{r}
+d1$var4 <- 0:-4
+```
+
+In this example, a new column called "var4" was created, consisting of sequence numbers from zero to -4. 
+
+```{r, echo=FALSE}
+d1
+```
+
+
+
 #### Value replacement
 
 There are likely to be moments when you want to replace values in a data frame or vector with something else. You can do that with indexing and variable assignment. 
 
 
-Let's image that we want to assign the third value in the second column as `NA`. First, we index the that position, then we assign a value to it:
+Let's image that we want to assign the third value in the second column as `NA`. First, we index the that position, then we assign a value to it (`NA` in this case): 
 
 ```{r}
 d1[3, 2] <- NA
@@ -232,13 +285,13 @@ d1[3, 2] <- NA
 
 ### The matrix
 
-A very mile-high view of the matrix is given here because you may encounter this, but it's less commonly used data structure in R. 
+A very mile-high view of the matrix is given here because you while may encounter this, it is a less commonly used data structure in R. 
 
-Like a data frame, a matrix is a collection of vectors all the same length, **except** all vectors must be the same data type (e.g. numeric, character, etc).
+Like a data frame, a matrix is a collection of vectors all the same length, ***except*** all vectors must be the same data type (e.g. numeric, character, etc).
 
 An R matrix is not strictly identical to the mathematical concept of a matrix, but if you make an R matrix consisting only of numbers, it can be used like a mathematical matrix. Furthermore, there several mathematical operations that are intended to only work on matrices such as matrix pre-multiplication `%*%` or extraction of a diagonal from a square matrix, `diag()`. 
 
-A matrix lacks some of the attributes and functionality that are possible for data.frames. Colnames can be given, but they cannot be used to index columns (i.e. `my_matrix$col` will throw an error). 
+A matrix lacks some of the attributes and functionality that are possible for data frames. Columns names can be given, but they cannot be used to index columns (i.e. `my_matrix$col` will throw an error). 
 
 Matrices are not commonly seen in user-facing functions in R, but within R internals, they are widely used. You may occasionally come across a package requiring a matrix or perhaps you work in a math-intensive discipline where matrix operations are part of your regular work. 
 
@@ -247,9 +300,9 @@ Matrices are not commonly seen in user-facing functions in R, but within R inter
 
 A matrix can be created by providing a vector of numbers and telling it to populate a table of given dimensions:
 
-```{r, eval=FALSE}
+```{r}
 x = 1:100
-m2 <- matrix(data = x, nrow = 5, ncol = 20, byrow = TRUE)
+m1 <- matrix(data = x, nrow = 5, ncol = 20, byrow = TRUE)
 ```
 
 :::
@@ -272,8 +325,8 @@ names(L1)
 str(L1)
 ```
 
-::: callout-note
-If you end up with too many objects, you can always delete them with the `rm()` function:
+::: {.callout-note}
+If you end up with too many objects in your global environment, you can always delete them with the `rm()` function:
 
     rm(myvar)
     rm(var1, var2, var3)
@@ -286,7 +339,7 @@ If one object ends up with the wrong name, you can copy the object to a new name
 
 #### Accessing items
 
-As mentioned earlier, lists are relatively unstructured and follow fewer rules. You can access list items by their numeric position, `list[[1]]`, or their name (if it exsits), `list$name`.
+As mentioned earlier, lists are relatively unstructured and follow fewer rules. You can access list items by their numeric position, `list[[1]]`, or their name (if it exists), `list$name`.
 
 ```{r}
 L1[[1]]
@@ -306,24 +359,21 @@ L1[[4]][1:2,]
 Use the `class()` command.
 
 ```{r}
+class(v1)
 class(d1)
-class(m2)
 class(L1)
 ```
 
-You can also explicity ask if it is one class or another:
+You can also explicitly ask R if an object is a specific data structure:
 
 ```{r}
 is.data.frame(d1)
+is.matrix(d1)
 is.list(L1)
-is.matrix(m2)
-is.data.frame(m2)
-is.list(d1)
+is.data.frame(L1)
 ```
 
-A data frame is also list. You can think of each row being a list containing potentially different data types.
-
-Coercion is also possible. If you find yourself working with matrices, you can convert a data.frame to a matrix. Or a function may return a matrix that you need converted back to a data frame:
+Coercion from is also possible. If you find yourself working with matrices, you can convert a data.frame to a matrix. Or a function may return a matrix that you need converted back to a data frame:
 
 ```{r, eval=FALSE}
 as.data.frame()
@@ -333,7 +383,7 @@ as.list()
 
 ## Final Notes
 
-There are actually several more object types, but these are by far the ones you are most likely to encounter and use.
+There are several more object types, but these are--by far--the ones you are most likely to encounter and use.
 
 ### More resources:
 
