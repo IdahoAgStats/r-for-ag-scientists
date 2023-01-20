@@ -6,6 +6,19 @@ $font-family: "Atkinson Hyperlegible", sans-serif;
 
 /*-- scss:rules --*/
 
+.fun {
+  padding: 0.5em 0.5em 0em 3em;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  background: #f8f8f8 5px center/3em no-repeat;
+  border-top: 1px solid #db7093;
+  border-bottom: 1px solid #db7093;
+  background-image: url("images/celebrate.png");
+  background-size: 2em;
+  background-position: 0.5em 0.5em;
+}
+
+
 .render-commit-push {
   padding: 0.5em 0.5em 0em 3em;
   margin-top: 5px;
