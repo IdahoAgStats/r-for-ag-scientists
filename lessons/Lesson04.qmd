@@ -78,7 +78,7 @@ $$logical < integer < numeric < character$$
 
 What classes do you think results from each of these?
 
-```{r, eval= FALSE}
+```{r}
 x8 <- c(8, 9.2)
 x9 <- c(0, 0, 0, 0)
 x10 <- c(TRUE, FALSE, 1, 0)
