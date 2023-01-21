@@ -10,20 +10,108 @@ At the end of this lesson, you should:
 * be able to aggregate data and perform actions on those aggregated data
 :::
 
-You may find yourself wanting to calculate summary statistics across a grouping variable. To do this, a data set needs to be split up by that variable, a summary statistic calculated, and the resulting data recombined, or 'split-apply'combine'. There's some nice tools to do this in the **dplyr** package. 
+You may find yourself wanting to calculate summary statistics across a grouping variable. To do this, a data set needs to be split up by that variable, a summary statistic calculated, and the resulting data recombined, or 'split-apply-combine'. There's some nice tools to do this in the **dplyr** package. 
+
+### Prep Work
+
+First, load libraries & import data: 
 
 
-First, load libraries & Import Data: 
-```{r, }
+```{r, eval=FALSE}
 library(dplyr)
 
-variety_trials <- read.csv(here::here("data", "trial_data.csv"))
-trial_metadata <- readr::read_csv(here::here("data", "trial_metadata.csv"))
+variety_trials <- read.csv(here::here("outputs", "trial_data_cleaned.csv")) %>% 
+  mutate(year = as.character(year))
+#trial_metadata <- readr::read_csv(here::here("data", "trial_metadata.csv"))
+```
+
+```{r, echo=FALSE, include=FALSE}
+library(dplyr)
+
+#trial_metadata <- readr::read_csv(here::here("data", "trial_metadata.csv"))
+
+variety_trials <- read.csv(here::here("data", "trial_data.csv")) %>% 
+  mutate(trial = gsub("_H_", "_H-", trial)) %>% 
+  tidyr::separate(trial, c("program", "crop", "location", "year"),
+                  sep = "_", remove = FALSE)
+```
+
+### Basic grouping & aggregation
+
+The `group_by` will group data and then any statistic can be calculated or summary action can be done on that grouped data using `summarise()`.
+
+The basic formula: 
+```{r, eval=FALSE}
+mydata %>% group_by(variable) %>% summarise(new_var = ...)
 ```
 
 
+This data set can several categorical variables we can group on: 
 
+```{r}
+str(variety_trials)
+```
 
+```{r}
+variety_trials %>% group_by(trial) %>% tally()
+```
+
+Let's group by crop and pull out the mean yield and standard deviation. 
+
+```{r}
+yield_crop <- variety_trials %>% group_by(crop) %>% 
+  summarise(yield_mean = mean(yield, na.rm = TRUE), 
+            yield_sd = sd(yield, na.rm = TRUE),
+            yield_min = min(yield, na.rm = TRUE),
+            yield_max = max(yield, na.rm = TRUE),
+            total = n())
+
+yield_crop
+```
+
+::: callout-note
+
+`summarise()` only returns a single value back for each group. If you want more than that (e.g. to run a linear model on each group), there are other tools for that. This is intended to be addressed in Lesson 16.
+
+:::
+
+### Grouping across multiple variables
+
+Let's examine how many crops and years there are: 
+```{r}
+table(variety_trials$crop, variety_trials$year)
+```
+
+This tells us how many rows of data occur for each variable combination. 
+
+You can group by as many conditions as you want: 
+```{r}
+variety_trials %>% group_by(crop, year) %>% 
+  summarise(protein_na = sum(is.na(grain_protein))) %>% arrange(desc(protein_na))
+```
+
+::: {.callout-warning}
+## FYI
+
+You can group by a numeric variable. ***dplyr*** will look for common values to group observations. This can be successful when there are repeat 'integers' (e.g. year), but if all values are unique (often the case with floating point numbers), then the number of groups is the number of observations. 
+
+:::
+
+### Summarising across multiple variables
+
+Use `across()` to conduct summaries across multiple columns. 
+
+```{r}
+
+```
+
+### Row-wise summaries
+
+Many operations in R are already vectorized across rows, but when they are not, you can use `rowwise()`. 
+
+```{r}
+
+```
 
 
 
