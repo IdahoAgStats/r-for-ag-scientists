@@ -7,7 +7,7 @@ title: "Lesson 10: Aggregating & Summarising Data"
 
 At the end of this lesson, you should:
 
-* be able to aggregate data and perform actions on those aggregated data
+* be able to aggregate data and perform actions on those aggregated data using `group_by()` + `summarise()`
 :::
 
 You may find yourself wanting to calculate summary statistics across a grouping variable. To do this, a data set needs to be split up by that variable, a summary statistic calculated, and the resulting data recombined, or 'split-apply-combine'. There's some nice tools to do this in the **dplyr** package. 
@@ -99,25 +99,44 @@ You can group by a numeric variable. ***dplyr*** will look for common values to 
 
 ### Summarising across multiple variables
 
-Use `across()` to conduct summaries across multiple columns. 
+Use `across()` to conduct the same summary action(s) across multiple columns. 
 
 ```{r}
-
+variety_trials %>% group_by(trial) %>% 
+  summarise(across(c(yield, grain_protein), ~ mean(.x, na.rm = T)))
 ```
 
 ### Row-wise summaries
 
-Many operations in R are already vectorized across rows, but when they are not, you can use `rowwise()`. 
+Many operations in R are already vectorized across rows, but when they are not, you can use `rowwise()` to implement that. 
+
+Field disease scoring may benefit from this system. Often, several measaurements are made on a single experimental unit (usually a plot), and those measurements are averaged together to create a final disease incidence score. Here is how to do that with `rowwise()`. 
+
+First, simulate a set of disease scores between 0 and 100 (indicating percent infection). 
 
 ```{r}
+score_range <- c(0:10 * 10L)
+scores <- sample(score_range, 50, replace = TRUE)
 
+disease_df <- data.frame(plot = 1:10,
+                         score1 = scores[1:10],
+                         score2 = scores[11:20],
+                         scores3 = scores[21:30],
+                         scores4 = scores[31:40],
+                         scores5 = scores[41:50])
+disease_df
 ```
 
-
+```{r}
+disease_df_sum <- disease_df %>% rowwise()
+  mutate(score_final = mean(score1:score5),
+        max_score = max(score1:score5))
+diseease_df_sum
+```
 
 ::: callout-tip
 ## Putting it all together
 
-
+The function `across()` also works with `mutate()` statements if you want to mutate several columns at once (for example, rounding numbers in multiple columns). 
 
 :::
