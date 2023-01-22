@@ -2,7 +2,7 @@
 title: "Practice D"
 ---
 
-(for data import lesson)
+*(for the data import lesson)*
 
 1. Import one of your data sets using two of the functions taught:
 

@@ -2,6 +2,8 @@
 title: "Practice Problem L"
 ---
 
+*(for the lesson on repeating operations)*
+
 (@) You have a data set of 1000 random numbers between 1 and 100:
 
 ```{r, eval=FALSE}
@@ -48,16 +50,4 @@ It should start:
 my_final_estimates <- fertil %>% 
 ```
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+[***The Solution***](../practice/solution-L.qmd)

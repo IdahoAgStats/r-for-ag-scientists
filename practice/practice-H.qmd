@@ -1,0 +1,8 @@
+---
+title: "Practice H"
+---
+
+*(for the data reshaping lesson)*
+
+
+[***Solution***](../practice/solution-H.qmd)

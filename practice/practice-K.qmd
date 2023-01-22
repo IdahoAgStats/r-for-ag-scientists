@@ -1,0 +1,10 @@
+---
+title: "Practice K"
+---
+
+*(for the ggplot2 lesson)*
+
+
+
+
+[***The Solution***](../practice/solution-K.qmd)

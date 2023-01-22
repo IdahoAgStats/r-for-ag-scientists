@@ -2,7 +2,7 @@
 title: "Practice B"
 ---
 
-(from introduction to R types and objects lesson)
+*(for introduction to R types and objects lesson)*
 
 
 (@) You have this collection of items:

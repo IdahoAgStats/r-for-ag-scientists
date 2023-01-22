@@ -2,6 +2,8 @@
 title: "Practice I"
 ---
 
+*(for the data merging lesson)*
+
 In the class project, there are two files with similar names in the "data" directory: 
 
 ### Main problem

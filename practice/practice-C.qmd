@@ -2,7 +2,7 @@
 title: "Practice C"
 ---
 
-(for lessons on data structures)
+*(for the lesson on data structures)*
 
 ### Vectors
 

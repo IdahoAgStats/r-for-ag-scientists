@@ -2,7 +2,7 @@
 title: "Practice A"
 ---
 
-(from lessons on R for mathematics and vectorized operations)
+*(for lessons on R for mathematics and vectorized operations)*
 
 1. Make this calculation using R math operators
 

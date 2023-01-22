@@ -1,0 +1,8 @@
+---
+title: "Practice F"
+---
+
+*(for the data export lesson)*
+
+
+[***Solution***](../practice/solution-F.qmd)
