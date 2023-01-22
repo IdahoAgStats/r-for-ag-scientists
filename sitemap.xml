@@ -2,98 +2,102 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://idahoagstats.github.io/r-for-ag-scientists/CoC.html</loc>
-    <lastmod>2023-01-21T06:33:30.418Z</lastmod>
+    <lastmod>2023-01-22T21:53:49.534Z</lastmod>
   </url>
   <url>
     <loc>https://idahoagstats.github.io/r-for-ag-scientists/index.html</loc>
-    <lastmod>2023-01-21T06:33:31.886Z</lastmod>
+    <lastmod>2023-01-22T21:53:51.346Z</lastmod>
   </url>
   <url>
     <loc>https://idahoagstats.github.io/r-for-ag-scientists/install_R_instructions.html</loc>
-    <lastmod>2023-01-21T06:33:33.394Z</lastmod>
+    <lastmod>2023-01-22T21:53:53.242Z</lastmod>
   </url>
   <url>
     <loc>https://idahoagstats.github.io/r-for-ag-scientists/learning-quarto.html</loc>
-    <lastmod>2023-01-21T06:33:33.802Z</lastmod>
+    <lastmod>2023-01-22T21:53:53.738Z</lastmod>
   </url>
   <url>
     <loc>https://idahoagstats.github.io/r-for-ag-scientists/lessons/Lesson00.html</loc>
-    <lastmod>2023-01-21T06:33:34.274Z</lastmod>
+    <lastmod>2023-01-22T21:53:54.350Z</lastmod>
   </url>
   <url>
     <loc>https://idahoagstats.github.io/r-for-ag-scientists/lessons/Lesson01.html</loc>
-    <lastmod>2023-01-21T06:33:36.226Z</lastmod>
+    <lastmod>2023-01-22T21:53:56.710Z</lastmod>
   </url>
   <url>
     <loc>https://idahoagstats.github.io/r-for-ag-scientists/lessons/Lesson02.html</loc>
-    <lastmod>2023-01-21T06:33:37.970Z</lastmod>
+    <lastmod>2023-01-22T21:53:58.866Z</lastmod>
   </url>
   <url>
     <loc>https://idahoagstats.github.io/r-for-ag-scientists/lessons/Lesson03.html</loc>
-    <lastmod>2023-01-21T06:33:39.622Z</lastmod>
+    <lastmod>2023-01-22T21:54:00.894Z</lastmod>
   </url>
   <url>
     <loc>https://idahoagstats.github.io/r-for-ag-scientists/lessons/Lesson04.html</loc>
-    <lastmod>2023-01-21T06:33:41.490Z</lastmod>
+    <lastmod>2023-01-22T21:54:03.194Z</lastmod>
   </url>
   <url>
     <loc>https://idahoagstats.github.io/r-for-ag-scientists/lessons/Lesson05.html</loc>
-    <lastmod>2023-01-21T06:33:43.990Z</lastmod>
+    <lastmod>2023-01-22T21:54:06.275Z</lastmod>
   </url>
   <url>
     <loc>https://idahoagstats.github.io/r-for-ag-scientists/lessons/final_Lesson.html</loc>
-    <lastmod>2023-01-21T06:33:44.418Z</lastmod>
+    <lastmod>2023-01-22T21:54:06.795Z</lastmod>
   </url>
   <url>
     <loc>https://idahoagstats.github.io/r-for-ag-scientists/posit_instructions.html</loc>
-    <lastmod>2023-01-21T06:33:45.958Z</lastmod>
+    <lastmod>2023-01-22T21:54:08.751Z</lastmod>
   </url>
   <url>
     <loc>https://idahoagstats.github.io/r-for-ag-scientists/practice/practice-A.html</loc>
-    <lastmod>2023-01-21T06:33:46.382Z</lastmod>
+    <lastmod>2023-01-22T21:54:09.263Z</lastmod>
   </url>
   <url>
     <loc>https://idahoagstats.github.io/r-for-ag-scientists/practice/practice-B.html</loc>
-    <lastmod>2023-01-21T06:33:47.870Z</lastmod>
+    <lastmod>2023-01-22T21:54:11.335Z</lastmod>
   </url>
   <url>
     <loc>https://idahoagstats.github.io/r-for-ag-scientists/practice/practice-C.html</loc>
-    <lastmod>2023-01-21T06:33:49.366Z</lastmod>
+    <lastmod>2023-01-22T21:54:13.151Z</lastmod>
   </url>
   <url>
     <loc>https://idahoagstats.github.io/r-for-ag-scientists/practice/practice-D.html</loc>
-    <lastmod>2023-01-21T06:33:49.790Z</lastmod>
+    <lastmod>2023-01-22T21:54:13.659Z</lastmod>
   </url>
   <url>
     <loc>https://idahoagstats.github.io/r-for-ag-scientists/practice/practice-E.html</loc>
-    <lastmod>2023-01-21T06:33:50.222Z</lastmod>
+    <lastmod>2023-01-22T21:54:14.183Z</lastmod>
   </url>
   <url>
     <loc>https://idahoagstats.github.io/r-for-ag-scientists/practice/practice-I.html</loc>
-    <lastmod>2023-01-21T06:33:50.658Z</lastmod>
+    <lastmod>2023-01-22T21:54:14.691Z</lastmod>
+  </url>
+  <url>
+    <loc>https://idahoagstats.github.io/r-for-ag-scientists/practice/practice-L.html</loc>
+    <lastmod>2023-01-22T21:54:16.715Z</lastmod>
   </url>
   <url>
     <loc>https://idahoagstats.github.io/r-for-ag-scientists/practice/solution-A.html</loc>
-    <lastmod>2023-01-21T06:33:52.350Z</lastmod>
+    <lastmod>2023-01-22T21:54:18.787Z</lastmod>
   </url>
   <url>
     <loc>https://idahoagstats.github.io/r-for-ag-scientists/practice/solution-B.html</loc>
-    <lastmod>2023-01-21T06:33:54.630Z</lastmod>
+    <lastmod>2023-01-22T21:54:20.836Z</lastmod>
   </url>
   <url>
     <loc>https://idahoagstats.github.io/r-for-ag-scientists/practice/solution-C.html</loc>
-    <lastmod>2023-01-21T06:33:56.482Z</lastmod>
+    <lastmod>2023-01-22T21:54:22.992Z</lastmod>
   </url>
   <url>
     <loc>https://idahoagstats.github.io/r-for-ag-scientists/practice/solution-F.html</loc>
-    <lastmod>2023-01-21T06:33:56.902Z</lastmod>
+    <lastmod>2023-01-22T21:54:23.480Z</lastmod>
   </url>
   <url>
     <loc>https://idahoagstats.github.io/r-for-ag-scientists/practice/solution-I.html</loc>
-    <lastmod>2023-01-21T06:33:58.542Z</lastmod>
+    <lastmod>2023-01-22T21:54:25.516Z</lastmod>
   </url>
   <url>
     <loc>https://idahoagstats.github.io/r-for-ag-scientists/schedule.html</loc>
-    <lastmod>2023-01-21T06:33:58.954Z</lastmod>
+    <lastmod>2023-01-22T21:54:26.048Z</lastmod>
   </url>
 </urlset>
