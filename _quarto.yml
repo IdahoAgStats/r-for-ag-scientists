@@ -57,6 +57,8 @@ website:
             text: Schedule
           - href: CoC.qmd
             text: Code of Conduct
+          #- href: install_R_instructions.qmd
+          #  text: how to install R
       - section: "Lessons"
         contents:
           - href: lessons/Lesson00.qmd

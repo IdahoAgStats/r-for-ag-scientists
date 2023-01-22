@@ -2,7 +2,7 @@
 title: "Practice F"
 ---
 
-*(for the data export lesson)*
+*(for the data wrangling lesson)*
 
 
 [***Solution***](../practice/solution-F.qmd)
