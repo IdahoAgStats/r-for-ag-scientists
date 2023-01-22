@@ -1,0 +1,63 @@
+---
+title: "Practice Problem L"
+---
+
+(@) You have a data set of 1000 random numbers between 1 and 100:
+
+```{r, eval=FALSE}
+x <- sample(1:100, 1000, replace = TRUE)
+```
+
+Write `ifelse` statements than converts:  
+
+* numbers less than 50 to zero   
+* numbers greater than or equal to 90 to 100   
+* and keeps the rest of the numbers as is   
+
+(@) need an `apply()` problem 
+
+(@) You have a data set of 500 random numbers between 1 and 100 that are divided into 5 categories. 
+
+```{r, eval=FALSE}
+df <- data.frame(int = sample(1:10, 500, replace = TRUE),
+                 category = sample(letters[1:5], 500, replace = TRUE))
+head(df)
+```
+
+Calculate the mode of each category using `lapply()`. The mode is the most commonly occurring value. If you're unsure how to do this, consider the function `table()` combined with `sort()`. FYI, The R function `mode()` does not compute a mathematical mode (it gives object class information). 
+
+(@) Rewrite this using ***purrr*** functions to loop over all countries for when y = "cereal_yield":
+
+[THIS LOOKS LIKE IT NEEDS A DATA SET]
+
+```{r, eval=FALSE}
+my_lm_fun <- function(df, y, cty) {
+  #browser()
+  form <- formula(paste(y, "~ year", sep = ""))
+  m1 = lm(form, data = df,
+          subset = df$country == cty)
+  a1 = anova(m1)
+  r2 = summary(m1)$r.squared
+  return(r2)
+}
+```
+
+It should start: 
+
+```{r, eval=FALSE}
+my_final_estimates <- fertil %>% 
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,81 @@
+---
+title: "Untitled"
+---
+
+Here is a very brief introduction to control flow variables in R!
+
+### `while` and `if`
+
+* `while` indicates that a process will repeat until a condition is met. A function will loop through until the the test for `while()` evaluates to `FALSE`. Be careful not to get this stuck in an infinite loop! 
+```{r, eval=FALSE}
+while(sometest) {
+  do something
+}
+```
+
+
+* `if` will only allow an action to occur if a test is passed. The action will only occur once (there is no looping). 
+```{r, eval=FALSE}
+if(sometest) {
+  do action
+}
+```
+
+* `if` can be paired with `else`. Anything that evaluated to `FALSE` in the `if` test will go through the processes described in `else`. There is no TRUE/FALSE test for `else`, it just takes everything that evaluated to `FALSE` in the `if` test. 
+```{r, eval=FALSE}
+if(sometest) {
+  do action
+} else {
+  do another action
+}
+```
+
+* `next` is used within a `while` statement or `for` loop along with `if`. It indicates that the remaining commands in the loop should be skipped and the process moves onto the next iteration: 
+```{r, eval=FALSE}
+while(sometest) {
+  do something
+  if(anothertest) 
+    next # when "anothertest" is TRUE, "other things to do" is skipped
+          # and the next iteration is performed
+  other things to do 
+}
+```
+
+* `break` is similar to `next`, except that it causes all of the repeating/looping to terminate. Like `next`, it is used within a `while` statement or `for` loop along with `if`.  
+```{r, eval=FALSE}
+while(sometest) {
+  do something
+  if(anothertest) 
+    break # when "anothertest" is TRUE,
+          # the entire process terminates immediately
+  other things to do 
+}
+```
+
+
+### Row median polish example
+```{r, eval=FALSE}
+# initial the variables 
+m <- matrix(1:90, nrow = 9, ncol = 10, byrow = TRUE)
+diff = 1
+# a while + if example function
+while (diff > 0.001){
+  if(exists("new_m")) {mat = new_m}
+    else {mat = m}
+  row_med1 = apply(mat, 1, median)
+  
+  if(exists("row_med2")) {
+    diff = max(abs(row_med1 - row_med2))}
+  print(diff)
+  # this is a good place for 'break' statement, 
+    # because without it, this code below must run 
+    # and the loop restarted at the top in order for the 
+    # 'while' statement to be evaluated again
+  over_eff = median(row_med1)
+  row_med2 <- row_med1 - over_eff
+  med_matrix = matrix(rep(row_med1, each = ncol(mat)), 
+                       nrow = nrow(mat), ncol = ncol(mat), byrow=TRUE)
+  new_m = mat - med_matrix
+}
+```
+

@@ -12,8 +12,196 @@ At the end of this lesson, you should:
  
 :::
 
+### Repeating operations across a vector
+
+* Reminder: a vector is an object with a length attribute composed of items each of the same class. It can have a name attribute (not required)
+
+* `ifelse(test, action-if-yes, action-if-no)`
+
+* The 'test' should be an R function that will return a TRUE or FALSE, e.g. `is.na()`, `is.numeric()`
+
+* Vector example
+```{r}
+x <- 1:10
+y <- ifelse(x < 5, NA, x)
+```
+
+* Vector example inside a data.frame
+```{r}
+data(storms, package = "dplyr")
+storms$category_simple <- ifelse(storms$wind <= 50, "small", "big")
+```
+
+
+### Repeating operations across a data frame
+
+* `apply()` a simple handy function to repeat things across a data.frame (or tibble, or matrix)
+* This operation is *vectorised*, meaning all processes proceed simultaneously
+
+* Across rows
+```{r, eval=FALSE}
+storm_num <- select_if(storms, is.numeric)
+apply(storm_num, 1, median, na.rm = TRUE)
+```
+
+* Across columns
+```{r, eval=FALSE}
+storm_num <- select_if(storms, is.numeric)
+apply(storm_num, 2, median, na.rm = TRUE)
+```
+
+
+#### Special R functions for rows and columns
+
+* These functions are very, very fast
+* They are not forgiving of non-numeric data
+
+```{r, eval=FALSE}
+rowSums(); colSums()
+rowMeans(); colMeans()
+```
+
+```{r, eval=TRUE}
+library(dplyr); data("storms")
+storms %>% select_if(is.numeric) %>% colMeans(na.rm=TRUE)
+```
+
+::: {.callout-note}
+# Comments on `NA` values
+
+* I often get the question "how can I replace "NA" across my entire data object?" 
+* `NA` is a reserved word in the R language referring to missing data. Often the best way to handle how missing values from your data are handled is to specify that when the file is read in. Check the documentation for your import function, e.g. `read.csv(..., na.string = "...")`.
+* To do a global replacement of `NA` with another value, use `tidyr::replace_na()`
+* To do a global replacement of another value with `NA`, this can be handled in the import, or use `dplyr::na_if()`
+
+
+### Repeating operatio across a list
+
+😍😍😍😍😍 `lapply()` 😍😍😍😍😍
+
+* Vectorised over *lists*
+* If you can express one aspect of your operation as a list, this can probably work for you!
+* Downside: everything comes back as a list (it takes an effort to convert this into a more exportable form)
+* It uses very simple notation: 
+
+```{r, eval=FALSE}
+lapply(list, some_function)
+```
+
+* Example
+```{r}
+integers <- sample(1:100, 200, replace = TRUE)
+thrice_int <- lapply(integers, function(x) x*(c(1,2,3)))
+```
+
+I'm very fond of this for doing complex repeat operations. Perhaps I have a group of experiments, all with identical experimental design, that each need to be analyzed the same. Using a list can accomplish this efficiently. 
+
+#### `lapply()` flotsam & jetsam
+
+* Dealing with lists can be challenging: they follow different rules; they typically require lots and lots of indexing to extract content. And you usually can't write a list straight to file like a data.frame.  
+* `sapply()` is just like `lapply()`, except it tries to simplify to common R data objects - a matrix or array. This works if the return data is one row. 
+* `dplyr::bind_rows()` can concatenate data.frames better than `rbind()`.
+* Getting things out of a list and into the desired format can be one of the most challenging aspects of working with `lapply()` (bonus: it makes you understand R data types really well!).
+* **purrr** to the rescue! 
+
+
+### purrr for repeat operations
+
+**[purrr](https://purrr.tidyverse.org/)** does all of the hard work of iteration *plus* conversion of output to the object type you want! It works on data structures of all types: vectors, data frames and lists. 
+
+```{r}
+library(purrr)
+
+mtcars %>%
+  split(.$cyl) %>%
+  map(~ lm(mpg ~ wt, data = .x)) %>%
+  map_dfr(~ as.data.frame(t(as.matrix(coef(.)))))
+```
+
+::: {.callout-note}
+
+***purrr*** is complicated! Make use of the [cheatsheet](https://raw.githubusercontent.com/rstudio/cheatsheets/main/purrr.pdf)].
+
+:::
+
+###  Base/Tidyverse equivalents
+
+|base functions | tidyverse equivalent |
+|--------------|-----------------------|
+| `lapply()` `sapply()` `vapply()`|  **purrr** package   |
+| `mapply()` | `purrr::pmap()` |
+| `tapply()` | `dplyr::group_by() %>%  dplyr::summarise()` |
+| `replicate()` | `purrr:rerun()` |
+| `ifelse()`  | `dplyr::case_when()`  |
+
+
+### The oft-abused `for`
+
+A `for` loop: 
+```{r, eval=FALSE}
+for (i in thingy) {
+  do_something()
+}
+```
+
+I see things like this frequently: 
+```{r, eval=FALSE}
+x <- LETTERS[1:10]
+for (i in x) print(i)
+# same as sapply(x, print)
+```
+
+Or worse: 
+```{r, eval=FALSE}
+for (i in item1) {
+  for(j in item2) {
+    here_we_go(...)
+  } }
+```
+
+
+#### Optimal use of `for`
+
+* Better usage of `for` is when you *require* the previous value(s) to proceed through the loop
+* pre-allocation of your vector/data.frame/list/etc will result in faster code
+```{r}
+# vector pre-allocation
+f <- c(0, 1, rep(NA, 98)) 
+f[1:10]
+
+# Fibonacci sequence
+for (i in 3:100){
+  f[i] = f[i-1] + f[i-2]
+}
+
+f[1:10]
+```
+
+
+### Traditional control flow
+
+* These are standard control variables that exist across many languages to repeat operations. 
+* These are not vectorized; they only work with a single input at time. 
+
+```{r, eval=FALSE}
+if
+else
+for 
+while
+next
+break
+```
+
+* Note that these are reserved words in the R language; you cannot use these words for any other purpose in the R language than what they are designed to do (no function masking is possible). 
+
+::: {.callout-note}
+
+Teaching how to use these traditional control flow variables is beyond an introductory course in R. However, you can learn more about it [here](../lessons/control_flow.qmd) and [Introduction to R manual](https://cran.r-project.org/doc/manuals/r-release/R-intro.pdf).   
+:::
+
 ::: {.callout-tip}
 ## Putting it all together
 
+Understanding how to do repeat operations in R often requires a strong understanding of the underlying data structures we are trying to perform those operations on. This aspect of R, sometimes called "data conditioning" can be one of the most challenging aspects of using R. When writing repeat operations, check back on Lessons 3 and 4 that address basics of data types and data structures if you are having trouble. 
 
 :::
