@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>R for Scientists - Solutions to Practice C</title>
+<title>R for Scientists - Lesson 8: Exporting Data</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -93,8 +93,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../lessons/Lesson06.html" rel="next">
-<link href="../practice/practice-C.html" rel="prev">
+<link href="../practice/practice-E.html" rel="next">
+<link href="../practice/practice-D.html" rel="prev">
 <link href="../images/logo_transparent.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -138,11 +138,11 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
 
 
 <link rel="stylesheet" href="../styles.css">
-<meta property="og:title" content="R for Scientists - Solutions to Practice C">
-<meta property="og:description" content="This is rather cumbersome. An easier way is to use the preset vectors letters and LETTERS which are the english alphabet in lowercase and uppercase, respectively.">
+<meta property="og:title" content="R for Scientists - Lesson 8: Exporting Data">
+<meta property="og:description" content="This lesson is focused on exporting tabular data. It is a very short lesson because exporting data is quite similar to importing data.">
 <meta property="og:site-name" content="R for Scientists">
-<meta name="twitter:title" content="R for Scientists - Solutions to Practice C">
-<meta name="twitter:description" content="This is rather cumbersome. An easier way is to use the preset vectors letters and LETTERS which are the english alphabet in lowercase and uppercase, respectively.">
+<meta name="twitter:title" content="R for Scientists - Lesson 8: Exporting Data">
+<meta name="twitter:description" content="This lesson is focused on exporting tabular data. It is a very short lesson because exporting data is quite similar to importing data.">
 <meta name="twitter:card" content="summary">
 </head>
 
@@ -152,7 +152,7 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Solutions to Practice C</h1>
+      <h1 class="quarto-secondary-nav-title">Lesson 8: Exporting Data</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -272,11 +272,11 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="../lessons/Lesson05.html" class="sidebar-item-text sidebar-link">Data structures</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="true">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="" class="collapse list-unstyled sidebar-section depth2 show">  
+      <ul id="" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../practice/practice-C.html" class="sidebar-item-text sidebar-link">practice set C</a>
@@ -284,7 +284,7 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../practice/solution-C.html" class="sidebar-item-text sidebar-link active">solutions to C</a>
+  <a href="../practice/solution-C.html" class="sidebar-item-text sidebar-link">solutions to C</a>
   </div>
 </li>
       </ul>
@@ -311,12 +311,12 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../lessons/Lesson08.html" class="sidebar-item-text sidebar-link">Data export</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false">
+            <a href="../lessons/Lesson08.html" class="sidebar-item-text sidebar-link active">Data export</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="true">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../practice/practice-E.html" class="sidebar-item-text sidebar-link">practice set E</a>
@@ -335,9 +335,17 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#vectors" id="toc-vectors" class="nav-link active" data-scroll-target="#vectors">Vectors</a></li>
-  <li><a href="#data-frames" id="toc-data-frames" class="nav-link" data-scroll-target="#data-frames">Data Frames</a></li>
-  <li><a href="#lists" id="toc-lists" class="nav-link" data-scroll-target="#lists">Lists</a></li>
+  <li><a href="#exporting-to-csv-files" id="toc-exporting-to-csv-files" class="nav-link active" data-scroll-target="#exporting-to-csv-files">Exporting to CSV files</a>
+  <ul class="collapse">
+  <li><a href="#write.csv" id="toc-write.csv" class="nav-link" data-scroll-target="#write.csv"><code>write.csv()</code></a></li>
+  <li><a href="#write_csv" id="toc-write_csv" class="nav-link" data-scroll-target="#write_csv"><code>write_csv()</code></a></li>
+  </ul></li>
+  <li><a href="#exporting-to-text-file" id="toc-exporting-to-text-file" class="nav-link" data-scroll-target="#exporting-to-text-file">Exporting to text file</a></li>
+  <li><a href="#exporting-to-excel-file" id="toc-exporting-to-excel-file" class="nav-link" data-scroll-target="#exporting-to-excel-file">Exporting to Excel file</a></li>
+  <li><a href="#other-options" id="toc-other-options" class="nav-link" data-scroll-target="#other-options">Other options</a>
+  <ul class="collapse">
+  <li><a href="#save" id="toc-save" class="nav-link" data-scroll-target="#save"><code>save()</code></a></li>
+  </ul></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/IdahoAgStats/r-for-ag-scientists/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
@@ -346,7 +354,7 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Solutions to Practice C</h1>
+<h1 class="title d-none d-lg-block">Lesson 8: Exporting Data</h1>
 </div>
 
 
@@ -361,28 +369,98 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
 
 </header>
 
-<section id="vectors" class="level3">
-<h3 class="anchored" data-anchor-id="vectors">Vectors</h3>
-<ol class="example" type="1">
-<li><p>There is no difference. If there is only item in a vector, it does not need to be indexed by position.</p></li>
-<li><p>The way to do this shown in class:</p></li>
-</ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>v1 <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>, <span class="st">"d"</span>, <span class="st">"e"</span>, <span class="st">"f"</span>, <span class="st">"g"</span>, <span class="st">"h"</span>, <span class="st">"i"</span>, <span class="st">"j"</span>, <span class="st">"k"</span>, <span class="st">"l"</span>, <span class="st">"m"</span>, <span class="st">"N"</span>, <span class="st">"O"</span>, <span class="st">"P"</span>, <span class="st">"Q"</span>, <span class="st">"R"</span>, <span class="st">"S"</span>, <span class="st">"T"</span>, <span class="st">"U"</span>, <span class="st">"V"</span>, <span class="st">"W"</span>, <span class="st">"X"</span>, <span class="st">"Y"</span>, <span class="st">"Z"</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>v1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> [1] "a" "b" "c" "d" "e" "f" "g" "h" "i" "j" "k" "l" "m" "N" "O" "P" "Q" "R" "S"
-[20] "T" "U" "V" "W" "X" "Y" "Z"</code></pre>
+
+</div>
+<div class="callout-caution callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Learning Goals
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<p>At the end of this lesson, you should:</p>
+<ul>
+<li>Be able to export tabular data from R into a text file, .csv or .xlsx file</li>
+<li>Be able to save an R object and reload it into an R session.</li>
+</ul>
 </div>
 </div>
-<p>This is rather cumbersome. An easier way is to use the preset vectors <code>letters</code> and <code>LETTERS</code> which are the english alphabet in lowercase and uppercase, respectively. The index position 1 of each corresponds to the first letter of the alphabet, “a” or “A”.</p>
+</div>
+<p>This lesson is focused on exporting tabular data. It is a very short lesson because exporting data is quite similar to importing data. Like in data import, exporting data invovles opening a connection between R and file system, writing the data to file and closing the connection.</p>
+<p>First, we need to load some data to write to file. R packages often come with data sets that can loaded with the <code>data()</code> command.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>v1 <span class="ot">&lt;-</span> <span class="fu">c</span>(letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">13</span>], LETTERS[<span class="dv">14</span><span class="sc">:</span><span class="dv">26</span>])</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>v1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> [1] "a" "b" "c" "d" "e" "f" "g" "h" "i" "j" "k" "l" "m" "N" "O" "P" "Q" "R" "S"
-[20] "T" "U" "V" "W" "X" "Y" "Z"</code></pre>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">"mtcars"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<section id="exporting-to-csv-files" class="level2">
+<h2 class="anchored" data-anchor-id="exporting-to-csv-files">Exporting to CSV files</h2>
+<section id="write.csv" class="level3">
+<h3 class="anchored" data-anchor-id="write.csv"><code>write.csv()</code></h3>
+<p>First, check the documentation: <code>?write.csv</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(mtcars, here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"outputs"</span>, <span class="st">"mtcars_1.csv"</span>), <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Setting the <code>row.names</code> argument to <code>FALSE</code> ensures that a column of numbers without a header is not included in the file (which is likely to cause import errors in the future). ### <code>write.table()</code></p>
+<p>This function looks very similar to <code>write.csv()</code> because it is technically the same function. <code>write.csv()</code> is wrapper for <code>write.table()</code> using a specific set of default arguments for CSV files (e.g.&nbsp;<code>sep = ","</code>). In this case, we cannot rely on those default and must specify</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.table</span>(mtcars, here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"outputs"</span>, <span class="st">"mtcars_2.csv"</span>), </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">row.names =</span> <span class="cn">FALSE</span>, <span class="at">sep =</span> <span class="st">","</span>, <span class="at">quote =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="write_csv" class="level3">
+<h3 class="anchored" data-anchor-id="write_csv"><code>write_csv()</code></h3>
+<p>This function is very similar to <code>read.csv()</code>, but it does not have a row names argument because it does not output rownames.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(mtcars, here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"outputs"</span>, <span class="st">"mtcars_3.csv"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><code>write_csv()</code> is wrapper for <code>write_delim()</code>.</p>
+</section>
+</section>
+<section id="exporting-to-text-file" class="level2">
+<h2 class="anchored" data-anchor-id="exporting-to-text-file">Exporting to text file</h2>
+<p>This also uses <code>write.table()</code> or <code>write.table()</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.table</span>(mtcars, here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"outputs"</span>, <span class="st">"mtcars.txt"</span>), <span class="at">sep =</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span>,</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>            <span class="at">quote =</span> <span class="st">"none"</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">write_delim</span>(mtcars, here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"outputs"</span>, <span class="st">"mtcars.txt"</span>), <span class="at">delim =</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span>,</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">quote =</span> <span class="st">"none"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="exporting-to-excel-file" class="level2">
+<h2 class="anchored" data-anchor-id="exporting-to-excel-file">Exporting to Excel file</h2>
+<p>Use the <a href="https://docs.ropensci.org/writexl/"><strong><em>writexl</em></strong></a> package:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(writexl)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">write_xlsx</span>(mtcars, here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"outputs"</span>, <span class="st">"mtcars.xlsx"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The help file is informative: <code>?write_xlsx</code></p>
+</section>
+<section id="other-options" class="level2">
+<h2 class="anchored" data-anchor-id="other-options">Other options</h2>
+<section id="save" class="level3">
+<h3 class="anchored" data-anchor-id="save"><code>save()</code></h3>
+<p>This is special option to save objects in your environment to file. These can only be used by R, but are convenient if you plan to return to these object:</p>
+<p>Save one object:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(mtcars, <span class="at">file =</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"outputs"</span>, <span class="st">"mydata.RData"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Save multiple objects:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">"sleep"</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(mtcars, sleep, <span class="at">file =</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"outputs"</span>, <span class="st">"more.RData"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>These can be loaded back into an R session as thus:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"outputs"</span>, <span class="st">"mydata.RData"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="callout-note callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
@@ -390,196 +468,30 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
 <i class="callout-icon"></i>
 </div>
 <div class="callout-caption-container flex-fill">
-FYI
+Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>If something seems tedious and slow in R, there is probably a shortcut.</p>
+<p>If you are working with a specialized file type that has dedicated libraries for importing them into R and manipulating those objects, those dedicated libraries likely have export functions for that file type. For spatial object, the packge <strong>sf</strong> can import, alter, and export shapefiles.</p>
 </div>
 </div>
-<ol start="3" class="example" type="1">
-<li>The vector:</li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>v2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="dv">2</span><span class="sc">:</span><span class="dv">50</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="data-frames" class="level3">
-<h3 class="anchored" data-anchor-id="data-frames">Data Frames</h3>
-<ol start="4" class="example" type="1">
-<li>A possible data frame:</li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>d1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">var1 =</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">TRUE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">FALSE</span>, <span class="cn">FALSE</span>),</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">var2 =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>,</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">var3 =</span> <span class="st">"orange"</span>,</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">var4 =</span> <span class="fu">as.factor</span>(<span class="fu">c</span>(<span class="st">"red"</span>, <span class="st">"blue"</span>, <span class="st">"blue"</span>, <span class="st">"purple"</span>, <span class="st">"green"</span>, <span class="st">"green"</span>)))</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(d1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>'data.frame':   6 obs. of  4 variables:
- $ var1: logi  TRUE TRUE TRUE FALSE FALSE FALSE
- $ var2: int  1 2 3 4 5 6
- $ var3: chr  "orange" "orange" "orange" "orange" ...
- $ var4: Factor w/ 4 levels "blue","green",..: 4 1 1 3 2 2</code></pre>
-</div>
-</div>
-<p>The function <code>str()</code> is for checking the structure of an object. For a data frame, it will iterate over every column and give us the data type and some sample values.</p>
-<ol start="5" class="example" type="1">
-<li>The starting data frame</li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">one =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">two =</span> <span class="fu">rnorm</span>(<span class="dv">10</span>))</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>three <span class="ot">&lt;-</span> df<span class="sc">$</span>two <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">10</span>)</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>four <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>), <span class="dv">10</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>five <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"apple"</span>, <span class="st">"huckleberry"</span>), <span class="dv">10</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>six <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(df<span class="sc">$</span>five)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>new_df <span class="ot">&lt;-</span> df[,<span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">3</span>)]</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>new_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>          five one four         two       three
-1        apple   1    A -1.19758919 -1.33960967
-2        apple   2    B -0.27099633  0.73048851
-3        apple   3    A  1.55344181  2.19319980
-4        apple   4    A -0.81883691  0.30644793
-5  huckleberry   5    A  0.29874563  0.04304078
-6  huckleberry   6    A  0.26489710 -1.21020083
-7        apple   7    A -0.89677331  0.24691796
-8        apple   8    A -0.57734542 -1.41303305
-9        apple   9    A -0.05716764 -0.51029433
-10 huckleberry  10    B -0.98757145 -1.20387302</code></pre>
-</div>
-</div>
-</section>
-<section id="lists" class="level3">
-<h3 class="anchored" data-anchor-id="lists">Lists</h3>
-<ol start="6" class="example" type="1">
-<li>The list</li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>mylist <span class="ot">=</span> <span class="fu">list</span>(<span class="at">x1 =</span> <span class="st">"snow"</span>, </span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>              <span class="at">x2 =</span> <span class="dv">45</span><span class="sc">:</span><span class="dv">65</span>, </span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>              <span class="at">x3 =</span> <span class="fu">rep</span>(letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>], <span class="at">each =</span> <span class="dv">3</span>), </span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">x4 =</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>, <span class="at">nrow =</span> <span class="dv">10</span>, <span class="at">ncol=</span><span class="dv">10</span>))</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>mylist</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>$x1
-[1] "snow"
-
-$x2
- [1] 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65
-
-$x3
-[1] "a" "a" "a" "b" "b" "b" "c" "c" "c"
-
-$x4
-      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]
- [1,]    1   11   21   31   41   51   61   71   81    91
- [2,]    2   12   22   32   42   52   62   72   82    92
- [3,]    3   13   23   33   43   53   63   73   83    93
- [4,]    4   14   24   34   44   54   64   74   84    94
- [5,]    5   15   25   35   45   55   65   75   85    95
- [6,]    6   16   26   36   46   56   66   76   86    96
- [7,]    7   17   27   37   47   57   67   77   87    97
- [8,]    8   18   28   38   48   58   68   78   88    98
- [9,]    9   19   29   39   49   59   69   79   89    99
-[10,]   10   20   30   40   50   60   70   80   90   100</code></pre>
-</div>
-</div>
-<p>There are two ways to remove x3. The First is to create a new list from the object ‘mylist’ and don’t include x3:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>mylist2 <span class="ot">&lt;-</span> <span class="fu">list</span>(mylist[[<span class="dv">1</span>]], mylist[[<span class="dv">2</span>]], mylist[[<span class="dv">4</span>]])</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>mylist2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[[1]]
-[1] "snow"
-
-[[2]]
- [1] 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65
-
-[[3]]
-      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]
- [1,]    1   11   21   31   41   51   61   71   81    91
- [2,]    2   12   22   32   42   52   62   72   82    92
- [3,]    3   13   23   33   43   53   63   73   83    93
- [4,]    4   14   24   34   44   54   64   74   84    94
- [5,]    5   15   25   35   45   55   65   75   85    95
- [6,]    6   16   26   36   46   56   66   76   86    96
- [7,]    7   17   27   37   47   57   67   77   87    97
- [8,]    8   18   28   38   48   58   68   78   88    98
- [9,]    9   19   29   39   49   59   69   79   89    99
-[10,]   10   20   30   40   50   60   70   80   90   100</code></pre>
-</div>
-</div>
-<p>Lists also let you declare a list item as <code>NULL</code> which makes it completely go away!</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>mylist[[<span class="dv">3</span>]] <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>mylist</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>$x1
-[1] "snow"
-
-$x2
- [1] 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65
-
-$x4
-      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]
- [1,]    1   11   21   31   41   51   61   71   81    91
- [2,]    2   12   22   32   42   52   62   72   82    92
- [3,]    3   13   23   33   43   53   63   73   83    93
- [4,]    4   14   24   34   44   54   64   74   84    94
- [5,]    5   15   25   35   45   55   65   75   85    95
- [6,]    6   16   26   36   46   56   66   76   86    96
- [7,]    7   17   27   37   47   57   67   77   87    97
- [8,]    8   18   28   38   48   58   68   78   88    98
- [9,]    9   19   29   39   49   59   69   79   89    99
-[10,]   10   20   30   40   50   60   70   80   90   100</code></pre>
-</div>
-</div>
-<ol start="7" class="example" type="1">
-<li>A possible list:</li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>l1 <span class="ot">&lt;-</span> <span class="fu">list</span>(v1, v2, d1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Set the 4th item of vector inside a list to <code>NA</code>. The first item is a vector, so we will use that.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>l1[[<span class="dv">1</span>]][<span class="dv">4</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>You can index a vector inside of a list by indexing the list first, then the vector.</p>
-<ol start="8" class="example" type="1">
-<li>Remove list item:</li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>l1[[<span class="dv">2</span>]] <span class="ot">&lt;-</span> <span class="cn">NULL</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>When an item is set to <code>NULL</code> in a list, it disappears.</p>
 <div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-caption-container flex-fill">
-Evergreen lesson
+Putting it all together
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Always always always check your object to make sure it looks like what you expected it to.</p>
-<p>Common checks:</p>
-<ul>
-<li>the dimensions (row number, column number, length, etc) are what you expect</li>
-<li>the data types are what you expect</li>
-<li>the values are what you expect</li>
-</ul>
+<p>Exporting data is a good thing to do during the data wrangling process. Once you have arranged in your data set into an ideal state, save it so you an easily reload it later.</p>
+<p>It is very important that you check your output file (especially as a newer R programmer!) to make sure everything is as you expect. We have all accidentally output “myfile” instead of “myfile.csv”, and this can be highly inconveniencing! You can do by manually opening the file or by importing back into R; either should tell you if the file export went as expected or not.</p>
 </div>
 </div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -833,13 +745,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../practice/practice-C.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">practice set C</span>
+      <a href="../practice/practice-D.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">practice set D</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../lessons/Lesson06.html" class="pagination-link">
-        <span class="nav-page-text">R documentation</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../practice/practice-E.html" class="pagination-link">
+        <span class="nav-page-text">practice set E</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
