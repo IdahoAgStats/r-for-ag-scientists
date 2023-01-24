@@ -1,5 +1,5 @@
 ---
-title: "Lesson 7: Importing Data into R"
+title: "Lesson 7: Importing Data into R
 ---
 
 ::: {.callout-caution collapse="false"}
@@ -74,6 +74,7 @@ mycsv1 <- read.csv(here::here("data", "trial_metadata.csv"))
 ```
 
 **Result:**
+
 ```{r}
 str(mycsv1)
 ```
@@ -111,6 +112,7 @@ mycsv2 <- read_csv(here::here("data", "trial_metadata.csv"))
 ```
 
 **Result:**
+
 ```{r}
 str(mycsv2)
 ```
@@ -133,7 +135,7 @@ This function will read in MS Excel files (reliably)! It is truly amazing. For m
 
 **Example Usage:**
 
-Load the package that contains the function `read_excel()`
+Load the package that contains the function `read_excel()`, [***readxl***](https://readxl.tidyverse.org/). 
 ```{r}
 library(readxl)
 ```
@@ -141,7 +143,6 @@ library(readxl)
 ```{r, eval=FALSE}
 myxl <- read_excel("data/field_trial_2009.xlsx", sheet = "site_02")
 ```
-
 
 ```{r, echo=FALSE}
 myxl <- read_excel(here::here("data", "field_trial_2009.xlsx"), sheet = "site_02", 
@@ -217,11 +218,11 @@ Big data is a subjective term that is system-dependent (and is rapidly changing 
 
 You may also be working with data types that are not strictly tabular, at least in the form they are stored on a computer. Here are some common non-tabular data types and packages to handle import of those.
 
-* spatial data: **[sf](https://r-spatial.github.io/sf/)**, **[sp](https://CRAN.R-project.org/package=sp)**, **[raster](https://rspatial.github.io/raster/)**
-* SAS data sets: **[haven](https://haven.tidyverse.org/)**, `haven::read_sas()`
-* SPSS data sets: **[haven](https://haven.tidyverse.org/)**, `haven::read_sav()`
-* tabular files on Google drive: **[googledrive](https://googledrive.tidyverse.org/)** 
-* image files: **[magick](https://docs.ropensci.org/magick/articles/intro.html)**
+* spatial data: ***[sf](https://r-spatial.github.io/sf/)***, ***[sp](https://CRAN.R-project.org/package=sp)***, ***[raster](https://rspatial.github.io/raster/)***
+* SAS data sets: ***[haven](https://haven.tidyverse.org/)***, `haven::read_sas()`
+* SPSS data sets: ***[haven](https://haven.tidyverse.org/)***, `haven::read_sav()`
+* tabular files on Google drive: ***[googledrive](https://googledrive.tidyverse.org/)*** 
+* image files: ***[magick](https://docs.ropensci.org/magick/articles/intro.html)***
 
 ...and so much more. 
 

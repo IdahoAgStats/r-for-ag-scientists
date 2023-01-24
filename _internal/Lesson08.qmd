@@ -1,5 +1,7 @@
 ---
 title: "Lesson 8: Exporting Data"
+execute:
+  eval: false
 ---
 
 ```{r, echo=FALSE}
@@ -72,7 +74,7 @@ write_delim(mtcars, here::here("outputs", "mtcars.txt"), delim = "\t",
 
 ## Exporting to Excel file
 
-Use the **writexl** package: 
+Use the [***writexl***](https://docs.ropensci.org/writexl/) package: 
 
 ```{r}
 library(writexl)
