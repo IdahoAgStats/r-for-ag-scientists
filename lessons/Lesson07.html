@@ -394,7 +394,8 @@ Learning Goals
 <h2 class="anchored" data-anchor-id="working-directory-and-file-paths">Working directory and file paths</h2>
 <p>While you can simulate data or load existing data sets associated with packages for your research, most of you will need to load pre-existing data sets from you computer, or a cloud server, some other external device.</p>
 <p>The first thing you need to understand is the working directory and file paths.</p>
-<p>When an R session is initiated, it ascertains what the root working directory is based on the default settings for your R installation and any other</p>
+<p>When an R session is initiated, it ascertains what the root working directory is based on the default settings for your R installation and any other.</p>
+<p>You can check this with <code>getwd()</code>. You can set the file path relative to the current working directory or set an absolute path. If this sounds unfamiliar, that is okay.</p>
 </section>
 <section id="how-to-import" class="level2">
 <h2 class="anchored" data-anchor-id="how-to-import">How to Import</h2>
@@ -450,7 +451,7 @@ Warning
 </ul>
 <section id="read.csv" class="level3">
 <h3 class="anchored" data-anchor-id="read.csv"><code>read.csv()</code></h3>
-<p>A very commonly used funtion for reading in “comma separated values” (CSV) files. I personally like this format because it is not proprietary and is compatable across many operating systems. It also limitts all sorts of extraneous formatting that itself is a barrier to reproducible research (e.g.&nbsp;highlighting is discarded once a CSV file is closed).</p>
+<p>A very commonly used function for reading in “comma separated values” (CSV) files. I personally like this format because it is not proprietary and is compatible across many operating systems. It also limits all sorts of extraneous formatting that itself is a barrier to reproducible research (e.g.&nbsp;highlighting is discarded once a CSV file is closed).</p>
 <p><strong>Example usage:</strong></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>mycsv1 <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/trial_metadata.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -497,7 +498,11 @@ Warning
 </div>
 <p><strong>Details:</strong></p>
 <p><code>read.csv()</code> is actually a “wrapper” for another function, <code>read.table()</code>. It has taken <code>read.table()</code> and set the default arguments to work with CSV files. <code>read.table()</code> is a more generalized form providing more flexibility.</p>
-<p>The default arguments include: * <code>colnames = TRUE</code>: the first row of data is assumed to be the column names * nothing in the data set will be used for rownames unless we explicitly indicate so * <code>sep = ","</code>: each data point is separated from another by a comma * a newline indicator is used to separate rows of data * <code>na.strings = c("NA", "")</code>: cells with a either no data (““) or an”NA” will be treated as missing. * if something consists of non-numeric characters, that column vector will be treated as character and not a factor</p>
+<p>The default arguments include:</p>
+<p>- <code>colnames = TRUE</code>: the first row of data is assumed to be the column names * nothing in the data set will be used for row names unless we explicitly indicate so</p>
+<p>- <code>sep = ","</code>: each data point is separated from another by a comma * a newline indicator is used to separate rows of data</p>
+<p>- <code>na.strings = c("NA", "")</code>: cells with a either no data (““) or an”NA” will be treated as missing.</p>
+<p>- if a column of data consists of non-numeric characters, that column vector will be treated as character and not a factor</p>
 </section>
 <section id="read_csv" class="level3">
 <h3 class="anchored" data-anchor-id="read_csv"><code>read_csv()</code></h3>
@@ -701,7 +706,7 @@ Note
 <p>Things frequently go wrong when importing data. This can sometimes be corrected by changing the import arguments, but often it indicates problems with the incoming data.</p>
 <p>Some possible errors and how to fix them:</p>
 <ol type="1">
-<li><p><strong>Some variables which should be numeric are characters instead.</strong> <em>At least one item contains an unexpected character that renders that observation - and the rest of the vector - as a character. This might be two decimal points, a comma, or a “O” instead of “0”. If possible, manually inspect the data and correct the error. </em></p></li>
+<li><p><strong>Some variables which should be numeric are characters instead.</strong> <em>At least one item contains an unexpected character that renders that observation - and the rest of the vector - as a character. This might be two decimal points, a comma, or a “O” instead of “0”. If possible, manually inspect the data and correct the error.</em></p></li>
 <li><p><strong>Missing data are not coded as missing.</strong> <em>Import functions have default values for what is interpreted as missing. Check the documentation and adjust the arguments as needed to capture what code a data sets is using to indicate missing data.</em></p></li>
 </ol>
 <p>The best choice is to properly arrange your data set prior to import. <a href="https://www.tandfonline.com/doi/full/10.1080/00031305.2017.1375989">Broman &amp; Woo (2018)</a> provides some straightforward recommendations on how to manage data in spreadsheets.</p>
@@ -709,14 +714,14 @@ Note
 <section id="importing-other-data-types" class="level3">
 <h3 class="anchored" data-anchor-id="importing-other-data-types">Importing Other Data types</h3>
 <p>The instructions provided above are for importing tabular data that is generally not “big data”.</p>
-<p>Big data is a subjective term that is system-dependent (and is rapidly changing as PC computing power and memory increases). Some personal computers can easily handle a 50 Mb file, while others cannot. If you are waiting more than 5 seconds for your data to import, then consider other options. A deep discussion about how to handle large data sets are beyond the scope of this workshop, but at the very minimum, consider the package <strong><a href="https://rdatatable.gitlab.io/data.table/">data.table</a></strong> and its high-performance functions for reading and writing data, <code>fread()</code> and <code>fwrite()</code>. If your data sets are too big to load directly into R, consider <strong><a href="https://arrow.apache.org/docs/r/">arrow</a></strong>.</p>
+<p>Big data is a subjective term that is system-dependent (and is rapidly changing as PC computing power and memory increases). Some personal computers can easily handle a 50 Mb file, while others cannot. If you are waiting more than 5 seconds for your data to import, then consider other options. A deep discussion about how to handle large data sets are beyond the scope of this workshop, but at the very minimum, consider the package <a href="https://rdatatable.gitlab.io/data.table/"><strong>data.table</strong></a> and its high-performance functions for reading and writing data, <code>fread()</code> and <code>fwrite()</code>. If your data sets are too big to load directly into R, consider <a href="https://arrow.apache.org/docs/r/"><strong>arrow</strong></a>.</p>
 <p>You may also be working with data types that are not strictly tabular, at least in the form they are stored on a computer. Here are some common non-tabular data types and packages to handle import of those.</p>
 <ul>
-<li>spatial data: <strong><em><a href="https://r-spatial.github.io/sf/">sf</a></em></strong>, <strong><em><a href="https://CRAN.R-project.org/package=sp">sp</a></em></strong>, <strong><em><a href="https://rspatial.github.io/raster/">raster</a></em></strong></li>
-<li>SAS data sets: <strong><em><a href="https://haven.tidyverse.org/">haven</a></em></strong>, <code>haven::read_sas()</code></li>
-<li>SPSS data sets: <strong><em><a href="https://haven.tidyverse.org/">haven</a></em></strong>, <code>haven::read_sav()</code></li>
-<li>tabular files on Google drive: <strong><em><a href="https://googledrive.tidyverse.org/">googledrive</a></em></strong></li>
-<li>image files: <strong><em><a href="https://docs.ropensci.org/magick/articles/intro.html">magick</a></em></strong></li>
+<li>spatial data: <a href="https://r-spatial.github.io/sf/"><strong><em>sf</em></strong></a>, <a href="https://CRAN.R-project.org/package=sp"><strong><em>sp</em></strong></a>, <a href="https://rspatial.github.io/raster/"><strong><em>raster</em></strong></a></li>
+<li>SAS data sets: <a href="https://haven.tidyverse.org/"><strong><em>haven</em></strong></a>, <code>haven::read_sas()</code></li>
+<li>SPSS data sets: <a href="https://haven.tidyverse.org/"><strong><em>haven</em></strong></a>, <code>haven::read_sav()</code></li>
+<li>tabular files on Google drive: <a href="https://googledrive.tidyverse.org/"><strong><em>googledrive</em></strong></a></li>
+<li>image files: <a href="https://docs.ropensci.org/magick/articles/intro.html"><strong><em>magick</em></strong></a></li>
 </ul>
 <p>…and so much more.</p>
 <div class="callout-tip callout callout-style-default callout-captioned">
