@@ -8,25 +8,24 @@ execute:
 knitr::opts_chunk$set(eval = FALSE)
 ```
 
-
 ::: {.callout-caution collapse="false"}
 ## Learning Goals
 
-At the end of this lesson, you should: 
+At the end of this lesson, you should:
 
-* Be able to export tabular data from R into a text file, .csv or .xlsx file
-* Be able to save an R object and reload it into an R session. 
+-   Be able to export tabular data from R into a text file, .csv or .xlsx file
+-   Be able to save an R object and reload it into an R session.
 :::
 
-This lesson is focused on exporting tabular data. It is a very short lesson because exporting data is quite similar to importing data. Like in data import, exporting data invovles opening a connection between R and file system, writing the data to file and closing the connection.  
+This lesson is focused on exporting tabular data. It is a very short lesson because exporting data is quite similar to importing data. Like in data import, exporting data invovles opening a connection between R and file system, writing the data to file and closing the connection.
 
-First, we need to load some data to write to file. R packages often come with data sets that can loaded with the `data()` command. 
+First, we need to load some data to write to file. R packages often come with data sets that can loaded with the `data()` command.
 
 ```{r}
 data("mtcars")
 ```
 
-## Exporting to CSV files 
+## Exporting to CSV files
 
 ### `write.csv()`
 
@@ -36,10 +35,9 @@ First, check the documentation: `?write.csv`
 write.csv(mtcars, here::here("outputs", "mtcars_1.csv"), row.names = FALSE)
 ```
 
-Setting the `row.names` argument to `FALSE` ensures that a column of numbers without a header is not included in the file (which is likely to cause import errors in the future). 
-### `write.table()`
+Setting the `row.names` argument to `FALSE` ensures that a column of numbers without a header is not included in the file (which is likely to cause import errors in the future). \### `write.table()`
 
-This function looks very similar to `write.csv()` because it is technically the same function. `write.csv()` is wrapper for `write.table()` using a specific set of default arguments for CSV files (e.g. `sep = ","`). In this case, we cannot rely on those default and must specify 
+This function looks very similar to `write.csv()` because it is technically the same function. `write.csv()` is wrapper for `write.table()` using a specific set of default arguments for CSV files (e.g. `sep = ","`). In this case, we cannot rely on those default and must specify
 
 ```{r}
 write.table(mtcars, here::here("outputs", "mtcars_2.csv"), 
@@ -48,7 +46,7 @@ write.table(mtcars, here::here("outputs", "mtcars_2.csv"),
 
 ### `write_csv()`
 
-This function is very similar to `read.csv()`, but it does not have a row names argument because it does not output rownames. 
+This function is very similar to `read.csv()`, but it does not have a row names argument because it does not output rownames.
 
 ```{r}
 library(readr)
@@ -56,8 +54,7 @@ library(readr)
 write_csv(mtcars, here::here("outputs", "mtcars_3.csv"))
 ```
 
-`write_csv()` is wrapper for `write_delim()`. 
-
+`write_csv()` is wrapper for `write_delim()`.
 
 ## Exporting to text file
 
@@ -71,10 +68,9 @@ write_delim(mtcars, here::here("outputs", "mtcars.txt"), delim = "\t",
             quote = "none")
 ```
 
-
 ## Exporting to Excel file
 
-Use the [***writexl***](https://docs.ropensci.org/writexl/) package: 
+Use the [***writexl***](https://docs.ropensci.org/writexl/) package:
 
 ```{r}
 library(writexl)
@@ -90,12 +86,14 @@ The help file is informative: `?write_xlsx`
 
 This is special option to save objects in your environment to file. These can only be used by R, but are convenient if you plan to return to these object:
 
-Save one object: 
+Save one object:
+
 ```{r, eval=FALSE}
 save(mtcars, file = here::here("outputs", "mydata.RData"))
 ```
 
-Save multiple objects: 
+Save multiple objects:
+
 ```{r, eval=FALSE}
 data("sleep")
 save(mtcars, sleep, file = here::here("outputs", "more.RData"))
@@ -107,15 +105,14 @@ These can be loaded back into an R session as thus:
 load(here::here("outputs", "mydata.RData"))
 ```
 
-::: {.callout-note}
-If you are working with a specialized file type that has dedicated libraries for importing them into R and manipulating those objects, those dedicated libraries likely have export functions for that file type. For spatial object, the packge **sf** can import, alter, and export shapefiles. 
+::: callout-note
+If you are working with a specialized file type that has dedicated libraries for importing them into R and manipulating those objects, those dedicated libraries likely have export functions for that file type. For spatial object, the packge **sf** can import, alter, and export shapefiles.
 :::
 
-::: {.callout-tip}
-## Putting it all together 
+::: callout-tip
+## Putting it all together
 
-Exporting data is a good thing to do during the data wrangling process. Once you have arranged in your data set into an ideal state, save it so you an easily reload it later. 
+Exporting data is a good thing to do during the data wrangling process. Once you have arranged in your data set into an ideal state, save it so you an easily reload it later.
 
-It is very important that you check your output file (especially as a newer R programmer!) to make sure everything is as you expect. We have all accidentally output "myfile" instead of "myfile.csv", and this can be highly inconveniencing! You can do by manually opening the file or by importing back into R; either should tell you if the file export went as expected or not. 
+It is very important that you check your output file (especially as a newer R programmer!) to make sure everything is as you expect. We have all accidentally output "myfile" instead of "myfile.csv", and this can be highly inconveniencing! You can do by manually opening the file or by importing back into R; either should tell you if the file export went as expected or not.
 :::
-
