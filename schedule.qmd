@@ -5,28 +5,26 @@ title: "Course Schedule"
 *This schedule is best understood as a draft that will be adjusted as needed.* 
 
 
-| Date            |   Topics          |
-|-----------------|-------------------|
-| Before January 17 | [Do Lesson Zero + Watch Video](lessons/Lesson00.qmd) |
+| Date            |   Topics          |       practice problems |
+|-----------------|-------------------|-------------------------|
+| Before January 17 | [Do Lesson Zero + Watch Video](lessons/Lesson00.qmd) |    |
 | January 17 | Lesson 1: [math operators](lessons/Lesson01.qmd)\
-                  Lesson 2: [vectorization](lessons/Lesson02.qmd)\
-                  [*practice problem set for lessons 1 & 2*](practice/practice-A.qmd) \
-                  Lesson 3: [RStudio](lessons/Lesson03.qmd) |
+                  Lesson 2: [vectorization](lessons/Lesson02.qmd) |  [*Lessons 1 & 2*](practice/practice-A.qmd) |
 | January 19 | Lesson 4: [objects](lessons/Lesson04.qmd)\
-[*practice problem set for lesson 4*](practice/practice-B.qmd)\
-                  Lesson 5: [data structures](lessons/Lesson05.qmd)\
-                  [*practice problem set for Lessons 5*](practice/practice-C.qmd) |
+                  Lesson 5: [data structures](lessons/Lesson05.qmd) |    [*Lesson 5*](practice/practice-B.qmd) \
+                                                                          [*Lesson 6*](practice/practice-C.qmd)  |
 | January 24 | Lesson 6: [R functions & help](lessons/Lesson06.qmd)\
-               Lesson 7: [data import](lessons/Lesson07.qmd)\
-               Lesson 8: [exporting data](lessons/Lesson08.qmd) |
-| January 26   | Lesson 9: data wrangling |
+               Lesson 7: [data import](lessons/Lesson07.qmd) \
+               Lesson 8: [exporting data](lessons/Lesson08.qmd) | [*Lesson 7*](practice/practice-D.qmd)\
+                                                                  [*Lesson 8*](practice/practice-E.qmd) |
+| January 26   | Lesson 9: data wrangling |   |
 | January 31  | Lesson 10: reshaping data sets\
                  Lesson 11: data aggregation & summary\
-                 Lesson 12: combining data sets |
+                 Lesson 12: combining data sets |   |
 | February 2  | Lesson 13: your R set-up\
-                Lesson 14: basic plotting |
-| February 7 | Lesson 15: ggplotting   |
+                Lesson 14: basic plotting |   |
+| February 7 | Lesson 15: ggplotting   |    |
 | February 9 | Lesson 16: repeating actions\
-               Final Lesson: Your R Future |
+               Final Lesson: Your R Future |    |
 
 

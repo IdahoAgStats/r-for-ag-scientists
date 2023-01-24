@@ -69,7 +69,7 @@ website:
             text: Vectorizing
             contents: 
               - href: practice/practice-A.qmd
-                text: "practice problems A"
+                text: "practice set A"
               - href: practice/solution-A.qmd
                 text: "solutions to A"
           - href: lessons/Lesson03.qmd
@@ -78,60 +78,56 @@ website:
             text: R objects
             contents: 
               - href: practice/practice-B.qmd
-                text: "practice problems B"
+                text: "practice set B"
               - href: practice/solution-B.qmd
                 text: "solutions to B"
           - href: lessons/Lesson05.qmd
             text: Data structures
             contents: 
               - href: practice/practice-C.qmd
-                text: "practice problems C"
+                text: "practice set C"
               - href: practice/solution-C.qmd
                 text: "solutions to C"
           - href: lessons/Lesson06.qmd
             text: R documentation
-           - href: lessons/Lesson07.qmd
-             text: Data Import
-             contents: 
-               - href: practice/practice-D.qmd
-                 text: "practice"
-               - href: practice/solution-D.qmd
-                 text: "solution"
-           - href: lessons/Lesson08.qmd
-             text: Data export
-             contents: 
-               - href: practice/practice-E.qmd
-                 text: "practice"
-               - href: practice/solution-E.qmd
-                 text: "solution"
+          - href: lessons/Lesson07.qmd
+            text: Data import
+            contents: 
+              - href: practice/practice-D.qmd
+                text: "practice set D"
+          - href: lessons/Lesson08.qmd
+            text: Data export
+            contents: 
+              - href: practice/practice-E.qmd
+                text: "practice set E"
           # - href: lessons/Lesson09.qmd
           #   text: Data wrangling
           #   contents: 
           #     - href: practice/practice-F.qmd
-          #       text: "practice"
+          #       text: "practice set F"
           #     - href: practice/solution-F.qmd
-          #       text: "solution"
+          #       text: "solution to F"
           # - href: lessons/Lesson10.qmd
           #   text: Data Aggregation
           #   contents:
           #     - href: practice/practice-G.qmd
-          #       text: "practice"
+          #       text: "practice set G"
           #     - href: practice/solution-G.qmd
-          #       text: "solution"
+          #       text: "solution to G"
           # - href: lessons/Lesson11.qmd
           #   text: Reshaping data
           #   contents:   
           #     - href: practice/practice-H.qmd
-          #       text: "practice"
+          #       text: "practice set H"
           #     - href: practice/solution-H.qmd
-          #       text: "solution"
+          #       text: "solution to H"
           # - href: lessons/Lesson12.qmd
           #   text: Data merging
           #   contents: 
           #     - href: practice/practice-I.qmd
-          #     - text: "practice"
+          #     - text: "practice set I"
           #     - href: practice/solution-I.qmd
-          #     - text: "solution"
+          #     - text: "solution to I"
           # - href: lessons/Lesson13.qmd
           #   text: R Set-up
           #   contents:
@@ -141,23 +137,23 @@ website:
           #   text: Exploratory plotting
           #   contents: 
           #     - href: practice/practice-J.qmd
-          #       text: "practice"
+          #       text: "practice set J"
           #     - href: practice/solution-J.qmd
-          #       text: "solution"
+          #       text: "solution to J"
           # - href: lessons/Lesson15.qmd
           #   text: ggplotting
           #   contents: 
           #     - href: practice/practice-K.qmd
-          #       text: "practice"
+          #       text: "practice set K"
           #     - href: practice/solution-K.qmd
-          #       text: "solution"
+          #       text: "solution to K"
           # - href: lessons/Lesson16.qmd
           #   text: Repeating operations
           #   contents: 
           #     - href: practice/practice-L.qmd
-          #       text: "practice"
+          #       text: "practice set L"
           #     - href: practice/solution-L.qmd
-          #       text: "solution"
+          #       text: "solution to L"
           # - href: lessons/final_Lesson.qmd
           #   text: Final thoughts
 
