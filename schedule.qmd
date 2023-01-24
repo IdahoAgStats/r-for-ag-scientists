@@ -16,9 +16,9 @@ title: "Course Schedule"
 [*practice problem set for lesson 4*](practice/practice-B.qmd)\
                   Lesson 5: [data structures](lessons/Lesson05.qmd)\
                   [*practice problem set for Lessons 5*](practice/practice-C.qmd) |
-| January 24 | Lesson 6: R functions & help\
-               Lesson 7: data import\
-               Lesson 8: exporting data |
+| January 24 | Lesson 6: [R functions & help](lessons/Lesson06.qmd)\
+               Lesson 7: [data import](lessons/Lesson07.qmd)\
+               Lesson 8: [exporting data](lessons/Lesson08.qmd) |
 | January 26   | Lesson 9: data wrangling |
 | January 31  | Lesson 10: reshaping data sets\
                  Lesson 11: data aggregation & summary\

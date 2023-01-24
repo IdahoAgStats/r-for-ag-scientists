@@ -88,22 +88,22 @@ website:
                 text: "practice problems C"
               - href: practice/solution-C.qmd
                 text: "solutions to C"
-          #- href: lessons/Lesson06.qmd
-          #  text: R documentation
-          # - href: lessons/Lesson07.qmd
-          #   text: Data Import
-          #   contents: 
-          #     - href: practice/practice-D.qmd
-          #       text: "practice"
-          #     - href: practice/solution-D.qmd
-          #       text: "solution"
-          # - href: lessons/Lesson08.qmd
-          #   text: Data export
-          #   contents: 
-          #     - href: practice/practice-E.qmd
-          #       text: "practice"
-          #     - href: practice/solution-E.qmd
-          #       text: "solution"
+          - href: lessons/Lesson06.qmd
+            text: R documentation
+           - href: lessons/Lesson07.qmd
+             text: Data Import
+             contents: 
+               - href: practice/practice-D.qmd
+                 text: "practice"
+               - href: practice/solution-D.qmd
+                 text: "solution"
+           - href: lessons/Lesson08.qmd
+             text: Data export
+             contents: 
+               - href: practice/practice-E.qmd
+                 text: "practice"
+               - href: practice/solution-E.qmd
+                 text: "solution"
           # - href: lessons/Lesson09.qmd
           #   text: Data wrangling
           #   contents: 
