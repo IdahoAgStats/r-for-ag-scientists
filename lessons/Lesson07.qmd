@@ -17,11 +17,26 @@ At the end of this lesson, you should:
 
 While you can simulate data or load existing data sets associated with packages for your research, most of you will need to load pre-existing data sets from you computer, or a cloud server, some other external device.
 
-The first thing you need to understand is the working directory and file paths.
+The first thing you need to understand is the working directory and file paths. When an R session is initiated, it ascertains what the root working directory is based on the default settings for your R installation and any other.
 
-When an R session is initiated, it ascertains what the root working directory is based on the default settings for your R installation and any other.
+You can check this with `getwd()`. You can set the file path relative to the current working directory or set an absolute path (that is, independent of your current directory). You can read more about absolute and relative paths [here](https://networkencyclopedia.com/absolute-path/). 
 
-You can check this with `getwd()`. You can set the file path relative to the current working directory or set an absolute path. If this sounds unfamiliar, that is okay.
+When opening an R project (an .Rproj file), the working directory is automatically set to the directory where the .Rproj is located. Otherise, you can set the working directory using `setwd()` or under "Session" in the RStudio Ribbon.
+
+### Quarto files and the {Here} package
+
+When working with an R notebook like a Quarto document or an Rmarkdown document, the working directory within code chunks is automatically set to where the quarto document is located on your file system. This is the case regardless of whether you set the working directory or where the .Rproj file is located. 
+
+To import a data set located in another directory from where the quarto document is located,  you can use bash strategies for navigating up and down directory structures (e.g. "../data/somefile.csv"). Another solution is to use the [***here***](https://here.r-lib.org/). 
+
+The function `here()` in the ***here*** package will reconstruct a path based on the system you are using (Windows, Mac, Linux, etc). Each directory must be specified and the final item specified is the file to import. 
+
+```{r}
+library(here)
+here("directory1", "subdirectory", "my_file.txt"))
+```
+
+If you don't want to load an entire package, but use the function from it, you can use the notation `package_name::function()`. The code below uses that when calling the `here()` function: `here::here()`. 
 
 ## How to Import
 
@@ -66,11 +81,7 @@ A very commonly used function for reading in "comma separated values" (CSV) file
 
 **Example usage:**
 
-```{r, eval=FALSE}
-mycsv1 <- read.csv("data/trial_metadata.csv")
-```
-
-```{r, echo=FALSE}
+```{r}
 mycsv1 <- read.csv(here::here("data", "trial_metadata.csv"))
 ```
 
@@ -86,31 +97,24 @@ str(mycsv1)
 
 The default arguments include:
 
-\- `colnames = TRUE`: the first row of data is assumed to be the column names \* nothing in the data set will be used for row names unless we explicitly indicate so
+- `colnames = TRUE`: the first row of data is assumed to be the column names \* nothing in the data set will be used for row names unless we explicitly indicate so
 
-\- `sep = ","`: each data point is separated from another by a comma \* a newline indicator is used to separate rows of data
+- `sep = ","`: each data point is separated from another by a comma \* a newline indicator is used to separate rows of data
 
-\- `na.strings = c("NA", "")`: cells with a either no data ("") or an"NA" will be treated as missing.
+- `na.strings = c("NA", "")`: cells with a either no data ("") or an"NA" will be treated as missing.
 
-\- if a column of data consists of non-numeric characters, that column vector will be treated as character and not a factor
+- if a column of data consists of non-numeric characters, that column vector will be treated as character and not a factor
 
 ### `read_csv()`
 
-This function is part of **readr**. It has very similar functionality to `read.csv()`, but it parses the data a wee bit different.
+This function is part of ***readr***. It has very similar functionality to `read.csv()`, but it parses the data a wee bit different.
 
 **Example Usage:**
 
-First, load the package that contains the function `read_csv()`
+First, load the package ***readr*** that contains the function `read_csv()`. 
 
 ```{r}
 library(readr)
-```
-
-```{r, eval=FALSE}
-mycsv2 <- read_csv("data/trial_metadata.csv", trim_ws = TRUE)
-```
-
-```{r, echo=FALSE}
 mycsv2 <- read_csv(here::here("data", "trial_metadata.csv"))
 ```
 
@@ -124,7 +128,7 @@ str(mycsv2)
 
 This function takes similar arguments to `read.csv()`, although the output is more extensive.
 
--   Like in `read.csv()`, the default seperator is ",", missing datea are coded as empty string `""` or `NA` and the first line is assumed to be the column header
+-   Like in `read.csv()`, the default separator is ",", missing datea are coded as empty string `""` or `NA` and the first line is assumed to be the column header
 -   it does not bother with a row names attribute
 -   the argument `trim_ws` will remove leading and trailing whitespace for data entries. So the column header " soil pH" will become "soil pH".
 -   Column are preserved more clearly than `read.csv()` (including spaces and special characters). I'm honestly not fond of this behavior and usually clean up weird column names with `janitor::clean_names()`.
@@ -141,15 +145,10 @@ Load the package that contains the function `read_excel()`, [***readxl***](https
 
 ```{r}
 library(readxl)
-```
-
-```{r, eval=FALSE}
-myxl <- read_excel("data/field_trial_2009.xlsx", sheet = "site_02")
-```
-
-```{r, echo=FALSE}
-myxl <- read_excel(here::here("data", "field_trial_2009.xlsx"), sheet = "site_02", 
-                   trim_ws = TRUE, na = c("", "NA"))
+myxl <- read_excel(here::here("data", "field_trial_2009.xlsx"), 
+                   sheet = "site_02", 
+                   trim_ws = TRUE, 
+                   na = c("", "NA"))
 ```
 
 **Results:**
@@ -170,22 +169,12 @@ str(myxl)
 For reading in text files! It's pretty simple. Text files are not used terribly frequently, but I see them now and then with really huge files, such as genotyping data.
 
 ```{r, eval=FALSE}
-#mytxt <- read.delim("data/genotypic_data.txt")
-```
-
-```{r, echo=FALSE}
-#mytxt <- read.delim(here::here("data", "genotypic_data.txt"))
-```
-
-**Results**
-
-```{r}
-#str(mytxt)
+mytxt <- read.delim(here::here("data", "genotypic_data.txt"))
 ```
 
 **Details**
 
-Not much to say here - it's basically like `read.csv()`!
+This function is a more extensive version of `read.csv()`. It has a longer list of argument and slight different default values for those arguments that `read.csv`. Run `?write.delim` in the console for more details.
 
 ::: callout-note
 It's useful to understand how R has read a data set into an R session. R has opened a connection to the file that you have specified, read file information into the R session using system memory (your computer's RAM), and then closed the connection.
