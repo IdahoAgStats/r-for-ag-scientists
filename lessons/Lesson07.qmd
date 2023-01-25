@@ -33,7 +33,7 @@ The function `here()` in the ***here*** package will reconstruct a path based on
 
 ```{r}
 library(here)
-here("directory1", "subdirectory", "my_file.txt"))
+here("directory1", "subdirectory", "my_file.txt")
 ```
 
 If you don't want to load an entire package, but use the function from it, you can use the notation `package_name::function()`. The code below uses that when calling the `here()` function: `here::here()`. 
