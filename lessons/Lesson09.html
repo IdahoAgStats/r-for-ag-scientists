@@ -204,6 +204,11 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
   <a href="../CoC.html" class="sidebar-item-text sidebar-link">Code of Conduct</a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../install_R_instructions.html" class="sidebar-item-text sidebar-link">how to install R</a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -416,9 +421,22 @@ Learning Goals
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>variety_trials <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"trial_data.csv"</span>))</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>weather <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"weather_data.csv"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>::: {.callout-note, collapse=“true”}</p>
-<p>What is going on with <code>here::here()</code>?</p>
-<p>The <code>here()</code> function is from the <strong><em><a href="https://here.r-lib.org/">here</a></em></strong> package. This package simplifies working directory issues by setting it to where the nearest .Rproj files exists. When using a .qmd file, it looks for the .Rproj file that is the same directory as that file and moves up the directory tree. :::</p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+What is going on with <code>here::here()</code>?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The <code>here()</code> function is from the <a href="https://here.r-lib.org/"><strong><em>here</em></strong></a> package. This package simplifies working directory issues by setting it to where the nearest .Rproj files exists. When using a .qmd file, it looks for the .Rproj file that is the same directory as that file and moves up the directory tree.</p>
+</div>
+</div>
+</div>
 <section id="tidyverse-notes" class="level3">
 <h3 class="anchored" data-anchor-id="tidyverse-notes">Tidyverse notes</h3>
 <p>This lesson relies on group of packages called the “Tidyverse”, in particular <strong>dplyr</strong> and <strong>tidyr</strong>.</p>
@@ -430,8 +448,9 @@ Learning Goals
 </section>
 <section id="selection-columns" class="level3">
 <h3 class="anchored" data-anchor-id="selection-columns">Selection columns</h3>
-<p>The function <code>select</code> is used to specify <em>column</em> you want to keep (all rows are returned). Columns can be specified by name or position (i.e.&nbsp;the first two columsn in the data set would be <code>1:2</code>).</p>
-<p>Select by name: ::: {.cell}</p>
+<p>The function <code>select</code> is used to specify <em>column</em> you want to keep (all rows are returned). Columns can be specified by name or position (i.e.&nbsp;the first two columns in the data set would be <code>1:2</code>).</p>
+<p>Select by name:</p>
+<div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>select1 <span class="ot">&lt;-</span> <span class="fu">select</span>(variety_trials, variety, yield, grain_protein)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(select1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -443,7 +462,8 @@ Learning Goals
 5 10SB0087-B  94.18977        13.053
 6 10SB0087-B 121.59047        13.794</code></pre>
 </div>
-<p>::: You can also select on what columns you do <em>not</em> want:</p>
+</div>
+<p>You can also select on what columns you do <em>not</em> want:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>select2 <span class="ot">&lt;-</span> <span class="fu">select</span>(variety_trials, <span class="sc">-</span>trial)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>select3 <span class="ot">&lt;-</span> <span class="fu">select</span>(variety_trials, <span class="sc">-</span><span class="fu">c</span>(trial, plot))</span>
@@ -564,7 +584,7 @@ Note
 <div class="cell-output cell-output-stdout">
 <pre><code>new_var
   0   1 
-909 973 </code></pre>
+919 963 </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mutate1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -576,24 +596,24 @@ Note
 5 SWIdahoCereals_HRS_PAR_2016   1     2 10SB0087-B  94.18977        13.053
 6 SWIdahoCereals_HRS_PAR_2016   2     2 10SB0087-B 121.59047        13.794
   test_weight flag row range plot dataset row_position range_new random_yield
-1          NA &lt;NA&gt;  NA    NA   NA example            1        NA     77.18487
-2          NA &lt;NA&gt;  NA    NA   NA example            2        NA    123.64758
-3          NA &lt;NA&gt;  NA    NA   NA example            3        NA     84.76501
-4          NA &lt;NA&gt;  NA    NA   NA example            4        NA    141.41084
-5          NA &lt;NA&gt;  NA    NA   NA example            5        NA     96.21378
-6          NA &lt;NA&gt;  NA    NA   NA example            6        NA    120.49047
+1          NA &lt;NA&gt;  NA    NA   NA example            1        NA     79.26780
+2          NA &lt;NA&gt;  NA    NA   NA example            2        NA    123.25916
+3          NA &lt;NA&gt;  NA    NA   NA example            3        NA     84.61220
+4          NA &lt;NA&gt;  NA    NA   NA example            4        NA    139.27287
+5          NA &lt;NA&gt;  NA    NA   NA example            5        NA     94.47763
+6          NA &lt;NA&gt;  NA    NA   NA example            6        NA    121.09210
   binom_var yield_protein
 1         0      92.52131
 2         1     138.78589
 3         0     100.30958
-4         0     154.92890
+4         1     154.92890
 5         0     107.24277
 6         0     135.38447</code></pre>
 </div>
 </div>
 <p>This created 6 new variables:</p>
 <ul>
-<li><strong>dateset</strong> which is a character with the value “example” for all rows</li>
+<li><strong>dataset</strong> which is a character with the value “example” for all rows</li>
 <li><strong>row_position</strong> providing the row number, starting at 1 and ending at <code>n()</code>, a function that returns the total nubmer of rows in the data frame</li>
 <li><strong>range_new</strong> which is a copy of the variable “range”</li>
 <li><strong>random_yield</strong> which is the sum of the value for yield plus a random deviation from the function <code>rnorm</code>. This operation is vectorized, using the ‘yield’ measurement for each row and generating a new random deviate for each row.</li>

@@ -204,6 +204,11 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
   <a href="../CoC.html" class="sidebar-item-text sidebar-link">Code of Conduct</a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../install_R_instructions.html" class="sidebar-item-text sidebar-link">how to install R</a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -358,6 +363,7 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
   <li><a href="#exporting-to-csv-files" id="toc-exporting-to-csv-files" class="nav-link active" data-scroll-target="#exporting-to-csv-files">Exporting to CSV files</a>
   <ul class="collapse">
   <li><a href="#write.csv" id="toc-write.csv" class="nav-link" data-scroll-target="#write.csv"><code>write.csv()</code></a></li>
+  <li><a href="#write.table" id="toc-write.table" class="nav-link" data-scroll-target="#write.table"><code>write.table()</code></a></li>
   <li><a href="#write_csv" id="toc-write_csv" class="nav-link" data-scroll-target="#write_csv"><code>write_csv()</code></a></li>
   </ul></li>
   <li><a href="#exporting-to-text-file" id="toc-exporting-to-text-file" class="nav-link" data-scroll-target="#exporting-to-text-file">Exporting to text file</a></li>
@@ -412,7 +418,7 @@ Learning Goals
 </div>
 </div>
 </div>
-<p>This lesson is focused on exporting tabular data. It is a very short lesson because exporting data is quite similar to importing data. Like in data import, exporting data invovles opening a connection between R and file system, writing the data to file and closing the connection.</p>
+<p>This lesson is focused on exporting tabular data. It is a very short lesson because exporting data is quite similar to importing data. Like in data import, exporting data involves opening a connection between R and file system, writing the data to file and closing the connection.</p>
 <p>First, we need to load some data to write to file. R packages often come with data sets that can loaded with the <code>data()</code> command.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">"mtcars"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -425,7 +431,10 @@ Learning Goals
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(mtcars, here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"outputs"</span>, <span class="st">"mtcars_1.csv"</span>), <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Setting the <code>row.names</code> argument to <code>FALSE</code> ensures that a column of numbers without a header is not included in the file (which is likely to cause import errors in the future). ### <code>write.table()</code></p>
+<p>Setting the <code>row.names</code> argument to <code>FALSE</code> ensures that a column of numbers without a header is not included in the file (which is likely to cause import errors in the future).</p>
+</section>
+<section id="write.table" class="level3">
+<h3 class="anchored" data-anchor-id="write.table"><code>write.table()</code></h3>
 <p>This function looks very similar to <code>write.csv()</code> because it is technically the same function. <code>write.csv()</code> is wrapper for <code>write.table()</code> using a specific set of default arguments for CSV files (e.g.&nbsp;<code>sep = ","</code>). In this case, we cannot rely on those default and must specify</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.table</span>(mtcars, here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"outputs"</span>, <span class="st">"mtcars_2.csv"</span>), </span>
@@ -492,7 +501,7 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>If you are working with a specialized file type that has dedicated libraries for importing them into R and manipulating those objects, those dedicated libraries likely have export functions for that file type. For spatial object, the packge <strong>sf</strong> can import, alter, and export shapefiles.</p>
+<p>If you are working with a specialized file type that has dedicated libraries for importing them into R and manipulating those objects, those dedicated libraries likely have export functions for that file type. For spatial object, the package <strong><em>sf</em></strong> can import, alter, and export shapefiles.</p>
 </div>
 </div>
 <div class="callout-tip callout callout-style-default callout-captioned">
@@ -506,7 +515,7 @@ Putting it all together
 </div>
 <div class="callout-body-container callout-body">
 <p>Exporting data is a good thing to do during the data wrangling process. Once you have arranged in your data set into an ideal state, save it so you an easily reload it later.</p>
-<p>It is very important that you check your output file (especially as a newer R programmer!) to make sure everything is as you expect. We have all accidentally output “myfile” instead of “myfile.csv”, and this can be highly inconveniencing! You can do by manually opening the file or by importing back into R; either should tell you if the file export went as expected or not.</p>
+<p>It is very important that you check your output file (especially as a newer R programmer!) to make sure everything is as you expect. We have all accidentally output “myfile” instead of “myfile.csv”, and this can be highly inconvenient! You can do by manually opening the file or by importing back into R; either should tell you if the file export went as expected or not.</p>
 </div>
 </div>
 
