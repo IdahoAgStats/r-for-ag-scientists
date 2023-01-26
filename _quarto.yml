@@ -100,13 +100,13 @@ website:
             contents: 
               - href: practice/practice-E.qmd
                 text: "practice set E"
-         - href: lessons/Lesson09.qmd
-           text: Data wrangling
-           contents: 
-             - href: practice/practice-F.qmd
-               text: "practice set F"
-             - href: practice/solution-F.qmd
-               text: "solution to F"
+          - href: lessons/Lesson09.qmd
+            text: Data wrangling
+            contents: 
+              - href: practice/practice-F.qmd
+                text: "practice set F"
+              - href: practice/solution-F.qmd
+                text: "solution to F"
           # - href: lessons/Lesson10.qmd
           #   text: Data Aggregation
           #   contents:
