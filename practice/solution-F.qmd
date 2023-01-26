@@ -12,7 +12,7 @@ title: "Solutions to Practice F"
  Then, import the data and create the new variable. 
 
  ```{r}
-mydata <- read_csv(here::here("data", "trial_metadata"))) %>%
+mydata <- read_csv(here::here("data", "trial_metadata")) %>%
     unite("new_var", location, irrigation, sep = "_", remove = FALSE ))
  ```
 
@@ -25,7 +25,7 @@ mydata$new_var <- paste(location, irrigation, sep = "_")
  Another option: 
 
  ```{r}
-mydata <- mydata %>% mutate(new_var = paste(location, irrigation, sep = "_")))
+mydata <- mydata %>% mutate(new_var = paste(location, irrigation, sep = "_"))
  ```
 
 (@) Filter and sort:
