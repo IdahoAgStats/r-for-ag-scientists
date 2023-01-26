@@ -259,6 +259,26 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
 </li>
       </ul>
   </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../lessons/Lesson09.html" class="sidebar-item-text sidebar-link">Data wrangling</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../practice/practice-F.html" class="sidebar-item-text sidebar-link">practice set F</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../practice/solution-F.html" class="sidebar-item-text sidebar-link">solution to F</a>
+  </div>
+</li>
+      </ul>
+  </li>
       </ul>
   </li>
     </ul>
@@ -289,6 +309,15 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
 </header>
 
 <p><em>(for the data aggregation lesson)</em></p>
+<ul>
+<li>As usual, consider how these data aggregation functions can support your own work.</li>
+</ul>
+<p>For some of these exercises, you may need to use other <a href="https://dplyr.tidyverse.org/reference/index.html"><strong><em>dplyr</em></strong></a> functions.</p>
+<ol class="example" type="1">
+<li><p>Import “weather_data.csv”. Group the data by station and year and count the number of missing data points for ‘tmax’, ‘tmin’ and ‘tavg’. This one is pretty hard, so it’s okay to start with the next problem, which is a .</p></li>
+<li><p>Import “weather_data.csv”, group the data by ‘station’ and ‘julian_day’ and calculate the average minimum and maximum temperatures for the groups from ‘tmin’ and ‘tmax’. If you already imported the data set from the previous problem, you don’t need to import it again if you did not change the data set.</p></li>
+<li><p>Import “weather_data.csv”, calculate the difference between the ‘tmin’ and ‘tmax’ for each day. Group the data by year and return the smallest and largest differences for each year. Consider how to handle missing data. If you already imported the data set from the previous problem, you don’t need to import it again if you did not change the data set.</p></li>
+</ol>
 <p><a href="../practice/solution-G.html"><strong><em>Solution</em></strong></a></p>
 
 

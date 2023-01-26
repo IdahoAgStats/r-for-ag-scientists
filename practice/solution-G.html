@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>R for Scientists - Solutions to Practice I</title>
+<title>R for Scientists - Solutions to Practice G</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -136,11 +136,11 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
 
 
 <link rel="stylesheet" href="../styles.css">
-<meta property="og:title" content="R for Scientists - Solutions to Practice I">
-<meta property="og:description" content="gsub() is relatively straightforward to use, but . without any modifiers is actually for wildcard matching (it matches everything)! Regular expressions are crazy!">
+<meta property="og:title" content="R for Scientists - Solutions to Practice G">
+<meta property="og:description" content="First, import the data:">
 <meta property="og:site-name" content="R for Scientists">
-<meta name="twitter:title" content="R for Scientists - Solutions to Practice I">
-<meta name="twitter:description" content="gsub() is relatively straightforward to use, but . without any modifiers is actually for wildcard matching (it matches everything)! Regular expressions are crazy!">
+<meta name="twitter:title" content="R for Scientists - Solutions to Practice G">
+<meta name="twitter:description" content="First, import the data:">
 <meta name="twitter:card" content="summary">
 </head>
 
@@ -150,7 +150,7 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Solutions to Practice I</h1>
+      <h1 class="quarto-secondary-nav-title">Solutions to Practice G</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -322,6 +322,26 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
 </li>
       </ul>
   </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../lessons/Lesson09.html" class="sidebar-item-text sidebar-link">Data wrangling</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../practice/practice-F.html" class="sidebar-item-text sidebar-link">practice set F</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../practice/solution-F.html" class="sidebar-item-text sidebar-link">solution to F</a>
+  </div>
+</li>
+      </ul>
+  </li>
       </ul>
   </li>
     </ul>
@@ -329,21 +349,14 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#main-problem" id="toc-main-problem" class="nav-link active" data-scroll-target="#main-problem">Main Problem</a></li>
-  <li><a href="#extra" id="toc-extra" class="nav-link" data-scroll-target="#extra">Extra</a></li>
-  </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/IdahoAgStats/r-for-ag-scientists/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Solutions to Practice I</h1>
+<h1 class="title d-none d-lg-block">Solutions to Practice G</h1>
 </div>
 
 
@@ -358,26 +371,106 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
 
 </header>
 
-<section id="main-problem" class="level3">
-<h3 class="anchored" data-anchor-id="main-problem">Main Problem</h3>
+<ol class="example" type="1">
+<li>Count missing data in “weather.csv”. This one is a bit hard!</li>
+</ol>
+<p>First, import the data:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>geno <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(<span class="st">"data/genotypic_data.txt"</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>geno2 <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">select</span>(geno, <span class="sc">-</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>))</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>geno3 <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">t</span>(geno2)) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">individual =</span> <span class="fu">colnames</span>(geno2)) <span class="sc">%&gt;%</span> <span class="fu">relocate</span>(individual)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(geno3)[<span class="dv">2</span><span class="sc">:</span><span class="fu">nrow</span>(geno3)] <span class="ot">&lt;-</span> geno<span class="sc">$</span>Markers</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>geno3[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>weather <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"weather_data.csv"</span>)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-<section id="extra" class="level3">
-<h3 class="anchored" data-anchor-id="extra">Extra</h3>
+<p>Next, we need to test if a value is missing or not with <code>is.na()</code>. As a logical his will return a <code>TRUE</code> or <code>FALSE</code>. Those end up being equivalent to ‘1’ (TRUE) and ‘0’ (FALSE), as you may recall from data type coercion. You can check with by running <code>as.integer(c(TRUE, TRUE, FALSE, TRUE))</code> which should return <code>1 1 0 1</code>. Once that is done, the observations can be grouped by ‘station’ and the columsn can be summed under the assumption that all the missing values are represented by a “1” to indicate it is missing.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>geno3<span class="sc">$</span>individual <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">"[.]"</span>, <span class="st">" "</span>, geno3<span class="sc">$</span>individual) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'dplyr'</code></pre>
 </div>
-<p><code>gsub()</code> is relatively straightforward to use, but <code>.</code> without any modifiers is actually for wildcard matching (it matches <em>everything</em>)! <a href="https://www.regular-expressions.info/">Regular expressions</a> are crazy!</p>
-<p>So use <code>[.]</code> instead to specify that you in fact are referring to a period and not simply any character (including whitespace!).</p>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:stats':
+
+    filter, lag</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>weather <span class="sc">%&gt;%</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">c</span>(tavg, tmax, tmin), <span class="sc">~</span> <span class="fu">is.na</span>(.x))) <span class="sc">%&gt;%</span> </span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(station) <span class="sc">%&gt;%</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">c</span>(tavg, tmax, tmin), <span class="sc">~</span> <span class="fu">sum</span>(.x)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4 × 4
+  station      tavg  tmax  tmin
+  &lt;chr&gt;       &lt;int&gt; &lt;int&gt; &lt;int&gt;
+1 USC00453546 13558     0     0
+2 USC00456215  6531     0     0
+3 USC00457059 15628     0     0
+4 USR0000WCNW     0     0     0</code></pre>
+</div>
+</div>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Programming Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This exercise is pretty hard! It took me several tries to get it right. If you have trouble, take the exercise one step at a time, troubleshooting each step separately. It’s helpful to write down - with a pen and paper - what it is you want to do and how you think you might do this.</p>
+<p>In this case, we wanted to count the number of missing data for three data columns for each station. My first (failed approach) was to group by station and the use a summary command to (1) test if the observations are missing and (2) count those missing data. Well, it turned out the observations can be converted from a value to a logical in a <code>summarise()</code> call (since this is actually a mutation action not a summary). So, instead, the solution is to (1) change the values to a logical indicating if each is missing or not, (2) group by station, and (3) count all the missing data for the requested data columns. Once I came to that realization, I could then focus on making the code correct so it would run without errors.</p>
+<p>Writing down the exact problem you want to solve and <em>how</em> you want to solve it (the steps you want to take) can help you focus on what code is required to complete those steps. New programmers often merge the steps of how to fix a problem along with the effort required to write and troubleshoot code, which can quickly lead to distraction and feeling overwhelmed. One thing at a time, my peeps!</p>
+</div>
+</div>
+<ol start="2" class="example" type="1">
+<li>Calculate average temperatures minimum and maximum</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>weather <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(station) <span class="sc">%&gt;%</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">max_temp =</span> <span class="fu">mean</span>(tmax, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>              <span class="at">min_temp =</span> <span class="fu">mean</span>(tmin, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4 × 3
+  station     max_temp min_temp
+  &lt;chr&gt;          &lt;dbl&gt;    &lt;dbl&gt;
+1 USC00453546     17.0     4.56
+2 USC00456215     16.2     3.58
+3 USC00457059     15.8     2.66
+4 USR0000WCNW     18.1     5.40</code></pre>
+</div>
+</div>
+<ol start="3" class="example" type="1">
+<li>Find the largest and smallest differences between the daily minimum and maximum temperatures for each year.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>weather <span class="sc">%&gt;%</span> </span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(tmin) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(tmax)) <span class="sc">%&gt;%</span>   <span class="co"># filter out missing data</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">temp_diff =</span> <span class="fu">abs</span>(tmax <span class="sc">-</span> tmin)) <span class="sc">%&gt;%</span> <span class="co"># make the calculation for all </span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(year) <span class="sc">%&gt;%</span> <span class="co"># grouping step</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">max_diff =</span> <span class="fu">max</span>(temp_diff), <span class="co"># extract the maximum</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>              <span class="at">min_diff =</span> <span class="fu">min</span>(temp_diff)) <span class="co"># extract the minimum</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 43 × 3
+    year max_diff min_diff
+   &lt;int&gt;    &lt;dbl&gt;    &lt;dbl&gt;
+ 1  1980     27.8    1.6  
+ 2  1981     27.8    1.1  
+ 3  1982     26.7    0.6  
+ 4  1983     27.8    0.5  
+ 5  1984     26.1    0.6  
+ 6  1985     28.9    0.5  
+ 7  1986     25      0.600
+ 8  1987     27.7    1.1  
+ 9  1988     25.5    0.6  
+10  1989     24.4    0.5  
+# … with 33 more rows</code></pre>
+</div>
+</div>
+<p>The function <code>abs()</code> was used to find the absolute difference. If both daily temperatures were negative, then the overall difference was negative, which ended up being the ‘minimum’, although by minimum difference, I was actually thinking about what was closest to zero. When there were wide swings in daily temperature, how big were they? And conversely, how small could these daily swings be?</p>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

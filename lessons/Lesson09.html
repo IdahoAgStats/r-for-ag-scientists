@@ -1,0 +1,1962 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.313">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>R for Scientists - Lesson 9: Introduction to Data Wrangling</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../practice/practice-F.html" rel="next">
+<link href="../practice/practice-E.html" rel="prev">
+<link href="../images/logo_transparent.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-ZZST40VXE1"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
+</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+<meta property="og:title" content="R for Scientists - Lesson 9: Introduction to Data Wrangling">
+<meta property="og:description" content="First, load libraries:">
+<meta property="og:site-name" content="R for Scientists">
+<meta name="twitter:title" content="R for Scientists - Lesson 9: Introduction to Data Wrangling">
+<meta name="twitter:description" content="First, load libraries:">
+<meta name="twitter:card" content="summary">
+</head>
+
+<body class="nav-sidebar docked">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">Lesson 9: Introduction to Data Wrangling</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-center sidebar-header">
+      <a href="../index.html" class="sidebar-logo-link">
+      <img src="../images/R_intro_logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+      <div class="sidebar-tools-main tools-wide">
+    <a href="https://posit.cloud/" title="Posit Cloud" class="sidebar-tool px-1"><i class="bi bi-code-square"></i></a>
+    <a href="https://github.com/IdahoAgStats/r-for-ag-scientists" title="GitHub Repository" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
+    <a href="https://canvas.uidaho.edu" title="Canvas" class="sidebar-tool px-1"><i class="bi bi-bank"></i></a>
+  <a href="" class="quarto-color-scheme-toggle sidebar-tool" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Course Info</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">Overview</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../schedule.html" class="sidebar-item-text sidebar-link">Schedule</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../CoC.html" class="sidebar-item-text sidebar-link">Code of Conduct</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">Lessons</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lessons/Lesson00.html" class="sidebar-item-text sidebar-link">Lesson Zero</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lessons/Lesson01.html" class="sidebar-item-text sidebar-link">Math Operators</a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../lessons/Lesson02.html" class="sidebar-item-text sidebar-link">Vectorizing</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../practice/practice-A.html" class="sidebar-item-text sidebar-link">practice set A</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../practice/solution-A.html" class="sidebar-item-text sidebar-link">solutions to A</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lessons/Lesson03.html" class="sidebar-item-text sidebar-link">RStudio Tour</a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../lessons/Lesson04.html" class="sidebar-item-text sidebar-link">R objects</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../practice/practice-B.html" class="sidebar-item-text sidebar-link">practice set B</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../practice/solution-B.html" class="sidebar-item-text sidebar-link">solutions to B</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../lessons/Lesson05.html" class="sidebar-item-text sidebar-link">Data structures</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../practice/practice-C.html" class="sidebar-item-text sidebar-link">practice set C</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../practice/solution-C.html" class="sidebar-item-text sidebar-link">solutions to C</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lessons/Lesson06.html" class="sidebar-item-text sidebar-link">R documentation</a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../lessons/Lesson07.html" class="sidebar-item-text sidebar-link">Data import</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../practice/practice-D.html" class="sidebar-item-text sidebar-link">practice set D</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../lessons/Lesson08.html" class="sidebar-item-text sidebar-link">Data export</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../practice/practice-E.html" class="sidebar-item-text sidebar-link">practice set E</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../lessons/Lesson09.html" class="sidebar-item-text sidebar-link active">Data wrangling</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../practice/practice-F.html" class="sidebar-item-text sidebar-link">practice set F</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../practice/solution-F.html" class="sidebar-item-text sidebar-link">solution to F</a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#tidyverse-notes" id="toc-tidyverse-notes" class="nav-link active" data-scroll-target="#tidyverse-notes">Tidyverse notes</a></li>
+  <li><a href="#selection-columns" id="toc-selection-columns" class="nav-link" data-scroll-target="#selection-columns">Selection columns</a></li>
+  <li><a href="#filtering-rows" id="toc-filtering-rows" class="nav-link" data-scroll-target="#filtering-rows">Filtering rows</a></li>
+  <li><a href="#creating-new-variables" id="toc-creating-new-variables" class="nav-link" data-scroll-target="#creating-new-variables">Creating new variables</a></li>
+  <li><a href="#renaming-variables" id="toc-renaming-variables" class="nav-link" data-scroll-target="#renaming-variables">Renaming Variables</a></li>
+  <li><a href="#split-up-variables" id="toc-split-up-variables" class="nav-link" data-scroll-target="#split-up-variables">Split up variables</a></li>
+  <li><a href="#sorting-a-data-set" id="toc-sorting-a-data-set" class="nav-link" data-scroll-target="#sorting-a-data-set">Sorting a data set</a></li>
+  <li><a href="#the-pipe" id="toc-the-pipe" class="nav-link" data-scroll-target="#the-pipe">The pipe</a></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/IdahoAgStats/r-for-ag-scientists/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block">Lesson 9: Introduction to Data Wrangling</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<div class="callout-caution callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Learning Goals
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<p>At the end of this lesson, you should:</p>
+<ul>
+<li>be able to select columns in R using <code>select()</code></li>
+<li>be able to filter a data set</li>
+<li>know to create new variables using <code>mutate()</code></li>
+<li>be able to rename variables</li>
+<li>be able to sort a data set</li>
+<li>be able to aggregate data and perform actions on those aggregated data</li>
+</ul>
+</div>
+</div>
+</div>
+<p><strong>First, load libraries:</strong></p>
+<p><strong>Next, import data:</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>variety_trials <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"trial_data.csv"</span>))</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>weather <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"weather_data.csv"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>::: {.callout-note, collapse=“true”}</p>
+<p>What is going on with <code>here::here()</code>?</p>
+<p>The <code>here()</code> function is from the <strong><em><a href="https://here.r-lib.org/">here</a></em></strong> package. This package simplifies working directory issues by setting it to where the nearest .Rproj files exists. When using a .qmd file, it looks for the .Rproj file that is the same directory as that file and moves up the directory tree. :::</p>
+<section id="tidyverse-notes" class="level3">
+<h3 class="anchored" data-anchor-id="tidyverse-notes">Tidyverse notes</h3>
+<p>This lesson relies on group of packages called the “Tidyverse”, in particular <strong>dplyr</strong> and <strong>tidyr</strong>.</p>
+<p>These packages follow a special set of rules called “non-standard evaluation” (sometimes abbreviated “NSE”).</p>
+<p>All functions in the Tidyverse follow this structure:</p>
+<p><code>function(dataset, action)</code></p>
+<p>Where “dataset” is the data framed being input and “action” is whatever action is being taken.</p>
+<p>Tidyverse non-standard evaluation uses quotes far less often than “base R” (base R are package that are installed automatically when R is updated). It also uses indexing <code>$</code> less frequently. You can name a variable directly instead of using <code>dataset$var</code>.</p>
+</section>
+<section id="selection-columns" class="level3">
+<h3 class="anchored" data-anchor-id="selection-columns">Selection columns</h3>
+<p>The function <code>select</code> is used to specify <em>column</em> you want to keep (all rows are returned). Columns can be specified by name or position (i.e.&nbsp;the first two columsn in the data set would be <code>1:2</code>).</p>
+<p>Select by name: ::: {.cell}</p>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>select1 <span class="ot">&lt;-</span> <span class="fu">select</span>(variety_trials, variety, yield, grain_protein)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(select1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     variety     yield grain_protein
+1   LCS Iron  78.27131        14.250
+2   LCS Iron 124.19389        14.592
+3   LCS Iron  85.20458        15.105
+4   LCS Iron 140.56490        14.364
+5 10SB0087-B  94.18977        13.053
+6 10SB0087-B 121.59047        13.794</code></pre>
+</div>
+<p>::: You can also select on what columns you do <em>not</em> want:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>select2 <span class="ot">&lt;-</span> <span class="fu">select</span>(variety_trials, <span class="sc">-</span>trial)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>select3 <span class="ot">&lt;-</span> <span class="fu">select</span>(variety_trials, <span class="sc">-</span><span class="fu">c</span>(trial, plot))</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(select2); <span class="fu">head</span>(select3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  rep entry    variety     yield grain_protein test_weight flag row range plot
+1   1     1   LCS Iron  78.27131        14.250          NA &lt;NA&gt;  NA    NA   NA
+2   2     1   LCS Iron 124.19389        14.592          NA &lt;NA&gt;  NA    NA   NA
+3   3     1   LCS Iron  85.20458        15.105          NA &lt;NA&gt;  NA    NA   NA
+4   4     1   LCS Iron 140.56490        14.364          NA &lt;NA&gt;  NA    NA   NA
+5   1     2 10SB0087-B  94.18977        13.053          NA &lt;NA&gt;  NA    NA   NA
+6   2     2 10SB0087-B 121.59047        13.794          NA &lt;NA&gt;  NA    NA   NA</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  rep entry    variety     yield grain_protein test_weight flag row range
+1   1     1   LCS Iron  78.27131        14.250          NA &lt;NA&gt;  NA    NA
+2   2     1   LCS Iron 124.19389        14.592          NA &lt;NA&gt;  NA    NA
+3   3     1   LCS Iron  85.20458        15.105          NA &lt;NA&gt;  NA    NA
+4   4     1   LCS Iron 140.56490        14.364          NA &lt;NA&gt;  NA    NA
+5   1     2 10SB0087-B  94.18977        13.053          NA &lt;NA&gt;  NA    NA
+6   2     2 10SB0087-B 121.59047        13.794          NA &lt;NA&gt;  NA    NA</code></pre>
+</div>
+</div>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The variables specified in <code>select()</code> will appear in the new data frame in exactly the order they were listed in the function call.</p>
+</div>
+</div>
+<p>Sometimes, you might want to select many columns that share something common about their name:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>select4 <span class="ot">&lt;-</span> <span class="fu">select</span>(variety_trials, <span class="fu">starts_with</span>(<span class="st">"r"</span>))</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(select4)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  rep row range
+1   1  NA    NA
+2   2  NA    NA
+3   3  NA    NA
+4   4  NA    NA
+5   1  NA    NA
+6   2  NA    NA</code></pre>
+</div>
+</div>
+<p>This particular example is not all that useful, but you might have a large data set, with several dozen variables that all start with “snp” followed by some alpha-numeric code (e.g.&nbsp;“snp4738”). This function will enable you to select these column more efficiently than naming every single one.</p>
+<p>There are more options for pattern matching on column names:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>?tidyselect<span class="sc">::</span>starts_with <span class="co">#another option for searching help from the R console</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="../images/starts_with.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="filtering-rows" class="level3">
+<h3 class="anchored" data-anchor-id="filtering-rows">Filtering rows</h3>
+<p>The function <code>filter</code> is used to specify <em>rows</em> you want to keep (all columns are returned). This command uses logical operators for deciding what to keep.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>filter1 <span class="ot">&lt;-</span> <span class="fu">filter</span>(variety_trials, variety <span class="sc">==</span> <span class="st">"Stephens"</span>) <span class="co"># match one name</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>filter2 <span class="ot">&lt;-</span> <span class="fu">filter</span>(variety_trials, variety <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Stephens"</span>, <span class="st">"Bobtail"</span>)) <span class="co"># match multiple names</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>filter3 <span class="ot">&lt;-</span> <span class="fu">filter</span>(variety_trials, yield <span class="sc">&gt;</span> <span class="dv">50</span> <span class="sc">&amp;</span> grain_protein <span class="sc">&lt;=</span> <span class="dv">14</span>) <span class="co"># filter on multiple conditions</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(filter1); <span class="fu">dim</span>(filter2); <span class="fu">dim</span>(filter3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  4 11</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 16 11</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1017   11</code></pre>
+</div>
+</div>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>It is also possible to select or filter by numeric position:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(variety_trials, <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="dv">4</span>))</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(variety_trials, <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>, <span class="dv">201</span><span class="sc">:</span><span class="dv">300</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>While filtering and selecting (but especially filtering) by numeric position works, it is an unreliable choice because it depends on column order or row order being exactly as you expect it. This may work the first time you write + run code, but it is likely to fail over time as you sort, augment or change data sets.</p>
+</div>
+</div>
+</section>
+<section id="creating-new-variables" class="level3">
+<h3 class="anchored" data-anchor-id="creating-new-variables">Creating new variables</h3>
+<p>You can quite create new variables with a <code>mutate()</code> function call:</p>
+<pre><code>mutate(dataset, var_name = variable)</code></pre>
+<p>Examples:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>new_var <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(<span class="at">n =</span> <span class="fu">nrow</span>(variety_trials), <span class="at">size =</span> <span class="dv">1</span>, <span class="at">prob =</span> <span class="fl">0.5</span>)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>mutate1 <span class="ot">&lt;-</span> <span class="fu">mutate</span>(variety_trials, </span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">dataset =</span> <span class="st">"example"</span>,</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>                    <span class="at">row_position =</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">n</span>(),</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>                    <span class="at">range_new =</span> range,</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>                    <span class="at">random_yield =</span> yield <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="fu">n</span>()),</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>                    <span class="at">binom_var =</span> new_var, </span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>                    <span class="at">yield_protein =</span> yield <span class="sc">+</span> grain_protein)</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(new_var)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>new_var
+  0   1 
+909 973 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mutate1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                        trial rep entry    variety     yield grain_protein
+1 SWIdahoCereals_HRS_PAR_2016   1     1   LCS Iron  78.27131        14.250
+2 SWIdahoCereals_HRS_PAR_2016   2     1   LCS Iron 124.19389        14.592
+3 SWIdahoCereals_HRS_PAR_2016   3     1   LCS Iron  85.20458        15.105
+4 SWIdahoCereals_HRS_PAR_2016   4     1   LCS Iron 140.56490        14.364
+5 SWIdahoCereals_HRS_PAR_2016   1     2 10SB0087-B  94.18977        13.053
+6 SWIdahoCereals_HRS_PAR_2016   2     2 10SB0087-B 121.59047        13.794
+  test_weight flag row range plot dataset row_position range_new random_yield
+1          NA &lt;NA&gt;  NA    NA   NA example            1        NA     77.18487
+2          NA &lt;NA&gt;  NA    NA   NA example            2        NA    123.64758
+3          NA &lt;NA&gt;  NA    NA   NA example            3        NA     84.76501
+4          NA &lt;NA&gt;  NA    NA   NA example            4        NA    141.41084
+5          NA &lt;NA&gt;  NA    NA   NA example            5        NA     96.21378
+6          NA &lt;NA&gt;  NA    NA   NA example            6        NA    120.49047
+  binom_var yield_protein
+1         0      92.52131
+2         1     138.78589
+3         0     100.30958
+4         0     154.92890
+5         0     107.24277
+6         0     135.38447</code></pre>
+</div>
+</div>
+<p>This created 6 new variables:</p>
+<ul>
+<li><strong>dateset</strong> which is a character with the value “example” for all rows</li>
+<li><strong>row_position</strong> providing the row number, starting at 1 and ending at <code>n()</code>, a function that returns the total nubmer of rows in the data frame</li>
+<li><strong>range_new</strong> which is a copy of the variable “range”</li>
+<li><strong>random_yield</strong> which is the sum of the value for yield plus a random deviation from the function <code>rnorm</code>. This operation is vectorized, using the ‘yield’ measurement for each row and generating a new random deviate for each row.</li>
+<li><strong>binom_var</strong> the binomical outcomes variable created in the <code>new_var ....</code> statement.</li>
+<li><strong>yield_protein</strong> the addition of two variables in the data set (this is also vectorized, calculating this for each row)</li>
+</ul>
+<p>These example cover the majority of what you are likely to experience: creating a constant, calculating new variables from existing variables, pulling in an external variables, and so forth.</p>
+<p>This is equivalent to what was taught earlier using “$” notation:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>mutate1 <span class="ot">&lt;-</span> variety_trials <span class="co"># first, copy the data frame</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>mutate1<span class="sc">$</span>dateset <span class="ot">&lt;-</span> <span class="st">"example"</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>mutate1<span class="sc">$</span>row_position <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(mutate1)</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>mutate1<span class="sc">$</span>range_new <span class="ot">&lt;-</span> mutate1<span class="sc">$</span>range_new <span class="co"># note that NSE cannot be used</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>mutate1<span class="sc">$</span>random_yield <span class="ot">&lt;-</span> mutate1<span class="sc">$</span>yield <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="fu">nrow</span>(mutate1))</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>mutate1<span class="sc">$</span>binom_var <span class="ot">=</span> new_var</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>mutate1<span class="sc">$</span>yield_protein <span class="ot">&lt;-</span> mutate1<span class="sc">$</span>yield <span class="sc">+</span> mutate1<span class="sc">$</span>grain_protein</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This can be a bit longer and cumbersome compared to <code>mutate</code> statements, but it does work.</p>
+<section id="case_when-a-special-type-of-mutate" class="level4">
+<h4 class="anchored" data-anchor-id="case_when-a-special-type-of-mutate"><code>case_when()</code> a special type of <code>mutate</code></h4>
+<p>Occasionally, you will need a define a variable conditionally, based on information from other variables. Here is an example for weather data. Here, a special minimum value is created where all data for “tmin_F” less than 50°F are set at 50:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>weather <span class="ot">&lt;-</span> <span class="fu">mutate</span>(weather, <span class="at">new_min =</span> <span class="fu">case_when</span>(</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  tmin_F <span class="sc">&lt;=</span> <span class="dv">50</span> <span class="sc">~</span> <span class="dv">50</span>,</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="cn">TRUE</span> <span class="sc">~</span> tmin_F))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Everything to the left of the tilde <code>~</code> is a logical expression to evaluate. Everything to the right of the tilde is the value to put if the logical expression evaluates to TRUE.</p>
+<p>This can easily become more complex!</p>
+<p>If you want to bin continuous data into intervals (e.g.&nbsp;“low”, “medium”, “high), use the base function <code>cut()</code> which can bin data into groups based on equal groups, or specific cut-off values you provide.</p>
+<p>If you have a categorical variable that needs further refinement (e.g.&nbsp;collapsing of multiple levels into one), check out the package <a href="https://forcats.tidyverse.org/">forcats</a>, which provides many functions for manipulating categorical (factor or character) variables.</p>
+</section>
+</section>
+<section id="renaming-variables" class="level3">
+<h3 class="anchored" data-anchor-id="renaming-variables">Renaming Variables</h3>
+<p>Compared to <code>mutate()</code>, the function for renaming variables, <code>rename()</code> is a breeze!</p>
+<pre><code>rename(dataset, new_name = "old_name")</code></pre>
+<p>This is similar to variable assignment:</p>
+<pre><code>new &lt;- old</code></pre>
+<p>Except that quotes are always used when specifying the old variable name.</p>
+<p>Example:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>rename1 <span class="ot">&lt;-</span> <span class="fu">rename</span>(variety_trials, <span class="at">cultivar =</span> <span class="st">"variety"</span>)</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(rename1, <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                        trial rep entry cultivar     yield grain_protein
+1 SWIdahoCereals_HRS_PAR_2016   1     1 LCS Iron  78.27131        14.250
+2 SWIdahoCereals_HRS_PAR_2016   2     1 LCS Iron 124.19389        14.592
+3 SWIdahoCereals_HRS_PAR_2016   3     1 LCS Iron  85.20458        15.105
+  test_weight flag row range plot
+1          NA &lt;NA&gt;  NA    NA   NA
+2          NA &lt;NA&gt;  NA    NA   NA
+3          NA &lt;NA&gt;  NA    NA   NA</code></pre>
+</div>
+</div>
+<p>Also, you can use <code>rename</code> notation in <code>select</code> statements:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>rename2 <span class="ot">&lt;-</span> <span class="fu">select</span>(variety_trials, <span class="at">cultivar =</span> <span class="st">"variety"</span>, yield, <span class="at">protein =</span> <span class="st">"grain_protein"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This function selected the columns “variety”, “yield” and “grain_protein”, while renaming “variety to”cultivar” and “grain_protein” to “protein”. A handy shortcut!</p>
+</section>
+<section id="split-up-variables" class="level3">
+<h3 class="anchored" data-anchor-id="split-up-variables">Split up variables</h3>
+<p>You may encounter variables with information about multiple things. In agriculture, I see variables like “Moscow_2021”, “Moscow_2022”, “StJohn_2021”, “StJohn_2022” which is communicating a data set collected in different locations (Moscow and St.&nbsp;John) in different years (2021 and 2022). This is a useful variable, but we might want to separate out location and year. The <strong><em>tidyr</em></strong> function <code>separate()</code> can do that.</p>
+<p>The first column of “variety_trials” contains considerable information, all separated by an underscore:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>variety_trials<span class="sc">$</span>trial[<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "SWIdahoCereals_HRS_PAR_2016"</code></pre>
+</div>
+</div>
+<p>The first term is the program conducting the trial, the second is the crop grown, the third term is a location code, and the last term is the year. Let’s separate those terms into separate columns/variables.</p>
+<p>These terms use an underscore to separate them, which we will use in the function. However, one of the term does have an underscore inside of it, which will interpreted incorrectly as a term separator.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>variety_trials<span class="sc">$</span>trial</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   [1] "SWIdahoCereals_HRS_PAR_2016" "SWIdahoCereals_HRS_PAR_2016"
+   [3] "SWIdahoCereals_HRS_PAR_2016" "SWIdahoCereals_HRS_PAR_2016"
+   [5] "SWIdahoCereals_HRS_PAR_2016" "SWIdahoCereals_HRS_PAR_2016"
+   [7] "SWIdahoCereals_HRS_PAR_2016" "SWIdahoCereals_HRS_PAR_2016"
+   [9] "SWIdahoCereals_HRS_PAR_2016" "SWIdahoCereals_HRS_PAR_2016"
+  [11] "SWIdahoCereals_HRS_PAR_2016" "SWIdahoCereals_HRS_PAR_2016"
+  [13] "SWIdahoCereals_HRS_PAR_2016" "SWIdahoCereals_HRS_PAR_2016"
+  [15] "SWIdahoCereals_HRS_PAR_2016" "SWIdahoCereals_HRS_PAR_2016"
+  [17] "SWIdahoCereals_HRS_PAR_2016" "SWIdahoCereals_HRS_PAR_2016"
+  [19] "SWIdahoCereals_HRS_PAR_2016" "SWIdahoCereals_HRS_PAR_2016"
+  [21] "SWIdahoCereals_HRS_PAR_2016" "SWIdahoCereals_HRS_PAR_2016"
+  [23] "SWIdahoCereals_HRS_PAR_2016" "SWIdahoCereals_HRS_PAR_2016"
+  [25] "SWIdahoCereals_HRS_PAR_2016" "SWIdahoCereals_HRS_PAR_2016"
+  [27] "SWIdahoCereals_HRS_PAR_2016" "SWIdahoCereals_HRS_PAR_2016"
+  [29] "SWIdahoCereals_HRS_PAR_2016" "SWIdahoCereals_HRS_PAR_2016"
+  [31] "SWIdahoCereals_HRS_PAR_2016" "SWIdahoCereals_HRS_PAR_2016"
+  [33] "SWIdahoCereals_HRS_PAR_2016" "SWIdahoCereals_HRS_PAR_2016"
+  [35] "SWIdahoCereals_HRS_PAR_2016" "SWIdahoCereals_HRS_PAR_2016"
+  [37] "SWIdahoCereals_HRS_PAR_2016" "SWIdahoCereals_HRS_PAR_2016"
+  [39] "SWIdahoCereals_HRS_PAR_2016" "SWIdahoCereals_HRS_PAR_2016"
+  [41] "SWIdahoCereals_HRS_PAR_2016" "SWIdahoCereals_HRS_PAR_2016"
+  [43] "SWIdahoCereals_HRS_PAR_2016" "SWIdahoCereals_HRS_PAR_2016"
+  [45] "SWIdahoCereals_HRS_PAR_2016" "SWIdahoCereals_HRS_PAR_2016"
+  [47] "SWIdahoCereals_HRS_PAR_2016" "SWIdahoCereals_HRS_PAR_2016"
+  [49] "SWIdahoCereals_HRS_PAR_2016" "SWIdahoCereals_HRS_PAR_2016"
+  [51] "SWIdahoCereals_HRS_PAR_2016" "SWIdahoCereals_HRS_PAR_2016"
+  [53] "SWIdahoCereals_HRS_PAR_2016" "SWIdahoCereals_HRS_PAR_2016"
+  [55] "SWIdahoCereals_HRS_PAR_2016" "SWIdahoCereals_HRS_PAR_2016"
+  [57] "SWIdahoCereals_HRS_PAR_2016" "SWIdahoCereals_HRS_PAR_2016"
+  [59] "SWIdahoCereals_HRS_PAR_2016" "SWIdahoCereals_HRS_PAR_2016"
+  [61] "SWIdahoCereals_HWS_PAR_2016" "SWIdahoCereals_HWS_PAR_2016"
+  [63] "SWIdahoCereals_HWS_PAR_2016" "SWIdahoCereals_HWS_PAR_2016"
+  [65] "SWIdahoCereals_HWS_PAR_2016" "SWIdahoCereals_HWS_PAR_2016"
+  [67] "SWIdahoCereals_HWS_PAR_2016" "SWIdahoCereals_HWS_PAR_2016"
+  [69] "SWIdahoCereals_HWS_PAR_2016" "SWIdahoCereals_HWS_PAR_2016"
+  [71] "SWIdahoCereals_HWS_PAR_2016" "SWIdahoCereals_HWS_PAR_2016"
+  [73] "SWIdahoCereals_HWS_PAR_2016" "SWIdahoCereals_HWS_PAR_2016"
+  [75] "SWIdahoCereals_HWS_PAR_2016" "SWIdahoCereals_HWS_PAR_2016"
+  [77] "SWIdahoCereals_HWS_PAR_2016" "SWIdahoCereals_HWS_PAR_2016"
+  [79] "SWIdahoCereals_HWS_PAR_2016" "SWIdahoCereals_HWS_PAR_2016"
+  [81] "SWIdahoCereals_HWS_PAR_2016" "SWIdahoCereals_HWS_PAR_2016"
+  [83] "SWIdahoCereals_HWS_PAR_2016" "SWIdahoCereals_HWS_PAR_2016"
+  [85] "SWIdahoCereals_HWS_PAR_2016" "SWIdahoCereals_HWS_PAR_2016"
+  [87] "SWIdahoCereals_HWS_PAR_2016" "SWIdahoCereals_HWS_PAR_2016"
+  [89] "SWIdahoCereals_HWS_PAR_2016" "SWIdahoCereals_HWS_PAR_2016"
+  [91] "SWIdahoCereals_HWS_PAR_2016" "SWIdahoCereals_HWS_PAR_2016"
+  [93] "SWIdahoCereals_HWS_PAR_2016" "SWIdahoCereals_HWS_PAR_2016"
+  [95] "SWIdahoCereals_HWS_PAR_2016" "SWIdahoCereals_HWS_PAR_2016"
+  [97] "SWIdahoCereals_HWS_PAR_2016" "SWIdahoCereals_HWS_PAR_2016"
+  [99] "SWIdahoCereals_HWS_PAR_2016" "SWIdahoCereals_HWS_PAR_2016"
+ [101] "SWIdahoCereals_HWS_PAR_2016" "SWIdahoCereals_HWS_PAR_2016"
+ [103] "SWIdahoCereals_HWS_PAR_2016" "SWIdahoCereals_HWS_PAR_2016"
+ [105] "SWIdahoCereals_SWS_PAR_2016" "SWIdahoCereals_SWS_PAR_2016"
+ [107] "SWIdahoCereals_SWS_PAR_2016" "SWIdahoCereals_SWS_PAR_2016"
+ [109] "SWIdahoCereals_SWS_PAR_2016" "SWIdahoCereals_SWS_PAR_2016"
+ [111] "SWIdahoCereals_SWS_PAR_2016" "SWIdahoCereals_SWS_PAR_2016"
+ [113] "SWIdahoCereals_SWS_PAR_2016" "SWIdahoCereals_SWS_PAR_2016"
+ [115] "SWIdahoCereals_SWS_PAR_2016" "SWIdahoCereals_SWS_PAR_2016"
+ [117] "SWIdahoCereals_SWS_PAR_2016" "SWIdahoCereals_SWS_PAR_2016"
+ [119] "SWIdahoCereals_SWS_PAR_2016" "SWIdahoCereals_SWS_PAR_2016"
+ [121] "SWIdahoCereals_SWS_PAR_2016" "SWIdahoCereals_SWS_PAR_2016"
+ [123] "SWIdahoCereals_SWS_PAR_2016" "SWIdahoCereals_SWS_PAR_2016"
+ [125] "SWIdahoCereals_SWS_PAR_2016" "SWIdahoCereals_SWS_PAR_2016"
+ [127] "SWIdahoCereals_SWS_PAR_2016" "SWIdahoCereals_SWS_PAR_2016"
+ [129] "SWIdahoCereals_SWS_PAR_2016" "SWIdahoCereals_SWS_PAR_2016"
+ [131] "SWIdahoCereals_SWS_PAR_2016" "SWIdahoCereals_SWS_PAR_2016"
+ [133] "SWIdahoCereals_SWS_PAR_2016" "SWIdahoCereals_SWS_PAR_2016"
+ [135] "SWIdahoCereals_SWS_PAR_2016" "SWIdahoCereals_SWS_PAR_2016"
+ [137] "SWIdahoCereals_SWS_PAR_2016" "SWIdahoCereals_SWS_PAR_2016"
+ [139] "SWIdahoCereals_SWS_PAR_2016" "SWIdahoCereals_SWS_PAR_2016"
+ [141] "SWIdahoCereals_SWS_PAR_2016" "SWIdahoCereals_SWS_PAR_2016"
+ [143] "SWIdahoCereals_SWS_PAR_2016" "SWIdahoCereals_SWS_PAR_2016"
+ [145] "SWIdahoCereals_H_W_PAR_2017" "SWIdahoCereals_H_W_PAR_2017"
+ [147] "SWIdahoCereals_H_W_PAR_2017" "SWIdahoCereals_H_W_PAR_2017"
+ [149] "SWIdahoCereals_H_W_PAR_2017" "SWIdahoCereals_H_W_PAR_2017"
+ [151] "SWIdahoCereals_H_W_PAR_2017" "SWIdahoCereals_H_W_PAR_2017"
+ [153] "SWIdahoCereals_H_W_PAR_2017" "SWIdahoCereals_H_W_PAR_2017"
+ [155] "SWIdahoCereals_H_W_PAR_2017" "SWIdahoCereals_H_W_PAR_2017"
+ [157] "SWIdahoCereals_H_W_PAR_2017" "SWIdahoCereals_H_W_PAR_2017"
+ [159] "SWIdahoCereals_H_W_PAR_2017" "SWIdahoCereals_H_W_PAR_2017"
+ [161] "SWIdahoCereals_H_W_PAR_2017" "SWIdahoCereals_H_W_PAR_2017"
+ [163] "SWIdahoCereals_H_W_PAR_2017" "SWIdahoCereals_H_W_PAR_2017"
+ [165] "SWIdahoCereals_H_W_PAR_2017" "SWIdahoCereals_H_W_PAR_2017"
+ [167] "SWIdahoCereals_H_W_PAR_2017" "SWIdahoCereals_H_W_PAR_2017"
+ [169] "SWIdahoCereals_H_W_PAR_2017" "SWIdahoCereals_H_W_PAR_2017"
+ [171] "SWIdahoCereals_H_W_PAR_2017" "SWIdahoCereals_H_W_PAR_2017"
+ [173] "SWIdahoCereals_H_W_PAR_2017" "SWIdahoCereals_H_W_PAR_2017"
+ [175] "SWIdahoCereals_H_W_PAR_2017" "SWIdahoCereals_H_W_PAR_2017"
+ [177] "SWIdahoCereals_H_W_PAR_2017" "SWIdahoCereals_H_W_PAR_2017"
+ [179] "SWIdahoCereals_H_W_PAR_2017" "SWIdahoCereals_H_W_PAR_2017"
+ [181] "SWIdahoCereals_H_W_PAR_2017" "SWIdahoCereals_H_W_PAR_2017"
+ [183] "SWIdahoCereals_H_W_PAR_2017" "SWIdahoCereals_H_W_PAR_2017"
+ [185] "SWIdahoCereals_H_W_PAR_2017" "SWIdahoCereals_H_W_PAR_2017"
+ [187] "SWIdahoCereals_H_W_PAR_2017" "SWIdahoCereals_H_W_PAR_2017"
+ [189] "SWIdahoCereals_H_W_PAR_2017" "SWIdahoCereals_H_W_PAR_2017"
+ [191] "SWIdahoCereals_H_W_PAR_2017" "SWIdahoCereals_H_W_PAR_2017"
+ [193] "SWIdahoCereals_H_W_PAR_2017" "SWIdahoCereals_H_W_PAR_2017"
+ [195] "SWIdahoCereals_H_W_PAR_2017" "SWIdahoCereals_H_W_PAR_2017"
+ [197] "SWIdahoCereals_H_W_PAR_2017" "SWIdahoCereals_H_W_PAR_2017"
+ [199] "SWIdahoCereals_H_W_PAR_2017" "SWIdahoCereals_H_W_PAR_2017"
+ [201] "SWIdahoCereals_H_W_PAR_2017" "SWIdahoCereals_H_W_PAR_2017"
+ [203] "SWIdahoCereals_H_W_PAR_2017" "SWIdahoCereals_H_W_PAR_2017"
+ [205] "SWIdahoCereals_H_W_PAR_2017" "SWIdahoCereals_H_W_PAR_2017"
+ [207] "SWIdahoCereals_H_W_PAR_2017" "SWIdahoCereals_H_W_PAR_2017"
+ [209] "SWIdahoCereals_H_W_PAR_2017" "SWIdahoCereals_H_W_PAR_2017"
+ [211] "SWIdahoCereals_H_W_PAR_2017" "SWIdahoCereals_H_W_PAR_2017"
+ [213] "SWIdahoCereals_H_W_PAR_2017" "SWIdahoCereals_H_W_PAR_2017"
+ [215] "SWIdahoCereals_H_W_PAR_2017" "SWIdahoCereals_H_W_PAR_2017"
+ [217] "SWIdahoCereals_H_W_PAR_2017" "SWIdahoCereals_H_W_PAR_2017"
+ [219] "SWIdahoCereals_H_W_PAR_2017" "SWIdahoCereals_H_W_PAR_2017"
+ [221] "SWIdahoCereals_H_W_PAR_2017" "SWIdahoCereals_H_W_PAR_2017"
+ [223] "SWIdahoCereals_H_W_PAR_2017" "SWIdahoCereals_H_W_PAR_2017"
+ [225] "SWIdahoCereals_H_W_PAR_2017" "SWIdahoCereals_H_W_PAR_2017"
+ [227] "SWIdahoCereals_H_W_PAR_2017" "SWIdahoCereals_H_W_PAR_2017"
+ [229] "SWIdahoCereals_H_W_PAR_2017" "SWIdahoCereals_H_W_PAR_2017"
+ [231] "SWIdahoCereals_H_W_PAR_2017" "SWIdahoCereals_H_W_PAR_2017"
+ [233] "SWIdahoCereals_H_W_PAR_2017" "SWIdahoCereals_H_W_PAR_2017"
+ [235] "SWIdahoCereals_H_W_PAR_2017" "SWIdahoCereals_H_W_PAR_2017"
+ [237] "SWIdahoCereals_H_W_PAR_2017" "SWIdahoCereals_H_W_PAR_2017"
+ [239] "SWIdahoCereals_H_W_PAR_2017" "SWIdahoCereals_H_W_PAR_2017"
+ [241] "SWIdahoCereals_H_W_PAR_2017" "SWIdahoCereals_H_W_PAR_2017"
+ [243] "SWIdahoCereals_H_W_PAR_2017" "SWIdahoCereals_H_W_PAR_2017"
+ [245] "SWIdahoCereals_H_W_PAR_2017" "SWIdahoCereals_H_W_PAR_2017"
+ [247] "SWIdahoCereals_H_W_PAR_2017" "SWIdahoCereals_H_W_PAR_2017"
+ [249] "SWIdahoCereals_H_W_PAR_2017" "SWIdahoCereals_H_W_PAR_2017"
+ [251] "SWIdahoCereals_H_W_PAR_2017" "SWIdahoCereals_H_W_PAR_2017"
+ [253] "SWIdahoCereals_H_W_PAR_2017" "SWIdahoCereals_H_W_PAR_2017"
+ [255] "SWIdahoCereals_H_W_PAR_2017" "SWIdahoCereals_H_W_PAR_2017"
+ [257] "SWIdahoCereals_H_W_PAR_2017" "SWIdahoCereals_H_W_PAR_2017"
+ [259] "SWIdahoCereals_H_W_PAR_2017" "SWIdahoCereals_H_W_PAR_2017"
+ [261] "SWIdahoCereals_H_W_PAR_2017" "SWIdahoCereals_H_W_PAR_2017"
+ [263] "SWIdahoCereals_H_W_PAR_2017" "SWIdahoCereals_H_W_PAR_2017"
+ [265] "SWIdahoCereals_HRS_PAR_2017" "SWIdahoCereals_HRS_PAR_2017"
+ [267] "SWIdahoCereals_HRS_PAR_2017" "SWIdahoCereals_HRS_PAR_2017"
+ [269] "SWIdahoCereals_HRS_PAR_2017" "SWIdahoCereals_HRS_PAR_2017"
+ [271] "SWIdahoCereals_HRS_PAR_2017" "SWIdahoCereals_HRS_PAR_2017"
+ [273] "SWIdahoCereals_HRS_PAR_2017" "SWIdahoCereals_HRS_PAR_2017"
+ [275] "SWIdahoCereals_HRS_PAR_2017" "SWIdahoCereals_HRS_PAR_2017"
+ [277] "SWIdahoCereals_HRS_PAR_2017" "SWIdahoCereals_HRS_PAR_2017"
+ [279] "SWIdahoCereals_HRS_PAR_2017" "SWIdahoCereals_HRS_PAR_2017"
+ [281] "SWIdahoCereals_HRS_PAR_2017" "SWIdahoCereals_HRS_PAR_2017"
+ [283] "SWIdahoCereals_HRS_PAR_2017" "SWIdahoCereals_HRS_PAR_2017"
+ [285] "SWIdahoCereals_HRS_PAR_2017" "SWIdahoCereals_HRS_PAR_2017"
+ [287] "SWIdahoCereals_HRS_PAR_2017" "SWIdahoCereals_HRS_PAR_2017"
+ [289] "SWIdahoCereals_HRS_PAR_2017" "SWIdahoCereals_HRS_PAR_2017"
+ [291] "SWIdahoCereals_HRS_PAR_2017" "SWIdahoCereals_HRS_PAR_2017"
+ [293] "SWIdahoCereals_HRS_PAR_2017" "SWIdahoCereals_HRS_PAR_2017"
+ [295] "SWIdahoCereals_HRS_PAR_2017" "SWIdahoCereals_HRS_PAR_2017"
+ [297] "SWIdahoCereals_HWS_PAR_2017" "SWIdahoCereals_HWS_PAR_2017"
+ [299] "SWIdahoCereals_HWS_PAR_2017" "SWIdahoCereals_HWS_PAR_2017"
+ [301] "SWIdahoCereals_HWS_PAR_2017" "SWIdahoCereals_HWS_PAR_2017"
+ [303] "SWIdahoCereals_HWS_PAR_2017" "SWIdahoCereals_HWS_PAR_2017"
+ [305] "SWIdahoCereals_HWS_PAR_2017" "SWIdahoCereals_HWS_PAR_2017"
+ [307] "SWIdahoCereals_HWS_PAR_2017" "SWIdahoCereals_HWS_PAR_2017"
+ [309] "SWIdahoCereals_HWS_PAR_2017" "SWIdahoCereals_HWS_PAR_2017"
+ [311] "SWIdahoCereals_HWS_PAR_2017" "SWIdahoCereals_HWS_PAR_2017"
+ [313] "SWIdahoCereals_HWS_PAR_2017" "SWIdahoCereals_HWS_PAR_2017"
+ [315] "SWIdahoCereals_HWS_PAR_2017" "SWIdahoCereals_HWS_PAR_2017"
+ [317] "SWIdahoCereals_HWS_PAR_2017" "SWIdahoCereals_HWS_PAR_2017"
+ [319] "SWIdahoCereals_HWS_PAR_2017" "SWIdahoCereals_HWS_PAR_2017"
+ [321] "SWIdahoCereals_HWS_PAR_2017" "SWIdahoCereals_HWS_PAR_2017"
+ [323] "SWIdahoCereals_HWS_PAR_2017" "SWIdahoCereals_HWS_PAR_2017"
+ [325] "SWIdahoCereals_HWS_PAR_2017" "SWIdahoCereals_HWS_PAR_2017"
+ [327] "SWIdahoCereals_HWS_PAR_2017" "SWIdahoCereals_HWS_PAR_2017"
+ [329] "SWIdahoCereals_SWS_PAR_2017" "SWIdahoCereals_SWS_PAR_2017"
+ [331] "SWIdahoCereals_SWS_PAR_2017" "SWIdahoCereals_SWS_PAR_2017"
+ [333] "SWIdahoCereals_SWS_PAR_2017" "SWIdahoCereals_SWS_PAR_2017"
+ [335] "SWIdahoCereals_SWS_PAR_2017" "SWIdahoCereals_SWS_PAR_2017"
+ [337] "SWIdahoCereals_SWS_PAR_2017" "SWIdahoCereals_SWS_PAR_2017"
+ [339] "SWIdahoCereals_SWS_PAR_2017" "SWIdahoCereals_SWS_PAR_2017"
+ [341] "SWIdahoCereals_SWS_PAR_2017" "SWIdahoCereals_SWS_PAR_2017"
+ [343] "SWIdahoCereals_SWS_PAR_2017" "SWIdahoCereals_SWS_PAR_2017"
+ [345] "SWIdahoCereals_SWS_PAR_2017" "SWIdahoCereals_SWS_PAR_2017"
+ [347] "SWIdahoCereals_SWS_PAR_2017" "SWIdahoCereals_SWS_PAR_2017"
+ [349] "SWIdahoCereals_SWS_PAR_2017" "SWIdahoCereals_SWS_PAR_2017"
+ [351] "SWIdahoCereals_SWS_PAR_2017" "SWIdahoCereals_SWS_PAR_2017"
+ [353] "SWIdahoCereals_SWS_PAR_2017" "SWIdahoCereals_SWS_PAR_2017"
+ [355] "SWIdahoCereals_SWS_PAR_2017" "SWIdahoCereals_SWS_PAR_2017"
+ [357] "SWIdahoCereals_SWS_PAR_2017" "SWIdahoCereals_SWS_PAR_2017"
+ [359] "SWIdahoCereals_SWS_PAR_2017" "SWIdahoCereals_SWS_PAR_2017"
+ [361] "SWIdahoCereals_SWS_PAR_2017" "SWIdahoCereals_SWS_PAR_2017"
+ [363] "SWIdahoCereals_SWS_PAR_2017" "SWIdahoCereals_SWS_PAR_2017"
+ [365] "SWIdahoCereals_SWS_PAR_2017" "SWIdahoCereals_SWS_PAR_2017"
+ [367] "SWIdahoCereals_SWS_PAR_2017" "SWIdahoCereals_SWS_PAR_2017"
+ [369] "SWIdahoCereals_SWW_PAR_2017" "SWIdahoCereals_SWW_PAR_2017"
+ [371] "SWIdahoCereals_SWW_PAR_2017" "SWIdahoCereals_SWW_PAR_2017"
+ [373] "SWIdahoCereals_SWW_PAR_2017" "SWIdahoCereals_SWW_PAR_2017"
+ [375] "SWIdahoCereals_SWW_PAR_2017" "SWIdahoCereals_SWW_PAR_2017"
+ [377] "SWIdahoCereals_SWW_PAR_2017" "SWIdahoCereals_SWW_PAR_2017"
+ [379] "SWIdahoCereals_SWW_PAR_2017" "SWIdahoCereals_SWW_PAR_2017"
+ [381] "SWIdahoCereals_SWW_PAR_2017" "SWIdahoCereals_SWW_PAR_2017"
+ [383] "SWIdahoCereals_SWW_PAR_2017" "SWIdahoCereals_SWW_PAR_2017"
+ [385] "SWIdahoCereals_SWW_PAR_2017" "SWIdahoCereals_SWW_PAR_2017"
+ [387] "SWIdahoCereals_SWW_PAR_2017" "SWIdahoCereals_SWW_PAR_2017"
+ [389] "SWIdahoCereals_SWW_PAR_2017" "SWIdahoCereals_SWW_PAR_2017"
+ [391] "SWIdahoCereals_SWW_PAR_2017" "SWIdahoCereals_SWW_PAR_2017"
+ [393] "SWIdahoCereals_SWW_PAR_2017" "SWIdahoCereals_SWW_PAR_2017"
+ [395] "SWIdahoCereals_SWW_PAR_2017" "SWIdahoCereals_SWW_PAR_2017"
+ [397] "SWIdahoCereals_SWW_PAR_2017" "SWIdahoCereals_SWW_PAR_2017"
+ [399] "SWIdahoCereals_SWW_PAR_2017" "SWIdahoCereals_SWW_PAR_2017"
+ [401] "SWIdahoCereals_SWW_PAR_2017" "SWIdahoCereals_SWW_PAR_2017"
+ [403] "SWIdahoCereals_SWW_PAR_2017" "SWIdahoCereals_SWW_PAR_2017"
+ [405] "SWIdahoCereals_SWW_PAR_2017" "SWIdahoCereals_SWW_PAR_2017"
+ [407] "SWIdahoCereals_SWW_PAR_2017" "SWIdahoCereals_SWW_PAR_2017"
+ [409] "SWIdahoCereals_SWW_PAR_2017" "SWIdahoCereals_SWW_PAR_2017"
+ [411] "SWIdahoCereals_SWW_PAR_2017" "SWIdahoCereals_SWW_PAR_2017"
+ [413] "SWIdahoCereals_SWW_PAR_2017" "SWIdahoCereals_SWW_PAR_2017"
+ [415] "SWIdahoCereals_SWW_PAR_2017" "SWIdahoCereals_SWW_PAR_2017"
+ [417] "SWIdahoCereals_SWW_PAR_2017" "SWIdahoCereals_SWW_PAR_2017"
+ [419] "SWIdahoCereals_SWW_PAR_2017" "SWIdahoCereals_SWW_PAR_2017"
+ [421] "SWIdahoCereals_SWW_PAR_2017" "SWIdahoCereals_SWW_PAR_2017"
+ [423] "SWIdahoCereals_SWW_PAR_2017" "SWIdahoCereals_SWW_PAR_2017"
+ [425] "SWIdahoCereals_SWW_PAR_2017" "SWIdahoCereals_SWW_PAR_2017"
+ [427] "SWIdahoCereals_SWW_PAR_2017" "SWIdahoCereals_SWW_PAR_2017"
+ [429] "SWIdahoCereals_SWW_PAR_2017" "SWIdahoCereals_SWW_PAR_2017"
+ [431] "SWIdahoCereals_SWW_PAR_2017" "SWIdahoCereals_SWW_PAR_2017"
+ [433] "SWIdahoCereals_SWW_PAR_2017" "SWIdahoCereals_SWW_PAR_2017"
+ [435] "SWIdahoCereals_SWW_PAR_2017" "SWIdahoCereals_SWW_PAR_2017"
+ [437] "SWIdahoCereals_SWW_PAR_2017" "SWIdahoCereals_SWW_PAR_2017"
+ [439] "SWIdahoCereals_SWW_PAR_2017" "SWIdahoCereals_SWW_PAR_2017"
+ [441] "SWIdahoCereals_SWW_PAR_2017" "SWIdahoCereals_SWW_PAR_2017"
+ [443] "SWIdahoCereals_SWW_PAR_2017" "SWIdahoCereals_SWW_PAR_2017"
+ [445] "SWIdahoCereals_SWW_PAR_2017" "SWIdahoCereals_SWW_PAR_2017"
+ [447] "SWIdahoCereals_SWW_PAR_2017" "SWIdahoCereals_SWW_PAR_2017"
+ [449] "SWIdahoCereals_SWW_PAR_2017" "SWIdahoCereals_SWW_PAR_2017"
+ [451] "SWIdahoCereals_SWW_PAR_2017" "SWIdahoCereals_SWW_PAR_2017"
+ [453] "SWIdahoCereals_SWW_PAR_2017" "SWIdahoCereals_SWW_PAR_2017"
+ [455] "SWIdahoCereals_SWW_PAR_2017" "SWIdahoCereals_SWW_PAR_2017"
+ [457] "SWIdahoCereals_SWW_PAR_2017" "SWIdahoCereals_SWW_PAR_2017"
+ [459] "SWIdahoCereals_SWW_PAR_2017" "SWIdahoCereals_SWW_PAR_2017"
+ [461] "SWIdahoCereals_SWW_PAR_2017" "SWIdahoCereals_SWW_PAR_2017"
+ [463] "SWIdahoCereals_SWW_PAR_2017" "SWIdahoCereals_SWW_PAR_2017"
+ [465] "SWIdahoCereals_SWW_PAR_2017" "SWIdahoCereals_SWW_PAR_2017"
+ [467] "SWIdahoCereals_SWW_PAR_2017" "SWIdahoCereals_SWW_PAR_2017"
+ [469] "SWIdahoCereals_SWW_PAR_2017" "SWIdahoCereals_SWW_PAR_2017"
+ [471] "SWIdahoCereals_SWW_PAR_2017" "SWIdahoCereals_SWW_PAR_2017"
+ [473] "SWIdahoCereals_SWW_PAR_2017" "SWIdahoCereals_SWW_PAR_2017"
+ [475] "SWIdahoCereals_SWW_PAR_2017" "SWIdahoCereals_SWW_PAR_2017"
+ [477] "SWIdahoCereals_SWW_PAR_2017" "SWIdahoCereals_SWW_PAR_2017"
+ [479] "SWIdahoCereals_SWW_PAR_2017" "SWIdahoCereals_SWW_PAR_2017"
+ [481] "SWIdahoCereals_SWW_PAR_2017" "SWIdahoCereals_SWW_PAR_2017"
+ [483] "SWIdahoCereals_SWW_PAR_2017" "SWIdahoCereals_SWW_PAR_2017"
+ [485] "SWIdahoCereals_SWW_PAR_2017" "SWIdahoCereals_SWW_PAR_2017"
+ [487] "SWIdahoCereals_SWW_PAR_2017" "SWIdahoCereals_SWW_PAR_2017"
+ [489] "SWIdahoCereals_SWW_PAR_2017" "SWIdahoCereals_SWW_PAR_2017"
+ [491] "SWIdahoCereals_SWW_PAR_2017" "SWIdahoCereals_SWW_PAR_2017"
+ [493] "SWIdahoCereals_SWW_PAR_2017" "SWIdahoCereals_SWW_PAR_2017"
+ [495] "SWIdahoCereals_SWW_PAR_2017" "SWIdahoCereals_SWW_PAR_2017"
+ [497] "SWIdahoCereals_SWW_PAR_2017" "SWIdahoCereals_SWW_PAR_2017"
+ [499] "SWIdahoCereals_SWW_PAR_2017" "SWIdahoCereals_SWW_PAR_2017"
+ [501] "SWIdahoCereals_SWW_PAR_2017" "SWIdahoCereals_SWW_PAR_2017"
+ [503] "SWIdahoCereals_SWW_PAR_2017" "SWIdahoCereals_SWW_PAR_2017"
+ [505] "SWIdahoCereals_SWW_PAR_2017" "SWIdahoCereals_SWW_PAR_2017"
+ [507] "SWIdahoCereals_SWW_PAR_2017" "SWIdahoCereals_SWW_PAR_2017"
+ [509] "SWIdahoCereals_SWW_PAR_2017" "SWIdahoCereals_SWW_PAR_2017"
+ [511] "SWIdahoCereals_SWW_PAR_2017" "SWIdahoCereals_SWW_PAR_2017"
+ [513] "SWIdahoCereals_SWW_PAR_2017" "SWIdahoCereals_SWW_PAR_2017"
+ [515] "SWIdahoCereals_SWW_PAR_2017" "SWIdahoCereals_SWW_PAR_2017"
+ [517] "SWIdahoCereals_SWW_PAR_2017" "SWIdahoCereals_SWW_PAR_2017"
+ [519] "SWIdahoCereals_SWW_PAR_2017" "SWIdahoCereals_SWW_PAR_2017"
+ [521] "SWIdahoCereals_SWW_PAR_2017" "SWIdahoCereals_SWW_PAR_2017"
+ [523] "SWIdahoCereals_SWW_PAR_2017" "SWIdahoCereals_SWW_PAR_2017"
+ [525] "SWIdahoCereals_SWW_PAR_2017" "SWIdahoCereals_SWW_PAR_2017"
+ [527] "SWIdahoCereals_SWW_PAR_2017" "SWIdahoCereals_SWW_PAR_2017"
+ [529] "SWIdahoCereals_H_S_PAR_2018" "SWIdahoCereals_H_S_PAR_2018"
+ [531] "SWIdahoCereals_H_S_PAR_2018" "SWIdahoCereals_H_S_PAR_2018"
+ [533] "SWIdahoCereals_H_S_PAR_2018" "SWIdahoCereals_H_S_PAR_2018"
+ [535] "SWIdahoCereals_H_S_PAR_2018" "SWIdahoCereals_H_S_PAR_2018"
+ [537] "SWIdahoCereals_H_S_PAR_2018" "SWIdahoCereals_H_S_PAR_2018"
+ [539] "SWIdahoCereals_H_S_PAR_2018" "SWIdahoCereals_H_S_PAR_2018"
+ [541] "SWIdahoCereals_H_S_PAR_2018" "SWIdahoCereals_H_S_PAR_2018"
+ [543] "SWIdahoCereals_H_S_PAR_2018" "SWIdahoCereals_H_S_PAR_2018"
+ [545] "SWIdahoCereals_H_S_PAR_2018" "SWIdahoCereals_H_S_PAR_2018"
+ [547] "SWIdahoCereals_H_S_PAR_2018" "SWIdahoCereals_H_S_PAR_2018"
+ [549] "SWIdahoCereals_H_S_PAR_2018" "SWIdahoCereals_H_S_PAR_2018"
+ [551] "SWIdahoCereals_H_S_PAR_2018" "SWIdahoCereals_H_S_PAR_2018"
+ [553] "SWIdahoCereals_H_S_PAR_2018" "SWIdahoCereals_H_S_PAR_2018"
+ [555] "SWIdahoCereals_H_S_PAR_2018" "SWIdahoCereals_H_S_PAR_2018"
+ [557] "SWIdahoCereals_H_S_PAR_2018" "SWIdahoCereals_H_S_PAR_2018"
+ [559] "SWIdahoCereals_H_S_PAR_2018" "SWIdahoCereals_H_S_PAR_2018"
+ [561] "SWIdahoCereals_H_S_PAR_2018" "SWIdahoCereals_H_S_PAR_2018"
+ [563] "SWIdahoCereals_H_S_PAR_2018" "SWIdahoCereals_H_S_PAR_2018"
+ [565] "SWIdahoCereals_H_S_PAR_2018" "SWIdahoCereals_H_S_PAR_2018"
+ [567] "SWIdahoCereals_H_S_PAR_2018" "SWIdahoCereals_H_S_PAR_2018"
+ [569] "SWIdahoCereals_H_S_PAR_2018" "SWIdahoCereals_H_S_PAR_2018"
+ [571] "SWIdahoCereals_H_S_PAR_2018" "SWIdahoCereals_H_S_PAR_2018"
+ [573] "SWIdahoCereals_H_S_PAR_2018" "SWIdahoCereals_H_S_PAR_2018"
+ [575] "SWIdahoCereals_H_S_PAR_2018" "SWIdahoCereals_H_S_PAR_2018"
+ [577] "SWIdahoCereals_H_S_PAR_2018" "SWIdahoCereals_H_S_PAR_2018"
+ [579] "SWIdahoCereals_H_S_PAR_2018" "SWIdahoCereals_H_S_PAR_2018"
+ [581] "SWIdahoCereals_H_S_PAR_2018" "SWIdahoCereals_H_S_PAR_2018"
+ [583] "SWIdahoCereals_H_S_PAR_2018" "SWIdahoCereals_H_S_PAR_2018"
+ [585] "SWIdahoCereals_H_S_PAR_2018" "SWIdahoCereals_H_S_PAR_2018"
+ [587] "SWIdahoCereals_H_S_PAR_2018" "SWIdahoCereals_H_S_PAR_2018"
+ [589] "SWIdahoCereals_H_S_PAR_2018" "SWIdahoCereals_H_S_PAR_2018"
+ [591] "SWIdahoCereals_H_S_PAR_2018" "SWIdahoCereals_H_S_PAR_2018"
+ [593] "SWIdahoCereals_H_S_PAR_2018" "SWIdahoCereals_H_S_PAR_2018"
+ [595] "SWIdahoCereals_H_S_PAR_2018" "SWIdahoCereals_H_S_PAR_2018"
+ [597] "SWIdahoCereals_H_S_PAR_2018" "SWIdahoCereals_H_S_PAR_2018"
+ [599] "SWIdahoCereals_H_S_PAR_2018" "SWIdahoCereals_H_S_PAR_2018"
+ [601] "SWIdahoCereals_H_S_PAR_2018" "SWIdahoCereals_H_S_PAR_2018"
+ [603] "SWIdahoCereals_H_S_PAR_2018" "SWIdahoCereals_H_S_PAR_2018"
+ [605] "SWIdahoCereals_H_S_PAR_2018" "SWIdahoCereals_H_S_PAR_2018"
+ [607] "SWIdahoCereals_H_S_PAR_2018" "SWIdahoCereals_H_S_PAR_2018"
+ [609] "SWIdahoCereals_H_S_PAR_2018" "SWIdahoCereals_H_S_PAR_2018"
+ [611] "SWIdahoCereals_H_S_PAR_2018" "SWIdahoCereals_H_S_PAR_2018"
+ [613] "SWIdahoCereals_H_S_PAR_2018" "SWIdahoCereals_H_S_PAR_2018"
+ [615] "SWIdahoCereals_H_S_PAR_2018" "SWIdahoCereals_H_S_PAR_2018"
+ [617] "SWIdahoCereals_H_W_PAR_2018" "SWIdahoCereals_H_W_PAR_2018"
+ [619] "SWIdahoCereals_H_W_PAR_2018" "SWIdahoCereals_H_W_PAR_2018"
+ [621] "SWIdahoCereals_H_W_PAR_2018" "SWIdahoCereals_H_W_PAR_2018"
+ [623] "SWIdahoCereals_H_W_PAR_2018" "SWIdahoCereals_H_W_PAR_2018"
+ [625] "SWIdahoCereals_H_W_PAR_2018" "SWIdahoCereals_H_W_PAR_2018"
+ [627] "SWIdahoCereals_H_W_PAR_2018" "SWIdahoCereals_H_W_PAR_2018"
+ [629] "SWIdahoCereals_H_W_PAR_2018" "SWIdahoCereals_H_W_PAR_2018"
+ [631] "SWIdahoCereals_H_W_PAR_2018" "SWIdahoCereals_H_W_PAR_2018"
+ [633] "SWIdahoCereals_H_W_PAR_2018" "SWIdahoCereals_H_W_PAR_2018"
+ [635] "SWIdahoCereals_H_W_PAR_2018" "SWIdahoCereals_H_W_PAR_2018"
+ [637] "SWIdahoCereals_H_W_PAR_2018" "SWIdahoCereals_H_W_PAR_2018"
+ [639] "SWIdahoCereals_H_W_PAR_2018" "SWIdahoCereals_H_W_PAR_2018"
+ [641] "SWIdahoCereals_H_W_PAR_2018" "SWIdahoCereals_H_W_PAR_2018"
+ [643] "SWIdahoCereals_H_W_PAR_2018" "SWIdahoCereals_H_W_PAR_2018"
+ [645] "SWIdahoCereals_H_W_PAR_2018" "SWIdahoCereals_H_W_PAR_2018"
+ [647] "SWIdahoCereals_H_W_PAR_2018" "SWIdahoCereals_H_W_PAR_2018"
+ [649] "SWIdahoCereals_H_W_PAR_2018" "SWIdahoCereals_H_W_PAR_2018"
+ [651] "SWIdahoCereals_H_W_PAR_2018" "SWIdahoCereals_H_W_PAR_2018"
+ [653] "SWIdahoCereals_H_W_PAR_2018" "SWIdahoCereals_H_W_PAR_2018"
+ [655] "SWIdahoCereals_H_W_PAR_2018" "SWIdahoCereals_H_W_PAR_2018"
+ [657] "SWIdahoCereals_H_W_PAR_2018" "SWIdahoCereals_H_W_PAR_2018"
+ [659] "SWIdahoCereals_H_W_PAR_2018" "SWIdahoCereals_H_W_PAR_2018"
+ [661] "SWIdahoCereals_H_W_PAR_2018" "SWIdahoCereals_H_W_PAR_2018"
+ [663] "SWIdahoCereals_H_W_PAR_2018" "SWIdahoCereals_H_W_PAR_2018"
+ [665] "SWIdahoCereals_H_W_PAR_2018" "SWIdahoCereals_H_W_PAR_2018"
+ [667] "SWIdahoCereals_H_W_PAR_2018" "SWIdahoCereals_H_W_PAR_2018"
+ [669] "SWIdahoCereals_H_W_PAR_2018" "SWIdahoCereals_H_W_PAR_2018"
+ [671] "SWIdahoCereals_H_W_PAR_2018" "SWIdahoCereals_H_W_PAR_2018"
+ [673] "SWIdahoCereals_H_W_PAR_2018" "SWIdahoCereals_H_W_PAR_2018"
+ [675] "SWIdahoCereals_H_W_PAR_2018" "SWIdahoCereals_H_W_PAR_2018"
+ [677] "SWIdahoCereals_H_W_PAR_2018" "SWIdahoCereals_H_W_PAR_2018"
+ [679] "SWIdahoCereals_H_W_PAR_2018" "SWIdahoCereals_H_W_PAR_2018"
+ [681] "SWIdahoCereals_H_W_PAR_2018" "SWIdahoCereals_H_W_PAR_2018"
+ [683] "SWIdahoCereals_H_W_PAR_2018" "SWIdahoCereals_H_W_PAR_2018"
+ [685] "SWIdahoCereals_H_W_PAR_2018" "SWIdahoCereals_H_W_PAR_2018"
+ [687] "SWIdahoCereals_H_W_PAR_2018" "SWIdahoCereals_H_W_PAR_2018"
+ [689] "SWIdahoCereals_H_W_PAR_2018" "SWIdahoCereals_H_W_PAR_2018"
+ [691] "SWIdahoCereals_H_W_PAR_2018" "SWIdahoCereals_H_W_PAR_2018"
+ [693] "SWIdahoCereals_H_W_PAR_2018" "SWIdahoCereals_H_W_PAR_2018"
+ [695] "SWIdahoCereals_H_W_PAR_2018" "SWIdahoCereals_H_W_PAR_2018"
+ [697] "SWIdahoCereals_SWS_PAR_2018" "SWIdahoCereals_SWS_PAR_2018"
+ [699] "SWIdahoCereals_SWS_PAR_2018" "SWIdahoCereals_SWS_PAR_2018"
+ [701] "SWIdahoCereals_SWS_PAR_2018" "SWIdahoCereals_SWS_PAR_2018"
+ [703] "SWIdahoCereals_SWS_PAR_2018" "SWIdahoCereals_SWS_PAR_2018"
+ [705] "SWIdahoCereals_SWS_PAR_2018" "SWIdahoCereals_SWS_PAR_2018"
+ [707] "SWIdahoCereals_SWS_PAR_2018" "SWIdahoCereals_SWS_PAR_2018"
+ [709] "SWIdahoCereals_SWS_PAR_2018" "SWIdahoCereals_SWS_PAR_2018"
+ [711] "SWIdahoCereals_SWS_PAR_2018" "SWIdahoCereals_SWS_PAR_2018"
+ [713] "SWIdahoCereals_SWS_PAR_2018" "SWIdahoCereals_SWS_PAR_2018"
+ [715] "SWIdahoCereals_SWS_PAR_2018" "SWIdahoCereals_SWS_PAR_2018"
+ [717] "SWIdahoCereals_SWS_PAR_2018" "SWIdahoCereals_SWS_PAR_2018"
+ [719] "SWIdahoCereals_SWS_PAR_2018" "SWIdahoCereals_SWS_PAR_2018"
+ [721] "SWIdahoCereals_SWS_PAR_2018" "SWIdahoCereals_SWS_PAR_2018"
+ [723] "SWIdahoCereals_SWS_PAR_2018" "SWIdahoCereals_SWS_PAR_2018"
+ [725] "SWIdahoCereals_SWS_PAR_2018" "SWIdahoCereals_SWS_PAR_2018"
+ [727] "SWIdahoCereals_SWS_PAR_2018" "SWIdahoCereals_SWS_PAR_2018"
+ [729] "SWIdahoCereals_SWS_PAR_2018" "SWIdahoCereals_SWS_PAR_2018"
+ [731] "SWIdahoCereals_SWS_PAR_2018" "SWIdahoCereals_SWS_PAR_2018"
+ [733] "SWIdahoCereals_SWS_PAR_2018" "SWIdahoCereals_SWS_PAR_2018"
+ [735] "SWIdahoCereals_SWS_PAR_2018" "SWIdahoCereals_SWS_PAR_2018"
+ [737] "SWIdahoCereals_SWS_PAR_2018" "SWIdahoCereals_SWS_PAR_2018"
+ [739] "SWIdahoCereals_SWS_PAR_2018" "SWIdahoCereals_SWS_PAR_2018"
+ [741] "SWIdahoCereals_SWS_PAR_2018" "SWIdahoCereals_SWS_PAR_2018"
+ [743] "SWIdahoCereals_SWS_PAR_2018" "SWIdahoCereals_SWS_PAR_2018"
+ [745] "SWIdahoCereals_SWS_PAR_2018" "SWIdahoCereals_SWS_PAR_2018"
+ [747] "SWIdahoCereals_SWS_PAR_2018" "SWIdahoCereals_SWS_PAR_2018"
+ [749] "SWIdahoCereals_SWS_PAR_2018" "SWIdahoCereals_SWS_PAR_2018"
+ [751] "SWIdahoCereals_SWS_PAR_2018" "SWIdahoCereals_SWS_PAR_2018"
+ [753] "SWIdahoCereals_SWS_PAR_2018" "SWIdahoCereals_SWS_PAR_2018"
+ [755] "SWIdahoCereals_SWS_PAR_2018" "SWIdahoCereals_SWS_PAR_2018"
+ [757] "SWIdahoCereals_SWS_PAR_2018" "SWIdahoCereals_SWS_PAR_2018"
+ [759] "SWIdahoCereals_SWS_PAR_2018" "SWIdahoCereals_SWS_PAR_2018"
+ [761] "SWIdahoCereals_SWS_PAR_2018" "SWIdahoCereals_SWS_PAR_2018"
+ [763] "SWIdahoCereals_SWS_PAR_2018" "SWIdahoCereals_SWS_PAR_2018"
+ [765] "SWIdahoCereals_SWW_PAR_2018" "SWIdahoCereals_SWW_PAR_2018"
+ [767] "SWIdahoCereals_SWW_PAR_2018" "SWIdahoCereals_SWW_PAR_2018"
+ [769] "SWIdahoCereals_SWW_PAR_2018" "SWIdahoCereals_SWW_PAR_2018"
+ [771] "SWIdahoCereals_SWW_PAR_2018" "SWIdahoCereals_SWW_PAR_2018"
+ [773] "SWIdahoCereals_SWW_PAR_2018" "SWIdahoCereals_SWW_PAR_2018"
+ [775] "SWIdahoCereals_SWW_PAR_2018" "SWIdahoCereals_SWW_PAR_2018"
+ [777] "SWIdahoCereals_SWW_PAR_2018" "SWIdahoCereals_SWW_PAR_2018"
+ [779] "SWIdahoCereals_SWW_PAR_2018" "SWIdahoCereals_SWW_PAR_2018"
+ [781] "SWIdahoCereals_SWW_PAR_2018" "SWIdahoCereals_SWW_PAR_2018"
+ [783] "SWIdahoCereals_SWW_PAR_2018" "SWIdahoCereals_SWW_PAR_2018"
+ [785] "SWIdahoCereals_SWW_PAR_2018" "SWIdahoCereals_SWW_PAR_2018"
+ [787] "SWIdahoCereals_SWW_PAR_2018" "SWIdahoCereals_SWW_PAR_2018"
+ [789] "SWIdahoCereals_SWW_PAR_2018" "SWIdahoCereals_SWW_PAR_2018"
+ [791] "SWIdahoCereals_SWW_PAR_2018" "SWIdahoCereals_SWW_PAR_2018"
+ [793] "SWIdahoCereals_SWW_PAR_2018" "SWIdahoCereals_SWW_PAR_2018"
+ [795] "SWIdahoCereals_SWW_PAR_2018" "SWIdahoCereals_SWW_PAR_2018"
+ [797] "SWIdahoCereals_SWW_PAR_2018" "SWIdahoCereals_SWW_PAR_2018"
+ [799] "SWIdahoCereals_SWW_PAR_2018" "SWIdahoCereals_SWW_PAR_2018"
+ [801] "SWIdahoCereals_SWW_PAR_2018" "SWIdahoCereals_SWW_PAR_2018"
+ [803] "SWIdahoCereals_SWW_PAR_2018" "SWIdahoCereals_SWW_PAR_2018"
+ [805] "SWIdahoCereals_SWW_PAR_2018" "SWIdahoCereals_SWW_PAR_2018"
+ [807] "SWIdahoCereals_SWW_PAR_2018" "SWIdahoCereals_SWW_PAR_2018"
+ [809] "SWIdahoCereals_SWW_PAR_2018" "SWIdahoCereals_SWW_PAR_2018"
+ [811] "SWIdahoCereals_SWW_PAR_2018" "SWIdahoCereals_SWW_PAR_2018"
+ [813] "SWIdahoCereals_SWW_PAR_2018" "SWIdahoCereals_SWW_PAR_2018"
+ [815] "SWIdahoCereals_SWW_PAR_2018" "SWIdahoCereals_SWW_PAR_2018"
+ [817] "SWIdahoCereals_SWW_PAR_2018" "SWIdahoCereals_SWW_PAR_2018"
+ [819] "SWIdahoCereals_SWW_PAR_2018" "SWIdahoCereals_SWW_PAR_2018"
+ [821] "SWIdahoCereals_SWW_PAR_2018" "SWIdahoCereals_SWW_PAR_2018"
+ [823] "SWIdahoCereals_SWW_PAR_2018" "SWIdahoCereals_SWW_PAR_2018"
+ [825] "SWIdahoCereals_SWW_PAR_2018" "SWIdahoCereals_SWW_PAR_2018"
+ [827] "SWIdahoCereals_SWW_PAR_2018" "SWIdahoCereals_SWW_PAR_2018"
+ [829] "SWIdahoCereals_SWW_PAR_2018" "SWIdahoCereals_SWW_PAR_2018"
+ [831] "SWIdahoCereals_SWW_PAR_2018" "SWIdahoCereals_SWW_PAR_2018"
+ [833] "SWIdahoCereals_SWW_PAR_2018" "SWIdahoCereals_SWW_PAR_2018"
+ [835] "SWIdahoCereals_SWW_PAR_2018" "SWIdahoCereals_SWW_PAR_2018"
+ [837] "SWIdahoCereals_SWW_PAR_2018" "SWIdahoCereals_SWW_PAR_2018"
+ [839] "SWIdahoCereals_SWW_PAR_2018" "SWIdahoCereals_SWW_PAR_2018"
+ [841] "SWIdahoCereals_SWW_PAR_2018" "SWIdahoCereals_SWW_PAR_2018"
+ [843] "SWIdahoCereals_SWW_PAR_2018" "SWIdahoCereals_SWW_PAR_2018"
+ [845] "SWIdahoCereals_SWW_PAR_2018" "SWIdahoCereals_SWW_PAR_2018"
+ [847] "SWIdahoCereals_SWW_PAR_2018" "SWIdahoCereals_SWW_PAR_2018"
+ [849] "SWIdahoCereals_SWW_PAR_2018" "SWIdahoCereals_SWW_PAR_2018"
+ [851] "SWIdahoCereals_SWW_PAR_2018" "SWIdahoCereals_SWW_PAR_2018"
+ [853] "SWIdahoCereals_SWW_PAR_2018" "SWIdahoCereals_SWW_PAR_2018"
+ [855] "SWIdahoCereals_SWW_PAR_2018" "SWIdahoCereals_SWW_PAR_2018"
+ [857] "SWIdahoCereals_SWW_PAR_2018" "SWIdahoCereals_SWW_PAR_2018"
+ [859] "SWIdahoCereals_SWW_PAR_2018" "SWIdahoCereals_SWW_PAR_2018"
+ [861] "SWIdahoCereals_SWW_PAR_2018" "SWIdahoCereals_SWW_PAR_2018"
+ [863] "SWIdahoCereals_SWW_PAR_2018" "SWIdahoCereals_SWW_PAR_2018"
+ [865] "SWIdahoCereals_SWW_PAR_2018" "SWIdahoCereals_SWW_PAR_2018"
+ [867] "SWIdahoCereals_SWW_PAR_2018" "SWIdahoCereals_SWW_PAR_2018"
+ [869] "SWIdahoCereals_SWW_PAR_2018" "SWIdahoCereals_SWW_PAR_2018"
+ [871] "SWIdahoCereals_SWW_PAR_2018" "SWIdahoCereals_SWW_PAR_2018"
+ [873] "SWIdahoCereals_SWW_PAR_2018" "SWIdahoCereals_SWW_PAR_2018"
+ [875] "SWIdahoCereals_SWW_PAR_2018" "SWIdahoCereals_SWW_PAR_2018"
+ [877] "SWIdahoCereals_SWW_PAR_2018" "SWIdahoCereals_SWW_PAR_2018"
+ [879] "SWIdahoCereals_SWW_PAR_2018" "SWIdahoCereals_SWW_PAR_2018"
+ [881] "SWIdahoCereals_H_S_WEI_2018" "SWIdahoCereals_H_S_WEI_2018"
+ [883] "SWIdahoCereals_H_S_WEI_2018" "SWIdahoCereals_H_S_WEI_2018"
+ [885] "SWIdahoCereals_H_S_WEI_2018" "SWIdahoCereals_H_S_WEI_2018"
+ [887] "SWIdahoCereals_H_S_WEI_2018" "SWIdahoCereals_H_S_WEI_2018"
+ [889] "SWIdahoCereals_H_S_WEI_2018" "SWIdahoCereals_H_S_WEI_2018"
+ [891] "SWIdahoCereals_H_S_WEI_2018" "SWIdahoCereals_H_S_WEI_2018"
+ [893] "SWIdahoCereals_H_S_WEI_2018" "SWIdahoCereals_H_S_WEI_2018"
+ [895] "SWIdahoCereals_H_S_WEI_2018" "SWIdahoCereals_H_S_WEI_2018"
+ [897] "SWIdahoCereals_H_S_WEI_2018" "SWIdahoCereals_H_S_WEI_2018"
+ [899] "SWIdahoCereals_H_S_WEI_2018" "SWIdahoCereals_H_S_WEI_2018"
+ [901] "SWIdahoCereals_H_S_WEI_2018" "SWIdahoCereals_H_S_WEI_2018"
+ [903] "SWIdahoCereals_H_S_WEI_2018" "SWIdahoCereals_H_S_WEI_2018"
+ [905] "SWIdahoCereals_H_S_WEI_2018" "SWIdahoCereals_H_S_WEI_2018"
+ [907] "SWIdahoCereals_H_S_WEI_2018" "SWIdahoCereals_H_S_WEI_2018"
+ [909] "SWIdahoCereals_H_S_WEI_2018" "SWIdahoCereals_H_S_WEI_2018"
+ [911] "SWIdahoCereals_H_S_WEI_2018" "SWIdahoCereals_H_S_WEI_2018"
+ [913] "SWIdahoCereals_H_S_WEI_2018" "SWIdahoCereals_H_S_WEI_2018"
+ [915] "SWIdahoCereals_H_S_WEI_2018" "SWIdahoCereals_H_S_WEI_2018"
+ [917] "SWIdahoCereals_H_S_WEI_2018" "SWIdahoCereals_H_S_WEI_2018"
+ [919] "SWIdahoCereals_H_S_WEI_2018" "SWIdahoCereals_H_S_WEI_2018"
+ [921] "SWIdahoCereals_H_S_WEI_2018" "SWIdahoCereals_H_S_WEI_2018"
+ [923] "SWIdahoCereals_H_S_WEI_2018" "SWIdahoCereals_H_S_WEI_2018"
+ [925] "SWIdahoCereals_H_S_WEI_2018" "SWIdahoCereals_H_S_WEI_2018"
+ [927] "SWIdahoCereals_H_S_WEI_2018" "SWIdahoCereals_H_S_WEI_2018"
+ [929] "SWIdahoCereals_H_S_WEI_2018" "SWIdahoCereals_H_S_WEI_2018"
+ [931] "SWIdahoCereals_H_S_WEI_2018" "SWIdahoCereals_H_S_WEI_2018"
+ [933] "SWIdahoCereals_H_S_WEI_2018" "SWIdahoCereals_H_S_WEI_2018"
+ [935] "SWIdahoCereals_H_S_WEI_2018" "SWIdahoCereals_H_S_WEI_2018"
+ [937] "SWIdahoCereals_H_S_WEI_2018" "SWIdahoCereals_H_S_WEI_2018"
+ [939] "SWIdahoCereals_H_S_WEI_2018" "SWIdahoCereals_H_S_WEI_2018"
+ [941] "SWIdahoCereals_H_S_WEI_2018" "SWIdahoCereals_H_S_WEI_2018"
+ [943] "SWIdahoCereals_H_S_WEI_2018" "SWIdahoCereals_H_S_WEI_2018"
+ [945] "SWIdahoCereals_H_S_WEI_2018" "SWIdahoCereals_H_S_WEI_2018"
+ [947] "SWIdahoCereals_H_S_WEI_2018" "SWIdahoCereals_H_S_WEI_2018"
+ [949] "SWIdahoCereals_H_S_WEI_2018" "SWIdahoCereals_H_S_WEI_2018"
+ [951] "SWIdahoCereals_H_S_WEI_2018" "SWIdahoCereals_H_S_WEI_2018"
+ [953] "SWIdahoCereals_H_S_WEI_2018" "SWIdahoCereals_H_S_WEI_2018"
+ [955] "SWIdahoCereals_H_S_WEI_2018" "SWIdahoCereals_H_S_WEI_2018"
+ [957] "SWIdahoCereals_H_S_WEI_2018" "SWIdahoCereals_H_S_WEI_2018"
+ [959] "SWIdahoCereals_H_S_WEI_2018" "SWIdahoCereals_H_S_WEI_2018"
+ [961] "SWIdahoCereals_H_S_WEI_2018" "SWIdahoCereals_H_S_WEI_2018"
+ [963] "SWIdahoCereals_H_S_WEI_2018" "SWIdahoCereals_H_S_WEI_2018"
+ [965] "SWIdahoCereals_H_S_WEI_2018" "SWIdahoCereals_H_S_WEI_2018"
+ [967] "SWIdahoCereals_H_S_WEI_2018" "SWIdahoCereals_H_S_WEI_2018"
+ [969] "SWIdahoCereals_H_S_WEI_2018" "SWIdahoCereals_H_S_WEI_2018"
+ [971] "SWIdahoCereals_H_S_WEI_2018" "SWIdahoCereals_H_S_WEI_2018"
+ [973] "SWIdahoCereals_H_S_WEI_2018" "SWIdahoCereals_H_S_WEI_2018"
+ [975] "SWIdahoCereals_H_S_WEI_2018" "SWIdahoCereals_H_S_WEI_2018"
+ [977] "SWIdahoCereals_H_W_WEI_2018" "SWIdahoCereals_H_W_WEI_2018"
+ [979] "SWIdahoCereals_H_W_WEI_2018" "SWIdahoCereals_H_W_WEI_2018"
+ [981] "SWIdahoCereals_H_W_WEI_2018" "SWIdahoCereals_H_W_WEI_2018"
+ [983] "SWIdahoCereals_H_W_WEI_2018" "SWIdahoCereals_H_W_WEI_2018"
+ [985] "SWIdahoCereals_H_W_WEI_2018" "SWIdahoCereals_H_W_WEI_2018"
+ [987] "SWIdahoCereals_H_W_WEI_2018" "SWIdahoCereals_H_W_WEI_2018"
+ [989] "SWIdahoCereals_H_W_WEI_2018" "SWIdahoCereals_H_W_WEI_2018"
+ [991] "SWIdahoCereals_H_W_WEI_2018" "SWIdahoCereals_H_W_WEI_2018"
+ [993] "SWIdahoCereals_H_W_WEI_2018" "SWIdahoCereals_H_W_WEI_2018"
+ [995] "SWIdahoCereals_H_W_WEI_2018" "SWIdahoCereals_H_W_WEI_2018"
+ [997] "SWIdahoCereals_H_W_WEI_2018" "SWIdahoCereals_H_W_WEI_2018"
+ [999] "SWIdahoCereals_H_W_WEI_2018" "SWIdahoCereals_H_W_WEI_2018"
+[1001] "SWIdahoCereals_H_W_WEI_2018" "SWIdahoCereals_H_W_WEI_2018"
+[1003] "SWIdahoCereals_H_W_WEI_2018" "SWIdahoCereals_H_W_WEI_2018"
+[1005] "SWIdahoCereals_H_W_WEI_2018" "SWIdahoCereals_H_W_WEI_2018"
+[1007] "SWIdahoCereals_H_W_WEI_2018" "SWIdahoCereals_H_W_WEI_2018"
+[1009] "SWIdahoCereals_H_W_WEI_2018" "SWIdahoCereals_H_W_WEI_2018"
+[1011] "SWIdahoCereals_H_W_WEI_2018" "SWIdahoCereals_H_W_WEI_2018"
+[1013] "SWIdahoCereals_H_W_WEI_2018" "SWIdahoCereals_H_W_WEI_2018"
+[1015] "SWIdahoCereals_H_W_WEI_2018" "SWIdahoCereals_H_W_WEI_2018"
+[1017] "SWIdahoCereals_H_W_WEI_2018" "SWIdahoCereals_H_W_WEI_2018"
+[1019] "SWIdahoCereals_H_W_WEI_2018" "SWIdahoCereals_H_W_WEI_2018"
+[1021] "SWIdahoCereals_H_W_WEI_2018" "SWIdahoCereals_H_W_WEI_2018"
+[1023] "SWIdahoCereals_H_W_WEI_2018" "SWIdahoCereals_H_W_WEI_2018"
+[1025] "SWIdahoCereals_SWS_WEI_2018" "SWIdahoCereals_SWS_WEI_2018"
+[1027] "SWIdahoCereals_SWS_WEI_2018" "SWIdahoCereals_SWS_WEI_2018"
+[1029] "SWIdahoCereals_SWS_WEI_2018" "SWIdahoCereals_SWS_WEI_2018"
+[1031] "SWIdahoCereals_SWS_WEI_2018" "SWIdahoCereals_SWS_WEI_2018"
+[1033] "SWIdahoCereals_SWS_WEI_2018" "SWIdahoCereals_SWS_WEI_2018"
+[1035] "SWIdahoCereals_SWS_WEI_2018" "SWIdahoCereals_SWS_WEI_2018"
+[1037] "SWIdahoCereals_SWS_WEI_2018" "SWIdahoCereals_SWS_WEI_2018"
+[1039] "SWIdahoCereals_SWS_WEI_2018" "SWIdahoCereals_SWS_WEI_2018"
+[1041] "SWIdahoCereals_SWS_WEI_2018" "SWIdahoCereals_SWS_WEI_2018"
+[1043] "SWIdahoCereals_SWS_WEI_2018" "SWIdahoCereals_SWS_WEI_2018"
+[1045] "SWIdahoCereals_SWS_WEI_2018" "SWIdahoCereals_SWS_WEI_2018"
+[1047] "SWIdahoCereals_SWS_WEI_2018" "SWIdahoCereals_SWS_WEI_2018"
+[1049] "SWIdahoCereals_SWS_WEI_2018" "SWIdahoCereals_SWS_WEI_2018"
+[1051] "SWIdahoCereals_SWS_WEI_2018" "SWIdahoCereals_SWS_WEI_2018"
+[1053] "SWIdahoCereals_SWS_WEI_2018" "SWIdahoCereals_SWS_WEI_2018"
+[1055] "SWIdahoCereals_SWS_WEI_2018" "SWIdahoCereals_SWS_WEI_2018"
+[1057] "SWIdahoCereals_SWS_WEI_2018" "SWIdahoCereals_SWS_WEI_2018"
+[1059] "SWIdahoCereals_SWS_WEI_2018" "SWIdahoCereals_SWS_WEI_2018"
+[1061] "SWIdahoCereals_SWS_WEI_2018" "SWIdahoCereals_SWS_WEI_2018"
+[1063] "SWIdahoCereals_SWS_WEI_2018" "SWIdahoCereals_SWS_WEI_2018"
+[1065] "SWIdahoCereals_SWS_WEI_2018" "SWIdahoCereals_SWS_WEI_2018"
+[1067] "SWIdahoCereals_SWS_WEI_2018" "SWIdahoCereals_SWS_WEI_2018"
+[1069] "SWIdahoCereals_SWS_WEI_2018" "SWIdahoCereals_SWS_WEI_2018"
+[1071] "SWIdahoCereals_SWS_WEI_2018" "SWIdahoCereals_SWS_WEI_2018"
+[1073] "SWIdahoCereals_SWS_WEI_2018" "SWIdahoCereals_SWS_WEI_2018"
+[1075] "SWIdahoCereals_SWS_WEI_2018" "SWIdahoCereals_SWS_WEI_2018"
+[1077] "SWIdahoCereals_SWS_WEI_2018" "SWIdahoCereals_SWS_WEI_2018"
+[1079] "SWIdahoCereals_SWS_WEI_2018" "SWIdahoCereals_SWS_WEI_2018"
+[1081] "SWIdahoCereals_SWS_WEI_2018" "SWIdahoCereals_SWS_WEI_2018"
+[1083] "SWIdahoCereals_SWS_WEI_2018" "SWIdahoCereals_SWS_WEI_2018"
+[1085] "SWIdahoCereals_SWS_WEI_2018" "SWIdahoCereals_SWS_WEI_2018"
+[1087] "SWIdahoCereals_SWS_WEI_2018" "SWIdahoCereals_SWS_WEI_2018"
+[1089] "SWIdahoCereals_SWW_WEI_2018" "SWIdahoCereals_SWW_WEI_2018"
+[1091] "SWIdahoCereals_SWW_WEI_2018" "SWIdahoCereals_SWW_WEI_2018"
+[1093] "SWIdahoCereals_SWW_WEI_2018" "SWIdahoCereals_SWW_WEI_2018"
+[1095] "SWIdahoCereals_SWW_WEI_2018" "SWIdahoCereals_SWW_WEI_2018"
+[1097] "SWIdahoCereals_SWW_WEI_2018" "SWIdahoCereals_SWW_WEI_2018"
+[1099] "SWIdahoCereals_SWW_WEI_2018" "SWIdahoCereals_SWW_WEI_2018"
+[1101] "SWIdahoCereals_SWW_WEI_2018" "SWIdahoCereals_SWW_WEI_2018"
+[1103] "SWIdahoCereals_SWW_WEI_2018" "SWIdahoCereals_SWW_WEI_2018"
+[1105] "SWIdahoCereals_SWW_WEI_2018" "SWIdahoCereals_SWW_WEI_2018"
+[1107] "SWIdahoCereals_SWW_WEI_2018" "SWIdahoCereals_SWW_WEI_2018"
+[1109] "SWIdahoCereals_SWW_WEI_2018" "SWIdahoCereals_SWW_WEI_2018"
+[1111] "SWIdahoCereals_SWW_WEI_2018" "SWIdahoCereals_SWW_WEI_2018"
+[1113] "SWIdahoCereals_SWW_WEI_2018" "SWIdahoCereals_SWW_WEI_2018"
+[1115] "SWIdahoCereals_SWW_WEI_2018" "SWIdahoCereals_SWW_WEI_2018"
+[1117] "SWIdahoCereals_SWW_WEI_2018" "SWIdahoCereals_SWW_WEI_2018"
+[1119] "SWIdahoCereals_SWW_WEI_2018" "SWIdahoCereals_SWW_WEI_2018"
+[1121] "SWIdahoCereals_SWW_WEI_2018" "SWIdahoCereals_SWW_WEI_2018"
+[1123] "SWIdahoCereals_SWW_WEI_2018" "SWIdahoCereals_SWW_WEI_2018"
+[1125] "SWIdahoCereals_SWW_WEI_2018" "SWIdahoCereals_SWW_WEI_2018"
+[1127] "SWIdahoCereals_SWW_WEI_2018" "SWIdahoCereals_SWW_WEI_2018"
+[1129] "SWIdahoCereals_SWW_WEI_2018" "SWIdahoCereals_SWW_WEI_2018"
+[1131] "SWIdahoCereals_SWW_WEI_2018" "SWIdahoCereals_SWW_WEI_2018"
+[1133] "SWIdahoCereals_SWW_WEI_2018" "SWIdahoCereals_SWW_WEI_2018"
+[1135] "SWIdahoCereals_SWW_WEI_2018" "SWIdahoCereals_SWW_WEI_2018"
+[1137] "SWIdahoCereals_SWW_WEI_2018" "SWIdahoCereals_SWW_WEI_2018"
+[1139] "SWIdahoCereals_SWW_WEI_2018" "SWIdahoCereals_SWW_WEI_2018"
+[1141] "SWIdahoCereals_SWW_WEI_2018" "SWIdahoCereals_SWW_WEI_2018"
+[1143] "SWIdahoCereals_SWW_WEI_2018" "SWIdahoCereals_SWW_WEI_2018"
+[1145] "SWIdahoCereals_SWW_WEI_2018" "SWIdahoCereals_SWW_WEI_2018"
+[1147] "SWIdahoCereals_SWW_WEI_2018" "SWIdahoCereals_SWW_WEI_2018"
+[1149] "SWIdahoCereals_SWW_WEI_2018" "SWIdahoCereals_SWW_WEI_2018"
+[1151] "SWIdahoCereals_SWW_WEI_2018" "SWIdahoCereals_SWW_WEI_2018"
+[1153] "SWIdahoCereals_SWW_WEI_2018" "SWIdahoCereals_SWW_WEI_2018"
+[1155] "SWIdahoCereals_SWW_WEI_2018" "SWIdahoCereals_SWW_WEI_2018"
+[1157] "SWIdahoCereals_SWW_WEI_2018" "SWIdahoCereals_SWW_WEI_2018"
+[1159] "SWIdahoCereals_SWW_WEI_2018" "SWIdahoCereals_SWW_WEI_2018"
+[1161] "SWIdahoCereals_SWW_WEI_2018" "SWIdahoCereals_SWW_WEI_2018"
+[1163] "SWIdahoCereals_SWW_WEI_2018" "SWIdahoCereals_SWW_WEI_2018"
+[1165] "SWIdahoCereals_SWW_WEI_2018" "SWIdahoCereals_SWW_WEI_2018"
+[1167] "SWIdahoCereals_SWW_WEI_2018" "SWIdahoCereals_SWW_WEI_2018"
+[1169] "SWIdahoCereals_SWW_WEI_2018" "SWIdahoCereals_SWW_WEI_2018"
+[1171] "SWIdahoCereals_SWW_WEI_2018" "SWIdahoCereals_SWW_WEI_2018"
+[1173] "SWIdahoCereals_SWW_WEI_2018" "SWIdahoCereals_SWW_WEI_2018"
+[1175] "SWIdahoCereals_SWW_WEI_2018" "SWIdahoCereals_SWW_WEI_2018"
+[1177] "SWIdahoCereals_SWW_WEI_2018" "SWIdahoCereals_SWW_WEI_2018"
+[1179] "SWIdahoCereals_HRS_PAR_2019" "SWIdahoCereals_HRS_PAR_2019"
+[1181] "SWIdahoCereals_HRS_PAR_2019" "SWIdahoCereals_HRS_PAR_2019"
+[1183] "SWIdahoCereals_HRS_PAR_2019" "SWIdahoCereals_HRS_PAR_2019"
+[1185] "SWIdahoCereals_HRS_PAR_2019" "SWIdahoCereals_HRS_PAR_2019"
+[1187] "SWIdahoCereals_HRS_PAR_2019" "SWIdahoCereals_HRS_PAR_2019"
+[1189] "SWIdahoCereals_HRS_PAR_2019" "SWIdahoCereals_HRS_PAR_2019"
+[1191] "SWIdahoCereals_HRS_PAR_2019" "SWIdahoCereals_HRS_PAR_2019"
+[1193] "SWIdahoCereals_HRS_PAR_2019" "SWIdahoCereals_HRS_PAR_2019"
+[1195] "SWIdahoCereals_HRS_PAR_2019" "SWIdahoCereals_HRS_PAR_2019"
+[1197] "SWIdahoCereals_HRS_PAR_2019" "SWIdahoCereals_HRS_PAR_2019"
+[1199] "SWIdahoCereals_HRS_PAR_2019" "SWIdahoCereals_HRS_PAR_2019"
+[1201] "SWIdahoCereals_HRS_PAR_2019" "SWIdahoCereals_HRS_PAR_2019"
+[1203] "SWIdahoCereals_HRS_PAR_2019" "SWIdahoCereals_HRS_PAR_2019"
+[1205] "SWIdahoCereals_HRS_PAR_2019" "SWIdahoCereals_HRS_PAR_2019"
+[1207] "SWIdahoCereals_HRS_PAR_2019" "SWIdahoCereals_HRS_PAR_2019"
+[1209] "SWIdahoCereals_HRS_PAR_2019" "SWIdahoCereals_HRS_PAR_2019"
+[1211] "SWIdahoCereals_HRS_PAR_2019" "SWIdahoCereals_HRS_PAR_2019"
+[1213] "SWIdahoCereals_HRS_PAR_2019" "SWIdahoCereals_HRS_PAR_2019"
+[1215] "SWIdahoCereals_HRS_PAR_2019" "SWIdahoCereals_HRS_PAR_2019"
+[1217] "SWIdahoCereals_HRS_PAR_2019" "SWIdahoCereals_HRS_PAR_2019"
+[1219] "SWIdahoCereals_HRS_PAR_2019" "SWIdahoCereals_HRS_PAR_2019"
+[1221] "SWIdahoCereals_HRS_PAR_2019" "SWIdahoCereals_HRS_PAR_2019"
+[1223] "SWIdahoCereals_HRS_PAR_2019" "SWIdahoCereals_HRS_PAR_2019"
+[1225] "SWIdahoCereals_HRS_PAR_2019" "SWIdahoCereals_HRS_PAR_2019"
+[1227] "SWIdahoCereals_HRS_PAR_2019" "SWIdahoCereals_HRS_PAR_2019"
+[1229] "SWIdahoCereals_HRS_PAR_2019" "SWIdahoCereals_HRS_PAR_2019"
+[1231] "SWIdahoCereals_HRS_PAR_2019" "SWIdahoCereals_HRS_PAR_2019"
+[1233] "SWIdahoCereals_HRS_PAR_2019" "SWIdahoCereals_HRS_PAR_2019"
+[1235] "SWIdahoCereals_HRS_PAR_2019" "SWIdahoCereals_HRS_PAR_2019"
+[1237] "SWIdahoCereals_HRS_PAR_2019" "SWIdahoCereals_HRS_PAR_2019"
+[1239] "SWIdahoCereals_HRW_PAR_2019" "SWIdahoCereals_HRW_PAR_2019"
+[1241] "SWIdahoCereals_HRW_PAR_2019" "SWIdahoCereals_HRW_PAR_2019"
+[1243] "SWIdahoCereals_HRW_PAR_2019" "SWIdahoCereals_HRW_PAR_2019"
+[1245] "SWIdahoCereals_HRW_PAR_2019" "SWIdahoCereals_HRW_PAR_2019"
+[1247] "SWIdahoCereals_HRW_PAR_2019" "SWIdahoCereals_HRW_PAR_2019"
+[1249] "SWIdahoCereals_HRW_PAR_2019" "SWIdahoCereals_HRW_PAR_2019"
+[1251] "SWIdahoCereals_HRW_PAR_2019" "SWIdahoCereals_HRW_PAR_2019"
+[1253] "SWIdahoCereals_HRW_PAR_2019" "SWIdahoCereals_HRW_PAR_2019"
+[1255] "SWIdahoCereals_HRW_PAR_2019" "SWIdahoCereals_HRW_PAR_2019"
+[1257] "SWIdahoCereals_HRW_PAR_2019" "SWIdahoCereals_HRW_PAR_2019"
+[1259] "SWIdahoCereals_HRW_PAR_2019" "SWIdahoCereals_HRW_PAR_2019"
+[1261] "SWIdahoCereals_HRW_PAR_2019" "SWIdahoCereals_HRW_PAR_2019"
+[1263] "SWIdahoCereals_HRW_PAR_2019" "SWIdahoCereals_HRW_PAR_2019"
+[1265] "SWIdahoCereals_HRW_PAR_2019" "SWIdahoCereals_HRW_PAR_2019"
+[1267] "SWIdahoCereals_HRW_PAR_2019" "SWIdahoCereals_HRW_PAR_2019"
+[1269] "SWIdahoCereals_HRW_PAR_2019" "SWIdahoCereals_HRW_PAR_2019"
+[1271] "SWIdahoCereals_HRW_PAR_2019" "SWIdahoCereals_HRW_PAR_2019"
+[1273] "SWIdahoCereals_HRW_PAR_2019" "SWIdahoCereals_HRW_PAR_2019"
+[1275] "SWIdahoCereals_HRW_PAR_2019" "SWIdahoCereals_HRW_PAR_2019"
+[1277] "SWIdahoCereals_HRW_PAR_2019" "SWIdahoCereals_HRW_PAR_2019"
+[1279] "SWIdahoCereals_HRW_PAR_2019" "SWIdahoCereals_HRW_PAR_2019"
+[1281] "SWIdahoCereals_HRW_PAR_2019" "SWIdahoCereals_HRW_PAR_2019"
+[1283] "SWIdahoCereals_HWS_PAR_2019" "SWIdahoCereals_HWS_PAR_2019"
+[1285] "SWIdahoCereals_HWS_PAR_2019" "SWIdahoCereals_HWS_PAR_2019"
+[1287] "SWIdahoCereals_HWS_PAR_2019" "SWIdahoCereals_HWS_PAR_2019"
+[1289] "SWIdahoCereals_HWS_PAR_2019" "SWIdahoCereals_HWS_PAR_2019"
+[1291] "SWIdahoCereals_HWS_PAR_2019" "SWIdahoCereals_HWS_PAR_2019"
+[1293] "SWIdahoCereals_HWS_PAR_2019" "SWIdahoCereals_HWS_PAR_2019"
+[1295] "SWIdahoCereals_HWS_PAR_2019" "SWIdahoCereals_HWS_PAR_2019"
+[1297] "SWIdahoCereals_HWS_PAR_2019" "SWIdahoCereals_HWS_PAR_2019"
+[1299] "SWIdahoCereals_HWS_PAR_2019" "SWIdahoCereals_HWS_PAR_2019"
+[1301] "SWIdahoCereals_HWS_PAR_2019" "SWIdahoCereals_HWS_PAR_2019"
+[1303] "SWIdahoCereals_HWS_PAR_2019" "SWIdahoCereals_HWS_PAR_2019"
+[1305] "SWIdahoCereals_HWS_PAR_2019" "SWIdahoCereals_HWS_PAR_2019"
+[1307] "SWIdahoCereals_HWW_PAR_2019" "SWIdahoCereals_HWW_PAR_2019"
+[1309] "SWIdahoCereals_HWW_PAR_2019" "SWIdahoCereals_HWW_PAR_2019"
+[1311] "SWIdahoCereals_HWW_PAR_2019" "SWIdahoCereals_HWW_PAR_2019"
+[1313] "SWIdahoCereals_HWW_PAR_2019" "SWIdahoCereals_HWW_PAR_2019"
+[1315] "SWIdahoCereals_HWW_PAR_2019" "SWIdahoCereals_HWW_PAR_2019"
+[1317] "SWIdahoCereals_HWW_PAR_2019" "SWIdahoCereals_HWW_PAR_2019"
+[1319] "SWIdahoCereals_HWW_PAR_2019" "SWIdahoCereals_HWW_PAR_2019"
+[1321] "SWIdahoCereals_HWW_PAR_2019" "SWIdahoCereals_HWW_PAR_2019"
+[1323] "SWIdahoCereals_HWW_PAR_2019" "SWIdahoCereals_HWW_PAR_2019"
+[1325] "SWIdahoCereals_HWW_PAR_2019" "SWIdahoCereals_HWW_PAR_2019"
+[1327] "SWIdahoCereals_HWW_PAR_2019" "SWIdahoCereals_HWW_PAR_2019"
+[1329] "SWIdahoCereals_HWW_PAR_2019" "SWIdahoCereals_HWW_PAR_2019"
+[1331] "SWIdahoCereals_HWW_PAR_2019" "SWIdahoCereals_HWW_PAR_2019"
+[1333] "SWIdahoCereals_HWW_PAR_2019" "SWIdahoCereals_HWW_PAR_2019"
+[1335] "SWIdahoCereals_HWW_PAR_2019" "SWIdahoCereals_HWW_PAR_2019"
+[1337] "SWIdahoCereals_HWW_PAR_2019" "SWIdahoCereals_HWW_PAR_2019"
+[1339] "SWIdahoCereals_HWW_PAR_2019" "SWIdahoCereals_HWW_PAR_2019"
+[1341] "SWIdahoCereals_HWW_PAR_2019" "SWIdahoCereals_HWW_PAR_2019"
+[1343] "SWIdahoCereals_HWW_PAR_2019" "SWIdahoCereals_HWW_PAR_2019"
+[1345] "SWIdahoCereals_HWW_PAR_2019" "SWIdahoCereals_HWW_PAR_2019"
+[1347] "SWIdahoCereals_HWW_PAR_2019" "SWIdahoCereals_HWW_PAR_2019"
+[1349] "SWIdahoCereals_HWW_PAR_2019" "SWIdahoCereals_HWW_PAR_2019"
+[1351] "SWIdahoCereals_SWS_PAR_2019" "SWIdahoCereals_SWS_PAR_2019"
+[1353] "SWIdahoCereals_SWS_PAR_2019" "SWIdahoCereals_SWS_PAR_2019"
+[1355] "SWIdahoCereals_SWS_PAR_2019" "SWIdahoCereals_SWS_PAR_2019"
+[1357] "SWIdahoCereals_SWS_PAR_2019" "SWIdahoCereals_SWS_PAR_2019"
+[1359] "SWIdahoCereals_SWS_PAR_2019" "SWIdahoCereals_SWS_PAR_2019"
+[1361] "SWIdahoCereals_SWS_PAR_2019" "SWIdahoCereals_SWS_PAR_2019"
+[1363] "SWIdahoCereals_SWS_PAR_2019" "SWIdahoCereals_SWS_PAR_2019"
+[1365] "SWIdahoCereals_SWS_PAR_2019" "SWIdahoCereals_SWS_PAR_2019"
+[1367] "SWIdahoCereals_SWS_PAR_2019" "SWIdahoCereals_SWS_PAR_2019"
+[1369] "SWIdahoCereals_SWS_PAR_2019" "SWIdahoCereals_SWS_PAR_2019"
+[1371] "SWIdahoCereals_SWS_PAR_2019" "SWIdahoCereals_SWS_PAR_2019"
+[1373] "SWIdahoCereals_SWS_PAR_2019" "SWIdahoCereals_SWS_PAR_2019"
+[1375] "SWIdahoCereals_SWS_PAR_2019" "SWIdahoCereals_SWS_PAR_2019"
+[1377] "SWIdahoCereals_SWS_PAR_2019" "SWIdahoCereals_SWS_PAR_2019"
+[1379] "SWIdahoCereals_SWS_PAR_2019" "SWIdahoCereals_SWS_PAR_2019"
+[1381] "SWIdahoCereals_SWS_PAR_2019" "SWIdahoCereals_SWS_PAR_2019"
+[1383] "SWIdahoCereals_SWS_PAR_2019" "SWIdahoCereals_SWS_PAR_2019"
+[1385] "SWIdahoCereals_SWS_PAR_2019" "SWIdahoCereals_SWS_PAR_2019"
+[1387] "SWIdahoCereals_SWS_PAR_2019" "SWIdahoCereals_SWS_PAR_2019"
+[1389] "SWIdahoCereals_SWS_PAR_2019" "SWIdahoCereals_SWS_PAR_2019"
+[1391] "SWIdahoCereals_SWS_PAR_2019" "SWIdahoCereals_SWS_PAR_2019"
+[1393] "SWIdahoCereals_SWS_PAR_2019" "SWIdahoCereals_SWS_PAR_2019"
+[1395] "SWIdahoCereals_SWS_PAR_2019" "SWIdahoCereals_SWS_PAR_2019"
+[1397] "SWIdahoCereals_SWS_PAR_2019" "SWIdahoCereals_SWS_PAR_2019"
+[1399] "SWIdahoCereals_SWS_PAR_2019" "SWIdahoCereals_SWS_PAR_2019"
+[1401] "SWIdahoCereals_SWS_PAR_2019" "SWIdahoCereals_SWS_PAR_2019"
+[1403] "SWIdahoCereals_SWS_PAR_2019" "SWIdahoCereals_SWS_PAR_2019"
+[1405] "SWIdahoCereals_SWS_PAR_2019" "SWIdahoCereals_SWS_PAR_2019"
+[1407] "SWIdahoCereals_SWW_PAR_2019" "SWIdahoCereals_SWW_PAR_2019"
+[1409] "SWIdahoCereals_SWW_PAR_2019" "SWIdahoCereals_SWW_PAR_2019"
+[1411] "SWIdahoCereals_SWW_PAR_2019" "SWIdahoCereals_SWW_PAR_2019"
+[1413] "SWIdahoCereals_SWW_PAR_2019" "SWIdahoCereals_SWW_PAR_2019"
+[1415] "SWIdahoCereals_SWW_PAR_2019" "SWIdahoCereals_SWW_PAR_2019"
+[1417] "SWIdahoCereals_SWW_PAR_2019" "SWIdahoCereals_SWW_PAR_2019"
+[1419] "SWIdahoCereals_SWW_PAR_2019" "SWIdahoCereals_SWW_PAR_2019"
+[1421] "SWIdahoCereals_SWW_PAR_2019" "SWIdahoCereals_SWW_PAR_2019"
+[1423] "SWIdahoCereals_SWW_PAR_2019" "SWIdahoCereals_SWW_PAR_2019"
+[1425] "SWIdahoCereals_SWW_PAR_2019" "SWIdahoCereals_SWW_PAR_2019"
+[1427] "SWIdahoCereals_SWW_PAR_2019" "SWIdahoCereals_SWW_PAR_2019"
+[1429] "SWIdahoCereals_SWW_PAR_2019" "SWIdahoCereals_SWW_PAR_2019"
+[1431] "SWIdahoCereals_SWW_PAR_2019" "SWIdahoCereals_SWW_PAR_2019"
+[1433] "SWIdahoCereals_SWW_PAR_2019" "SWIdahoCereals_SWW_PAR_2019"
+[1435] "SWIdahoCereals_SWW_PAR_2019" "SWIdahoCereals_SWW_PAR_2019"
+[1437] "SWIdahoCereals_SWW_PAR_2019" "SWIdahoCereals_SWW_PAR_2019"
+[1439] "SWIdahoCereals_SWW_PAR_2019" "SWIdahoCereals_SWW_PAR_2019"
+[1441] "SWIdahoCereals_SWW_PAR_2019" "SWIdahoCereals_SWW_PAR_2019"
+[1443] "SWIdahoCereals_SWW_PAR_2019" "SWIdahoCereals_SWW_PAR_2019"
+[1445] "SWIdahoCereals_SWW_PAR_2019" "SWIdahoCereals_SWW_PAR_2019"
+[1447] "SWIdahoCereals_SWW_PAR_2019" "SWIdahoCereals_SWW_PAR_2019"
+[1449] "SWIdahoCereals_SWW_PAR_2019" "SWIdahoCereals_SWW_PAR_2019"
+[1451] "SWIdahoCereals_SWW_PAR_2019" "SWIdahoCereals_SWW_PAR_2019"
+[1453] "SWIdahoCereals_SWW_PAR_2019" "SWIdahoCereals_SWW_PAR_2019"
+[1455] "SWIdahoCereals_SWW_PAR_2019" "SWIdahoCereals_SWW_PAR_2019"
+[1457] "SWIdahoCereals_SWW_PAR_2019" "SWIdahoCereals_SWW_PAR_2019"
+[1459] "SWIdahoCereals_SWW_PAR_2019" "SWIdahoCereals_SWW_PAR_2019"
+[1461] "SWIdahoCereals_SWW_PAR_2019" "SWIdahoCereals_SWW_PAR_2019"
+[1463] "SWIdahoCereals_SWW_PAR_2019" "SWIdahoCereals_SWW_PAR_2019"
+[1465] "SWIdahoCereals_SWW_PAR_2019" "SWIdahoCereals_SWW_PAR_2019"
+[1467] "SWIdahoCereals_SWW_PAR_2019" "SWIdahoCereals_SWW_PAR_2019"
+[1469] "SWIdahoCereals_SWW_PAR_2019" "SWIdahoCereals_SWW_PAR_2019"
+[1471] "SWIdahoCereals_SWW_PAR_2019" "SWIdahoCereals_SWW_PAR_2019"
+[1473] "SWIdahoCereals_SWW_PAR_2019" "SWIdahoCereals_SWW_PAR_2019"
+[1475] "SWIdahoCereals_SWW_PAR_2019" "SWIdahoCereals_SWW_PAR_2019"
+[1477] "SWIdahoCereals_SWW_PAR_2019" "SWIdahoCereals_SWW_PAR_2019"
+[1479] "SWIdahoCereals_SWW_PAR_2019" "SWIdahoCereals_SWW_PAR_2019"
+[1481] "SWIdahoCereals_SWW_PAR_2019" "SWIdahoCereals_SWW_PAR_2019"
+[1483] "SWIdahoCereals_SWW_PAR_2019" "SWIdahoCereals_SWW_PAR_2019"
+[1485] "SWIdahoCereals_SWW_PAR_2019" "SWIdahoCereals_SWW_PAR_2019"
+[1487] "SWIdahoCereals_SWW_PAR_2019" "SWIdahoCereals_SWW_PAR_2019"
+[1489] "SWIdahoCereals_SWW_PAR_2019" "SWIdahoCereals_SWW_PAR_2019"
+[1491] "SWIdahoCereals_SWW_PAR_2019" "SWIdahoCereals_SWW_PAR_2019"
+[1493] "SWIdahoCereals_SWW_PAR_2019" "SWIdahoCereals_SWW_PAR_2019"
+[1495] "SWIdahoCereals_SWW_PAR_2019" "SWIdahoCereals_SWW_PAR_2019"
+[1497] "SWIdahoCereals_SWW_PAR_2019" "SWIdahoCereals_SWW_PAR_2019"
+[1499] "SWIdahoCereals_SWW_PAR_2019" "SWIdahoCereals_SWW_PAR_2019"
+[1501] "SWIdahoCereals_SWW_PAR_2019" "SWIdahoCereals_SWW_PAR_2019"
+[1503] "SWIdahoCereals_SWW_PAR_2019" "SWIdahoCereals_SWW_PAR_2019"
+[1505] "SWIdahoCereals_SWW_PAR_2019" "SWIdahoCereals_SWW_PAR_2019"
+[1507] "SWIdahoCereals_SWW_PAR_2019" "SWIdahoCereals_SWW_PAR_2019"
+[1509] "SWIdahoCereals_SWW_PAR_2019" "SWIdahoCereals_SWW_PAR_2019"
+[1511] "SWIdahoCereals_SWW_PAR_2019" "SWIdahoCereals_SWW_PAR_2019"
+[1513] "SWIdahoCereals_SWW_PAR_2019" "SWIdahoCereals_SWW_PAR_2019"
+[1515] "SWIdahoCereals_HRS_PAR_2020" "SWIdahoCereals_HRS_PAR_2020"
+[1517] "SWIdahoCereals_HRS_PAR_2020" "SWIdahoCereals_HRS_PAR_2020"
+[1519] "SWIdahoCereals_HRS_PAR_2020" "SWIdahoCereals_HRS_PAR_2020"
+[1521] "SWIdahoCereals_HRS_PAR_2020" "SWIdahoCereals_HRS_PAR_2020"
+[1523] "SWIdahoCereals_HRS_PAR_2020" "SWIdahoCereals_HRS_PAR_2020"
+[1525] "SWIdahoCereals_HRS_PAR_2020" "SWIdahoCereals_HRS_PAR_2020"
+[1527] "SWIdahoCereals_HRS_PAR_2020" "SWIdahoCereals_HRS_PAR_2020"
+[1529] "SWIdahoCereals_HRS_PAR_2020" "SWIdahoCereals_HRS_PAR_2020"
+[1531] "SWIdahoCereals_HRS_PAR_2020" "SWIdahoCereals_HRS_PAR_2020"
+[1533] "SWIdahoCereals_HRS_PAR_2020" "SWIdahoCereals_HRS_PAR_2020"
+[1535] "SWIdahoCereals_HRS_PAR_2020" "SWIdahoCereals_HRS_PAR_2020"
+[1537] "SWIdahoCereals_HRS_PAR_2020" "SWIdahoCereals_HRS_PAR_2020"
+[1539] "SWIdahoCereals_HRS_PAR_2020" "SWIdahoCereals_HRS_PAR_2020"
+[1541] "SWIdahoCereals_HRS_PAR_2020" "SWIdahoCereals_HRS_PAR_2020"
+[1543] "SWIdahoCereals_HRS_PAR_2020" "SWIdahoCereals_HRS_PAR_2020"
+[1545] "SWIdahoCereals_HRS_PAR_2020" "SWIdahoCereals_HRS_PAR_2020"
+[1547] "SWIdahoCereals_HRS_PAR_2020" "SWIdahoCereals_HRS_PAR_2020"
+[1549] "SWIdahoCereals_HRS_PAR_2020" "SWIdahoCereals_HRS_PAR_2020"
+[1551] "SWIdahoCereals_HRS_PAR_2020" "SWIdahoCereals_HRS_PAR_2020"
+[1553] "SWIdahoCereals_HRS_PAR_2020" "SWIdahoCereals_HRS_PAR_2020"
+[1555] "SWIdahoCereals_HRS_PAR_2020" "SWIdahoCereals_HRS_PAR_2020"
+[1557] "SWIdahoCereals_HRS_PAR_2020" "SWIdahoCereals_HRS_PAR_2020"
+[1559] "SWIdahoCereals_HRS_PAR_2020" "SWIdahoCereals_HRS_PAR_2020"
+[1561] "SWIdahoCereals_HRS_PAR_2020" "SWIdahoCereals_HRS_PAR_2020"
+[1563] "SWIdahoCereals_HRW_PAR_2020" "SWIdahoCereals_HRW_PAR_2020"
+[1565] "SWIdahoCereals_HRW_PAR_2020" "SWIdahoCereals_HRW_PAR_2020"
+[1567] "SWIdahoCereals_HRW_PAR_2020" "SWIdahoCereals_HRW_PAR_2020"
+[1569] "SWIdahoCereals_HRW_PAR_2020" "SWIdahoCereals_HRW_PAR_2020"
+[1571] "SWIdahoCereals_HRW_PAR_2020" "SWIdahoCereals_HRW_PAR_2020"
+[1573] "SWIdahoCereals_HRW_PAR_2020" "SWIdahoCereals_HRW_PAR_2020"
+[1575] "SWIdahoCereals_HRW_PAR_2020" "SWIdahoCereals_HRW_PAR_2020"
+[1577] "SWIdahoCereals_HRW_PAR_2020" "SWIdahoCereals_HRW_PAR_2020"
+[1579] "SWIdahoCereals_HRW_PAR_2020" "SWIdahoCereals_HRW_PAR_2020"
+[1581] "SWIdahoCereals_HRW_PAR_2020" "SWIdahoCereals_HRW_PAR_2020"
+[1583] "SWIdahoCereals_HRW_PAR_2020" "SWIdahoCereals_HRW_PAR_2020"
+[1585] "SWIdahoCereals_HRW_PAR_2020" "SWIdahoCereals_HRW_PAR_2020"
+[1587] "SWIdahoCereals_HRW_PAR_2020" "SWIdahoCereals_HRW_PAR_2020"
+[1589] "SWIdahoCereals_HRW_PAR_2020" "SWIdahoCereals_HRW_PAR_2020"
+[1591] "SWIdahoCereals_HRW_PAR_2020" "SWIdahoCereals_HRW_PAR_2020"
+[1593] "SWIdahoCereals_HRW_PAR_2020" "SWIdahoCereals_HRW_PAR_2020"
+[1595] "SWIdahoCereals_HRW_PAR_2020" "SWIdahoCereals_HRW_PAR_2020"
+[1597] "SWIdahoCereals_HRW_PAR_2020" "SWIdahoCereals_HRW_PAR_2020"
+[1599] "SWIdahoCereals_HRW_PAR_2020" "SWIdahoCereals_HRW_PAR_2020"
+[1601] "SWIdahoCereals_HRW_PAR_2020" "SWIdahoCereals_HRW_PAR_2020"
+[1603] "SWIdahoCereals_HRW_PAR_2020" "SWIdahoCereals_HRW_PAR_2020"
+[1605] "SWIdahoCereals_HRW_PAR_2020" "SWIdahoCereals_HRW_PAR_2020"
+[1607] "SWIdahoCereals_HRW_PAR_2020" "SWIdahoCereals_HRW_PAR_2020"
+[1609] "SWIdahoCereals_HRW_PAR_2020" "SWIdahoCereals_HRW_PAR_2020"
+[1611] "SWIdahoCereals_HRW_PAR_2020" "SWIdahoCereals_HRW_PAR_2020"
+[1613] "SWIdahoCereals_HRW_PAR_2020" "SWIdahoCereals_HRW_PAR_2020"
+[1615] "SWIdahoCereals_HRW_PAR_2020" "SWIdahoCereals_HRW_PAR_2020"
+[1617] "SWIdahoCereals_HRW_PAR_2020" "SWIdahoCereals_HRW_PAR_2020"
+[1619] "SWIdahoCereals_HWS_PAR_2020" "SWIdahoCereals_HWS_PAR_2020"
+[1621] "SWIdahoCereals_HWS_PAR_2020" "SWIdahoCereals_HWS_PAR_2020"
+[1623] "SWIdahoCereals_HWS_PAR_2020" "SWIdahoCereals_HWS_PAR_2020"
+[1625] "SWIdahoCereals_HWS_PAR_2020" "SWIdahoCereals_HWS_PAR_2020"
+[1627] "SWIdahoCereals_HWS_PAR_2020" "SWIdahoCereals_HWS_PAR_2020"
+[1629] "SWIdahoCereals_HWS_PAR_2020" "SWIdahoCereals_HWS_PAR_2020"
+[1631] "SWIdahoCereals_HWS_PAR_2020" "SWIdahoCereals_HWS_PAR_2020"
+[1633] "SWIdahoCereals_HWS_PAR_2020" "SWIdahoCereals_HWS_PAR_2020"
+[1635] "SWIdahoCereals_HWS_PAR_2020" "SWIdahoCereals_HWS_PAR_2020"
+[1637] "SWIdahoCereals_HWS_PAR_2020" "SWIdahoCereals_HWS_PAR_2020"
+[1639] "SWIdahoCereals_HWS_PAR_2020" "SWIdahoCereals_HWS_PAR_2020"
+[1641] "SWIdahoCereals_HWS_PAR_2020" "SWIdahoCereals_HWS_PAR_2020"
+[1643] "SWIdahoCereals_HWS_PAR_2020" "SWIdahoCereals_HWS_PAR_2020"
+[1645] "SWIdahoCereals_HWS_PAR_2020" "SWIdahoCereals_HWS_PAR_2020"
+[1647] "SWIdahoCereals_HWS_PAR_2020" "SWIdahoCereals_HWS_PAR_2020"
+[1649] "SWIdahoCereals_HWS_PAR_2020" "SWIdahoCereals_HWS_PAR_2020"
+[1651] "SWIdahoCereals_HWW_PAR_2020" "SWIdahoCereals_HWW_PAR_2020"
+[1653] "SWIdahoCereals_HWW_PAR_2020" "SWIdahoCereals_HWW_PAR_2020"
+[1655] "SWIdahoCereals_HWW_PAR_2020" "SWIdahoCereals_HWW_PAR_2020"
+[1657] "SWIdahoCereals_HWW_PAR_2020" "SWIdahoCereals_HWW_PAR_2020"
+[1659] "SWIdahoCereals_HWW_PAR_2020" "SWIdahoCereals_HWW_PAR_2020"
+[1661] "SWIdahoCereals_HWW_PAR_2020" "SWIdahoCereals_HWW_PAR_2020"
+[1663] "SWIdahoCereals_HWW_PAR_2020" "SWIdahoCereals_HWW_PAR_2020"
+[1665] "SWIdahoCereals_HWW_PAR_2020" "SWIdahoCereals_HWW_PAR_2020"
+[1667] "SWIdahoCereals_HWW_PAR_2020" "SWIdahoCereals_HWW_PAR_2020"
+[1669] "SWIdahoCereals_HWW_PAR_2020" "SWIdahoCereals_HWW_PAR_2020"
+[1671] "SWIdahoCereals_HWW_PAR_2020" "SWIdahoCereals_HWW_PAR_2020"
+[1673] "SWIdahoCereals_HWW_PAR_2020" "SWIdahoCereals_HWW_PAR_2020"
+[1675] "SWIdahoCereals_HWW_PAR_2020" "SWIdahoCereals_HWW_PAR_2020"
+[1677] "SWIdahoCereals_HWW_PAR_2020" "SWIdahoCereals_HWW_PAR_2020"
+[1679] "SWIdahoCereals_HWW_PAR_2020" "SWIdahoCereals_HWW_PAR_2020"
+[1681] "SWIdahoCereals_HWW_PAR_2020" "SWIdahoCereals_HWW_PAR_2020"
+[1683] "SWIdahoCereals_SWS_PAR_2020" "SWIdahoCereals_SWS_PAR_2020"
+[1685] "SWIdahoCereals_SWS_PAR_2020" "SWIdahoCereals_SWS_PAR_2020"
+[1687] "SWIdahoCereals_SWS_PAR_2020" "SWIdahoCereals_SWS_PAR_2020"
+[1689] "SWIdahoCereals_SWS_PAR_2020" "SWIdahoCereals_SWS_PAR_2020"
+[1691] "SWIdahoCereals_SWS_PAR_2020" "SWIdahoCereals_SWS_PAR_2020"
+[1693] "SWIdahoCereals_SWS_PAR_2020" "SWIdahoCereals_SWS_PAR_2020"
+[1695] "SWIdahoCereals_SWS_PAR_2020" "SWIdahoCereals_SWS_PAR_2020"
+[1697] "SWIdahoCereals_SWS_PAR_2020" "SWIdahoCereals_SWS_PAR_2020"
+[1699] "SWIdahoCereals_SWS_PAR_2020" "SWIdahoCereals_SWS_PAR_2020"
+[1701] "SWIdahoCereals_SWS_PAR_2020" "SWIdahoCereals_SWS_PAR_2020"
+[1703] "SWIdahoCereals_SWS_PAR_2020" "SWIdahoCereals_SWS_PAR_2020"
+[1705] "SWIdahoCereals_SWS_PAR_2020" "SWIdahoCereals_SWS_PAR_2020"
+[1707] "SWIdahoCereals_SWS_PAR_2020" "SWIdahoCereals_SWS_PAR_2020"
+[1709] "SWIdahoCereals_SWS_PAR_2020" "SWIdahoCereals_SWS_PAR_2020"
+[1711] "SWIdahoCereals_SWS_PAR_2020" "SWIdahoCereals_SWS_PAR_2020"
+[1713] "SWIdahoCereals_SWS_PAR_2020" "SWIdahoCereals_SWS_PAR_2020"
+[1715] "SWIdahoCereals_SWS_PAR_2020" "SWIdahoCereals_SWS_PAR_2020"
+[1717] "SWIdahoCereals_SWS_PAR_2020" "SWIdahoCereals_SWS_PAR_2020"
+[1719] "SWIdahoCereals_SWS_PAR_2020" "SWIdahoCereals_SWS_PAR_2020"
+[1721] "SWIdahoCereals_SWS_PAR_2020" "SWIdahoCereals_SWS_PAR_2020"
+[1723] "SWIdahoCereals_SWS_PAR_2020" "SWIdahoCereals_SWS_PAR_2020"
+[1725] "SWIdahoCereals_SWS_PAR_2020" "SWIdahoCereals_SWS_PAR_2020"
+[1727] "SWIdahoCereals_SWS_PAR_2020" "SWIdahoCereals_SWS_PAR_2020"
+[1729] "SWIdahoCereals_SWS_PAR_2020" "SWIdahoCereals_SWS_PAR_2020"
+[1731] "SWIdahoCereals_SWW_PAR_2020" "SWIdahoCereals_SWW_PAR_2020"
+[1733] "SWIdahoCereals_SWW_PAR_2020" "SWIdahoCereals_SWW_PAR_2020"
+[1735] "SWIdahoCereals_SWW_PAR_2020" "SWIdahoCereals_SWW_PAR_2020"
+[1737] "SWIdahoCereals_SWW_PAR_2020" "SWIdahoCereals_SWW_PAR_2020"
+[1739] "SWIdahoCereals_SWW_PAR_2020" "SWIdahoCereals_SWW_PAR_2020"
+[1741] "SWIdahoCereals_SWW_PAR_2020" "SWIdahoCereals_SWW_PAR_2020"
+[1743] "SWIdahoCereals_SWW_PAR_2020" "SWIdahoCereals_SWW_PAR_2020"
+[1745] "SWIdahoCereals_SWW_PAR_2020" "SWIdahoCereals_SWW_PAR_2020"
+[1747] "SWIdahoCereals_SWW_PAR_2020" "SWIdahoCereals_SWW_PAR_2020"
+[1749] "SWIdahoCereals_SWW_PAR_2020" "SWIdahoCereals_SWW_PAR_2020"
+[1751] "SWIdahoCereals_SWW_PAR_2020" "SWIdahoCereals_SWW_PAR_2020"
+[1753] "SWIdahoCereals_SWW_PAR_2020" "SWIdahoCereals_SWW_PAR_2020"
+[1755] "SWIdahoCereals_SWW_PAR_2020" "SWIdahoCereals_SWW_PAR_2020"
+[1757] "SWIdahoCereals_SWW_PAR_2020" "SWIdahoCereals_SWW_PAR_2020"
+[1759] "SWIdahoCereals_SWW_PAR_2020" "SWIdahoCereals_SWW_PAR_2020"
+[1761] "SWIdahoCereals_SWW_PAR_2020" "SWIdahoCereals_SWW_PAR_2020"
+[1763] "SWIdahoCereals_SWW_PAR_2020" "SWIdahoCereals_SWW_PAR_2020"
+[1765] "SWIdahoCereals_SWW_PAR_2020" "SWIdahoCereals_SWW_PAR_2020"
+[1767] "SWIdahoCereals_SWW_PAR_2020" "SWIdahoCereals_SWW_PAR_2020"
+[1769] "SWIdahoCereals_SWW_PAR_2020" "SWIdahoCereals_SWW_PAR_2020"
+[1771] "SWIdahoCereals_SWW_PAR_2020" "SWIdahoCereals_SWW_PAR_2020"
+[1773] "SWIdahoCereals_SWW_PAR_2020" "SWIdahoCereals_SWW_PAR_2020"
+[1775] "SWIdahoCereals_SWW_PAR_2020" "SWIdahoCereals_SWW_PAR_2020"
+[1777] "SWIdahoCereals_SWW_PAR_2020" "SWIdahoCereals_SWW_PAR_2020"
+[1779] "SWIdahoCereals_SWW_PAR_2020" "SWIdahoCereals_SWW_PAR_2020"
+[1781] "SWIdahoCereals_SWW_PAR_2020" "SWIdahoCereals_SWW_PAR_2020"
+[1783] "SWIdahoCereals_SWW_PAR_2020" "SWIdahoCereals_SWW_PAR_2020"
+[1785] "SWIdahoCereals_SWW_PAR_2020" "SWIdahoCereals_SWW_PAR_2020"
+[1787] "SWIdahoCereals_SWW_PAR_2020" "SWIdahoCereals_SWW_PAR_2020"
+[1789] "SWIdahoCereals_SWW_PAR_2020" "SWIdahoCereals_SWW_PAR_2020"
+[1791] "SWIdahoCereals_SWW_PAR_2020" "SWIdahoCereals_SWW_PAR_2020"
+[1793] "SWIdahoCereals_SWW_PAR_2020" "SWIdahoCereals_SWW_PAR_2020"
+[1795] "SWIdahoCereals_SWW_PAR_2020" "SWIdahoCereals_SWW_PAR_2020"
+[1797] "SWIdahoCereals_SWW_PAR_2020" "SWIdahoCereals_SWW_PAR_2020"
+[1799] "SWIdahoCereals_SWW_PAR_2020" "SWIdahoCereals_SWW_PAR_2020"
+[1801] "SWIdahoCereals_SWW_PAR_2020" "SWIdahoCereals_SWW_PAR_2020"
+[1803] "SWIdahoCereals_SWW_PAR_2020" "SWIdahoCereals_SWW_PAR_2020"
+[1805] "SWIdahoCereals_SWW_PAR_2020" "SWIdahoCereals_SWW_PAR_2020"
+[1807] "SWIdahoCereals_SWW_PAR_2020" "SWIdahoCereals_SWW_PAR_2020"
+[1809] "SWIdahoCereals_SWW_PAR_2020" "SWIdahoCereals_SWW_PAR_2020"
+[1811] "SWIdahoCereals_SWW_PAR_2020" "SWIdahoCereals_SWW_PAR_2020"
+[1813] "SWIdahoCereals_SWW_PAR_2020" "SWIdahoCereals_SWW_PAR_2020"
+[1815] "SWIdahoCereals_SWW_PAR_2020" "SWIdahoCereals_SWW_PAR_2020"
+[1817] "SWIdahoCereals_SWW_PAR_2020" "SWIdahoCereals_SWW_PAR_2020"
+[1819] "SWIdahoCereals_SWW_PAR_2020" "SWIdahoCereals_SWW_PAR_2020"
+[1821] "SWIdahoCereals_SWW_PAR_2020" "SWIdahoCereals_SWW_PAR_2020"
+[1823] "SWIdahoCereals_SWW_PAR_2020" "SWIdahoCereals_SWW_PAR_2020"
+[1825] "SWIdahoCereals_SWW_PAR_2020" "SWIdahoCereals_SWW_PAR_2020"
+[1827] "SWIdahoCereals_SWW_PAR_2020" "SWIdahoCereals_SWW_PAR_2020"
+[1829] "SWIdahoCereals_SWW_PAR_2020" "SWIdahoCereals_SWW_PAR_2020"
+[1831] "SWIdahoCereals_SWW_PAR_2020" "SWIdahoCereals_SWW_PAR_2020"
+[1833] "SWIdahoCereals_SWW_PAR_2020" "SWIdahoCereals_SWW_PAR_2020"
+[1835] "SWIdahoCereals_SWW_PAR_2020" "SWIdahoCereals_SWW_PAR_2020"
+[1837] "SWIdahoCereals_SWW_PAR_2020" "SWIdahoCereals_SWW_PAR_2020"
+[1839] "SWIdahoCereals_SWW_PAR_2020" "SWIdahoCereals_SWW_PAR_2020"
+[1841] "SWIdahoCereals_SWW_PAR_2020" "SWIdahoCereals_SWW_PAR_2020"
+[1843] "SWIdahoCereals_SWW_PAR_2020" "SWIdahoCereals_SWW_PAR_2020"
+[1845] "SWIdahoCereals_SWW_PAR_2020" "SWIdahoCereals_SWW_PAR_2020"
+[1847] "SWIdahoCereals_SWW_PAR_2020" "SWIdahoCereals_SWW_PAR_2020"
+[1849] "SWIdahoCereals_SWW_PAR_2020" "SWIdahoCereals_SWW_PAR_2020"
+[1851] "SWIdahoCereals_SWW_PAR_2020" "SWIdahoCereals_SWW_PAR_2020"
+[1853] "SWIdahoCereals_SWW_PAR_2020" "SWIdahoCereals_SWW_PAR_2020"
+[1855] "SWIdahoCereals_SWW_PAR_2020" "SWIdahoCereals_SWW_PAR_2020"
+[1857] "SWIdahoCereals_SWW_PAR_2020" "SWIdahoCereals_SWW_PAR_2020"
+[1859] "SWIdahoCereals_SWW_PAR_2020" "SWIdahoCereals_SWW_PAR_2020"
+[1861] "SWIdahoCereals_SWW_PAR_2020" "SWIdahoCereals_SWW_PAR_2020"
+[1863] "SWIdahoCereals_SWW_PAR_2020" "SWIdahoCereals_SWW_PAR_2020"
+[1865] "SWIdahoCereals_SWW_PAR_2020" "SWIdahoCereals_SWW_PAR_2020"
+[1867] "SWIdahoCereals_SWW_PAR_2020" "SWIdahoCereals_SWW_PAR_2020"
+[1869] "SWIdahoCereals_SWW_PAR_2020" "SWIdahoCereals_SWW_PAR_2020"
+[1871] "SWIdahoCereals_SWW_PAR_2020" "SWIdahoCereals_SWW_PAR_2020"
+[1873] "SWIdahoCereals_SWW_PAR_2020" "SWIdahoCereals_SWW_PAR_2020"
+[1875] "SWIdahoCereals_SWW_PAR_2020" "SWIdahoCereals_SWW_PAR_2020"
+[1877] "SWIdahoCereals_SWW_PAR_2020" "SWIdahoCereals_SWW_PAR_2020"
+[1879] "SWIdahoCereals_SWW_PAR_2020" "SWIdahoCereals_SWW_PAR_2020"
+[1881] "SWIdahoCereals_SWW_PAR_2020" "SWIdahoCereals_SWW_PAR_2020"</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>variety_trials<span class="sc">$</span>trial <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="at">pattern =</span> <span class="st">"_H_"</span>, <span class="at">replacement =</span> <span class="st">"_H-"</span>, <span class="at">x =</span> variety_trials<span class="sc">$</span>trial )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>variety_trials <span class="ot">&lt;-</span> <span class="fu">separate</span>(variety_trials, trial, </span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>                           <span class="at">into =</span> <span class="fu">c</span>(<span class="st">"program"</span>, <span class="st">"crop"</span>, <span class="st">"location"</span>, <span class="st">"year"</span>),</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>                           <span class="at">sep =</span> <span class="st">"_"</span>, </span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>                           <span class="at">remove =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The argument <code>remove = FALSE</code> indicates that we want to keep the input variable (“trial”). By default, it would be removed.</p>
+<p>The opposite function is <code>tidyr::unite()</code> which will paste these variable together, separate by any character string you specify. <code>unite()</code> also can ignore missing data when pasting information together, avoiding this unfortunate result: “somevar_NA_NA_anothervar”. You would get “somevar_anothervar” instead.</p>
+</section>
+<section id="sorting-a-data-set" class="level3">
+<h3 class="anchored" data-anchor-id="sorting-a-data-set">Sorting a data set</h3>
+<p>Prior to dplyr, sorting in R was a nightmare. Excel makes this so easy! Why was R torturing us??? But, dplyr has made this much easier:</p>
+<pre><code>arrange(dataset, variable1, variable2, ....)</code></pre>
+<p>You can sort on as many variables as you like! It will sort on the first variables listed and within that, the second variable listed, and so on.</p>
+<p>Example;</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>arrange1 <span class="ot">&lt;-</span> <span class="fu">arrange</span>(variety_trials, variety, yield)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="output-file" class="level4">
+<h4 class="anchored" data-anchor-id="output-file">Output file</h4>
+<p>Let’s output this object to file so we can use it later.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(variety_trials, here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"outputs"</span>, <span class="st">"variety_trials_clean.csv"</span>), <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="the-pipe" class="level3">
+<h3 class="anchored" data-anchor-id="the-pipe">The pipe</h3>
+<p>The pipe operator <code>%&gt;%</code> or its newer replacement <code>|&gt;</code> are magic, or at least, they make our (data wrangling) lives so much easier.</p>
+<p>The pipe operator works as thus:</p>
+<pre><code>operation_1 %&gt;% operation_2</code></pre>
+<p>One operation can be performed (e.g.&nbsp;a <code>select()</code> command), and that resulting data frame is passed on to the next operation (e.g.&nbsp;<code>filter()</code>).</p>
+<p>Example: filter then sort</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>pipe1 <span class="ot">&lt;-</span> <span class="fu">filter</span>(variety_trials, yield <span class="sc">&lt;</span> <span class="dv">75</span>) <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(variety)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The data set is not named in the second operation because it is assumed to be dataset provided in the first operation. Whatever is being output directly left of the pipe operator is in the input data set.</p>
+<p>We can take this even further by making the first operation our addition of the data set to the pipes:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>pipe2 <span class="ot">&lt;-</span> variety_trials <span class="sc">%&gt;%</span> <span class="fu">filter</span>(yield <span class="sc">&lt;</span> <span class="dv">75</span>) <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(variety)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The pipe has made data wrangling so much easier! Before the pipe, each of these operations can be specified separately with its own object. So when you were done, you had roughly 50 objects in your environment, 48 of which were not needed anymore.</p>
+<p>It also saved us from the “parentheses cascade” where you nest operations within another and no longer had any sense of which set of parentheses belong to which operation.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="../images/nest_vs_pipe.jpg" class="img-fluid"></p>
+</div>
+</div>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Putting it all together
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>What going on this notation?</p>
+<pre><code>tibble::rownames_to_column()</code></pre>
+<p>This is a normal function call (the function being <code>rownames_to_column()</code>), and it is specifying that the package where this function resides is <a href="https://tibble.tidyverse.org/reference/tibble-package.html">tibble</a> (a tibble is the Tidyverse alternative to the data frame).</p>
+<p>You want to use this notation in 2 circumstance:</p>
+<ul>
+<li><p>You don’t want to load the entire package with a <code>library()</code> call, especially if you only need one function from it</p></li>
+<li><p>The name of the function you want to call from a package conflicts with function names from another package. A very common example is <code>filter()</code> - this is a dplyr function, but it is also a base R function. Sometimes, you may receive a very puzzling error when using <code>filter()</code> that essentially is indicating that the wrong package was used. Using notation like <code>dplyr::filter()</code> clarified to R that you want to use the dplyr version of <code>filter()</code>. By default, the most recent package loaded overrides other function name conflicts, but sometiimes, it’s helpful to be unambiguous in your R function calls.</p></li>
+</ul>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../practice/practice-E.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">practice set E</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../practice/practice-F.html" class="pagination-link">
+        <span class="nav-page-text">practice set F</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">© 2023 by Julia Piaskowski</div>   
+      <div class="nav-footer-center"><a href="https://www.uidaho.edu"><img src="https://github.com/IdahoAgStats/r-for-ag-scientists/raw/main/images/UI_Main_horizontal_4c.png" class="img-fluid" alt="Uidaho Logo" width="200"></a></div>
+    <div class="nav-footer-right"><a href="https://quarto.org/">Quarto Website</a>, template by <a href="https://github.com/sta210-s22/website">Mine Çetinkaya-Rundel</a></div>
+  </div>
+</footer>
+
+
+
+</body></html>

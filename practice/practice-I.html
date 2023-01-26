@@ -259,6 +259,26 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
 </li>
       </ul>
   </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../lessons/Lesson09.html" class="sidebar-item-text sidebar-link">Data wrangling</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../practice/practice-F.html" class="sidebar-item-text sidebar-link">practice set F</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../practice/solution-F.html" class="sidebar-item-text sidebar-link">solution to F</a>
+  </div>
+</li>
+      </ul>
+  </li>
       </ul>
   </li>
     </ul>
@@ -266,14 +286,7 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#main-problem" id="toc-main-problem" class="nav-link active" data-scroll-target="#main-problem">Main problem</a></li>
-  <li><a href="#extra" id="toc-extra" class="nav-link" data-scroll-target="#extra">Extra!</a></li>
-  </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/IdahoAgStats/r-for-ag-scientists/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -296,23 +309,17 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
 </header>
 
 <p><em>(for the data merging lesson)</em></p>
-<p>In the class project, there are two files with similar names in the “data” directory:</p>
-<section id="main-problem" class="level3">
-<h3 class="anchored" data-anchor-id="main-problem">Main problem</h3>
-<ul>
-<li>“genotypic_data.txt”</li>
-<li>“genotypic_data_rotated.txt”</li>
-</ul>
-<p>As the file names indicates, “genotypic_data_rotated.txt” is a rotated version of “genotypic_data.txt”.</p>
-<p>Import “genotypic_data.txt” into R and use R commands to recreate “genotypic_data_rotated.txt”.</p>
-</section>
-<section id="extra" class="level3">
-<h3 class="anchored" data-anchor-id="extra">Extra!</h3>
-<p>This is very much outside what has been taught, so only proceed if you don’t mind a foray into the unknown.</p>
-<p>The column “individual” no longer has periods in the listed names, but the original file had periods in those names since they were column headers. Write code to remove those periods from the column “individual” in your transformed column (hint: look at the documentation for <code>gsub()</code>).</p>
+<ol class="example" type="1">
+<li><p>Import “genotypic_data_rotated.txt”, “trial_data.csv”, and “trial_metadata.csv”).</p></li>
+<li><p>Do a full join between “trial_data” and “trial_metadata”.</p></li>
+<li><p>Do an inner join between “genotypic_data_rotated.txt” and “trial_data.csv”).</p></li>
+<li><p>Do a semi-join of “genotypic_data_rotated” with “trial_data” and do the reverse. How does this compare with the inner join from the previous problem?</p></li>
+<li><p>Do an anti-join between genotypic_data_rotated and trial_data.</p></li>
+<li><p>Join together all common observations (by variety name) between the 3 files.</p></li>
+</ol>
+<p><a href="../practice/solution-I.html"><strong><em>Solution</em></strong></a></p>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
