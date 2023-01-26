@@ -19,24 +19,24 @@ While you can simulate data or load existing data sets associated with packages 
 
 The first thing you need to understand is the working directory and file paths. When an R session is initiated, it ascertains what the root working directory is based on the default settings for your R installation and any other.
 
-You can check this with `getwd()`. You can set the file path relative to the current working directory or set an absolute path (that is, independent of your current directory). You can read more about absolute and relative paths [here](https://networkencyclopedia.com/absolute-path/). 
+You can check this with `getwd()`. You can set the file path relative to the current working directory or set an absolute path (that is, independent of your current directory). You can read more about absolute and relative paths [here](https://networkencyclopedia.com/absolute-path/).
 
 When opening an R project (an .Rproj file), the working directory is automatically set to the directory where the .Rproj is located. Otherise, you can set the working directory using `setwd()` or under "Session" in the RStudio Ribbon.
 
 ### Quarto files and the {Here} package
 
-When working with an R notebook like a Quarto document or an Rmarkdown document, the working directory within code chunks is automatically set to where the quarto document is located on your file system. This is the case regardless of whether you set the working directory or where the .Rproj file is located. 
+When working with an R notebook like a Quarto document or an Rmarkdown document, the working directory within code chunks is automatically set to where the quarto document is located on your file system. This is the case regardless of whether you set the working directory or where the .Rproj file is located.
 
-To import a data set located in another directory from where the quarto document is located,  you can use bash strategies for navigating up and down directory structures (e.g. "../data/somefile.csv"). Another solution is to use the [***here***](https://here.r-lib.org/). 
+To import a data set located in another directory from where the quarto document is located, you can use bash strategies for navigating up and down directory structures (e.g. "../data/somefile.csv"). Another solution is to use the [***here***](https://here.r-lib.org/).
 
-The function `here()` in the ***here*** package will reconstruct a path based on the system you are using (Windows, Mac, Linux, etc). Each directory must be specified and the final item specified is the file to import. 
+The function `here()` in the ***here*** package will reconstruct a path based on the system you are using (Windows, Mac, Linux, etc). Each directory must be specified and the final item specified is the file to import.
 
 ```{r}
 library(here)
 here("directory1", "subdirectory", "my_file.txt")
 ```
 
-If you don't want to load an entire package, but use the function from it, you can use the notation `package_name::function()`. The code below uses that when calling the `here()` function: `here::here()`. 
+If you don't want to load an entire package, but use the function from it, you can use the notation `package_name::function()`. The code below uses that when calling the `here()` function: `here::here()`.
 
 ## How to Import
 
@@ -97,13 +97,13 @@ str(mycsv1)
 
 The default arguments include:
 
-- `colnames = TRUE`: the first row of data is assumed to be the column names \* nothing in the data set will be used for row names unless we explicitly indicate so
+-   `colnames = TRUE`: the first row of data is assumed to be the column names \* nothing in the data set will be used for row names unless we explicitly indicate so
 
-- `sep = ","`: each data point is separated from another by a comma \* a newline indicator is used to separate rows of data
+-   `sep = ","`: each data point is separated from another by a comma \* a newline indicator is used to separate rows of data
 
-- `na.strings = c("NA", "")`: cells with a either no data ("") or an"NA" will be treated as missing.
+-   `na.strings = c("NA", "")`: cells with a either no data ("") or an"NA" will be treated as missing.
 
-- if a column of data consists of non-numeric characters, that column vector will be treated as character and not a factor
+-   if a column of data consists of non-numeric characters, that column vector will be treated as character and not a factor
 
 ### `read_csv()`
 
@@ -111,7 +111,7 @@ This function is part of ***readr***. It has very similar functionality to `read
 
 **Example Usage:**
 
-First, load the package ***readr*** that contains the function `read_csv()`. 
+First, load the package ***readr*** that contains the function `read_csv()`.
 
 ```{r}
 library(readr)
