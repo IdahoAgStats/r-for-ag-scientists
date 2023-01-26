@@ -2,6 +2,31 @@
 title: "Solutions to Practice H"
 ---
 
+....Under Construction. 
 
 
+```{r}
+library(dplyr)
+```
+
+(@)
+
+(@)
+
+(@)
+
+(@) Extra problem: transform "genotypic_data.txt" into "genotypic_data_rotated.txt".
+
+```{r, eval=FALSE}
+geno <- read.delim("data/genotypic_data.txt")
+geno2 <- dplyr::select(geno, -(1:5))
+geno3 <- as.data.frame(t(geno2)) %>% mutate(individual = colnames(geno2)) %>% relocate(individual)
+colnames(geno3)[2:nrow(geno3)] <- geno$Markers
+geno3$individual <- gsub("[.]", " ", geno3$individual) 
+geno3[1:10, 1:5]
+```
+
+`gsub()` is relatively straightforward to use, but `.` without any modifiers is actually for wildcard matching (it matches *everything*)! [Regular expressions](https://www.regular-expressions.info/) are crazy!
+
+So use `[.]` instead to specify that you in fact are referring to a period and not simply any character (including whitespace!).  
 

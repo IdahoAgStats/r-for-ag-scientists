@@ -6,13 +6,13 @@ title: "Practice F"
 
 *If you have your own data, import it and consider what sort of data wrangling you might need to do on the data set to ready it for analysis - does something need to be filtered or calculated? This is a good moment to apply skills learned. *
 
-(@) Import "trial_metadata.csv" with the ***readr*** function `read_csv()`. Create a new variable that combined information in the 'location' and 'irrigation' columns.
+(@) Import "trial_metadata.csv" with the [***readr***](https://readr.tidyverse.org/) function `read_csv()`. Create a new variable that combined information in the 'location' and 'irrigation' columns.
 
 (@) Filter the imported data set for when the location is "Parma" and sort the data set based on planting date. Assign the results to a new object. 
 
 (@) Select 4 columns from the data set and rename one of them. Assign these results to a new object. 
 
-(@) Import "weather_data.csv", select the first five columnd and reduce that data set to unique rows.
+(@) Import "weather_data.csv", select the first five columns and reduce that data set to unique rows.
 
 (@) Output the result from any of the previous problems to file. 
 

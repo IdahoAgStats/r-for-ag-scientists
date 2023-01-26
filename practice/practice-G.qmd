@@ -8,10 +8,10 @@ title: "Practice G"
 
 For some of these exercises, you may need to use other [***dplyr***](https://dplyr.tidyverse.org/reference/index.html) functions.
 
-(@) Import "weather_data.csv". Group the data by station and year and count the number of missing data points for tmax, tmin and tavg. 
+(@) Import "weather_data.csv". Group the data by station and year and count the number of missing data points for 'tmax', 'tmin' and 'tavg'. This one is pretty hard, so it's okay to start with the next problem, which is a .  
 
-(@) Using the weather data set, group the data by "station" and "julian_day" and calculate the average minimum and maximum temperatures for the groups from "tmin" and "tmax".
+(@) Import "weather_data.csv", group the data by 'station' and 'julian_day' and calculate the average minimum and maximum temperatures for the groups from 'tmin' and 'tmax'. If you already imported the data set from the previous problem, you don't need to import it again if you did not change the data set. 
 
-(@) Using the weather data set, calculate the difference between the tmin and tmax for each day. Group the data by year and return the smallest and largest differences for each year. Your code should address how to handle missing data. 
+(@) Import "weather_data.csv", calculate the difference between the 'tmin' and 'tmax' for each day. Group the data by year and return the smallest and largest differences for each year. Consider how to handle missing data. If you already imported the data set from the previous problem, you don't need to import it again if you did not change the data set.
 
 [***Solution***](../practice/solution-G.qmd)
