@@ -13,7 +13,7 @@ title: "Solutions to Practice F"
 
  ```{r}
 mydata <- read_csv(here::here("data", "trial_metadata")) %>%
-    unite("new_var", location, irrigation, sep = "_", remove = FALSE ))
+    unite("new_var", location, irrigation, sep = "_", remove = FALSE )
  ```
 
  Another option:
@@ -47,3 +47,17 @@ Or in one step:
 mydata_selected <- mtdata %>% select(trial, farm = "grower_cooperator, location, year)
 ```
 
+(@) Reduce the identifying information in the weather data set to non-repetitive information. A data set will often several columns that reflect repetitive identifying information. It's helful to know how many unique observations are present:
+
+```{r}
+weather <- read.csv(here::here("data", "weather_data.csv"))
+weather %>% select(1:5) %>% distinct()
+```
+
+(@) Write out a result to file:
+
+```{r}
+write.csv(mydata_filtered, 
+          here::here("outputs", "filtered_data.csv"),
+          row.names = FALSE)
+```

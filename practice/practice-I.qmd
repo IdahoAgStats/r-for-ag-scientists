@@ -4,6 +4,22 @@ title: "Practice I"
 
 *(for the data merging lesson)*
 
+(@) Import "genotypic_data_rotated.txt", "trial_data.csv", and "trial_metadata.csv"). 
+
+(@) Do a full join between "trial_data" and "trial_metadata". 
+
+(@) Do an inner join between "genotypic_data_rotated.txt" and "trial_data.csv"). 
+
+(@) Do a semi-join of "genotypic_data_rotated" with "trial_data" and do the reverse. How does this compare with the inner join from the previous problem? 
+
+(@) Do an anti-join between genotypic_data_rotated and trial_data. 
+
+(@) Join together all common observations (by variety name) between the 3 files. 
+
+
+
+
+.... why???
 In the class project, there are two files with similar names in the "data" directory: 
 
 ### Main problem

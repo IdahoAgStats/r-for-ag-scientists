@@ -12,5 +12,8 @@ title: "Practice F"
 
 (@) Select 4 columns from the data set and rename one of them. Assign these results to a new object. 
 
+(@) Import "weather_data.csv", select the first five columnd and reduce that data set to unique rows.
+
+(@) Output the result from any of the previous problems to file. 
 
 [***Solution***](../practice/solution-F.qmd)

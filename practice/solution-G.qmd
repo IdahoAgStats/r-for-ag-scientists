@@ -2,7 +2,37 @@
 title: "Solutions to Practice G"
 ---
 
-### Main Problem
+(@) Count missing data in "weather.csv". 
+
+```{r}
+weather <- read.csv(here::here("data", "weather_data.csv)) 
+weather %>% group_by(station) %>% 
+    summarise(across(tavg, tmax, tmin, ~ sum(is.na(.x))))
+```
+
+(@) Calculate average temperatures minimum and maximum
+
+```{r}
+weather %>% group_by(station) %>%
+    summarise(max_temp = mean(tmax, na.rm = TRUE),
+              min_temp = mean(tmin, na.rm = TRUE))
+```
+
+(@) Find the largest and smallest differences between the daily minimum and maximum temperatures for each year. 
+
+```{r}
+weather %>% 
+    filter(!is.na(tmin) & !is.an(tmax))) %>% 
+    mutate(temp_diff = tmax - tmin) %>%
+    group_by(year) %>%
+    summarise(max_diff = max(temp_diff),
+              min_diff = min(temp_diff))
+```
+
+
+DElETE all this
+
+Recreate this file...why? 
 
 ```{r, eval=FALSE}
 geno <- read.delim("data/genotypic_data.txt")
@@ -21,5 +51,5 @@ geno3$individual <- gsub("[.]", " ", geno3$individual)
 
 `gsub()` is relatively straightforward to use, but `.` without any modifiers is actually for wildcard matching (it matches *everything*)! [Regular expressions](https://www.regular-expressions.info/) are crazy!
 
-So use `[.]` instead to specify that you in fact are referring to a period and not simply any character (including whitespace!).  
+So use `[.]` instead to specify that you in fact are referring to a peri simply any character (including whitespace!).  
 

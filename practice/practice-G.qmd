@@ -4,5 +4,14 @@ title: "Practice G"
 
 *(for the data aggregation lesson)*
 
+* As usual, consider how these data aggregation functions can support your own work.
+
+For some of these exercises, you may need to use other [***dplyr***](https://dplyr.tidyverse.org/reference/index.html) functions.
+
+(@) Import "weather_data.csv". Group the data by station and year and count the number of missing data points for tmax, tmin and tavg. 
+
+(@) Using the weather data set, group the data by "station" and "julian_day" and calculate the average minimum and maximum temperatures for the groups from "tmin" and "tmax".
+
+(@) Using the weather data set, calculate the difference between the tmin and tmax for each day. Group the data by year and return the smallest and largest differences for each year. Your code should address how to handle missing data. 
 
 [***Solution***](../practice/solution-G.qmd)
