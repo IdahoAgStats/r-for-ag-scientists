@@ -3,4 +3,47 @@ title: "Solutions to Practice F"
 ---
 
 
+(@) First load the libraries. 
+ 
+ ```{r}
+ library(readr); library(dplyr); library(tidyr)
+ ```
+
+ Then, import the data and create the new variable. 
+
+ ```{r}
+mydata <- read_csv(here::here("data", "trial_metadata"))) %>%
+    unite("new_var", location, irrigation, sep = "_", remove = FALSE ))
+ ```
+
+ Another option:
+
+ ```{r}
+mydata$new_var <- paste(location, irrigation, sep = "_")
+ ```
+
+ Another option: 
+
+ ```{r}
+mydata <- mydata %>% mutate(new_var = paste(location, irrigation, sep = "_")))
+ ```
+
+(@) Filter and sort:
+
+```{r}
+mydata_filtered <- mydata %>% filter(location == "Parma") %>% arrange(planting_date)
+```
+
+(@) Select and rename
+
+```{r}
+mydata_selected <- mydata %>% select(trial, grower_cooperator, location, year) %>%
+    rename(farm = "grower_cooperator")
+```
+
+Or in one step:
+
+```{r}
+mydata_selected <- mtdata %>% select(trial, farm = "grower_cooperator, location, year)
+```
 

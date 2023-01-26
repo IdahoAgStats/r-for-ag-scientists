@@ -17,7 +17,7 @@ title: "Course Schedule"
                Lesson 7: [data import](lessons/Lesson07.qmd) \
                Lesson 8: [exporting data](lessons/Lesson08.qmd) | [*Lesson 7*](practice/practice-D.qmd)\
                                                                   [*Lesson 8*](practice/practice-E.qmd) |
-| January 26   | Lesson 9: data wrangling |   |
+| January 26   | Lesson 9: data wrangling |  Lesson 9  |
 | January 31  | Lesson 10: reshaping data sets\
                  Lesson 11: data aggregation & summary\
                  Lesson 12: combining data sets |   |

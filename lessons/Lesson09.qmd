@@ -27,11 +27,11 @@ variety_trials <- read.csv(here::here("data", "trial_data.csv"))
 weather <- read.csv(here::here("data", "weather_data.csv"))
 ```
 
-::: {.callout-note}
+::: {.callout-note, collapse="true"}
 
 What is going on with `here::here()`?
 
-The `here()` function is from the **[here](https://here.r-lib.org/)** package. This package simplifies working directory issues by setting it to where the nearest .Rproj files exists. When using a .qmd file, it looks for the .Rproj file that is thd same directory as that file and moves up the directory tree. 
+The `here()` function is from the ***[here](https://here.r-lib.org/)*** package. This package simplifies working directory issues by setting it to where the nearest .Rproj files exists. When using a .qmd file, it looks for the .Rproj file that is the same directory as that file and moves up the directory tree. 
 :::
 
 ### Tidyverse notes
@@ -69,8 +69,7 @@ head(select2); head(select3)
 The variables specified in `select()` will appear in the new data frame in exactly the order they were listed in the function call.
 :::
 
-
-sometimes, you might want to select many columns that share something common about their name:
+Sometimes, you might want to select many columns that share something common about their name:
 ```{r}
 select4 <- select(variety_trials, starts_with("r"))
 head(select4)
@@ -188,8 +187,7 @@ This is similar to variable assignment:
 ```
 new <- old
 ```
-
-(Except that quotes are always used when specifying the old variable name)
+Except that quotes are always used when specifying the old variable name. 
 
 Example: 
 ```{r}
@@ -197,7 +195,7 @@ rename1 <- rename(variety_trials, cultivar = "variety")
 head(rename1, 3)
 ```
 
-Fun fact: you can use `rename` notation in `select` statements:
+Also, you can use `rename` notation in `select` statements:
 ```{r}
 rename2 <- select(variety_trials, cultivar = "variety", yield, protein = "grain_protein")
 ```
