@@ -320,8 +320,11 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
 <ol class="example" type="1">
 <li><p>Import “trial_metadata.csv” with the <a href="https://readr.tidyverse.org/"><strong><em>readr</em></strong></a> function <code>read_csv()</code>. Create a new variable that combined information in the ‘location’ and ‘irrigation’ columns.</p></li>
 <li><p>Filter the imported data set for when the location is “Parma” and sort the data set based on planting date. Assign the results to a new object.</p></li>
+</ol>
+<p><em>Note: we have not yet learned how to sort, so you can either skip that step or look up the documentation for <code>arrange()</code>, the dplyr function for sorting.</em></p>
+<ol start="3" class="example" type="1">
 <li><p>Select 4 columns from the data set and rename one of them. Assign these results to a new object.</p></li>
-<li><p>Import “weather_data.csv”, select the first five columns and reduce that data set to unique rows.</p></li>
+<li><p>Import “weather_data.csv”, select the first five columns and reduce that data set to unique rows (look into using <code>distinct()</code> for extracting the unique observations).</p></li>
 <li><p>Output the result from any of the previous problems to file.</p></li>
 </ol>
 <p><a href="../practice/solution-F.html"><strong><em>Solution</em></strong></a></p>
