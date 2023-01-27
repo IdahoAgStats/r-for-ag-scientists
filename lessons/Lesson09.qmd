@@ -143,7 +143,7 @@ This created 6 new variables:
 -   **row_position** providing the row number, starting at 1 and ending at `n()`, a function that returns the total nubmer of rows in the data frame
 -   **range_new** which is a copy of the variable "range"
 -   **random_yield** which is the sum of the value for yield plus a random deviation from the function `rnorm`. This operation is vectorized, using the 'yield' measurement for each row and generating a new random deviate for each row.
--   **binom_var** the binomical outcomes variable created in the `new_var ....` statement.
+-   **binom_var** the binomial outcomes variable created in the `new_var ....` statement.
 -   **yield_protein** the addition of two variables in the data set (this is also vectorized, calculating this for each row)
 
 These example cover the majority of what you are likely to experience: creating a constant, calculating new variables from existing variables, pulling in an external variables, and so forth.
@@ -222,7 +222,7 @@ The first term is the program conducting the trial, the second is the crop grown
 These terms use an underscore to separate them, which we will use in the function. However, one of the term does have an underscore inside of it, which will interpreted incorrectly as a term separator.
 
 ```{r}
-variety_trials$trial
+unique(variety_trials$trial)
 ```
 
 ```{r}
@@ -238,7 +238,7 @@ variety_trials <- separate(variety_trials, trial,
 
 The argument `remove = FALSE` indicates that we want to keep the input variable ("trial"). By default, it would be removed.
 
-The opposite function is `tidyr::unite()` which will paste these variable together, separate by any character string you specify. `unite()` also can ignore missing data when pasting information together, avoiding this unfortunate result: "somevar_NA_NA_anothervar". You would get "somevar_anothervar" instead.
+The opposite function is `tidyr::unite()` which will paste these variable together, separate by any character string you specify. `unite()` also can ignore missing data when pasting information together, avoiding this unfortunate result: "some.var_NA_NA_another.var". You would get "some.var_another.var" instead.
 
 ### Sorting a data set
 
