@@ -221,6 +221,8 @@ The first term is the program conducting the trial, the second is the crop grown
 
 These terms use an underscore to separate them, which we will use in the function. However, one of the term does have an underscore inside of it, which will interpreted incorrectly as a term separator.
 
+Use `unique()` to determine the unique observations for the column "trial" in of "variety trials."
+
 ```{r}
 unique(variety_trials$trial)
 ```

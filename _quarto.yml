@@ -109,13 +109,13 @@ website:
                 text: "practice set F"
               - href: practice/solution-F.qmd
                 text: "solution to F"
-          # - href: lessons/Lesson10.qmd
-          #   text: Data Aggregation
-          #   contents:
-          #     - href: practice/practice-G.qmd
-          #       text: "practice set G"
-          #     - href: practice/solution-G.qmd
-          #       text: "solution to G"
+          - href: lessons/Lesson10.qmd
+            text: Data Aggregation
+            contents:
+              - href: practice/practice-G.qmd
+                text: "practice set G"
+              - href: practice/solution-G.qmd
+                text: "solution to G"
           # - href: lessons/Lesson11.qmd
           #   text: Reshaping data
           #   contents:   

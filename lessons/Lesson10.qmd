@@ -16,19 +16,8 @@ You may find yourself wanting to calculate summary statistics across a grouping 
 
 First, load libraries & import data: 
 
-
-```{r, eval=FALSE}
+```{r}
 library(dplyr)
-
-variety_trials <- read.csv(here::here("outputs", "trial_data_cleaned.csv")) %>% 
-  mutate(year = as.character(year))
-#trial_metadata <- readr::read_csv(here::here("data", "trial_metadata.csv"))
-```
-
-```{r, echo=FALSE, include=FALSE}
-library(dplyr)
-
-#trial_metadata <- readr::read_csv(here::here("data", "trial_metadata.csv"))
 
 variety_trials <- read.csv(here::here("data", "trial_data.csv")) %>% 
   mutate(trial = gsub("_H_", "_H-", trial)) %>% 
@@ -46,12 +35,13 @@ mydata %>% group_by(variable) %>% summarise(new_var = ...)
 ```
 
 
-This data set can several categorical variables we can group on: 
+This data set has several categorical variables that can be used for grouping: 
 
 ```{r}
 str(variety_trials)
 ```
 
+The function `tally()` counts observations: 
 ```{r}
 variety_trials %>% group_by(trial) %>% tally()
 ```
@@ -60,7 +50,7 @@ Let's group by crop and pull out the mean yield and standard deviation.
 
 ```{r}
 yield_crop <- variety_trials %>% group_by(crop) %>% 
-  summarise(yield_mean = mean(yield, na.rm = TRUE), 
+  summarise(yield_mean = mean(yield, na.rm = TRUE),
             yield_sd = sd(yield, na.rm = TRUE),
             yield_min = min(yield, na.rm = TRUE),
             yield_max = max(yield, na.rm = TRUE),
@@ -71,29 +61,28 @@ yield_crop
 
 ::: callout-note
 
-`summarise()` only returns a single value back for each group. If you want more than that (e.g. to run a linear model on each group), there are other tools for that. This is intended to be addressed in Lesson 16.
+`summarise()` only returns a single value back for each group. If you want more than that (e.g. to run a linear model on each group), there are other tools for that. This is intended to be addressed in Lesson 16. We may not reach this lesson during the course, 
 
 :::
 
 ### Grouping across multiple variables
 
-Let's examine how many crops and years there are: 
+Let's examine how many crops and years there are using the `table()` command: 
 ```{r}
 table(variety_trials$crop, variety_trials$year)
 ```
 
-This tells us how many rows of data occur for each variable combination. 
+This tells us how many rows of data occur for each variable combination. This information can help inform us how to group information. 
 
 You can group by as many conditions as you want: 
 ```{r}
 variety_trials %>% group_by(crop, year) %>% 
   summarise(protein_na = sum(is.na(grain_protein))) %>% arrange(desc(protein_na))
 ```
-
 ::: {.callout-warning}
 ## FYI
 
-You can group by a numeric variable. ***dplyr*** will look for common values to group observations. This can be successful when there are repeat 'integers' (e.g. year), but if all values are unique (often the case with floating point numbers), then the number of groups is the number of observations. 
+You can group by a numeric variable. If you do that, ***dplyr*** will look for common values to group observations. This can be successful when there are repeat 'integers' (e.g. year, replicate), but if all values are unique (which is often the case with floating point numbers), then the number of groups is the number of observations. 
 
 :::
 
@@ -115,28 +104,39 @@ Field disease scoring may benefit from this system. Often, several measaurements
 First, simulate a set of disease scores between 0 and 100 (indicating percent infection). 
 
 ```{r}
+# step 1: generate a set of possible scores: 0, 10, 20,...100
 score_range <- c(0:10 * 10L)
+# sample those possible scores to generate 50 data points
 scores <- sample(score_range, 50, replace = TRUE)
-
-disease_df <- data.frame(plot = 1:10,
+# arrange those 50 data points into a datafrmae of 5 columns, each column reflecting 10 observations
+disease_df <- data.frame(plot = letters[1:10],
                          score1 = scores[1:10],
-                         score2 = scores[11:20],
-                         scores3 = scores[21:30],
-                         scores4 = scores[31:40],
-                         scores5 = scores[41:50])
+                         score5 = scores[11:20],
+                         score3 = scores[21:30],
+                         score4 = scores[31:40],
+                         score2 = scores[41:50])
 disease_df
 ```
+Data sets exist like this. A person might have a set of 10 experimental plots to evaluate for some trait. The trait assay protocol may require that multiple observations be gathered per plot (from a statistical standpoint, this is a technical replicate, not a true replicate) and then reduced to a single number per plot using a simple mean. Row-wise functions can accomplish this. 
 
 ```{r}
-disease_df_sum <- disease_df %>% rowwise()
-  mutate(score_final = mean(score1:score5),
-        max_score = max(score1:score5))
-diseease_df_sum
+disease_df_sum <- disease_df %>% rowwise() %>% 
+  mutate(score_final = mean(score1:score2),
+        max_score = max(score1:score2))
+disease_df_sum
 ```
 
 ::: callout-tip
 ## Putting it all together
 
-The function `across()` also works with `mutate()` statements if you want to mutate several columns at once (for example, rounding numbers in multiple columns). 
+It is possible use `mutate()` or `summary()` commands on a grouped data frame. A `summary()` call will return one value per group + summary function (e.g. `mean`). A `mutate()` call will return one value per row + summary function. All the previous examples in this lesson used `summary()`. Here is one example using `mutate()`: 
 
+
+```{r}
+variety_trials %>% 
+  select(trial, rep, variety, crop, yield) %>% group_by(crop) %>%
+  mutate(relative_yield = yield/mean(yield, na.rm=TRUE)) %>% 
+  arrange(desc(yield)) %>% head(15)
+```
+In this case, the mean value used for calculating 'relative_yield' is the group mean. 
 :::
