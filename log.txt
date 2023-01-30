@@ -28,3 +28,23 @@ Day 2:
 - 10 minute break halfway through
 - reminder of practice problems
 
+Day 3:
+
+- class annoucements: I don't need to see your qmd files. They are there for you. 
+
+Day 4: 
+
+- had mic issues, used ipad for audio input, logged into a personal 
+
+Day 5: 
+
+Announcements: 
+  - office hours different next week b/c of scheduleing conflict
+  - quarto document added to website
+  - folks need to install R on their computer for next week.
+  - schedule updated: we will do data wrangling, ggploting and R set-up
+  
+- Do a problem set. give 5 minutes to do alone, 5 minutes in a group, then I will spend 5 minutes working on 1-2 exercises in front of everyone. 
+
+
+
