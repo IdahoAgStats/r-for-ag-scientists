@@ -2,12 +2,136 @@
 title: "Working with Quarto Documents"
 ---
 
-[Quarto](https://quarto.org/) is a file format for weaving togther code (R, python, and others), output, and text into a single notebook. It's a nice tool for putting together reports or doing analysis for yourself. Quarto also has applications for building websites (this website is build with Quarto!), formatting books, and making slideshow presentations. These are advanced applications that over time, you may want to try out yourself. 
+## What is Quarto and why should you use it? 
 
-It follows some of the [standard syntax of markdown](https://quarto.org/docs/authoring/markdown-basics.html), which is a highly simplified version of HTML ("hypertext *markup* language"). 
+<a href="https://quarto.org/" target="_blank">Quarto</a> is a file format for weaving together code (R, python, and others), output, and text into a single notebook. It is a nice tool for putting together reports or doing analysis for yourself. Quarto also has applications for building websites (this website is build with Quarto!), formatting books, and making slideshow presentations. These are advanced applications that over time, you may want to try out yourself. 
 
-A .qmd document can simply exist as is (and is highly useful), or you can choose to output it to many enabled formats such as .html (the easiest!), .pdf, .docx and more. 
+While Quarto offers many advanced features, using only the basic features will enable users of many abilities to communicate their results with others. You can choose to learn more, but Quarto is nevertheless useful using only its foundational tools: mixing text, code, and code outputs. 
 
-There is a rich array of possibilities for [quarto documents](https://quarto.org/docs/guide/), the majority of which we will not addres in this class. Take a look at this [gallery](https://quarto.org/docs/gallery/) to get a better sense of what you can do with quarto and decide for yourself if it's worth the effor to learn better. 
+It follows some of the <a href="https://quarto.org/docs/authoring/markdown-basics.html" target="_blank">standard syntax of markdown</a>, which is a highly simplified version of HTML ("hypertext *markup* language"). 
 
-I started learning standard documents, then made a few presentations with quarto (I'm not sure this is worth the effort), and run many many website with quarto and/or its predecessor, Rmarkdown (this has been great!). 
+A .qmd document can simply exist as is (and is highly useful), or you can choose to output it to many enabled formats such as .html (the easiest to do), .pdf, .docx and more. Click on "Render" at the top of a .qmd file in RStudio to see a rendered version of your Quarto document. 
+
+
+## Basics of quarto
+
+### Text Formatting
+
++-----------------------------------+-------------------------------+
+| Markdown Syntax                   | Output                        |
++===================================+===============================+
+|     *italics* and **bold**        | *italics* and **bold**        |
++-----------------------------------+-------------------------------+
+|     superscript^2^ / subscript~2~ | superscript^2^ / subscript~2~ |
++-----------------------------------+-------------------------------+
+|     ~~strikethrough~~             | ~~strikethrough~~             |
++-----------------------------------+-------------------------------+
+|     `verbatim code`               | `verbatim code`               |
++-----------------------------------+-------------------------------+
+
+### Headings {#headings}
+
++---------------------+-----------------------------------+
+| Markdown Syntax     | Output                            |
++=====================+===================================+
+|     # Header 1      | # Header 1 {.heading-output}      |
++---------------------+-----------------------------------+
+|     ## Header 2     | ## Header 2 {.heading-output}     |
++---------------------+-----------------------------------+
+|     ### Header 3    | ### Header 3 {.heading-output}    |
++---------------------+-----------------------------------+
+|     #### Header 4   | #### Header 4 {.heading-output}   |
++---------------------+-----------------------------------+
+|     ##### Header 5  | ##### Header 5 {.heading-output}  |
++---------------------+-----------------------------------+
+|     ###### Header 6 | ###### Header 6 {.heading-output} |
++---------------------+-----------------------------------+
+
+
+### Lists
+
++-------------------------------------+---------------------------------+
+| Markdown Syntax                     | Output                          |
++=====================================+=================================+
+|     * unordered list                | -   unordered list              |
+|         + sub-item 1                |                                 |
+|         + sub-item 2                |     -   sub-item 1              |
+|             - sub-sub-item 1        |                                 |
+|                                     |     -   sub-item 2              |
+|                                     |                                 |
+|                                     |         -   sub-sub-item 1      |
++-------------------------------------+---------------------------------+
+|     *   item 2                      | -   item 2                      |
+|                                     |                                 |
+|         Continued (indent 4 spaces) |     Continued (indent 4 spaces) |
++-------------------------------------+---------------------------------+
+|     1. ordered list                 | 1.  ordered list                |
+|     2. item 2                       |                                 |
+|         i) sub-item 1               | 2.  item 2                      |
+|              A.  sub-sub-item 1     |                                 |
+|                                     |     i)  sub-item 1              |
+|                                     |                                 |
+|                                     |         A.  sub-sub-item 1      |
++-------------------------------------+---------------------------------+
+|     (@)  A list whose numbering     | (1) A list whose numbering      |
+|                                     |                                 |
+|     continues after                 | continues after                 |
+|                                     |                                 |
+|     (@)  an interruption            | (2) an interruption             |
++-------------------------------------+---------------------------------+
+|     term                            | term                            |
+|     : definition                    |                                 |
+|                                     | :   definition                  |
++-------------------------------------+---------------------------------+
+
+### Source Code
+
+Use ```` ``` ```` to delimit blocks of source code:
+
+```` markdown
+```
+code
+``` 
+````
+
+Add a language to syntax highlight code blocks:
+
+```` markdown
+```r
+1 + 1
+``` 
+````
+
+
+If you are creating HTML output there is a wide variety of options available for code block output. See the article on <a href="https://quarto.org/docs/output-formats/html-code.html" target="_blank">code blocks</a> for additional details.
+
+### Tables
+
+#### Markdown Syntax
+
+    | Right | Left | Default | Center |
+    |------:|:-----|---------|:------:|
+    |   12  |  12  |    12   |    12  |
+    |  123  |  123 |   123   |   123  |
+    |    1  |    1 |     1   |     1  |
+
+#### Output
+
+| Right | Left | Default | Center |
+|------:|:-----|---------|:------:|
+|    12 | 12   | 12      |   12   |
+|   123 | 123  | 123     |  123   |
+|     1 | 1    | 1       |   1    |
+
+::: {.callout-tip}
+## To Learn More
+
+There are many more options for formatting Quarto documents and embedding information in a Quarto document. Visit Quarto's <a href="https://quarto.org/docs/authoring/markdown-basics.html" target="_blank">markdown page</a> to learn more. 
+
+:::
+
+## What else can quarto be used for? 
+
+There is a rich array of possibilities for <a href="https://quarto.org/docs/guide" target="_blank">Quarto documents</a>, the majority of which we will not address in this class. Take a look at this <a href="https://quarto.org/docs/gallery/" target="_blank">gallery</a> to get a better sense of what you can do with Quarto and decide for yourself if it's worth the effort to learn better. 
+
+I started learning how to use markdown for html documents, then made a few presentations with Quarto's predecessor, Rmarkdown (I'm not sure this is worth the effort). I next started building website with Rmarkdown and Quarto, and have found this to be a great tool for sharing information via websites. If you never do this, that is completely okay! Not everyone neesd these tools, but it you do, Quarto can make implementation easier. 
