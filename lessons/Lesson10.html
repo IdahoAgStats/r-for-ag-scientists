@@ -561,7 +561,7 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><code>summarise()</code> only returns a single value back for each group. If you want more than that (e.g.&nbsp;to run a linear model on each group), there are other tools for that. This is intended to be addressed in Lesson 16. We may not reach this lesson during the course,</p>
+<p><code>summarise()</code> only returns a single value back for each group. If you want more than that (e.g.&nbsp;to run a linear model on each group), there are other tools for that. This is intended to be addressed in Lesson 16, repeating actions.</p>
 </div>
 </div>
 </section>
@@ -668,16 +668,16 @@ FYI
 <span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>disease_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   plot score1 score5 score3 score4 score2
-1     a     80    100     60     10    100
-2     b     30      0     70     80     30
-3     c     70     20     80     40     50
-4     d     10     30     20     10    100
-5     e    100     80     20     10      0
-6     f     20     80     60     30     30
-7     g     50     90    100     80     70
-8     h    100     70     80     20    100
-9     i     70     60     10     10     90
-10    j     10     70     10     70     70</code></pre>
+1     a     20     70     30     60     70
+2     b     80     60      0     60     50
+3     c    100     80     30     10     30
+4     d     20      0     90     50     90
+5     e     10    100     60     10     90
+6     f     80     20    100     40     80
+7     g    100     50     30     50     70
+8     h     20     20     80     70     70
+9     i     30     10     80     70     10
+10    j     30      0     60    100     60</code></pre>
 </div>
 </div>
 <p>Data sets exist like this. A person might have a set of 10 experimental plots to evaluate for some trait. The trait assay protocol may require that multiple observations be gathered per plot (from a statistical standpoint, this is a technical replicate, not a true replicate) and then reduced to a single number per plot using a simple mean. Row-wise functions can accomplish this.</p>
@@ -691,16 +691,16 @@ FYI
 # Rowwise: 
    plot  score1 score5 score3 score4 score2 score_final max_score
    &lt;chr&gt;  &lt;int&gt;  &lt;int&gt;  &lt;int&gt;  &lt;int&gt;  &lt;int&gt;       &lt;dbl&gt;     &lt;int&gt;
- 1 a         80    100     60     10    100          90       100
- 2 b         30      0     70     80     30          30        30
- 3 c         70     20     80     40     50          60        70
- 4 d         10     30     20     10    100          55       100
- 5 e        100     80     20     10      0          50       100
- 6 f         20     80     60     30     30          25        30
- 7 g         50     90    100     80     70          60        70
- 8 h        100     70     80     20    100         100       100
- 9 i         70     60     10     10     90          80        90
-10 j         10     70     10     70     70          40        70</code></pre>
+ 1 a         20     70     30     60     70          45        70
+ 2 b         80     60      0     60     50          65        80
+ 3 c        100     80     30     10     30          65       100
+ 4 d         20      0     90     50     90          55        90
+ 5 e         10    100     60     10     90          50        90
+ 6 f         80     20    100     40     80          80        80
+ 7 g        100     50     30     50     70          85       100
+ 8 h         20     20     80     70     70          45        70
+ 9 i         30     10     80     70     10          20        30
+10 j         30      0     60    100     60          45        60</code></pre>
 </div>
 </div>
 <div class="callout-tip callout callout-style-default callout-captioned">
