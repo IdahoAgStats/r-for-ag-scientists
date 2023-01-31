@@ -104,17 +104,61 @@ head(parma2020_wide)
 ```
 #### Pivot multiple variables
 
+Perhaps we want to pivot 2 variables. 
+
+```{r}
+parma2020_wide_2vars <- parma2020 %>%
+  pivot_wider(id_cols = entry,
+              names_from = rep,
+              values_from = c(yield, grain_protein))
+head(parma2020_wice_2vars)
+```
+
 #### Pivot with multiple observations per identifier
+
+Sometimes, there may be multiple observations per identifier and new column header. ***tidyr** will attempt to resolve this automatically, sometimes by inserting a list inside a data frame to capture the additional information. This is messy and hard to access. Sometimes this is an unintentional; you expected only one observaton and learn through tidyr warning messages that there is an more observations than expected. 
+
+However, you can also introduce a function in a `pivot_wider` such as `mean` or `sum` to summarise these replicate observations. 
+
+Here is an example using "variety", which is has replicate values. 
+
+```{r}
+parma2020_wide_var <- parma2020 %>%
+  pivot_wider(id_cols = variety,
+              names_from = rep, 
+              values_from = yield,
+              values_fn = mean)
+```
 
 ### Wide to Long
 
-Another option is to combine all traits into a single column along side identifying variables. 
+Let's put all the traits in one column (and filter out the missing data). 
 
+Main arguments in `pivot_longer()` (besides the data set): 
+
+**cols** the columns to stack/pivot
+
+**names_to** name of the new categorial variable that is composed of the names of the columns being pivoted
+
+**values_to** name of new value column (will be named "value" by default if not specified)
+
+```{r}
+parma2020_long <- parma2020 %>% 
+  pivot_longer(cols = c(yield, grain_protein, test_weight),
+               names_to = "trait")
+
+head(parma2020_long)
+```
 
 
 ::: {.callout-tip}
 ## Putting it all together
 
+When to use these function depends on the desired output. If you want to do a multi-year anaysis of field trial data, stacking the years in the long format makes sense.  If you want to compute correlations across two variables, the wide format makes sense for those variables. 
+
+As part of the tidyverse, anything pivoting can be preceded by or can be followed by any other data wrangling step such as filtering, data aggregation and so on. 
+
+You can use any of the [tidy select](https://tidyselect.r-lib.org/reference/starts_with.html) methods for indicating which values to pivot. This is particularily useful when there is a very large number of columns to pivot that share similarities in their name. 
 
 :::
 
