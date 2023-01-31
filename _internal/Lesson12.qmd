@@ -101,6 +101,7 @@ Complete list of [dplyr functions](https://dplyr.tidyverse.org/reference/index.h
 ::: {.callout-tip}
 ## Putting it all together
 
+{bring in comments on NA data from lesson 16}
 
 :::
 

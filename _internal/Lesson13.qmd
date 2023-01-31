@@ -9,9 +9,9 @@ This lesson assumes you have installed R and RStudio ([instructions]("../install
 
 At the end of this lesson, you should: 
 
-* Know to disable saving .Rdata
-* Know to set up an R Project
-
+* know to disable saving .Rdata
+* know to set up an R Project
+* know what reproducible research and be aware of practices that support this
 :::
 
 ### What is Reproducible Research? 
