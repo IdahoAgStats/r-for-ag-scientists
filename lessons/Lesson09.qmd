@@ -8,11 +8,13 @@ title: "Lesson 9: Introduction to Data Wrangling"
 At the end of this lesson, you should:
 
 -   be able to select columns in R using `select()`
--   be able to filter a data set
+-   be able to filter a data set using `filter()`
+-   be aware of how to conditionally create new variables using `case_when()`
 -   know to create new variables using `mutate()`
--   be able to rename variables
--   be able to sort a data set
--   be able to aggregate data and perform actions on those aggregated data
+-   be able to rename variables using `rename()`
+-   be able to sort a data set using `arrange()`
+-   be table to use `separate()` to split up single variables into multiple variables 
+
 :::
 
 **First, load libraries:**
@@ -104,21 +106,20 @@ dim(filter1); dim(filter2); dim(filter3)
 ```
 
 ::: callout-note
-It is also possible to select or filter by numeric position:
+It is also possible to select by numeric position:
 
 ```{r, eval=FALSE}
 select(variety_trials, c(1:3, 4))
-filter(variety_trials, c(1:100, 201:300))
 ```
 
-While filtering and selecting (but especially filtering) by numeric position works, it is an unreliable choice because it depends on column order or row order being exactly as you expect it. This may work the first time you write + run code, but it is likely to fail over time as you sort, augment or change data sets.
+While selecting by numeric position works, it is an unreliable choice because it depends on column order or row order being exactly as you expect it. This may work the first time you write + run code, but it is likely to fail over time as you sort, augment or change data sets. 
 :::
 
 ### Creating new variables
 
 You can quite create new variables with a `mutate()` function call:
 
-    mutate(dataset, var_name = variable)
+mutate(dataset, var_name = variable)
 
 Examples:
 
@@ -162,7 +163,7 @@ mutate1$yield_protein <- mutate1$yield + mutate1$grain_protein
 
 This can be a bit longer and cumbersome compared to `mutate` statements, but it does work.
 
-#### `case_when()` a special type of `mutate`
+#### `case_when()` a special addition to `mutate` statements
 
 Occasionally, you will need a define a variable conditionally, based on information from other variables. Here is an example for weather data. Here, a special minimum value is created where all data for "tmin_F" less than 50°F are set at 50:
 
@@ -174,9 +175,7 @@ weather <- mutate(weather, new_min = case_when(
 
 Everything to the left of the tilde `~` is a logical expression to evaluate. Everything to the right of the tilde is the value to put if the logical expression evaluates to TRUE.
 
-This can easily become more complex!
-
-If you want to bin continuous data into intervals (e.g. "low", "medium", "high), use the base function `cut()` which can bin data into groups based on equal groups, or specific cut-off values you provide.
+This can easily become more complex with the addition of other logical expressions and categorical levels to create. 
 
 If you have a categorical variable that needs further refinement (e.g. collapsing of multiple levels into one), check out the package [forcats](https://forcats.tidyverse.org/), which provides many functions for manipulating categorical (factor or character) variables.
 
@@ -188,7 +187,7 @@ Compared to `mutate()`, the function for renaming variables, `rename()` is a bre
 
 This is similar to variable assignment:
 
-    new <- old
+    new_name <- old_name
 
 Except that quotes are always used when specifying the old variable name.
 
@@ -205,11 +204,11 @@ Also, you can use `rename` notation in `select` statements:
 rename2 <- select(variety_trials, cultivar = "variety", yield, protein = "grain_protein")
 ```
 
-This function selected the columns "variety", "yield" and "grain_protein", while renaming "variety to"cultivar" and "grain_protein" to "protein". A handy shortcut!
+This function selected the columns "variety", "yield" and "grain_protein", while renaming "variety to"cultivar" and "grain_protein" to "protein" - a handy shortcut. 
 
 ### Split up variables
 
-You may encounter variables with information about multiple things. In agriculture, I see variables like "Moscow_2021", "Moscow_2022", "StJohn_2021", "StJohn_2022" which is communicating a data set collected in different locations (Moscow and St. John) in different years (2021 and 2022). This is a useful variable, but we might want to separate out location and year. The ***tidyr*** function `separate()` can do that.
+You may encounter variables with information about multiple things. In agriculture, I see variables with values such as "Moscow_2021", "Moscow_2022", "StJohn_2021", "StJohn_2022". This variables is indicating multiple things - location and year in this exmample.  This is a useful variable by itself, but a researcher might want to separate out location and year for other analytical purposes. The ***tidyr*** function `separate()` can do that.
 
 The first column of "variety_trials" contains considerable information, all separated by an underscore:
 
@@ -219,17 +218,21 @@ variety_trials$trial[1]
 
 The first term is the program conducting the trial, the second is the crop grown, the third term is a location code, and the last term is the year. Let's separate those terms into separate columns/variables.
 
-These terms use an underscore to separate them, which we will use in the function. However, one of the term does have an underscore inside of it, which will interpreted incorrectly as a term separator.
+Before running a `separate()` command, always check the variable to make sure it is structured as you expect. 
 
-Use `unique()` to determine the unique observations for the column "trial" in of "variety trials."
+Use `unique()` to determine the unique observations for the column "trial" in the the object "variety_trials". 
 
 ```{r}
 unique(variety_trials$trial)
 ```
 
+The variable `variety_trials$trial` uses an underscore to separate its components. However, one of the terms we mean to keep as one component does have an underscore inside of it, which will interpreted incorrectly as a term separator. The function `gsub()` can be used to fix this. 
+
 ```{r}
-variety_trials$trial <- gsub(pattern = "_H_", replacement = "_H-", x = variety_trials$trial )
+variety_trials$trial <- gsub(pattern = "_H_", replacement = "_H-", x = variety_trials$trial)
 ```
+
+Now, `separate()` will split the variable into 4 components: 
 
 ```{r}
 variety_trials <- separate(variety_trials, trial, 
@@ -290,7 +293,7 @@ pipe2 <- variety_trials %>% filter(yield < 75) %>% arrange(variety)
 
 The pipe has made data wrangling so much easier! Before the pipe, each of these operations can be specified separately with its own object. So when you were done, you had roughly 50 objects in your environment, 48 of which were not needed anymore.
 
-It also saved us from the "parentheses cascade" where you nest operations within another and no longer had any sense of which set of parentheses belong to which operation.
+It also saved us from the "parentheses cascade" where one function is nested inside another function, which is nested within another, and so forth. It can be difficult to ascertain what parentheses belong to what operation, which often leads to coding errors. In a set of nestd functions, the inner functions are first executed and the outer functions are executed last. no longer had any sense of which set of parentheses belong to which operation.
 
 ```{r, echo=FALSE}
 knitr::include_graphics(here::here("images", "nest_vs_pipe.jpg"))
