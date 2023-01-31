@@ -116,13 +116,13 @@ website:
                 text: "practice set G"
               - href: practice/solution-G.qmd
                 text: "solution to G"
-          # - href: lessons/Lesson11.qmd
-          #   text: Reshaping data
-          #   contents:   
-          #     - href: practice/practice-H.qmd
-          #       text: "practice set H"
-          #     - href: practice/solution-H.qmd
-          #       text: "solution to H"
+          - href: lessons/Lesson11.qmd
+            text: Reshaping data
+            contents:   
+              - href: practice/practice-H.qmd
+                text: "practice set H"
+              - href: practice/solution-H.qmd
+                text: "solution to H"
           # - href: lessons/Lesson12.qmd
           #   text: Data merging
           #   contents: 
@@ -132,9 +132,6 @@ website:
           #     - text: "solution to I"
           # - href: lessons/Lesson13.qmd
           #   text: R Set-up
-          #   contents:
-          #     - href: install_R_instructions.qmd
-          #     - text: Install R + Rstudio
           # - href: lessons/Lesson14.qmd
           #   text: Exploratory plotting
           #   contents: 

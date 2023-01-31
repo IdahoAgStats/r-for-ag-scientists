@@ -7,7 +7,7 @@ title: "Solutions to Practice G"
 First, load libraries and import data: 
 
 ```{r}
-library(dplyr)
+library(dplyr); library(tidyr)
 
 weather <- read.csv(here::here("data", "weather_data.csv")) 
 ```
@@ -30,16 +30,6 @@ weather %>%
 ```
 
 
-
-::: {.callout-note}
-## Programming Tip
-
-The second example of how to do this (using `across`) is rather hard! It took me several tries to get it right. If you have trouble, take the exercise one step at a time, troubleshooting each step separately. It's helpful to write down - with a pen and paper - what it is you want to do and how you think you might do this.
-
-Writing down the exact problem you want to solve and *how* you want to solve it (the steps you want to take) can help you focus on what code is required to complete those steps. New programmers often merge the steps of how to fix a problem along with the effort required to write and troubleshoot code, which can quickly lead to distraction and feeling overwhelmed. One thing at a time, my peeps! 
-
-:::
-
 (@) Calculate average temperatures minimum and maximum
 
 ```{r}
@@ -59,5 +49,16 @@ weather %>%
               min_diff = min(temp_diff)) # extract the minimum
 ```
 
+
+::: {.callout-note}
+## Programming Tip
+
+This exercise is rather hard! It took me several tries to get it right. If you have trouble, take the exercise one step at a time, troubleshooting each step separately. It's helpful to write down - with a pen and paper - what it is you want to do and how you think you might do this.
+
 The function `abs()` was used to find the absolute difference. If both daily temperatures were negative, then the overall difference was negative, which ended up being the 'minimum', although by minimum difference, I was actually thinking about what was closest to zero. When there were wide swings in daily temperature, how big were they? And conversely, how small could these daily swings be? 
+
+Writing down the exact problem you want to solve and *how* you want to solve it (the steps you want to take) can help you focus on what code is required to complete those steps. New programmers often merge the steps of how to fix a problem along with the effort required to write and troubleshoot code, which can quickly lead to distraction and feeling overwhelmed. One thing at a time, my peeps! 
+
+:::
+
 

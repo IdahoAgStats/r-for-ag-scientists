@@ -1,4 +1,4 @@
----
+`---
 title: "Practice H"
 ---
 
@@ -8,9 +8,9 @@ title: "Practice H"
 
 (@) Import "genotypic_data.txt" and remove columns 2 through 5 ('CHROM', 'POS(cM)', 'Major_allele', 'Minor_allele'). What is left is genetic marker names and the marker scores for the individual lines (each column is an genetically distinct wheat line). Using `pivot_longer()`, reshape this object to long so there is one column for the marker name, one column for the wheat name, and the one column for the marker score. How many rows long is this object? Can you image trying to do this by hand??
 
-(@) Import "weather_data.csv". Filter to any single year and reshape the data from long to wide so that 'station' from new column headers, 'julian_day' is the identifying column and the cells are filled with data from 'tmax_F'. 
+(@) Import "weather_data.csv". Filter to any single year and reshape the data from long to wide so that the levels in "station' form the new column headers, 'julian_day' is the identifying column and the cells are filled with data from 'tmax_F'. 
 
-(@) Here is a crazy extra exercise that utilizes transpose instead of pivoting. It's not strictly related to reshaping. Only try this if you're in the mood for a challenge. 
+(@) Here is a crazy extra exercise that utilizes transpose instead of pivoting. It's not strictly related to reshaping. Only try this if you are in the mood for a challenge. 
 
 This problem is indicative of a data wrangling you can experience out in the wild. You are given a data set in one format, but a package requires your data be in another format. 
 

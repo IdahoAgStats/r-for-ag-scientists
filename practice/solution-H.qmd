@@ -2,18 +2,40 @@
 title: "Solutions to Practice H"
 ---
 
-....Under Construction. 
-
 
 ```{r}
-library(dplyr)
+library(dplyr); library(tidyr)
 ```
 
-(@)
+(@) Import data, remove unneeded columns, and pivot all columns but the first to long. 
 
-(@)
+```{r}
+geno <- read.delim(here::here("data", "genotypic_data.txt")) %>% select(-(2:5))
+geno_long <- geno %>% pivot_longer(cols = !1, 
+                                   names_to = "individual",
+                                   values_to = "marker_score")
+```
 
-(@)
+```{r}
+nrow(geno_long)
+head(geno_long)
+```
+
+
+
+(@) Import weather data and filter to 2000. 
+
+```{r}
+weather <- read.csv(here::here("data", "weather_data.csv")) %>% filter(year == 2000)
+weather_wide <- weather %>% select(station, julian_day, tmax_F) %>% 
+  pivot_wider(id_cols = julian_day, 
+              names_from = station, 
+              values_from = tmax_F)
+
+dim(weather_wide)
+head(weather_wide)
+```
+
 
 (@) Extra problem: transform "genotypic_data.txt" into "genotypic_data_rotated.txt".
 
@@ -26,7 +48,5 @@ geno3$individual <- gsub("[.]", " ", geno3$individual)
 geno3[1:10, 1:5]
 ```
 
-`gsub()` is relatively straightforward to use, but `.` without any modifiers is actually for wildcard matching (it matches *everything*)! [Regular expressions](https://www.regular-expressions.info/) are crazy!
-
-So use `[.]` instead to specify that you in fact are referring to a period and not simply any character (including whitespace!).  
+`gsub()` is relatively straightforward to use, but `.` without any modifiers is actually for wildcard matching (it matches *everything*!!) [Regular expressions](https://www.regular-expressions.info/) are crazy! So use `[.]` instead to specify that you in fact are referring to a period and not simply any character (including whitespace).  
 
