@@ -111,7 +111,8 @@ parma2020_wide_2vars <- parma2020 %>%
   pivot_wider(id_cols = entry,
               names_from = rep,
               values_from = c(yield, grain_protein))
-head(parma2020_wice_2vars)
+
+head(parma2020_wide_2vars)
 ```
 
 #### Pivot with multiple observations per identifier
@@ -128,6 +129,8 @@ parma2020_wide_var <- parma2020 %>%
               names_from = rep, 
               values_from = yield,
               values_fn = mean)
+
+head(parma2020_wide_var)
 ```
 
 ### Wide to Long

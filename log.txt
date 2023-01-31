@@ -41,10 +41,10 @@ Day 5:
 Announcements: 
   - office hours different next week b/c of scheduleing conflict
   - quarto document added to website
-  - folks need to install R on their computer for next week.
+  - folks need to install R on their computer by next Thursday.
   - schedule updated: we will do data wrangling, ggploting and R set-up
   
 - Do a problem set. give 5 minutes to do alone, 5 minutes in a group, then I will spend 5 minutes working on 1-2 exercises in front of everyone. 
 
-
+need a cheat sheet of functions
 
