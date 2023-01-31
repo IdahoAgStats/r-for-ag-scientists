@@ -8,6 +8,8 @@ title: "Lesson 10: Aggregating & Summarising Data"
 At the end of this lesson, you should:
 
 * be able to aggregate data and perform actions on those aggregated data using `group_by()` + `summarise()`
+* understand when to use `rowwise()` for operations
+
 :::
 
 You may find yourself wanting to calculate summary statistics across a grouping variable. To do this, a data set needs to be split up by that variable, a summary statistic calculated, and the resulting data recombined, or 'split-apply-combine'. There's some nice tools to do this in the **dplyr** package. 
