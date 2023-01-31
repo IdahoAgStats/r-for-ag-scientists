@@ -107,8 +107,8 @@ website:
             contents: 
               - href: practice/practice-F.qmd
                 text: "practice set F"
-              - href: practice/solution-F.qmd
-                text: "solution to F"
+             # - href: practice/solution-F.qmd
+              #  text: "solution to F"
           - href: lessons/Lesson10.qmd
             text: Data Aggregation
             contents:

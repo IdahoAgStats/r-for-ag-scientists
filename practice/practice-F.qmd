@@ -16,6 +16,9 @@ title: "Practice F"
 
 (@) Import "weather_data.csv", select the first five columns and reduce that data set to unique rows (look into using `distinct()` for extracting the unique observations). 
 
+(@) NEW: Import "trial_data.csv". Split the "trials" column into 4 variables as we did in class (or see the lesson notes). Filter the data set to the 2 most recent years and the varieties WA8268, WB4418, WB4311, WB4623CLP, WB4792, and WB7589
+
+
 (@) Output the result from any of the previous problems to file. 
 
-[***Solution***](../practice/solution-F.qmd)
+
