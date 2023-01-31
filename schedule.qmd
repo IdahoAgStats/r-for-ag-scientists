@@ -18,16 +18,15 @@ title: "Course Schedule"
                Lesson 8: [exporting data](lessons/Lesson08.qmd) | [*Lesson 7*](practice/practice-D.qmd) \
                                                                   [*Lesson 8*](practice/practice-E.qmd) |
 | January 26   | Lesson 9: [data wrangling](lessons/Lesson09.qmd) |  [*Lesson 9*](practice/practice-F.qmd)  |
-| January 31  | Lesson 10: [data aggregation & summary](lessons/Lesson10.qmd) \
-                Lesson 11: [reshaping data sets](lessons/Lesson11.qmd) |  |
-|  |   | [*Lesson 10*](practice/practice-G.qmd) \
-                                     [*Lesson 11*](practice/practice-H.qmd) |
-| February 2  | Lesson 12: combining data sets \ 
+| January 31  | Lesson 10: [data aggregation & summary](lessons/Lesson10.qmd)\
+                Lesson 11: [reshaping data sets](lessons/Lesson11.qmd) | [*Lesson 10*](practice/practice-G.qmd)\
+                                     [*Lesson 11*](practice/practice-H.qmd) |   |   | 
+| February 2  | Lesson 12: combining data sets\ 
                 Lesson 13: your R set-up |    |
 | February 7  |  Lesson 15: ggplotting   |    |
 | February 9  |  Lesson 15: ggplotting \
                  Final Lesson: Your R Future |    |
-| extra     | Lesson 14: basic plotting \
+| extra  | Lesson 14: basic plotting \
               Lesson 16: repeating actions |   |
 
 
