@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>R for Scientists - Practice H</title>
+<title>R for Scientists – practice-h</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,6 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<link href="../practice/solution-H.html" rel="next">
+<link href="../lessons/Lesson11.html" rel="prev">
 <link href="../images/logo_transparent.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -73,12 +75,6 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
 
 
 <link rel="stylesheet" href="../styles.css">
-<meta property="og:title" content="R for Scientists - Practice H">
-<meta property="og:description" content="(for the data reshaping lesson)">
-<meta property="og:site-name" content="R for Scientists">
-<meta name="twitter:title" content="R for Scientists - Practice H">
-<meta name="twitter:description" content="(for the data reshaping lesson)">
-<meta name="twitter:card" content="summary">
 </head>
 
 <body class="nav-sidebar docked">
@@ -87,7 +83,7 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Practice H</h1>
+      <h1 class="quarto-secondary-nav-title"></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -289,6 +285,46 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
 </li>
       </ul>
   </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../lessons/Lesson10.html" class="sidebar-item-text sidebar-link">Data Aggregation</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../practice/practice-G.html" class="sidebar-item-text sidebar-link">practice set G</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../practice/solution-G.html" class="sidebar-item-text sidebar-link">solution to G</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../lessons/Lesson11.html" class="sidebar-item-text sidebar-link">Reshaping data</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../practice/practice-H.html" class="sidebar-item-text sidebar-link active">practice set H</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../practice/solution-H.html" class="sidebar-item-text sidebar-link">solution to H</a>
+  </div>
+</li>
+      </ul>
+  </li>
       </ul>
   </li>
     </ul>
@@ -301,31 +337,18 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title d-none d-lg-block">Practice H</h1>
-</div>
 
 
-
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
-
-</header>
-
+<p>`— title: “Practice H”</p>
+<hr>
 <p><em>(for the data reshaping lesson)</em></p>
 <ul>
 <li>As always, consider how these reshaping functions can support your own research and data analysis.</li>
 </ul>
 <ol class="example" type="1">
 <li><p>Import “genotypic_data.txt” and remove columns 2 through 5 (‘CHROM’, ‘POS(cM)’, ‘Major_allele’, ‘Minor_allele’). What is left is genetic marker names and the marker scores for the individual lines (each column is an genetically distinct wheat line). Using <code>pivot_longer()</code>, reshape this object to long so there is one column for the marker name, one column for the wheat name, and the one column for the marker score. How many rows long is this object? Can you image trying to do this by hand??</p></li>
-<li><p>Import “weather_data.csv”. Filter to any single year and reshape the data from long to wide so that ‘station’ from new column headers, ‘julian_day’ is the identifying column and the cells are filled with data from ‘tmax_F’.</p></li>
-<li><p>Here is a crazy extra exercise that utilizes transpose instead of pivoting. It’s not strictly related to reshaping. Only try this if you’re in the mood for a challenge.</p></li>
+<li><p>Import “weather_data.csv”. Filter to any single year and reshape the data from long to wide so that the levels in “station’ form the new column headers, ‘julian_day’ is the identifying column and the cells are filled with data from ‘tmax_F’.</p></li>
+<li><p>Here is a crazy extra exercise that utilizes transpose instead of pivoting. It’s not strictly related to reshaping. Only try this if you are in the mood for a challenge.</p></li>
 </ol>
 <p>This problem is indicative of a data wrangling you can experience out in the wild. You are given a data set in one format, but a package requires your data be in another format.</p>
 <p>The file “genotypic_data.txt” is a transposed version of “genotypic_data_rotated.txt”. Import “genotypic_data.txt” into R and use R commands to recreate “genotypic_data_rotated.txt”.</p>
@@ -583,6 +606,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../lessons/Lesson11.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Reshaping data</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../practice/solution-H.html" class="pagination-link">
+        <span class="nav-page-text">solution to H</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">

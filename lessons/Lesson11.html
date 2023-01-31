@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>R for Scientists - Solutions to Practice J</title>
+<title>R for Scientists - Lesson 11: Reshaping Data Sets</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,69 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -30,6 +93,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<link href="../practice/practice-H.html" rel="next">
+<link href="../practice/solution-G.html" rel="prev">
 <link href="../images/logo_transparent.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -73,9 +138,11 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
 
 
 <link rel="stylesheet" href="../styles.css">
-<meta property="og:title" content="R for Scientists - Solutions to Practice J">
+<meta property="og:title" content="R for Scientists - Lesson 11: Reshaping Data Sets">
+<meta property="og:description" content="There are circumstances when a wide data set are needed and circumstances when a long data set are needed, for analysis, plotting, data wrangling, etc.">
 <meta property="og:site-name" content="R for Scientists">
-<meta name="twitter:title" content="R for Scientists - Solutions to Practice J">
+<meta name="twitter:title" content="R for Scientists - Lesson 11: Reshaping Data Sets">
+<meta name="twitter:description" content="There are circumstances when a wide data set are needed and circumstances when a long data set are needed, for analysis, plotting, data wrangling, etc.">
 <meta name="twitter:card" content="summary">
 </head>
 
@@ -85,7 +152,7 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Solutions to Practice J</h1>
+      <h1 class="quarto-secondary-nav-title">Lesson 11: Reshaping Data Sets</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -309,12 +376,12 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../lessons/Lesson11.html" class="sidebar-item-text sidebar-link">Reshaping data</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false">
+            <a href="../lessons/Lesson11.html" class="sidebar-item-text sidebar-link active">Reshaping data</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="true">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../practice/practice-H.html" class="sidebar-item-text sidebar-link">practice set H</a>
@@ -334,14 +401,22 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#what-is-pivoting" id="toc-what-is-pivoting" class="nav-link active" data-scroll-target="#what-is-pivoting">What is pivoting?</a></li>
+  <li><a href="#pivot-long-to-wide" id="toc-pivot-long-to-wide" class="nav-link" data-scroll-target="#pivot-long-to-wide">Pivot long to wide</a></li>
+  <li><a href="#wide-to-long" id="toc-wide-to-long" class="nav-link" data-scroll-target="#wide-to-long">Wide to Long</a></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/IdahoAgStats/r-for-ag-scientists/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Solutions to Practice J</h1>
+<h1 class="title d-none d-lg-block">Lesson 11: Reshaping Data Sets</h1>
 </div>
 
 
@@ -356,8 +431,219 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
 
 </header>
 
+<div class="callout-caution callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Learning Goals
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<p>At the end of this lesson, you should:</p>
+<ul>
+<li>be able to convert long data set to wide and the reverse</li>
+</ul>
+</div>
+</div>
+</div>
+<section id="what-is-pivoting" class="level3">
+<h3 class="anchored" data-anchor-id="what-is-pivoting">What is pivoting?</h3>
+<p>There are circumstances when a wide data set are needed and circumstances when a long data set are needed, for analysis, plotting, data wrangling, etc.</p>
+<p>Doing this manually in a spreadsheet program is extremely cumbersome and very susceptible to errors! You are much better off doing this in R (or another programming language).</p>
+<p>These wide-to-long and long-to-wide conversions are also called ‘pivoting’.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="../images/wide_v_long.png" class="img-fluid"></p>
+</div>
+</div>
+<p>When pivoting from long to wide format, we should consider what will be used as the identifying information, what information will be used for column headers and what information will be used to fill the cells/populate the table.</p>
+<p>When pivoting from wide to long, the considerations are similar: what will be the name of the new column header and what information (i.e.&nbsp;what columns) will be used to populate the data in the vertical direction, while which columns will be used for record identification.</p>
+<p>Pivoting from wide to long can be done with the <a href="https://tidyr.tidyverse.org/"><strong><em>tidyr</em></strong></a> functions <code>pivot_wide()</code> and the reverse function if <code>pivot_longer()</code>.</p>
+<p>Let’s run some examples with trial data set.</p>
+<p>Load the trial data and libraries:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr); <span class="fu">library</span>(dplyr); <span class="fu">library</span>(tidyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'dplyr'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:stats':
+
+    filter, lag</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>variety_trials <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"trial_data.csv"</span>)) </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co">#weather &lt;- read_csv(here::here("data", "weather_data.csv"))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="pivot-long-to-wide" class="level3">
+<h3 class="anchored" data-anchor-id="pivot-long-to-wide">Pivot long to wide</h3>
+<p>The first thing we should do is look at the documentation for <code>pivot_wider</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>?pivot_wider</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The main arguments to consider (not including the input data) is:</p>
+<p><strong>id_cols</strong> what are the identifying columns that we will keep in the data set to identify and separate records. This can be multiple columns.</p>
+<p><strong>names_from</strong> is the variable that will be used to make the new column header. This is the column that we are seeking to change from long to wide. This should be a categorical variable or one that can be coerced to one. Usually it contains repeating values.</p>
+<p><strong>values_from</strong> is the variable that will be used to fill the cells under the column header.</p>
+<p><em>There is long list of other arguments, but these are the most important.</em></p>
+<section id="pivot-single-variable" class="level4">
+<h4 class="anchored" data-anchor-id="pivot-single-variable">Pivot single variable</h4>
+<p>The loaded data set includes many different field trials. Let’s look at the information for one trial and pivot the data across replicates for a single variable, using entry as an ID variable.</p>
+<p>First, find out the different levels for “trial”:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(variety_trials<span class="sc">$</span>trial)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "SWIdahoCereals_HRS_PAR_2016" "SWIdahoCereals_HWS_PAR_2016"
+ [3] "SWIdahoCereals_SWS_PAR_2016" "SWIdahoCereals_H_W_PAR_2017"
+ [5] "SWIdahoCereals_HRS_PAR_2017" "SWIdahoCereals_HWS_PAR_2017"
+ [7] "SWIdahoCereals_SWS_PAR_2017" "SWIdahoCereals_SWW_PAR_2017"
+ [9] "SWIdahoCereals_H_S_PAR_2018" "SWIdahoCereals_H_W_PAR_2018"
+[11] "SWIdahoCereals_SWS_PAR_2018" "SWIdahoCereals_SWW_PAR_2018"
+[13] "SWIdahoCereals_H_S_WEI_2018" "SWIdahoCereals_H_W_WEI_2018"
+[15] "SWIdahoCereals_SWS_WEI_2018" "SWIdahoCereals_SWW_WEI_2018"
+[17] "SWIdahoCereals_HRS_PAR_2019" "SWIdahoCereals_HRW_PAR_2019"
+[19] "SWIdahoCereals_HWS_PAR_2019" "SWIdahoCereals_HWW_PAR_2019"
+[21] "SWIdahoCereals_SWS_PAR_2019" "SWIdahoCereals_SWW_PAR_2019"
+[23] "SWIdahoCereals_HRS_PAR_2020" "SWIdahoCereals_HRW_PAR_2020"
+[25] "SWIdahoCereals_HWS_PAR_2020" "SWIdahoCereals_HWW_PAR_2020"
+[27] "SWIdahoCereals_SWS_PAR_2020" "SWIdahoCereals_SWW_PAR_2020"</code></pre>
+</div>
+</div>
+<p>This example will use the last trial listed (SWIdahoCereals_SWW_PAR_2020), but any of these options will work. Let’s filter the data and check that there is one observation per rep and entry.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>parma2020 <span class="ot">&lt;-</span> variety_trials <span class="sc">%&gt;%</span> <span class="fu">filter</span>(trial <span class="sc">==</span> <span class="st">"SWIdahoCereals_SWW_PAR_2020"</span>) </span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(parma2020<span class="sc">$</span>entry, parma2020<span class="sc">$</span>rep)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    
+     1 2 3 4
+  1  1 1 1 1
+  2  1 1 1 1
+  3  1 1 1 1
+  4  1 1 1 1
+  5  1 1 1 1
+  6  1 1 1 1
+  7  1 1 1 1
+  8  1 1 1 1
+  9  1 1 1 1
+  10 1 1 1 1
+  11 1 1 1 1
+  12 1 1 1 1
+  13 1 1 1 1
+  14 1 1 1 1
+  15 1 1 1 1
+  16 1 1 1 1
+  17 1 1 1 1
+  18 1 1 1 1
+  19 1 1 1 1
+  20 1 1 1 1
+  21 1 1 1 1
+  22 1 1 1 1
+  23 1 1 1 1
+  24 1 1 1 1
+  25 1 1 1 1
+  26 1 1 1 1
+  27 1 1 1 1
+  28 1 1 1 1
+  29 1 1 1 1
+  30 1 1 1 1
+  31 1 1 1 1
+  32 1 1 1 1
+  33 1 1 1 1
+  34 1 1 1 1
+  35 1 1 1 1
+  36 1 1 1 1
+  37 1 1 1 1
+  38 1 1 1 1</code></pre>
+</div>
+</div>
+<p>The table produces all “1” indicating 1 observation per variable combination, which is what we want.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>parma2020_wide <span class="ot">&lt;-</span> parma2020 <span class="sc">%&gt;%</span> </span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">id_cols =</span> entry,</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>              <span class="at">names_from =</span> rep,</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">values_from =</span> yield)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(parma2020_wide)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 5
+  entry   `1`   `2`   `3`   `4`
+  &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+1     1  165.  119.  161.  141.
+2     2  151.  141.  155.  155.
+3     3  150.  143.  155.  141.
+4     4  149.  149.  155.  158.
+5     5  182.  143.  131.  157.
+6     6  127.  135.  145.  125.</code></pre>
+</div>
+</div>
+<p>If you try to index that column with <code>parma2020_wide$1</code>, an error is thrown:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>parma2020_wide<span class="sc">$</span><span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error: &lt;text&gt;:1:16: unexpected numeric constant
+1: parma2020_wide$1
+                   ^</code></pre>
+</div>
+</div>
+<p>We can give it better column names (not starting with a number) using the <code>names_prefix</code> argument.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>parma2020_wide <span class="ot">&lt;-</span> parma2020 <span class="sc">%&gt;%</span> </span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">id_cols =</span> entry,</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>              <span class="at">names_from =</span> rep,</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">values_from =</span> yield,</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>              <span class="at">names_prefix =</span> <span class="st">"rep_"</span>)</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(parma2020_wide)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 5
+  entry rep_1 rep_2 rep_3 rep_4
+  &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+1     1  165.  119.  161.  141.
+2     2  151.  141.  155.  155.
+3     3  150.  143.  155.  141.
+4     4  149.  149.  155.  158.
+5     5  182.  143.  131.  157.
+6     6  127.  135.  145.  125.</code></pre>
+</div>
+</div>
+</section>
+<section id="pivot-multiple-variables" class="level4">
+<h4 class="anchored" data-anchor-id="pivot-multiple-variables">Pivot multiple variables</h4>
+</section>
+<section id="pivot-with-multiple-observations-per-identifier" class="level4">
+<h4 class="anchored" data-anchor-id="pivot-with-multiple-observations-per-identifier">Pivot with multiple observations per identifier</h4>
+</section>
+</section>
+<section id="wide-to-long" class="level3">
+<h3 class="anchored" data-anchor-id="wide-to-long">Wide to Long</h3>
+<p>Another option is to combine all traits into a single column along side identifying variables.</p>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Putting it all together
+</div>
+</div>
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -608,6 +894,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../practice/solution-G.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">solution to G</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../practice/practice-H.html" class="pagination-link">
+        <span class="nav-page-text">practice set H</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">

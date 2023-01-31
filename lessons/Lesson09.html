@@ -354,6 +354,46 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
 </li>
       </ul>
   </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../lessons/Lesson10.html" class="sidebar-item-text sidebar-link">Data Aggregation</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../practice/practice-G.html" class="sidebar-item-text sidebar-link">practice set G</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../practice/solution-G.html" class="sidebar-item-text sidebar-link">solution to G</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../lessons/Lesson11.html" class="sidebar-item-text sidebar-link">Reshaping data</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../practice/practice-H.html" class="sidebar-item-text sidebar-link">practice set H</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../practice/solution-H.html" class="sidebar-item-text sidebar-link">solution to H</a>
+  </div>
+</li>
+      </ul>
+  </li>
       </ul>
   </li>
     </ul>
@@ -589,7 +629,7 @@ Note
 <div class="cell-output cell-output-stdout">
 <pre><code>new_var
   0   1 
-906 976 </code></pre>
+917 965 </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mutate1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -601,19 +641,19 @@ Note
 5 SWIdahoCereals_HRS_PAR_2016   1     2 10SB0087-B  94.18977        13.053
 6 SWIdahoCereals_HRS_PAR_2016   2     2 10SB0087-B 121.59047        13.794
   test_weight flag row range plot dataset row_position range_new random_yield
-1          NA &lt;NA&gt;  NA    NA   NA example            1        NA     77.63192
-2          NA &lt;NA&gt;  NA    NA   NA example            2        NA    123.48100
-3          NA &lt;NA&gt;  NA    NA   NA example            3        NA     85.42534
-4          NA &lt;NA&gt;  NA    NA   NA example            4        NA    140.94081
-5          NA &lt;NA&gt;  NA    NA   NA example            5        NA     94.90564
-6          NA &lt;NA&gt;  NA    NA   NA example            6        NA    120.99807
+1          NA &lt;NA&gt;  NA    NA   NA example            1        NA     78.47559
+2          NA &lt;NA&gt;  NA    NA   NA example            2        NA    123.46480
+3          NA &lt;NA&gt;  NA    NA   NA example            3        NA     85.74838
+4          NA &lt;NA&gt;  NA    NA   NA example            4        NA    139.51275
+5          NA &lt;NA&gt;  NA    NA   NA example            5        NA     94.43336
+6          NA &lt;NA&gt;  NA    NA   NA example            6        NA    121.83148
   binom_var yield_protein
-1         1      92.52131
-2         0     138.78589
-3         0     100.30958
+1         0      92.52131
+2         1     138.78589
+3         1     100.30958
 4         0     154.92890
 5         1     107.24277
-6         1     135.38447</code></pre>
+6         0     135.38447</code></pre>
 </div>
 </div>
 <p>This created 6 new variables:</p>
@@ -691,6 +731,7 @@ Note
 </div>
 <p>The first term is the program conducting the trial, the second is the crop grown, the third term is a location code, and the last term is the year. Let’s separate those terms into separate columns/variables.</p>
 <p>These terms use an underscore to separate them, which we will use in the function. However, one of the term does have an underscore inside of it, which will interpreted incorrectly as a term separator.</p>
+<p>Use <code>unique()</code> to determine the unique observations for the column “trial” in of “variety trials.”</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(variety_trials<span class="sc">$</span>trial)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">

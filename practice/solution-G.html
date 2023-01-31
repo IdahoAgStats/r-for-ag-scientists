@@ -93,6 +93,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<link href="../lessons/Lesson11.html" rel="next">
+<link href="../practice/practice-G.html" rel="prev">
 <link href="../images/logo_transparent.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -137,10 +139,10 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
 
 <link rel="stylesheet" href="../styles.css">
 <meta property="og:title" content="R for Scientists - Solutions to Practice G">
-<meta property="og:description" content="First, import the data:">
+<meta property="og:description" content="First, load libraries and import data:">
 <meta property="og:site-name" content="R for Scientists">
 <meta name="twitter:title" content="R for Scientists - Solutions to Practice G">
-<meta name="twitter:description" content="First, import the data:">
+<meta name="twitter:description" content="First, load libraries and import data:">
 <meta name="twitter:card" content="summary">
 </head>
 
@@ -352,6 +354,46 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
 </li>
       </ul>
   </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../lessons/Lesson10.html" class="sidebar-item-text sidebar-link">Data Aggregation</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../practice/practice-G.html" class="sidebar-item-text sidebar-link">practice set G</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../practice/solution-G.html" class="sidebar-item-text sidebar-link active">solution to G</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../lessons/Lesson11.html" class="sidebar-item-text sidebar-link">Reshaping data</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../practice/practice-H.html" class="sidebar-item-text sidebar-link">practice set H</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../practice/solution-H.html" class="sidebar-item-text sidebar-link">solution to H</a>
+  </div>
+</li>
+      </ul>
+  </li>
       </ul>
   </li>
     </ul>
@@ -384,13 +426,9 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
 <ol class="example" type="1">
 <li>Count missing data in “weather.csv”. This one is a bit hard!</li>
 </ol>
-<p>First, import the data:</p>
+<p>First, load libraries and import data:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>weather <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"weather_data.csv"</span>)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Next, we need to test if a value is missing or not with <code>is.na()</code>. As a logical his will return a <code>TRUE</code> or <code>FALSE</code>. Those end up being equivalent to ‘1’ (TRUE) and ‘0’ (FALSE), as you may recall from data type coercion. You can check with by running <code>as.integer(c(TRUE, TRUE, FALSE, TRUE))</code> which should return <code>1 1 0 1</code>. Once that is done, the observations can be grouped by ‘station’ and the columsn can be summed under the assumption that all the missing values are represented by a “1” to indicate it is missing.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr); <span class="fu">library</span>(tidyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>
 Attaching package: 'dplyr'</code></pre>
@@ -405,10 +443,29 @@ Attaching package: 'dplyr'</code></pre>
 
     intersect, setdiff, setequal, union</code></pre>
 </div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>weather <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"weather_data.csv"</span>)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>weather <span class="sc">%&gt;%</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">c</span>(tavg, tmax, tmin), <span class="sc">~</span> <span class="fu">is.na</span>(.x))) <span class="sc">%&gt;%</span> </span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(station) <span class="sc">%&gt;%</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">c</span>(tavg, tmax, tmin), <span class="sc">~</span> <span class="fu">sum</span>(.x)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(station) <span class="sc">%&gt;%</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">tavg_na =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(tavg)),</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">tmin_na =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(tmin)),</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">tmax_na =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(tmax)) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4 × 4
+  station     tavg_na tmin_na tmax_na
+  &lt;chr&gt;         &lt;int&gt;   &lt;int&gt;   &lt;int&gt;
+1 USC00453546   13558       0       0
+2 USC00456215    6531       0       0
+3 USC00457059   15628       0       0
+4 USR0000WCNW       0       0       0</code></pre>
+</div>
+</div>
+<p><strong>Using <code>across()</code></strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>weather <span class="sc">%&gt;%</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(station) <span class="sc">%&gt;%</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">c</span>(tavg, tmax, tmin), <span class="sc">~</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(.x))))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 4
   station      tavg  tmax  tmin
@@ -419,28 +476,13 @@ Attaching package: 'dplyr'</code></pre>
 4 USR0000WCNW     0     0     0</code></pre>
 </div>
 </div>
-<div class="callout-note callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Programming Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>This exercise is pretty hard! It took me several tries to get it right. If you have trouble, take the exercise one step at a time, troubleshooting each step separately. It’s helpful to write down - with a pen and paper - what it is you want to do and how you think you might do this.</p>
-<p>In this case, we wanted to count the number of missing data for three data columns for each station. My first (failed approach) was to group by station and the use a summary command to (1) test if the observations are missing and (2) count those missing data. Well, it turned out the observations can be converted from a value to a logical in a <code>summarise()</code> call (since this is actually a mutation action not a summary). So, instead, the solution is to (1) change the values to a logical indicating if each is missing or not, (2) group by station, and (3) count all the missing data for the requested data columns. Once I came to that realization, I could then focus on making the code correct so it would run without errors.</p>
-<p>Writing down the exact problem you want to solve and <em>how</em> you want to solve it (the steps you want to take) can help you focus on what code is required to complete those steps. New programmers often merge the steps of how to fix a problem along with the effort required to write and troubleshoot code, which can quickly lead to distraction and feeling overwhelmed. One thing at a time, my peeps!</p>
-</div>
-</div>
 <ol start="2" class="example" type="1">
 <li>Calculate average temperatures minimum and maximum</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>weather <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(station) <span class="sc">%&gt;%</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">max_temp =</span> <span class="fu">mean</span>(tmax, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>              <span class="at">min_temp =</span> <span class="fu">mean</span>(tmin, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>weather <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(station) <span class="sc">%&gt;%</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">max_temp =</span> <span class="fu">mean</span>(tmax, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>              <span class="at">min_temp =</span> <span class="fu">mean</span>(tmin, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 3
   station     max_temp min_temp
@@ -455,12 +497,12 @@ Programming Tip
 <li>Find the largest and smallest differences between the daily minimum and maximum temperatures for each year.</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>weather <span class="sc">%&gt;%</span> </span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(tmin) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(tmax)) <span class="sc">%&gt;%</span>   <span class="co"># filter out missing data</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">temp_diff =</span> <span class="fu">abs</span>(tmax <span class="sc">-</span> tmin)) <span class="sc">%&gt;%</span> <span class="co"># make the calculation for all </span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(year) <span class="sc">%&gt;%</span> <span class="co"># grouping step</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">max_diff =</span> <span class="fu">max</span>(temp_diff), <span class="co"># extract the maximum</span></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>              <span class="at">min_diff =</span> <span class="fu">min</span>(temp_diff)) <span class="co"># extract the minimum</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>weather <span class="sc">%&gt;%</span> </span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(tmin) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(tmax)) <span class="sc">%&gt;%</span>   <span class="co"># filter out missing data</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">temp_diff =</span> <span class="fu">abs</span>(tmax <span class="sc">-</span> tmin)) <span class="sc">%&gt;%</span> <span class="co"># make the calculation for all </span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(year) <span class="sc">%&gt;%</span> <span class="co"># grouping step</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">max_diff =</span> <span class="fu">max</span>(temp_diff), <span class="co"># extract the maximum</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>              <span class="at">min_diff =</span> <span class="fu">min</span>(temp_diff)) <span class="co"># extract the minimum</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 43 × 3
     year max_diff min_diff
@@ -478,7 +520,21 @@ Programming Tip
 # … with 33 more rows</code></pre>
 </div>
 </div>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Programming Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This exercise is rather hard! It took me several tries to get it right. If you have trouble, take the exercise one step at a time, troubleshooting each step separately. It’s helpful to write down - with a pen and paper - what it is you want to do and how you think you might do this.</p>
 <p>The function <code>abs()</code> was used to find the absolute difference. If both daily temperatures were negative, then the overall difference was negative, which ended up being the ‘minimum’, although by minimum difference, I was actually thinking about what was closest to zero. When there were wide swings in daily temperature, how big were they? And conversely, how small could these daily swings be?</p>
+<p>Writing down the exact problem you want to solve and <em>how</em> you want to solve it (the steps you want to take) can help you focus on what code is required to complete those steps. New programmers often merge the steps of how to fix a problem along with the effort required to write and troubleshoot code, which can quickly lead to distraction and feeling overwhelmed. One thing at a time, my peeps!</p>
+</div>
+</div>
 
 
 
@@ -731,6 +787,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../practice/practice-G.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">practice set G</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../lessons/Lesson11.html" class="pagination-link">
+        <span class="nav-page-text">Reshaping data</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
