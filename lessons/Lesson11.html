@@ -620,14 +620,81 @@ Attaching package: 'dplyr'</code></pre>
 </section>
 <section id="pivot-multiple-variables" class="level4">
 <h4 class="anchored" data-anchor-id="pivot-multiple-variables">Pivot multiple variables</h4>
+<p>Perhaps we want to pivot 2 variables.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>parma2020_wide_2vars <span class="ot">&lt;-</span> parma2020 <span class="sc">%&gt;%</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">id_cols =</span> entry,</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>              <span class="at">names_from =</span> rep,</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">values_from =</span> <span class="fu">c</span>(yield, grain_protein))</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(parma2020_wide_2vars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 9
+  entry yield_1 yield_2 yield_3 yield_4 grain_protein_1 grain_…¹ grain…² grain…³
+  &lt;int&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;           &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+1     1    165.    119.    161.    141.             9.9      8.4    11.2    11  
+2     2    151.    141.    155.    155.             8.5     10.2    10.1    10  
+3     3    150.    143.    155.    141.             8.5     10.4     8.8     9.3
+4     4    149.    149.    155.    158.             9.4      9      10       9.6
+5     5    182.    143.    131.    157.             8.4      9.5    10       8  
+6     6    127.    135.    145.    125.             8.8     10.4     9.5     9  
+# … with abbreviated variable names ¹​grain_protein_2, ²​grain_protein_3,
+#   ³​grain_protein_4</code></pre>
+</div>
+</div>
 </section>
 <section id="pivot-with-multiple-observations-per-identifier" class="level4">
 <h4 class="anchored" data-anchor-id="pivot-with-multiple-observations-per-identifier">Pivot with multiple observations per identifier</h4>
+<p>Sometimes, there may be multiple observations per identifier and new column header. *<strong>tidyr</strong> will attempt to resolve this automatically, sometimes by inserting a list inside a data frame to capture the additional information. This is messy and hard to access. Sometimes this is an unintentional; you expected only one observaton and learn through tidyr warning messages that there is an more observations than expected.</p>
+<p>However, you can also introduce a function in a <code>pivot_wider</code> such as <code>mean</code> or <code>sum</code> to summarise these replicate observations.</p>
+<p>Here is an example using “variety”, which is has replicate values.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>parma2020_wide_var <span class="ot">&lt;-</span> parma2020 <span class="sc">%&gt;%</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">id_cols =</span> variety,</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>              <span class="at">names_from =</span> rep, </span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">values_from =</span> yield,</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>              <span class="at">values_fn =</span> mean)</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(parma2020_wide_var)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 5
+  variety       `1`   `2`   `3`   `4`
+  &lt;chr&gt;       &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+1 11PN044#48   165.  119.  161.  141.
+2 LCS Artdeco  151.  141.  155.  155.
+3 LCS Drive    150.  143.  155.  141.
+4 LCS Hulk     149.  149.  155.  158.
+5 IDO1708      182.  143.  131.  157.
+6 Jasper       127.  135.  145.  125.</code></pre>
+</div>
+</div>
 </section>
 </section>
 <section id="wide-to-long" class="level3">
 <h3 class="anchored" data-anchor-id="wide-to-long">Wide to Long</h3>
-<p>Another option is to combine all traits into a single column along side identifying variables.</p>
+<p>Let’s put all the traits in one column (and filter out the missing data).</p>
+<p>Main arguments in <code>pivot_longer()</code> (besides the data set):</p>
+<p><strong>cols</strong> the columns to stack/pivot</p>
+<p><strong>names_to</strong> name of the new categorial variable that is composed of the names of the columns being pivoted</p>
+<p><strong>values_to</strong> name of new value column (will be named “value” by default if not specified)</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>parma2020_long <span class="ot">&lt;-</span> parma2020 <span class="sc">%&gt;%</span> </span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(yield, grain_protein, test_weight),</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"trait"</span>)</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(parma2020_long)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 10
+  trial                    rep entry variety flag  row   range plot  trait value
+  &lt;chr&gt;                  &lt;int&gt; &lt;int&gt; &lt;chr&gt;   &lt;chr&gt; &lt;lgl&gt; &lt;lgl&gt; &lt;lgl&gt; &lt;chr&gt; &lt;dbl&gt;
+1 SWIdahoCereals_SWW_PA…     1     1 11PN04… &lt;NA&gt;  NA    NA    NA    yield 165. 
+2 SWIdahoCereals_SWW_PA…     1     1 11PN04… &lt;NA&gt;  NA    NA    NA    grai…   9.9
+3 SWIdahoCereals_SWW_PA…     1     1 11PN04… &lt;NA&gt;  NA    NA    NA    test…  61.5
+4 SWIdahoCereals_SWW_PA…     2     1 11PN04… &lt;NA&gt;  NA    NA    NA    yield 119. 
+5 SWIdahoCereals_SWW_PA…     2     1 11PN04… &lt;NA&gt;  NA    NA    NA    grai…   8.4
+6 SWIdahoCereals_SWW_PA…     2     1 11PN04… &lt;NA&gt;  NA    NA    NA    test…  60.5</code></pre>
+</div>
+</div>
 <div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -638,7 +705,9 @@ Putting it all together
 </div>
 </div>
 <div class="callout-body-container callout-body">
-
+<p>When to use these function depends on the desired output. If you want to do a multi-year anaysis of field trial data, stacking the years in the long format makes sense. If you want to compute correlations across two variables, the wide format makes sense for those variables.</p>
+<p>As part of the tidyverse, anything pivoting can be preceded by or can be followed by any other data wrangling step such as filtering, data aggregation and so on.</p>
+<p>You can use any of the <a href="https://tidyselect.r-lib.org/reference/starts_with.html">tidy select</a> methods for indicating which values to pivot. This is particularily useful when there is a very large number of columns to pivot that share similarities in their name.</p>
 </div>
 </div>
 
