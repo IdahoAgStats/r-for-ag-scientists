@@ -21,8 +21,7 @@ title: "Course Schedule"
 | January 31  | Lesson 10: [data aggregation & summary](lessons/Lesson10.qmd)\
                 Lesson 11: [reshaping data sets](lessons/Lesson11.qmd) | [*Lesson 10*](practice/practice-G.qmd)\
                                      [*Lesson 11*](practice/practice-H.qmd) | 
-| February 2  | Lesson 12: combining data sets \  
-                Lesson 13: your R set-up |    |
+| February 2  | Lesson 12: combining data sets \ Lesson 13: your R set-up |    |
 | February 7  |  Lesson 15: ggplotting   |    |
 | February 9  |  Lesson 15: ggplotting \
                  Final Lesson: Your R Future |    |
