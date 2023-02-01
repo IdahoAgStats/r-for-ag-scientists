@@ -10,7 +10,8 @@ library(readr); library(dplyr); library(tidyr)
 Then, import the data and create the new variable. 
 
 ```{r}
-mydata <- read_csv(here::here("data", "trial_metadata.csv")) %>%
+mydata <- read_csv(here::here("data", "trial_metadata.csv"),
+                   show_col_types = FALSE) %>%
     unite("new_var", location, irrigation, sep = "_", remove = FALSE )
 ```
 
