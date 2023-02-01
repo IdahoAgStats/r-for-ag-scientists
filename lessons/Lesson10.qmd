@@ -7,16 +7,15 @@ title: "Lesson 10: Aggregating & Summarising Data"
 
 At the end of this lesson, you should:
 
-* be able to aggregate data and perform actions on those aggregated data using `group_by()` + `summarise()`
-* understand when to use `rowwise()` for operations
-
+-   be able to aggregate data and perform actions on those aggregated data using `group_by()` + `summarise()`
+-   understand when to use `rowwise()` for operations
 :::
 
-You may find yourself wanting to calculate summary statistics across a grouping variable. To do this, a data set needs to be split up by that variable, a summary statistic calculated, and the resulting data recombined, or 'split-apply-combine'. There's some nice tools to do this in the **dplyr** package. 
+You may find yourself wanting to calculate summary statistics across a grouping variable. To do this, a data set needs to be split up by that variable, a summary statistic calculated, and the resulting data recombined, or 'split-apply-combine'. There's some nice tools to do this in the **dplyr** package.
 
 ### Prep Work
 
-First, load libraries & import data: 
+First, load libraries & import data:
 
 ```{r}
 library(dplyr)
@@ -31,23 +30,25 @@ variety_trials <- read.csv(here::here("data", "trial_data.csv")) %>%
 
 The `group_by` will group data and then any statistic can be calculated or summary action can be done on that grouped data using `summarise()`.
 
-The basic formula: 
+The basic formula:
+
 ```{r, eval=FALSE}
 mydata %>% group_by(variable) %>% summarise(new_var = ...)
 ```
 
-This data set has several categorical variables that can be used for grouping: 
+This data set has several categorical variables that can be used for grouping:
 
 ```{r}
 str(variety_trials)
 ```
 
-The function `tally()` counts observations: 
+The function `tally()` counts observations:
+
 ```{r}
 variety_trials %>% group_by(trial) %>% tally()
 ```
 
-Let's group by crop and pull out the mean yield and standard deviation. 
+Let's group by crop and pull out the mean yield and standard deviation.
 
 ```{r}
 yield_crop <- variety_trials %>% group_by(crop) %>% 
@@ -61,35 +62,35 @@ yield_crop
 ```
 
 ::: callout-note
-
-`summarise()` only returns a single value back for each group. If you want more than that (e.g. to run a linear model on each group), there are other tools for that. This is intended to be addressed in Lesson 16, repeating actions. 
-
+`summarise()` only returns a single value back for each group. If you want more than that (e.g. to run a linear model on each group), there are other tools for that. This is intended to be addressed in Lesson 16, repeating actions.
 :::
 
 ### Grouping across multiple variables
 
-Let's examine how many crops and years there are using the `table()` command: 
+Let's examine how many crops and years there are using the `table()` command:
+
 ```{r}
 table(variety_trials$crop, variety_trials$year)
 ```
 
-This tells us how many rows of data occur for each variable combination. This information can help inform us how to group information. 
+This tells us how many rows of data occur for each variable combination. This information can help inform us how to group information.
 
-You can group by as many conditions as you want: 
+You can group by as many conditions as you want:
+
 ```{r}
 variety_trials %>% group_by(crop, year) %>% 
   summarise(protein_na = sum(is.na(grain_protein))) %>% arrange(desc(protein_na))
 ```
-::: {.callout-warning}
+
+::: callout-warning
 ## FYI
 
-You can group by a numeric variable. If you do that, ***dplyr*** will look for common values to group observations. This can be successful when there are repeat 'integers' (e.g. year, replicate), but if all values are unique (which is often the case with floating point numbers), then the number of groups is the number of observations. 
-
+You can group by a numeric variable. If you do that, ***dplyr*** will look for common values to group observations. This can be successful when there are repeat 'integers' (e.g. year, replicate), but if all values are unique (which is often the case with floating point numbers), then the number of groups is the number of observations.
 :::
 
 ### Summarising across multiple variables
 
-Use `across()` to conduct the same summary action(s) across multiple columns. 
+Use `across()` to conduct the same summary action(s) across multiple columns.
 
 ```{r}
 variety_trials %>% group_by(trial) %>% 
@@ -98,11 +99,11 @@ variety_trials %>% group_by(trial) %>%
 
 ### Row-wise summaries
 
-Many operations in R are already vectorized across rows, but when they are not, you can use `rowwise()` to implement that. 
+Many operations in R are already vectorized across rows, but when they are not, you can use `rowwise()` to implement that.
 
-Field disease scoring may benefit from this system. Often, several measaurements are made on a single experimental unit (usually a plot), and those measurements are averaged together to create a final disease incidence score. Here is how to do that with `rowwise()`. 
+Field disease scoring may benefit from this system. Often, several measurements are made on a single experimental unit (usually a plot), and those measurements are averaged together to create a final disease incidence score. Here is how to do that with `rowwise()`.
 
-First, simulate a set of disease scores between 0 and 100 (indicating percent infection). 
+First, simulate a set of disease scores between 0 and 100 (indicating percent infection).
 
 ```{r}
 # step 1: generate a set of possible scores: 0, 10, 20,...100
@@ -118,7 +119,8 @@ disease_df <- data.frame(plot = letters[1:10],
                          score2 = scores[41:50])
 disease_df
 ```
-Data sets exist like this. A person might have a set of 10 experimental plots to evaluate for some trait. The trait assay protocol may require that multiple observations be gathered per plot (from a statistical standpoint, this is a technical replicate, not a true replicate) and then reduced to a single number per plot using a simple mean. Row-wise functions can accomplish this. 
+
+Data sets exist like this. A person might have a set of 10 experimental plots to evaluate for some trait. The trait assay protocol may require that multiple observations be gathered per plot (from a statistical standpoint, this is a technical replicate, not a true replicate) and then reduced to a single number per plot using a simple mean. Row-wise functions can accomplish this.
 
 ```{r}
 disease_df_sum <- disease_df %>% rowwise() %>% 
@@ -130,8 +132,7 @@ disease_df_sum
 ::: callout-tip
 ## Putting it all together
 
-It is possible use `mutate()` or `summary()` commands on a grouped data frame. A `summary()` call will return one value per group + summary function (e.g. `mean`). A `mutate()` call will return one value per row + summary function. All the previous examples in this lesson used `summary()`. Here is one example using `mutate()`: 
-
+It is possible use `mutate()` or `summary()` commands on a grouped data frame. A `summary()` call will return one value per group + summary function (e.g. `mean`). A `mutate()` call will return one value per row + summary function. All the previous examples in this lesson used `summary()`. Here is one example using `mutate()`:
 
 ```{r}
 variety_trials %>% 
@@ -139,5 +140,6 @@ variety_trials %>%
   mutate(relative_yield = yield/mean(yield, na.rm=TRUE)) %>% 
   arrange(desc(yield)) %>% head(15)
 ```
-In this case, the mean value used for calculating 'relative_yield' is the group mean. 
+
+In this case, the mean value used for calculating 'relative_yield' is the group mean.
 :::

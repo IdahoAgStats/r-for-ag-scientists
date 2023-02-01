@@ -13,8 +13,7 @@ At the end of this lesson, you should:
 -   know to create new variables using `mutate()`
 -   be able to rename variables using `rename()`
 -   be able to sort a data set using `arrange()`
--   be table to use `separate()` to split up single variables into multiple variables 
-
+-   be table to use `separate()` to split up single variables into multiple variables
 :::
 
 **First, load libraries:**
@@ -40,15 +39,13 @@ The `here()` function is from the [***here***](https://here.r-lib.org/) package.
 
 This lesson relies on group of packages called the "Tidyverse", in particular **dplyr** and **tidyr**.
 
-These packages follow a special set of rules called "non-standard evaluation" (sometimes abbreviated "NSE").
+These packages follow a special set of rules called "non-standard evaluation" (sometimes abbreviated "NSE"). Tidyverse non-standard evaluation uses quotes far less often than "base R" (base R are package that are installed automatically when R is updated). It also uses indexing `$` less frequently. You can name a variable directly instead of using `dataset$var`.
 
-All functions in the Tidyverse follow this structure:
+Many functions in the Tidyverse follow this structure:
 
 `function(dataset, action)`
 
 Where "dataset" is the data framed being input and "action" is whatever action is being taken.
-
-Tidyverse non-standard evaluation uses quotes far less often than "base R" (base R are package that are installed automatically when R is updated). It also uses indexing `$` less frequently. You can name a variable directly instead of using `dataset$var`.
 
 ### Selection columns
 
@@ -112,14 +109,14 @@ It is also possible to select by numeric position:
 select(variety_trials, c(1:3, 4))
 ```
 
-While selecting by numeric position works, it is an unreliable choice because it depends on column order or row order being exactly as you expect it. This may work the first time you write + run code, but it is likely to fail over time as you sort, augment or change data sets. 
+While selecting by numeric position works, it is an unreliable choice because it depends on column order or row order being exactly as you expect it. This may work the first time you write + run code, but it is likely to fail over time as you sort, augment or change data sets.
 :::
 
 ### Creating new variables
 
 You can quite create new variables with a `mutate()` function call:
 
-mutate(dataset, var_name = variable)
+`mutate(dataset, var_name = variable)`
 
 Examples:
 
@@ -163,7 +160,7 @@ mutate1$yield_protein <- mutate1$yield + mutate1$grain_protein
 
 This can be a bit longer and cumbersome compared to `mutate` statements, but it does work.
 
-#### `case_when()` a special addition to `mutate` statements
+#### `case_when(),` a special addition to `mutate` statements
 
 Occasionally, you will need a define a variable conditionally, based on information from other variables. Here is an example for weather data. Here, a special minimum value is created where all data for "tmin_F" less than 50°F are set at 50:
 
@@ -175,13 +172,13 @@ weather <- mutate(weather, new_min = case_when(
 
 Everything to the left of the tilde `~` is a logical expression to evaluate. Everything to the right of the tilde is the value to put if the logical expression evaluates to TRUE.
 
-This can easily become more complex with the addition of other logical expressions and categorical levels to create. 
+This can easily become more complex with the addition of other logical expressions and categorical levels to create.
 
-If you have a categorical variable that needs further refinement (e.g. collapsing of multiple levels into one), check out the package [forcats](https://forcats.tidyverse.org/), which provides many functions for manipulating categorical (factor or character) variables.
+If you have a categorical variable that needs further refinement (e.g. collapsing of multiple levels into one), check out the package [***forcats***](https://forcats.tidyverse.org/), which provides many functions for manipulating categorical (factor or character) variables.
 
 ### Renaming Variables
 
-Compared to `mutate()`, the function for renaming variables, `rename()` is a breeze!
+Compared to `mutate()`, the function for renaming variables, `rename(),` is a breeze!
 
     rename(dataset, new_name = "old_name")
 
@@ -204,11 +201,11 @@ Also, you can use `rename` notation in `select` statements:
 rename2 <- select(variety_trials, cultivar = "variety", yield, protein = "grain_protein")
 ```
 
-This function selected the columns "variety", "yield" and "grain_protein", while renaming "variety to"cultivar" and "grain_protein" to "protein" - a handy shortcut. 
+This function selected the columns "variety", "yield" and "grain_protein", while renaming "variety to"cultivar" and "grain_protein" to "protein" - a handy shortcut.
 
 ### Split up variables
 
-You may encounter variables with information about multiple things. In agriculture, I see variables with values such as "Moscow_2021", "Moscow_2022", "StJohn_2021", "StJohn_2022". This variables is indicating multiple things - location and year in this exmample.  This is a useful variable by itself, but a researcher might want to separate out location and year for other analytical purposes. The ***tidyr*** function `separate()` can do that.
+You may encounter variables with information about multiple things. In agriculture, I see variables with values such as "Moscow_2021", "Moscow_2022", "StJohn_2021", "StJohn_2022". This variables is indicating multiple things - location and year in this exmample. This is a useful variable by itself, but a researcher might want to separate out location and year for other analytical purposes. The ***tidyr*** function `separate()` can do that.
 
 The first column of "variety_trials" contains considerable information, all separated by an underscore:
 
@@ -218,21 +215,21 @@ variety_trials$trial[1]
 
 The first term is the program conducting the trial, the second is the crop grown, the third term is a location code, and the last term is the year. Let's separate those terms into separate columns/variables.
 
-Before running a `separate()` command, always check the variable to make sure it is structured as you expect. 
+Before running a `separate()` command, always check the variable to make sure it is structured as you expect.
 
-Use `unique()` to determine the unique observations for the column "trial" in the the object "variety_trials". 
+Use `distinct()` to determine the unique observations for the column "trial" in the the object "variety_trials".
 
 ```{r}
-unique(variety_trials$trial)
+distinct(variety_trials, trial)
 ```
 
-The variable `variety_trials$trial` uses an underscore to separate its components. However, one of the terms we mean to keep as one component does have an underscore inside of it, which will interpreted incorrectly as a term separator. The function `gsub()` can be used to fix this. 
+The variable `variety_trials$trial` uses an underscore to separate its components. However, one of the terms we mean to keep as one component does have an underscore inside of it, which will interpreted incorrectly as a term separator. The function `gsub()` can be used to fix this.
 
 ```{r}
 variety_trials$trial <- gsub(pattern = "_H_", replacement = "_H-", x = variety_trials$trial)
 ```
 
-Now, `separate()` will split the variable into 4 components: 
+Now, `separate()` will split the variable into 4 components:
 
 ```{r}
 variety_trials <- separate(variety_trials, trial, 

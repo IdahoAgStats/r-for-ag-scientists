@@ -10,15 +10,24 @@ title: "Practice F"
 
 (@) Filter the imported data set for when the location is "Parma" and sort the data set based on planting date. Assign the results to a new object.
 
-*Note: we have not yet learned how to sort, so you can either skip that step or look up the documentation for `arrange()`, the dplyr function for sorting.* 
 
 (@) Select 4 columns from the data set and rename one of them. Assign these results to a new object. 
 
 (@) Import "weather_data.csv", select the first five columns and reduce that data set to unique rows (look into using `distinct()` for extracting the unique observations). 
 
-(@) NEW: Import "trial_data.csv". Split the "trials" column into 4 variables as we did in class (or see the lesson notes). Filter the data set to the 2 most recent years and the varieties WA8268, WB4418, WB4311, WB4623CLP, WB4792, and WB7589
+(@) NEW: Import "trial_data.csv". Split the "trials" column into 4 variables using `separate()` as we did in class (or see the [lesson notes](../lessons/Lesson09.qmd)). Filter the data set to the 2 most recent years and the varieties WA8268, WB4418, WB4311, WB4623CLP, WB4792, and WB7589. 
 
+Here is the prep work to do prior to `separate()`: 
+
+```{r}
+trial_data <- read.csv(here::here("data", "trial_data.csv")) 
+
+trial_data$trial <- gsub(pattern = "_H_", 
+                         replacement = "_H-", 
+                         x = trial_data$trial)
+```
 
 (@) Output the result from any of the previous problems to file. 
 
 
+[***Solution***](../practice/solution-F.qmd)

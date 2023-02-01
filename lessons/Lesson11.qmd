@@ -2,36 +2,36 @@
 title: "Lesson 11: Reshaping Data Sets"
 ---
 
-
 ::: {.callout-caution collapse="false"}
 ## Learning Goals
 
-At the end of this lesson, you should: 
+At the end of this lesson, you should:
 
-* be able to convert long data set to wide and the reverse
+-   be able to convert long data set to wide and the reverse
 :::
 
-### What is pivoting? 
+### What is pivoting?
 
 There are circumstances when a wide data set are needed and circumstances when a long data set are needed, for analysis, plotting, data wrangling, etc.
 
-Doing this manually in a spreadsheet program is extremely cumbersome and very susceptible to errors! You are much better off doing this in R (or another programming language). 
+Doing this manually in a spreadsheet program is extremely cumbersome and very susceptible to errors! You are much better off doing this in R (or another programming language).
 
-These wide-to-long and long-to-wide conversions are also called 'pivoting'. 
+These wide-to-long and long-to-wide conversions are also called 'pivoting'.
 
 ```{r, echo=FALSE}
 knitr::include_graphics(here::here("images", "wide_v_long.png"))
 ```
-When pivoting from long to wide format, we should consider what will be used as the identifying information, what information will be used for column headers and what information will be used to fill the cells/populate the table. 
 
-When pivoting from wide to long, the considerations are similar: what will be the name of the new column header and what information (i.e. what columns) will be used to populate the data in the vertical direction, while which columns will be used for record identification. 
+When pivoting from long to wide format, we should consider what will be used as the identifying information, what information will be used for column headers and what information will be used to fill the cells/populate the table.
 
-Pivoting from wide to long can be done with the [***tidyr***](https://tidyr.tidyverse.org/) functions `pivot_wide()` and the reverse function if `pivot_longer()`. 
+When pivoting from wide to long, the considerations are similar: what will be the name of the new column header and what information (i.e. what columns) will be used to populate the data in the vertical direction, while which columns will be used for record identification.
 
+Pivoting from wide to long can be done with the [***tidyr***](https://tidyr.tidyverse.org/) functions `pivot_wide()` and the reverse function if `pivot_longer()`.
 
-Let's run some examples with trial data set. 
+Let's run some examples with trial data set.
 
 Load the trial data and libraries:
+
 ```{r}
 library(readr); library(dplyr); library(tidyr)
 
@@ -39,28 +39,28 @@ variety_trials <- read.csv(here::here("data", "trial_data.csv"))
 
 #weather <- read_csv(here::here("data", "weather_data.csv"))
 ```
+
 ### Pivot long to wide
 
 The first thing we should do is look at the documentation for `pivot_wider`.
+
 ```{r, eval=FALSE}
 ?pivot_wider
 ```
 
 The main arguments to consider (not including the input data) is:
 
-**id_cols** what are the identifying columns that we will keep in the data set to identify and separate records. This can be multiple columns. 
+**id_cols** what are the identifying columns that we will keep in the data set to identify and separate records. This can be multiple columns.
 
-**names_from** is the variable that will be used to make the new column header. This is the column that we are seeking to change from long to wide. This should be a categorical variable or one that can be coerced to one. Usually it contains repeating values. 
+**names_from** is the variable that will be used to make the new column header. This is the column that we are seeking to change from long to wide. This should be a categorical variable or one that can be coerced to one. Usually it contains repeating values.
 
-**values_from** is the variable that will be used to fill the cells under the column header. 
-
+**values_from** is the variable that will be used to fill the cells under the column header.
 
 *There is long list of other arguments, but these are the most important.*
 
-
 #### Pivot single variable
 
-The loaded data set includes many different field trials. Let's look at the information for one trial and pivot the data across replicates for a single variable, using entry as an ID variable. 
+The loaded data set includes many different field trials. Let's look at the information for one trial and pivot the data across replicates for a single variable, using entry as an ID variable.
 
 First, find out the different levels for "trial":
 
@@ -68,14 +68,14 @@ First, find out the different levels for "trial":
 unique(variety_trials$trial)
 ```
 
-This example will use the last trial listed (SWIdahoCereals_SWW_PAR_2020), but any of these options will work. Let's filter the data and check that there is one observation per rep and entry. 
+This example will use the last trial listed (SWIdahoCereals_SWW_PAR_2020), but any of these options will work. Let's filter the data and check that there is one observation per rep and entry.
 
 ```{r}
 parma2020 <- variety_trials %>% filter(trial == "SWIdahoCereals_SWW_PAR_2020") 
 table(parma2020$entry, parma2020$rep)
 ```
-The table produces all "1" indicating 1 observation per variable combination, which is what we want. 
 
+The table produces all "1" indicating 1 observation per variable combination, which is what we want.
 
 ```{r}
 parma2020_wide <- parma2020 %>% 
@@ -87,6 +87,7 @@ head(parma2020_wide)
 ```
 
 If you try to index that column with `parma2020_wide$1`, an error is thrown:
+
 ```{r, error=TRUE}
 parma2020_wide$1
 ```
@@ -102,9 +103,10 @@ parma2020_wide <- parma2020 %>%
 
 head(parma2020_wide)
 ```
+
 #### Pivot multiple variables
 
-Perhaps we want to pivot 2 variables. 
+Perhaps we want to pivot 2 variables.
 
 ```{r}
 parma2020_wide_2vars <- parma2020 %>%
@@ -117,11 +119,11 @@ head(parma2020_wide_2vars)
 
 #### Pivot with multiple observations per identifier
 
-Sometimes, there may be multiple observations per identifier and new column header. ***tidyr** will attempt to resolve this automatically, sometimes by inserting a list inside a data frame to capture the additional information. This is messy and hard to access. Sometimes this is an unintentional; you expected only one observaton and learn through tidyr warning messages that there is an more observations than expected. 
+Sometimes, there may be multiple observations per identifier and new column header. \***tidyr** will attempt to resolve this automatically, sometimes by inserting a list inside a data frame to capture the additional information. This is messy and hard to access. Sometimes this is an unintentional; you expected only one observation and learn through tidyr warning messages that there is an more observations than expected.
 
-However, you can also introduce a function in a `pivot_wider` such as `mean` or `sum` to summarise these replicate observations. 
+However, you can also introduce a function in a `pivot_wider` such as `mean` or `sum` to summarise these replicate observations.
 
-Here is an example using "variety", which is has replicate values. 
+Here is an example using "variety", which is has replicate values.
 
 ```{r}
 parma2020_wide_var <- parma2020 %>%
@@ -135,9 +137,9 @@ head(parma2020_wide_var)
 
 ### Wide to Long
 
-Let's put all the traits in one column (and filter out the missing data). 
+Let's put all the traits in one column (and filter out the missing data).
 
-Main arguments in `pivot_longer()` (besides the data set): 
+Main arguments in `pivot_longer()` (besides the data set):
 
 **cols** the columns to stack/pivot
 
@@ -153,15 +155,12 @@ parma2020_long <- parma2020 %>%
 head(parma2020_long)
 ```
 
-
-::: {.callout-tip}
+::: callout-tip
 ## Putting it all together
 
-When to use these function depends on the desired output. If you want to do a multi-year anaysis of field trial data, stacking the years in the long format makes sense.  If you want to compute correlations across two variables, the wide format makes sense for those variables. 
+When to use these function depends on the desired output. If you want to do a multi-year analysis of field trial data, stacking the years in the long format makes sense. If you want to compute correlations across two variables, the wide format makes sense for those variables.
 
-As part of the tidyverse, anything pivoting can be preceded by or can be followed by any other data wrangling step such as filtering, data aggregation and so on. 
+As part of the tidyverse, anything pivoting can be preceded by or can be followed by any other data wrangling step such as filtering, data aggregation and so on.
 
-You can use any of the [tidy select](https://tidyselect.r-lib.org/reference/starts_with.html) methods for indicating which values to pivot. This is particularily useful when there is a very large number of columns to pivot that share similarities in their name. 
-
+You can use any of the [tidy select](https://tidyselect.r-lib.org/reference/starts_with.html) methods for indicating which values to pivot. This is particularly useful when there is a very large number of columns to pivot that share similarities in their name.
 :::
-

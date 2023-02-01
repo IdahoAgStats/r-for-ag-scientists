@@ -49,18 +49,57 @@ mydata_selected <- mydata %>% select(trial, farm = "grower_cooperator",
                                      location, year)
 ```
 
-(@) Reduce the identifying information in the weather data set to non-repetitive information. A data set will often several columns that reflect repetitive identifying information. It's helful to know how many unique observations are present:
+(@) Reduce the identifying information in the weather data set to non-repetitive information. A data set will often several columns that reflect repetitive identifying information. It's helpful to know how many unique observations are present:
 
 ```{r}
 weather <- read.csv(here::here("data", "weather_data.csv"))
+
 weather %>% select(1:5) %>% distinct()
 ```
 
-(@) Write out a result to file:
+(@) Prep work: 
+
+```{r}
+trial_data <- read.csv(here::here("data", "trial_data.csv")) 
+
+trial_data$trial <- gsub(pattern = "_H_", 
+                         replacement = "_H-", 
+                         x = trial_data$trial)
+```
+
+It is helpful to know the levels we splitting so we can give the new columns informative names:
+
+```{r}
+distinct(trial_data, trial)
+```
+
+I will call the first column "program", the second "crop" (those are wheat market classes), the third will be called "location" (PAR is an abbreviation for Parma), and the fourth column is year. This `separate()` command is being done on a character variable and will return all character variables, even though "year" could be coerced to be numeric. 
+
+```{r}
+trial_data_sep <- trial_data %>% 
+  separate(trial, into = c("program", "crop", "location", "year"), 
+           sep = "_",  # specifying the separator between terms, an underscore
+           remove = FALSE) # tells R to keep the original variable "trial" in the data set
+```
+
+Since I'm not sure of what are the two most recent years, lets check:
+```{r}
+trial_data_sep %>% distinct(year) %>% arrange(desc(year))
+```
+The most recent two years are 2019 and 2020 and they are character variables. We can convert them to numeric with `as.numeric()`, but why bother in this instance? 
+
+```{r}
+trial_data_sep_filter <- trial_data_sep %>% 
+  filter(year %in% c("2019", "2020")) %>% 
+  filter(variety %in% c("WA8268", "WB4418", "WB4311", "WB4623CLP", "WB4792", "WB7589"))
+```
+
+
+(@) Write out a result (any result) to file:
 
 ```{r, eval=FALSE}
-write.csv(mydata_filtered, 
-          here::here("outputs", "filtered_data.csv"),
+write.csv(trial_data_sep_filter, 
+          here::here("outputs", "problem_F_output.csv"),
           row.names = FALSE)
 ```
 
