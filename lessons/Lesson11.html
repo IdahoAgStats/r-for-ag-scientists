@@ -347,6 +347,11 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
   <a href="../practice/practice-F.html" class="sidebar-item-text sidebar-link">practice set F</a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../practice/solution-F.html" class="sidebar-item-text sidebar-link">solution to F</a>
+  </div>
+</li>
       </ul>
   </li>
           <li class="sidebar-item sidebar-item-section">
@@ -640,7 +645,7 @@ Attaching package: 'dplyr'</code></pre>
 </section>
 <section id="pivot-with-multiple-observations-per-identifier" class="level4">
 <h4 class="anchored" data-anchor-id="pivot-with-multiple-observations-per-identifier">Pivot with multiple observations per identifier</h4>
-<p>Sometimes, there may be multiple observations per identifier and new column header. *<strong>tidyr</strong> will attempt to resolve this automatically, sometimes by inserting a list inside a data frame to capture the additional information. This is messy and hard to access. Sometimes this is an unintentional; you expected only one observaton and learn through tidyr warning messages that there is an more observations than expected.</p>
+<p>Sometimes, there may be multiple observations per identifier and new column header. *<strong>tidyr</strong> will attempt to resolve this automatically, sometimes by inserting a list inside a data frame to capture the additional information. This is messy and hard to access. Sometimes this is an unintentional; you expected only one observation and learn through tidyr warning messages that there is an more observations than expected.</p>
 <p>However, you can also introduce a function in a <code>pivot_wider</code> such as <code>mean</code> or <code>sum</code> to summarise these replicate observations.</p>
 <p>Here is an example using “variety”, which is has replicate values.</p>
 <div class="cell">
@@ -700,9 +705,9 @@ Putting it all together
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>When to use these function depends on the desired output. If you want to do a multi-year anaysis of field trial data, stacking the years in the long format makes sense. If you want to compute correlations across two variables, the wide format makes sense for those variables.</p>
+<p>When to use these function depends on the desired output. If you want to do a multi-year analysis of field trial data, stacking the years in the long format makes sense. If you want to compute correlations across two variables, the wide format makes sense for those variables.</p>
 <p>As part of the tidyverse, anything pivoting can be preceded by or can be followed by any other data wrangling step such as filtering, data aggregation and so on.</p>
-<p>You can use any of the <a href="https://tidyselect.r-lib.org/reference/starts_with.html">tidy select</a> methods for indicating which values to pivot. This is particularily useful when there is a very large number of columns to pivot that share similarities in their name.</p>
+<p>You can use any of the <a href="https://tidyselect.r-lib.org/reference/starts_with.html">tidy select</a> methods for indicating which values to pivot. This is particularly useful when there is a very large number of columns to pivot that share similarities in their name.</p>
 </div>
 </div>
 

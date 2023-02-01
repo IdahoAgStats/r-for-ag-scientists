@@ -347,6 +347,11 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
   <a href="../practice/practice-F.html" class="sidebar-item-text sidebar-link">practice set F</a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../practice/solution-F.html" class="sidebar-item-text sidebar-link">solution to F</a>
+  </div>
+</li>
       </ul>
   </li>
           <li class="sidebar-item sidebar-item-section">
@@ -481,11 +486,10 @@ What is going on with <code>here::here()</code>?
 <section id="tidyverse-notes" class="level3">
 <h3 class="anchored" data-anchor-id="tidyverse-notes">Tidyverse notes</h3>
 <p>This lesson relies on group of packages called the “Tidyverse”, in particular <strong>dplyr</strong> and <strong>tidyr</strong>.</p>
-<p>These packages follow a special set of rules called “non-standard evaluation” (sometimes abbreviated “NSE”).</p>
-<p>All functions in the Tidyverse follow this structure:</p>
+<p>These packages follow a special set of rules called “non-standard evaluation” (sometimes abbreviated “NSE”). Tidyverse non-standard evaluation uses quotes far less often than “base R” (base R are package that are installed automatically when R is updated). It also uses indexing <code>$</code> less frequently. You can name a variable directly instead of using <code>dataset$var</code>.</p>
+<p>Many functions in the Tidyverse follow this structure:</p>
 <p><code>function(dataset, action)</code></p>
 <p>Where “dataset” is the data framed being input and “action” is whatever action is being taken.</p>
-<p>Tidyverse non-standard evaluation uses quotes far less often than “base R” (base R are package that are installed automatically when R is updated). It also uses indexing <code>$</code> less frequently. You can name a variable directly instead of using <code>dataset$var</code>.</p>
 </section>
 <section id="selection-columns" class="level3">
 <h3 class="anchored" data-anchor-id="selection-columns">Selection columns</h3>
@@ -607,7 +611,7 @@ Note
 <section id="creating-new-variables" class="level3">
 <h3 class="anchored" data-anchor-id="creating-new-variables">Creating new variables</h3>
 <p>You can quite create new variables with a <code>mutate()</code> function call:</p>
-<p>mutate(dataset, var_name = variable)</p>
+<p><code>mutate(dataset, var_name = variable)</code></p>
 <p>Examples:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>new_var <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(<span class="at">n =</span> <span class="fu">nrow</span>(variety_trials), <span class="at">size =</span> <span class="dv">1</span>, <span class="at">prob =</span> <span class="fl">0.5</span>)</span>
@@ -624,7 +628,7 @@ Note
 <div class="cell-output cell-output-stdout">
 <pre><code>new_var
   0   1 
-949 933 </code></pre>
+911 971 </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mutate1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -636,19 +640,19 @@ Note
 5 SWIdahoCereals_HRS_PAR_2016   1     2 10SB0087-B  94.18977        13.053
 6 SWIdahoCereals_HRS_PAR_2016   2     2 10SB0087-B 121.59047        13.794
   test_weight flag row range plot dataset row_position range_new random_yield
-1          NA &lt;NA&gt;  NA    NA   NA example            1        NA     78.53174
-2          NA &lt;NA&gt;  NA    NA   NA example            2        NA    124.63690
-3          NA &lt;NA&gt;  NA    NA   NA example            3        NA     85.54702
-4          NA &lt;NA&gt;  NA    NA   NA example            4        NA    140.74363
-5          NA &lt;NA&gt;  NA    NA   NA example            5        NA     94.70437
-6          NA &lt;NA&gt;  NA    NA   NA example            6        NA    120.70704
+1          NA &lt;NA&gt;  NA    NA   NA example            1        NA     77.58318
+2          NA &lt;NA&gt;  NA    NA   NA example            2        NA    125.30368
+3          NA &lt;NA&gt;  NA    NA   NA example            3        NA     84.89826
+4          NA &lt;NA&gt;  NA    NA   NA example            4        NA    140.17325
+5          NA &lt;NA&gt;  NA    NA   NA example            5        NA     92.83697
+6          NA &lt;NA&gt;  NA    NA   NA example            6        NA    122.47888
   binom_var yield_protein
-1         1      92.52131
-2         0     138.78589
+1         0      92.52131
+2         1     138.78589
 3         1     100.30958
-4         0     154.92890
+4         1     154.92890
 5         0     107.24277
-6         0     135.38447</code></pre>
+6         1     135.38447</code></pre>
 </div>
 </div>
 <p>This created 6 new variables:</p>
@@ -673,7 +677,7 @@ Note
 </div>
 <p>This can be a bit longer and cumbersome compared to <code>mutate</code> statements, but it does work.</p>
 <section id="case_when-a-special-addition-to-mutate-statements" class="level4">
-<h4 class="anchored" data-anchor-id="case_when-a-special-addition-to-mutate-statements"><code>case_when()</code> a special addition to <code>mutate</code> statements</h4>
+<h4 class="anchored" data-anchor-id="case_when-a-special-addition-to-mutate-statements"><code>case_when(),</code> a special addition to <code>mutate</code> statements</h4>
 <p>Occasionally, you will need a define a variable conditionally, based on information from other variables. Here is an example for weather data. Here, a special minimum value is created where all data for “tmin_F” less than 50°F are set at 50:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>weather <span class="ot">&lt;-</span> <span class="fu">mutate</span>(weather, <span class="at">new_min =</span> <span class="fu">case_when</span>(</span>
@@ -682,12 +686,12 @@ Note
 </div>
 <p>Everything to the left of the tilde <code>~</code> is a logical expression to evaluate. Everything to the right of the tilde is the value to put if the logical expression evaluates to TRUE.</p>
 <p>This can easily become more complex with the addition of other logical expressions and categorical levels to create.</p>
-<p>If you have a categorical variable that needs further refinement (e.g.&nbsp;collapsing of multiple levels into one), check out the package <a href="https://forcats.tidyverse.org/">forcats</a>, which provides many functions for manipulating categorical (factor or character) variables.</p>
+<p>If you have a categorical variable that needs further refinement (e.g.&nbsp;collapsing of multiple levels into one), check out the package <a href="https://forcats.tidyverse.org/"><strong><em>forcats</em></strong></a>, which provides many functions for manipulating categorical (factor or character) variables.</p>
 </section>
 </section>
 <section id="renaming-variables" class="level3">
 <h3 class="anchored" data-anchor-id="renaming-variables">Renaming Variables</h3>
-<p>Compared to <code>mutate()</code>, the function for renaming variables, <code>rename()</code> is a breeze!</p>
+<p>Compared to <code>mutate()</code>, the function for renaming variables, <code>rename(),</code> is a breeze!</p>
 <pre><code>rename(dataset, new_name = "old_name")</code></pre>
 <p>This is similar to variable assignment:</p>
 <pre><code>new_name &lt;- old_name</code></pre>
@@ -725,24 +729,39 @@ Note
 </div>
 <p>The first term is the program conducting the trial, the second is the crop grown, the third term is a location code, and the last term is the year. Let’s separate those terms into separate columns/variables.</p>
 <p>Before running a <code>separate()</code> command, always check the variable to make sure it is structured as you expect.</p>
-<p>Use <code>unique()</code> to determine the unique observations for the column “trial” in the the object “variety_trials”.</p>
+<p>Use <code>distinct()</code> to determine the unique observations for the column “trial” in the the object “variety_trials”.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(variety_trials<span class="sc">$</span>trial)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">distinct</span>(variety_trials, trial)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] "SWIdahoCereals_HRS_PAR_2016" "SWIdahoCereals_HWS_PAR_2016"
- [3] "SWIdahoCereals_SWS_PAR_2016" "SWIdahoCereals_H_W_PAR_2017"
- [5] "SWIdahoCereals_HRS_PAR_2017" "SWIdahoCereals_HWS_PAR_2017"
- [7] "SWIdahoCereals_SWS_PAR_2017" "SWIdahoCereals_SWW_PAR_2017"
- [9] "SWIdahoCereals_H_S_PAR_2018" "SWIdahoCereals_H_W_PAR_2018"
-[11] "SWIdahoCereals_SWS_PAR_2018" "SWIdahoCereals_SWW_PAR_2018"
-[13] "SWIdahoCereals_H_S_WEI_2018" "SWIdahoCereals_H_W_WEI_2018"
-[15] "SWIdahoCereals_SWS_WEI_2018" "SWIdahoCereals_SWW_WEI_2018"
-[17] "SWIdahoCereals_HRS_PAR_2019" "SWIdahoCereals_HRW_PAR_2019"
-[19] "SWIdahoCereals_HWS_PAR_2019" "SWIdahoCereals_HWW_PAR_2019"
-[21] "SWIdahoCereals_SWS_PAR_2019" "SWIdahoCereals_SWW_PAR_2019"
-[23] "SWIdahoCereals_HRS_PAR_2020" "SWIdahoCereals_HRW_PAR_2020"
-[25] "SWIdahoCereals_HWS_PAR_2020" "SWIdahoCereals_HWW_PAR_2020"
-[27] "SWIdahoCereals_SWS_PAR_2020" "SWIdahoCereals_SWW_PAR_2020"</code></pre>
+<pre><code>                         trial
+1  SWIdahoCereals_HRS_PAR_2016
+2  SWIdahoCereals_HWS_PAR_2016
+3  SWIdahoCereals_SWS_PAR_2016
+4  SWIdahoCereals_H_W_PAR_2017
+5  SWIdahoCereals_HRS_PAR_2017
+6  SWIdahoCereals_HWS_PAR_2017
+7  SWIdahoCereals_SWS_PAR_2017
+8  SWIdahoCereals_SWW_PAR_2017
+9  SWIdahoCereals_H_S_PAR_2018
+10 SWIdahoCereals_H_W_PAR_2018
+11 SWIdahoCereals_SWS_PAR_2018
+12 SWIdahoCereals_SWW_PAR_2018
+13 SWIdahoCereals_H_S_WEI_2018
+14 SWIdahoCereals_H_W_WEI_2018
+15 SWIdahoCereals_SWS_WEI_2018
+16 SWIdahoCereals_SWW_WEI_2018
+17 SWIdahoCereals_HRS_PAR_2019
+18 SWIdahoCereals_HRW_PAR_2019
+19 SWIdahoCereals_HWS_PAR_2019
+20 SWIdahoCereals_HWW_PAR_2019
+21 SWIdahoCereals_SWS_PAR_2019
+22 SWIdahoCereals_SWW_PAR_2019
+23 SWIdahoCereals_HRS_PAR_2020
+24 SWIdahoCereals_HRW_PAR_2020
+25 SWIdahoCereals_HWS_PAR_2020
+26 SWIdahoCereals_HWW_PAR_2020
+27 SWIdahoCereals_SWS_PAR_2020
+28 SWIdahoCereals_SWW_PAR_2020</code></pre>
 </div>
 </div>
 <p>The variable <code>variety_trials$trial</code> uses an underscore to separate its components. However, one of the terms we mean to keep as one component does have an underscore inside of it, which will interpreted incorrectly as a term separator. The function <code>gsub()</code> can be used to fix this.</p>
