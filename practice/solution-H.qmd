@@ -10,7 +10,7 @@ library(dplyr); library(tidyr)
 (@) Import data, remove unneeded columns, and pivot all columns but the first to long. 
 
 ```{r}
-geno <- read.delim(here::here("data", "genotypic_data.txt")) %>% select(-(2:5))
+geno <- read.delim(here::here("data", "genotypic_data.txt")) %>% dplyr::select(-(2:5))
 geno_long <- geno %>% pivot_longer(cols = !1, 
                                    names_to = "individual",
                                    values_to = "marker_score")
@@ -40,7 +40,7 @@ head(weather_wide)
 (@) Extra problem: transform "genotypic_data.txt" into "genotypic_data_rotated.txt".
 
 ```{r, eval=FALSE}
-geno <- read.delim("data/genotypic_data.txt")
+geno <- read.delim(here::here("data", "genotypic_data.txt"))
 geno2 <- dplyr::select(geno, -(1:5))
 geno3 <- as.data.frame(t(geno2)) %>% mutate(individual = colnames(geno2)) %>% relocate(individual)
 colnames(geno3)[2:nrow(geno3)] <- geno$Markers
