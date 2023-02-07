@@ -394,6 +394,47 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
 </li>
       </ul>
   </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../lessons/Lesson12.html" class="sidebar-item-text sidebar-link">Data merging</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../practice/practice-I.html" class="sidebar-item-text sidebar-link">Practice I</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  practice set I
+  </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../practice/solution-I.html" class="sidebar-item-text sidebar-link">Solutions to Practice I</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  solution to I
+  </li>
+      </ul>
+  </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lessons/Lesson13.html" class="sidebar-item-text sidebar-link">R Set-up</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lessons/Lesson15.html" class="sidebar-item-text sidebar-link">ggplotting</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lessons/final_Lesson.html" class="sidebar-item-text sidebar-link">Final thoughts</a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -669,16 +710,16 @@ FYI
 <span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>disease_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   plot score1 score5 score3 score4 score2
-1     a     90      0     60     10     70
-2     b     10     20    100     20     50
-3     c     10     90     30     40     40
-4     d     30    100    100     30     80
-5     e     10     30     30     50     20
-6     f      0      0    100     90    100
-7     g     80     50     30    100     50
-8     h     90     70     50    100     50
-9     i     10     70     70     80     10
-10    j    100     30      0     20     40</code></pre>
+1     a    100     50      0     50      0
+2     b     80     10     50     20     30
+3     c     50      0      0    100      0
+4     d     80     60     40     90     90
+5     e     50     30     30     90    100
+6     f     80      0     30     60     10
+7     g     40      0     10     80     40
+8     h     10     80     10     60     60
+9     i     20     30     90     30     30
+10    j     30     40     70     10     30</code></pre>
 </div>
 </div>
 <p>Data sets exist like this. A person might have a set of 10 experimental plots to evaluate for some trait. The trait assay protocol may require that multiple observations be gathered per plot (from a statistical standpoint, this is a technical replicate, not a true replicate) and then reduced to a single number per plot using a simple mean. Row-wise functions can accomplish this.</p>
@@ -692,16 +733,16 @@ FYI
 # Rowwise: 
    plot  score1 score5 score3 score4 score2 score_final max_score
    &lt;chr&gt;  &lt;int&gt;  &lt;int&gt;  &lt;int&gt;  &lt;int&gt;  &lt;int&gt;       &lt;dbl&gt;     &lt;int&gt;
- 1 a         90      0     60     10     70          80        90
- 2 b         10     20    100     20     50          30        50
- 3 c         10     90     30     40     40          25        40
- 4 d         30    100    100     30     80          55        80
- 5 e         10     30     30     50     20          15        20
- 6 f          0      0    100     90    100          50       100
- 7 g         80     50     30    100     50          65        80
- 8 h         90     70     50    100     50          70        90
- 9 i         10     70     70     80     10          10        10
-10 j        100     30      0     20     40          70       100</code></pre>
+ 1 a        100     50      0     50      0          50       100
+ 2 b         80     10     50     20     30          55        80
+ 3 c         50      0      0    100      0          25        50
+ 4 d         80     60     40     90     90          85        90
+ 5 e         50     30     30     90    100          75       100
+ 6 f         80      0     30     60     10          45        80
+ 7 g         40      0     10     80     40          40        40
+ 8 h         10     80     10     60     60          35        60
+ 9 i         20     30     90     30     30          25        30
+10 j         30     40     70     10     30          30        30</code></pre>
 </div>
 </div>
 <div class="callout-tip callout callout-style-default callout-captioned">
