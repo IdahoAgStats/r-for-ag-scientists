@@ -123,15 +123,15 @@ website:
                 text: "practice set H"
               - href: practice/solution-H.qmd
                 text: "solution to H"
-          # - href: lessons/Lesson12.qmd
-          #   text: Data merging
-          #   contents: 
-          #     - href: practice/practice-I.qmd
-          #     - text: "practice set I"
-          #     - href: practice/solution-I.qmd
-          #     - text: "solution to I"
-          # - href: lessons/Lesson13.qmd
-          #   text: R Set-up
+          - href: lessons/Lesson12.qmd
+            text: Data merging
+            contents: 
+              - href: practice/practice-I.qmd
+              - text: "practice set I"
+              - href: practice/solution-I.qmd
+              - text: "solution to I"
+          - href: lessons/Lesson13.qmd
+            text: R Set-up
           # - href: lessons/Lesson14.qmd
           #   text: Exploratory plotting
           #   contents: 
@@ -139,8 +139,8 @@ website:
           #       text: "practice set J"
           #     - href: practice/solution-J.qmd
           #       text: "solution to J"
-          # - href: lessons/Lesson15.qmd
-          #   text: ggplotting
+          - href: lessons/Lesson15.qmd
+            text: ggplotting
           #   contents: 
           #     - href: practice/practice-K.qmd
           #       text: "practice set K"
@@ -153,8 +153,8 @@ website:
           #       text: "practice set L"
           #     - href: practice/solution-L.qmd
           #       text: "solution to L"
-          # - href: lessons/final_Lesson.qmd
-          #   text: Final thoughts
+          - href: lessons/final_Lesson.qmd
+            text: Final thoughts
 
   page-footer:
     right: "[Quarto Website](https://quarto.org/), template by [Mine Çetinkaya-Rundel](https://github.com/sta210-s22/website)"

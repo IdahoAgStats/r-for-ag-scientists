@@ -1,0 +1,249 @@
+---
+title: "Lesson 12: Combining Data Sets"
+---
+
+::: {.callout-caution collapse="false"}
+## Learning Goals
+
+At the end of this lesson, you should: 
+
+* understand the concept of a "key" for merging
+* be able to merge two data sets together
+* know the difference between left join, right join, full join, semi-join and anti-join
+:::
+
+As usual, let's start by importing data
+```{r, include=FALSE}
+library(dplyr); library(readr); library(tidyr)
+
+metadata <-  read_csv(here::here("data", "trial_metadata.csv"), show_col_types = FALSE)
+variety_trial <- read.csv(here::here("data", "trial_data.csv"))
+```
+
+Another data set to import: 
+```{r, eval=FALSE}
+download.file(url = "https://github.com/IdahoAgStats/r-for-ag-scientists/raw/main/data/genotypic_data_rotated.csv",
+              destfile = here::here("data", "genotypic_data_rotated.csv"))
+```
+
+*This will take a minute*
+```{r, include=FALSE}
+genotypes <- read_csv(here::here("data", "genotypic_data_rotated.csv"), show_col_types = FALSE)
+```
+
+For merging, it is done in groups of two; that is, two tables at a time are merged together. 
+
+## Bind rows
+
+If you have two data sets of different observations (the keys do not match) but similar or identical column headers, these rows can be stacked togther using a row bind. 
+
+Example syntax of a `row_bind`: 
+
+```{r, eval=FALSE}
+new1 <- bind_rows(x, y)
+```
+
+In this functionm, the column names are matched and ordered according to the first data frame listed ("x" in this example). The default behavior is to return all unique columns from both data sets and fill in with missing data as needed. 
+
+```{r, echo=FALSE}
+knitr::include_graphics(here::here("images", "bind_rows.png"))
+```
+
+We can manufacture a version of this with our data sets by filtering to a single trial and selecting a few columns. This is a silly toy example, but most of the time you will not be handed these data sets that are already merged. You will be given two or more data sets that need to be combined. Perhaps these are field experiments from different years or lab results from two different runs. 
+
+```{r}
+trial_1 <- variety_trial %>% filter(trial == "SWIdahoCereals_HRS_PAR_2016") %>% select(trial, rep, variety, yield)
+trial_2 <- variety_trial %>% filter(trial == "SWIdahoCereals_SWS_PAR_2018") %>% select(trial, variety, rep, grain_protein)
+```
+
+Compare data sets:
+
+```{r}
+head(trial_1)
+head(trial_2)
+```
+
+Bind the rows together:
+```{r}
+together <- bind_rows(trial_2, trial_1)
+head(together)
+```
+
+If you have ever used `rbind()`, this is an improvement. It will match column names across data sets and order them appropriately. 
+
+## Joins
+
+Merging two data sets when it goes beyond a row bind can take an effort. 
+
+All joins follow this syntax: 
+
+```{r, eval=FALSE}
+xxx_join(left_dataset, right_dataset)
+```
+
+Where "left_dataset" and "right_dataset" correspond to the left and right data sets in this diagram: 
+
+```{r, echo=FALSE}
+knitr::include_graphics(here::here("images", "dplyr_joins.png"))
+```
+
+:::{.callout-note}
+## The importance of 'keys'
+
+All joins rely on "keys" to match observations. A key is a unique identifier; it is usually a unique for each row. This can be a single column or the result of multiple columns. This information is used to match information in one table (or data frame) with another. The extent to which these keys match or do not match is the essence of a merge. 
+
+:::
+
+Let's look at matches between "genotype", "variety_trial", and "metadata". 
+
+The key between "metadata" and "variety_trial" is "trial". There is exactly one row in the "metadata" file for each level of trial. The metadata file was designed to be like this. We did not need all those extra columns when it could be compressed into a smaller data set. 
+
+The file "genotype" is from a wholly different study. The extent of matches is considerably less complete than the matching between "variety_trial" and "metadata". 
+
+### Full join
+
+All observations are returned, regardless if matched. 
+
+Let's match "variety_trial" and "metadata"
+```{r, eval=FALSE}
+ex_fulljoin <- full_join(metadata, variety_trial, by = "trial")
+
+dim(ex_fulljoin)
+```
+ 
+### inner join
+
+Returns only the rows with matching information. Non-matches are filtered out of the data set. 
+
+Let's match "genotypes" and "variety_trial" (this will be big!). 
+
+How many of these match (where the key is "variety", which matches "individual" in "genotype")?
+```{r}
+intersect(variety_trial$variety, genotypes$individual)
+```
+
+
+```{r}
+ex_innerjoin <- inner_join(variety_trial, genotypes, by = join_by("variety" == "individual"))
+```
+
+Check results
+```{r}
+dim(ex_innerjoin)
+sort(unique(ex_innerjoin$variety))
+```
+
+
+Complete this expression: 
+```{r, eval=FALSE}
+test <- inner_join(genotypes, trial_1, by = join_by(         ))
+```
+
+ 
+### Left join and right join
+ 
+Preserves all the rows in one data set and matches to that dataset in the other. In the left join, it is the first data set (the one on the left) where all the rows are kep. In the right join, it's the data set to the right that is full preserved. 
+
+Let's compare the different when merging 'trial_2' with 'metadata'. 
+
+ 
+#### Left join
+```{r}
+ex_leftjoin_1 <- left_join(trial_2, metadata, by = "trial")
+ex_leftjoin_2 <- left_join(metadata, trial_2, by = "trial")
+```
+
+#### right join equivalent
+
+```{r}
+#ex_rightjoin_1 <- right_join(metadata, trial_2, by = "trial")
+ex_rightjoin_2 <- right_join(trial_2, metadata, by = "trial")
+```
+**Why did this error message result?**
+
+::: {.callout-important collapse="true"}
+## Answer
+
+When metadata is listed first, it is expecting on one match per key. In this case, there are many matches for the column "trial" in the object "trial_2". 
+
+:::
+
+
+**What are some relationships between these 4 joins?**
+
+::: {.callout-important collapse="true"}
+## Answer
+
+* ex_leftjoin_1 is the exact equivalent of ex_rightjoin_1, but the columns are in a different order.   
+* ex_leftjoin_2 is the exact equivalent of ex_rightjoin_2, but the columsna are in a different order. 
+
+:::
+
+
+### Semi-join
+
+One of my favorite joins! It does an inner join, but only return the columns for the first data set listed. It's handy when you don't want to generate gigantic objects.
+
+Let's revisit matching "genotypes" and "variety_trial" like in the `inner_join()` example above. 
+
+```{r}
+ex_semijoin <- semi_join(variety_trial, genotypes, by = join_by("variety" == "individual"))
+```
+
+How do the dimensions of this object compare to the dimensions of 'ex_innerjoin'? 
+
+### Anti-join
+
+This is similar to `semi_join()`. It will return all the rows that do *not* match, and only the columns from the first data set mentioned. 
+
+```{r}
+ex_antijoin <- anti_join(variety_trial, genotypes, by = join_by("variety" == "individual"))
+```
+
+Do any of the variety names match?
+```{r}
+table(ex_antijoin$variety %in% genotypes$individual)
+```
+
+::: {.callout-note}
+
+***dplyr*** [updated](https://dplyr.tidyverse.org/news/index.html?q=join#joins-0-7-0) about 1 week ago! 
+
+One of the biggest changes is how it handles joins. It can now do some very flexible matching by numeric values, dates and other factors. More on this can be found in the documentation for [join_by](https://dplyr.tidyverse.org/reference/join_by.html). 
+:::
+
+## Final Notes
+
+This is the end of lessons on data wrangling. There is additional functionality that we have not touched on that you may find useful to know. 
+
+| function name | what it does |
+|---------------|--------------|
+| `tidyr::drop_na()`     | remove rows with missing data |
+| `dplyr::pull()`        | extracts a single column and converts it to a vector | 
+| `dplyr::distinct()`   | return rows with distinct observations (removes duplicates) |
+| `dplyr::na_if()`      | converts a specificed value to NA |
+| `dplyr::relocate()`     | move columns to another position |
+| `tidyr::fill()`       | fill is missing data based on surrounding data |
+
+Complete list of [dplyr functions](https://dplyr.tidyverse.org/reference/index.html) and [tidyr functions](https://tidyr.tidyverse.org/reference/index.html).
+
+[R 4 Data Science](https://r4ds.had.co.nz/) by Hadley Wickam and Garret Grolemund provides comprehensive guide to data wrangling. 
+
+::: {.callout-tip}
+## Putting it all together
+
+Although this lesson did not demonstrate the use of the pipe, `%>%`, it can be used with pipes:
+
+```{r, eval=FALSE}
+obj <- left_join(x, y) %>% right_join(z)
+```
+
+The first join is a left join like any other. The second join presumes that the first argument is what was passed to it through the pipe. An equivalent:
+
+```{r, eval=FALSE}
+temp <- left_join(x, y)
+obj <-  right_join(temp, z)
+```
+
+:::
+
