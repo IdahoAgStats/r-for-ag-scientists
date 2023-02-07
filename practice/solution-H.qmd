@@ -3,7 +3,7 @@ title: "Solutions to Practice H"
 ---
 
 
-```{r}
+```{r, include=FALSE}
 library(dplyr); library(tidyr)
 ```
 
@@ -37,16 +37,29 @@ head(weather_wide)
 ```
 
 
-(@) Extra problem: transform "genotypic_data.txt" into "genotypic_data_rotated.txt".
+(@) Extra problem: transform "genotypic_data.txt" into "genotypic_data_rotated.csv".
 
 ```{r, eval=FALSE}
 geno <- read.delim(here::here("data", "genotypic_data.txt"))
 geno2 <- dplyr::select(geno, -(1:5))
 geno3 <- as.data.frame(t(geno2)) %>% mutate(individual = colnames(geno2)) %>% relocate(individual)
-colnames(geno3)[2:nrow(geno3)] <- geno$Markers
+### Next line is updated!!! 2023/02/06
+colnames(geno3)[2:ncol(geno3)] <- geno$Markers
+### end updates
 geno3$individual <- gsub("[.]", " ", geno3$individual) 
-geno3[1:10, 1:5]
+
+# check that things look okay: 
+geno3[sample(1:nrow(geno3), 5), sample(1:ncol(geno3), 5)]
 ```
 
 `gsub()` is relatively straightforward to use, but `.` without any modifiers is actually for wildcard matching (it matches *everything*!!) [Regular expressions](https://www.regular-expressions.info/) are crazy! So use `[.]` instead to specify that you in fact are referring to a period and not simply any character (including whitespace).  
 
+```{r, eval=FALSE}
+readr::write_csv(geno3, here::here("data", "genotypic_data_rotated.csv"))
+```
+
+
+```{r, eval=FALSE, echo=FALSE}
+# test (it works)
+# test <- readr::read_csv(here::here("data", "genotypic_data_rotated.csv"))
+```
