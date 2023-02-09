@@ -1,5 +1,5 @@
 ---
-title: "Lesson 16: Repeating Actions with Purrr"
+title: "Lesson 16: Repeating Actions in R"
 ---
 
 ::: {.callout-caution collapse="false"}

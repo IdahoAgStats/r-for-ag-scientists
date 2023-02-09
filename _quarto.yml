@@ -153,6 +153,8 @@ website:
           #       text: "practice set L"
           #     - href: practice/solution-L.qmd
           #       text: "solution to L"
+          - href: lessons/Lesson16.qmd
+            text: Repeating Operations
           - href: lessons/final_Lesson.qmd
             text: Final thoughts
 

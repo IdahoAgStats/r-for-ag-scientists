@@ -26,7 +26,6 @@ title: "Course Schedule"
                 Lesson 13: [your R set-up](lessons/Lesson13.qmd) |   [*Lesson 12*](practice/practice-I.qmd) |
 | February 9  |  Lesson 15: [ggplotting](lessons/Lesson15.qmd) \
                  Final Lesson: [Your R Future](lessons/final_Lesson.qmd) |    |
-| extra  | Lesson 14: basic plotting \
-              Lesson 16: repeating actions |   |
+| extra  | [repeating actions](lessons/Lesson16.qmd) |   |
 
 
