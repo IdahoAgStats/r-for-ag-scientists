@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>R for Scientists - Practice Problem L</title>
+<title>R for Scientists - Control Flow Variables in R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -136,11 +136,11 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
 
 
 <link rel="stylesheet" href="../styles.css">
-<meta property="og:title" content="R for Scientists - Practice Problem L">
-<meta property="og:description" content="(for the lesson on repeating operations)">
+<meta property="og:title" content="R for Scientists - Control Flow Variables in R">
+<meta property="og:description" content="Here is a very brief introduction to control flow variables in R!">
 <meta property="og:site-name" content="R for Scientists">
-<meta name="twitter:title" content="R for Scientists - Practice Problem L">
-<meta name="twitter:description" content="(for the lesson on repeating operations)">
+<meta name="twitter:title" content="R for Scientists - Control Flow Variables in R">
+<meta name="twitter:description" content="Here is a very brief introduction to control flow variables in R!">
 <meta name="twitter:card" content="summary">
 </head>
 
@@ -150,7 +150,7 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Practice Problem L</h1>
+      <h1 class="quarto-secondary-nav-title">Control Flow Variables in R</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -430,6 +430,11 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../lessons/Lesson16.html" class="sidebar-item-text sidebar-link">Repeating Operations</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../lessons/final_Lesson.html" class="sidebar-item-text sidebar-link">Final thoughts</a>
   </div>
 </li>
@@ -440,14 +445,21 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#while-and-if" id="toc-while-and-if" class="nav-link active" data-scroll-target="#while-and-if"><code>while</code> and <code>if</code></a></li>
+  <li><a href="#row-median-polish-example" id="toc-row-median-polish-example" class="nav-link" data-scroll-target="#row-median-polish-example">Row median polish example</a></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/IdahoAgStats/r-for-ag-scientists/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Practice Problem L</h1>
+<h1 class="title d-none d-lg-block">Control Flow Variables in R</h1>
 </div>
 
 
@@ -462,53 +474,89 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
 
 </header>
 
-<p><em>(for the lesson on repeating operations)</em></p>
-<ol class="example" type="1">
-<li>You have a data set of 1000 random numbers between 1 and 100:</li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>, <span class="dv">1000</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Write <code>ifelse</code> statements than converts:</p>
+<p>Here is a very brief introduction to control flow variables in R!</p>
+<section id="while-and-if" class="level3">
+<h3 class="anchored" data-anchor-id="while-and-if"><code>while</code> and <code>if</code></h3>
 <ul>
-<li>numbers less than 50 to zero<br>
-</li>
-<li>numbers greater than or equal to 90 to 100<br>
-</li>
-<li>and keeps the rest of the numbers as is</li>
+<li><code>while</code> indicates that a process will repeat until a condition is met. A function will loop through until the the test for <code>while()</code> evaluates to <code>FALSE</code>. Be careful not to get this stuck in an infinite loop!</li>
 </ul>
-<ol start="2" class="example" type="1">
-<li><p>need an <code>apply()</code> problem</p></li>
-<li><p>You have a data set of 500 random numbers between 1 and 100 that are divided into 5 categories.</p></li>
-</ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">int =</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="dv">500</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">category =</span> <span class="fu">sample</span>(letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>], <span class="dv">500</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span>(sometest) {</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  do something</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Calculate the mode of each category using <code>lapply()</code>. The mode is the most commonly occurring value. If you’re unsure how to do this, consider the function <code>table()</code> combined with <code>sort()</code>. FYI, The R function <code>mode()</code> does not compute a mathematical mode (it gives object class information).</p>
-<ol start="4" class="example" type="1">
-<li>Rewrite this using <strong><em>purrr</em></strong> functions to loop over all countries for when y = “cereal_yield”:</li>
-</ol>
-<p>[THIS LOOKS LIKE IT NEEDS A DATA SET]</p>
+<ul>
+<li><code>if</code> will only allow an action to occur if a test is passed. The action will only occur once (there is no looping).</li>
+</ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>my_lm_fun <span class="ot">&lt;-</span> <span class="cf">function</span>(df, y, cty) {</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">#browser()</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  form <span class="ot">&lt;-</span> <span class="fu">formula</span>(<span class="fu">paste</span>(y, <span class="st">"~ year"</span>, <span class="at">sep =</span> <span class="st">""</span>))</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  m1 <span class="ot">=</span> <span class="fu">lm</span>(form, <span class="at">data =</span> df,</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">subset =</span> df<span class="sc">$</span>country <span class="sc">==</span> cty)</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  a1 <span class="ot">=</span> <span class="fu">anova</span>(m1)</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  r2 <span class="ot">=</span> <span class="fu">summary</span>(m1)<span class="sc">$</span>r.squared</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(r2)</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(sometest) {</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  do action</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>It should start:</p>
+<ul>
+<li><code>if</code> can be paired with <code>else</code>. Anything that evaluated to <code>FALSE</code> in the <code>if</code> test will go through the processes described in <code>else</code>. There is no TRUE/FALSE test for <code>else</code>, it just takes everything that evaluated to <code>FALSE</code> in the <code>if</code> test.</li>
+</ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>my_final_estimates <span class="ot">&lt;-</span> fertil <span class="sc">%&gt;%</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(sometest) {</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  do action</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  do another action</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><a href="../practice/solution-L.html"><strong><em>The Solution</em></strong></a></p>
+<ul>
+<li><code>next</code> is used within a <code>while</code> statement or <code>for</code> loop along with <code>if</code>. It indicates that the remaining commands in the loop should be skipped and the process moves onto the next iteration:</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span>(sometest) {</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  do something</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(anothertest) </span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">next</span> <span class="co"># when "anothertest" is TRUE, "other things to do" is skipped</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>          <span class="co"># and the next iteration is performed</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  other things to do </span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li><code>break</code> is similar to <code>next</code>, except that it causes all of the repeating/looping to terminate. Like <code>next</code>, it is used within a <code>while</code> statement or <code>for</code> loop along with <code>if</code>.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span>(sometest) {</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  do something</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(anothertest) </span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">break</span> <span class="co"># when "anothertest" is TRUE,</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>          <span class="co"># the entire process terminates immediately</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  other things to do </span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="row-median-polish-example" class="level3">
+<h3 class="anchored" data-anchor-id="row-median-polish-example">Row median polish example</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># initial the variables </span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">90</span>, <span class="at">nrow =</span> <span class="dv">9</span>, <span class="at">ncol =</span> <span class="dv">10</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>diff <span class="ot">=</span> <span class="dv">1</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># a while + if example function</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> (diff <span class="sc">&gt;</span> <span class="fl">0.001</span>){</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="fu">exists</span>(<span class="st">"new_m"</span>)) {mat <span class="ot">=</span> new_m}</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span> {mat <span class="ot">=</span> m}</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  row_med1 <span class="ot">=</span> <span class="fu">apply</span>(mat, <span class="dv">1</span>, median)</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="fu">exists</span>(<span class="st">"row_med2"</span>)) {</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    diff <span class="ot">=</span> <span class="fu">max</span>(<span class="fu">abs</span>(row_med1 <span class="sc">-</span> row_med2))}</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(diff)</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># this is a good place for 'break' statement, </span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># because without it, this code below must run </span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># and the loop restarted at the top in order for the </span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 'while' statement to be evaluated again</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>  over_eff <span class="ot">=</span> <span class="fu">median</span>(row_med1)</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>  row_med2 <span class="ot">&lt;-</span> row_med1 <span class="sc">-</span> over_eff</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>  med_matrix <span class="ot">=</span> <span class="fu">matrix</span>(<span class="fu">rep</span>(row_med1, <span class="at">each =</span> <span class="fu">ncol</span>(mat)), </span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>                       <span class="at">nrow =</span> <span class="fu">nrow</span>(mat), <span class="at">ncol =</span> <span class="fu">ncol</span>(mat), <span class="at">byrow=</span><span class="cn">TRUE</span>)</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>  new_m <span class="ot">=</span> mat <span class="sc">-</span> med_matrix</span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>R for Scientists - Solutions to Practice A</title>
+<title>R for Scientists - Lesson 16: Repeating Actions in R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -93,8 +93,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../lessons/Lesson03.html" rel="next">
-<link href="../practice/practice-A.html" rel="prev">
+<link href="../lessons/final_Lesson.html" rel="next">
+<link href="../lessons/Lesson15.html" rel="prev">
 <link href="../images/logo_transparent.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -136,14 +136,13 @@ gtag('js', new Date());
 gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
 </script>
 
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="../styles.css">
-<meta property="og:title" content="R for Scientists - Solutions to Practice A">
-<meta property="og:description" content="\[ \frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{1}{2}(\frac{x-\mu}{\sigma})^2}\]">
+<meta property="og:title" content="R for Scientists - Lesson 16: Repeating Actions in R">
+<meta property="og:description" content="😍😍😍😍😍 lapply() 😍😍😍😍😍">
 <meta property="og:site-name" content="R for Scientists">
-<meta name="twitter:title" content="R for Scientists - Solutions to Practice A">
-<meta name="twitter:description" content="\[ \frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{1}{2}(\frac{x-\mu}{\sigma})^2}\]">
+<meta name="twitter:title" content="R for Scientists - Lesson 16: Repeating Actions in R">
+<meta name="twitter:description" content="😍😍😍😍😍 lapply() 😍😍😍😍😍">
 <meta name="twitter:card" content="summary">
 </head>
 
@@ -153,7 +152,7 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Solutions to Practice A</h1>
+      <h1 class="quarto-secondary-nav-title">Lesson 16: Repeating Actions in R</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -238,11 +237,11 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="../lessons/Lesson02.html" class="sidebar-item-text sidebar-link">Vectorizing</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="true">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="" class="collapse list-unstyled sidebar-section depth2 show">  
+      <ul id="" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../practice/practice-A.html" class="sidebar-item-text sidebar-link">practice set A</a>
@@ -250,7 +249,7 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../practice/solution-A.html" class="sidebar-item-text sidebar-link active">solutions to A</a>
+  <a href="../practice/solution-A.html" class="sidebar-item-text sidebar-link">solutions to A</a>
   </div>
 </li>
       </ul>
@@ -433,7 +432,7 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../lessons/Lesson16.html" class="sidebar-item-text sidebar-link">Repeating Operations</a>
+  <a href="../lessons/Lesson16.html" class="sidebar-item-text sidebar-link active">Repeating Operations</a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -448,14 +447,26 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#repeating-operations-across-a-vector" id="toc-repeating-operations-across-a-vector" class="nav-link active" data-scroll-target="#repeating-operations-across-a-vector">Repeating operations across a vector</a></li>
+  <li><a href="#repeating-operations-across-a-data-frame" id="toc-repeating-operations-across-a-data-frame" class="nav-link" data-scroll-target="#repeating-operations-across-a-data-frame">Repeating operations across a data frame</a></li>
+  <li><a href="#repeating-operatio-across-a-list" id="toc-repeating-operatio-across-a-list" class="nav-link" data-scroll-target="#repeating-operatio-across-a-list">Repeating operatio across a list</a></li>
+  <li><a href="#purrr-for-repeat-operations" id="toc-purrr-for-repeat-operations" class="nav-link" data-scroll-target="#purrr-for-repeat-operations">purrr for repeat operations</a></li>
+  <li><a href="#basetidyverse-equivalents" id="toc-basetidyverse-equivalents" class="nav-link" data-scroll-target="#basetidyverse-equivalents">Base/Tidyverse equivalents</a></li>
+  <li><a href="#the-oft-abused-for" id="toc-the-oft-abused-for" class="nav-link" data-scroll-target="#the-oft-abused-for">The oft-abused <code>for</code></a></li>
+  <li><a href="#traditional-control-flow" id="toc-traditional-control-flow" class="nav-link" data-scroll-target="#traditional-control-flow">Traditional control flow</a></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/IdahoAgStats/r-for-ag-scientists/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Solutions to Practice A</h1>
+<h1 class="title d-none d-lg-block">Lesson 16: Repeating Actions in R</h1>
 </div>
 
 
@@ -470,36 +481,169 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
 
 </header>
 
-<p><span class="math display">\[ \frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{1}{2}(\frac{x-\mu}{\sigma})^2}\]</span></p>
-<p><span class="math inline">\(\pi\)</span> = 3.14 <span class="math inline">\(e\)</span> = 2.718 <span class="math inline">\(\mu\)</span> = 50 <span class="math inline">\(\sigma\)</span> = 5 <span class="math inline">\(x\)</span> = 20</p>
-<ol type="1">
-<li>For this problem, there are several possible solutions:</li>
-</ol>
+<div class="callout-caution callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Learning Goals
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<p>At the end of this lesson, you should:</p>
 <ul>
-<li>Manual the whole way down:</li>
+<li>know how to use <code>apply()</code> to iterate across a data frame</li>
+<li>know to use <code>lapply()</code> to interate across a list</li>
+<li>know the structure of <strong><em>purrr</em></strong> functions for iterating across different object types</li>
+<li>know when and how to construct a <code>for</code> loop</li>
+</ul>
+</div>
+</div>
+</div>
+<section id="repeating-operations-across-a-vector" class="level3">
+<h3 class="anchored" data-anchor-id="repeating-operations-across-a-vector">Repeating operations across a vector</h3>
+<ul>
+<li><p>Reminder: a vector is an object with a length attribute composed of items each of the same class. It can have a name attribute (not required)</p></li>
+<li><p><code>ifelse(test, action-if-yes, action-if-no)</code></p></li>
+<li><p>The ‘test’ should be an R function that will return a TRUE or FALSE, e.g.&nbsp;<code>is.na()</code>, <code>is.numeric()</code></p></li>
+<li><p>Vector example</p></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">/</span>(<span class="dv">5</span><span class="sc">*</span>(<span class="dv">2</span><span class="sc">*</span><span class="fl">3.14</span>)<span class="sc">^</span><span class="fl">0.5</span>)<span class="sc">*</span><span class="fl">2.718</span><span class="sc">^</span>(<span class="sc">-</span><span class="fl">0.5</span><span class="sc">*</span>((<span class="dv">20-50</span>)<span class="sc">/</span><span class="dv">5</span>)<span class="sc">^</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 1.217755e-09</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(x <span class="sc">&lt;</span> <span class="dv">5</span>, <span class="cn">NA</span>, x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
-<li>Employing a few shortcuts</li>
+<li>Vector example inside a data.frame</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">/</span>(<span class="dv">5</span><span class="sc">*</span><span class="fu">sqrt</span>(<span class="dv">2</span><span class="sc">*</span>pi))<span class="sc">*</span><span class="fu">exp</span>(<span class="sc">-</span><span class="fl">0.5</span><span class="sc">*</span>((<span class="dv">20-50</span>)<span class="sc">/</span><span class="dv">5</span>)<span class="sc">^</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 1.215177e-09</code></pre>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(storms, <span class="at">package =</span> <span class="st">"dplyr"</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>storms<span class="sc">$</span>category_simple <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(storms<span class="sc">$</span>wind <span class="sc">&lt;=</span> <span class="dv">50</span>, <span class="st">"small"</span>, <span class="st">"big"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</section>
+<section id="repeating-operations-across-a-data-frame" class="level3">
+<h3 class="anchored" data-anchor-id="repeating-operations-across-a-data-frame">Repeating operations across a data frame</h3>
+<ul>
+<li><p><code>apply()</code> a simple handy function to repeat things across a data.frame (or tibble, or matrix)</p></li>
+<li><p>This operation is <em>vectorised</em>, meaning all processes proceed simultaneously</p></li>
+<li><p>Across rows</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>storm_num <span class="ot">&lt;-</span> <span class="fu">select_if</span>(storms, is.numeric)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">apply</span>(storm_num, <span class="dv">1</span>, median, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
-<li>R function that estimates the <a href="https://en.wikipedia.org/wiki/Normal_distribution">standard normal density</a> (the equation above is the probability density function for the normal distribution)</li>
+<li>Across columns</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dnorm</span>(<span class="at">x =</span> <span class="dv">20</span>, <span class="at">mean =</span> <span class="dv">50</span>, <span class="at">sd =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>storm_num <span class="ot">&lt;-</span> <span class="fu">select_if</span>(storms, is.numeric)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">apply</span>(storm_num, <span class="dv">2</span>, median, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="special-r-functions-for-rows-and-columns" class="level4">
+<h4 class="anchored" data-anchor-id="special-r-functions-for-rows-and-columns">Special R functions for rows and columns</h4>
+<ul>
+<li>These functions are very, very fast</li>
+<li>They are not forgiving of non-numeric data</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rowSums</span>(); <span class="fu">colSums</span>()</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rowMeans</span>(); <span class="fu">colMeans</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr); <span class="fu">data</span>(<span class="st">"storms"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'dplyr'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked _by_ '.GlobalEnv':
+
+    storms</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:stats':
+
+    filter, lag</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>storms <span class="sc">%&gt;%</span> <span class="fu">select_if</span>(is.numeric) <span class="sc">%&gt;%</span> <span class="fu">colMeans</span>(<span class="at">na.rm=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 1.215177e-09</code></pre>
+<pre><code>                        year                        month 
+                 2002.278926                     8.698626 
+                         day                         hour 
+                   15.781968                     9.094042 
+                         lat                         long 
+                   26.994252                   -61.524300 
+                    category                         wind 
+                    1.898377                    50.017413 
+                    pressure tropicalstorm_force_diameter 
+                  993.554390                   146.309399 
+    hurricane_force_diameter 
+                   14.811074 </code></pre>
+</div>
+</div>
+<p>::: {.callout-note} # Comments on <code>NA</code> values</p>
+<ul>
+<li>I often get the question “how can I replace”NA” across my entire data object?”</li>
+<li><code>NA</code> is a reserved word in the R language referring to missing data. Often the best way to handle how missing values from your data are handled is to specify that when the file is read in. Check the documentation for your import function, e.g.&nbsp;<code>read.csv(..., na.string = "...")</code>.</li>
+<li>To do a global replacement of <code>NA</code> with another value, use <code>tidyr::replace_na()</code></li>
+<li>To do a global replacement of another value with <code>NA</code>, this can be handled in the import, or use <code>dplyr::na_if()</code></li>
+</ul>
+</section>
+</section>
+<section id="repeating-operatio-across-a-list" class="level3">
+<h3 class="anchored" data-anchor-id="repeating-operatio-across-a-list">Repeating operatio across a list</h3>
+<p>😍😍😍😍😍 <code>lapply()</code> 😍😍😍😍😍</p>
+<ul>
+<li>Vectorised over <em>lists</em></li>
+<li>If you can express one aspect of your operation as a list, this can probably work for you!</li>
+<li>Downside: everything comes back as a list (it takes an effort to convert this into a more exportable form)</li>
+<li>It uses very simple notation:</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lapply</span>(list, some_function)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>Example</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>integers <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>, <span class="dv">200</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>thrice_int <span class="ot">&lt;-</span> <span class="fu">lapply</span>(integers, <span class="cf">function</span>(x) x<span class="sc">*</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>I’m very fond of this for doing complex repeat operations. Perhaps I have a group of experiments, all with identical experimental design, that each need to be analyzed the same. Using a list can accomplish this efficiently.</p>
+<section id="lapply-flotsam-jetsam" class="level4">
+<h4 class="anchored" data-anchor-id="lapply-flotsam-jetsam"><code>lapply()</code> flotsam &amp; jetsam</h4>
+<ul>
+<li>Dealing with lists can be challenging: they follow different rules; they typically require lots and lots of indexing to extract content. And you usually can’t write a list straight to file like a data.frame.<br>
+</li>
+<li><code>sapply()</code> is just like <code>lapply()</code>, except it tries to simplify to common R data objects - a matrix or array. This works if the return data is one row.</li>
+<li><code>dplyr::bind_rows()</code> can concatenate data.frames better than <code>rbind()</code>.</li>
+<li>Getting things out of a list and into the desired format can be one of the most challenging aspects of working with <code>lapply()</code> (bonus: it makes you understand R data types really well!).</li>
+<li><strong>purrr</strong> to the rescue!</li>
+</ul>
+</section>
+</section>
+<section id="purrr-for-repeat-operations" class="level3">
+<h3 class="anchored" data-anchor-id="purrr-for-repeat-operations">purrr for repeat operations</h3>
+<p><strong><a href="https://purrr.tidyverse.org/">purrr</a></strong> does all of the hard work of iteration <em>plus</em> conversion of output to the object type you want! It works on data structures of all types: vectors, data frames and lists.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(purrr)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">split</span>(.<span class="sc">$</span>cyl) <span class="sc">%&gt;%</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(<span class="sc">~</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> wt, <span class="at">data =</span> .x)) <span class="sc">%&gt;%</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map_dfr</span>(<span class="sc">~</span> <span class="fu">as.data.frame</span>(<span class="fu">t</span>(<span class="fu">as.matrix</span>(<span class="fu">coef</span>(.)))))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  (Intercept)        wt
+1    39.57120 -5.647025
+2    28.40884 -2.780106
+3    23.86803 -2.192438</code></pre>
 </div>
 </div>
 <div class="callout-note callout callout-style-default callout-captioned">
@@ -512,21 +656,135 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>It’s not expected you would be aware of the second and third solutions given what has been taught thus far, but it’s helpful to be aware that many shortcuts exist in R to make coding easier.</p>
+<p><strong><em>purrr</em></strong> is complicated! Make use of the <a href="https://raw.githubusercontent.com/rstudio/cheatsheets/main/purrr.pdf">cheatsheet</a>].</p>
 </div>
 </div>
-<ol start="2" type="1">
-<li>Using the manual approach:</li>
-</ol>
+</section>
+<section id="basetidyverse-equivalents" class="level3">
+<h3 class="anchored" data-anchor-id="basetidyverse-equivalents">Base/Tidyverse equivalents</h3>
+<table class="table">
+<thead>
+<tr class="header">
+<th>base functions</th>
+<th>tidyverse equivalent</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>lapply()</code> <code>sapply()</code> <code>vapply()</code></td>
+<td><strong>purrr</strong> package</td>
+</tr>
+<tr class="even">
+<td><code>mapply()</code></td>
+<td><code>purrr::pmap()</code></td>
+</tr>
+<tr class="odd">
+<td><code>tapply()</code></td>
+<td><code>dplyr::group_by() %&gt;%  dplyr::summarise()</code></td>
+</tr>
+<tr class="even">
+<td><code>replicate()</code></td>
+<td><code>purrr:rerun()</code></td>
+</tr>
+<tr class="odd">
+<td><code>ifelse()</code></td>
+<td><code>dplyr::case_when()</code></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="the-oft-abused-for" class="level3">
+<h3 class="anchored" data-anchor-id="the-oft-abused-for">The oft-abused <code>for</code></h3>
+<p>A <code>for</code> loop:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">40</span>, <span class="dv">50</span>)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">/</span>(<span class="dv">5</span><span class="sc">*</span>(<span class="dv">2</span><span class="sc">*</span><span class="fl">3.14</span>)<span class="sc">^</span><span class="fl">0.5</span>)<span class="sc">*</span><span class="fl">2.718</span><span class="sc">^</span>(<span class="sc">-</span><span class="fl">0.5</span><span class="sc">*</span>((x<span class="dv">-50</span>)<span class="sc">/</span><span class="dv">5</span>)<span class="sc">^</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> thingy) {</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">do_something</span>()</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>I see things like this frequently:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> LETTERS[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> x) <span class="fu">print</span>(i)</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="co"># same as sapply(x, print)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Or worse:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> item1) {</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(j <span class="cf">in</span> item2) {</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">here_we_go</span>(...)</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  } }</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="optimal-use-of-for" class="level4">
+<h4 class="anchored" data-anchor-id="optimal-use-of-for">Optimal use of <code>for</code></h4>
+<ul>
+<li>Better usage of <code>for</code> is when you <em>require</em> the previous value(s) to proceed through the loop</li>
+<li>pre-allocation of your vector/data.frame/list/etc will result in faster code</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># vector pre-allocation</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="fu">rep</span>(<span class="cn">NA</span>, <span class="dv">98</span>)) </span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>f[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 1.014069e-15 1.217755e-09 2.679505e-05 1.080317e-02 7.980869e-02</code></pre>
+<pre><code> [1]  0  1 NA NA NA NA NA NA NA NA</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fibonacci sequence</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">3</span><span class="sc">:</span><span class="dv">100</span>){</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  f[i] <span class="ot">=</span> f[i<span class="dv">-1</span>] <span class="sc">+</span> f[i<span class="dv">-2</span>]</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>f[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1]  0  1  1  2  3  5  8 13 21 34</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="traditional-control-flow" class="level3">
+<h3 class="anchored" data-anchor-id="traditional-control-flow">Traditional control flow</h3>
+<ul>
+<li>These are standard control variables that exist across many languages to repeat operations.</li>
+<li>These are not vectorized; they only work with a single input at time.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> </span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="cf">next</span></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="cf">break</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>Note that these are reserved words in the R language; you cannot use these words for any other purpose in the R language than what they are designed to do (no function masking is possible).</li>
+</ul>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Teaching how to use these traditional control flow variables is beyond an introductory course in R. However, you can learn more about it <a href="../lessons/control_flow.html">here</a> and <a href="https://cran.r-project.org/doc/manuals/r-release/R-intro.pdf">Introduction to R manual</a>.</p>
+</div>
+</div>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Putting it all together
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Understanding how to do repeat operations in R often requires a strong understanding of the underlying data structures we are trying to perform those operations on. This aspect of R, sometimes called “data conditioning” can be one of the most challenging aspects of using R. When writing repeat operations, check back on Lessons 3 and 4 that address basics of data types and data structures if you are having trouble.</p>
 </div>
 </div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -779,13 +1037,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../practice/practice-A.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">practice set A</span>
+      <a href="../lessons/Lesson15.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">ggplotting</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../lessons/Lesson03.html" class="pagination-link">
-        <span class="nav-page-text">RStudio Tour</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../lessons/final_Lesson.html" class="pagination-link">
+        <span class="nav-page-text">Final thoughts</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
