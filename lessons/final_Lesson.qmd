@@ -8,7 +8,7 @@ This is only the beginning. You will probably need more R knowledge, both genera
 
 I tried to get everyone a bit up this learning curve and out of the zone of pain:
 
-```{r, out.width='75%'}
+```{r, echo=FALSE, out.width='75%'}
 knitr::include_graphics(here::here("images", "learning_stats.png"))
 ```
 
