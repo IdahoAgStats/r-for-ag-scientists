@@ -21,24 +21,39 @@ We will load ***ggplot2***, which will automatically load a useful package of co
 The data set, "nass.hay" is from the ***agridat*** package. It is historic data on hay production across U.S. states from 1909 to 2012 gathered by the National Agricultural Statistics Service. This script also creates a data object only containing data from Idaho, and a data object with hay production stats from 2012. 
 
 ```{r include=FALSE, echo=TRUE}
-library(dplyr); library(data.table); library(forcats)
+library(dplyr); library(tidyr)
 library(ggplot2)
 ```
 
+The package 'agridat' is needed for this lesson. 
 ```{r}
-library(agridat) # loaded so we can access the following date set:
+if(!require(agridat)) {
+  install.packages("agridat")
+  library(agridat)}
+```
+
+***[agridat](https://kwstat.github.io/agridat/)*** is a package consisting solely of several hundred agricultural data sets, along with example code for data visualiztion or analysis. This is an extraordinary resource! This lesson will use a data set from the National Agricultural Statistics Service (NASS). This is hay yields between 1909 and 2012 for by state (in the US). Some states do not have Ha
+
+```{r}
 data("nass.hay")
 str(nass.hay)
+summary(nass.hay)
 head(nass.hay)
+```
 
+First, let's create a few smaller data sets by filtering the data by different conditions. 
+```{r}
+# all observations from Idaho
 hay_idaho <- filter(nass.hay, state == "Idaho") 
+# all observations for 2012 
 hay2012 <- filter(nass.hay, year == 2012)
+# all observations for Idaho, Oregon, Washinton and Montana
 hay_pnw <- filter(nass.hay, state %in% c("Oregon", "Washington", "Montana","Idaho")) %>% 
-  mutate(state = fct_drop(state)) 
+  mutate(state = as.character(state)) 
 # fct_drop() command run so extra factor levels in "state" that are not longer represented in "hay_pnw" are dropped 
 ```
 
-### Basics of ggplot
+### Building a ggplot
 
 #### A ggplot needs 3 parts:  
 
@@ -48,7 +63,7 @@ hay_pnw <- filter(nass.hay, state %in% c("Oregon", "Washington", "Montana","Idah
 
 **Note:** 
 
-  * ggplot2 uses the `+` notation in their plots (see below). I think there is some regret over this style decision, but it is now an accepted convention!  
+  * ggplot2 uses the `+` notation in their plots (see below). It's my understanding that there is some regret over this style decision by the ggplot authors, but it is now an accepted convention. 
   * ggplot2 also uses non-standard evaluation, so, often column names do not need to be quoted  
   * common mapping aesthetics:  
     * x (the x variable)  
@@ -58,7 +73,19 @@ hay_pnw <- filter(nass.hay, state %in% c("Oregon", "Washington", "Montana","Idah
     * group (when a plotted option should be grouped, then plotted)  
 
 ### build a simple plot
-*Let's plot Yield over time for Idaho hay production*
+
+**Goal: plot yield over time for hay production in Idaho**
+
+Here is what the final plot will look like: 
+```{r, echo=FALSE. warning=FALSE}
+#suppressWarnings(print(
+ggplot(hay_idaho, aes(x = year, y = yield)) +
+  geom_line(color = "turquoise3", linewidth = 1, linetype = 1, na.rm=TRUE) +
+  ggtitle("Total historic hay yields in Idaho") + 
+  xlab("Year") +
+  ylab("yield (1000's of tons)")
+#))
+```
 
 #### Step 1: Add the data
 
@@ -66,8 +93,7 @@ hay_pnw <- filter(nass.hay, state %in% c("Oregon", "Washington", "Montana","Idah
 ggplot(hay_idaho)
 ```
 
-  
-(not much to see here - we have not specified the aesthetics or the geom)
+There is not much to see here since we have not specified anything beyond the data set to use. 
 
 #### Step 2: Add aesthetics
 
@@ -85,6 +111,7 @@ ggplot(hay_idaho, aes(x = year, y = yield)) +
 ```
 **Question:** What happens if we use `%>%` instead of `+`?
 
+*(try it to find out)*
 
 ### Common plot improvements
 
@@ -102,7 +129,7 @@ ggplot(hay_idaho, aes(x = year, y = yield)) +
 
 ```{r}
 ggplot(hay_idaho, aes(x = year, y = yield)) +
-  geom_line(color = "turquoise", size = 1.5, linetype = 1) +
+  geom_line(color = "turquoise3", linewidth = 1, linetype = 1, na.rm=TRUE) +
   ggtitle("Total historic hay yields in Idaho") + 
   xlab("Year") +
   ylab("yield (1000's of tons)")
@@ -163,7 +190,7 @@ ggplot(hay_pnw, aes(x = state, y = yield)) +
 ```
 
 Color boxplots by state:   
-(This requires an aes statement.)
+(This requires an aes statement)
 
 ```{r}
 ggplot(hay_pnw, aes(x = state, y = yield, fill = state)) +
@@ -173,6 +200,27 @@ ggplot(hay_pnw, aes(x = state, y = yield, fill = state)) +
   ylab("yield (1000s of tons)")
 ```
 **Question:** *What happens if we specify "color = state" instead of "fill = state"?*
+
+(Try it and find out). 
+
+::: {.callout-note}
+
+Aesthetic statements (those wrapped in `aes()`) can be made in the first ggplot argument or within a specific geom. These two examples are equivalent:
+
+*example*
+```
+ggplot(mydata, aes(x, y)) +
+  geom_line()
+```
+
+*example 2*
+```
+ggplot(mydata) +
+  geom_line(aes(x, y))
+```
+
+The `aes()` argument is sometimes specified within a geom if a particular aesthetic changes between geom (e.g. the fill aesthetic changes). Otherwise, the default aesthetic is whatever was previously specified. 
+:::
 
 #### histograms and density plots:
 
@@ -199,6 +247,11 @@ ggplot(hay_pnw, aes(x = yield, fill = state)) +
 #### Combining geoms
 
 Geoms are best thought of as plotting layers. Additional geoms can be added to a single plot, adding additional layers of information. Each geom is added to the plot in the order it is specified in the ggplot statement. 
+
+```{r, echo=FALSE}
+knitr::include_graphics(here::here("images", "ggplot_layers_frame.png"))
+```
+
 
 Adding an overall of points over boxplots is a good way to summarise the empirical distribution of a large number of data points: 
 
@@ -297,6 +350,7 @@ P +
 ### Adjusting non-data items
 
   * Adjustments to the background, text size and other details are done in the `theme()` argument command. 
+  * the complete list of option is available in the [ggplot2 documentation](https://ggplot2.tidyverse.org/reference/theme.html)
   * there are several pre-built themes:
 
 ![](../images/ggplot_themes.png)
@@ -440,7 +494,7 @@ ggsave("PNW_hay_production.png", dpi = 300)
 
 ### ggplot extensions
 
-Many [packages](http://www.ggplot2-exts.org/gallery/) have been developed to extend ggplot's functionality. Here are a few notable examples: 
+Many [packages](https://exts.ggplot2.tidyverse.org/gallery/) have been developed to extend ggplot's functionality. Here are a few notable examples: 
 
 #### ggridge
 
@@ -450,7 +504,7 @@ nass.hay$decade <- cut(nass.hay$year, breaks = c(1900, 1920, 1930, 1940, 1950, 1
 
 library(ggridges); library(viridis)
 
-ggplot(nass.hay, aes(x = yield, y = reorder(decade, desc(decade)), fill = ..x..)) +
+ggplot(nass.hay, aes(x = yield, y = reorder(decade, desc(decade)), fill = after_stat(x))) +
   geom_density_ridges_gradient(rel_min_height = 0.001) +
   scale_fill_viridis(direction = -1) + 
   ylab("") # suppress the y-axis label
@@ -463,12 +517,11 @@ ggplot(nass.hay, aes(x = yield, y = reorder(decade, desc(decade)), fill = ..x..)
 ```{r message=FALSE, warning=FALSE}
 library(plotly)
 
-pl <- ggplot(nass.hay, aes(x = acres, y = yield, color = year)) +
+pl <- ggplot(nass.hay, aes(x = year, y = yield, color = acres)) +
   geom_point() +
   geom_point(aes(text = state)) + 
-  #, shape = 21, col = "gray30", alpha = 0.6) +
-  #scale_fill_manual(values = alpha(rainbow(nlevels(nass.hay$state)), 0.5))
-  scale_color_gradientn(colors = alpha(rainbow(20), 0.5))
+  scale_color_gradientn(colors = alpha(rainbow(10), 0.5)) +
+  theme_bw()
 
 ggplotly(pl)
 ```
@@ -489,10 +542,9 @@ Plot from "[Learn gganimate](https://github.com/ropenscilabs/learngganimate/blob
 ```{r, eval=FALSE}
 vignette("ggplot2")
 ```
-  * There are innumerable ggplot tutorials like this one on the interwebs, such as [here](https://ggplot2tutor.com/), [here](https://uc-r.github.io/ggplot_intro), and [here](https://r-statistics.co/Complete-Ggplot2-Tutorial-Part2-Customizing-Theme-With-R-Code.html), among others
+  * There are innumerable ggplot tutorials like this one on the interwebs, such as  [this one](https://cedricscherer.netlify.app/2019/08/05/a-ggplot2-tutorial-for-beautiful-plotting-in-r/), [this ione](https://r-statistics.co/Complete-Ggplot2-Tutorial-Part2-Customizing-Theme-With-R-Code.html), and [this one](https://ggplot2tutor.com/), among many others.
 
-  * [R Graphics Cookbook Online Tutorial](http://www.cookbook-r.com/Graphs)
-  * [R Graphics Cookbook](https://www.amazon.com/Graphics-Cookbook-Practical-Recipes-Visualizing/dp/1491978600/) ($$). This book is written by Winston Chang, the main author of the ggplot2 package. 
+  * [R Graphics Cookbook Online Book](https://r-graphics.org/index.html), which is also a [purchasable book](https://www.amazon.com/Graphics-Cookbook-Practical-Recipes-Visualizing/dp/1491978600/). This is written by Winston Chang, one of the main authors of the ggplot2 package. It is a very helpful resource for consulting.  
   
 ![](../images/R_graphics_cookbook2.jpg)
 * [ggplot-focused data visualization workshop](https://rstudio-conf-2022.github.io/ggplot2-graphic-design/) by Cédric Scherer 
@@ -501,7 +553,7 @@ vignette("ggplot2")
 
 Plot of shots made by NBA Player Steph Curry, made using **gganimate**:  
 
-```{r eval=FALSE, echo=TRUE}
+```{r eval=FALSE, echo=FALSE}
 library(tidyr)
 library(rjson)
 # shot data for Stephen Curry
@@ -542,7 +594,7 @@ ggplot(shots_made, aes(x=LOC_X, y=LOC_Y)) +
   )
 ```
 
-```{r eval=FALSE, include=FALSE}
+```{r eval=FALSE, echo=FALSE}
 ggsave("steph_curry_shots_made_loop.gif")
 ```
 
