@@ -355,6 +355,8 @@ P +
 
 ![](../images/ggplot_themes.png)
 
+* [More ggplot themes](https://github.com/jrnold/ggthemes)
+
 #### Implementing a ggplot theme
 
 ```{r}
@@ -434,7 +436,7 @@ The legend can also be moved to locations outside the main plotting area with ar
 
 #### Summary
 
-There are many options for adjusting text. You you will inevitable need to consult [help files](https://ggplot2.tidyverse.org/reference/theme.html) at some point. 
+There are many options for adjusting elements of a ggplot. You you will inevitable need to consult [help files](https://ggplot2.tidyverse.org/reference/theme.html) at some point. 
 
 ### A bit on colors
 
@@ -491,6 +493,7 @@ ggsave("PNW_hay_production.png", dpi = 300)
 |`geom_map()` | part of the rich ecosystem of ggplot mapping functions |
 |`geom_rug()` | adds rug plots to edges of a plot |
 
+Here is the [compplete list](https://ggplot2.tidyverse.org/reference/) of ggplotting options available in ggplot2. 
 
 ### ggplot extensions
 
@@ -538,6 +541,7 @@ Plot from "[Learn gganimate](https://github.com/ropenscilabs/learngganimate/blob
 ### Other resources
 
   * [Package documentation](https://ggplot2.tidyverse.org/reference/)
+  * [Official ggplot guidebook](https://ggplot2-book.org)
   * [Tutorials put together by package authors](https://ggplot2.tidyverse.org/)
 ```{r, eval=FALSE}
 vignette("ggplot2")
