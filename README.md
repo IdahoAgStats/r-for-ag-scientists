@@ -18,6 +18,7 @@ https://idahoagstats.github.io/r-for-ag-scientists/
   - for lesson 07, have them make a new quarto file. Mention the visual editor and yaml header
   
 * Starting at lesson 13, switch to using R on people's systems (rather than Posit cloud)
+  * step 1: make an R project - in a dedicated directory
 
 
 #### Using Posit Cloud
@@ -44,7 +45,10 @@ https://idahoagstats.github.io/r-for-ag-scientists/
     * example_quarto_file.qmd     
   * project.Rproj      
 
-* Every student should make a permanent copy of this project. Over time, we will create more files and save them to this project. 
+* Every student should make a permanent copy of this project. Over time, we will create more files and save them to this project.
+
+* students need to encouraged to visit my posit R project as often as they wish and to use Posit cloud outside of class time. 
+
 
 #### Other notes:
 
@@ -53,5 +57,7 @@ https://idahoagstats.github.io/r-for-ag-scientists/
   * RStudio (lesson 3)
   * R functions & R help (lesson 6)
   * R for reproducible research (Lesson 13)
+  
+Perhaps considering have a class long project to motivate people more. 
 
 
