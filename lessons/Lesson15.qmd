@@ -16,17 +16,17 @@ At the end of this lesson, you should:
 
 ### Data and packages
 
-We will load ***ggplot2***, which will automatically load a useful package of color palette, 'RColorBrewer'. The packages 'dplyr', 'forcats' and 'data.table' are loaded since we will need to use some of their functions to prepare the data for plots. 
+We will load ***[ggplot2](https://ggplot2.tidyverse.org/index.html)***, which will automatically load a useful package of color palette, ***[RColorBrewer](https://CRAN.R-project.org/package=RColorBrewer)***. The package ***[dplyr](https://dplyr.tidyverse.org/)*** is also loaded since we will need to use some of their functions to prepare the data for plots. 
 
-The data set, "nass.hay" is from the ***agridat*** package. It is historic data on hay production across U.S. states from 1909 to 2012 gathered by the National Agricultural Statistics Service. This script also creates a data object only containing data from Idaho, and a data object with hay production stats from 2012. 
+The data set, "nass.hay" is from the ***[agridat](https://kwstat.github.io/agridat/)*** package. It is historic data on hay production across U.S. states from 1909 to 2012 gathered by the National Agricultural Statistics Service. This script also creates a data object only containing data from Idaho, and a data object with hay production stats from 2012. 
 
-```{r include=FALSE, echo=TRUE}
-library(dplyr); library(tidyr)
+```{r message=FALSE, warning=FALSE}
+library(dplyr)
 library(ggplot2)
 ```
 
 The package 'agridat' is needed for this lesson. 
-```{r}
+```{r, message=FALSE, warning=FALSE}
 if(!require(agridat)) {
   install.packages("agridat")
   library(agridat)}
@@ -195,7 +195,7 @@ Color boxplots by state:
 
 ```{r}
 ggplot(hay_pnw, aes(x = state, y = yield, fill = state)) +
-  geom_boxplot(, na.rm=TRUE)) +
+  geom_boxplot(na.rm=TRUE) +
   ggtitle("Yearly hay yields in the Pacific Northwest") + 
   xlab("State") +
   ylab("yield (1000s of tons)")
@@ -549,13 +549,13 @@ Plot from "[Learn gganimate](https://github.com/ropenscilabs/learngganimate/blob
 vignette("ggplot2")
 ```
   * There are innumerable ggplot tutorials like this one on the interwebs, such as  [this one](https://cedricscherer.netlify.app/2019/08/05/a-ggplot2-tutorial-for-beautiful-plotting-in-r/), [this one](https://r-statistics.co/Complete-Ggplot2-Tutorial-Part2-Customizing-Theme-With-R-Code.html), and [this one](https://ggplot2tutor.com/), among many others.
-
+  * [ggplot-focused data visualization workshop](https://rstudio-conf-2022.github.io/ggplot2-graphic-design/) by Cédric Scherer. 
   * [R Graphics Cookbook Online Book](https://r-graphics.org/index.html), which is also a [purchasable book](https://www.amazon.com/Graphics-Cookbook-Practical-Recipes-Visualizing/dp/1491978600/). This is written by Winston Chang, one of the main authors of the ggplot2 package. It is a very helpful resource for consulting.  
   
 ![](../images/R_graphics_cookbook2.jpg)
-* [ggplot-focused data visualization workshop](https://rstudio-conf-2022.github.io/ggplot2-graphic-design/) by Cédric Scherer 
 
-**ggplot can be fun**  
+
+#### ggplot can be fun 
 
 Plot of shots made by NBA Player Steph Curry, made using **gganimate**:  
 
