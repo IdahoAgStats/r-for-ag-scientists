@@ -50,7 +50,6 @@ hay2012 <- filter(nass.hay, year == 2012)
 # all observations for Idaho, Oregon, Washinton and Montana
 hay_pnw <- filter(nass.hay, state %in% c("Oregon", "Washington", "Montana","Idaho")) %>% 
   mutate(state = as.character(state)) 
-# fct_drop() command run so extra factor levels in "state" that are not longer represented in "hay_pnw" are dropped 
 ```
 
 ### Building a ggplot
@@ -78,13 +77,13 @@ hay_pnw <- filter(nass.hay, state %in% c("Oregon", "Washington", "Montana","Idah
 
 Here is what the final plot will look like: 
 ```{r, echo=FALSE, warning=FALSE}
-#suppressWarnings(print(
+suppressWarnings(print(
 ggplot(hay_idaho, aes(x = year, y = yield)) +
   geom_line(color = "turquoise3", linewidth = 1, linetype = 1, na.rm=TRUE) +
   ggtitle("Total historic hay yields in Idaho") + 
   xlab("Year") +
   ylab("yield (1000's of tons)")
-#))
+))
 ```
 
 #### Step 1: Add the data
@@ -107,8 +106,11 @@ This step mapped "year" and "yield" from the hay_idaho data set to the x and y a
 (explicit mapping command dropped - use a positional argument instead)
 ```{r}
 ggplot(hay_idaho, aes(x = year, y = yield)) +
-  geom_line()
+  geom_line(na.rm = TRUE)
 ```
+We can ignore this warning telling us there is missing data. That happens when using NASS data!
+
+
 **Question:** What happens if we use `%>%` instead of `+`?
 
 *(try it to find out)*
@@ -118,7 +120,7 @@ ggplot(hay_idaho, aes(x = year, y = yield)) +
 #### plot title and axis labels
 ```{r}
 ggplot(hay_idaho, aes(x = year, y = yield)) +
-  geom_line() +
+  geom_line(na.rm=TRUE) +
   ggtitle("Total historic hay yields in Idaho") + 
   xlab("Year") +
   ylab("yield (1000s of tons)")
@@ -146,7 +148,7 @@ knitr::include_graphics(here::here("images", "linetypes.png"))
 #### points
 ```{r}
 ggplot(hay_idaho, aes(x = year, y = yield)) +
-  geom_point(shape = 2, col = "navy") +
+  geom_point(shape = 2, col = "navy", na.rm=TRUE) +
   ggtitle("Total historic hay yields in Idaho") + 
   xlab("Year") +
   ylab("yield (1000s of tons)")
@@ -162,7 +164,7 @@ The default shape is "1" (the circle). Plotting symbols 21 - 25 have outline col
 #### area
 ```{r}
 ggplot(hay_idaho, aes(x = year, y = yield)) +
-  geom_area(fill = "orange", col = "gray20") +
+  geom_area(fill = "orange", col = "gray20", na.rm=TRUE) +
   ggtitle("Total historic hay yields in Idaho") + 
   xlab("Year") +
   ylab("yield (1000s of tons)")
@@ -173,17 +175,16 @@ ggplot(hay_idaho, aes(x = year, y = yield)) +
 
 ```{r}
 ggplot(hay_pnw, aes(x = state, y = yield)) +
-  geom_boxplot() +
+  geom_boxplot(na.rm=TRUE) +
   ggtitle("Yearly hay yields in the Pacific Northwest") + 
   xlab("State") +
   ylab("yield (1000s of tons)")
 ```
 
-
 Color all boxplots the same:
 ```{r}
 ggplot(hay_pnw, aes(x = state, y = yield)) +
-  geom_boxplot(fill = "yellow") +
+  geom_boxplot(fill = "yellow", na.rm=TRUE) +
   ggtitle("Yearly hay yields in the Pacific Northwest") + 
   xlab("State") +
   ylab("yield (1000s of tons)")
@@ -194,7 +195,7 @@ Color boxplots by state:
 
 ```{r}
 ggplot(hay_pnw, aes(x = state, y = yield, fill = state)) +
-  geom_boxplot() +
+  geom_boxplot(, na.rm=TRUE)) +
   ggtitle("Yearly hay yields in the Pacific Northwest") + 
   xlab("State") +
   ylab("yield (1000s of tons)")
@@ -224,9 +225,9 @@ The `aes()` argument is sometimes specified within a geom if a particular aesthe
 
 #### histograms and density plots:
 
-```{r warning=TRUE}
+```{r}
 ggplot(hay_idaho, aes(x = yield)) +
-  geom_histogram(fill = "gray70", col = "black", bins = 20)
+  geom_histogram(fill = "gray70", col = "black", bins = 20, na.rm=TRUE)
 ```
 
 Unlike in base R plotting, creating a density plot and shading the are under the curve is easy. 
@@ -234,14 +235,14 @@ Unlike in base R plotting, creating a density plot and shading the are under the
 
 ```{r}
 ggplot(hay_pnw, aes(x = yield, fill = state)) +
-  geom_density()
+  geom_density(na.rm=TRUE)
 ```
 
 In this plot, it is hard to see what is going on since the each distribution covers up the one plotted before it (so we can't really see Idaho, but Washington's hay yield distribution is clear). The attribute "alpha" can be used to add a transparency to colors. The code is `alpha =  n` where `n` is the proportion of the color that is shown (0 is completely transparent and 1 is no transparency).
 
 ```{r}
 ggplot(hay_pnw, aes(x = yield, fill = state)) +
-  geom_density(alpha = 0.5)
+  geom_density(alpha = 0.5, na.rm=TRUE)
 ```
 
 #### Combining geoms
@@ -257,8 +258,8 @@ Adding an overall of points over boxplots is a good way to summarise the empiric
 
 ```{r}
 ggplot(hay_pnw, aes(x = state, y = yield, fill = state)) +
-  geom_boxplot() +
-  geom_point() +
+  geom_boxplot(na.rm = TRUE) +
+  geom_point(na.rm = TRUE) +
   ggtitle("Yearly hay yields in the Pacific Northwest") + 
   xlab("State") +
   ylab("yield (1000s of tons)")
@@ -268,14 +269,12 @@ In this example, it is likely there is over-plotting of data since each state ha
 
 ```{r}
 ggplot(hay_pnw, aes(x = state, y = yield, fill = state)) +
-  geom_boxplot() +
-  geom_jitter(width = 0.3, height = 0) +
+  geom_boxplot(na.rm = TRUE) +
+  geom_jitter(width = 0.2, height = 0, na.rm = TRUE, alpha = 0.7) +
   ggtitle("Yearly hay yields in the Pacific Northwest") + 
   xlab("State") +
   ylab("yield (1000s of tons)")
 ```
-
-
 
 ### Other common plotting options
 
@@ -287,11 +286,11 @@ For an example, below is a plot of the distributions from above using `facet_gri
 
 ```{r}
 ggplot(hay_pnw, aes(x = yield)) +
-  geom_density(col = "blue", fill = "dodgerblue", alpha = 0.6) +
+  geom_density(col = "blue", fill = "dodgerblue", alpha = 0.6, na.rm = TRUE) +
   facet_grid(. ~ state) # for a horizontal facet
 
 ggplot(hay_pnw, aes(x = yield)) +
-  geom_density(col = "darkgreen", fill = "springgreen3", alpha = 0.6) +
+  geom_density(col = "darkgreen", fill = "springgreen3", alpha = 0.6, na.rm = TRUE) +
   facet_grid(state ~ .) # for a vertical facet
 ```
  
@@ -300,7 +299,7 @@ Faceting can also be done be used to create a grid of plots with `facet_wrap()`:
  
 ```{r}
 ggplot(hay_pnw) +
-  geom_line(aes(x = year, y = yield), col = "darkcyan") +
+  geom_line(aes(x = year, y = yield), col = "darkcyan", na.rm=TRUE) +
   facet_wrap(. ~ state, nrow = 2, ncol = 2)
 ```
 
@@ -313,8 +312,8 @@ hay_yearly <- nass.hay %>% group_by(year) %>%
   summarise(Yield = mean(yield), yield_min = min(yield), yield_max = max(yield))
 
 ggplot(hay_yearly, aes(x = year)) + 
-  geom_ribbon(aes(ymin = yield_min, ymax = yield_max), fill = "gray70") +
-  geom_line(aes(y = Yield), size = 0.8)
+  geom_ribbon(aes(ymin = yield_min, ymax = yield_max), fill = "gray70", na.rm=TRUE) +
+  geom_line(aes(y = Yield), linewidth = 0.8, na.rm=TRUE)
 ```
 
 **Example:**  add error bars
@@ -327,11 +326,12 @@ Two other plot adjustments included:
 hay_pnw_summary <- hay_pnw %>% group_by(state) %>% 
   summarise(Yield = mean(yield, na.rm = T), yield_sd = sd(yield, na.rm = T))
 
-ggplot(hay_pnw_summary, aes(x = state)) + 
-  geom_errorbar(aes(ymin = Yield - yield_sd, ymax = Yield + yield_sd), width = 0.2) +
-  geom_point(aes(y = Yield), shape = 18, size = 5, col = "blue") +
-  ylim(c(0, 3.7)) +
-  coord_flip()
+ggplot(hay_pnw_summary, aes(y = state)) + 
+  geom_errorbar(aes(xmin = Yield - yield_sd, xmax = Yield + yield_sd), width = 0.2) +
+  geom_point(aes(x = Yield), shape = 18, size = 5, col = "blue") +
+  # set the limits (lower and upper bounds for the x-axis)
+  xlim(c(0, 3.7)) +
+  ylab("") 
 ```
 
 
@@ -339,11 +339,11 @@ ggplot(hay_pnw_summary, aes(x = state)) +
 
 ```{r}
 P <- ggplot(hay_idaho, aes(x = acres, y = yield)) +
-  geom_point(shape = 16, alpha = 0.6, size = 2.5)
+  geom_point(shape = 16, alpha = 0.6, size = 2.5, na.rm=TRUE)
 P  # Plots can be assigned to an object and then later added to
 P +
-  geom_smooth(method = "lm") +
-  geom_smooth(method = "loess", col = "yellowgreen")
+  geom_smooth(method = "lm", na.rm=TRUE) +
+  geom_smooth(method = "loess", col = "yellowgreen", na.rm = TRUE)
 ```
 
 
@@ -361,7 +361,7 @@ P +
 
 ```{r}
 facet.plot <- ggplot(hay_pnw) +
-  geom_line(aes(x = year, y = yield), col = "darkcyan") +
+  geom_line(aes(x = year, y = yield), col = "darkcyan", na.rm=TRUE) +
   facet_wrap(. ~ state, nrow = 2, ncol = 2)
 
 facet.plot + theme_minimal() 
@@ -373,7 +373,7 @@ This is not *exactly* what I want. Larger labels on everything would be helpful,
 
 ```{r}
 facet.plot + 
-  theme_minimal() +   # this must be added to plot before manual theme adjustments 
+  theme_minimal() +   # the theme must be added to plot *before* manual theme adjustments 
   theme(
    axis.title = element_text(size = 14),
    axis.text = element_text(size = 13)
@@ -412,7 +412,8 @@ facet.plot +
 
 ```{r}
 ggplot(hay_pnw) +
-  geom_line(aes(x = year, y = yield, col = state)) +
+  geom_line(aes(x = year, y = yield, col = state), na.rm = TRUE) +
+  # set the scale for x-axis (yer)
   scale_x_continuous(breaks = c(seq(1910, 2015, by = 10)))  +
   theme_bw() 
 ```
@@ -421,7 +422,7 @@ This looks okay, but it could be better. There is room to put the legend inside 
 
 ```{r}
 ggplot(hay_pnw) +
-  geom_line(aes(x = year, y = yield, col = state)) +
+  geom_line(aes(x = year, y = yield, col = state), na.rm = TRUE) +
   scale_x_continuous(breaks = c(seq(1910, 2015, by = 10)))  +
   theme_bw() +
   theme(
@@ -451,7 +452,7 @@ display.brewer.all()
 knitr::include_graphics(here::here("images", "rcolorbrewer.png"))
 ```
 
-The package **[viridis](https://sjmgarnier.github.io/viridis/)** also has some nice color palettes that are widely used. Also check out the **paletteer](https://emilhvitfeldt.github.io/paletteer/)** and the accompanying [R palette picker](https://emilhvitfeldt.github.io/r-color-palettes/) for a wider set of options.  
+The package **[viridis](https://sjmgarnier.github.io/viridis/)** also has some nice color palettes that are widely used. Also check out the **[paletteer](https://emilhvitfeldt.github.io/paletteer/)** and the accompanying [R palette picker](https://emilhvitfeldt.github.io/r-color-palettes/) for a wider set of options.  
 
 ### Other Important Stuff
 
@@ -461,8 +462,9 @@ The package **[viridis](https://sjmgarnier.github.io/viridis/)** also has some n
   * By default, it will save the the last plot created. 
 ```{r}
 ggplot(hay_pnw) +
-  geom_line(aes(x = year, y = yield), col = "violetred") +
-  facet_wrap(. ~ state, nrow = 2, ncol = 2)
+  geom_line(aes(x = year, y = yield), col = "violetred", na.rm=TRUE) +
+  facet_wrap(. ~ state, nrow = 2, ncol = 2) +
+  theme_linedraw()
 ```
 
 ```{r, eval=FALSE}
@@ -521,8 +523,8 @@ ggplot(nass.hay, aes(x = yield, y = reorder(decade, desc(decade)), fill = after_
 library(plotly)
 
 pl <- ggplot(nass.hay, aes(x = year, y = yield, color = acres)) +
-  geom_point() +
-  geom_point(aes(text = state)) + 
+  geom_point(na.rm = TRUE) +
+  geom_point(aes(text = state), na.rm = TRUE) + 
   scale_color_gradientn(colors = alpha(rainbow(10), 0.5)) +
   theme_bw()
 
@@ -546,7 +548,7 @@ Plot from "[Learn gganimate](https://github.com/ropenscilabs/learngganimate/blob
 ```{r, eval=FALSE}
 vignette("ggplot2")
 ```
-  * There are innumerable ggplot tutorials like this one on the interwebs, such as  [this one](https://cedricscherer.netlify.app/2019/08/05/a-ggplot2-tutorial-for-beautiful-plotting-in-r/), [this ione](https://r-statistics.co/Complete-Ggplot2-Tutorial-Part2-Customizing-Theme-With-R-Code.html), and [this one](https://ggplot2tutor.com/), among many others.
+  * There are innumerable ggplot tutorials like this one on the interwebs, such as  [this one](https://cedricscherer.netlify.app/2019/08/05/a-ggplot2-tutorial-for-beautiful-plotting-in-r/), [this one](https://r-statistics.co/Complete-Ggplot2-Tutorial-Part2-Customizing-Theme-With-R-Code.html), and [this one](https://ggplot2tutor.com/), among many others.
 
   * [R Graphics Cookbook Online Book](https://r-graphics.org/index.html), which is also a [purchasable book](https://www.amazon.com/Graphics-Cookbook-Practical-Recipes-Visualizing/dp/1491978600/). This is written by Winston Chang, one of the main authors of the ggplot2 package. It is a very helpful resource for consulting.  
   
