@@ -41,9 +41,7 @@ website:
       - icon: github
         href: https://github.com/IdahoAgStats/r-for-ag-scientists
         text: "GitHub Repository"
-      - icon: bank
-        href: https://canvas.uidaho.edu
-        text: Canvas
+
       
     style: "docked"
     search: true
@@ -59,79 +57,79 @@ website:
             text: Code of Conduct
           - href: learning-quarto.qmd
             text: Quarto basics
-          - href: install_R_instructions.qmd
+          - href: r-installation-instructions.qmd
             text: how to install R
-      - section: "Lessons"
-        contents:
-          - href: lessons/Lesson00.qmd
-            text: Lesson Zero
-          - href: lessons/Lesson01.qmd
-            text: Math Operators
-          - href: lessons/Lesson02.qmd
-            text: Vectorizing
-            contents: 
-              - href: practice/practice-A.qmd
-                text: "practice set A"
-              - href: practice/solution-A.qmd
-                text: "solutions to A"
-          - href: lessons/Lesson03.qmd
-            text: RStudio Tour
-          - href: lessons/Lesson04.qmd
-            text: R objects
-            contents: 
-              - href: practice/practice-B.qmd
-                text: "practice set B"
-              - href: practice/solution-B.qmd
-                text: "solutions to B"
-          - href: lessons/Lesson05.qmd
-            text: Data structures
-            contents: 
-              - href: practice/practice-C.qmd
-                text: "practice set C"
-              - href: practice/solution-C.qmd
-                text: "solutions to C"
-          - href: lessons/Lesson06.qmd
-            text: R documentation
-          - href: lessons/Lesson07.qmd
-            text: Data import
-            contents: 
-              - href: practice/practice-D.qmd
-                text: "practice set D"
-          - href: lessons/Lesson08.qmd
-            text: Data export
-            contents: 
-              - href: practice/practice-E.qmd
-                text: "practice set E"
-          - href: lessons/Lesson09.qmd
-            text: Data wrangling
-            contents: 
-              - href: practice/practice-F.qmd
-                text: "practice set F"
-              - href: practice/solution-F.qmd
-                text: "solution to F"
-          - href: lessons/Lesson10.qmd
-            text: Data Aggregation
-            contents:
-              - href: practice/practice-G.qmd
-                text: "practice set G"
-              - href: practice/solution-G.qmd
-                text: "solution to G"
-          - href: lessons/Lesson11.qmd
-            text: Reshaping data
-            contents:   
-              - href: practice/practice-H.qmd
-                text: "practice set H"
-              - href: practice/solution-H.qmd
-                text: "solution to H"
-          - href: lessons/Lesson12.qmd
-            text: Data merging
-            contents: 
-              - href: practice/practice-I.qmd
-              - text: "practice set I"
-              - href: practice/solution-I.qmd
-              - text: "solution to I"
-          - href: lessons/Lesson13.qmd
-            text: R Set-up
+      # - section: "Lessons"
+      #   contents:
+      #     - href: lessons/Lesson00.qmd
+      #       text: Lesson Zero
+      #     - href: lessons/Lesson01.qmd
+      #       text: Math Operators
+      #     - href: lessons/Lesson02.qmd
+      #       text: Vectorizing
+      #       contents: 
+      #         - href: practice/practice-A.qmd
+      #           text: "practice set A"
+      #         - href: practice/solution-A.qmd
+      #           text: "solutions to A"
+      #     - href: lessons/Lesson03.qmd
+      #       text: RStudio Tour
+      #     - href: lessons/Lesson04.qmd
+      #       text: R objects
+      #       contents: 
+      #         - href: practice/practice-B.qmd
+      #           text: "practice set B"
+      #         - href: practice/solution-B.qmd
+      #           text: "solutions to B"
+      #     - href: lessons/Lesson05.qmd
+      #       text: Data structures
+      #       contents: 
+      #         - href: practice/practice-C.qmd
+      #           text: "practice set C"
+      #         - href: practice/solution-C.qmd
+      #           text: "solutions to C"
+      #     - href: lessons/Lesson06.qmd
+      #       text: R documentation
+      #     - href: lessons/Lesson07.qmd
+      #       text: Data import
+      #       contents: 
+      #         - href: practice/practice-D.qmd
+      #           text: "practice set D"
+      #     - href: lessons/Lesson08.qmd
+      #       text: Data export
+      #       contents: 
+      #         - href: practice/practice-E.qmd
+      #           text: "practice set E"
+      #     - href: lessons/Lesson09.qmd
+      #       text: Data wrangling
+      #       contents: 
+      #         - href: practice/practice-F.qmd
+      #           text: "practice set F"
+      #         - href: practice/solution-F.qmd
+      #           text: "solution to F"
+      #     - href: lessons/Lesson10.qmd
+      #       text: Data Aggregation
+      #       contents:
+      #         - href: practice/practice-G.qmd
+      #           text: "practice set G"
+      #         - href: practice/solution-G.qmd
+      #           text: "solution to G"
+      #     - href: lessons/Lesson11.qmd
+      #       text: Reshaping data
+      #       contents:   
+      #         - href: practice/practice-H.qmd
+      #           text: "practice set H"
+      #         - href: practice/solution-H.qmd
+      #           text: "solution to H"
+      #     - href: lessons/Lesson12.qmd
+      #       text: Data merging
+      #       contents: 
+      #         - href: practice/practice-I.qmd
+      #         - text: "practice set I"
+      #         - href: practice/solution-I.qmd
+      #         - text: "solution to I"
+      #     - href: lessons/Lesson13.qmd
+      #       text: R Set-up
           # - href: lessons/Lesson14.qmd
           #   text: Exploratory plotting
           #   contents: 
@@ -139,8 +137,8 @@ website:
           #       text: "practice set J"
           #     - href: practice/solution-J.qmd
           #       text: "solution to J"
-          - href: lessons/Lesson15.qmd
-            text: ggplotting
+          # - href: lessons/Lesson15.qmd
+          #   text: ggplotting
           #   contents: 
           #     - href: practice/practice-K.qmd
           #       text: "practice set K"
@@ -153,10 +151,10 @@ website:
           #       text: "practice set L"
           #     - href: practice/solution-L.qmd
           #       text: "solution to L"
-          - href: lessons/Lesson16.qmd
-            text: Repeating Operations
-          - href: lessons/final_Lesson.qmd
-            text: Final thoughts
+          # - href: lessons/Lesson16.qmd
+          #   text: Repeating Operations
+          # - href: lessons/final_Lesson.qmd
+          #   text: Final thoughts
 
   page-footer:
     right: "[Quarto Website](https://quarto.org/), template by [Mine Çetinkaya-Rundel](https://github.com/sta210-s22/website)"

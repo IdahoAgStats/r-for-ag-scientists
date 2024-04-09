@@ -7,9 +7,8 @@ subtitle: "Course Overview"
 library(quarto); library(here)
 ```
 
-###  [*Our Class Playlist*](https://open.spotify.com/playlist/4gM3IDE3th5sk3vdosHNfO?si=97f2ab1043444224)
 
-This workshop will take you from zero to hero over the course of 16 hours of instruction and practice. It will introduce the [R programming language](https://www.r-project.org/), the graphical user interface [RStudio](https://www.rstudio.com/products/rstudio/) and how R can be used to manage and analyse your data. At the end of this workshop, you will be able to:
+This workshop will take you from zero to hero over the course of 30 hours of instruction and practice. It will introduce the [R programming language](https://www.r-project.org/), the graphical user interface [RStudio](https://www.rstudio.com/products/rstudio/) and how R can be used to manage and analyse your data. At the end of this workshop, you will be able to:
 
 -   import & export data
 -   understand data types and object types
@@ -21,7 +20,7 @@ This workshop will take you from zero to hero over the course of 16 hours of ins
 
 ### Who is This workshop for?
 
-This workshop is intended for beginner R users. No previous experience in R or any other programming or statistical language is expected (although previous R users whose skills have lapsed are welcomed!)
+This workshop is intended for beginner R users. No previous experience in R or any other programming or statistical language is expected (although previous R users whose skills have lapsed are welcome)
 
 ### What this workshop will not cover
 
@@ -31,33 +30,21 @@ This workshop is intended for beginner R users. No previous experience in R or a
 
 ### Requirements
 
-* a computer with a reliable internet connection
-* A camera and microphone for Zoom 
-* A Zoom account (the free version is sufficient)
+-   A laptop. You can opt to install R and RStudio on it (recommended if you plan to continue using R beyond the workshop), or you can use the online R programming environment provided by [Posit Cloud](https://posit.cloud/).
 
 ### When
 
-Jan 17 - February 9\
-Tuesday/Thursdays\
-2 - 4 pm Pacific time
+May 20-24, 2024\
+Monday - Friday
+9 am - 12 pm | 1 pm - 4 pm Pacific Time
 
-All sessions will take place over Zoom so students across different timezones can participate.
+All sessions will take place on the University of Idaho campus in Moscow, Idaho.
 
-#### Office hours
 
-I will hold open drop-in hours on Zoom on Wednesdays and Fridays, 1-2 pm if you have questions. It will be the same Zoom link for regular class sessions. 
 
 ### Instructors
 
-#### Lead Instructor
+[Julia Piaskowski](https://www.uidaho.edu/cals/statistical-programs/people/julia-piaskowski)
 
-[Julia Piaskowski](https://www.uidaho.edu/cals/statistical-programs/people/julia-piaskowski) | [training website](agstats.io) | [GitHub](https://github.com/jpiaskowski) | [personal website](https://jpiaskowski.gitlab.io/)
-
-
-#### Teaching Assistants
-
-[JT VanLeuven](https://www.uidaho.edu/cals/animal-veterinary-and-food-sciences/our-people/james-vanleuven) | [Research Website](https://sites.google.com/site/jtvanleuven/home)
-
-[Breanna Sipley](https://sipley.github.io/) | [GitHub](https://github.com/sipley) | [Twitter](https://twitter.com/Breanna_Sipley)
-
+[Harpreet Kaur](https://www.uidaho.edu/cals/people/harpreet-kaur)
 
