@@ -2,7 +2,7 @@
 title: "Special Lesson 13: Setting up R for Reproducible Research"
 ---
 
-This lesson assumes you have installed R and RStudio ([instructions]("../install_R_instructions.qmd")). 
+This lesson assumes you have installed R and RStudio. 
 
 ::: {.callout-caution collapse="false"}
 ## Learning Goals
