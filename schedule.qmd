@@ -7,25 +7,23 @@ title: "Course Schedule"
 
 | Date            |   Topics          |       practice problems |
 |-----------------|-------------------|-------------------------|
-| Before January 17 | [Do Lesson Zero + Watch Video](lessons/Lesson00.qmd) |    |
-| January 17 | Lesson 1: [math operators](lessons/Lesson01.qmd)\
-                  Lesson 2: [vectorization](lessons/Lesson02.qmd) |  [*Lessons 1 & 2*](practice/practice-A.qmd) |
-| January 19 | Lesson 4: [objects](lessons/Lesson04.qmd)\
-                  Lesson 5: [data structures](lessons/Lesson05.qmd) |    [*Lesson 5*](practice/practice-B.qmd) \
-                                                                          [*Lesson 6*](practice/practice-C.qmd)  |
-| January 24 | Lesson 6: [R functions & help](lessons/Lesson06.qmd)\
-               Lesson 7: [data import](lessons/Lesson07.qmd) \
-               Lesson 8: [exporting data](lessons/Lesson08.qmd) | [*Lesson 7*](practice/practice-D.qmd) \
-                                                                  [*Lesson 8*](practice/practice-E.qmd) |
-| January 26   | Lesson 9: [data wrangling](lessons/Lesson09.qmd) |    |
-| January 31    |  Lesson 9: [data wrangling](lessons/Lesson09.qmd) |  [*Lesson 9*](practice/practice-F.qmd)  |
-| February 2  | Lesson 10: [data aggregation & summary](lessons/Lesson10.qmd)\
-                Lesson 11: [reshaping data sets](lessons/Lesson11.qmd) | [*Lesson 10*](practice/practice-G.qmd)\
-                                     [*Lesson 11*](practice/practice-H.qmd) | 
-| February 7  | Lesson 12: [combining data sets](lessons/Lesson12.qmd)  \
-                Lesson 13: [your R set-up](lessons/Lesson13.qmd) |   [*Lesson 12*](practice/practice-I.qmd) |
-| February 9  |  Lesson 15: [ggplotting](lessons/Lesson15.qmd) \
-                 Final Lesson: [Your R Future](lessons/final_Lesson.qmd) |    |
-| extra  | [repeating actions](lessons/Lesson16.qmd) |   |
+| Before first day of class | Lesson Zero |    |
+| May 20 | Workshop orientation \
+           Quick tour of R Studio\
+           Getting to know data in R\
+           Installing R packages |   |
+| May 21 | Importing tabular files\
+           Data transformation & wrangling\
+           R documentation \
+           Exporting R objects to file |  |
+| May 22 | Data aggregation + summary \
+            Reshaping data\
+            Combining data sets|   |
+| May 23   | Combining data sets (part 2)
+              Visualizing data in R |    |
+| May 24    |  Finding help\
+               Reproducible research in R \
+               Open time for questions |   |
+| extra  | How to do repeating actions |   |
 
 
