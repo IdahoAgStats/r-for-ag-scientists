@@ -55,10 +55,11 @@ website:
             text: Schedule
           - href: CoC.qmd
             text: Code of Conduct
-          - href: learning-quarto.qmd
-            text: Quarto basics
           - href: r-installation-instructions.qmd
             text: how to install R
+          - href: learning-quarto.qmd
+            text: Quarto basics
+
       # - section: "Lessons"
       #   contents:
       #     - href: lessons/Lesson00.qmd

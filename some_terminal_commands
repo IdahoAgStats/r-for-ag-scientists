@@ -22,3 +22,8 @@ quarto render r-for-ag-scientists
 # to preview the site
 quarto preview r-for-ag-scientists
 
+
+### in the R console:
+
+quarto::quarto_preview()
+

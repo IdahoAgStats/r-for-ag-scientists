@@ -47,4 +47,4 @@ knitr::include_graphics(here::here("images", "posit_4.png"))
 
 Only the instructors and you can access your project. Course instructors will not access student Posit classroom projects unless a student requests we look at it to help troubleshoot an R coding issue. 
 
-This project is where you should save all of your R scripts. You can access this project at anytime, including when the class is not meeting from now until Feb 10th, 2022. When the course is done, the classroom will be deleted, so be certain to download your project in case you want to revisit it. The course instructors will send a reminder email to do this if you forget. 
+This project is where you should save all of your R scripts. You can access this project at anytime, including when the class is not meeting. When the course is done, the classroom will be deleted, so be certain to download your project in case you want to revisit it. The course instructors will send a reminder email to do this if you forget. 
