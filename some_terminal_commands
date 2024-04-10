@@ -26,4 +26,3 @@ quarto preview r-for-ag-scientists
 ### in the R console:
 
 quarto::quarto_preview()
-

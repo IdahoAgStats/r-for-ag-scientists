@@ -48,7 +48,6 @@ jobs:
 
       - name: Build site 🔧
         run: |
-          R -e 'renv::install("quarto")'
           R -e 'quarto::quarto_render(".", as_job = FALSE)'
           
       - name: Deploy 🚀
