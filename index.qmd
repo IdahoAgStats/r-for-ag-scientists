@@ -35,8 +35,8 @@ This workshop is intended for beginner R users. No previous experience in R or a
 ### When
 
 May 20-24, 2024\
-Monday - Friday
-9 am - 12 pm | 1 pm - 4 pm Pacific Time
+Monday - Friday\
+9am - 12pm | 1pm - 4pm Pacific Time
 
 All sessions will take place on the University of Idaho campus in Moscow, Idaho.
 
