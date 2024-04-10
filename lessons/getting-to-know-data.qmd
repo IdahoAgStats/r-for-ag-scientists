@@ -1,0 +1,33 @@
+---
+title: "Getting to Know Your Data in R"
+editor: 
+  markdown: 
+    wrap: 72
+---
+
+
+::: {.callout-caution collapse="false"}
+## Learning Goals
+
+At the end of this lesson, you should:
+
+-   know several methods of data exploration in R
+-   understand how to make cross tabulations of data
+-   know how to make histograms and pairwise plots in R
+:::
+
+### Import a sample data set
+
+### Explore data
+
+### Make Some Simple Plots
+
+### Calculate Some Values
+
+### Access Data
+
+::: callout-tip
+## Putting it all together
+
+?????
+:::
