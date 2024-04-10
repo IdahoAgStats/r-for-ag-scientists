@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -179,7 +213,7 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#import-a-sample-data-set" id="toc-import-a-sample-data-set" class="nav-link active" data-scroll-target="#import-a-sample-data-set">Import a sample data set</a></li>
+  <li><a href="#import-a-csv-data-set" id="toc-import-a-csv-data-set" class="nav-link active" data-scroll-target="#import-a-csv-data-set">Import a csv data set</a></li>
   <li><a href="#explore-data" id="toc-explore-data" class="nav-link" data-scroll-target="#explore-data">Explore data</a></li>
   <li><a href="#make-some-simple-plots" id="toc-make-some-simple-plots" class="nav-link" data-scroll-target="#make-some-simple-plots">Make Some Simple Plots</a></li>
   <li><a href="#calculate-some-values" id="toc-calculate-some-values" class="nav-link" data-scroll-target="#calculate-some-values">Calculate Some Values</a></li>
@@ -230,8 +264,11 @@ Learning Goals
 </div>
 </div>
 </div>
-<section id="import-a-sample-data-set" class="level3">
-<h3 class="anchored" data-anchor-id="import-a-sample-data-set">Import a sample data set</h3>
+<section id="import-a-csv-data-set" class="level3">
+<h3 class="anchored" data-anchor-id="import-a-csv-data-set">Import a csv data set</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>data1 <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"trial_data.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="explore-data" class="level3">
 <h3 class="anchored" data-anchor-id="explore-data">Explore data</h3>
