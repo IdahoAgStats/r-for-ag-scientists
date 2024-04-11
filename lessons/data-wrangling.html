@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>R for Scientists - Lesson 9: Introduction to Data Wrangling</title>
+<title>R for Scientists - Introduction to Data Wrangling</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -115,11 +115,11 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
 
 
 <link rel="stylesheet" href="../styles.css">
-<meta property="og:title" content="R for Scientists - Lesson 9: Introduction to Data Wrangling">
+<meta property="og:title" content="R for Scientists - Introduction to Data Wrangling">
 <meta property="og:description" content="Homepage for Introduction to R for Scientists, Spring 2023.">
 <meta property="og:image" content="https://idahoagstats.github.io/r-for-ag-scientists/lessons/images/R_intro_logo.png">
 <meta property="og:site_name" content="R for Scientists">
-<meta name="twitter:title" content="R for Scientists - Lesson 9: Introduction to Data Wrangling">
+<meta name="twitter:title" content="R for Scientists - Introduction to Data Wrangling">
 <meta name="twitter:description" content="Homepage for Introduction to R for Scientists, Spring 2023.">
 <meta name="twitter:image" content="https://idahoagstats.github.io/r-for-ag-scientists/lessons/images/R_intro_logo.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -134,7 +134,7 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Lesson 9: Introduction to Data Wrangling</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Introduction to Data Wrangling</li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -231,7 +231,7 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Lesson 9: Introduction to Data Wrangling</h1>
+<h1 class="title">Introduction to Data Wrangling</h1>
 </div>
 
 
@@ -444,7 +444,7 @@ Note
 <div class="cell-output cell-output-stdout">
 <pre><code>new_var
   0   1 
-945 937 </code></pre>
+958 924 </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mutate1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -456,19 +456,19 @@ Note
 5 SWIdahoCereals_HRS_PAR_2016   1     2 10SB0087-B  94.18977        13.053
 6 SWIdahoCereals_HRS_PAR_2016   2     2 10SB0087-B 121.59047        13.794
   test_weight flag row range plot dataset row_position range_new random_yield
-1          NA &lt;NA&gt;  NA    NA   NA example            1        NA     79.43667
-2          NA &lt;NA&gt;  NA    NA   NA example            2        NA    124.56916
-3          NA &lt;NA&gt;  NA    NA   NA example            3        NA     85.56797
-4          NA &lt;NA&gt;  NA    NA   NA example            4        NA    141.31398
-5          NA &lt;NA&gt;  NA    NA   NA example            5        NA     92.81950
-6          NA &lt;NA&gt;  NA    NA   NA example            6        NA    120.79127
+1          NA &lt;NA&gt;  NA    NA   NA example            1        NA     78.86997
+2          NA &lt;NA&gt;  NA    NA   NA example            2        NA    123.52200
+3          NA &lt;NA&gt;  NA    NA   NA example            3        NA     86.45927
+4          NA &lt;NA&gt;  NA    NA   NA example            4        NA    140.69243
+5          NA &lt;NA&gt;  NA    NA   NA example            5        NA     95.37555
+6          NA &lt;NA&gt;  NA    NA   NA example            6        NA    122.33669
   binom_var yield_protein
 1         0      92.52131
 2         1     138.78589
 3         1     100.30958
 4         1     154.92890
 5         0     107.24277
-6         1     135.38447</code></pre>
+6         0     135.38447</code></pre>
 </div>
 </div>
 <p>This created 6 new variables:</p>
