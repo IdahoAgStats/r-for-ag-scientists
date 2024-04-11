@@ -1,5 +1,5 @@
 ---
-title: "Lesson 12: Combining Data Sets"
+title: "Combining Data Sets"
 ---
 
 ::: {.callout-caution collapse="false"}

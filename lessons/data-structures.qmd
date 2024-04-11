@@ -1,5 +1,5 @@
 ---
-title: "Lesson 5: Data Structures"
+title: "Data Structures"
 ---
 
 The longest and most important lesson of them all! These are the foundation of everything you are likely to do R as a scientists. Understanding these will take time and practice, so you may find yourself returning to this page to remind yourself of these data structures.

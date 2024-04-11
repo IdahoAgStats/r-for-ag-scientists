@@ -1,5 +1,5 @@
 ---
-title: "Lesson 2: Vectorizing Operations"
+title: "Vectorizing Operations"
 editor: 
   markdown: 
     wrap: 72

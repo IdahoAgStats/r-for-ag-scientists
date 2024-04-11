@@ -1,5 +1,5 @@
 ---
-title: "Special Lesson 13: Setting up R for Reproducible Research"
+title: "Setting up R for Reproducible Research"
 ---
 
 This lesson assumes you have installed R and RStudio. 

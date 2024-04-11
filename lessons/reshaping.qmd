@@ -1,5 +1,5 @@
 ---
-title: "Lesson 11: Reshaping Data Sets"
+title: "Reshaping Data Sets"
 ---
 
 ::: {.callout-caution collapse="false"}
