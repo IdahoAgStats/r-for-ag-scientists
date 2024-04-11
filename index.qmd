@@ -24,9 +24,10 @@ This workshop is intended for beginner R users. No previous experience in R or a
 
 ### What this workshop will not cover
 
+-   statistical analysis
 -   git, GitHub, or any version control
 -   usage of the terminal (e.g. bash)
--   statistical analysis
+
 
 ### Requirements
 
