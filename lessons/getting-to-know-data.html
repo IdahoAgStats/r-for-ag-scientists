@@ -116,9 +116,11 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
 
 <link rel="stylesheet" href="../styles.css">
 <meta property="og:title" content="R for Scientists - Getting to Know Your Data in R">
+<meta property="og:description" content="Homepage for Introduction to R for Scientists, Spring 2023.">
 <meta property="og:image" content="https://idahoagstats.github.io/r-for-ag-scientists/lessons/images/R_intro_logo.png">
 <meta property="og:site_name" content="R for Scientists">
 <meta name="twitter:title" content="R for Scientists - Getting to Know Your Data in R">
+<meta name="twitter:description" content="Homepage for Introduction to R for Scientists, Spring 2023.">
 <meta name="twitter:image" content="https://idahoagstats.github.io/r-for-ag-scientists/lessons/images/R_intro_logo.png">
 <meta name="twitter:card" content="summary_large_image">
 </head>
@@ -257,6 +259,7 @@ Learning Goals
 <div class="callout-body-container callout-body">
 <p>At the end of this lesson, you should:</p>
 <ul>
+<li>How to import data in R</li>
 <li>know several methods of data exploration in R</li>
 <li>understand how to make cross tabulations of data</li>
 <li>know how to make histograms and pairwise plots in R</li>
@@ -266,12 +269,81 @@ Learning Goals
 </div>
 <section id="import-a-csv-data-set" class="level3">
 <h3 class="anchored" data-anchor-id="import-a-csv-data-set">Import a csv data set</h3>
+<p>This code (“read_csv”) reads a CSV file named “trial_data.csv” and assigns it to a variable named “data1”. The second line of code uses the “head” function to display the first 5 rows of the “data1” data frame.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>data1 <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"trial_data.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>data1 <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"trial_data.csv"</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data1, <span class="dv">5</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">view</span>(data1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>                        trial rep entry    variety     yield grain_protein
+1 SWIdahoCereals_HRS_PAR_2016   1     1   LCS Iron  78.27131        14.250
+2 SWIdahoCereals_HRS_PAR_2016   2     1   LCS Iron 124.19389        14.592
+3 SWIdahoCereals_HRS_PAR_2016   3     1   LCS Iron  85.20458        15.105
+4 SWIdahoCereals_HRS_PAR_2016   4     1   LCS Iron 140.56490        14.364
+5 SWIdahoCereals_HRS_PAR_2016   1     2 10SB0087-B  94.18977        13.053
+  test_weight flag row range plot
+1          NA &lt;NA&gt;  NA    NA   NA
+2          NA &lt;NA&gt;  NA    NA   NA
+3          NA &lt;NA&gt;  NA    NA   NA
+4          NA &lt;NA&gt;  NA    NA   NA
+5          NA &lt;NA&gt;  NA    NA   NA</code></pre>
+</div>
 </div>
 </section>
 <section id="explore-data" class="level3">
 <h3 class="anchored" data-anchor-id="explore-data">Explore data</h3>
+<p>Base R also has some useful functions for quickly exploring dataframes:</p>
+<ul>
+<li>str: Show the structure of an R object, including a dataframe</li>
+<li>summary: Give summaries of each column of a dataframe</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(data1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'data.frame':   1882 obs. of  11 variables:
+ $ trial        : chr  "SWIdahoCereals_HRS_PAR_2016" "SWIdahoCereals_HRS_PAR_2016" "SWIdahoCereals_HRS_PAR_2016" "SWIdahoCereals_HRS_PAR_2016" ...
+ $ rep          : int  1 2 3 4 1 2 3 4 1 2 ...
+ $ entry        : int  1 1 1 1 2 2 2 2 3 3 ...
+ $ variety      : chr  "LCS Iron" "LCS Iron" "LCS Iron" "LCS Iron" ...
+ $ yield        : num  78.3 124.2 85.2 140.6 94.2 ...
+ $ grain_protein: num  14.2 14.6 15.1 14.4 13.1 ...
+ $ test_weight  : num  NA NA NA NA NA NA NA NA NA NA ...
+ $ flag         : chr  NA NA NA NA ...
+ $ row          : logi  NA NA NA NA NA NA ...
+ $ range        : logi  NA NA NA NA NA NA ...
+ $ plot         : logi  NA NA NA NA NA NA ...</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(data1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    trial                rep            entry         variety         
+ Length:1882        Min.   :1.000   Min.   : 1.00   Length:1882       
+ Class :character   1st Qu.:1.000   1st Qu.: 6.00   Class :character  
+ Mode  :character   Median :2.000   Median :11.00   Mode  :character  
+                    Mean   :2.463   Mean   :13.54                     
+                    3rd Qu.:3.000   3rd Qu.:19.00                     
+                    Max.   :4.000   Max.   :49.00                     
+                                                                      
+     yield          grain_protein     test_weight        flag          
+ Min.   :  0.7053   Min.   : 5.348   Min.   :26.50   Length:1882       
+ 1st Qu.: 66.7487   1st Qu.: 8.395   1st Qu.:60.20   Class :character  
+ Median :100.3156   Median : 9.800   Median :61.90   Mode  :character  
+ Mean   : 97.1963   Mean   :10.123   Mean   :61.48                     
+ 3rd Qu.:126.5857   3rd Qu.:11.557   3rd Qu.:63.50                     
+ Max.   :497.8209   Max.   :16.188   Max.   :68.10                     
+ NA's   :1          NA's   :769      NA's   :249                       
+   row           range           plot        
+ Mode:logical   Mode:logical   Mode:logical  
+ NA's:1882      NA's:1882      NA's:1882     
+                                             
+                                             
+                                             
+                                             
+                                             </code></pre>
+</div>
+</div>
 </section>
 <section id="make-some-simple-plots" class="level3">
 <h3 class="anchored" data-anchor-id="make-some-simple-plots">Make Some Simple Plots</h3>

@@ -481,16 +481,16 @@ FYI
 <span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>disease_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   plot score1 score5 score3 score4 score2
-1     a     80     70     10     50    100
-2     b      0     40     10     20      0
-3     c     40     10     70     90     20
-4     d     20     60     60     90     30
-5     e     30     80     10     60     20
-6     f     50     40     40    100     40
-7     g     50      0     70    100     90
-8     h     60     60     20     90     30
-9     i     20      0     40     90      0
-10    j     50     80      0      0     50</code></pre>
+1     a     40     60     10     40    100
+2     b     70     50     50     70      0
+3     c     40    100     10     20     90
+4     d     80     10    100     80      0
+5     e     20     60     50     30     50
+6     f     20     60     90     70     50
+7     g     30     70     10     60     50
+8     h      0     50     10     50     70
+9     i     60    100     80     70     60
+10    j      0     50     80      0     30</code></pre>
 </div>
 </div>
 <p>Data sets exist like this. A person might have a set of 10 experimental plots to evaluate for some trait. The trait assay protocol may require that multiple observations be gathered per plot (from a statistical standpoint, this is a technical replicate, not a true replicate) and then reduced to a single number per plot using a simple mean. Row-wise functions can accomplish this.</p>
@@ -504,16 +504,16 @@ FYI
 # Rowwise: 
    plot  score1 score5 score3 score4 score2 score_final max_score
    &lt;chr&gt;  &lt;int&gt;  &lt;int&gt;  &lt;int&gt;  &lt;int&gt;  &lt;int&gt;       &lt;dbl&gt;     &lt;int&gt;
- 1 a         80     70     10     50    100          90       100
- 2 b          0     40     10     20      0           0         0
- 3 c         40     10     70     90     20          30        40
- 4 d         20     60     60     90     30          25        30
- 5 e         30     80     10     60     20          25        30
- 6 f         50     40     40    100     40          45        50
- 7 g         50      0     70    100     90          70        90
- 8 h         60     60     20     90     30          45        60
- 9 i         20      0     40     90      0          10        20
-10 j         50     80      0      0     50          50        50</code></pre>
+ 1 a         40     60     10     40    100          70       100
+ 2 b         70     50     50     70      0          35        70
+ 3 c         40    100     10     20     90          65        90
+ 4 d         80     10    100     80      0          40        80
+ 5 e         20     60     50     30     50          35        50
+ 6 f         20     60     90     70     50          35        50
+ 7 g         30     70     10     60     50          40        50
+ 8 h          0     50     10     50     70          35        70
+ 9 i         60    100     80     70     60          60        60
+10 j          0     50     80      0     30          15        30</code></pre>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
