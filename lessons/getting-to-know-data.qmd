@@ -38,7 +38,7 @@ View(data1)
 Base R also has some useful functions for quickly exploring dataframes:
 
 -   str: Show the structure of an R object, including a dataframe
--   summary: Give summaries of each column of a datafram
+-   summary: Give summaries of each column of a dataframe
 
 ```{r}
 str(data1)
