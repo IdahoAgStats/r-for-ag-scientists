@@ -31,7 +31,7 @@ view(data1)
 ```{r, echo=FALSE}
 data1 <- read.csv(here::here("data/trial_data.csv"))
 head(data1, 5)
-View(data1)
+#View(data1)
 ```
 ### Explore data
 
