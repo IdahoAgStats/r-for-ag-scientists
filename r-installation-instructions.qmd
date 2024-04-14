@@ -6,7 +6,7 @@ You may already have R installed on your computer. However, if the installation 
 
 ## Install R
 
-First, navigate to the Cloud mirror of the R Project for Statistical computing, and download R](https://cran.rstudio.com/): 
+First, navigate to the Cloud mirror of the R Project for Statistical computing, and download [R](https://cran.rstudio.com/): 
 
 
 ```{r, echo=FALSE}
