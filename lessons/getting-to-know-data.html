@@ -217,6 +217,7 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
   <ul>
   <li><a href="#import-a-csv-data-set" id="toc-import-a-csv-data-set" class="nav-link active" data-scroll-target="#import-a-csv-data-set">Import a csv data set</a></li>
   <li><a href="#explore-data" id="toc-explore-data" class="nav-link" data-scroll-target="#explore-data">Explore data</a></li>
+  <li><a href="#exploring-data-in-r" id="toc-exploring-data-in-r" class="nav-link" data-scroll-target="#exploring-data-in-r">Exploring Data in R</a></li>
   <li><a href="#make-some-simple-plots" id="toc-make-some-simple-plots" class="nav-link" data-scroll-target="#make-some-simple-plots">Make Some Simple Plots</a></li>
   <li><a href="#calculate-some-values" id="toc-calculate-some-values" class="nav-link" data-scroll-target="#calculate-some-values">Calculate Some Values</a></li>
   <li><a href="#access-data" id="toc-access-data" class="nav-link" data-scroll-target="#access-data">Access Data</a></li>
@@ -269,7 +270,7 @@ Learning Goals
 </div>
 <section id="import-a-csv-data-set" class="level3">
 <h3 class="anchored" data-anchor-id="import-a-csv-data-set">Import a csv data set</h3>
-<p>This code (“read_csv”) reads a CSV file named “trial_data.csv” and assigns it to a variable named “data1”. The second line of code uses the “head” function to display the first 5 rows of the “data1” data frame.</p>
+<p>This code (“read_csv”) reads a CSV file named “trial_data.csv” and assigns it to a variable named “data1”. The second line of code uses the “head” function to display the first 5 rows of the “data1” data frame. The view() will open the data set in new RStuido video where you can look up at the rows and columns.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>data1 <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"trial_data.csv"</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -345,8 +346,39 @@ Learning Goals
 </div>
 </div>
 </section>
+<section id="exploring-data-in-r" class="level3">
+<h3 class="anchored" data-anchor-id="exploring-data-in-r">Exploring Data in R</h3>
+<p>To access the data in any of the variables (columns) in our data frame we can use a $ notation. For example, to access the ‘variety’ variable in our data1 data frame we can use the code below. This tells R that the variety variable is contained within the data frame data1.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>data1<span class="sc">$</span>variety</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
 <section id="make-some-simple-plots" class="level3">
 <h3 class="anchored" data-anchor-id="make-some-simple-plots">Make Some Simple Plots</h3>
+<p>Here we are creating a histogram to look at data distribution of the ‘yield’ variable from data1 data frame using a hist() function.</p>
+<p>A boxplot() function in R is used to create a boxplot for the selected variables. In the code chunk below, a boxplot of yield for each replication is createdfrom data1, the xlab and ylab shows the title of x-axis and y-axis, respectively. The main=, gives the title to the graph.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(data1<span class="sc">$</span>yield)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="getting-to-know-data_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the box plot</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(yield <span class="sc">~</span> rep, <span class="at">data =</span> data1,</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">"Yield Graph"</span>,</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">"Rep"</span>,</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">"Yield"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="getting-to-know-data_files/figure-html/unnamed-chunk-5-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
 </section>
 <section id="calculate-some-values" class="level3">
 <h3 class="anchored" data-anchor-id="calculate-some-values">Calculate Some Values</h3>
