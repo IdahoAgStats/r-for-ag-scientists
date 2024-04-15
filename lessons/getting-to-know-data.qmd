@@ -20,7 +20,8 @@ At the end of this lesson, you should:
 ### Import a csv data set
 
 This code ("read_csv") reads a CSV file named "trial_data.csv" and assigns it to a variable named "data1".
-The second line of code uses the "head" function to display the first 5 rows of the "data1" data frame.
+The second line of code uses the "head" function to display the first 5 rows of the "data1" data frame. 
+The view() will open the data set in new RStuido video where you can look up at the rows and columns. 
 ```{r, eval=FALSE}
 data1 <- read.csv("trial_data.csv")
 
@@ -47,14 +48,42 @@ summary(data1)
 ```
 
 
+### Exploring Data in R 
+
+To access the data in any of the variables (columns) in our data frame we can use a $ notation. For example, to access the 'variety' variable in our data1 data frame we can use the code below. This tells R that the variety variable is contained within the data frame data1.
+
+```{r eval=FALSE}
+data1$variety
+
+```
+
+
 ### Make Some Simple Plots
 
+Here we are creating a histogram to look at data distribution of the 'yield' variable from data1 data frame using a hist() function.
+
+A boxplot() function in R is used to create a boxplot for the selected variables. In the code chunk below, a boxplot of yield for each replication is createdfrom data1, the xlab and ylab shows the title of x-axis and y-axis, respectively. The main=, gives the title to the graph.
+
 ```{r}
+hist(data1$yield)
+
+
+# Create the box plot
+boxplot(yield ~ rep, data = data1,
+        main = "Yield Graph",
+        xlab = "Rep",
+        ylab = "Yield")
+
 
 ```
 
 
 ### Calculate Some Values
+```{r}
+
+
+```
+
 
 ### Access Data
 
