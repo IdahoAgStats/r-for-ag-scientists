@@ -49,6 +49,11 @@ summary(data1)
 
 ### Make Some Simple Plots
 
+```{r}
+
+```
+
+
 ### Calculate Some Values
 
 ### Access Data
