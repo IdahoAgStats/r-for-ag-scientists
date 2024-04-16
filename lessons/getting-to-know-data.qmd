@@ -5,7 +5,6 @@ editor:
     wrap: 72
 ---
 
-
 ::: {.callout-caution collapse="false"}
 ## Learning Goals
 
@@ -19,27 +18,35 @@ At the end of this lesson, you should:
 
 ### Import a csv data set
 
-This code ("read_csv") reads a CSV file named "trial_data.csv" and assigns it to a variable named "data1".
-The second line of code uses the "head" function to display the first 5 rows of the "data1" data frame. 
-The view() will open the data set in new RStuido video where you can look up at the rows and columns. 
+This code `read_csv()` reads a CSV file named "trial_data.csv" and
+assigns it to an object named "data1".
+
+The second line of code uses the "head" function to display the first 5
+rows of the "data1" data frame. The `View()` will open the data set in new
+RStuido video where you can look up at the rows and columns.
+
 ```{r, eval=FALSE}
 data1 <- read.csv("trial_data.csv")
 
 head(data1, 5)
-view(data1)
+View(data1)
 ```
+
+
+
 
 ```{r, echo=FALSE}
 data1 <- read.csv(here::here("data/trial_data.csv"))
 head(data1, 5)
 #View(data1)
 ```
+
 ### Explore data
 
-Base R also has some useful functions for quickly exploring dataframes:
+Base R also has some useful functions for quickly exploring data frames:
 
--   str: Show the structure of an R object, including a dataframe
--   summary: Give summaries of each column of a dataframe
+-   `str()`: Show the structure of an R object, including a dataframe
+-   summary: Give summaries of each column of a data frame
 
 ```{r}
 str(data1)
@@ -47,48 +54,58 @@ str(data1)
 summary(data1)
 ```
 
+### Exploring Data in R
 
-### Exploring Data in R 
-
-To access the data in any of the variables (columns) in our data frame we can use a $ notation. For example, to access the 'variety' variable in our data1 data frame we can use the code below. This tells R that the variety variable is contained within the data frame data1.
+To access the data in any of the variables (columns) in our data frame
+we can use a \$ notation. For example, to access the 'variety' variable
+in our data1 data frame we can use the code below. This tells R that the
+variety variable is contained within the data frame data1.
 
 ```{r eval=FALSE}
 data1$variety
 
 ```
 
-
 ### Make Some Simple Plots
 
-Here we are creating a histogram to look at data distribution of the 'yield' variable from data1 data frame using a hist() function.
+Here we are creating a histogram to look at data distribution of the
+'yield' variable from data1 data frame using a `hist()` function.
 
-A boxplot() function in R is used to create a boxplot for the selected variables. In the code chunk below, a boxplot of yield for each replication is createdfrom data1, the xlab and ylab shows the title of x-axis and y-axis, respectively. The main=, gives the title to the graph.
+The `boxplot()` function in R is used to create a boxplot for the selected
+variables. In the code chunk below, a boxplot of yield for each
+replication is createdfrom data1, the xlab and ylab shows the title of
+x-axis and y-axis, respectively. The main=, gives the title to the
+graph.
 
 ```{r}
 hist(data1$yield)
 
+# pairwise plots
 
 # Create the box plot
 boxplot(yield ~ rep, data = data1,
         main = "Yield Graph",
         xlab = "Rep",
         ylab = "Yield")
-
-
 ```
 
-
 ### Calculate Some Values
+
 ```{r}
 
 
 ```
 
+- mention vectorization (give examples)
+- bring up these two data structures: data frame and the vector
+- discuss data types: numeric, character, factor
+
+- pull content from the other lessons and link to those lessons (see example below)
 
 ### Access Data
 
 ::: callout-tip
 ## Putting it all together
 
-?????
+Vectors and data frames are two major object types in R, but there are other types that provide different functionality. You can learn more about them [here](../lessons/data-structures.qmd)
 :::
