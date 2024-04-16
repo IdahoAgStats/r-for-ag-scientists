@@ -270,12 +270,13 @@ Learning Goals
 </div>
 <section id="import-a-csv-data-set" class="level3">
 <h3 class="anchored" data-anchor-id="import-a-csv-data-set">Import a csv data set</h3>
-<p>This code (“read_csv”) reads a CSV file named “trial_data.csv” and assigns it to a variable named “data1”. The second line of code uses the “head” function to display the first 5 rows of the “data1” data frame. The view() will open the data set in new RStuido video where you can look up at the rows and columns.</p>
+<p>This code <code>read_csv()</code> reads a CSV file named “trial_data.csv” and assigns it to an object named “data1”.</p>
+<p>The second line of code uses the “head” function to display the first 5 rows of the “data1” data frame. The <code>View()</code> will open the data set in new RStuido video where you can look up at the rows and columns.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>data1 <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"trial_data.csv"</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data1, <span class="dv">5</span>)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">view</span>(data1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(data1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
@@ -296,10 +297,10 @@ Learning Goals
 </section>
 <section id="explore-data" class="level3">
 <h3 class="anchored" data-anchor-id="explore-data">Explore data</h3>
-<p>Base R also has some useful functions for quickly exploring dataframes:</p>
+<p>Base R also has some useful functions for quickly exploring data frames:</p>
 <ul>
-<li>str: Show the structure of an R object, including a dataframe</li>
-<li>summary: Give summaries of each column of a dataframe</li>
+<li><code>str()</code>: Show the structure of an R object, including a dataframe</li>
+<li>summary: Give summaries of each column of a data frame</li>
 </ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(data1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -355,8 +356,8 @@ Learning Goals
 </section>
 <section id="make-some-simple-plots" class="level3">
 <h3 class="anchored" data-anchor-id="make-some-simple-plots">Make Some Simple Plots</h3>
-<p>Here we are creating a histogram to look at data distribution of the ‘yield’ variable from data1 data frame using a hist() function.</p>
-<p>A boxplot() function in R is used to create a boxplot for the selected variables. In the code chunk below, a boxplot of yield for each replication is createdfrom data1, the xlab and ylab shows the title of x-axis and y-axis, respectively. The main=, gives the title to the graph.</p>
+<p>Here we are creating a histogram to look at data distribution of the ‘yield’ variable from data1 data frame using a <code>hist()</code> function.</p>
+<p>The <code>boxplot()</code> function in R is used to create a boxplot for the selected variables. In the code chunk below, a boxplot of yield for each replication is createdfrom data1, the xlab and ylab shows the title of x-axis and y-axis, respectively. The main=, gives the title to the graph.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(data1<span class="sc">$</span>yield)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
@@ -366,11 +367,13 @@ Learning Goals
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the box plot</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(yield <span class="sc">~</span> rep, <span class="at">data =</span> data1,</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">"Yield Graph"</span>,</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">"Rep"</span>,</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">"Yield"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pairwise plots</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the box plot</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(yield <span class="sc">~</span> rep, <span class="at">data =</span> data1,</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">"Yield Graph"</span>,</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">"Rep"</span>,</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">"Yield"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -382,6 +385,12 @@ Learning Goals
 </section>
 <section id="calculate-some-values" class="level3">
 <h3 class="anchored" data-anchor-id="calculate-some-values">Calculate Some Values</h3>
+<ul>
+<li><p>mention vectorization (give examples)</p></li>
+<li><p>bring up these two data structures: data frame and the vector</p></li>
+<li><p>discuss data types: numeric, character, factor</p></li>
+<li><p>pull content from the other lessons and link to those lessons (see example below)</p></li>
+</ul>
 </section>
 <section id="access-data" class="level3">
 <h3 class="anchored" data-anchor-id="access-data">Access Data</h3>
@@ -395,7 +404,7 @@ Putting it all together
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>?????</p>
+<p>Vectors and data frames are two major object types in R, but there are other types that provide different functionality. You can learn more about them <a href="../lessons/data-structures.html">here</a></p>
 </div>
 </div>
 
