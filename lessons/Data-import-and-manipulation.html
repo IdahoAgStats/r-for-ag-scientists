@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>R for Scientists - Lesson 10: Aggregating &amp; Summarising Data</title>
+<title>R for Scientists - Data import and manipulation in R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,40 +19,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -115,12 +81,10 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
 
 
 <link rel="stylesheet" href="../styles.css">
-<meta property="og:title" content="R for Scientists - Lesson 10: Aggregating &amp; Summarising Data">
-<meta property="og:description" content="Homepage for Introduction to R for Scientists, Spring 2023.">
+<meta property="og:title" content="R for Scientists - Data import and manipulation in R">
 <meta property="og:image" content="https://idahoagstats.github.io/r-for-ag-scientists/lessons/images/R_intro_logo.png">
 <meta property="og:site_name" content="R for Scientists">
-<meta name="twitter:title" content="R for Scientists - Lesson 10: Aggregating &amp; Summarising Data">
-<meta name="twitter:description" content="Homepage for Introduction to R for Scientists, Spring 2023.">
+<meta name="twitter:title" content="R for Scientists - Data import and manipulation in R">
 <meta name="twitter:image" content="https://idahoagstats.github.io/r-for-ag-scientists/lessons/images/R_intro_logo.png">
 <meta name="twitter:card" content="summary_large_image">
 </head>
@@ -134,7 +98,7 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Lesson 10: Aggregating &amp; Summarising Data</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Data import and manipulation in R</li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -211,24 +175,14 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#prep-work" id="toc-prep-work" class="nav-link active" data-scroll-target="#prep-work">Prep Work</a></li>
-  <li><a href="#basic-grouping-aggregation" id="toc-basic-grouping-aggregation" class="nav-link" data-scroll-target="#basic-grouping-aggregation">Basic grouping &amp; aggregation</a></li>
-  <li><a href="#grouping-across-multiple-variables" id="toc-grouping-across-multiple-variables" class="nav-link" data-scroll-target="#grouping-across-multiple-variables">Grouping across multiple variables</a></li>
-  <li><a href="#summarising-across-multiple-variables" id="toc-summarising-across-multiple-variables" class="nav-link" data-scroll-target="#summarising-across-multiple-variables">Summarising across multiple variables</a></li>
-  <li><a href="#row-wise-summaries" id="toc-row-wise-summaries" class="nav-link" data-scroll-target="#row-wise-summaries">Row-wise summaries</a></li>
-  </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/IdahoAgStats/r-for-ag-scientists/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Lesson 10: Aggregating &amp; Summarising Data</h1>
+<h1 class="title">Data import and manipulation in R</h1>
 </div>
 
 
@@ -259,307 +213,22 @@ Learning Goals
 <div class="callout-body-container callout-body">
 <p>At the end of this lesson, you should:</p>
 <ul>
-<li>be able to aggregate data and perform actions on those aggregated data using <code>group_by()</code> + <code>summarise()</code></li>
-<li>understand when to use <code>rowwise()</code> for operations</li>
+<li>How to install packages in R</li>
+<li>know to import different data types in R</li>
+<li>understand how to make changes in data set in R</li>
+<li>Export data in R</li>
 </ul>
 </div>
 </div>
 </div>
-<p>You may find yourself wanting to calculate summary statistics across a grouping variable. To do this, a data set needs to be split up by that variable, a summary statistic calculated, and the resulting data recombined, or ‘split-apply-combine’. There’s some nice tools to do this in the <strong>dplyr</strong> package.</p>
-<section id="prep-work" class="level3">
-<h3 class="anchored" data-anchor-id="prep-work">Prep Work</h3>
-<p>First, load libraries &amp; import data:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>
-Attaching package: 'dplyr'</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following objects are masked from 'package:stats':
-
-    filter, lag</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following objects are masked from 'package:base':
-
-    intersect, setdiff, setequal, union</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>variety_trials <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"trial_data.csv"</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">trial =</span> <span class="fu">gsub</span>(<span class="st">"_H_"</span>, <span class="st">"_H-"</span>, trial)) <span class="sc">%&gt;%</span> </span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">separate</span>(trial, <span class="fu">c</span>(<span class="st">"program"</span>, <span class="st">"crop"</span>, <span class="st">"location"</span>, <span class="st">"year"</span>),</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>                  <span class="at">sep =</span> <span class="st">"_"</span>, <span class="at">remove =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="basic-grouping-aggregation" class="level3">
-<h3 class="anchored" data-anchor-id="basic-grouping-aggregation">Basic grouping &amp; aggregation</h3>
-<p>The <code>group_by</code> will group data and then any statistic can be calculated or summary action can be done on that grouped data using <code>summarise()</code>.</p>
-<p>The basic formula:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>mydata <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(variable) <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="at">new_var =</span> ...)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>This data set has several categorical variables that can be used for grouping:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(variety_trials)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>'data.frame':   1882 obs. of  15 variables:
- $ trial        : chr  "SWIdahoCereals_HRS_PAR_2016" "SWIdahoCereals_HRS_PAR_2016" "SWIdahoCereals_HRS_PAR_2016" "SWIdahoCereals_HRS_PAR_2016" ...
- $ program      : chr  "SWIdahoCereals" "SWIdahoCereals" "SWIdahoCereals" "SWIdahoCereals" ...
- $ crop         : chr  "HRS" "HRS" "HRS" "HRS" ...
- $ location     : chr  "PAR" "PAR" "PAR" "PAR" ...
- $ year         : chr  "2016" "2016" "2016" "2016" ...
- $ rep          : int  1 2 3 4 1 2 3 4 1 2 ...
- $ entry        : int  1 1 1 1 2 2 2 2 3 3 ...
- $ variety      : chr  "LCS Iron" "LCS Iron" "LCS Iron" "LCS Iron" ...
- $ yield        : num  78.3 124.2 85.2 140.6 94.2 ...
- $ grain_protein: num  14.2 14.6 15.1 14.4 13.1 ...
- $ test_weight  : num  NA NA NA NA NA NA NA NA NA NA ...
- $ flag         : chr  NA NA NA NA ...
- $ row          : logi  NA NA NA NA NA NA ...
- $ range        : logi  NA NA NA NA NA NA ...
- $ plot         : logi  NA NA NA NA NA NA ...</code></pre>
-</div>
-</div>
-<p>The function <code>tally()</code> counts observations:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>variety_trials <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(trial) <span class="sc">%&gt;%</span> <span class="fu">tally</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 28 × 2
-   trial                           n
-   &lt;chr&gt;                       &lt;int&gt;
- 1 SWIdahoCereals_H-S_PAR_2018    88
- 2 SWIdahoCereals_H-S_WEI_2018    96
- 3 SWIdahoCereals_H-W_PAR_2017   120
- 4 SWIdahoCereals_H-W_PAR_2018    80
- 5 SWIdahoCereals_H-W_WEI_2018    48
- 6 SWIdahoCereals_HRS_PAR_2016    60
- 7 SWIdahoCereals_HRS_PAR_2017    32
- 8 SWIdahoCereals_HRS_PAR_2019    60
- 9 SWIdahoCereals_HRS_PAR_2020    48
-10 SWIdahoCereals_HRW_PAR_2019    44
-# ℹ 18 more rows</code></pre>
-</div>
-</div>
-<p>Let’s group by crop and pull out the mean yield and standard deviation.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>yield_crop <span class="ot">&lt;-</span> variety_trials <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(crop) <span class="sc">%&gt;%</span> </span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">yield_mean =</span> <span class="fu">mean</span>(yield, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">yield_sd =</span> <span class="fu">sd</span>(yield, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">yield_min =</span> <span class="fu">min</span>(yield, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">yield_max =</span> <span class="fu">max</span>(yield, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">total =</span> <span class="fu">n</span>())</span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>yield_crop</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 8 × 6
-  crop  yield_mean yield_sd yield_min yield_max total
-  &lt;chr&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt; &lt;int&gt;
-1 H-S         57.6     34.3    16.6        119.   184
-2 H-W         84.4     42.2     4.17       199.   248
-3 HRS        111.      38.5    56.0        498.   200
-4 HRW        136.      45.0    66.2        197.   100
-5 HWS        116.      32.0    56.6        253.   132
-6 HWW        115.      38.5    68.7        192.    76
-7 SWS        104.      42.4    12.1        219.   316
-8 SWW         94.0     43.9     0.705      201.   626</code></pre>
-</div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><code>summarise()</code> only returns a single value back for each group. If you want more than that (e.g.&nbsp;to run a linear model on each group), there are other tools for that. This is intended to be addressed in Lesson 16, repeating actions.</p>
-</div>
-</div>
-</section>
-<section id="grouping-across-multiple-variables" class="level3">
-<h3 class="anchored" data-anchor-id="grouping-across-multiple-variables">Grouping across multiple variables</h3>
-<p>Let’s examine how many crops and years there are using the <code>table()</code> command:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(variety_trials<span class="sc">$</span>crop, variety_trials<span class="sc">$</span>year)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>     
-      2016 2017 2018 2019 2020
-  H-S    0    0  184    0    0
-  H-W    0  120  128    0    0
-  HRS   60   32    0   60   48
-  HRW    0    0    0   44   56
-  HWS   44   32    0   24   32
-  HWW    0    0    0   44   32
-  SWS   40   40  132   56   48
-  SWW    0  160  206  108  152</code></pre>
-</div>
-</div>
-<p>This tells us how many rows of data occur for each variable combination. This information can help inform us how to group information.</p>
-<p>You can group by as many conditions as you want:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>variety_trials <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(crop, year) <span class="sc">%&gt;%</span> </span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">protein_na =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(grain_protein))) <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(<span class="fu">desc</span>(protein_na))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>`summarise()` has grouped output by 'crop'. You can override using the
-`.groups` argument.</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 24 × 3
-# Groups:   crop [8]
-   crop  year  protein_na
-   &lt;chr&gt; &lt;chr&gt;      &lt;int&gt;
- 1 SWW   2017         160
- 2 H-W   2018         128
- 3 H-W   2017         120
- 4 H-S   2018          96
- 5 SWW   2018          90
- 6 SWS   2018          64
- 7 SWS   2017          40
- 8 HRS   2017          32
- 9 HWS   2017          32
-10 HRW   2019           4
-# ℹ 14 more rows</code></pre>
-</div>
-</div>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-FYI
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>You can group by a numeric variable. If you do that, <strong><em>dplyr</em></strong> will look for common values to group observations. This can be successful when there are repeat ‘integers’ (e.g.&nbsp;year, replicate), but if all values are unique (which is often the case with floating point numbers), then the number of groups is the number of observations.</p>
-</div>
-</div>
-</section>
-<section id="summarising-across-multiple-variables" class="level3">
-<h3 class="anchored" data-anchor-id="summarising-across-multiple-variables">Summarising across multiple variables</h3>
-<p>Use <code>across()</code> to conduct the same summary action(s) across multiple columns.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>variety_trials <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(trial) <span class="sc">%&gt;%</span> </span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">c</span>(yield, grain_protein), <span class="sc">~</span> <span class="fu">mean</span>(.x, <span class="at">na.rm =</span> T)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 28 × 3
-   trial                       yield grain_protein
-   &lt;chr&gt;                       &lt;dbl&gt;         &lt;dbl&gt;
- 1 SWIdahoCereals_H-S_PAR_2018  91.0         10.9 
- 2 SWIdahoCereals_H-S_WEI_2018  27.0        NaN   
- 3 SWIdahoCereals_H-W_PAR_2017 121.         NaN   
- 4 SWIdahoCereals_H-W_PAR_2018  63.1        NaN   
- 5 SWIdahoCereals_H-W_WEI_2018  28.4        NaN   
- 6 SWIdahoCereals_HRS_PAR_2016 111.          14.3 
- 7 SWIdahoCereals_HRS_PAR_2017 150.         NaN   
- 8 SWIdahoCereals_HRS_PAR_2019 106.          11.7 
- 9 SWIdahoCereals_HRS_PAR_2020  90.6         12.7 
-10 SWIdahoCereals_HRW_PAR_2019  88.2          8.20
-# ℹ 18 more rows</code></pre>
-</div>
-</div>
-</section>
-<section id="row-wise-summaries" class="level3">
-<h3 class="anchored" data-anchor-id="row-wise-summaries">Row-wise summaries</h3>
-<p>Many operations in R are already vectorized across rows, but when they are not, you can use <code>rowwise()</code> to implement that.</p>
-<p>Field disease scoring may benefit from this system. Often, several measurements are made on a single experimental unit (usually a plot), and those measurements are averaged together to create a final disease incidence score. Here is how to do that with <code>rowwise()</code>.</p>
-<p>First, simulate a set of disease scores between 0 and 100 (indicating percent infection).</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># step 1: generate a set of possible scores: 0, 10, 20,...100</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>score_range <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">10</span> <span class="sc">*</span> <span class="dv">10</span>L)</span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="co"># sample those possible scores to generate 50 data points</span></span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>scores <span class="ot">&lt;-</span> <span class="fu">sample</span>(score_range, <span class="dv">50</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="co"># arrange those 50 data points into a datafrmae of 5 columns, each column reflecting 10 observations</span></span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>disease_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">plot =</span> letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>],</span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>                         <span class="at">score1 =</span> scores[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>],</span>
-<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>                         <span class="at">score5 =</span> scores[<span class="dv">11</span><span class="sc">:</span><span class="dv">20</span>],</span>
-<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>                         <span class="at">score3 =</span> scores[<span class="dv">21</span><span class="sc">:</span><span class="dv">30</span>],</span>
-<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>                         <span class="at">score4 =</span> scores[<span class="dv">31</span><span class="sc">:</span><span class="dv">40</span>],</span>
-<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>                         <span class="at">score2 =</span> scores[<span class="dv">41</span><span class="sc">:</span><span class="dv">50</span>])</span>
-<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>disease_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>   plot score1 score5 score3 score4 score2
-1     a     30     60     30     70     50
-2     b     80     70     90    100     90
-3     c     20     40     70    100     60
-4     d     60      0     10     90     70
-5     e     30      0     90    100     70
-6     f     80     20     10     30     50
-7     g     60     20     20     70     50
-8     h      0     70     80     80     20
-9     i     40     90     80     60     10
-10    j     80     40     80    100     10</code></pre>
-</div>
-</div>
-<p>Data sets exist like this. A person might have a set of 10 experimental plots to evaluate for some trait. The trait assay protocol may require that multiple observations be gathered per plot (from a statistical standpoint, this is a technical replicate, not a true replicate) and then reduced to a single number per plot using a simple mean. Row-wise functions can accomplish this.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>disease_df_sum <span class="ot">&lt;-</span> disease_df <span class="sc">%&gt;%</span> <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">score_final =</span> <span class="fu">mean</span>(score1<span class="sc">:</span>score2),</span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">max_score =</span> <span class="fu">max</span>(score1<span class="sc">:</span>score2))</span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>disease_df_sum</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 10 × 8
-# Rowwise: 
-   plot  score1 score5 score3 score4 score2 score_final max_score
-   &lt;chr&gt;  &lt;int&gt;  &lt;int&gt;  &lt;int&gt;  &lt;int&gt;  &lt;int&gt;       &lt;dbl&gt;     &lt;int&gt;
- 1 a         30     60     30     70     50          40        50
- 2 b         80     70     90    100     90          85        90
- 3 c         20     40     70    100     60          40        60
- 4 d         60      0     10     90     70          65        70
- 5 e         30      0     90    100     70          50        70
- 6 f         80     20     10     30     50          65        80
- 7 g         60     20     20     70     50          55        60
- 8 h          0     70     80     80     20          10        20
- 9 i         40     90     80     60     10          25        40
-10 j         80     40     80    100     10          45        80</code></pre>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Putting it all together
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>It is possible use <code>mutate()</code> or <code>summary()</code> commands on a grouped data frame. A <code>summary()</code> call will return one value per group + summary function (e.g.&nbsp;<code>mean</code>). A <code>mutate()</code> call will return one value per row + summary function. All the previous examples in this lesson used <code>summary()</code>. Here is one example using <code>mutate()</code>:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>variety_trials <span class="sc">%&gt;%</span> </span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(trial, rep, variety, crop, yield) <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(crop) <span class="sc">%&gt;%</span></span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">relative_yield =</span> yield<span class="sc">/</span><span class="fu">mean</span>(yield, <span class="at">na.rm=</span><span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(yield)) <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">15</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 15 × 6
-# Groups:   crop [6]
-   trial                         rep variety        crop  yield relative_yield
-   &lt;chr&gt;                       &lt;int&gt; &lt;chr&gt;          &lt;chr&gt; &lt;dbl&gt;          &lt;dbl&gt;
- 1 SWIdahoCereals_HRS_PAR_2017     1 WB9411         HRS    498.           4.50
- 2 SWIdahoCereals_HRS_PAR_2017     3 12SB0197       HRS    297.           2.68
- 3 SWIdahoCereals_HWS_PAR_2017     3 Dayn           HWS    253.           2.18
- 4 SWIdahoCereals_SWS_PAR_2017     1 UI Stone       SWS    219.           2.12
- 5 SWIdahoCereals_SWS_PAR_2017     4 UI Stone       SWS    217.           2.09
- 6 SWIdahoCereals_SWS_PAR_2017     4 WA8277         SWS    204.           1.97
- 7 SWIdahoCereals_SWW_PAR_2017     1 Bobtail        SWW    201.           2.14
- 8 SWIdahoCereals_H-W_PAR_2017     3 WA8269         H-W    199.           2.36
- 9 SWIdahoCereals_HWS_PAR_2017     1 LCS Star       HWS    198.           1.71
-10 SWIdahoCereals_HRW_PAR_2020     2 LCS Jet        HRW    197.           1.45
-11 SWIdahoCereals_HRW_PAR_2020     3 LCS Rocket     HRW    196.           1.44
-12 SWIdahoCereals_SWW_PAR_2017     2 Agripro Legion SWW    194.           2.06
-13 SWIdahoCereals_H-W_PAR_2017     4 NSA10-2196     H-W    193.           2.29
-14 SWIdahoCereals_HWS_PAR_2017     4 LCS Star       HWS    193.           1.66
-15 SWIdahoCereals_HRW_PAR_2020     2 Scorpio        HRW    193.           1.42</code></pre>
-</div>
-</div>
-<p>In this case, the mean value used for calculating ‘relative_yield’ is the group mean.</p>
-</div>
-</div>
+<ul>
+<li>Installing and loading packages in R</li>
+<li>Data import in r</li>
+<li>Data wrangling + data type coercion</li>
+<li>Data Export in R</li>
+</ul>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -1123,7 +792,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
 <p><a href="https://www.uidaho.edu"><img src="https://github.com/IdahoAgStats/r-for-ag-scientists/raw/main/images/UI_Main_horizontal_4c.png" class="img-fluid" alt="Uidaho Logo" width="200"></a></p>
-<div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/IdahoAgStats/r-for-ag-scientists/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></div>
+<div class="toc-actions"><ul><li><a href="https://github.com/IdahoAgStats/r-for-ag-scientists/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p><a href="https://quarto.org/">Quarto Website</a>, template by <a href="https://github.com/sta210-s22/website">Mine Çetinkaya-Rundel</a></p>
 </div>
