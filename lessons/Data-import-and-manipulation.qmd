@@ -5,23 +5,38 @@ editor:
     wrap: 72
 ---
 
-
 ::: {.callout-caution collapse="false"}
 ## Learning Goals
 
 At the end of this lesson, you should:
 
--   How to install packages in R
+-   How to install and load packages in R
 -   know to import different data types in R
 -   understand how to make changes in data set in R
 -   Export data in R
 :::
 
+### Install and Load Packages
+
+1.  To install packages:
+
+You can either use `install.pcakages()` function
+
+```{r}
+install.packages("dplyr")   # install 'dplyr' package
+```
 
 
+Or click Tools \> Install packages. Write the package name in dialog,
+then click *install*. 
+
+2.  To Load packages:
+
+Once you install the package, you need to load it so that it becomes available to use. Simply use `library()` function.
+```{r}
+library(dplyr)  # load 'dplyr' package
+```
 
 
-- Installing and loading packages in R
-- Data import in r
-- Data wrangling + data type coercion
-- Data Export in R 
+- Installing and loading packages in R - Data
+import in r - Data wrangling + data type coercion - Data Export in R
