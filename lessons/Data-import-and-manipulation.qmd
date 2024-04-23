@@ -1,0 +1,27 @@
+---
+title: "Data import and manipulation in R"
+editor: 
+  markdown: 
+    wrap: 72
+---
+
+
+::: {.callout-caution collapse="false"}
+## Learning Goals
+
+At the end of this lesson, you should:
+
+-   How to install packages in R
+-   know to import different data types in R
+-   understand how to make changes in data set in R
+-   Export data in R
+:::
+
+
+
+
+
+- Installing and loading packages in R
+- Data import in r
+- Data wrangling + data type coercion
+- Data Export in R 
