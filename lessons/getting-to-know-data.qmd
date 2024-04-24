@@ -70,9 +70,8 @@ Here we are creating a histogram to look at data distribution of the
 
 The `boxplot()` function in R is used to create a boxplot for the
 selected variables. In the code chunk below, a boxplot of yield for each
-replication is createdfrom data1, the xlab and ylab shows the title of
-x-axis and y-axis, respectively. The main=, gives the title to the
-graph.
+replication is created, the xlab and ylab shows the title of x-axis and
+y-axis, respectively. The `main=`, gives the title to the graph.
 
 ```{r}
 hist(data1$yield)
@@ -97,7 +96,7 @@ boxplot(yield ~ rep, data = data1,
 
 Previously, we looked at how to a import a dataset in R. Now we need to
 consider how those types are arranged into complex structures (that is,
-objects) we can access and manipulate.
+objects) that we can access and manipulate.
 
 There are several data structures commonly used in R:
 
