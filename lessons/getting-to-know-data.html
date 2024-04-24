@@ -224,6 +224,7 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
   <ul class="collapse">
   <li><a href="#object-types" id="toc-object-types" class="nav-link" data-scroll-target="#object-types">Object types</a></li>
   <li><a href="#the-data-frame" id="toc-the-data-frame" class="nav-link" data-scroll-target="#the-data-frame">The data frame</a></li>
+  <li><a href="#install-and-load-packages" id="toc-install-and-load-packages" class="nav-link" data-scroll-target="#install-and-load-packages">Install and Load Packages</a></li>
   <li><a href="#access-data" id="toc-access-data" class="nav-link" data-scroll-target="#access-data">Access Data</a></li>
   </ul></li>
   </ul>
@@ -874,13 +875,54 @@ Things to note
 <div class="cell">
 <div class="sourceCode cell-code" id="cb88"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a>d1[<span class="dv">3</span>, <span class="dv">2</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</section>
+</section>
+<section id="install-and-load-packages" class="level3">
+<h3 class="anchored" data-anchor-id="install-and-load-packages">Install and Load Packages</h3>
+<ol type="1">
+<li>To install packages:</li>
+</ol>
+<p>You can either use <code>install.pcakages()</code> function</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb89"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a href="#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"dplyr"</span>)   <span class="co"># install 'dplyr' package</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>The following package(s) will be installed:
+- dplyr [1.1.4]
+These packages will be installed into "~/work/r-for-ag-scientists/r-for-ag-scientists/renv/library/R-4.3/x86_64-pc-linux-gnu".
+
+# Installing packages --------------------------------------------------------
+- Installing dplyr ...                          OK [linked from cache]
+Successfully installed 1 package in 5.4 milliseconds.</code></pre>
+</div>
+</div>
+<p>Or click Tools &gt; Install packages. Write the package name in dialog, then click <em>install</em>.</p>
+<ol start="2" type="1">
+<li>To Load packages:</li>
+</ol>
+<p>Once you install the package, you need to load it so that it becomes available to use. Simply use <code>library()</code> function.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb91"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)  <span class="co"># load 'dplyr' package</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'dplyr'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:stats':
+
+    filter, lag</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union</code></pre>
+</div>
+</div>
 <ol start="2" type="1">
 <li><p>mention vectorization (give examples)</p></li>
 <li><p>bring up these two data structures: data frame and the vector</p></li>
 <li><p>discuss data types: numeric, character, factor</p></li>
 <li><p>pull content from the other lessons and link to those lessons (see example below)</p></li>
 </ol>
-</section>
 </section>
 <section id="access-data" class="level3">
 <h3 class="anchored" data-anchor-id="access-data">Access Data</h3>
