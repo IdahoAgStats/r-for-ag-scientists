@@ -54,9 +54,9 @@ summary(data1)
 ### Exploring Data in R
 
 To access the data in any of the variables (columns) in our data frame
-we can use a \$ notation. For example, to access the 'variety' variable
-in our data1 data frame we can use the code below. This tells R that the
-variety variable is contained within the data frame data1.
+we can use a `$` notation. For example, to access the 'variety' variable
+in our data1, we can use the code below. This tells R that the variety
+variable is contained within the data frame data1.
 
 ```{r eval=FALSE}
 data1$variety
@@ -66,7 +66,7 @@ data1$variety
 ### Make Some Simple Plots
 
 Here we are creating a histogram to look at data distribution of the
-'yield' variable from data1 data frame using a `hist()` function.
+'yield' variable from data1 using a `hist()` function.
 
 The `boxplot()` function in R is used to create a boxplot for the
 selected variables. In the code chunk below, a boxplot of yield for each
@@ -131,30 +131,38 @@ To find out how many items a vector has, use the `length()` function:
 ```{r}
 length(v1); length(v2); length(v3)
 ```
-2.  Sort a Vector 
-To sort items in a vector alphabetically or numerically, use the `sort()` function:
+
+2.  Sort a Vector To sort items in a vector alphabetically or
+    numerically, use the `sort()` function:
+
 ```{r}
 sort(v2)  # sort a string
 sort(v3)  # Sort numbers
 ```
 
+3.  Access Vectors You can access the vector items by referring to its
+    index number inside brackets \[\]. The first item has index 1, the
+    second item has index 2, and so on: Multiple item can also be
+    indexed: `x[c(1,5)]`. If an index position, it repeated, that item
+    will be returned as often as it is called:
 
-3.  Access Vectors
-You can access the vector items by referring to its index number inside brackets []. The first item has index 1, the second item has index 2, and so on:
-Multiple item can also be indexed: `x[c(1,5)]`. If an index position, it repeated, that item will be returned as often as it is called:
 ```{r}
 v1[1]
 v1[5]
 v1[c(1,5)]
 v1[c(1,1)]
 ```
-You can also use negative index numbers to access all items except the ones specified:
+
+You can also use negative index numbers to access all items except the
+ones specified:
+
 ```{r}
 v1[-1]
 ```
 
-4. Change an Item
-To change the value of a specific item, refer to the index number:
+4.  Change an Item To change the value of a specific item, refer to the
+    index number:
+
 ```{r}
 v2 <- c("apples", "pears", "oranges")
 
@@ -164,18 +172,20 @@ v2[2] <- "banana"
 # Print fruits
 v2
 ```
+
 ### Object types
 
-The most common object types used includes numeric, logical,and character.
+The most common object types used includes numeric, logical,and
+character.
 
-- Numeric
-Previously, we created an object in R that was a collection or sequence of numbers. These numbers are technically integers
+-   Numeric Previously, we created an object in R that was a collection
+    or sequence of numbers. These numbers are technically integers
 
 ```{r}
 x1 <- 1:10
 ```
 
-- Character
+-   Character
 
 These can also be created for character variables:
 
@@ -184,7 +194,7 @@ x2 <- "apple"
 x3 <- c("orange", "banana")
 ```
 
-- Logical
+-   Logical
 
 consists of TRUE and FALSE values:
 
@@ -193,6 +203,7 @@ x4 <- c(TRUE, FALSE, FALSE, TRUE)
 ```
 
 Check the type for each R object
+
 ```{r}
  class(x1)
  class(x2)
@@ -200,8 +211,8 @@ Check the type for each R object
  class(x4)
 ```
 
-
 Objects can be coerced into different types, for example:
+
 ```{r}
 x8 <- c(8, 9.2)
 x9 <- c(0, 0, 0, 0)
@@ -222,7 +233,9 @@ class(x11)
 ```
 :::
 
-Here, x8, x9, x10 are numeric and x11 is character. These can coerced using the functions below:
+Here, x8, x9, x10 are numeric and x11 is character. These can coerced
+using the functions below:
+
 ```{r, eval=FALSE}
 as.character(x8)
 as.logical(x10)
@@ -230,13 +243,18 @@ as.numeric(x11)
 ```
 
 ::: callout-note
-For more information how data types are assigned in R and methods of coercing into differebt types can be assessed [here](../lessons/data-types.qmd). 
+For more information how data types are assigned in R and methods of
+coercing into differebt types can be assessed
+[here](../lessons/data-types.qmd).
 :::
-
 
 ### The data frame
 
-A collection of vectors all of the name length. Each vector is a single data type, but different columns can be different data types. This is similar to a typical workbook you might open in Excel or another spreadsheet program. These can be only one column wide, but they often consist of more than that.
+A collection of vectors all of the name length. Each vector is a single
+data type, but different columns can be different data types. This is
+similar to a typical workbook you might open in Excel or another
+spreadsheet program. These can be only one column wide, but they often
+consist of more than that.
 
 ```{r}
 d1 <- data.frame(var1 = 1:5,
@@ -245,17 +263,21 @@ d1 <- data.frame(var1 = 1:5,
 d1
 ```
 
-Notes that is a single value is supplied for a column, it will be repeated for the entire column.
+Notes that is a single value is supplied for a column, it will be
+repeated for the entire column.
 
 A data frame has attributes for:
 
 -   `nrow` number of rows
 -   `ncol` number of columns
 -   `colnames` column names
--   `rownames` row names (if none are provided, R will generate integer row names starting at 1)
+-   `rownames` row names (if none are provided, R will generate integer
+    row names starting at 1)
 
 ::: callout-note
-While duplicate column names in a data frame are allowed, they are not advised, and may throw an error during data import, depending on the import function used.
+While duplicate column names in a data frame are allowed, they are not
+advised, and may throw an error during data import, depending on the
+import function used.
 :::
 
 Check the number of rows and columns:
@@ -274,9 +296,14 @@ colnames(d1)
 ```
 
 ::: callout-note
-The `rownames` attribute can be set, but if it is not, it is automatically created within R from 1 to the total number of rows. Row names are a tricky attribute than many packages in R do not support. A function may toss out your row names without any warning!
+The `rownames` attribute can be set, but if it is not, it is
+automatically created within R from 1 to the total number of rows. Row
+names are a tricky attribute than many packages in R do not support. A
+function may toss out your row names without any warning!
 
-In general, I do not recommend setting the row names attribute in data frames to anything other than the default values unless a package function specifically requires it.
+In general, I do not recommend setting the row names attribute in data
+frames to anything other than the default values unless a package
+function specifically requires it.
 :::
 
 What does `length(d1)` return? How about `names(d1)`?
@@ -287,17 +314,24 @@ We can look at the overall structure of a data.frame with `View()`:
 View(d1)
 ```
 
-If a particularly large file is loaded into R, using `View()` may be very slow (if you have a large number of rows) and provide an incomplete view (if you have a large number of columns). In that case, you can use `str()` to look at a data frame's structure:
+If a particularly large file is loaded into R, using `View()` may be
+very slow (if you have a large number of rows) and provide an incomplete
+view (if you have a large number of columns). In that case, you can use
+`str()` to look at a data frame's structure:
 
 ```{r}
 str(d1)
 ```
 
-***The data frame is the most common data structure scientists use in R***
+***The data frame is the most common data structure scientists use in
+R***
 
 #### Accessing items
 
-Like vectors, data frames can be indexed by position, except now we have two dimensions to consider. You can extract individual elements in a data frame by references the row and column position, `my_dataframe[row, column]`.
+Like vectors, data frames can be indexed by position, except now we have
+two dimensions to consider. You can extract individual elements in a
+data frame by references the row and column position,
+`my_dataframe[row, column]`.
 
 -   Extract the items located in the first 2 row2 and last 2 columns:
 
@@ -307,7 +341,10 @@ Like vectors, data frames can be indexed by position, except now we have two dim
 knitr::include_graphics("../images/index_ex1.png")
 ```
 
-*(This graphic is an overlay of green over blue, creating a dark teal color. The green represents rows indexed, the blue is columns indexed and the teal is the intersection between those two. If a color is not visible, that is because it is under the teal overlay.)*
+*(This graphic is an overlay of green over blue, creating a dark teal
+color. The green represents rows indexed, the blue is columns indexed
+and the teal is the intersection between those two. If a color is not
+visible, that is because it is under the teal overlay.)*
 
 ```{r}
 d1[1:2, 2:3]
@@ -337,7 +374,8 @@ d1[ ,1]
 
 *When the row position is left empty, all rows are returned*
 
--   Extract the values located in the first 2 rows and first two columns:
+-   Extract the values located in the first 2 rows and first two
+    columns:
 
 ```{r, echo=FALSE,out.height="50%",out.width="50%"}
 knitr::include_graphics("../images/index_ex4.png")
@@ -370,20 +408,26 @@ d1[-(1:2),  ]
 ::: callout-note
 ## Things to note
 
-Indexing accepts numeric/integer vectors, so you can use a sequence (`3:10`), or concatenated positions (`c(1, 2, 5, 10)`), or a combination of both (`c(1:10, 13)`).
+Indexing accepts numeric/integer vectors, so you can use a sequence
+(`3:10`), or concatenated positions (`c(1, 2, 5, 10)`), or a combination
+of both (`c(1:10, 13)`).
 
-When indexing positions in a vector or data frame (or anything else), the amount of white space does not affect the outcome. These are equivalent: `d[1,2]`, `d[1, 2]`, `d[ 1, 2]`
+When indexing positions in a vector or data frame (or anything else),
+the amount of white space does not affect the outcome. These are
+equivalent: `d[1,2]`, `d[1, 2]`, `d[ 1, 2]`
 :::
 
 #### Column Referencing
 
-Data in R data frames can also be referred to by their column names using the notation `dataframe$column_name`:
+Data in R data frames can also be referred to by their column names
+using the notation `dataframe$column_name`:
 
 ```{r}
 d1$var1
 ```
 
-The data are returned as a vector (with the typical attributes of a vector: length and names).
+The data are returned as a vector (with the typical attributes of a
+vector: length and names).
 
 This can also be used to create a new column in the data frame:
 
@@ -391,7 +435,8 @@ This can also be used to create a new column in the data frame:
 d1$var4 <- 0:-4
 ```
 
-In this example, a new column called "var4" was created, consisting of sequence numbers from zero to -4.
+In this example, a new column called "var4" was created, consisting of
+sequence numbers from zero to -4.
 
 ```{r, echo=FALSE}
 d1
@@ -399,14 +444,17 @@ d1
 
 #### Value replacement
 
-There are likely to be moments when you want to replace values in a data frame or vector with something else. You can do that with indexing and variable assignment.
+There are likely to be moments when you want to replace values in a data
+frame or vector with something else. You can do that with indexing and
+variable assignment.
 
-Let's image that we want to assign the third value in the second column as `NA`. First, we index the that position, then we assign a value to it (`NA` in this case):
+Let's image that we want to assign the third value in the second column
+as `NA`. First, we index the that position, then we assign a value to it
+(`NA` in this case):
 
 ```{r}
 d1[3, 2] <- NA
 ```
-
 
 ### Install and Load Packages
 
@@ -418,21 +466,17 @@ You can either use `install.pcakages()` function
 install.packages("dplyr")   # install 'dplyr' package
 ```
 
-
 Or click Tools \> Install packages. Write the package name in dialog,
-then click *install*. 
+then click *install*.
 
 2.  To Load packages:
 
-Once you install the package, you need to load it so that it becomes available to use. Simply use `library()` function.
+Once you install the package, you need to load it so that it becomes
+available to use. Simply use `library()` function.
+
 ```{r}
 library(dplyr)  # load 'dplyr' package
 ```
-
-
-
-
-
 
 2.  mention vectorization (give examples)
 
