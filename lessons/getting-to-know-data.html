@@ -355,14 +355,14 @@ Learning Goals
 </section>
 <section id="exploring-data-in-r" class="level3">
 <h3 class="anchored" data-anchor-id="exploring-data-in-r">Exploring Data in R</h3>
-<p>To access the data in any of the variables (columns) in our data frame we can use a $ notation. For example, to access the ‘variety’ variable in our data1 data frame we can use the code below. This tells R that the variety variable is contained within the data frame data1.</p>
+<p>To access the data in any of the variables (columns) in our data frame we can use a <code>$</code> notation. For example, to access the ‘variety’ variable in our data1, we can use the code below. This tells R that the variety variable is contained within the data frame data1.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>data1<span class="sc">$</span>variety</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="make-some-simple-plots" class="level3">
 <h3 class="anchored" data-anchor-id="make-some-simple-plots">Make Some Simple Plots</h3>
-<p>Here we are creating a histogram to look at data distribution of the ‘yield’ variable from data1 data frame using a <code>hist()</code> function.</p>
+<p>Here we are creating a histogram to look at data distribution of the ‘yield’ variable from data1 using a <code>hist()</code> function.</p>
 <p>The <code>boxplot()</code> function in R is used to create a boxplot for the selected variables. In the code chunk below, a boxplot of yield for each replication is createdfrom data1, the xlab and ylab shows the title of x-axis and y-axis, respectively. The main=, gives the title to the graph.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(data1<span class="sc">$</span>yield)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -892,7 +892,7 @@ These packages will be installed into "~/work/r-for-ag-scientists/r-for-ag-scien
 
 # Installing packages --------------------------------------------------------
 - Installing dplyr ...                          OK [linked from cache]
-Successfully installed 1 package in 5.4 milliseconds.</code></pre>
+Successfully installed 1 package in 5.3 milliseconds.</code></pre>
 </div>
 </div>
 <p>Or click Tools &gt; Install packages. Write the package name in dialog, then click <em>install</em>.</p>
