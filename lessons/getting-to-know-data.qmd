@@ -408,6 +408,31 @@ d1[3, 2] <- NA
 ```
 
 
+### Install and Load Packages
+
+1.  To install packages:
+
+You can either use `install.pcakages()` function
+
+```{r}
+install.packages("dplyr")   # install 'dplyr' package
+```
+
+
+Or click Tools \> Install packages. Write the package name in dialog,
+then click *install*. 
+
+2.  To Load packages:
+
+Once you install the package, you need to load it so that it becomes available to use. Simply use `library()` function.
+```{r}
+library(dplyr)  # load 'dplyr' package
+```
+
+
+
+
+
 
 2.  mention vectorization (give examples)
 
