@@ -1,5 +1,6 @@
 
-### Repo for Introduction to R for Ag Scientists
+### Repo for Introduction to R for Ag Scientists 
+*UIdaho-CALS version*
 
 
 https://idahoagstats.github.io/r-for-ag-scientists/
@@ -7,19 +8,9 @@ https://idahoagstats.github.io/r-for-ag-scientists/
 
 #### Course progression:
 
-* Main goal: teach lessons 1-13
-* If time is running out, skip lesson 14, do lesson 15, then decide if there is time to cover 14 or lesson 16. Poll the class to see what they want. 
-* Lessons 3, 6 and 12 are special lessons that are lecture-based (no live coding) and to impart larger lessons on R programming (RStudio, R functions & documentation, reproducible research)
-* in lessons 01 & 02, use the console 
-* introduce and use .R files for lessons 14 & 15
-* Introduce .qmd files in lesson 03 and use that for the remainder of the class (except the plotting lessons)
-* regarding teaching quarto: 
-  - first start with the example file provided for lessons 04 & 05
-  - for lesson 07, have them make a new quarto file. Mention the visual editor and yaml header
-  
-* Starting at lesson 13, switch to using R on people's systems (rather than Posit cloud)
-  * step 1: make an R project - in a dedicated directory
-
+1. lesson zero: how each day will go, how the course is structured, how to succeed in learning R 
+1. tour of RStudio
+1. First real lesson: getting-to-know-data. This is designed to get users comfortable using R. It will directly teach basic concepts: importing a CSV file, looking at data, running cross tabulations, producing data summaries, doing some simple data visualizations (base plotting only), calculating new variables. It is implicitly teaching other topics we will not address at all directly (or only minimally so): how to call and use an R function, *variable/data types*, *object types*, *vectorizing*, and *math operations*. Those lessons still exist, but will fold them into "getting to know data" and indicate that these documents are more comprehensive guides to those topics. 
 
 #### Using Posit Cloud
 
@@ -54,9 +45,9 @@ https://idahoagstats.github.io/r-for-ag-scientists/
 
 * This is intended to be delivered as a live coded class
 * There are special lessons that are largely lecture and hence exceptions to the live-coded format: 
-  * RStudio (lesson 3)
-  * R functions & R help (lesson 6)
-  * R for reproducible research (Lesson 13)
+  * RStudio 
+  * R functions & R help 
+  * R for reproducible research 
   
 Perhaps considering have a class long project to motivate people more. 
 
