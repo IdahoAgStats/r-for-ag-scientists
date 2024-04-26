@@ -41,7 +41,7 @@ head(data1, 5)
 ## Introduction to Common Data Structures
 
 Previously, we looked at how to a import a dataset in R. Now we need to
-consider how those types are arranged into complex structures (that is,
+consider how this data are arranged into complex structures (that is,
 objects) that we can access and manipulate.
 
 There are several data structures commonly used in R:
@@ -51,14 +51,19 @@ There are several data structures commonly used in R:
 3.  matrix
 4.  list
 
+::: callout-tip
+## Putting it all together
+
 Vectors and data frames are two major object types in R, but there are
 other types that provide different functionality. You can learn more
-about them [here](../lessons/data-structures.qmd).
+about them [here](../lessons/data-structures.qmd)
+:::
 
--   **THE VECTOR**
+-   **The vector**
 
 A *vector* in R is an object that contain multiple elements of the same
-type. In the data1, if we select each column varible, it will be returned as a vector.
+type. In the data1, if we select each column varible, it will be
+returned as a vector.
 
 Data in R data frames can also be referred to by their column names
 using the notation `dataframe$column_name`:
@@ -68,8 +73,8 @@ yield <- data1$yield
 Site <- data1$site
 ```
 
-The yield and site variables are returned as a vector (with the typical attributes of a
-vector: length and names).
+The yield and site variables are returned as a vector (with the typical
+attributes of a vector: length and names).
 
 1.  Vector Length
 
@@ -93,8 +98,12 @@ sort(Site)  # Sort a character
     indexed: `x[c(1,5)]`. If an index position, it repeated, that item
     will be returned as often as it is called:
 
+```{r}
+yield[5]
+yield[c(2,5)]
+```
 
-### The data frame
+-   **The data frame**
 
 A collection of vectors all of the name length. Each vector is a single
 data type, but different columns can be different data types. This is
@@ -102,15 +111,15 @@ similar to a typical workbook you might open in Excel or another
 spreadsheet program. These can be only one column wide, but they often
 consist of more than that.
 
-In this example, data1 is a data frame which consists of different vectors (site, block, yield,...)
+In this example, data1 is a data frame which consists of different
+vectors (site, block, yield,...)
 
-We can create an example data frame using yield and Site variables 
+We can create an example data frame using yield and Site variables
 
 ```{r}
 d1 <- data.frame(yield, Site)
-d1
+head(d1)
 ```
-
 
 A data frame has attributes for:
 
@@ -152,7 +161,6 @@ frames to anything other than the default values unless a package
 function specifically requires it.
 :::
 
-
 We can look at the overall structure of a data.frame with `View()`:
 
 ```{r, eval=FALSE}
@@ -168,34 +176,32 @@ view (if you have a large number of columns). In that case, you can use
 str(data1)
 ```
 
-***The data frame is the most common data structure scientists use in R***
+***The data frame is the most common data structure scientists use in
+R***
 
-
-
-
-### Explore data
+### Data Types
 
 Base R also has some useful functions for quickly exploring data frames:
 
+-   `summary()`: Give summaries of each column of a data frame
 -   `str()`: Show the structure of an R object, including a dataframe
--   summary: Give summaries of each column of a data frame
 
 ```{r}
-str(data1)
-
 summary(data1)
+
+str(data1)
 ```
 
-### Object types
+By using the `str()` command above, we noticed the object types in this
+data set. The common object types in this data set includes:
 
-By using the `str()` command above, we noticed the object types in this data set. The common object types in this data set includes:
+-   Yield and ears are shown as 'numeric' and 'integer' which belongs to
+    class - numeric.
+-   Variables such as site, and trt belong to character class.
+-   disease variable belongs to the logical class.
 
-- Yield and ears are shown as 'numeric' and 'integer' which belongs to class - numeric.
-- Variables such as  site, and trt belong to character class.
-- disease variable belongs to the logical class.
-
-
-You can check the class of each variable separately by using `class()` function.
+You can check the class of each variable separately by using `class()`
+function.
 
 ```{r}
  class(data1$block)
@@ -204,7 +210,7 @@ You can check the class of each variable separately by using `class()` function.
 ```
 
 data types of individual variables can be coerced into different types.
-For example, 
+For example,
 
 ```{r, eval=FALSE}
 
@@ -214,8 +220,11 @@ data1$plot <- as.numeric(data1$plot) #converting plot back to numeric
 
 ```
 
-A character variable can be converted to the factor variable.
-Factor is a character variable, with pre-defined levels that are alphabetized. The text "Levels: ..." are the predefined levels associated with that factor. Let's compare this to a character variable by manually converting it to factor.
+A character variable can be converted to the factor variable. Factor is
+a character variable, with pre-defined levels that are alphabetized. The
+text "Levels: ..." are the predefined levels associated with that
+factor. Let's compare this to a character variable by manually
+converting it to factor.
 
 ```{r}
 data1$block <- as.factor(data1$block)
@@ -223,14 +232,11 @@ data1$block <- as.factor(data1$block)
 str(data1$block) # check structure of the block
 ```
 
-
 ::: callout-note
 For more information how data types are assigned in R and methods of
 coercing into differebt types can be assessed
 [here](../lessons/data-types.qmd).
 :::
-
-
 
 ### Exploring Data in R
 
@@ -244,10 +250,10 @@ data1$block
 
 ```
 
-
 #### Accessing items
 
-A data set can be indexed by position. You can extract individual elements in a data frame by references the row and column position,
+A data set can be indexed by position. You can extract individual
+elements in a data frame by references the row and column position,
 `my_dataframe[row, column]`.
 
 -   Extract the items located in the first 2 row2 and last 2 columns:
@@ -355,7 +361,6 @@ data1$var4 <- seq.int(from=0,to=30,length.out=288)
 In this example, a new column called "var4" was created, consisting of
 sequence numbers from zero to 30.
 
-
 #### Value replacement
 
 There are likely to be moments when you want to replace values in a data
@@ -369,11 +374,6 @@ as `NA`. First, we index the that position, then we assign a value to it
 ```{r}
 data1[3, 6] <- NA
 ```
-
-
-
-
-
 
 ### Make Some Simple Plots
 
@@ -397,15 +397,12 @@ boxplot(yield ~ block, data = data1,
         ylab = "Yield")
 ```
 
-
-
 ### Calculate Some Values
 
 ```{r}
 
 
 ```
-
 
 ### Install and Load Packages
 
