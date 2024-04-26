@@ -26,7 +26,7 @@ rows of the "data1" data frame. The `View()` will open the data set in
 new RStuido video where you can look up at the rows and columns.
 
 ```{r, eval=FALSE}
-data1 <- read.csv("trial_data.csv")
+#data1 <- read.csv("trial_data.csv")
 
 head(data1, 5)
 View(data1)
@@ -92,33 +92,6 @@ sort(Site)  # Sort a character
     second item has index 2, and so on: Multiple item can also be
     indexed: `x[c(1,5)]`. If an index position, it repeated, that item
     will be returned as often as it is called:
-
-```{r}
-v1[1]
-v1[5]
-v1[c(1,5)]
-v1[c(1,1)]
-```
-
-You can also use negative index numbers to access all items except the
-ones specified:
-
-```{r}
-v1[-1]
-```
-
-4.  Change an Item To change the value of a specific item, refer to the
-    index number:
-
-```{r}
-v2 <- c("apples", "pears", "oranges")
-
-# Change "pears" to "banana"
-v2[2] <- "banana"
-
-# Print fruits
-v2
-```
 
 
 ### The data frame
@@ -195,8 +168,7 @@ view (if you have a large number of columns). In that case, you can use
 str(data1)
 ```
 
-***The data frame is the most common data structure scientists use in
-R***
+***The data frame is the most common data structure scientists use in R***
 
 
 
