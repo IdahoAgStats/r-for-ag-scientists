@@ -23,7 +23,7 @@ assigns it to an object named "data1".
 
 The second line of code uses the "head" function to display the first 5
 rows of the "data1" data frame. The `View()` will open the data set in
-new RStuido video where you can look up at the rows and columns.
+new RStudio video where you can look up at the rows and columns.
 
 ```{r, eval=FALSE}
 #data1 <- read.csv("trial_data.csv")
@@ -59,7 +59,7 @@ other types that provide different functionality. You can learn more
 about them [here](../lessons/data-structures.qmd)
 :::
 
--   **The vector**
+####  **The vector**
 
 A *vector* in R is an object that contain multiple elements of the same
 type. In the data1, if we select each column varible, it will be
@@ -437,8 +437,8 @@ library(dplyr)  # load 'dplyr' package
 
 ### Access Data
 
-::: callout-tip
-## Putting it all together
+::: callout-note
+## Note on object types
 
 Vectors and data frames are two major object types in R, but there are
 other types that provide different functionality. You can learn more
