@@ -275,7 +275,7 @@ Learning Goals
 <section id="import-a-csv-data-set" class="level3">
 <h3 class="anchored" data-anchor-id="import-a-csv-data-set">Import a csv data set</h3>
 <p>This code <code>read_csv()</code> reads a CSV file named “trial_data.csv” and assigns it to an object named “data1”.</p>
-<p>The second line of code uses the “head” function to display the first 5 rows of the “data1” data frame. The <code>View()</code> will open the data set in new RStuido video where you can look up at the rows and columns.</p>
+<p>The second line of code uses the “head” function to display the first 5 rows of the “data1” data frame. The <code>View()</code> will open the data set in new RStudio video where you can look up at the rows and columns.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#data1 &lt;- read.csv("trial_data.csv")</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -316,9 +316,8 @@ Putting it all together
 <p>Vectors and data frames are two major object types in R, but there are other types that provide different functionality. You can learn more about them <a href="../lessons/data-structures.html">here</a></p>
 </div>
 </div>
-<ul>
-<li><strong>The vector</strong></li>
-</ul>
+<section id="the-vector" class="level4">
+<h4 class="anchored" data-anchor-id="the-vector"><strong>The vector</strong></h4>
 <p>A <em>vector</em> in R is an object that contain multiple elements of the same type. In the data1, if we select each column varible, it will be returned as a vector.</p>
 <p>Data in R data frames can also be referred to by their column names using the notation <code>dataframe$column_name</code>:</p>
 <div class="cell">
@@ -538,6 +537,7 @@ Note
 </div>
 </div>
 <p><strong><em>The data frame is the most common data structure scientists use in R</em></strong></p>
+</section>
 <section id="data-types" class="level3">
 <h3 class="anchored" data-anchor-id="data-types">Data Types</h3>
 <p>Base R also has some useful functions for quickly exploring data frames:</p>
@@ -1491,7 +1491,7 @@ These packages will be installed into "~/work/r-for-ag-scientists/r-for-ag-scien
 
 # Installing packages --------------------------------------------------------
 - Installing dplyr ...                          OK [linked from cache]
-Successfully installed 1 package in 5.1 milliseconds.</code></pre>
+Successfully installed 1 package in 5.6 milliseconds.</code></pre>
 </div>
 </div>
 <p>Or click Tools &gt; Install packages. Write the package name in dialog, then click <em>install</em>.</p>
@@ -1525,13 +1525,13 @@ Attaching package: 'dplyr'</code></pre>
 </section>
 <section id="access-data" class="level3">
 <h3 class="anchored" data-anchor-id="access-data">Access Data</h3>
-<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Putting it all together
+Note on object types
 </div>
 </div>
 <div class="callout-body-container callout-body">
