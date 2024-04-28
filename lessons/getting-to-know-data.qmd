@@ -1,8 +1,5 @@
 ---
 title: "Getting to Know Your Data in R"
-editor: 
-  markdown: 
-    wrap: 72
 ---
 
 ::: {.callout-caution collapse="false"}
@@ -16,27 +13,35 @@ At the end of this lesson, you should:
 -   know how to make histograms and pairwise plots in R
 :::
 
-### Import a csv data set
+## Import a csv data set
 
-This code `read_csv()` reads a CSV file named "trial_data.csv" and
+This code `read_csv()` reads a CSV file named "caribbean_maize.csv" and
 assigns it to an object named "data1".
 
 The second line of code uses the "head" function to display the first 5
 rows of the "data1" data frame. The `View()` will open the data set in
 new RStudio video where you can look up at the rows and columns.
 
-```{r, eval=FALSE}
-#data1 <- read.csv("trial_data.csv")
-
-head(data1, 5)
-View(data1)
-```
-
 ```{r, echo=FALSE}
 data1 <- read.csv(here::here("data/caribbean_maize.csv"))
 head(data1, 5)
 #View(data1)
 ```
+
+```{r, eval=FALSE}
+data1 <- read.csv("caribbean_maize.csv")
+
+head(data1, 5)
+View(data1)
+```
+Base R also has some useful functions for quickly exploring data frames:
+
+- summary(): Give summaries of each column of a data frame
+```{r}
+summary(data1)
+```
+
+
 
 ## Introduction to Common Data Structures
 
@@ -51,15 +56,14 @@ There are several data structures commonly used in R:
 3.  matrix
 4.  list
 
-::: callout-tip
-## Putting it all together
 
+::: {.callout-note}
 Vectors and data frames are two major object types in R, but there are
 other types that provide different functionality. You can learn more
 about them [here](../lessons/data-structures.qmd)
 :::
 
-####  **The vector**
+###   The vector
 
 A *vector* in R is an object that contain multiple elements of the same
 type. In the data1, if we select each column varible, it will be
@@ -103,9 +107,9 @@ yield[5]
 yield[c(2,5)]
 ```
 
--   **The data frame**
+### The data frame
 
-A collection of vectors all of the name length. Each vector is a single
+Data frame is a collection of the vectors of same length. Each vector is a single
 data type, but different columns can be different data types. This is
 similar to a typical workbook you might open in Excel or another
 spreadsheet program. These can be only one column wide, but they often
@@ -129,7 +133,9 @@ A data frame has attributes for:
 -   `rownames` row names (if none are provided, R will generate integer
     row names starting at 1)
 
-::: callout-note
+
+::: {.callout-tip}
+
 While duplicate column names in a data frame are allowed, they are not
 advised, and may throw an error during data import, depending on the
 import function used.
@@ -143,14 +149,14 @@ ncol(data1); length(data1)
 dim(data1) # tells us row and column lengths in one command
 ```
 
-Look at the `rownames` and `colnames` atrributes:
+
 
 ```{r}
 rownames(data1)
 colnames(data1)
 ```
 
-::: callout-note
+::: {.callout-tip}
 The `rownames` attribute can be set, but if it is not, it is
 automatically created within R from 1 to the total number of rows. Row
 names are a tricky attribute than many packages in R do not support. A
@@ -161,36 +167,20 @@ frames to anything other than the default values unless a package
 function specifically requires it.
 :::
 
-We can look at the overall structure of a data.frame with `View()`:
+We can look at the overall structure of a data.frame with `str()`:
 
-```{r, eval=FALSE}
-View(data1)
-```
-
-If a particularly large file is loaded into R, using `View()` may be
-very slow (if you have a large number of rows) and provide an incomplete
-view (if you have a large number of columns). In that case, you can use
-`str()` to look at a data frame's structure:
 
 ```{r}
 str(data1)
 ```
 
-***The data frame is the most common data structure scientists use in
-R***
+::: {.callout-important}
+The data frame is the most common data structure scientists use in
+R.
+:::
 
-### Data Types
 
-Base R also has some useful functions for quickly exploring data frames:
-
--   `summary()`: Give summaries of each column of a data frame
--   `str()`: Show the structure of an R object, including a dataframe
-
-```{r}
-summary(data1)
-
-str(data1)
-```
+## Data Types
 
 By using the `str()` command above, we noticed the object types in this
 data set. The common object types in this data set includes:
@@ -200,7 +190,13 @@ data set. The common object types in this data set includes:
 -   Variables such as site, and trt belong to character class.
 -   disease variable belongs to the logical class.
 
-You can check the class of each variable separately by using `class()`
+
+```{r}
+str(data1)
+```
+
+
+You can also check the class of each variable separately by using `class()`
 function.
 
 ```{r}
@@ -209,8 +205,8 @@ function.
  class(data1$disease)
 ```
 
-data types of individual variables can be coerced into different types.
-For example,
+Data type of individual variables can be coerced into different types.
+For example, plot is a numeric variable, `as.character()` converts it to a character variable.
 
 ```{r, eval=FALSE}
 
@@ -229,7 +225,7 @@ converting it to factor.
 ```{r}
 data1$block <- as.factor(data1$block)
 
-str(data1$block) # check structure of the block
+class(data1$block) # check class of the block
 ```
 
 ::: callout-note
@@ -238,7 +234,7 @@ coercing into differebt types can be assessed
 [here](../lessons/data-types.qmd).
 :::
 
-### Exploring Data in R
+## Exploring Data in R
 
 To access the data in any of the variables (columns) in our data frame
 we can use a `$` notation. For example, to access the 'block' variable
@@ -250,13 +246,13 @@ data1$block
 
 ```
 
-#### Accessing items
+### Accessing items
 
 A data set can be indexed by position. You can extract individual
 elements in a data frame by references the row and column position,
 `my_dataframe[row, column]`.
 
--   Extract the items located in the first 2 row2 and last 2 columns:
+-   Extract the items located in the first 2 rows and 2 columns:
 
 **Visual of what we want:**
 
@@ -345,13 +341,6 @@ equivalent: `d[1,2]`, `d[1, 2]`, `d[ 1, 2]`
 Data in R data frames can also be referred to by their column names
 using the notation `dataframe$column_name`:
 
-```{r}
-data1$yield
-```
-
-The data are returned as a vector (with the typical attributes of a
-vector: length and names).
-
 This can also be used to create a new column in the data frame:
 
 ```{r}
@@ -375,7 +364,7 @@ as `NA`. First, we index the that position, then we assign a value to it
 data1[3, 6] <- NA
 ```
 
-### Make Some Simple Plots
+## Make Some Simple Plots
 
 Here we are creating a histogram to look at data distribution of the
 'yield' variable from data1 using a `hist()` function.
@@ -389,7 +378,8 @@ y-axis, respectively. The `main=`, gives the title to the graph.
 hist(data1$yield)
 
 # pairwise plots
-data1$block
+plot(data1$ears, data1$yield)  # plot(x, y)
+
 # Create the box plot
 boxplot(yield ~ block, data = data1,
         main = "Yield Graph",
@@ -397,14 +387,14 @@ boxplot(yield ~ block, data = data1,
         ylab = "Yield")
 ```
 
-### Calculate Some Values
+## Calculate Some Values
 
 ```{r}
 
 
 ```
 
-### Install and Load Packages
+## Install and Load Packages
 
 1.  To install packages:
 
