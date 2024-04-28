@@ -228,10 +228,7 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
   </ul></li>
   <li><a href="#make-some-simple-plots" id="toc-make-some-simple-plots" class="nav-link" data-scroll-target="#make-some-simple-plots">Make Some Simple Plots</a></li>
   <li><a href="#calculate-some-values" id="toc-calculate-some-values" class="nav-link" data-scroll-target="#calculate-some-values">Calculate Some Values</a></li>
-  <li><a href="#install-and-load-packages" id="toc-install-and-load-packages" class="nav-link" data-scroll-target="#install-and-load-packages">Install and Load Packages</a>
-  <ul class="collapse">
-  <li><a href="#access-data" id="toc-access-data" class="nav-link" data-scroll-target="#access-data">Access Data</a></li>
-  </ul></li>
+  <li><a href="#install-and-load-packages" id="toc-install-and-load-packages" class="nav-link" data-scroll-target="#install-and-load-packages">Install and Load Packages</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/IdahoAgStats/r-for-ag-scientists/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -269,12 +266,13 @@ Learning Goals
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
-<p>At the end of this lesson, you should:</p>
+<p>At the end of this lesson, you should know:</p>
 <ul>
 <li>How to import data in R</li>
-<li>know several methods of data exploration in R</li>
-<li>understand how to make cross tabulations of data</li>
-<li>know how to make histograms and pairwise plots in R</li>
+<li>Several methods of data exploration in R</li>
+<li>How to make cross tabulations of data</li>
+<li>How to make histograms and pairwise plots in R</li>
+<li>How to install and load packages in R</li>
 </ul>
 </div>
 </div>
@@ -1457,6 +1455,44 @@ Things to note
 </section>
 <section id="calculate-some-values" class="level2">
 <h2 class="anchored" data-anchor-id="calculate-some-values">Calculate Some Values</h2>
+<p>Firstly, extract a vector from data1 using <code>dataframe$column_name</code> code.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>yield <span class="ot">&lt;-</span> data1<span class="sc">$</span>yield</span>
+<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(yield)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4.96 3.94 6.35 5.56 5.36 6.18</code></pre>
+</div>
+</div>
+<p>Now, create a new vector (M) by adding 5 to each element of yield value using the code below:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>M <span class="ot">&lt;-</span> yield <span class="sc">+</span> <span class="dv">5</span></span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(M)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  9.96  8.94 11.35 10.56 10.36 11.18</code></pre>
+</div>
+</div>
+<p>You can also add/multiply/subtract two columns of same data type and of same length. Let’s create a new vector named ‘var2’ as a product of ‘yield’ and ‘ears’ from data1.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>var2 <span class="ot">&lt;-</span> data1<span class="sc">$</span>yield<span class="sc">*</span>data1<span class="sc">$</span>ears</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The code below shows how to update data1 with ‘var2’</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>data1<span class="sc">$</span>var2 <span class="ot">&lt;-</span> var2</span>
+<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a><span class="co">#View(data1)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>More information how mathematical operators work in R can be assessed <a href="../lessons/data-types.html">here</a>.</p>
+</div>
+</div>
 </section>
 <section id="install-and-load-packages" class="level2">
 <h2 class="anchored" data-anchor-id="install-and-load-packages">Install and Load Packages</h2>
@@ -1465,7 +1501,7 @@ Things to note
 </ol>
 <p>You can either use <code>install.pcakages()</code> function</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"dplyr"</span>)   <span class="co"># install 'dplyr' package</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"dplyr"</span>)   <span class="co"># install 'dplyr' package</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>The following package(s) will be installed:
 - dplyr [1.1.4]
@@ -1482,7 +1518,7 @@ Successfully installed 1 package in 5 milliseconds.</code></pre>
 </ol>
 <p>Once you install the package, you need to load it so that it becomes available to use. Simply use <code>library()</code> function.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)  <span class="co"># load 'dplyr' package</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)  <span class="co"># load 'dplyr' package</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>
 Attaching package: 'dplyr'</code></pre>
@@ -1498,30 +1534,8 @@ Attaching package: 'dplyr'</code></pre>
     intersect, setdiff, setequal, union</code></pre>
 </div>
 </div>
-<ol start="2" type="1">
-<li><p>mention vectorization (give examples)</p></li>
-<li><p>bring up these two data structures: data frame and the vector</p></li>
-<li><p>discuss data types: numeric, character, factor</p></li>
-<li><p>pull content from the other lessons and link to those lessons (see example below)</p></li>
-</ol>
-<section id="access-data" class="level3">
-<h3 class="anchored" data-anchor-id="access-data">Access Data</h3>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note on object types
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Vectors and data frames are two major object types in R, but there are other types that provide different functionality. You can learn more about them <a href="../lessons/data-structures.html">here</a></p>
-</div>
-</div>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
