@@ -5,12 +5,13 @@ title: "Getting to Know Your Data in R"
 ::: {.callout-caution collapse="false"}
 ## Learning Goals
 
-At the end of this lesson, you should:
+At the end of this lesson, you should know:
 
 -   How to import data in R
--   know several methods of data exploration in R
--   understand how to make cross tabulations of data
--   know how to make histograms and pairwise plots in R
+-   Several methods of data exploration in R
+-   How to make cross tabulations of data
+-   How to make histograms and pairwise plots in R
+-   How to install and load packages in R
 :::
 
 ## Import a csv data set
@@ -389,10 +390,39 @@ boxplot(yield ~ block, data = data1,
 
 ## Calculate Some Values
 
-```{r}
+Firstly, extract a vector from data1 using `dataframe$column_name` code. 
 
+```{r}
+yield <- data1$yield
+head(yield)
+```
+
+Now, create a new vector (M) by adding 5 to each element of yield value using the code below:
+
+```{r}
+M <- yield + 5
+head(M)
+```
+
+You can also add/multiply/subtract two columns of same data type and of same length.
+Let's create a new vector named 'var2' as a product of 'yield' and 'ears' from data1.
+
+```{r}
+var2 <- data1$yield*data1$ears
 
 ```
+
+The code below shows how to update data1 with 'var2'
+
+```{r}
+data1$var2 <- var2
+#View(data1)
+```
+
+::: callout-note
+More information how mathematical operators work in R can be assessed
+[here](../lessons/data-types.qmd).
+:::
 
 ## Install and Load Packages
 
@@ -416,21 +446,4 @@ available to use. Simply use `library()` function.
 library(dplyr)  # load 'dplyr' package
 ```
 
-2.  mention vectorization (give examples)
 
-3.  bring up these two data structures: data frame and the vector
-
-4.  discuss data types: numeric, character, factor
-
-5.  pull content from the other lessons and link to those lessons (see
-    example below)
-
-### Access Data
-
-::: callout-note
-## Note on object types
-
-Vectors and data frames are two major object types in R, but there are
-other types that provide different functionality. You can learn more
-about them [here](../lessons/data-structures.qmd)
-:::
