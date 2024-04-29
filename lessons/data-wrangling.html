@@ -314,38 +314,38 @@ What is going on with <code>here::here()</code>?
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>select1 <span class="ot">&lt;-</span> <span class="fu">select</span>(variety_trials, variety, yield, grain_protein)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(select1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>     variety     yield grain_protein
-1   LCS Iron  78.27131        14.250
-2   LCS Iron 124.19389        14.592
-3   LCS Iron  85.20458        15.105
-4   LCS Iron 140.56490        14.364
-5 10SB0087-B  94.18977        13.053
-6 10SB0087-B 121.59047        13.794</code></pre>
+<pre><code>    variety     yield grain_protein
+1  12SB0197  71.69333        9.8325
+2  12SB0197 108.60301        9.6025
+3  12SB0197  81.71237       11.2700
+4  12SB0197 103.84303       10.3500
+5 Jefferson  65.26589       10.2350
+6 Jefferson 104.37355       11.0400</code></pre>
 </div>
 </div>
 <p>You can also select on what columns you do <em>not</em> want:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>select2 <span class="ot">&lt;-</span> <span class="fu">select</span>(variety_trials, <span class="sc">-</span>trial)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>select3 <span class="ot">&lt;-</span> <span class="fu">select</span>(variety_trials, <span class="sc">-</span><span class="fu">c</span>(trial, plot))</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>select3 <span class="ot">&lt;-</span> <span class="fu">select</span>(variety_trials, <span class="sc">-</span><span class="fu">c</span>(trial))</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(select2); <span class="fu">head</span>(select3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  rep entry    variety     yield grain_protein test_weight flag row range plot
-1   1     1   LCS Iron  78.27131        14.250          NA &lt;NA&gt;  NA    NA   NA
-2   2     1   LCS Iron 124.19389        14.592          NA &lt;NA&gt;  NA    NA   NA
-3   3     1   LCS Iron  85.20458        15.105          NA &lt;NA&gt;  NA    NA   NA
-4   4     1   LCS Iron 140.56490        14.364          NA &lt;NA&gt;  NA    NA   NA
-5   1     2 10SB0087-B  94.18977        13.053          NA &lt;NA&gt;  NA    NA   NA
-6   2     2 10SB0087-B 121.59047        13.794          NA &lt;NA&gt;  NA    NA   NA</code></pre>
+<pre><code>  rep   variety     yield grain_protein test_weight
+1   1  12SB0197  71.69333        9.8325        62.1
+2   2  12SB0197 108.60301        9.6025        64.2
+3   3  12SB0197  81.71237       11.2700        65.6
+4   4  12SB0197 103.84303       10.3500        64.3
+5   1 Jefferson  65.26589       10.2350        62.8
+6   2 Jefferson 104.37355       11.0400        65.2</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  rep entry    variety     yield grain_protein test_weight flag row range
-1   1     1   LCS Iron  78.27131        14.250          NA &lt;NA&gt;  NA    NA
-2   2     1   LCS Iron 124.19389        14.592          NA &lt;NA&gt;  NA    NA
-3   3     1   LCS Iron  85.20458        15.105          NA &lt;NA&gt;  NA    NA
-4   4     1   LCS Iron 140.56490        14.364          NA &lt;NA&gt;  NA    NA
-5   1     2 10SB0087-B  94.18977        13.053          NA &lt;NA&gt;  NA    NA
-6   2     2 10SB0087-B 121.59047        13.794          NA &lt;NA&gt;  NA    NA</code></pre>
+<pre><code>  rep   variety     yield grain_protein test_weight
+1   1  12SB0197  71.69333        9.8325        62.1
+2   2  12SB0197 108.60301        9.6025        64.2
+3   3  12SB0197  81.71237       11.2700        65.6
+4   4  12SB0197 103.84303       10.3500        64.3
+5   1 Jefferson  65.26589       10.2350        62.8
+6   2 Jefferson 104.37355       11.0400        65.2</code></pre>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -366,13 +366,13 @@ Note
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>select4 <span class="ot">&lt;-</span> <span class="fu">select</span>(variety_trials, <span class="fu">starts_with</span>(<span class="st">"r"</span>))</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(select4)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  rep row range
-1   1  NA    NA
-2   2  NA    NA
-3   3  NA    NA
-4   4  NA    NA
-5   1  NA    NA
-6   2  NA    NA</code></pre>
+<pre><code>  rep
+1   1
+2   2
+3   3
+4   4
+5   1
+6   2</code></pre>
 </div>
 </div>
 <p>This particular example is not all that useful, but you might have a large data set, with several dozen variables that all start with “snp” followed by some alpha-numeric code (e.g.&nbsp;“snp4738”). This function will enable you to select these column more efficiently than naming every single one.</p>
@@ -400,13 +400,13 @@ Note
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(filter1); <span class="fu">dim</span>(filter2); <span class="fu">dim</span>(filter3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1]  4 11</code></pre>
+<pre><code>[1] 4 6</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 16 11</code></pre>
+<pre><code>[1] 16  6</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 1017   11</code></pre>
+<pre><code>[1] 1017    6</code></pre>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -438,7 +438,7 @@ Note
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>mutate1 <span class="ot">&lt;-</span> <span class="fu">mutate</span>(variety_trials, </span>
 <span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">dataset =</span> <span class="st">"example"</span>,</span>
 <span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>                    <span class="at">row_position =</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">n</span>(),</span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>                    <span class="at">range_new =</span> range,</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>                    <span class="at">trial_id =</span> trial,</span>
 <span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>                    <span class="at">random_yield =</span> yield <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="fu">n</span>()),</span>
 <span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>                    <span class="at">binom_var =</span> new_var, </span>
 <span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>                    <span class="at">yield_protein =</span> yield <span class="sc">+</span> grain_protein)</span>
@@ -447,31 +447,31 @@ Note
 <div class="cell-output cell-output-stdout">
 <pre><code>new_var
   0   1 
-932 950 </code></pre>
+917 965 </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mutate1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>                        trial rep entry    variety     yield grain_protein
-1 SWIdahoCereals_HRS_PAR_2016   1     1   LCS Iron  78.27131        14.250
-2 SWIdahoCereals_HRS_PAR_2016   2     1   LCS Iron 124.19389        14.592
-3 SWIdahoCereals_HRS_PAR_2016   3     1   LCS Iron  85.20458        15.105
-4 SWIdahoCereals_HRS_PAR_2016   4     1   LCS Iron 140.56490        14.364
-5 SWIdahoCereals_HRS_PAR_2016   1     2 10SB0087-B  94.18977        13.053
-6 SWIdahoCereals_HRS_PAR_2016   2     2 10SB0087-B 121.59047        13.794
-  test_weight flag row range plot dataset row_position range_new random_yield
-1          NA &lt;NA&gt;  NA    NA   NA example            1        NA     77.09894
-2          NA &lt;NA&gt;  NA    NA   NA example            2        NA    124.87576
-3          NA &lt;NA&gt;  NA    NA   NA example            3        NA     85.09141
-4          NA &lt;NA&gt;  NA    NA   NA example            4        NA    140.92629
-5          NA &lt;NA&gt;  NA    NA   NA example            5        NA     94.70128
-6          NA &lt;NA&gt;  NA    NA   NA example            6        NA    122.84017
-  binom_var yield_protein
-1         0      92.52131
-2         0     138.78589
-3         1     100.30958
-4         0     154.92890
-5         0     107.24277
-6         0     135.38447</code></pre>
+<pre><code>                        trial rep   variety     yield grain_protein test_weight
+1 SWIdahoCereals_H_S_PAR_2018   1  12SB0197  71.69333        9.8325        62.1
+2 SWIdahoCereals_H_S_PAR_2018   2  12SB0197 108.60301        9.6025        64.2
+3 SWIdahoCereals_H_S_PAR_2018   3  12SB0197  81.71237       11.2700        65.6
+4 SWIdahoCereals_H_S_PAR_2018   4  12SB0197 103.84303       10.3500        64.3
+5 SWIdahoCereals_H_S_PAR_2018   1 Jefferson  65.26589       10.2350        62.8
+6 SWIdahoCereals_H_S_PAR_2018   2 Jefferson 104.37355       11.0400        65.2
+  dataset row_position                    trial_id random_yield binom_var
+1 example            1 SWIdahoCereals_H_S_PAR_2018     71.98519         0
+2 example            2 SWIdahoCereals_H_S_PAR_2018    108.61886         0
+3 example            3 SWIdahoCereals_H_S_PAR_2018     81.67020         1
+4 example            4 SWIdahoCereals_H_S_PAR_2018    101.32819         0
+5 example            5 SWIdahoCereals_H_S_PAR_2018     64.82566         0
+6 example            6 SWIdahoCereals_H_S_PAR_2018    104.32708         0
+  yield_protein
+1      81.52583
+2     118.20551
+3      92.98237
+4     114.19303
+5      75.50089
+6     115.41355</code></pre>
 </div>
 </div>
 <p>This created 6 new variables:</p>
@@ -484,12 +484,12 @@ Note
 <li><strong>yield_protein</strong> the addition of two variables in the data set (this is also vectorized, calculating this for each row)</li>
 </ul>
 <p>These example cover the majority of what you are likely to experience: creating a constant, calculating new variables from existing variables, pulling in an external variables, and so forth.</p>
-<p>This is equivalent to what was taught earlier using “$” notation:</p>
+<p>This is equivalent to what was taught earlier using <code>$</code> notation:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>mutate1 <span class="ot">&lt;-</span> variety_trials <span class="co"># first, copy the data frame</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>mutate1<span class="sc">$</span>dateset <span class="ot">&lt;-</span> <span class="st">"example"</span></span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>mutate1<span class="sc">$</span>row_position <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(mutate1)</span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>mutate1<span class="sc">$</span>range_new <span class="ot">&lt;-</span> mutate1<span class="sc">$</span>range_new <span class="co"># note that NSE cannot be used</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>mutate1<span class="sc">$</span>trial_new <span class="ot">&lt;-</span> mutate1<span class="sc">$</span>trial <span class="co"># note that NSE cannot be used</span></span>
 <span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>mutate1<span class="sc">$</span>random_yield <span class="ot">&lt;-</span> mutate1<span class="sc">$</span>yield <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="fu">nrow</span>(mutate1))</span>
 <span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>mutate1<span class="sc">$</span>binom_var <span class="ot">=</span> new_var</span>
 <span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>mutate1<span class="sc">$</span>yield_protein <span class="ot">&lt;-</span> mutate1<span class="sc">$</span>yield <span class="sc">+</span> mutate1<span class="sc">$</span>grain_protein</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -520,14 +520,10 @@ Note
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>rename1 <span class="ot">&lt;-</span> <span class="fu">rename</span>(variety_trials, <span class="at">cultivar =</span> <span class="st">"variety"</span>)</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(rename1, <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>                        trial rep entry cultivar     yield grain_protein
-1 SWIdahoCereals_HRS_PAR_2016   1     1 LCS Iron  78.27131        14.250
-2 SWIdahoCereals_HRS_PAR_2016   2     1 LCS Iron 124.19389        14.592
-3 SWIdahoCereals_HRS_PAR_2016   3     1 LCS Iron  85.20458        15.105
-  test_weight flag row range plot
-1          NA &lt;NA&gt;  NA    NA   NA
-2          NA &lt;NA&gt;  NA    NA   NA
-3          NA &lt;NA&gt;  NA    NA   NA</code></pre>
+<pre><code>                        trial rep cultivar     yield grain_protein test_weight
+1 SWIdahoCereals_H_S_PAR_2018   1 12SB0197  71.69333        9.8325        62.1
+2 SWIdahoCereals_H_S_PAR_2018   2 12SB0197 108.60301        9.6025        64.2
+3 SWIdahoCereals_H_S_PAR_2018   3 12SB0197  81.71237       11.2700        65.6</code></pre>
 </div>
 </div>
 <p>Also, you can use <code>rename</code> notation in <code>select</code> statements:</p>
@@ -543,7 +539,7 @@ Note
 <div class="cell">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>variety_trials<span class="sc">$</span>trial[<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "SWIdahoCereals_HRS_PAR_2016"</code></pre>
+<pre><code>[1] "SWIdahoCereals_H_S_PAR_2018"</code></pre>
 </div>
 </div>
 <p>The first term is the program conducting the trial, the second is the crop grown, the third term is a location code, and the last term is the year. Let’s separate those terms into separate columns/variables.</p>
@@ -553,34 +549,34 @@ Note
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">distinct</span>(variety_trials, trial)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                         trial
-1  SWIdahoCereals_HRS_PAR_2016
-2  SWIdahoCereals_HWS_PAR_2016
-3  SWIdahoCereals_SWS_PAR_2016
-4  SWIdahoCereals_H_W_PAR_2017
-5  SWIdahoCereals_HRS_PAR_2017
-6  SWIdahoCereals_HWS_PAR_2017
-7  SWIdahoCereals_SWS_PAR_2017
-8  SWIdahoCereals_SWW_PAR_2017
-9  SWIdahoCereals_H_S_PAR_2018
-10 SWIdahoCereals_H_W_PAR_2018
-11 SWIdahoCereals_SWS_PAR_2018
-12 SWIdahoCereals_SWW_PAR_2018
-13 SWIdahoCereals_H_S_WEI_2018
-14 SWIdahoCereals_H_W_WEI_2018
-15 SWIdahoCereals_SWS_WEI_2018
-16 SWIdahoCereals_SWW_WEI_2018
-17 SWIdahoCereals_HRS_PAR_2019
-18 SWIdahoCereals_HRW_PAR_2019
-19 SWIdahoCereals_HWS_PAR_2019
-20 SWIdahoCereals_HWW_PAR_2019
+1  SWIdahoCereals_H_S_PAR_2018
+2  SWIdahoCereals_H_S_WEI_2018
+3  SWIdahoCereals_H_W_PAR_2017
+4  SWIdahoCereals_H_W_PAR_2018
+5  SWIdahoCereals_H_W_WEI_2018
+6  SWIdahoCereals_HRS_PAR_2016
+7  SWIdahoCereals_HRS_PAR_2017
+8  SWIdahoCereals_HRS_PAR_2019
+9  SWIdahoCereals_HRS_PAR_2020
+10 SWIdahoCereals_HRW_PAR_2019
+11 SWIdahoCereals_HRW_PAR_2020
+12 SWIdahoCereals_HWS_PAR_2016
+13 SWIdahoCereals_HWS_PAR_2017
+14 SWIdahoCereals_HWS_PAR_2019
+15 SWIdahoCereals_HWS_PAR_2020
+16 SWIdahoCereals_HWW_PAR_2019
+17 SWIdahoCereals_HWW_PAR_2020
+18 SWIdahoCereals_SWS_PAR_2016
+19 SWIdahoCereals_SWS_PAR_2017
+20 SWIdahoCereals_SWS_PAR_2018
 21 SWIdahoCereals_SWS_PAR_2019
-22 SWIdahoCereals_SWW_PAR_2019
-23 SWIdahoCereals_HRS_PAR_2020
-24 SWIdahoCereals_HRW_PAR_2020
-25 SWIdahoCereals_HWS_PAR_2020
-26 SWIdahoCereals_HWW_PAR_2020
-27 SWIdahoCereals_SWS_PAR_2020
-28 SWIdahoCereals_SWW_PAR_2020</code></pre>
+22 SWIdahoCereals_SWS_PAR_2020
+23 SWIdahoCereals_SWS_WEI_2018
+24 SWIdahoCereals_SWW_PAR_2017
+25 SWIdahoCereals_SWW_PAR_2018
+26 SWIdahoCereals_SWW_PAR_2019
+27 SWIdahoCereals_SWW_PAR_2020
+28 SWIdahoCereals_SWW_WEI_2018</code></pre>
 </div>
 </div>
 <p>The variable <code>variety_trials$trial</code> uses an underscore to separate its components. However, one of the terms we mean to keep as one component does have an underscore inside of it, which will interpreted incorrectly as a term separator. The function <code>gsub()</code> can be used to fix this.</p>

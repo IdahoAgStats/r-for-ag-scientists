@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>R for Scientists - Vectorizing Operations</title>
+<title>R for Scientists - Preparing for this Short Course/Workshop</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,40 +19,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -115,11 +81,11 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
 
 
 <link rel="stylesheet" href="../styles.css">
-<meta property="og:title" content="R for Scientists - Vectorizing Operations">
+<meta property="og:title" content="R for Scientists - Preparing for this Short Course/Workshop">
 <meta property="og:description" content="Homepage for Introduction to R for Scientists, Spring 2023.">
 <meta property="og:image" content="https://idahoagstats.github.io/r-for-ag-scientists/lessons/images/R_intro_logo.png">
 <meta property="og:site_name" content="R for Scientists">
-<meta name="twitter:title" content="R for Scientists - Vectorizing Operations">
+<meta name="twitter:title" content="R for Scientists - Preparing for this Short Course/Workshop">
 <meta name="twitter:description" content="Homepage for Introduction to R for Scientists, Spring 2023.">
 <meta name="twitter:image" content="https://idahoagstats.github.io/r-for-ag-scientists/lessons/images/R_intro_logo.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -134,7 +100,7 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Vectorizing Operations</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Preparing for this Short Course/Workshop</li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -215,10 +181,13 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#vectorizing-operations" id="toc-vectorizing-operations" class="nav-link active" data-scroll-target="#vectorizing-operations">Vectorizing operations</a></li>
-  <li><a href="#object-assignment" id="toc-object-assignment" class="nav-link" data-scroll-target="#object-assignment">Object assignment</a></li>
-  <li><a href="#object-naming" id="toc-object-naming" class="nav-link" data-scroll-target="#object-naming">Object naming</a></li>
-  <li><a href="#reserved-words" id="toc-reserved-words" class="nav-link" data-scroll-target="#reserved-words">Reserved words</a></li>
+  <li><a href="#install-r-rstudio." id="toc-install-r-rstudio." class="nav-link active" data-scroll-target="#install-r-rstudio.">Install R &amp; RStudio.</a></li>
+  <li><a href="#join-posit-cloud" id="toc-join-posit-cloud" class="nav-link" data-scroll-target="#join-posit-cloud">Join Posit Cloud</a></li>
+  <li><a href="#class-structure" id="toc-class-structure" class="nav-link" data-scroll-target="#class-structure">Class Structure</a></li>
+  <li><a href="#class-absences" id="toc-class-absences" class="nav-link" data-scroll-target="#class-absences">Class absences</a></li>
+  <li><a href="#class-notes-structure" id="toc-class-notes-structure" class="nav-link" data-scroll-target="#class-notes-structure">Class Notes Structure</a></li>
+  <li><a href="#how-to-suceed-in-learning-r" id="toc-how-to-suceed-in-learning-r" class="nav-link" data-scroll-target="#how-to-suceed-in-learning-r">How to Suceed in Learning R</a></li>
+  <li><a href="#your-very-first-r-lesson" id="toc-your-very-first-r-lesson" class="nav-link" data-scroll-target="#your-very-first-r-lesson">Your very first R lesson!</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/IdahoAgStats/r-for-ag-scientists/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -227,7 +196,7 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Vectorizing Operations</h1>
+<h1 class="title">Preparing for this Short Course/Workshop</h1>
 </div>
 
 
@@ -244,6 +213,31 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
 </header>
 
 
+<p>Welcome &amp; salutations!</p>
+<p>We excited to teach this course. We have revamped this curriculum so that we get everyone doing practical coding with data as soon as possible.</p>
+<p>We have limited time, so order to conserve class time and have us all ready for the first day of class, please read through this “Lesson Zero”, watch the video and follow the instructions below.</p>
+<section id="install-r-rstudio." class="level3">
+<h3 class="anchored" data-anchor-id="install-r-rstudio.">Install R &amp; RStudio.</h3>
+<p>Follow <a href="r-installation-instructions.qmd">these instructions</a> for installing R <em>and</em> RStudio. R is the actual programmatic engine that you can do cool things with, and RStudio is an “integrated development environment” (IDE) to help us use R effectively.</p>
+</section>
+<section id="join-posit-cloud" class="level3">
+<h3 class="anchored" data-anchor-id="join-posit-cloud">Join Posit Cloud</h3>
+<p>You will receive a link via email from us to join our online classroom on <a href="https://login.posit.cloud/login">Posit Cloud</a>, where you will need to sign up for an account using your email, or you can connect it to a Gmail or GitHub account (any of these choices will work fine for the class). If do you not have a Gmail or GitHub account, use your normal email instead. Once you receive the invitation and have created an account, follow <a href="../posit-instructions.html">these instructions</a> for accessing the classroom.</p>
+</section>
+<section id="class-structure" class="level3">
+<h3 class="anchored" data-anchor-id="class-structure">Class Structure</h3>
+<p>For all lessons, please follow along in R + RStudio or Posit Cloud session. In most instances, you will type and run the same code that we will demonstrate. Actually typing out the code rather than cut-and-pasting is how you learn.</p>
+<p>Additionally, all code generated that day will be posted on the Posit Cloud ‘classroom’. It is important that you read through notes and try to run to do the exercises if (1) you had to miss some or all of a class, or (2) there is material you do not understand.</p>
+<p><strong>It is very important that you use the time between class sessions to ensure you understand the material.</strong></p>
+</section>
+<section id="class-absences" class="level3">
+<h3 class="anchored" data-anchor-id="class-absences">Class absences</h3>
+<p>It’s okay to miss class or a lecture - we all have stuff going on. There is no need to tell me in advance. As mentioned above, if you miss class, please be sure to catch up on the course material you missed by reading the course notes, running the content and attempting the exercises. Falling behind in the content can create problems with the following content, so please make every effort to stay current with the class.</p>
+</section>
+<section id="class-notes-structure" class="level3">
+<h3 class="anchored" data-anchor-id="class-notes-structure">Class Notes Structure</h3>
+<p>As mentioned, all code run will be captured in class notes that will be posted. While you can read those notes and not attend class, many find it helpful to attend a live course and receive live instruction and feedback from an expert.</p>
+<p><strong>At the beginning of each lesson, this box will be included:</strong></p>
 <div class="callout callout-style-default callout-caution callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -256,157 +250,12 @@ Learning Goals
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
-<p>At the end of this lesson, you should:</p>
-<ul>
-<li>understand how to assign variables and collections of numbers to an object name</li>
-<li>known the rules for how to name objects</li>
-<li>understand reserved words in R and how to find them</li>
-<li>be able to create a sequence of numbers in R using any starting value and any ending value</li>
-</ul>
+<p>This will be a list of what each lesson intends to teach.</p>
+<p>If you do not think you have met those learning goals, please review the notes, and if the material is still unclear, contact us.</p>
 </div>
 </div>
 </div>
-<section id="vectorizing-operations" class="level3">
-<h3 class="anchored" data-anchor-id="vectorizing-operations">Vectorizing operations</h3>
-<p>Using R as a calculator between a few numbers is handy, but typically we are hoping to do so much more with it, such as performing a calculations across a long list of numbers.</p>
-<p>R is naturally vectorized, which means that you can easily perform a mathematical operation across a vector of numbers (no need to write loops!)</p>
-<p>Say we have a collection of numbers from 10 to 20 and we want to multiple them all by 12. We can create a sequence of numbers by wrapping them all in <code>c()</code> command (for “concatenate”) and separating each with a comma.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>, <span class="dv">13</span>, <span class="dv">14</span>, <span class="dv">15</span>, <span class="dv">16</span>, <span class="dv">17</span>, <span class="dv">18</span>, <span class="dv">19</span>, <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> [1] 10 11 12 13 14 15 16 17 18 19 20</code></pre>
-</div>
-</div>
-<p>Then those numbers can be operated on by any math operator:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>, <span class="dv">13</span>, <span class="dv">14</span>, <span class="dv">15</span>, <span class="dv">16</span>, <span class="dv">17</span>, <span class="dv">18</span>, <span class="dv">19</span>, <span class="dv">20</span>) <span class="sc">*</span> <span class="dv">10</span> <span class="sc">-</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> [1]  99 109 119 129 139 149 159 169 179 189 199</code></pre>
-</div>
-</div>
-<p>There’s also a quicker way to specify a sequence of integers using the notation <code>start:end</code>:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
-</div>
-</div>
-<p>It also counts down:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="dv">20</span><span class="sc">:</span><span class="dv">10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> [1] 20 19 18 17 16 15 14 13 12 11 10</code></pre>
-</div>
-</div>
-<p>And works with negative integers:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="sc">-</span><span class="dv">5</span><span class="sc">:</span><span class="dv">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> [1] -5 -4 -3 -2 -1  0  1  2  3  4  5</code></pre>
-</div>
-</div>
-<p>These can be operated on:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>(<span class="sc">-</span><span class="dv">5</span><span class="sc">:</span><span class="dv">5</span>)<span class="sc">^</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> [1] 25 16  9  4  1  0  1  4  9 16 25</code></pre>
-</div>
-</div>
-</section>
-<section id="object-assignment" class="level3">
-<h3 class="anchored" data-anchor-id="object-assignment">Object assignment</h3>
-<p>It is rather cumbersome to continually retype numbers, even while using a shortcut. There’s a general rule of “DRY” when coding, which means “Don’t repeat yourself”. We can avoid this by assigning these numbers to an R object.</p>
-<p>Traditionally, the left arrow is used for object assignment, <code>&lt;-</code> (less than symbol + a dash), but the standard equals sign, <code>=</code> also works. These are equivalent:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>We can assign multiple numbers to an object</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>x_vector <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>y_vector <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">8</span>, <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>The left arrow assignment <code>&lt;-</code> takes everything on the right side of the arrow and assigns it the object name on the left.</p>
-</section>
-<section id="object-naming" class="level3">
-<h3 class="anchored" data-anchor-id="object-naming">Object naming</h3>
-<p>It is your choice (mostly) about what to name R objects. There are a few rules to follow:</p>
-<ul>
-<li>spaces are generally not allowed and a huge pain - avoid at all costs!</li>
-<li>Don’t start with a number or symbol! (this is technically possible, but a huge pain)</li>
-<li>choose a name that is short, yet descriptive</li>
-<li>R is case sensitive, so <code>test</code> is different from <code>Test</code> and <code>TEST</code>. Be mindful of this! It trips many folks up.<br>
-</li>
-<li>It’s possible that you will thank yourself for using lowercase and avoiding special symbols (aside from <code>.</code> and <code>_</code>)</li>
-<li>if you start a function name with a “.” (e.g.&nbsp;<code>.variable</code>), you won’t see it listed in the global environment (which can be frustrating), this is not recommended for newer R users</li>
-<li>you cannot use “reserved words” from the R language (terms set aside for very specific purposes in R). When typing these in an R console, they usually light up in a special colors.</li>
-</ul>
-<p>Here is <a href="https://intro2r.com/objects-in-r.html">some discussion</a> on object naming in R.</p>
-</section>
-<section id="reserved-words" class="level3">
-<h3 class="anchored" data-anchor-id="reserved-words">Reserved words</h3>
-<table class="table">
-<colgroup>
-<col style="width: 44%">
-<col style="width: 55%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>reserved word</th>
-<th>meaning</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>TRUE</code> <code>FALSE</code></td>
-<td>logical</td>
-</tr>
-<tr class="even">
-<td><code>NA</code></td>
-<td>missing value</td>
-</tr>
-<tr class="odd">
-<td><code>NaN</code></td>
-<td>not a number/undefined</td>
-</tr>
-<tr class="even">
-<td><code>NULL</code></td>
-<td>no value/undefined</td>
-</tr>
-<tr class="odd">
-<td><code>Inf</code> <code>-Inf</code></td>
-<td>infinity</td>
-</tr>
-<tr class="even">
-<td><code>for</code> <code>in</code></td>
-<td>for loops</td>
-</tr>
-<tr class="odd">
-<td><code>if</code> <code>else</code> <code>while</code> <code>break</code> <code>next</code> <code>repeat</code></td>
-<td>control flow</td>
-</tr>
-<tr class="even">
-<td><code>NA_integer_</code> <code>NA_real_</code> <code>NA_complex_</code> <code>NA_character_</code></td>
-<td>missing data by data type</td>
-</tr>
-</tbody>
-</table>
-<p>It’s easy to forgot these. Run <code>?reserved</code> in an R console or <a href="https://stat.ethz.ch/R-manual/R-devel/library/base/html/Reserved.html">check here</a> to remind yourself if need be.</p>
-<p>Some examples of reserved words in the wild:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">log</span>(<span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] -Inf</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="dv">0</span><span class="sc">/</span><span class="dv">0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] NaN</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">/</span><span class="dv">0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] Inf</code></pre>
-</div>
-</div>
+<p><strong>At the end of most lessons, this box will be included:</strong></p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -417,9 +266,33 @@ Putting it all together
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Check the environment pane. These are the object you created during the session. This is where you will see all objects created, unless you have choosen to render the objects invisible by starting their object names with a <code>.</code>, a period.</p>
+<p>Tips designed to weave together information from multiple lessons.</p>
 </div>
 </div>
+</section>
+<section id="how-to-suceed-in-learning-r" class="level3">
+<h3 class="anchored" data-anchor-id="how-to-suceed-in-learning-r">How to Suceed in Learning R</h3>
+<p>Learning R is hard. It is a steep learning curve. You will spend some amount of time lost and confused. The purpose of this workshop is to reduce the amount of time you spent in the zone of learning pain:</p>
+<p>![images/r_learning_curve.png]</p>
+<p>There will be a steep learning curve. Your work may look like this, at first:</p>
+<p>![images/nailed_it.jpg]</p>
+<p>But after time and regular application of your skill set, your code will look better and be easier to write.</p>
+<p>Here are some tips on how to succeed in learning R from this workshop:</p>
+<ul>
+<li>At the end of each class, review the learning goals and decide if you met those goals. These are designed to be the bare minimum of knowledge to competently use R. Later workshop content builds on this knowledge.<br>
+</li>
+<li>Review what we have covered between classes - refresh your knowledge.</li>
+<li>If there are practice problems, do them (we will give time during class)</li>
+<li>Experiment in the R console using what you learned. Really, nothing can go wrong.</li>
+<li>If class material is not clear, re-run the code from class and reread the notes; If it’s still not clear, ask up questions. We are here to help.</li>
+</ul>
+</section>
+<section id="your-very-first-r-lesson" class="level3">
+<h3 class="anchored" data-anchor-id="your-very-first-r-lesson">Your very first R lesson!</h3>
+<ul>
+<li>R is case-sensitive! (<code>data</code> is different from <code>Data</code> and <code>DATA</code>). This means when typing commands, exercise great care and attention to detail so your code works.</li>
+<li>There is no “undo” button in R. Once a command is run, you can’t undo it! (this is not as bad as it sounds)</li>
+</ul>
 
 
 </section>

@@ -226,7 +226,7 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
   <ul class="collapse">
   <li><a href="#accessing-items" id="toc-accessing-items" class="nav-link" data-scroll-target="#accessing-items">Accessing items</a></li>
   </ul></li>
-  <li><a href="#make-some-simple-plots" id="toc-make-some-simple-plots" class="nav-link" data-scroll-target="#make-some-simple-plots">Make Some Simple Plots</a></li>
+  <li><a href="#easy-plots" id="toc-easy-plots" class="nav-link" data-scroll-target="#easy-plots">Easy Plots</a></li>
   <li><a href="#calculate-some-values" id="toc-calculate-some-values" class="nav-link" data-scroll-target="#calculate-some-values">Calculate Some Values</a></li>
   <li><a href="#install-and-load-packages" id="toc-install-and-load-packages" class="nav-link" data-scroll-target="#install-and-load-packages">Install and Load Packages</a></li>
   </ul>
@@ -268,11 +268,11 @@ Learning Goals
 <div class="callout-body-container callout-body">
 <p>At the end of this lesson, you should know:</p>
 <ul>
-<li>How to import data in R</li>
-<li>Several methods of data exploration in R</li>
-<li>How to make cross tabulations of data</li>
-<li>How to make histograms and pairwise plots in R</li>
-<li>How to install and load packages in R</li>
+<li>how to import data in R</li>
+<li>several methods of data exploration in R</li>
+<li>how to make cross tabulations of data</li>
+<li>how to make histograms and pairwise plots in R</li>
+<li>how to install and load packages in R</li>
 </ul>
 </div>
 </div>
@@ -600,15 +600,15 @@ Important
 </div>
 <p>You can also check the class of each variable separately by using <code>class()</code> function.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">class</span>(data1<span class="sc">$</span>block)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(data1<span class="sc">$</span>block)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "character"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">class</span>(data1<span class="sc">$</span>yield)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(data1<span class="sc">$</span>yield)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "numeric"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">class</span>(data1<span class="sc">$</span>disease)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(data1<span class="sc">$</span>disease)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "logical"</code></pre>
 </div>
@@ -628,19 +628,7 @@ Important
 <pre><code>[1] "factor"</code></pre>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>For more information how data types are assigned in R and methods of coercing into differebt types can be assessed <a href="../lessons/data-types.html">here</a>.</p>
-</div>
-</div>
+<p>For more information different data types in R and how to convert between them can be found <a href="../lessons/data-types.html">here</a>.</p>
 </section>
 <section id="exploring-data-in-r" class="level2">
 <h2 class="anchored" data-anchor-id="exploring-data-in-r">Exploring Data in R</h2>
@@ -1403,7 +1391,7 @@ Things to note
 <p>Data in R data frames can also be referred to by their column names using the notation <code>dataframe$column_name</code>:</p>
 <p>This can also be used to create a new column in the data frame:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>data1<span class="sc">$</span>var4 <span class="ot">&lt;-</span> <span class="fu">seq.int</span>(<span class="at">from=</span><span class="dv">0</span>,<span class="at">to=</span><span class="dv">30</span>,<span class="at">length.out=</span><span class="dv">288</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>data1<span class="sc">$</span>var4 <span class="ot">&lt;-</span> <span class="fu">seq.int</span>(<span class="at">from=</span><span class="dv">0</span>, <span class="at">to=</span><span class="dv">30</span>, <span class="at">length.out=</span><span class="dv">288</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>In this example, a new column called “var4” was created, consisting of sequence numbers from zero to 30.</p>
 </section>
@@ -1417,8 +1405,8 @@ Things to note
 </section>
 </section>
 </section>
-<section id="make-some-simple-plots" class="level2">
-<h2 class="anchored" data-anchor-id="make-some-simple-plots">Make Some Simple Plots</h2>
+<section id="easy-plots" class="level2">
+<h2 class="anchored" data-anchor-id="easy-plots">Easy Plots</h2>
 <p>Here we are creating a histogram to look at data distribution of the ‘yield’ variable from data1 using a <code>hist()</code> function.</p>
 <p>The <code>boxplot()</code> function in R is used to create a boxplot for the selected variables. In the code chunk below, a boxplot of yield for each replication is created, the xlab and ylab shows the title of x-axis and y-axis, respectively. The <code>main=</code>, gives the title to the graph.</p>
 <div class="cell">
@@ -1480,19 +1468,7 @@ Things to note
 <div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>data1<span class="sc">$</span>var2 <span class="ot">&lt;-</span> var2</span>
 <span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a><span class="co">#View(data1)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>More information how mathematical operators work in R can be assessed <a href="../lessons/data-types.html">here</a>.</p>
-</div>
-</div>
+<p>More information mathematical operators and order of operations in R can be found <a href="../lessons/data-types.html">here</a>.</p>
 </section>
 <section id="install-and-load-packages" class="level2">
 <h2 class="anchored" data-anchor-id="install-and-load-packages">Install and Load Packages</h2>
@@ -1509,14 +1485,14 @@ These packages will be installed into "~/work/r-for-ag-scientists/r-for-ag-scien
 
 # Installing packages --------------------------------------------------------
 - Installing dplyr ...                          OK [linked from cache]
-Successfully installed 1 package in 5.3 milliseconds.</code></pre>
+Successfully installed 1 package in 4.9 milliseconds.</code></pre>
 </div>
 </div>
 <p>Or click Tools &gt; Install packages. Write the package name in dialog, then click <em>install</em>.</p>
 <ol start="2" type="1">
 <li>To Load packages:</li>
 </ol>
-<p>Once you install the package, you need to load it so that it becomes available to use. Simply use <code>library()</code> function.</p>
+<p>Once you install the package, you need to load it so that it becomes available to use. Use <code>library()</code> function.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)  <span class="co"># load 'dplyr' package</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
@@ -1532,6 +1508,19 @@ Attaching package: 'dplyr'</code></pre>
 <pre><code>The following objects are masked from 'package:base':
 
     intersect, setdiff, setequal, union</code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Putting it all together
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Check the environment pane. These are the object you created during the session. This is where you will see all objects created, unless you have choosen to render the objects invisible by starting their object names with a <code>.</code>, a period.</p>
 </div>
 </div>
 

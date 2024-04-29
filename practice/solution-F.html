@@ -303,34 +303,34 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">distinct</span>(trial_data, trial)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                         trial
-1  SWIdahoCereals_HRS_PAR_2016
-2  SWIdahoCereals_HWS_PAR_2016
-3  SWIdahoCereals_SWS_PAR_2016
-4  SWIdahoCereals_H-W_PAR_2017
-5  SWIdahoCereals_HRS_PAR_2017
-6  SWIdahoCereals_HWS_PAR_2017
-7  SWIdahoCereals_SWS_PAR_2017
-8  SWIdahoCereals_SWW_PAR_2017
-9  SWIdahoCereals_H-S_PAR_2018
-10 SWIdahoCereals_H-W_PAR_2018
-11 SWIdahoCereals_SWS_PAR_2018
-12 SWIdahoCereals_SWW_PAR_2018
-13 SWIdahoCereals_H-S_WEI_2018
-14 SWIdahoCereals_H-W_WEI_2018
-15 SWIdahoCereals_SWS_WEI_2018
-16 SWIdahoCereals_SWW_WEI_2018
-17 SWIdahoCereals_HRS_PAR_2019
-18 SWIdahoCereals_HRW_PAR_2019
-19 SWIdahoCereals_HWS_PAR_2019
-20 SWIdahoCereals_HWW_PAR_2019
+1  SWIdahoCereals_H-S_PAR_2018
+2  SWIdahoCereals_H-S_WEI_2018
+3  SWIdahoCereals_H-W_PAR_2017
+4  SWIdahoCereals_H-W_PAR_2018
+5  SWIdahoCereals_H-W_WEI_2018
+6  SWIdahoCereals_HRS_PAR_2016
+7  SWIdahoCereals_HRS_PAR_2017
+8  SWIdahoCereals_HRS_PAR_2019
+9  SWIdahoCereals_HRS_PAR_2020
+10 SWIdahoCereals_HRW_PAR_2019
+11 SWIdahoCereals_HRW_PAR_2020
+12 SWIdahoCereals_HWS_PAR_2016
+13 SWIdahoCereals_HWS_PAR_2017
+14 SWIdahoCereals_HWS_PAR_2019
+15 SWIdahoCereals_HWS_PAR_2020
+16 SWIdahoCereals_HWW_PAR_2019
+17 SWIdahoCereals_HWW_PAR_2020
+18 SWIdahoCereals_SWS_PAR_2016
+19 SWIdahoCereals_SWS_PAR_2017
+20 SWIdahoCereals_SWS_PAR_2018
 21 SWIdahoCereals_SWS_PAR_2019
-22 SWIdahoCereals_SWW_PAR_2019
-23 SWIdahoCereals_HRS_PAR_2020
-24 SWIdahoCereals_HRW_PAR_2020
-25 SWIdahoCereals_HWS_PAR_2020
-26 SWIdahoCereals_HWW_PAR_2020
-27 SWIdahoCereals_SWS_PAR_2020
-28 SWIdahoCereals_SWW_PAR_2020</code></pre>
+22 SWIdahoCereals_SWS_PAR_2020
+23 SWIdahoCereals_SWS_WEI_2018
+24 SWIdahoCereals_SWW_PAR_2017
+25 SWIdahoCereals_SWW_PAR_2018
+26 SWIdahoCereals_SWW_PAR_2019
+27 SWIdahoCereals_SWW_PAR_2020
+28 SWIdahoCereals_SWW_WEI_2018</code></pre>
 </div>
 </div>
 <p>I will call the first column “program”, the second “crop” (those are wheat market classes), the third will be called “location” (PAR is an abbreviation for Parma), and the fourth column is year. This <code>separate()</code> command is being done on a character variable and will return all character variables, even though “year” could be coerced to be numeric.</p>
