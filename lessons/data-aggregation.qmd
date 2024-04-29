@@ -1,5 +1,5 @@
 ---
-title: "Lesson 10: Aggregating & Summarising Data"
+title: "Aggregating & Summarising Data"
 ---
 
 ::: {.callout-caution collapse="false"}
