@@ -1,0 +1,78 @@
+---
+title: "Preparing for this Short Course/Workshop"
+---
+
+Welcome & salutations!
+
+We excited to teach this course. We have revamped this curriculum so that we get everyone doing practical coding with data as soon as possible. 
+
+We have limited time, so order to conserve class time and have us all ready for the first day of class, please read through this "Lesson Zero", watch the video and follow the instructions below.  
+
+### Install R & RStudio. 
+
+Follow [these instructions](r-installation-instructions.qmd) for installing R *and* RStudio. R is the actual programmatic engine that you can do cool things with, and RStudio is an "integrated development environment" (IDE) to help us use R effectively. 
+
+### Join Posit Cloud
+
+You will receive a link via email from us to join our online classroom on [Posit Cloud](https://login.posit.cloud/login), where you will need to sign up for an account using your email, or you can connect it to a Gmail or GitHub account (any of these choices will work fine for the class). If do you not have a Gmail or GitHub account, use your normal email instead. Once you receive the invitation and have created an account, follow [these instructions](../posit-instructions.qmd) for accessing the classroom. 
+
+### Class Structure
+
+For all lessons, please follow along in R + RStudio or Posit Cloud session. In most instances, you will type and run the same code that we will demonstrate. Actually typing out the code rather than cut-and-pasting is how you learn. 
+
+Additionally, all code generated that day will be posted on the Posit Cloud 
+'classroom'. It is important that you read through notes and try to run to do the exercises if (1) you had to miss some or all of a class, or (2) there is material you do not understand. 
+
+**It is very important that you use the time between class sessions to ensure you understand the material.**
+
+### Class absences
+
+It's okay to miss class or a lecture - we all have stuff going on. There is no need to tell me in advance. As mentioned above, if you miss class, please be sure to catch up on the course material you missed by reading the course notes, running the content and attempting the exercises. Falling behind in the content can create problems with the following content, so please make every effort to stay current with the class. 
+
+### Class Notes Structure 
+
+As mentioned, all code run will be captured in class notes that will be posted. While you can read those notes and not attend class, many find it helpful to attend a live course and receive live instruction and feedback from an expert. 
+
+**At the beginning of each lesson, this box will be included:**
+
+::: {.callout-caution collapse="false"}
+## Learning Goals
+
+This will be a list of what each lesson intends to teach. 
+
+If you do not think you have met those learning goals, please review the notes, rewatch the videos and if the material is still unclear, contact me.  
+:::
+
+**At the end of most lessons, this box will be included:**
+
+::: {.callout-tip}
+## Putting it all together
+
+Tips designed to weave together information from multiple lessons. 
+:::
+
+### How to Suceed in Learning R
+
+Learning R is hard. It is a steep learning curve. You will spend some amount of time lost and confused. The purpose of this workshop is to reduce the amount of time you spent in the zone of learning pain:
+
+![images/r_learning_curve.png]
+
+There will be a steep learning curve. Your work may look like this, at first: 
+
+![images/nailed_it.jpg]
+
+But after time and regular application of your skill set, your code will look better and be easier to write. 
+
+Here are some tips on how to succeed in learning R from this workshop: 
+
+- At the end of each class, review the learning goals and decide if you met those goals. These are designed to be the bare minimum of knowledge to competently use R. Later workshop content builds on this knowledge.  
+- Review what we have covered between classes - refresh your knowledge. 
+- If there are practice problems, do them (we will give time during class)
+- Experiment in the R console using what you learned. Really, nothing can go wrong. 
+- If class material is not clear, re-run the code from class and reread the notes; If it's still not clear, ask up questions. We are here to help. 
+
+### Your very first R lesson!
+
+* R is case-sensitive! (`data` is different from `Data` and `DATA`). This means when typing commands, exercise great care and attention to detail so your code works. 
+* There is no "undo" button in R. Once a command is run, you can't undo it! (this is not as bad as it sounds)
+
