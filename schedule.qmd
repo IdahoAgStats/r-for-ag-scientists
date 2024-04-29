@@ -12,9 +12,9 @@ title: "Course Schedule"
            Quick tour of R Studio\
            Getting to know data in R\
            Installing R packages |   |
-| May 21 | Importing tabular files\
+| May 21 |  R documentation \
+            Importing tabular files\
            Data transformation & wrangling\
-           R documentation \
            Exporting R objects to file |  |
 | May 22 | Data aggregation + summary \
             Reshaping data\
