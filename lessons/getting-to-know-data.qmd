@@ -7,11 +7,11 @@ title: "Getting to Know Your Data in R"
 
 At the end of this lesson, you should know:
 
--   How to import data in R
--   Several methods of data exploration in R
--   How to make cross tabulations of data
--   How to make histograms and pairwise plots in R
--   How to install and load packages in R
+-   how to import data in R
+-   several methods of data exploration in R
+-   how to make cross tabulations of data
+-   how to make histograms and pairwise plots in R
+-   how to install and load packages in R
 :::
 
 ## Import a csv data set
@@ -201,20 +201,18 @@ You can also check the class of each variable separately by using `class()`
 function.
 
 ```{r}
- class(data1$block)
- class(data1$yield)
- class(data1$disease)
+class(data1$block)
+class(data1$yield)
+class(data1$disease)
 ```
 
 Data type of individual variables can be coerced into different types.
 For example, plot is a numeric variable, `as.character()` converts it to a character variable.
 
 ```{r, eval=FALSE}
-
 data1$plot <-  as.character(data1$plot)
 
 data1$plot <- as.numeric(data1$plot) #converting plot back to numeric
-
 ```
 
 A character variable can be converted to the factor variable. Factor is
@@ -229,11 +227,10 @@ data1$block <- as.factor(data1$block)
 class(data1$block) # check class of the block
 ```
 
-::: callout-note
-For more information how data types are assigned in R and methods of
-coercing into differebt types can be assessed
+
+For more information different data types in R and how to convert between them can be found
 [here](../lessons/data-types.qmd).
-:::
+
 
 ## Exploring Data in R
 
@@ -345,7 +342,7 @@ using the notation `dataframe$column_name`:
 This can also be used to create a new column in the data frame:
 
 ```{r}
-data1$var4 <- seq.int(from=0,to=30,length.out=288) 
+data1$var4 <- seq.int(from=0, to=30, length.out=288) 
 ```
 
 In this example, a new column called "var4" was created, consisting of
@@ -365,7 +362,7 @@ as `NA`. First, we index the that position, then we assign a value to it
 data1[3, 6] <- NA
 ```
 
-## Make Some Simple Plots
+## Easy Plots
 
 Here we are creating a histogram to look at data distribution of the
 'yield' variable from data1 using a `hist()` function.
@@ -409,7 +406,6 @@ Let's create a new vector named 'var2' as a product of 'yield' and 'ears' from d
 
 ```{r}
 var2 <- data1$yield*data1$ears
-
 ```
 
 The code below shows how to update data1 with 'var2'
@@ -419,10 +415,8 @@ data1$var2 <- var2
 #View(data1)
 ```
 
-::: callout-note
-More information how mathematical operators work in R can be assessed
-[here](../lessons/data-types.qmd).
-:::
+
+More information mathematical operators and order of operations in R can be found [here](../lessons/data-types.qmd).
 
 ## Install and Load Packages
 
@@ -440,10 +434,18 @@ then click *install*.
 2.  To Load packages:
 
 Once you install the package, you need to load it so that it becomes
-available to use. Simply use `library()` function.
+available to use. Use `library()` function.
 
 ```{r}
 library(dplyr)  # load 'dplyr' package
 ```
 
 
+::: callout-tip
+## Putting it all together
+
+Check the environment pane. These are the object you created during the
+session. This is where you will see all objects created, unless you have
+choosen to render the objects invisible by starting their object names
+with a `.`, a period.
+:::
