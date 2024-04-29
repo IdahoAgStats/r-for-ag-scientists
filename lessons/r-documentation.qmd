@@ -65,7 +65,7 @@ Let's check out the help file for `sample()`, a function designed to randomly sa
 
 Here is a screenshot of the window that hopefully popped up in your RStudio help pane:
 
-```{r, alt="screenshot of an R help file for the function 'sample'"}
+```{r, echo=FALSE, out.height="90%",out.width="90%", alt="screenshot of an R help file for the function 'sample'"}
 knitr::include_graphics(here::here("images", "help_sample_ex.png"))
 ```
 
@@ -120,7 +120,7 @@ Additionally, here is the [ultimate guide](https://cran.r-project.org/doc/manual
 
 #### Libraries
 
-```{r, fig.alt="Sokka shouting 'At the library!'"}
+```{r,  echo=FALSE, fig.alt="Sokka shouting 'At the library!'"}
 knitr::include_graphics(here::here("images", "sokka_library.gif"))
 ```
 
