@@ -43,7 +43,7 @@ Example syntax of a `row_bind`:
 new1 <- bind_rows(x, y)
 ```
 
-In this functionm, the column names are matched and ordered according to the first data frame listed ("x" in this example). The default behavior is to return all unique columns from both data sets and fill in with missing data as needed. 
+In this function, the column names are matched and ordered according to the first data frame listed ("x" in this example). The default behavior is to return all unique columns from both data sets and fill in with missing data as needed. 
 
 ```{r, echo=FALSE}
 knitr::include_graphics(here::here("images", "bind_rows.png"))
@@ -207,7 +207,7 @@ table(ex_antijoin$variety %in% genotypes$individual)
 
 ::: {.callout-note}
 
-***dplyr*** [updated](https://dplyr.tidyverse.org/news/index.html?q=join#joins-0-7-0) about 1 week ago! 
+***dplyr*** [updated](https://dplyr.tidyverse.org/news/index.html?q=join#joins-0-7-0)! 
 
 One of the biggest changes is how it handles joins. It can now do some very flexible matching by numeric values, dates and other factors. More on this can be found in the documentation for [join_by](https://dplyr.tidyverse.org/reference/join_by.html). 
 :::
