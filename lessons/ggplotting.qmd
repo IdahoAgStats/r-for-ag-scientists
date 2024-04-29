@@ -48,7 +48,7 @@ hay_idaho <- filter(nass.hay, state == "Idaho")
 # all observations for 2012 
 hay2012 <- filter(nass.hay, year == 2012)
 # all observations for Idaho, Oregon, Washinton and Montana
-hay_pnw <- filter(nass.hay, state %in% c("Oregon", "Washington", "Montana","Idaho")) %>% 
+hay_pnw <- filter(nass.hay, state %in% c("Oregon", "Washington", "Montana","Idaho")) |> 
   mutate(state = as.character(state)) 
 ```
 
@@ -111,7 +111,7 @@ ggplot(hay_idaho, aes(x = year, y = yield)) +
 We can ignore this warning telling us there is missing data. That happens when using NASS data!
 
 
-**Question:** What happens if we use `%>%` instead of `+`?
+**Question:** What happens if we use `|>` instead of `+`?
 
 *(try it to find out)*
 
@@ -308,7 +308,7 @@ ggplot(hay_pnw) +
 **Example:**  create a band indicates the minimum and maximum range of values  
 
 ```{r}
-hay_yearly <- nass.hay %>% group_by(year) %>% 
+hay_yearly <- nass.hay |> group_by(year) |> 
   summarise(Yield = mean(yield), yield_min = min(yield), yield_max = max(yield))
 
 ggplot(hay_yearly, aes(x = year)) + 
@@ -323,7 +323,7 @@ Two other plot adjustments included:
   * flip the x and y axes
   
 ```{r}
-hay_pnw_summary <- hay_pnw %>% group_by(state) %>% 
+hay_pnw_summary <- hay_pnw |> group_by(state) |> 
   summarise(Yield = mean(yield, na.rm = T), yield_sd = sd(yield, na.rm = T))
 
 ggplot(hay_pnw_summary, aes(y = state)) + 
@@ -448,7 +448,7 @@ library(RColorBrewer)
 display.brewer.all()
 ```
 
-```{r, echo=FALSE, fig.height=400}
+```{r, echo=FALSE, out.width="40%",out.height = "40%"}
 knitr::include_graphics(here::here("images", "rcolorbrewer.png"))
 ```
 
@@ -586,7 +586,7 @@ shotDataf$LOC_Y <- as.numeric(as.character(shotDataf$LOC_Y))
 shotDataf$SHOT_DISTANCE <- as.numeric(as.character(shotDataf$SHOT_DISTANCE))
 
 # extract relevant data for plotting
-shots_made <- shotDataf %>% filter(EVENT_TYPE == "Made Shot") %>% select(LOC_X, LOC_Y) %>% 
+shots_made <- shotDataf |> filter(EVENT_TYPE == "Made Shot") |> select(LOC_X, LOC_Y) |> 
   drop_na()
 
 # set colors
@@ -622,7 +622,7 @@ knitr::include_graphics(here::here("images", "steph_curry_shots_made_loop.gif"))
 ***ggplot*** is part of the Tidyverse, despite having different conventions, like the use of the "+" operator for adding plot layers. You can take Tidyverse output from piped operations and pipe that directly into a ggplot:
 
 ``` {r, eval=FALSE}
-mydata %>% filter(var == "some_conditions") %>% 
+mydata |> filter(var == "some_conditions") |> 
   ggplot(...)
 ```
 
