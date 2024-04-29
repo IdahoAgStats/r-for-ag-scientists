@@ -306,35 +306,32 @@ Learning Goals
 <li>Use the “Import Dataset” tool in the Environment pane.</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"images"</span>, <span class="st">"import_dataset_enviro.png"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="../images/import_dataset_enviro.png" class="img-fluid figure-img"></p>
+<p><img src="../images/import_dataset_enviro.png" style="width:80.0%;height:80.0%" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<ol type="1">
+<ol start="2" type="1">
 <li>Use the Files pane in RStudio</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"images"</span>, <span class="st">"import_dataset_file.png"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="../images/import_dataset_file.png" class="img-fluid figure-img"></p>
+<p><img src="../images/import_dataset_file.png" style="width:80.0%;height:80.0%" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
 <p>Both of them open a new window that looks like this:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"images"</span>, <span class="st">"import_dataset_window.png"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="../images/import_dataset_window.png" class="img-fluid figure-img"></p>
+<p><img src="../images/import_dataset_window.png" style="width:80.0%;height:80.0%" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -352,7 +349,7 @@ Warning
 <p>While these point-and-click interfaces are very convenient, they don’t automatically leave a trail of breadcrumbs to help you repeat the process in the future. <em>But</em>, they do generate R code that we can capture and reuse. They are handy shortcuts that I have found especially helpful when trying to import file formats I work with rarely.</p>
 </div>
 </div>
-<ol type="1">
+<ol start="3" type="1">
 <li>Manual command line import</li>
 </ol>
 <p>Ultimately, this is how anything is imported into R. As mentioned, first two options listed above are actually tools for generating code that will import a data set through the command-line!</p>
@@ -368,11 +365,11 @@ Warning
 <p>A very commonly used function for reading in “comma separated values” (CSV) files. I personally like this format because it is not proprietary and is compatible across many operating systems. It also limits all sorts of extraneous formatting that itself is a barrier to reproducible research (e.g.&nbsp;highlighting is discarded once a CSV file is closed).</p>
 <p><strong>Example usage:</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>mycsv1 <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"trial_metadata.csv"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>mycsv1 <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"trial_metadata.csv"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>Result:</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(mycsv1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(mycsv1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>'data.frame':   28 obs. of  30 variables:
  $ trial             : chr  "SWIdahoCereals_HWW_PAR_2020" "SWIdahoCereals_SWW_PAR_2020" "SWIdahoCereals_H_W_PAR_2018" "SWIdahoCereals_SWW_PAR_2018" ...
@@ -423,8 +420,8 @@ Warning
 <p><strong>Example Usage:</strong></p>
 <p>First, load the package <strong><em>readr</em></strong> that contains the function <code>read_csv()</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>mycsv2 <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"trial_metadata.csv"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>mycsv2 <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"trial_metadata.csv"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Rows: 28 Columns: 30
 ── Column specification ────────────────────────────────────────────────────────
@@ -440,7 +437,7 @@ date  (2): planting_date, harvest_date
 </div>
 <p><strong>Result:</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(mycsv2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(mycsv2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>spc_tbl_ [28 × 30] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
  $ trial             : chr [1:28] "SWIdahoCereals_HWW_PAR_2020" "SWIdahoCereals_SWW_PAR_2020" "SWIdahoCereals_H_W_PAR_2018" "SWIdahoCereals_SWW_PAR_2018" ...
@@ -512,7 +509,7 @@ date  (2): planting_date, harvest_date
 <p><strong>Details:</strong></p>
 <p>This function takes similar arguments to <code>read.csv()</code>, although the output is more extensive.</p>
 <ul>
-<li>Like in <code>read.csv()</code>, the default separator is “,”, missing datea are coded as empty string <code>""</code> or <code>NA</code> and the first line is assumed to be the column header</li>
+<li>Like in <code>read.csv()</code>, the default separator is “,”, missing data are coded as empty string <code>""</code> or <code>NA</code> and the first line is assumed to be the column header</li>
 <li>it does not bother with a row names attribute</li>
 <li>the argument <code>trim_ws</code> will remove leading and trailing whitespace for data entries. So the column header ” soil pH” will become “soil pH”.</li>
 <li>Column are preserved more clearly than <code>read.csv()</code> (including spaces and special characters). I’m honestly not fond of this behavior and usually clean up weird column names with <code>janitor::clean_names()</code>.</li>
@@ -525,15 +522,15 @@ date  (2): planting_date, harvest_date
 <p><strong>Example Usage:</strong></p>
 <p>Load the package that contains the function <code>read_excel()</code>, <a href="https://readxl.tidyverse.org/"><strong><em>readxl</em></strong></a>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>myxl <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"field_trial_2009.xlsx"</span>), </span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>                   <span class="at">sheet =</span> <span class="st">"site_02"</span>, </span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>                   <span class="at">trim_ws =</span> <span class="cn">TRUE</span>, </span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>                   <span class="at">na =</span> <span class="fu">c</span>(<span class="st">""</span>, <span class="st">"NA"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>myxl <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"field_trial_2009.xlsx"</span>), </span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>                   <span class="at">sheet =</span> <span class="st">"site_02"</span>, </span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>                   <span class="at">trim_ws =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>                   <span class="at">na =</span> <span class="fu">c</span>(<span class="st">""</span>, <span class="st">"NA"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>Results:</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(myxl)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(myxl)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>tibble [80 × 30] (S3: tbl_df/tbl/data.frame)
  $ plot    : num [1:80] 1 2 3 4 5 6 7 8 9 10 ...
@@ -580,7 +577,7 @@ date  (2): planting_date, harvest_date
 <h3 class="anchored" data-anchor-id="read_delim"><code>read_delim()</code></h3>
 <p>For reading in text files! It’s pretty simple. Text files are not used terribly frequently, but I see them now and then with really huge files, such as genotyping data.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>mytxt <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"genotypic_data.txt"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>mytxt <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"genotypic_data.txt"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>Details</strong></p>
 <p>This function is a more extensive version of <code>read.csv()</code>. It has a longer list of argument and slight different default values for those arguments that <code>read.csv</code>. Run <code>?write.delim</code> in the console for more details.</p>

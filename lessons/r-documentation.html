@@ -301,11 +301,10 @@ Learning Goals
 </div>
 <p>Here is a screenshot of the window that hopefully popped up in your RStudio help pane:</p>
 <div class="cell" alt="screenshot of an R help file for the function 'sample'">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"images"</span>, <span class="st">"help_sample_ex.png"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="../images/help_sample_ex.png" class="img-fluid figure-img"></p>
+<p><img src="../images/help_sample_ex.png" style="width:90.0%;height:90.0%" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -331,8 +330,8 @@ Learning Goals
 <li>It will return a vector of the item sampled</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  [1]   1   2   3   4   5   6   7   8   9  10  11  12  13  14  15  16  17  18
  [19]  19  20  21  22  23  24  25  26  27  28  29  30  31  32  33  34  35  36
@@ -341,9 +340,9 @@ Learning Goals
  [73]  73  74  75  76  77  78  79  80  81  82  83  84  85  86  87  88  89  90
  [91]  91  92  93  94  95  96  97  98  99 100</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(x, <span class="dv">10</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(x, <span class="dv">10</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] 49  7  3 31 34 61 99 65 62 95</code></pre>
+<pre><code> [1] 74  4 54 19 18 41 80 84 85 33</code></pre>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -364,7 +363,7 @@ Note
 <h3 class="anchored" data-anchor-id="back-to-functions">Back to functions</h3>
 <p>Functions can return exactly one object (or none at all). If it does return an object, that can be assigned to a new object:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>new <span class="ot">&lt;-</span> <span class="fu">function_name</span>(value1, <span class="at">arg3 =</span> value3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>new <span class="ot">&lt;-</span> <span class="fu">function_name</span>(value1, <span class="at">arg3 =</span> value3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>If the output from a function is not assigned, it will be sent to the console instead (we’ve done this plenty during this workshop). Sometimes, this is fine! Maybe it is a small amount of output we are running to check data integrity. Or maybe it’s a giant data frame we deeply regret printing in the console.</p>
 </section>
@@ -376,7 +375,6 @@ Note
 <section id="libraries" class="level4">
 <h4 class="anchored" data-anchor-id="libraries">Libraries</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"images"</span>, <span class="st">"sokka_library.gif"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -389,9 +387,9 @@ Note
 <p>These packages are often made available on <a href="https://cran.r-project.org/web/packages/available_packages_by_name.html">CRAN</a>, the comprehensive R archive network, as well <a href="https://www.bioconductor.org/">Bioconductor</a> or via GitHub, GitLab, independent websites.</p>
 <p>You can access packages on CRAN by first installing them with <code>install.packages("package_name")</code> and then loading the package into an R session, <code>library(package_name)</code>. Here’s an example using <strong>readr</strong> and *readxl**, packages we will use for data importation.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">"readr"</span>, <span class="st">"readxl"</span>))</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">"readr"</span>, <span class="st">"readxl"</span>))</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Note that multiple packages can be listed in the <code>install.packages()</code> command, but not <code>library()</code>. Also, packages only need to be installed once, not repeatedly (unless a package needs to be a updated to the latest version). However, packages must be loaded in every R session or their functionality (including the help files) is not available.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
