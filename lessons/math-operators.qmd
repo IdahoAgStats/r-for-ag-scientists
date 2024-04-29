@@ -1,5 +1,5 @@
 ---
-title: "Math Operators"
+title: "Math Operators & Vectorizing"
 ---
 
 ::: {.callout-caution collapse="false"}
@@ -7,11 +7,13 @@ title: "Math Operators"
 
 At the end of this lesson, you should:
 
--   Understand sorts of math operators available in R and how to use them
--   Understand logical operators in R
--   Be aware of the order of operations
--   Be aware of how whitespace is interpreted in R
--   Understand how to use parentheses, brackets, braces and quotations in R
+-   understand sorts of math operators available in R and how to use them
+-   understand logical operators in R
+-   be aware of the order of operations
+-   be aware of how whitespace is interpreted in R
+-   understand how to use parentheses, brackets, braces and quotations in R
+-   be able to repeat a set of operations across a vector
+-   be able to create a sequence of numbers in R using any starting value and any ending value
 :::
 
 ### R as a calculator
@@ -146,61 +148,63 @@ What results from this?
 
 [Here](https://stat.ethz.ch/R-manual/R-devel/library/base/html/Syntax.html) is the official R guide to order of operations (warning: this is complicated and refers to functions beyond mathematical operators).
 
-### Some notes on R syntax
 
--   most often, the amount of white space does not matter.
-
-These are the same:
-
-```{r}
-4/3
-4/    3
-4    /  3
-```
-
-These are also the same:
-
-```{r}
-log(10)
-log( 10 )
-log ( 10)
-```
-
--   R expects certain things to be paired or completed before it will send it to the interpreter
-
--   As mentioned, earlier a hard return is sufficient to send a command to the R interpreter.
-
--   Exceptions: binary operators (= those expecting 2 numbers): `+`, `-`, `*`, `/`, `^`, `==`, etc
-
--   Exceptions: unclosed parentheses `()`, brackets `[]` `{}`, or quotes `' '` `" "`. R will wait for these to be completed. A single quote must always be complemented by a second single quote, and a double quote likewise must always have a second quote to complete it. Left parentheses, curly braces, or brackets much also be accompanying by their right-sided complement.
-
--   good examples
-
-<!-- -->
-
-    1 + 2
-    { }
-    ( )
-    [ ]
-    "  "
-    ' '
-    ` `
-
--   bad examples
-
-<!-- -->
-
-    1 + 
-    '
-    (  } ] 
-    "
-    ' "
-
--   there is no difference between double and single quotes on a practical level, but R will interpret them as different commands (so a single quote cannot close a double quote). This is useful when there is nested levels of quoting (rare), and yet, it happens now and then.
 
 ::: callout-note
 If you become stuck with an unfinished command, you can use the escape key, `ESC`, to get out of it.
 :::
+
+
+### Vectorizing operations
+
+Using R as a calculator between a few numbers is handy, but typically we
+are hoping to do so much more with it, such as performing a calculations
+across a long list of numbers.
+
+R is naturally vectorized, which means that you can easily perform a
+mathematical operation across a vector of numbers (no need to write
+loops!)
+
+Say we have a collection of numbers from 10 to 20 and we want to
+multiple them all by 12. We can create a sequence of numbers by wrapping
+them all in `c()` command (for "concatenate") and separating each with a
+comma.
+
+```{r}
+c(10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20)
+```
+
+Then those numbers can be operated on by any math operator:
+
+```{r}
+c(10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20) * 10 - 1
+```
+
+There's also a quicker way to specify a sequence of integers using the
+notation `start:end`:
+
+```{r}
+1:10
+```
+
+It also counts down:
+
+```{r}
+20:10
+```
+
+And works with negative integers:
+
+```{r}
+-5:5
+```
+
+These can be operated on:
+
+```{r}
+(-5:5)^2
+```
+
 
 ::: callout-tip
 ## Putting it all together
