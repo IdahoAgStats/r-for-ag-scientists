@@ -9,7 +9,7 @@ knitr::opts_chunk$set(echo = FALSE)
 
 Follow the link provided in the mail to join the classroom. 
 
-Once you have created a login for [Posit Cloud](https://posit.cloud/), you can join the classroom. Once you follow the link and log in to Posit, you should see this screen:
+Once you have created a login for [Posit Cloud](https://posit.cloud/), you can join the classroom. Once you follow the link and log in to Posit, you should see something similar to this screen:
 
 ```{r}
 knitr::include_graphics(here::here("images", "posit_1_alt.png"))
