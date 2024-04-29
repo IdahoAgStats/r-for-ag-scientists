@@ -17,7 +17,7 @@ You may find yourself wanting to calculate summary statistics across a grouping 
 
 First, load libraries & import data:
 
-```{r}
+```{r, message=FALSE}
 library(dplyr)
 
 variety_trials <- read.csv(here::here("data", "trial_data.csv")) %>% 
@@ -62,7 +62,7 @@ yield_crop
 ```
 
 ::: callout-note
-`summarise()` only returns a single value back for each group. If you want more than that (e.g. to run a linear model on each group), there are other tools for that. This is intended to be addressed in Lesson 16, repeating actions.
+`summarise()` only returns a single value back for each group. If you want more than that (e.g. to run a linear model on each group), there are other tools for that. This is intended to be addressed in Lesson 'repeating actions'.
 :::
 
 ### Grouping across multiple variables
