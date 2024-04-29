@@ -519,7 +519,12 @@ ggplot(nass.hay, aes(x = yield, y = reorder(decade, desc(decade)), fill = after_
 
 #### plotly
 
-```{r message=FALSE, warning=FALSE}
+```{r include=FALSE, echo=FALSE}
+library(htmlwidgets)
+```
+
+
+```{r 'html widget', eval=FALSE, echo=TRUE}
 library(plotly)
 
 pl <- ggplot(nass.hay, aes(x = year, y = yield, color = acres)) +
@@ -530,6 +535,7 @@ pl <- ggplot(nass.hay, aes(x = year, y = yield, color = acres)) +
 
 ggplotly(pl)
 ```
+
 
 To save an interactive plot, use `htmlwidgets::saveWidget()`. 
 
