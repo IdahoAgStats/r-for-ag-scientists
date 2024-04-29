@@ -443,7 +443,7 @@ There are many options for adjusting elements of a ggplot. You you will inevitab
 
 R has a rich set of colors and some excellent palettes that provide excellent contrast and/or work for color-blind individuals. Several are automatically loaded with ggplot2, such as the RColorBrewer:  
 
-```{}
+```{r, 'r color brewer', eval=FALSE, echo=TRUE}
 library(RColorBrewer)
 display.brewer.all()
 ```
@@ -460,7 +460,7 @@ The package **[viridis](https://sjmgarnier.github.io/viridis/)** also has some n
 
   * The function `ggsave()` is the recommended approach. 
   * By default, it will save the the last plot created. 
-```{r}
+```{r, 'ggsave'}
 ggplot(hay_pnw) +
   geom_line(aes(x = year, y = yield), col = "violetred", na.rm=TRUE) +
   facet_wrap(. ~ state, nrow = 2, ncol = 2) +
@@ -503,7 +503,7 @@ Many [packages](https://exts.ggplot2.tidyverse.org/gallery/) have been developed
 
 #### ggridge
 
-```{r}
+```{r, 'ggridge', message=FAlSE}
 # break hay data into decennial increments (roughly)
 nass.hay$decade <- cut(nass.hay$year, breaks = c(1900, 1920, 1930, 1940, 1950, 1960, 1970, 1980, 1990, 2000, 2020), labels = c("pre-1920", "1920s", "1930s", "1940s", "1950s", "1960s", "1970s", "1980s", "1990s", "2000s"))
 
@@ -519,12 +519,12 @@ ggplot(nass.hay, aes(x = yield, y = reorder(decade, desc(decade)), fill = after_
 
 #### plotly
 
-```{r include=FALSE, echo=FALSE}
-library(htmlwidgets)
+```{r, include=FALSE, echo=FALSE}
+#library(htmlwidgets)
 ```
 
 
-```{r 'html widget', eval=FALSE, echo=TRUE}
+```{r, 'html widget', eval=FALSE, echo=TRUE}
 library(plotly)
 
 pl <- ggplot(nass.hay, aes(x = year, y = yield, color = acres)) +
