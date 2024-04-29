@@ -32,14 +32,13 @@ Pivoting from wide to long can be done with the [***tidyr***](https://tidyr.tidy
 
 Let's run some examples with trial data set.
 
-Load the trial data and libraries:
+Load the libraries and trial data:
 
-```{r}
+```{r, message=FALSE}
 library(readr); library(dplyr); library(tidyr)
 
 variety_trials <- read.csv(here::here("data", "trial_data.csv")) 
 
-#weather <- read_csv(here::here("data", "weather_data.csv"))
 ```
 
 ### Pivot long to wide
