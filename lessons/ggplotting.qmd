@@ -448,7 +448,7 @@ library(RColorBrewer)
 display.brewer.all()
 ```
 
-```{r, echo=FALSE, fig.height=6, out.height=6}
+```{r, echo=FALSE, fig.height=400}
 knitr::include_graphics(here::here("images", "rcolorbrewer.png"))
 ```
 
