@@ -72,37 +72,37 @@ unique(variety_trials$trial)
 This example will use the last trial listed (SWIdahoCereals_SWW_PAR_2020), but any of these options will work. Let's filter the data and check that there is one observation per rep and entry.
 
 ```{r}
-parma2020 <- variety_trials %>% filter(trial == "SWIdahoCereals_SWW_PAR_2020") 
-table(parma2020$entry, parma2020$rep)
+parma2018 <- variety_trials %>% filter(trial == "SWIdahoCereals_H_S_PAR_2018") 
+table(parma2018$variety, parma2018$rep)
 ```
 
 The table produces all "1" indicating 1 observation per variable combination, which is what we want.
 
 ```{r}
-parma2020_wide <- parma2020 %>% 
-  pivot_wider(id_cols = entry,
+parma2018_wide <- parma2018 %>% 
+  pivot_wider(id_cols = variety,
               names_from = rep,
               values_from = yield)
 
-head(parma2020_wide)
+head(parma2018_wide)
 ```
 
-If you try to index that column with `parma2020_wide$1`, an error is thrown:
+If you try to index that column with `parma2018_wide$1`, an error is thrown:
 
 ```{r, error=TRUE}
-parma2020_wide$1
+parma2018_wide$1
 ```
 
 We can give it better column names (not starting with a number) using the `names_prefix` argument.
 
 ```{r}
-parma2020_wide <- parma2020 %>% 
-  pivot_wider(id_cols = entry,
+parma2018_wide <- parma2018 %>% 
+  pivot_wider(id_cols = variety,
               names_from = rep,
               values_from = yield,
               names_prefix = "rep_")
 
-head(parma2020_wide)
+head(parma2018_wide)
 ```
 
 #### Pivot multiple variables
@@ -110,12 +110,12 @@ head(parma2020_wide)
 Perhaps we want to pivot 2 variables.
 
 ```{r}
-parma2020_wide_2vars <- parma2020 %>%
-  pivot_wider(id_cols = entry,
+parma2018_wide_2vars <- parma2018 %>%
+  pivot_wider(id_cols = variety,
               names_from = rep,
               values_from = c(yield, grain_protein))
 
-head(parma2020_wide_2vars)
+head(parma2018_wide_2vars)
 ```
 
 #### Pivot with multiple observations per identifier
@@ -127,13 +127,13 @@ However, you can also introduce a function in a `pivot_wider` such as `mean` or 
 Here is an example using "variety", which is has replicate values.
 
 ```{r}
-parma2020_wide_var <- parma2020 %>%
+parma2018_wide_var <- parma2018 %>%
   pivot_wider(id_cols = variety,
               names_from = rep, 
               values_from = yield,
               values_fn = mean)
 
-head(parma2020_wide_var)
+head(parma2018_wide_var)
 ```
 
 ### Wide to Long
@@ -149,7 +149,7 @@ Main arguments in `pivot_longer()` (besides the data set):
 **values_to** name of new value column (will be named "value" by default if not specified)
 
 ```{r}
-parma2020_long <- parma2020 %>% 
+parma2020_long <- parma2018 %>% 
   pivot_longer(cols = c(yield, grain_protein, test_weight),
                names_to = "trait")
 

@@ -62,7 +62,7 @@ You can also select on what columns you do *not* want:
 
 ```{r}
 select2 <- select(variety_trials, -trial)
-select3 <- select(variety_trials, -c(trial, plot))
+select3 <- select(variety_trials, -c(trial))
 
 head(select2); head(select3)
 ```
@@ -126,7 +126,7 @@ new_var <- rbinom(n = nrow(variety_trials), size = 1, prob = 0.5)
 mutate1 <- mutate(variety_trials, 
                     dataset = "example",
                     row_position = 1:n(),
-                    range_new = range,
+                    trial_id = trial,
                     random_yield = yield + rnorm(n = n()),
                     binom_var = new_var, 
                     yield_protein = yield + grain_protein)
@@ -146,13 +146,13 @@ This created 6 new variables:
 
 These example cover the majority of what you are likely to experience: creating a constant, calculating new variables from existing variables, pulling in an external variables, and so forth.
 
-This is equivalent to what was taught earlier using "\$" notation:
+This is equivalent to what was taught earlier using `$` notation:
 
 ```{r, eval=FALSE}
 mutate1 <- variety_trials # first, copy the data frame
 mutate1$dateset <- "example"
 mutate1$row_position <- 1:nrow(mutate1)
-mutate1$range_new <- mutate1$range_new # note that NSE cannot be used
+mutate1$trial_new <- mutate1$trial # note that NSE cannot be used
 mutate1$random_yield <- mutate1$yield + rnorm(nrow(mutate1))
 mutate1$binom_var = new_var
 mutate1$yield_protein <- mutate1$yield + mutate1$grain_protein
