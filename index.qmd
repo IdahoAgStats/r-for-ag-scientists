@@ -4,7 +4,7 @@ subtitle: "Course Overview"
 ---
 
 ```{r echo=FALSE,include=FALSE}
-library(quarto); library(here)
+library(quarto); library(here); library(yaml)
 ```
 
 
