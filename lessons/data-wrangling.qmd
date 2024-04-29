@@ -18,7 +18,7 @@ At the end of this lesson, you should:
 
 **First, load libraries:**
 
-```{r, include=FALSE}
+```{r, message=FALSE}
 library(dplyr); library(tidyr)
 ```
 
