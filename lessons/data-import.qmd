@@ -44,19 +44,19 @@ There are several ways to import data into R.
 
 1.  Use the "Import Dataset" tool in the Environment pane.
 
-```{r}
+```{r, echo=FALSE, ,out.height="80%",out.width="80%"}
 knitr::include_graphics(here::here("images", "import_dataset_enviro.png"))
 ```
 
-1.  Use the Files pane in RStudio
+2.  Use the Files pane in RStudio
 
-```{r}
+```{r, echo=FALSE, ,out.height="80%",out.width="80%"}
 knitr::include_graphics(here::here("images", "import_dataset_file.png"))
 ```
 
 Both of them open a new window that looks like this:
 
-```{r}
+```{r, echo=FALSE, ,out.height="80%",out.width="80%"}
 knitr::include_graphics(here::here("images", "import_dataset_window.png"))
 ```
 
@@ -64,7 +64,7 @@ knitr::include_graphics(here::here("images", "import_dataset_window.png"))
 While these point-and-click interfaces are very convenient, they don't automatically leave a trail of breadcrumbs to help you repeat the process in the future. *But*, they do generate R code that we can capture and reuse. They are handy shortcuts that I have found especially helpful when trying to import file formats I work with rarely.
 :::
 
-1.  Manual command line import
+3.  Manual command line import
 
 Ultimately, this is how anything is imported into R. As mentioned, first two options listed above are actually tools for generating code that will import a data set through the command-line!
 
@@ -128,7 +128,7 @@ str(mycsv2)
 
 This function takes similar arguments to `read.csv()`, although the output is more extensive.
 
--   Like in `read.csv()`, the default separator is ",", missing datea are coded as empty string `""` or `NA` and the first line is assumed to be the column header
+-   Like in `read.csv()`, the default separator is ",", missing data are coded as empty string `""` or `NA` and the first line is assumed to be the column header
 -   it does not bother with a row names attribute
 -   the argument `trim_ws` will remove leading and trailing whitespace for data entries. So the column header " soil pH" will become "soil pH".
 -   Column are preserved more clearly than `read.csv()` (including spaces and special characters). I'm honestly not fond of this behavior and usually clean up weird column names with `janitor::clean_names()`.
