@@ -55,11 +55,11 @@ Tips designed to weave together information from multiple lessons.
 
 Learning R is hard. It is a steep learning curve. You will spend some amount of time lost and confused. The purpose of this workshop is to reduce the amount of time you spent in the zone of learning pain:
 
-![images/r_learning_curve.png]
+![../images/r_learning_curve.png]
 
 There will be a steep learning curve. Your work may look like this, at first: 
 
-![images/nailed_it.jpg]
+![../images/nailed_it.jpg]
 
 But after time and regular application of your skill set, your code will look better and be easier to write. 
 
