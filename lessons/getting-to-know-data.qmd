@@ -89,19 +89,18 @@ To find out how many items a vector has, use the `length()` function:
 length(yield); length(Site)
 ```
 
-2.  Sort a Vector To sort items in a vector alphabetically or
-    numerically, use the `sort()` function:
+2. Sort a Vector
+
+To sort items in a vector alphabetically or numerically, use the `sort()` function:
 
 ```{r}
 sort(yield)  # sort a number
 sort(Site)  # Sort a character
 ```
 
-3.  Access Vectors You can access the vector items by referring to its
-    index number inside brackets \[\]. The first item has index 1, the
-    second item has index 2, and so on: Multiple item can also be
-    indexed: `x[c(1,5)]`. If an index position, it repeated, that item
-    will be returned as often as it is called:
+3.  Access Vectors 
+
+You can access the vector items by referring to its index number inside brackets \[\]. The first item has index 1, the second item has index 2, and so on: Multiple item can also be indexed: `x[c(1,5)]`. If an index position, it repeated, that item will be returned as often as it is called:
 
 ```{r}
 yield[5]
