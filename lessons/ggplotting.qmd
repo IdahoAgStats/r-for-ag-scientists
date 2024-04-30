@@ -524,7 +524,7 @@ ggplot(nass.hay, aes(x = yield, y = reorder(decade, desc(decade)), fill = after_
 ```
 
 
-```{r, 'html widget'}
+```{r, 'html widget', message=FALSE, warning=FALSE}
 library(plotly)
 
 pl <- ggplot(nass.hay, aes(x = year, y = yield, color = acres)) +
