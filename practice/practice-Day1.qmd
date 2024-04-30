@@ -1,0 +1,26 @@
+---
+title: "Day1"
+---
+
+*(for lessons on getting to know data)*
+
+note: covered practice tests: A, B, C (to be removed from here)
+
+(@) Import "caribbean_maize.csv" with the function `read_csv()` and assigns it to an object named "data2". 
+
+(@) Create the vector names 'plot', 'ears', and 'site' by extracting these variables from data2.
+
+(@) What is the data type of these vectors?
+
+(@) Convert 'plot' into factor. Inspect the results. What happened? 
+
+(@) Create a new vector (M1) as a product of addition of 100 to 'ears'. 
+
+(@) Make a data frame (data3) consisting of 'plot', 'ears', and 'isle' using `data.frame()` function and look at the structure of the data.
+
+(@) Extract the values located in the first 2 rows and third column of data3.
+
+(@) Create a boxplot with 'site' and 'ears' variables. 
+
+
+
