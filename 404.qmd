@@ -2,4 +2,4 @@
 title: "There's nothing here"
 ---
 
-!["404 page"](images/404.png)
+![](images/404.png)
