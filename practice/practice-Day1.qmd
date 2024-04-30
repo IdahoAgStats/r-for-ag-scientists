@@ -6,7 +6,7 @@ title: "Day1"
 
 note: covered practice tests: A, B, C (to be removed from here)
 
-(@) Import "caribbean_maize.csv" with the function `read_csv()` and assigns it to an object named "data2". 
+(@) Import "caribbean_maize.csv" with the function `read.csv()` and assigns it to an object named "data2". 
 
 (@) Create the vector names 'plot', 'ears', and 'site' by extracting these variables from data2.
 
@@ -20,7 +20,7 @@ note: covered practice tests: A, B, C (to be removed from here)
 
 (@) Extract the values located in the first 2 rows and third column of data3.
 
-(@) Create a boxplot with 'site' and 'ears' variables. 
+(@) Create a boxplot with 'site' and 'ears' variables from data3. 
 
 
 
