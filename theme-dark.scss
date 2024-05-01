@@ -40,34 +40,11 @@ $input-bg: #242424;
   background: #181818 5px center/3em no-repeat;
   border-top: 1px solid #f4c2c2 ;
   border-bottom: 1px solid #f4c2c2;
-  background-image: url("images/render-commit-push.png");
+  background-image: url("images/celebrate.png");
   background-size: 2em;
   background-position: 0.5em 0.5em;
 }
 
-.render-commit-push {
-  padding: 0.5em 0.5em 0em 3em;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  background: #181818 5px center/3em no-repeat;
-  border-top: 1px solid #adadad;
-  border-bottom: 1px solid #adadad;
-  background-image: url("images/render-commit-push.png");
-  background-size: 2em;
-  background-position: 0.5em 0.5em;
-}
-
-.pull {
-  padding: 0.5em 0.5em 0em 3em;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  background: #181818 5px center/3em no-repeat;
-  border-top: 1px solid #adadad;
-  border-bottom: 1px solid #adadad;
-  background-image: url("images/pull.png");
-  background-size: 2em;
-  background-position: 0.5em 0.5em;
-}
 
 /*-- scss:Julia's additions --*/
 .quarto-secondary-nav-title {
@@ -76,5 +53,21 @@ $input-bg: #242424;
 
 .h6, h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
   color: white;
+}
+
+div.callout-question.callout {
+  border-left-color: #B4CFEC !important;
+  border-right-color: #B4CFEC !important;
+  border-top: 1px solid #B4CFEC !important;
+  border-bottom: 1px solid #B4CFEC!important;
+  background-color:  #1b1b1b!important;
+  padding: 0em 0em 0em 0em;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+div.callout-question.callout-style-default>.callout-header{
+  background-color: #E0E0E0 !important;
+  color: #FFFFFF ;
 }
 

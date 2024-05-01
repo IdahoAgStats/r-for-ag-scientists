@@ -19,26 +19,64 @@ $font-family: "Atkinson Hyperlegible", sans-serif;
 }
 
 
-.render-commit-push {
-  padding: 0.5em 0.5em 0em 3em;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  background: #f8f8f8 5px center/3em no-repeat;
-  border-top: 1px solid #5B888C;
-  border-bottom: 1px solid #5B888C;
-  background-image: url("images/render-commit-push.png");
-  background-size: 2em;
-  background-position: 0.5em 0.5em;
+
+/*-- scss:Julia's additions --*/
+
+
+.callout-question.callout {
+  border-left-color: #000099 !important;
+  border-right-color: #e6e6fa  !important;
+  border-top: 1px solid #E0E0E0 !important;
+  border-bottom: 1px solid #E0E0E0  !important;
+  background-color:  #FFFFFF !important;
+  padding: 0em 0em 0em 0em;
+  margin-top: 0px;
+  margin-bottom: 0px;
 }
 
-.pull {
-  padding: 0.5em 0.5em 0em 3em;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  background: #f8f8f8 5px center/3em no-repeat;
-  border-top: 1px solid #E0A890;
-  border-bottom: 1px solid #E0A890;
-  background-image: url("images/pull.png");
-  background-size: 1em;
-  background-position: 1em 0.5em;
+
+.callout-question.callout-style-default>.callout-header{
+  background-color: #e6e6fa  !important;
+  color: #1b1b1b;
+  padding-right: 1em;
+  display: flex;
+  height: 2.5em;
+  overflow: hidden;
 }
+
+
+/*--
+
+.callout-question.icon.callout-icon {
+  height: 1rem;
+  width: 1rem;
+  display: inline-block;
+  content: "";
+  background-repeat: no-repeat;
+  background-size: 1rem 1rem;
+  margin-top: .5rem;
+  padding-right: 1.25rem;
+  background-image: unset !important;
+}
+
+
+div.callout-question.icon.callout-captioned .callout-icon::before {
+  height: 1rem;
+  width: 1rem;
+  display: inline-block;
+  content: "";
+  background-repeat: no-repeat;
+  background-size: 1rem 1rem;
+  margin-top: .5rem;
+  padding-right: 1.25rem;
+  background-image: url('images/computer_icon.png');
+}
+
+
+div.callout-question.icon.callout-style-default div.callout-icon-container {
+  padding-top: 0em;
+  padding-right: 1.25em;
+}
+
+--*/
+

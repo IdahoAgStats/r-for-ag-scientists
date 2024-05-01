@@ -22,5 +22,14 @@ note: covered practice tests: A, B, C (to be removed from here)
 
 (@) Create a boxplot with 'site' and 'ears' variables. 
 
+:::{.callout-question .callout collapse="true"}
+## Problem Set for Data Importation
 
+Import "caribbean_maize.csv" with the function `read_csv()` and assigns it to an object named "data2". 
 
+:::
+
+:::{.callout-note collapse="true"}
+## test
+content
+:::
