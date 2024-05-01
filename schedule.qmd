@@ -7,7 +7,7 @@ title: "Course Schedule"
 
 | Date            |   Topics              | practice problems |
 |-----------------|-----------------------|-------------------|
-| Before first day of class | Lesson Zero |    |
+| Before first day of class | [Lesson Zero](lessons/lesson-zero.qmd) |    |
 | May 20 | Workshop orientation \
            Quick tour of R Studio\
            Getting to know data in R\

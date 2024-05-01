@@ -1,8 +1,0 @@
----
-title: "Practice J"
----
-
-*(for the exploratory plotting lesson)*
-
-
-[***Solution***](../practice/solution-J.qmd)
