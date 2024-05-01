@@ -2,19 +2,19 @@
 title: "Preparing for this Short Course/Workshop"
 ---
 
-Welcome & salutations!
+Welcome & Salutations!
 
 We excited to teach this course. We have revamped this curriculum so that we get everyone doing practical coding with data as soon as possible. 
 
-We have limited time, so order to conserve class time and have us all ready for the first day of class, please read through this "Lesson Zero", watch the video and follow the instructions below.  
+We have limited time, so order to conserve class time and have us all ready for the first day of class, please read through this "Lesson Zero" and follow the instructions below.  
 
 ### Install R & RStudio. 
 
-Follow [these instructions](../r-installation-instructions.qmd) for installing R *and* RStudio. R is the actual programmatic engine that you can do cool things with, and RStudio is an "integrated development environment" (IDE) to help us use R effectively. 
+Follow [these instructions](../r-installation-instructions.qmd) for installing R *and* RStudio. R is the actual programmatic engine that you can do cool things with, and RStudio is an "integrated development environment" (IDE) to help us use R effectively. Some of the screenshots are for an older version of R; please install the latest version of R (4.4 as of May 1, 2024). 
 
 ### Join Posit Cloud
 
-You will receive a link via email from us to join our online classroom on [Posit Cloud](https://login.posit.cloud/login), where you will need to sign up for an account using your email, or you can connect it to a Gmail or GitHub account (any of these choices will work fine for the class). If do you not have a Gmail or GitHub account, use your normal email instead. Once you receive the invitation and have created an account, follow [these instructions](../posit-instructions.qmd) for accessing the classroom. 
+You will receive a link via email from us to join our online classroom on [Posit Cloud](https://login.posit.cloud/login), where you will need to sign up for an account using your email, or you can connect it to a Gmail or GitHub account (any of these choices will work fine for the class). If do you not have a Gmail or GitHub account or prefer not to use those, you can use your normal work email instead. Once you receive the invitation and have created an account, follow [these instructions](../posit-instructions.qmd) for accessing the classroom. 
 
 ### Class Structure
 
@@ -27,7 +27,7 @@ Additionally, all code generated that day will be posted on the Posit Cloud
 
 ### Class absences
 
-It's okay to miss class or a lecture - we all have stuff going on. There is no need to tell me in advance. As mentioned above, if you miss class, please be sure to catch up on the course material you missed by reading the course notes, running the content and attempting the exercises. Falling behind in the content can create problems with the following content, so please make every effort to stay current with the class. 
+It's okay to miss class or a lecture - we all have stuff going on. There is no need to tell us in advance. As mentioned above, if you miss class, please be sure to catch up on the course material you missed by reading the course notes, running the content and attempting the exercises. Falling behind in the content can create problems with the following content, so please make every effort to stay current with the class. 
 
 ### Class Notes Structure 
 
@@ -53,21 +53,19 @@ Tips designed to weave together information from multiple lessons.
 
 ### How to Suceed in Learning R
 
-Learning R is hard. It is a steep learning curve. You will spend some amount of time lost and confused. The purpose of this workshop is to reduce the amount of time you spent in the zone of learning pain:
+Learning R is hard. It has a very steep learning curve. You will spend some amount of time lost and confused. At first, your work may look or feel like some of the baking attempts from the TV show "[Nailed It](https://www.netflix.com/title/80179138)", where amateur bakers attempt to make very intricate baked concoctions:
 
-![](../images/r_learning_curve.png)
+![](../images/nailed_it.jpg, alt = "Nailed It Baking Fail")
 
-There will be a steep learning curve. Your work may look like this, at first: 
+That is normal and okay. It means you are trying to active engage with the material. Keep engaging in this process of learning to code. Many of you may have never programmed in any language before, where others do have previous programming experience. After time and regular practice, your R code will look better and most importantly, be easier for you to write. The purpose of this workshop is to reduce the amount of time you spent in the zone of learning pain:
 
-![](../images/nailed_it.jpg)
-
-But after time and regular application of your skill set, your code will look better and be easier to write. 
+![](../images/r_learning_curve.png, alt = "learing curve image")
 
 Here are some tips on how to succeed in learning R from this workshop: 
 
-- At the end of each class, review the learning goals and decide if you met those goals. These are designed to be the bare minimum of knowledge to competently use R. Later workshop content builds on this knowledge.  
+- At the end of each class (or when you have a free moment in the class), review the learning goals and decide if you met those goals. These are designed to be the bare minimum of knowledge to competently use R. Later workshop content builds on this knowledge.  
 - Review what we have covered between classes - refresh your knowledge. 
-- If there are practice problems, do them (we will give time during class)
+- If there are practice problems, do them (we will give time during class). 
 - Experiment in the R console using what you learned. Really, nothing can go wrong. 
 - If class material is not clear, re-run the code from class and reread the notes; If it's still not clear, ask up questions. We are here to help. 
 

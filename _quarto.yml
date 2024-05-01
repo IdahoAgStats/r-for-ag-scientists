@@ -60,10 +60,10 @@ website:
           - href: learning-quarto.qmd
             text: Quarto basics
 
-      # - section: "Lessons"
-      #   contents:
-      #     - href: lessons/Lesson00.qmd
-      #       text: Lesson Zero
+      - section: "Lessons"
+        contents:
+          - href: lessons/lesson-zero.qmd
+            text: Lesson Zero
       #     - href: lessons/Lesson01.qmd
       #       text: Math Operators
       #     - href: lessons/Lesson02.qmd
