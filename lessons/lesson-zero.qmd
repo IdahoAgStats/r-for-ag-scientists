@@ -36,6 +36,7 @@ As mentioned, all code run will be captured in class notes that will be posted. 
 **At the beginning of each lesson, this box will be included:**
 
 ::: {.callout-caution collapse="false"}
+
 ## Learning Goals
 
 This will be a list of what each lesson intends to teach. 
@@ -55,11 +56,11 @@ Tips designed to weave together information from multiple lessons.
 
 Learning R is hard. It has a very steep learning curve. You will spend some amount of time lost and confused. At first, your work may look or feel like some of the baking attempts from the TV show "[Nailed It](https://www.netflix.com/title/80179138)", where amateur bakers attempt to make very intricate baked concoctions:
 
-![](../images/nailed_it.jpg, alt = "Nailed It Baking Fail")
+![](../images/nailed_it.jpg)
 
 That is normal and okay. It means you are trying to active engage with the material. Keep engaging in this process of learning to code. Many of you may have never programmed in any language before, where others do have previous programming experience. After time and regular practice, your R code will look better and most importantly, be easier for you to write. The purpose of this workshop is to reduce the amount of time you spent in the zone of learning pain:
 
-![](../images/r_learning_curve.png, alt = "learing curve image")
+![](../images/r_learning_curve.png)
 
 Here are some tips on how to succeed in learning R from this workshop: 
 
