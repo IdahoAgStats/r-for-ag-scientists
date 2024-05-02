@@ -231,6 +231,21 @@ For more information different data types in R and how to convert between them c
 [here](../lessons/data-types.qmd).
 
 
+::: {.callout-tip title="Practice Test" collapse="true"}
+## Practice test
+
+(@) Import "Apple.csv" with the function `read.csv()` and assigns it to an object named "data2". 
+
+(@) Create the vector names 'stock', 'gen', and 'yield' by extracting these variables from data2.
+
+(@) What is the data type of these vectors?
+
+(@) Convert 'stock' into numeric. Inspect the results. What happened? 
+
+:::
+
+
+
 ## Exploring Data in R
 
 To access the data in any of the variables (columns) in our data frame
@@ -416,6 +431,19 @@ data1$var2 <- var2
 
 
 More information mathematical operators and order of operations in R can be found [here](../lessons/data-types.qmd).
+
+
+::: {.callout-tip title="Practice Test-2" collapse="true"}
+## Practice test
+
+(@) Extract the values located in the first 2 rows and third column of data1.
+
+(@) Create a boxplot with 'site' and 'ears' variables from data1. 
+
+(@) Create a new vector (M1) as a sum of of 100 to 'ears'. 
+
+:::
+
 
 ## Install and Load Packages
 
