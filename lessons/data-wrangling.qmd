@@ -296,6 +296,39 @@ It also saved us from the "parentheses cascade" where one function is nested ins
 knitr::include_graphics(here::here("images", "nest_vs_pipe.jpg"))
 ```
 
+
+::: {.callout-tip title="Practice Test" collapse="true"}
+## Practice test
+
+*If you have your own data, import it and consider what sort of data wrangling you might need to do on the data set to ready it for analysis - does something need to be filtered or calculated? This is a good moment to apply skills learned. *
+
+(@) Import "trial_metadata.csv" with the [***readr***](https://readr.tidyverse.org/) function `read_csv()`. Create a new variable that combined information in the 'location' and 'irrigation' columns.
+
+(@) Filter the imported data set for when the location is "Parma" and sort the data set based on planting date. Assign the results to a new object.
+
+
+(@) Select 4 columns from the data set and rename one of them. Assign these results to a new object. 
+
+(@) Import "weather_data.csv", select the first five columns and reduce that data set to unique rows (look into using `distinct()` for extracting the unique observations). 
+
+(@) NEW: Import "trial_data.csv". Split the "trials" column into 4 variables using `separate()` as we did in class (or see the [lesson notes](../lessons/Lesson09.qmd)). Filter the data set to the 2 most recent years and the varieties WA8268, WB4418, WB4311, WB4623CLP, WB4792, and WB7589. 
+
+Here is the prep work to do prior to `separate()`: 
+
+```{r}
+trial_data <- read.csv(here::here("data", "trial_data.csv")) 
+
+trial_data$trial <- gsub(pattern = "_H_", 
+                         replacement = "_H-", 
+                         x = trial_data$trial)
+```
+
+(@) Output the result from any of the previous problems to file. 
+
+
+:::
+
+
 ::: callout-tip
 ## Putting it all together
 

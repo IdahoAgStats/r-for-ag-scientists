@@ -214,6 +214,24 @@ You may also be working with data types that are not strictly tabular, at least 
 
 ...and so much more.
 
+::: {.callout-tip title="Practice Test" collapse="true"}
+## Practice test
+
+1. Import one of your data sets using two of the functions taught:
+
+(save your data in different format to enable this)
+
+* `read.csv()`
+* `read_csv()`
+* `read_excel()`
+* `read.delim()`
+
+1. Examine the data imported using `View(imported_data)`. Did everything import as expected? Are your variables coded as they should be? Are numeric variables numeric? Are missing data detected as thus? 
+
+:::
+
+
+
 ::: callout-tip
 ## Putting it all together
 
