@@ -464,7 +464,7 @@ Note
 <div class="cell-output cell-output-stdout">
 <pre><code>new_var
   0   1 
-949 933 </code></pre>
+939 943 </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mutate1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -476,12 +476,12 @@ Note
 5 SWIdahoCereals_H_S_PAR_2018   1 Jefferson  65.26589       10.2350        62.8
 6 SWIdahoCereals_H_S_PAR_2018   2 Jefferson 104.37355       11.0400        65.2
   dataset row_position                    trial_id random_yield binom_var
-1 example            1 SWIdahoCereals_H_S_PAR_2018     71.65713         1
-2 example            2 SWIdahoCereals_H_S_PAR_2018    110.02553         1
-3 example            3 SWIdahoCereals_H_S_PAR_2018     80.09232         1
-4 example            4 SWIdahoCereals_H_S_PAR_2018    105.84294         1
-5 example            5 SWIdahoCereals_H_S_PAR_2018     66.33087         1
-6 example            6 SWIdahoCereals_H_S_PAR_2018    103.22112         0
+1 example            1 SWIdahoCereals_H_S_PAR_2018     71.92851         0
+2 example            2 SWIdahoCereals_H_S_PAR_2018    109.03166         0
+3 example            3 SWIdahoCereals_H_S_PAR_2018     80.26508         1
+4 example            4 SWIdahoCereals_H_S_PAR_2018    102.84381         0
+5 example            5 SWIdahoCereals_H_S_PAR_2018     66.09186         0
+6 example            6 SWIdahoCereals_H_S_PAR_2018    104.21631         1
   yield_protein
 1      81.52583
 2     118.20551
@@ -628,7 +628,7 @@ Note
 </section>
 </section>
 <section id="the-pipe" class="level3">
-<h3 class="anchored" data-anchor-id="the-pipe">The pipe</h3>
+<h3 class="anchored">The pipe</h3>
 <p>The pipe operator <code>%&gt;%</code> or its newer replacement <code>|&gt;</code> are magic, or at least, they make our (data wrangling) lives so much easier.</p>
 <p>The pipe operator works as thus:</p>
 <pre><code>operation_1 %&gt;% operation_2</code></pre>
@@ -651,6 +651,41 @@ Note
 <p><img src="../images/nest_vs_pipe.jpg" class="img-fluid figure-img"></p>
 </figure>
 </div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Practice Test">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Practice Test
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<section id="practice-test" class="level2 callout-body-container callout-body">
+<h2 class="anchored" data-anchor-id="practice-test">Practice test</h2>
+<p><em>If you have your own data, import it and consider what sort of data wrangling you might need to do on the data set to ready it for analysis - does something need to be filtered or calculated? This is a good moment to apply skills learned. </em></p>
+<ol class="example" type="1">
+<li><p>Import “trial_metadata.csv” with the <a href="https://readr.tidyverse.org/"><strong><em>readr</em></strong></a> function <code>read_csv()</code>. Create a new variable that combined information in the ‘location’ and ‘irrigation’ columns.</p></li>
+<li><p>Filter the imported data set for when the location is “Parma” and sort the data set based on planting date. Assign the results to a new object.</p></li>
+<li><p>Select 4 columns from the data set and rename one of them. Assign these results to a new object.</p></li>
+<li><p>Import “weather_data.csv”, select the first five columns and reduce that data set to unique rows (look into using <code>distinct()</code> for extracting the unique observations).</p></li>
+<li><p>NEW: Import “trial_data.csv”. Split the “trials” column into 4 variables using <code>separate()</code> as we did in class (or see the <a href="../lessons/Lesson09.qmd">lesson notes</a>). Filter the data set to the 2 most recent years and the varieties WA8268, WB4418, WB4311, WB4623CLP, WB4792, and WB7589.</p></li>
+</ol>
+<p>Here is the prep work to do prior to <code>separate()</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>trial_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"trial_data.csv"</span>)) </span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>trial_data<span class="sc">$</span>trial <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="at">pattern =</span> <span class="st">"_H_"</span>, </span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>                         <span class="at">replacement =</span> <span class="st">"_H-"</span>, </span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>                         <span class="at">x =</span> trial_data<span class="sc">$</span>trial)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="6" class="example" type="1">
+<li>Output the result from any of the previous problems to file.</li>
+</ol>
+</section>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
