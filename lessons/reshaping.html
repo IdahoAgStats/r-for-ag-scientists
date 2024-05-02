@@ -474,7 +474,7 @@ Learning Goals
 </section>
 </section>
 <section id="wide-to-long" class="level3">
-<h3 class="anchored" data-anchor-id="wide-to-long">Wide to Long</h3>
+<h3 class="anchored">Wide to Long</h3>
 <p>Let’s put all the traits in one column (and filter out the missing data).</p>
 <p>Main arguments in <code>pivot_longer()</code> (besides the data set):</p>
 <p><strong>cols</strong> the columns to stack/pivot</p>
@@ -496,6 +496,34 @@ Learning Goals
 4 SWIdahoCereals_H_S_PAR_2018     2 12SB0197 yield         109.  
 5 SWIdahoCereals_H_S_PAR_2018     2 12SB0197 grain_protein   9.60
 6 SWIdahoCereals_H_S_PAR_2018     2 12SB0197 test_weight    64.2 </code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Practice Test">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Practice Test
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<section id="practice-test" class="level2 callout-body-container callout-body">
+<h2 class="anchored" data-anchor-id="practice-test">Practice test</h2>
+<ul>
+<li>As always, consider how these reshaping functions can support your own research and data analysis.</li>
+</ul>
+<ol class="example" type="1">
+<li><p>Import “genotypic_data.txt” and remove columns 2 through 5 (‘CHROM’, ‘POS(cM)’, ‘Major_allele’, ‘Minor_allele’). What is left is genetic marker names and the marker scores for the individual lines (each column is an genetically distinct wheat line). Using <code>pivot_longer()</code>, reshape this object to long so there is one column for the marker name, one column for the wheat name, and the one column for the marker score. How many rows long is this object? Can you image trying to do this by hand??</p></li>
+<li><p>Import “weather_data.csv”. Filter to any single year and reshape the data from long to wide so that the levels in “station’ form the new column headers, ‘julian_day’ is the identifying column and the cells are filled with data from ‘tmax_F’.</p></li>
+<li><p>Here is a crazy extra exercise that utilizes transpose instead of pivoting. It’s not strictly related to reshaping. Only try this if you are in the mood for a challenge.</p></li>
+</ol>
+<p>This problem is indicative of a data wrangling you can experience out in the wild. You are given a data set in one format, but a package requires your data be in another format.</p>
+<p>The file “genotypic_data.txt” is a transposed version of “genotypic_data_rotated.csv”. Import “genotypic_data.txt” into R and use R commands to recreate “genotypic_data_rotated.csv”.</p>
+<p>The column “individual” no longer has periods in the listed names, but the original file had periods in those names since they were column headers. Write code to remove those periods from the column “individual” in your transformed column (hint: look at the documentation for <code>gsub()</code>).</p>
+<p><a href="../practice/solution-H.html"><strong><em>Solution</em></strong></a></p>
+</section>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">

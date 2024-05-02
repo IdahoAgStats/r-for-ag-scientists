@@ -497,7 +497,7 @@ Answer
 <p>How do the dimensions of this object compare to the dimensions of ‘ex_innerjoin’?</p>
 </section>
 <section id="anti-join" class="level3">
-<h3 class="anchored" data-anchor-id="anti-join">Anti-join</h3>
+<h3 class="anchored">Anti-join</h3>
 <p>This is similar to <code>semi_join()</code>. It will return all the rows that do <em>not</em> match, and only the columns from the first data set mentioned.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>ex_antijoin <span class="ot">&lt;-</span> <span class="fu">anti_join</span>(variety_trial, genotypes, <span class="at">by =</span> <span class="fu">join_by</span>(<span class="st">"variety"</span> <span class="sc">==</span> <span class="st">"individual"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -509,6 +509,32 @@ Answer
 <pre><code>
 FALSE 
  1806 </code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Practice Test">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Practice Test
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<section id="practice-test" class="level2 callout-body-container callout-body">
+<h2 class="anchored" data-anchor-id="practice-test">Practice test</h2>
+<ul>
+<li>As usual, consider how these data aggregation functions can support your own work.</li>
+</ul>
+<p>For some of these exercises, you may need to use other <a href="https://dplyr.tidyverse.org/reference/index.html"><strong><em>dplyr</em></strong></a> functions.</p>
+<ol class="example" type="1">
+<li><p>Import “weather_data.csv”. Group the data by station and year and count the number of missing data points for ‘tmax’, ‘tmin’ and ‘tavg’.</p></li>
+<li><p>Import “weather_data.csv”, group the data by ‘station’ and ‘julian_day’ and calculate the average minimum and maximum temperatures for the groups from ‘tmin’ and ‘tmax’. If you already imported the data set from the previous problem, you don’t need to import it again if you did not change the data set.</p></li>
+<li><p>Import “weather_data.csv”, calculate the difference between the ‘tmin’ and ‘tmax’ for each day. Group the data by year and return the smallest and largest differences for each year. Consider how to handle missing data. If you already imported the data set from the previous problem, you don’t need to import it again if you did not change the data set.</p></li>
+</ol>
+<p><a href="../practice/solution-G.html"><strong><em>Solution</em></strong></a></p>
+</section>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -570,6 +596,36 @@ Note
 </table>
 <p>Complete list of <a href="https://dplyr.tidyverse.org/reference/index.html">dplyr functions</a> and <a href="https://tidyr.tidyverse.org/reference/index.html">tidyr functions</a>.</p>
 <p><a href="https://r4ds.had.co.nz/">R 4 Data Science</a> by Hadley Wickam and Garret Grolemund provides comprehensive guide to data wrangling.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Practice Test">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Practice Test
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<section id="practice-test-1" class="level2 callout-body-container callout-body">
+<h2 class="anchored" data-anchor-id="practice-test-1">Practice test</h2>
+<ol start="4" class="example" type="1">
+<li>Download <a href="https://github.com/IdahoAgStats/r-for-ag-scientists/raw/main/data/genotypic_data_rotated.csv">genotypic_data_rotated.csv</a> (see script below), Import that file, along with, “trial_data.csv”, and “trial_metadata.csv”.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">download.file</span>(<span class="at">url =</span> <span class="st">"https://github.com/IdahoAgStats/r-for-ag-scientists/raw/main/data/genotypic_data_rotated.csv"</span>,</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>              <span class="at">destfile =</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"genotypic_data_rotated.csv"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="5" class="example" type="1">
+<li><p>Do an inner join between “genotypic_data_rotated.csv” and “trial_data.csv” using variety names.</p></li>
+<li><p>Do a semi-join of “genotypic_data_rotated.csv” with “trial_data.csv” and do the reverse. How does this compare with the inner join from the previous problem?</p></li>
+<li><p>Do an anti-join between “genotypic_data_rotated.csv” and “trial_data.csv”.</p></li>
+<li><p>Join together all common observations between the 3 files (your choice on join).</p></li>
+</ol>
+<p><a href="../practice/solution-I.html"><strong><em>Solution</em></strong></a></p>
+</section>
+</div>
+</div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -582,12 +638,12 @@ Putting it all together
 <div class="callout-body-container callout-body">
 <p>Although this lesson did not demonstrate the use of the pipe, <code>%&gt;%</code>, it can be used with pipes:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>obj <span class="ot">&lt;-</span> <span class="fu">left_join</span>(x, y) <span class="sc">%&gt;%</span> <span class="fu">right_join</span>(z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>obj <span class="ot">&lt;-</span> <span class="fu">left_join</span>(x, y) <span class="sc">%&gt;%</span> <span class="fu">right_join</span>(z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The first join is a left join like any other. The second join presumes that the first argument is what was passed to it through the pipe. An equivalent:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>temp <span class="ot">&lt;-</span> <span class="fu">left_join</span>(x, y)</span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>obj <span class="ot">&lt;-</span>  <span class="fu">right_join</span>(temp, z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>temp <span class="ot">&lt;-</span> <span class="fu">left_join</span>(x, y)</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>obj <span class="ot">&lt;-</span>  <span class="fu">right_join</span>(temp, z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
