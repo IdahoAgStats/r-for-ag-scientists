@@ -156,8 +156,8 @@ parma2020_long <- parma2018 %>%
 head(parma2020_long)
 ```
 
-::: {.callout-tip title="Practice Test" collapse="true"}
-## Practice test
+::: {.callout-question .callout collapse="true"}
+## Practice Problem
 * As always, consider how these reshaping functions can support your own research and data analysis. 
 
 (@) Import "genotypic_data.txt" and remove columns 2 through 5 ('CHROM', 'POS(cM)', 'Major_allele', 'Minor_allele'). What is left is genetic marker names and the marker scores for the individual lines (each column is an genetically distinct wheat line). Using `pivot_longer()`, reshape this object to long so there is one column for the marker name, one column for the wheat name, and the one column for the marker score. How many rows long is this object? Can you image trying to do this by hand??

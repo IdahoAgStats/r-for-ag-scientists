@@ -129,8 +129,8 @@ disease_df_sum <- disease_df %>% rowwise() %>%
 disease_df_sum
 ```
 
-::: {.callout-tip title="Practice Test" collapse="true"}
-## Practice test
+::: {.callout-question .callout collapse="true"}
+## Practice Problem
 * As usual, consider how these data aggregation functions can support your own work.
 
 For some of these exercises, you may need to use other [***dplyr***](https://dplyr.tidyverse.org/reference/index.html) functions.

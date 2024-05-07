@@ -231,8 +231,8 @@ For more information different data types in R and how to convert between them c
 [here](../lessons/data-types.qmd).
 
 
-::: {.callout-tip title="Practice Test" collapse="true"}
-## Practice test
+::: {.callout-question .callout collapse="true"}
+## Practice Problem
 
 (@) Import "Apple.csv" with the function `read.csv()` and assigns it to an object named "data2". 
 
@@ -432,9 +432,8 @@ data1$var2 <- var2
 
 More information mathematical operators and order of operations in R can be found [here](../lessons/data-types.qmd).
 
-
-::: {.callout-tip title="Practice Test-2" collapse="true"}
-## Practice test
+::: {.callout-question .callout collapse="true"}
+## Practice Problem
 
 (@) Extract the values located in the first 2 rows and third column of data1.
 

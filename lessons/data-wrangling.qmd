@@ -297,8 +297,8 @@ knitr::include_graphics(here::here("images", "nest_vs_pipe.jpg"))
 ```
 
 
-::: {.callout-tip title="Practice Test" collapse="true"}
-## Practice test
+::: {.callout-question .callout collapse="true"}
+## Practice Problem
 
 *If you have your own data, import it and consider what sort of data wrangling you might need to do on the data set to ready it for analysis - does something need to be filtered or calculated? This is a good moment to apply skills learned. *
 

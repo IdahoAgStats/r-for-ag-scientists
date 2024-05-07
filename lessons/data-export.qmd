@@ -112,8 +112,8 @@ If you are working with a specialized file type that has dedicated libraries for
 :::
 
 
-::: {.callout-tip title="Practice Test" collapse="true"}
-## Practice test
+::: {.callout-question .callout collapse="true"}
+## Practice Problem
 
 1. Repeat the [import practice problems](../pratice/practice-D.qmd). Export those files under a new file name. Make sure you use a new file name or a different output directory so you do not write over the original files. 
 2. Examine the output files to make sure they look as expected? Where any row names accidentally introduced? Were missing cells converted to "NA"? Did any data become unexpectedly quoted? 
