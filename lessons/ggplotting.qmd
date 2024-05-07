@@ -143,6 +143,17 @@ The default line type is "1", which is a plain line. There are other types:
 knitr::include_graphics(here::here("images", "linetypes.png"))
 ```
 
+::: {.callout-question .callout collapse="true"}
+## Practice Problem
+Test your R installation by running this in the console:
+```
+x = 1:10
+x
+```
+What resulted? 
+
+:::
+
 ### Other common geoms:
 
 #### points
@@ -431,9 +442,19 @@ ggplot(hay_pnw) +
     legend.text = element_text(size = 12),
     legend.title = element_blank()
   )
+
 ```
 
 The legend can also be moved to locations outside the main plotting area with arguments such as `legend.position = "top"`, `legend.position = "left"` and so on. 
+
+::: {.callout-question .callout collapse="true"}
+## Practice Problem
+
+(@) Create a point scatter plot for yield over years and add color & shape effect for the state factor.
+
+:::
+
+
 
 #### Summary
 
