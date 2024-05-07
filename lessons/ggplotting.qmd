@@ -143,17 +143,6 @@ The default line type is "1", which is a plain line. There are other types:
 knitr::include_graphics(here::here("images", "linetypes.png"))
 ```
 
-::: {.callout-question .callout collapse="true"}
-## Practice Problem
-Test your R installation by running this in the console:
-```
-x = 1:10
-x
-```
-What resulted? 
-
-:::
-
 ### Other common geoms:
 
 #### points
