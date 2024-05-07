@@ -573,7 +573,7 @@ Note
 <p>The best choice is to properly arrange your data set prior to import. <a href="https://www.tandfonline.com/doi/full/10.1080/00031305.2017.1375989">Broman &amp; Woo (2018)</a> provides some straightforward recommendations on how to manage data in spreadsheets.</p>
 </section>
 <section id="importing-other-data-types" class="level3">
-<h3 class="anchored">Importing Other Data types</h3>
+<h3 class="anchored" data-anchor-id="importing-other-data-types">Importing Other Data types</h3>
 <p>The instructions provided above are for importing tabular data that is generally not “big data”.</p>
 <p>Big data is a subjective term that is system-dependent (and is rapidly changing as PC computing power and memory increases). Some personal computers can easily handle a 50 Mb file, while others cannot. If you are waiting more than 5 seconds for your data to import, then consider other options. A deep discussion about how to handle large data sets are beyond the scope of this workshop, but at the very minimum, consider the package <a href="https://rdatatable.gitlab.io/data.table/"><strong>data.table</strong></a> and its high-performance functions for reading and writing data, <code>fread()</code> and <code>fwrite()</code>. If your data sets are too big to load directly into R, consider <a href="https://arrow.apache.org/docs/r/"><strong>arrow</strong></a>.</p>
 <p>You may also be working with data types that are not strictly tabular, at least in the form they are stored on a computer. Here are some common non-tabular data types and packages to handle import of those.</p>
@@ -585,19 +585,18 @@ Note
 <li>image files: <a href="https://docs.ropensci.org/magick/articles/intro.html"><strong><em>magick</em></strong></a></li>
 </ul>
 <p>…and so much more.</p>
-<div class="callout callout-style-default callout-tip callout-titled" title="Practice Test">
+<div class="callout callout-style-default callout-question no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
-<i class="callout-icon"></i>
+<i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Practice Test
+Practice Problem
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
-<section id="practice-test" class="level2 callout-body-container callout-body">
-<h2 class="anchored" data-anchor-id="practice-test">Practice test</h2>
+<div class="callout-body-container callout-body">
 <ol type="1">
 <li>Import one of your data sets using two of the functions taught:</li>
 </ol>
@@ -611,7 +610,7 @@ Practice Test
 <ol type="1">
 <li>Examine the data imported using <code>View(imported_data)</code>. Did everything import as expected? Are your variables coded as they should be? Are numeric variables numeric? Are missing data detected as thus?</li>
 </ol>
-</section>
+</div>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">

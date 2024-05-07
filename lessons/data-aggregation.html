@@ -461,7 +461,7 @@ FYI
 </div>
 </section>
 <section id="row-wise-summaries" class="level3">
-<h3 class="anchored">Row-wise summaries</h3>
+<h3 class="anchored" data-anchor-id="row-wise-summaries">Row-wise summaries</h3>
 <p>Many operations in R are already vectorized across rows, but when they are not, you can use <code>rowwise()</code> to implement that.</p>
 <p>Field disease scoring may benefit from this system. Often, several measurements are made on a single experimental unit (usually a plot), and those measurements are averaged together to create a final disease incidence score. Here is how to do that with <code>rowwise()</code>.</p>
 <p>First, simulate a set of disease scores between 0 and 100 (indicating percent infection).</p>
@@ -480,16 +480,16 @@ FYI
 <span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>disease_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   plot score1 score5 score3 score4 score2
-1     a     90     80     20     10     40
-2     b     80    100     10     40    100
-3     c     70     20     90     90     90
-4     d    100     40     80     90     30
-5     e    100     40      0     40     80
-6     f     40     10     10     80     70
-7     g     90     50     60     20     70
-8     h     70     70     30     40     20
-9     i      0     60     40     30     40
-10    j     90      0      0     60     50</code></pre>
+1     a     40     30     80     60     20
+2     b     80     30     60     20     70
+3     c     30     30     80     60     10
+4     d     70     20     30     50     40
+5     e     10     80      0     30    100
+6     f     80     90     40     30     30
+7     g      0     20     40     60     90
+8     h     60     10     40     70     50
+9     i     10      0     80     80     90
+10    j    100     10     20     50     10</code></pre>
 </div>
 </div>
 <p>Data sets exist like this. A person might have a set of 10 experimental plots to evaluate for some trait. The trait assay protocol may require that multiple observations be gathered per plot (from a statistical standpoint, this is a technical replicate, not a true replicate) and then reduced to a single number per plot using a simple mean. Row-wise functions can accomplish this.</p>
@@ -503,31 +503,30 @@ FYI
 # Rowwise: 
    plot  score1 score5 score3 score4 score2 score_final max_score
    &lt;chr&gt;  &lt;int&gt;  &lt;int&gt;  &lt;int&gt;  &lt;int&gt;  &lt;int&gt;       &lt;dbl&gt;     &lt;int&gt;
- 1 a         90     80     20     10     40          65        90
- 2 b         80    100     10     40    100          90       100
- 3 c         70     20     90     90     90          80        90
- 4 d        100     40     80     90     30          65       100
- 5 e        100     40      0     40     80          90       100
- 6 f         40     10     10     80     70          55        70
- 7 g         90     50     60     20     70          80        90
- 8 h         70     70     30     40     20          45        70
- 9 i          0     60     40     30     40          20        40
-10 j         90      0      0     60     50          70        90</code></pre>
+ 1 a         40     30     80     60     20          30        40
+ 2 b         80     30     60     20     70          75        80
+ 3 c         30     30     80     60     10          20        30
+ 4 d         70     20     30     50     40          55        70
+ 5 e         10     80      0     30    100          55       100
+ 6 f         80     90     40     30     30          55        80
+ 7 g          0     20     40     60     90          45        90
+ 8 h         60     10     40     70     50          55        60
+ 9 i         10      0     80     80     90          50        90
+10 j        100     10     20     50     10          55       100</code></pre>
 </div>
 </div>
-<div class="callout callout-style-default callout-tip callout-titled" title="Practice Test">
+<div class="callout callout-style-default callout-question no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
-<i class="callout-icon"></i>
+<i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Practice Test
+Practice Problem
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
-<section id="practice-test" class="level2 callout-body-container callout-body">
-<h2 class="anchored" data-anchor-id="practice-test">Practice test</h2>
+<div class="callout-body-container callout-body">
 <ul>
 <li>As usual, consider how these data aggregation functions can support your own work.</li>
 </ul>
@@ -538,7 +537,7 @@ Practice Test
 <li><p>Import “weather_data.csv”, calculate the difference between the ‘tmin’ and ‘tmax’ for each day. Group the data by year and return the smallest and largest differences for each year. Consider how to handle missing data. If you already imported the data set from the previous problem, you don’t need to import it again if you did not change the data set.</p></li>
 </ol>
 <p><a href="../practice/solution-G.html"><strong><em>Solution</em></strong></a></p>
-</section>
+</div>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">

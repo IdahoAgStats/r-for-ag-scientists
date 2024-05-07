@@ -464,7 +464,7 @@ Note
 <div class="cell-output cell-output-stdout">
 <pre><code>new_var
   0   1 
-977 905 </code></pre>
+952 930 </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mutate1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -476,12 +476,12 @@ Note
 5 SWIdahoCereals_H_S_PAR_2018   1 Jefferson  65.26589       10.2350        62.8
 6 SWIdahoCereals_H_S_PAR_2018   2 Jefferson 104.37355       11.0400        65.2
   dataset row_position                    trial_id random_yield binom_var
-1 example            1 SWIdahoCereals_H_S_PAR_2018     70.73280         1
-2 example            2 SWIdahoCereals_H_S_PAR_2018    107.12502         0
-3 example            3 SWIdahoCereals_H_S_PAR_2018     82.79871         0
-4 example            4 SWIdahoCereals_H_S_PAR_2018    104.57393         1
-5 example            5 SWIdahoCereals_H_S_PAR_2018     66.60595         1
-6 example            6 SWIdahoCereals_H_S_PAR_2018    102.37499         1
+1 example            1 SWIdahoCereals_H_S_PAR_2018     71.42254         1
+2 example            2 SWIdahoCereals_H_S_PAR_2018    108.18319         0
+3 example            3 SWIdahoCereals_H_S_PAR_2018     80.82095         1
+4 example            4 SWIdahoCereals_H_S_PAR_2018    102.23844         0
+5 example            5 SWIdahoCereals_H_S_PAR_2018     65.91032         0
+6 example            6 SWIdahoCereals_H_S_PAR_2018    106.55553         0
   yield_protein
 1      81.52583
 2     118.20551
@@ -628,7 +628,7 @@ Note
 </section>
 </section>
 <section id="the-pipe" class="level3">
-<h3 class="anchored">The pipe</h3>
+<h3 class="anchored" data-anchor-id="the-pipe">The pipe</h3>
 <p>The pipe operator <code>%&gt;%</code> or its newer replacement <code>|&gt;</code> are magic, or at least, they make our (data wrangling) lives so much easier.</p>
 <p>The pipe operator works as thus:</p>
 <pre><code>operation_1 %&gt;% operation_2</code></pre>
@@ -653,19 +653,18 @@ Note
 </div>
 </div>
 </div>
-<div class="callout callout-style-default callout-tip callout-titled" title="Practice Test">
+<div class="callout callout-style-default callout-question no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
-<i class="callout-icon"></i>
+<i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Practice Test
+Practice Problem
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-5" class="callout-5-contents callout-collapse collapse">
-<section id="practice-test" class="level2 callout-body-container callout-body">
-<h2 class="anchored" data-anchor-id="practice-test">Practice test</h2>
+<div class="callout-body-container callout-body">
 <p><em>If you have your own data, import it and consider what sort of data wrangling you might need to do on the data set to ready it for analysis - does something need to be filtered or calculated? This is a good moment to apply skills learned. </em></p>
 <ol class="example" type="1">
 <li><p>Import “trial_metadata.csv” with the <a href="https://readr.tidyverse.org/"><strong><em>readr</em></strong></a> function <code>read_csv()</code>. Create a new variable that combined information in the ‘location’ and ‘irrigation’ columns.</p></li>
@@ -685,7 +684,7 @@ Practice Test
 <ol start="6" class="example" type="1">
 <li>Output the result from any of the previous problems to file.</li>
 </ol>
-</section>
+</div>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
