@@ -33,7 +33,7 @@ It's okay to miss class or a lecture - we all have stuff going on. There is no n
 
 As mentioned, all code run will be captured in class notes that will be posted. While you can read those notes and not attend class, many find it helpful to attend a live course and receive live instruction and feedback from an expert. 
 
-**At the beginning of each lesson, this box will be included:**
+- At the beginning of each lesson, this box will be included:
 
 ::: {.callout-caution collapse="false"}
 
@@ -44,12 +44,27 @@ This will be a list of what each lesson intends to teach.
 If you do not think you have met those learning goals, please review the notes, and if the material is still unclear, contact us.  
 :::
 
-**At the end of most lessons, this box will be included:**
+- At the end of most lessons, this box will be included:
 
 ::: {.callout-tip}
 ## Putting it all together
 
 Tips designed to weave together information from multiple lessons. 
+:::
+
+- Practice problems are included in most lessons:
+
+*(click to expand)* 
+
+::: {.callout-question .callout collapse="true"}
+## Practice Problem
+Test your R installation by running this in the console:
+```
+x = 1:10
+x
+```
+What resulted? 
+
 :::
 
 ### How to Suceed in Learning R
