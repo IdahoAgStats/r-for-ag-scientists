@@ -7,9 +7,43 @@ title: "R Functions & R Help"
 
 At the end of this lesson, you should:
 
+-   Be able to install R packages
 -   Understand how to call functions using named and positional arguments
 -   Be able to access help files for an R function and know how to use the information provided in a help file
 :::
+
+### R Package Installation
+
+2 options for installing packages on [CRAN](https://cran.r-project.org/web/packages/available_packages_by_name.html) (Comprehensive R Archive Network).
+
+#### Option 1: the command line
+
+```{r, eval=FALSE}
+# one package
+install.packages("package_name")
+# multiple packages
+install.packages(c("package_1", "package_2"))
+```
+
+Spelling and case must be *exact*. Otherwise you get an error:
+
+```{r, error=TRUE}
+install.packages("matrx")
+```
+
+#### Option 2: The RStutio 'Packages' window:
+
+A point-and-click interface.
+
+```{r}
+knitr::include_graphics("images/package_pane.png")
+```
+
+```{r fig.width="60%", fig.height="60%"}
+knitr::include_graphics("images/package_installation.png")
+```
+
+This will automatically resolve spelling and case issues. 
 
 ### The Mechanics of R Functions
 
