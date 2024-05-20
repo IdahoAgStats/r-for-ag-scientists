@@ -31,7 +31,7 @@ Spelling and case must be *exact*. Otherwise you get an error:
 install.packages("matrx")
 ```
 
-### Option 2: The RStutio 'Packages' window:
+### Option 2: The RStudio 'Packages' window:
 
 A point-and-click interface.
 

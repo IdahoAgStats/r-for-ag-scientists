@@ -476,9 +476,9 @@ later in this workshop, we will absolutely be covering how to make publication q
 
 (@) Make a histogram of inverse yield
 
-(@) Calculate reliave percent yield by dividing all yield values by the mean yield and multipling it by 100. Do the equivalent action for ears. 
+(@) Calculate relative percent yield by dividing all yield values by the mean yield and multipling it by 100. Do the equivalent action for ears. 
 
-(@) Make a pairwise plot between relative percent ears and relative percent yield. 
+(@) Make a pairwise plot (x-y plot) between relative percent ears and relative percent yield. 
 
 :::
 
