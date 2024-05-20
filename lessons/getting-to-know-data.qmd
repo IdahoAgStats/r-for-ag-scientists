@@ -7,11 +7,10 @@ title: "Getting to Know Your Data in R"
 
 At the end of this lesson, you should know:
 
--   how to import data in R
--   several methods of data exploration in R
--   how to make cross tabulations of data
--   how to make histograms and pairwise plots in R
--   how to install and load packages in R
+-   how to import data in R.  
+-   several methods of data exploration in R.  
+-   how to make cross tabulations of data.     
+-   how to make histograms and pairwise plots in R.   
 :::
 
 ## Import a csv data set
@@ -24,31 +23,26 @@ rows of the "data1" data frame. The `View()` will open the data set in
 new RStudio video where you can look up at the rows and columns.
 
 ```{r, echo=FALSE}
-data1 <- read.csv(here::here("data/caribbean_maize.csv"))
+data1 <- read.csv(here::here("data", "caribbean_maize.csv"))
 head(data1, 5)
-#View(data1)
 ```
 
 ```{r, eval=FALSE}
-data1 <- read.csv("caribbean_maize.csv")
+data1 <- read.csv("data/caribbean_maize.csv")
 
 head(data1, 5)
 View(data1)
 ```
 Base R also has some useful functions for quickly exploring data frames:
 
-- summary(): Give summaries of each column of a data frame
+- `summary()` provides summaries of each column of a data frame
 ```{r}
 summary(data1)
 ```
 
-
-
 ## Introduction to Common Data Structures
 
-Previously, we looked at how to a import a dataset in R. Now we need to
-consider how this data are arranged into complex structures (that is,
-objects) that we can access and manipulate.
+Previously, we looked at how to a import a dataset in R. Now we need to consider how this data are arranged into complex structures (that is, objects) that we can access and manipulate.
 
 There are several data structures commonly used in R:
 
@@ -58,70 +52,96 @@ There are several data structures commonly used in R:
 4.  list
 
 
-::: {.callout-note}
-Vectors and data frames are two major object types in R, but there are
-other types that provide different functionality. You can learn more
-about them [here](../lessons/data-structures.qmd)
+::: {.callout-note collapse="false"}
+Vectors and data frames are two major object types in R, but there are other types that provide different functionality. You can learn more about them [here](../lessons/data-structures.qmd)
 :::
 
 ###   The vector
 
-A *vector* in R is an object that contain multiple elements of the same
-type. In the data1, if we select each column varible, it will be
-returned as a vector.
+A *vector* in R is an object that contain multiple elements of the same type. In the data1, if we select each column varible, it will be returned as a vector.
 
-Data in R data frames can also be referred to by their column names
-using the notation `dataframe$column_name`:
+Data in R data frames can also be referred to by their column names using the notation `dataframe$column_name`:
 
 ```{r}
 yield <- data1$yield
-Site <- data1$site
+site <- data1$site
 ```
 
-The yield and site variables are returned as a vector (with the typical
-attributes of a vector: length and names).
+The yield and site variables are returned as a vector and assigned to new object names.
 
-1.  Vector Length
+1.  Ascertaining Vector Length
 
 To find out how many items a vector has, use the `length()` function:
 
 ```{r}
-length(yield); length(Site)
+length(yield); length(site)
 ```
 
-2. Sort a Vector
+2. Sorting Vectors
 
 To sort items in a vector alphabetically or numerically, use the `sort()` function:
 
 ```{r}
 sort(yield)  # sort a number
-sort(Site)  # Sort a character
+sort(site)  # Sort a character
 ```
 
-3.  Access Vectors 
+For 'character' variables with repeat information, sometimes it is more helpful to only look at unique values:
+
+```{r}
+unique(site)
+```
+
+Or to look at counts of unique values:
+```{r}
+table(site)
+```
+
+This also works across multiple vectors:
+
+```{r}
+table(data1$site, data1$isle)
+```
+
+
+You can also look at summaries for individual vectors:
+```{r}
+# mean
+mean(yield, na.rm = TRUE) # the na.rm tells R to ignore missing data
+# minimum
+min(yield, na.rm = TRUE)
+# maximum
+max(yield, na.rm = TRUE)
+# median
+median(yield, na.rm = TRUE)
+# variance
+var(yield, na.rm = TRUE)
+# standard deviation
+sd(yield, na.rm = TRUE)
+```
+
+3.  Accessing Vectors 
 
 You can access the vector items by referring to its index number inside brackets \[\]. The first item has index 1, the second item has index 2, and so on: Multiple item can also be indexed: `x[c(1,5)]`. If an index position, it repeated, that item will be returned as often as it is called:
 
 ```{r}
+# look at one position
 yield[5]
+# look at multiple positions
 yield[c(2,5)]
 ```
 
-### The data frame
 
-Data frame is a collection of the vectors of same length. Each vector is a single
-data type, but different columns can be different data types. This is
-similar to a typical workbook you might open in Excel or another
-spreadsheet program. These can be only one column wide, but they often
-consist of more than that.
+### The Data Frame
 
-In this example, data1 is a data frame which consists of different
-vectors (site, block, yield,...)
+A data frame is a collection of the vectors of same length. This is the most widely used and important data structure in R. Each vector is a single data type, but different columns can be different data types. This is similar to a typical workbook you might open in Excel or another spreadsheet program. These can be only one column wide, but they often consist of more than that.
 
-We can create an example data frame using yield and Site variables
+In this example, data1 is a data frame which consists of different vectors (site, block, yield,...)
+
+We can create an example data frame using "yield" and "site" variables: 
 
 ```{r}
-d1 <- data.frame(yield, Site)
+d1 <- data.frame(yield, site)
 head(d1)
 ```
 
@@ -130,15 +150,12 @@ A data frame has attributes for:
 -   `nrow` number of rows
 -   `ncol` number of columns
 -   `colnames` column names
--   `rownames` row names (if none are provided, R will generate integer
-    row names starting at 1)
+-   `rownames` row names (if none are provided, R will generate integer row names starting at 1)
 
 
-::: {.callout-tip}
+::: {.callout-tip collapse="false"} 
 
-While duplicate column names in a data frame are allowed, they are not
-advised, and may throw an error during data import, depending on the
-import function used.
+While duplicate column names in a data frame are allowed, they are not advised and may throw an error during data import, depending on the import function used.
 :::
 
 Check the number of rows and columns in a data frame:
@@ -150,45 +167,32 @@ dim(data1) # tells us row and column lengths in one command
 ```
 
 
-
 ```{r}
 rownames(data1)
 colnames(data1)
 ```
 
-::: {.callout-tip}
-The `rownames` attribute can be set, but if it is not, it is
-automatically created within R from 1 to the total number of rows. Row
-names are a tricky attribute than many packages in R do not support. A
+::: {.callout-tip collapse="false"}
+The `rownames` attribute can be set, but if it is not, it is automatically created within R from 1 to the total number of rows. Row names are a tricky attribute than many packages in R do not support. A
 function may toss out your row names without any warning!
 
-In general, I do not recommend setting the row names attribute in data
-frames to anything other than the default values unless a package
-function specifically requires it.
+In general, I do not recommend setting the row names attribute in data frames to anything other than the default values unless a package function specifically requires it.
 :::
 
 We can look at the overall structure of a data.frame with `str()`:
 
-
 ```{r}
 str(data1)
 ```
-
-::: {.callout-important}
-The data frame is the most common data structure scientists use in
-R.
-:::
 
 
 ## Data Types
 
-By using the `str()` command above, we noticed the object types in this
-data set. The common object types in this data set includes:
+By using the `str()` command above, we noticed the object types in this data set. The common object types in this data set includes:
 
--   Yield and ears are shown as 'numeric' and 'integer' which belongs to
-    class - numeric.
--   Variables such as site, and trt belong to character class.
--   disease variable belongs to the logical class.
+-   Yield and ears are shown as 'numeric' and 'integer' (integer is a subtype of 'numeric').
+-   Variables such as site, and trt are class 'character'.
+-   The variable 'disease' is logical, meaning it can only take TRUE or FALSE values (or 1/0 values) 
 
 
 ```{r}
@@ -196,8 +200,7 @@ str(data1)
 ```
 
 
-You can also check the class of each variable separately by using `class()`
-function.
+You can also check the class of each variable separately by using `class()` function.
 
 ```{r}
 class(data1$block)
@@ -205,8 +208,7 @@ class(data1$yield)
 class(data1$disease)
 ```
 
-Data type of individual variables can be coerced into different types.
-For example, plot is a numeric variable, `as.character()` converts it to a character variable.
+Data type of individual variables can be coerced into different types. For example, plot is a numeric variable, `as.character()` converts it to a character variable.
 
 ```{r, eval=FALSE}
 data1$plot <-  as.character(data1$plot)
@@ -214,11 +216,7 @@ data1$plot <-  as.character(data1$plot)
 data1$plot <- as.numeric(data1$plot) #converting plot back to numeric
 ```
 
-A character variable can be converted to the factor variable. Factor is
-a character variable, with pre-defined levels that are alphabetized. The
-text "Levels: ..." are the predefined levels associated with that
-factor. Let's compare this to a character variable by manually
-converting it to factor.
+A character variable can be converted to the factor variable. Factor is a character variable, with pre-defined levels that are alphabetized. The text "Levels: ..." are the predefined levels associated with that factor. Let's compare this to a character variable by manually converting it to factor.
 
 ```{r}
 data1$block <- as.factor(data1$block)
@@ -232,7 +230,7 @@ For more information different data types in R and how to convert between them c
 
 
 ::: {.callout-question .callout collapse="true"}
-## Practice Problem
+## Practice Problems
 
 (@) Import "Apple.csv" with the function `read.csv()` and assigns it to an object named "data2". 
 
@@ -248,34 +246,23 @@ For more information different data types in R and how to convert between them c
 
 ## Exploring Data in R
 
-To access the data in any of the variables (columns) in our data frame
-we can use a `$` notation. For example, to access the 'block' variable
-in our data1, we can use the code below. This tells R that the variety
-variable is contained within the data frame data1.
-
-```{r eval=FALSE}
-data1$block
-
-```
-
 ### Accessing items
 
-A data set can be indexed by position. You can extract individual
-elements in a data frame by references the row and column position,
-`my_dataframe[row, column]`.
+Earlier, we saw how we can use the `$` notation to access any column (or vector) in a data frame. For example, to access the 'block' variable in our data1, you can use `data1$block`
+
+A data set can also be indexed by numeric position. You can extract individual elements in a data frame by references the row and column position, `my_dataframe[row, column]`, where the indexing begins at 1. So `my_dataframe[1, 1]` would extract the data point located in the first row and first column. 
+
+More examples: 
 
 -   Extract the items located in the first 2 rows and 2 columns:
 
 **Visual of what we want:**
 
 ```{r, echo=FALSE,out.height="50%",out.width="50%"}
-knitr::include_graphics("../images/index_ex1.png")
+knitr::include_graphics(here::here("images", "index_ex1.png"))
 ```
 
-*(This graphic is an overlay of green over blue, creating a dark teal
-color. The green represents rows indexed, the blue is columns indexed
-and the teal is the intersection between those two. If a color is not
-visible, that is because it is under the teal overlay.)*
+*This graphic is an overlay of green over blue, creating a dark teal  color. The green represents rows indexed, the blue is columns indexed and the teal is the intersection between those two. If a color is not visible, that is because it is under the teal overlay.*
 
 ```{r}
 data1[1:2, 2:3]
@@ -284,7 +271,7 @@ data1[1:2, 2:3]
 -   Extract the first two rows and all of the columns:
 
 ```{r, echo=FALSE,out.height="50%",out.width="50%"}
-knitr::include_graphics("../images/index_ex2.png")
+knitr::include_graphics(here::here("images", "index_ex2.png"))
 ```
 
 ```{r}
@@ -296,20 +283,19 @@ data1[1:2, ]
 -   Extract the entire first column and all rows:
 
 ```{r, echo=FALSE,out.height="50%",out.width="50%"}
-knitr::include_graphics("../images/index_ex3.png")
+knitr::include_graphics(here::here("images", "index_ex3.png"))
 ```
 
 ```{r}
 data1[ ,1]
 ```
 
-*When the row position is left empty, all rows are returned*
+*When the row position is left empty, all rows are returned.*
 
--   Extract the values located in the first 2 rows and first two
-    columns:
+-   Extract the values located in the first 2 rows and first two columns:
 
 ```{r, echo=FALSE,out.height="50%",out.width="50%"}
-knitr::include_graphics("../images/index_ex4.png")
+knitr::include_graphics(here::here("images", "index_ex4.png"))
 ```
 
 ```{r}
@@ -319,7 +305,7 @@ data1[1:2, 1:2]
 -   Return everything except the third columns
 
 ```{r, echo=FALSE,out.height="50%",out.width="50%"}
-knitr::include_graphics("../images/index_ex5.png")
+knitr::include_graphics(here::here("images", "index_ex5.png"))
 ```
 
 ```{r}
@@ -329,75 +315,69 @@ data1[ ,-3]
 -   Return everything except the first 2 rows:
 
 ```{r, echo=FALSE,out.height="50%",out.width="50%"}
-knitr::include_graphics("../images/index_ex6.png")
+knitr::include_graphics(here::here("images", "index_ex6.png"))
 ```
 
 ```{r}
 data1[-(1:2),  ]
 ```
 
-::: callout-note
+::: {callout-note}
 ## Things to note
 
-Indexing accepts numeric/integer vectors, so you can use a sequence
-(`3:10`), or concatenated positions (`c(1, 2, 5, 10)`), or a combination
-of both (`c(1:10, 13)`).
+Indexing accepts numeric/integer vectors, so you can use a sequence (`3:10`), or concatenated positions (`c(1, 2, 5, 10)`), or a combination of both (`c(1:10, 13)`).
 
-When indexing positions in a vector or data frame (or anything else),
-the amount of white space does not affect the outcome. These are
-equivalent: `d[1,2]`, `d[1, 2]`, `d[ 1, 2]`
+When indexing positions in a vector or data frame (or anything else), the amount of white space does not affect the outcome. These are equivalent: `d[1,2]`, `d[1, 2]`, `d[ 1, 2]`
+
 :::
-
-#### Column Referencing
-
-Data in R data frames can also be referred to by their column names
-using the notation `dataframe$column_name`:
-
-This can also be used to create a new column in the data frame:
-
-```{r}
-data1$var4 <- seq.int(from=0, to=30, length.out=288) 
-```
-
-In this example, a new column called "var4" was created, consisting of
-sequence numbers from zero to 30.
 
 #### Value replacement
 
-There are likely to be moments when you want to replace values in a data
-frame or vector with something else. You can do that with indexing and
-variable assignment.
+There are likely to be moments when you want to replace values in a data frame or vector with something else. You can do that with indexing and variable assignment.
 
-Let's image that we want to assign the third value in the sixth column
-as `NA`. First, we index the that position, then we assign a value to it
-(`NA` in this case):
+Let's image that we want to assign the third value in the sixth column as `NA`. First, we index the that position, then we assign a value to it (`NA` in this case):
 
 ```{r}
 data1[3, 6] <- NA
 ```
 
-## Easy Plots
+`NA` is a [reserved word](https://search.r-project.org/R/refmans/base/html/Reserved.html) in R, hence it does not need to be quoted. 
 
-Here we are creating a histogram to look at data distribution of the
-'yield' variable from data1 using a `hist()` function.
+::: {.callout-question .callout collapse="true"}
+## Practice Problem
 
-The `boxplot()` function in R is used to create a boxplot for the
-selected variables. In the code chunk below, a boxplot of yield for each
-replication is created, the xlab and ylab shows the title of x-axis and
-y-axis, respectively. The `main=`, gives the title to the graph.
+Rerun the previous command and quote `NA`. What happened? 
+
+:::
+
+
+## Base Plotting
+
+While R can make sophisticated and publication quality charts, it can also be used for quick data visualizations. We usually use a set of functions that automatically come with an R installation, 'base functions'. 'Base plotting' refers to functions that are part of base R used for plotting. 
+
+Here we are creating a histogram to look at data distribution of the 'yield' variable from data1 using a `hist()` function.
 
 ```{r}
 hist(data1$yield)
+```
 
-# pairwise plots
-plot(data1$ears, data1$yield)  # plot(x, y)
+The `boxplot()` function in R is used to create a boxplot for the selected variables. In the code chunk below, a boxplot of yield for each replication is created, the xlab and ylab shows the title of x-axis and y-axis, respectively. The `main=`, provides the title to the graph.
 
-# Create the box plot
-boxplot(yield ~ block, data = data1,
+```{r}
+boxplot(yield ~ trt, data = data1,
         main = "Yield Graph",
         xlab = "Rep",
         ylab = "Yield")
 ```
+
+
+Pairwise plots are also useful ways to visualize information:
+```{r}
+plot(data1$ears, data1$yield)  
+```
+::: {.callout note}
+Often, base plotting is only used for quick visualizations and it is not worth the effort to make them look pretty. However, they can be made publication quality. Search `?par` to learn more about how to adjust and improve upon these plots. 
+:::
 
 ## Calculate Some Values
 
@@ -415,18 +395,16 @@ M <- yield + 5
 head(M)
 ```
 
-You can also add/multiply/subtract two columns of same data type and of same length.
-Let's create a new vector named 'var2' as a product of 'yield' and 'ears' from data1.
+You can also add/multiply/subtract two columns of same data type and of same length. Let's create a new vector named 'var2' as a product of 'yield' and 'ears' from data1.
 
 ```{r}
-var2 <- data1$yield*data1$ears
+var2 <- data1$yield * data1$ears
 ```
 
 The code below shows how to update data1 with 'var2'
 
 ```{r}
 data1$var2 <- var2
-#View(data1)
 ```
 
 
@@ -444,34 +422,8 @@ More information mathematical operators and order of operations in R can be foun
 :::
 
 
-## Install and Load Packages
-
-1.  To install packages:
-
-You can either use `install.pcakages()` function
-
-```{r}
-install.packages("dplyr")   # install 'dplyr' package
-```
-
-Or click Tools \> Install packages. Write the package name in dialog,
-then click *install*.
-
-2.  To Load packages:
-
-Once you install the package, you need to load it so that it becomes
-available to use. Use `library()` function.
-
-```{r}
-library(dplyr)  # load 'dplyr' package
-```
-
-
-::: callout-tip
+::: {callout-tip}
 ## Putting it all together
 
-Check the environment pane. These are the object you created during the
-session. This is where you will see all objects created, unless you have
-choosen to render the objects invisible by starting their object names
-with a `.`, a period.
+Check the environment pane. These are the object you created during the session. This is where you will see all objects created, unless you have choosen to render the objects invisible by starting their object names with a `.`, a period.
 :::
