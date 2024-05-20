@@ -5,12 +5,12 @@ title: "Course Schedule"
 *This schedule is best understood as a draft that will be adjusted as needed.* 
 
 
-| Date            |   Topics              | 
+| Date            |  Main Topics              |   
 |-----------------|-----------------------|
 | Before first day of class | [Lesson Zero](lessons/lesson-zero.qmd) |  
 | May 20 | Workshop orientation \
            [Quick tour of R Studio](lessons/rstudio-tour.qmd)\
-           [Getting to know data in R](lessons/getting-to-know-data.qmd) |
+           [Getting to know data in R](lessons/getting-to-know-data.qmd) | 
 | May 21 |  [R documentation](lessons/r-documentation.qmd) \
             Importing tabular files\
            Data transformation & wrangling\

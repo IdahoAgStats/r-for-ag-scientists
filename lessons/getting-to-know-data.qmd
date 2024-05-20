@@ -77,7 +77,7 @@ Note that this will also count missing values.
 
 To sort items in a vector alphabetically or numerically, use the `sort()` function:
 
-```{r}
+```{r, eval=FALSE}
 sort(data1$yield)  # sort a number
 sort(data1$site)  # Sort a character
 ```
@@ -135,7 +135,7 @@ data1$yield[c(2,5)]
 
 We can use this information to replace information in a vector
 ```{r}
-data1$yield[5] <- 5 #(original value is 5.36)
+data1$yield[5] <- 5 #(original value was 5.36)
 ```
 
 Indexing accepts numeric/integer vectors, so you can use a sequence (`3:10`), or concatenated positions (`c(1, 2, 5, 10)`), or a combination of both (`c(1:10, 13)`).
@@ -152,6 +152,8 @@ site_ <- data1$site
 The columns called "yield" and "site" are returned as a vector and assigned to new objects. 
 
 These new objects can be examined and manipulated the same as if they were indexed (e.g. `mean(yield, na.rm = TRUE)`, `table(site_)`)
+
+#### Creating New Vectors
 
 We can also create new vectors from the original vectors
 
@@ -177,8 +179,16 @@ Any vector whose length matches the number of rows in a data frame can be added 
 data1$yield_x_ear <- yield_ear
 ```
 
-R also has a rich set of math operators available. You can learn more about using math operators [here](../lessons/math-operators.qmd). 
+When adding a new vector to a data frame that is multiple of the number of rows in the dataframe, that vector will be 'recycled' or repeated until it is as long as the data frame:
 
+```{r, error=TRUE}
+data1$new_isle = "Puerto Rico"
+data1$sequence = c(1, 2, 3, 4)
+data1$bad_order = c(1, 2, 3, 4, 5) # throws an error
+```
+
+
+R also has a rich set of math operators available. You can learn more about using math operators [here](../lessons/math-operators.qmd). 
 
 ::: {.callout-question .callout collapse="true"}
 ## Practice Problems
@@ -249,23 +259,23 @@ More examples:
 
 **Visual of what we want:**
 
-```{r, echo=FALSE,out.height="50%",out.width="50%"}
+```{r, echo=FALSE,out.height="65%",out.width="65%"}
 knitr::include_graphics(here::here("images", "index_ex1.png"))
 ```
 
 *This graphic is an overlay of green over blue, creating a dark teal  color. The green represents rows indexed, the blue is columns indexed and the teal is the intersection between those two. If a color is not visible, that is because it is under the teal overlay.*
 
-```{r}
+```{r, eval=FALSE}
 data1[1:2, 2:3]
 ```
 
 -   Extract the first two rows and all of the columns:
 
-```{r, echo=FALSE,out.height="50%",out.width="50%"}
+```{r, echo=FALSE,out.height="65%",out.width="65%"}
 knitr::include_graphics(here::here("images", "index_ex2.png"))
 ```
 
-```{r}
+```{r, eval=FALSE}
 data1[1:2, ]
 ```
 
@@ -273,11 +283,11 @@ data1[1:2, ]
 
 -   Extract the entire first column and all rows:
 
-```{r, echo=FALSE,out.height="50%",out.width="50%"}
+```{r, echo=FALSE,out.height="65%",out.width="65%"}
 knitr::include_graphics(here::here("images", "index_ex3.png"))
 ```
 
-```{r}
+```{r, eval=FALSE}
 data1[ ,1]
 ```
 
@@ -285,31 +295,31 @@ data1[ ,1]
 
 -   Extract the values located in the first 2 rows and first two columns:
 
-```{r, echo=FALSE,out.height="50%",out.width="50%"}
+```{r, echo=FALSE,out.height="65%",out.width="65%"}
 knitr::include_graphics(here::here("images", "index_ex4.png"))
 ```
 
-```{r}
+```{r, eval=FALSE}
 data1[1:2, 1:2]
 ```
 
 -   Return everything except the third columns
 
-```{r, echo=FALSE,out.height="50%",out.width="50%"}
+```{r, echo=FALSE,out.height="65%",out.width="65%"}
 knitr::include_graphics(here::here("images", "index_ex5.png"))
 ```
 
-```{r}
+```{r, eval=FALSE}
 data1[ ,-3]
 ```
 
 -   Return everything except the first 2 rows:
 
-```{r, echo=FALSE,out.height="50%",out.width="50%"}
+```{r, echo=FALSE,out.height="65%",out.width="65%"}
 knitr::include_graphics(here::here("images", "index_ex6.png"))
 ```
 
-```{r}
+```{r, eval=FALSE}
 data1[-(1:2),  ]
 ```
 
@@ -353,12 +363,13 @@ Recall that we can look at the overall structure of a data.frame with `str()`:
 str(data1)
 ```
 
+### Common Data Types
+
 By using the `str()` command above, we noticed the object types in this data set. The common object types in this data set includes:
 
 -   Yield and ears are shown as 'numeric' and 'integer' (integer is a subtype of 'numeric').
 -   Variables such as site, and trt are class 'character'.
 -   The variable 'disease' is logical, meaning it can only take TRUE or FALSE values (or 1/0 values) 
-
 
 You can also check the class of each variable separately by using `class()` function.
 
@@ -368,6 +379,8 @@ class(data1$yield)
 class(data1$disease)
 ```
 
+### Data Type Conversion
+
 Data type of individual variables can be 'coerced' (forced) into different types. For example, plot is a numeric variable, `as.character()` converts it to a character variable.
 
 ```{r, eval=FALSE}
@@ -375,6 +388,8 @@ data1$plot <-  as.character(data1$plot)
 
 data1$plot <- as.numeric(data1$plot) #converting plot back to numeric
 ```
+
+### Factors
 
 A character variable can be converted to the factor variable. Factor is a special type of variable used largely for linear modelling. It look like a character variable and it has pre-defined levels. 
 
@@ -388,7 +403,7 @@ nlevels(data1$block) # predefined levels
 Factors are challenging to work with. They are required for linear modelling and hence that is we teach them. Nevertheless, they are tricky beasts with funny conventions (run `typeof(data1$block)` to see what we mean). We don't have any additional lesson to refer to, but if find yourselve working with factors, take some time to read the documentation for the function `factor()` (run `?factor` in the console), and if you must really get serious about factors, see the packge **[forcats](https://forcats.tidyverse.org/)** for further resources. 
 
 ::: {.callout-question .callout collapse="true"}
-## Practice Problem
+## Practice Problems
 
 Here is some code from earlier: `data1[1, 8] <- NA`
 
@@ -447,18 +462,15 @@ barplot(Freq ~ Var1, data = totes)
 ```
 
 
-::: {.callout note}
+::: {.callout-note collapse="false"}
 Often, base plotting is only used for quick visualizations and it is not worth the effort to make them look pretty. However, they can be made publication quality. Search `?par` to learn more about how to adjust and improve upon these plots.
 
 later in this workshop, we will absolutely be covering how to make publication quality plots with ggplot2 and related extensions. 
 :::
 
 
-
-More information mathematical operators and order of operations in R can be found [here](../lessons/data-types.qmd).
-
 ::: {.callout-question .callout collapse="true"}
-## Practice Problem
+## Practice Problems
 
 (@) Calculate the inverse of yield from data1.
 
@@ -471,7 +483,7 @@ More information mathematical operators and order of operations in R can be foun
 :::
 
 
-::: {callout-tip}
+::: {.callout-tip}
 ## Putting it all together
 
 Check the environment pane. These are the object you created during the session. This is where you will see all objects created, unless you have choosen to render the objects invisible by starting their object names with a `.`, a period.

@@ -68,6 +68,13 @@ website:
             text: Quick tour of R studio
           - href: lessons/getting-to-know-data.qmd
             text: Getting to know data in R
+            contents:
+                - href: lessons/data-types.qmd
+                  text: Data Types
+                - href: lessons/data-structures.qmd
+                  text: Data Structures
+                - href: lessons/math-operators.qmd
+                  text: Math Operators
       #       contents: 
       #         - href: practice/practice-A.qmd
       #           text: "practice set A"
