@@ -261,6 +261,12 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
  <span class="menu-text">R documentation</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lessons/data-import.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Importing tabular file</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -521,16 +527,16 @@ FYI
 <span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>disease_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   plot score1 score5 score3 score4 score2
-1     a     90    100     50     50     50
-2     b     40     70     60     20     20
-3     c     50     30     60     80    100
-4     d     50    100     50     90     90
-5     e     60     10     20     90      0
-6     f     70     80     60      0     80
-7     g     20     60     70     20     30
-8     h     70     50      0     40     30
-9     i     50     80     60     60     30
-10    j     40     80      0     90      0</code></pre>
+1     a     30      0     90     50     30
+2     b     30     50    100     10     10
+3     c     20     10     80     60     30
+4     d     30     90     70     50     70
+5     e     20     70     50     60     70
+6     f     20     90     20     20    100
+7     g     80     70     20     50    100
+8     h     20     20     90     50     50
+9     i     20     30     10     70     70
+10    j     60    100     10     30     40</code></pre>
 </div>
 </div>
 <p>Data sets exist like this. A person might have a set of 10 experimental plots to evaluate for some trait. The trait assay protocol may require that multiple observations be gathered per plot (from a statistical standpoint, this is a technical replicate, not a true replicate) and then reduced to a single number per plot using a simple mean. Row-wise functions can accomplish this.</p>
@@ -544,16 +550,16 @@ FYI
 # Rowwise: 
    plot  score1 score5 score3 score4 score2 score_final max_score
    &lt;chr&gt;  &lt;int&gt;  &lt;int&gt;  &lt;int&gt;  &lt;int&gt;  &lt;int&gt;       &lt;dbl&gt;     &lt;int&gt;
- 1 a         90    100     50     50     50          70        90
- 2 b         40     70     60     20     20          30        40
- 3 c         50     30     60     80    100          75       100
- 4 d         50    100     50     90     90          70        90
- 5 e         60     10     20     90      0          30        60
- 6 f         70     80     60      0     80          75        80
- 7 g         20     60     70     20     30          25        30
- 8 h         70     50      0     40     30          50        70
- 9 i         50     80     60     60     30          40        50
-10 j         40     80      0     90      0          20        40</code></pre>
+ 1 a         30      0     90     50     30          30        30
+ 2 b         30     50    100     10     10          20        30
+ 3 c         20     10     80     60     30          25        30
+ 4 d         30     90     70     50     70          50        70
+ 5 e         20     70     50     60     70          45        70
+ 6 f         20     90     20     20    100          60       100
+ 7 g         80     70     20     50    100          90       100
+ 8 h         20     20     90     50     50          35        50
+ 9 i         20     30     10     70     70          45        70
+10 j         60    100     10     30     40          50        60</code></pre>
 </div>
 </div>
 <div class="callout callout-style-default callout-question no-icon callout-titled">
