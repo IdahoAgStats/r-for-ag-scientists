@@ -13,14 +13,11 @@ At the end of this lesson, you should know:
 -   how to make histograms and pairwise plots in R.   
 :::
 
-## Import a csv data set
+## Import a CSV file
 
-This code `read_csv()` reads a CSV file named "caribbean_maize.csv" and
-assigns it to an object named "data1".
+This code `read_csv()` reads a CSV file named "caribbean_maize.csv" and assigns it to an object named "data1".
 
-The second line of code uses the "head" function to display the first 5
-rows of the "data1" data frame. The `View()` will open the data set in
-new RStudio video where you can look up at the rows and columns.
+The second line of code uses the "head" function to display the first 5 rows of the "data1" data frame. The `View()` will open the data set in new RStudio video where you can look up at the rows and columns.
 
 ```{r, echo=FALSE}
 data1 <- read.csv(here::here("data", "caribbean_maize.csv"))
@@ -29,72 +26,74 @@ head(data1, 5)
 
 ```{r, eval=FALSE}
 data1 <- read.csv("data/caribbean_maize.csv")
-
-head(data1, 5)
 View(data1)
 ```
-Base R also has some useful functions for quickly exploring data frames:
 
-- `summary()` provides summaries of each column of a data frame
+::: {.callout-note collapse=FALSE}
+This data set has been imported and stored in an R session as a "data frame" (we will describe what that is later). This data frame only exists while your session is running. You can choose to save or export this object before closing your R session. Unless you purposely export this object and write over the original file, any changes you make to this object in an R session will not affect the original file that was imported. 
+:::
+
+There are several functions for enabling a quick examination of a data frame.
+
+- `dim()` gives the number of rows and columns; `head()` prints out the first 5 rows; and `summary()` provides summaries of each column of a data frame.
 ```{r}
+dim(data1)
+head(data1, 5)
 summary(data1)
 ```
 
-## Introduction to Common Data Structures
+## Common Data Structures in R
 
-Previously, we looked at how to a import a dataset in R. Now we need to consider how this data are arranged into complex structures (that is, objects) that we can access and manipulate.
+Let's consider how imported data sets are arranged into complex structures (that is, objects) that we can access and manipulate.
 
 There are several data structures commonly used in R:
 
-1.  vector
-2.  data.frame
+1.  **vector**
+2.  **data.frame**
 3.  matrix
 4.  list
 
+This lesson covers vectors and data frames, the two most common object types in R. 
 
-::: {.callout-note collapse="false"}
-Vectors and data frames are two major object types in R, but there are other types that provide different functionality. You can learn more about them [here](../lessons/data-structures.qmd)
-:::
+### The vector
 
-###   The vector
+A *vector* in R is an object that contain one or more elements of the same type (types are covered later in this lesson). If we select a single column variable in `data1`, it will be returned to us as a vector.
 
-A *vector* in R is an object that contain multiple elements of the same type. In the data1, if we select each column varible, it will be returned as a vector.
+Data in R data frames can be referred to by their column names using the notation `dataframe$column_name`:
 
-Data in R data frames can also be referred to by their column names using the notation `dataframe$column_name`:
+#### Vector Exploration
 
-```{r}
-yield <- data1$yield
-site <- data1$site
-```
-
-The yield and site variables are returned as a vector and assigned to new object names.
-
-1.  Ascertaining Vector Length
+1.  Ascertaining vector length
 
 To find out how many items a vector has, use the `length()` function:
 
 ```{r}
-length(yield); length(site)
+length(data1$site)
 ```
 
-2. Sorting Vectors
+Note that this will also count missing values. 
+
+2. Sorting vectors
 
 To sort items in a vector alphabetically or numerically, use the `sort()` function:
 
 ```{r}
-sort(yield)  # sort a number
-sort(site)  # Sort a character
+sort(data1$yield)  # sort a number
+sort(data1$site)  # Sort a character
 ```
+
+3. Finding unique values in a vector
 
 For 'character' variables with repeat information, sometimes it is more helpful to only look at unique values:
 
 ```{r}
-unique(site)
+unique(data1$site)
 ```
 
-Or to look at counts of unique values:
+4. Counting unique values in a vector:
+
 ```{r}
-table(site)
+table(data1$site)
 ```
 
 This also works across multiple vectors:
@@ -103,47 +102,100 @@ This also works across multiple vectors:
 table(data1$site, data1$isle)
 ```
 
+5. Vector summaries information 
 
 You can also look at summaries for individual vectors:
 ```{r}
 # mean
-mean(yield, na.rm = TRUE) # the na.rm tells R to ignore missing data
+mean(data1$yield, na.rm = TRUE) # the na.rm tells R to ignore missing data
 # minimum
-min(yield, na.rm = TRUE)
+min(data1$yield, na.rm = TRUE)
 # maximum
-max(yield, na.rm = TRUE)
+max(data1$yield, na.rm = TRUE)
 # median
-median(yield, na.rm = TRUE)
+median(data1$yield, na.rm = TRUE)
 # variance
-var(yield, na.rm = TRUE)
+var(data1$yield, na.rm = TRUE)
 # standard deviation
-sd(yield, na.rm = TRUE)
+sd(data1$yield, na.rm = TRUE)
+# sum all yield data
+sum(data1$yield, na.rm = TRUE)
 ```
 
-3.  Accessing Vectors 
+####  Accessing Vectors 
 
 You can access the vector items by referring to its index number inside brackets \[\]. The first item has index 1, the second item has index 2, and so on: Multiple item can also be indexed: `x[c(1,5)]`. If an index position, it repeated, that item will be returned as often as it is called:
 
 ```{r}
 # look at one position
-yield[5]
+data1$yield[5]
 # look at multiple positions
-yield[c(2,5)]
+data1$yield[c(2,5)]
 ```
 
+We can use this information to replace information in a vector
+```{r}
+data1$yield[5] <- 5 #(original value is 5.36)
+```
+
+Indexing accepts numeric/integer vectors, so you can use a sequence (`3:10`), or concatenated positions (`c(1, 2, 5, 10)`), or a combination of both (`c(1:10, 13)`).
+
+#### Assigning Vectors to Objects
+
+Vectors can be indexed and assigned to a new object.
+
+```{r, eval=FALSE}
+yield_ <- data1$yield
+site_ <- data1$site
+```
+
+The columns called "yield" and "site" are returned as a vector and assigned to new objects. 
+
+These new objects can be examined and manipulated the same as if they were indexed (e.g. `mean(yield, na.rm = TRUE)`, `table(site_)`)
+
+We can also create new vectors from the original vectors
+
+```{r}
+log_yield = log(data1$yield)
+yield_pi = data1$yield*3.14
+yield_sqrt = sqrt(data1$yield)
+ear_sqr = data1$ears^2
+```
+
+You can also add/multiply/subtract two columns of same data type and of same length. Let's create a new vector named 'var2' as a product of 'yield' and 'ears' from data1.
+
+```{r}
+yield_per_ear = data1$yield / data1$ears
+yield_ear <- data1$yield * data1$ears
+```
+
+R is naturally vectorized, which means that when you conduct a math operation on a vector, it will be repeated across the entire vector. 
+
+Any vector whose length matches the number of rows in a data frame can be added to that data frame. When we do this, we assume each is in the correct order. Since 'yield_ear' is directly from a vectorized operation done on 'data1', that assumption is correctly made. 
+
+```{r}
+data1$yield_x_ear <- yield_ear
+```
+
+R also has a rich set of math operators available. You can learn more about using math operators [here](../lessons/math-operators.qmd). 
+
+
+::: {.callout-question .callout collapse="true"}
+## Practice Problems
+
+(@) Create a sequence of numbers from 1 to 10 twice and assign that to a new vector called 'k'.
+(@) Assign the value `5.4` to a vector called 'lambda'
+(@) Do the following operation to your vector from part 1 of this problem and the vector called 'lamba' and assign the results to a new vector:
+
+$$ \frac{lambda^k2.72^{-lambda}}{k!}$$
+You can compute $k!$ using `factorial(k)`.
+:::
 
 ### The Data Frame
 
-A data frame is a collection of the vectors of same length. This is the most widely used and important data structure in R. Each vector is a single data type, but different columns can be different data types. This is similar to a typical workbook you might open in Excel or another spreadsheet program. These can be only one column wide, but they often consist of more than that.
+A data frame is a collection of the vectors of same length. This is the most widely used and important data structure in R. Each vector is a single data type, but different vectors can be different data types (e.g. character or numeric) in a data frame. This is similar to a typical workbook you might open in Excel or another spreadsheet program. 
 
-In this example, data1 is a data frame which consists of different vectors (site, block, yield,...)
-
-We can create an example data frame using "yield" and "site" variables: 
-
-```{r}
-d1 <- data.frame(yield, site)
-head(d1)
-```
+In this example, `data1` is a data frame which consists of different vectors (isle, site, block, etc) that are each their own data type (character, integer, numeric, logical). 
 
 A data frame has attributes for:
 
@@ -152,11 +204,6 @@ A data frame has attributes for:
 -   `colnames` column names
 -   `rownames` row names (if none are provided, R will generate integer row names starting at 1)
 
-
-::: {.callout-tip collapse="false"} 
-
-While duplicate column names in a data frame are allowed, they are not advised and may throw an error during data import, depending on the import function used.
-:::
 
 Check the number of rows and columns in a data frame:
 
@@ -179,74 +226,18 @@ function may toss out your row names without any warning!
 In general, I do not recommend setting the row names attribute in data frames to anything other than the default values unless a package function specifically requires it.
 :::
 
-We can look at the overall structure of a data.frame with `str()`:
-
-```{r}
-str(data1)
-```
-
-
-## Data Types
-
-By using the `str()` command above, we noticed the object types in this data set. The common object types in this data set includes:
-
--   Yield and ears are shown as 'numeric' and 'integer' (integer is a subtype of 'numeric').
--   Variables such as site, and trt are class 'character'.
--   The variable 'disease' is logical, meaning it can only take TRUE or FALSE values (or 1/0 values) 
-
-
-```{r}
-str(data1)
-```
-
-
-You can also check the class of each variable separately by using `class()` function.
-
-```{r}
-class(data1$block)
-class(data1$yield)
-class(data1$disease)
-```
-
-Data type of individual variables can be coerced into different types. For example, plot is a numeric variable, `as.character()` converts it to a character variable.
-
-```{r, eval=FALSE}
-data1$plot <-  as.character(data1$plot)
-
-data1$plot <- as.numeric(data1$plot) #converting plot back to numeric
-```
-
-A character variable can be converted to the factor variable. Factor is a character variable, with pre-defined levels that are alphabetized. The text "Levels: ..." are the predefined levels associated with that factor. Let's compare this to a character variable by manually converting it to factor.
-
-```{r}
-data1$block <- as.factor(data1$block)
-
-class(data1$block) # check class of the block
-```
-
-
-For more information different data types in R and how to convert between them can be found
-[here](../lessons/data-types.qmd).
-
-
 ::: {.callout-question .callout collapse="true"}
 ## Practice Problems
 
-(@) Import "Apple.csv" with the function `read.csv()` and assigns it to an object named "data2". 
+(@) Import "Apple.csv" from the data/ folder using the function `read.csv()` and assign it to an object named "data2".
 
-(@) Create the vector names 'stock', 'gen', and 'yield' by extracting these variables from data2.
+(@) Copy 'data2' to a new object. You pick the new name!
 
-(@) What is the data type of these vectors?
-
-(@) Convert 'stock' into numeric. Inspect the results. What happened? 
+(@) Create three news vectors using the variables named 'stock', 'gen', and 'yield' from data2 and give each vector a name of your choosing. 
 
 :::
 
-
-
-## Exploring Data in R
-
-### Accessing items
+#### Accessing items in a data frame
 
 Earlier, we saw how we can use the `$` notation to access any column (or vector) in a data frame. For example, to access the 'block' variable in our data1, you can use `data1$block`
 
@@ -322,15 +313,6 @@ knitr::include_graphics(here::here("images", "index_ex6.png"))
 data1[-(1:2),  ]
 ```
 
-::: {callout-note}
-## Things to note
-
-Indexing accepts numeric/integer vectors, so you can use a sequence (`3:10`), or concatenated positions (`c(1, 2, 5, 10)`), or a combination of both (`c(1:10, 13)`).
-
-When indexing positions in a vector or data frame (or anything else), the amount of white space does not affect the outcome. These are equivalent: `d[1,2]`, `d[1, 2]`, `d[ 1, 2]`
-
-:::
-
 #### Value replacement
 
 There are likely to be moments when you want to replace values in a data frame or vector with something else. You can do that with indexing and variable assignment.
@@ -338,17 +320,86 @@ There are likely to be moments when you want to replace values in a data frame o
 Let's image that we want to assign the third value in the sixth column as `NA`. First, we index the that position, then we assign a value to it (`NA` in this case):
 
 ```{r}
-data1[3, 6] <- NA
+data1[1, 8] <- NA
 ```
 
 `NA` is a [reserved word](https://search.r-project.org/R/refmans/base/html/Reserved.html) in R, hence it does not need to be quoted. 
 
+
+#### Creating a new data frame
+
+We can create an example data frame using the new vectors created earlier in this lesson: 
+
+```{r}
+new_df <- data.frame(log_yield, ear_sqr )
+head(new_df)
+```
+
+::: {.callout-tip collapse="false"} 
+## Brief notes on naming
+
+While duplicate column names in a data frame are allowed, they are not advised and may throw an error during data import, depending on the import function used.
+
+Also, it is not recommended that objects be named after existing functions since it can cause unpredictable behavior with R. Over time, you will learn of these conflicts. Two examples that new users often trip over are `data` and `df`, which are existing functions in R.
+:::
+
+Vectors and data frames are two major object types in R, but there are other types that provide different functionality. You can learn more about them [here](../lessons/data-structures.qmd).
+
+## Data Types
+
+Recall that we can look at the overall structure of a data.frame with `str()`:
+
+```{r}
+str(data1)
+```
+
+By using the `str()` command above, we noticed the object types in this data set. The common object types in this data set includes:
+
+-   Yield and ears are shown as 'numeric' and 'integer' (integer is a subtype of 'numeric').
+-   Variables such as site, and trt are class 'character'.
+-   The variable 'disease' is logical, meaning it can only take TRUE or FALSE values (or 1/0 values) 
+
+
+You can also check the class of each variable separately by using `class()` function.
+
+```{r}
+class(data1$block)
+class(data1$yield)
+class(data1$disease)
+```
+
+Data type of individual variables can be 'coerced' (forced) into different types. For example, plot is a numeric variable, `as.character()` converts it to a character variable.
+
+```{r, eval=FALSE}
+data1$plot <-  as.character(data1$plot)
+
+data1$plot <- as.numeric(data1$plot) #converting plot back to numeric
+```
+
+A character variable can be converted to the factor variable. Factor is a special type of variable used largely for linear modelling. It look like a character variable and it has pre-defined levels. 
+
+```{r}
+data1$block <- as.factor(data1$block)
+class(data1$block) # check class of the block
+levels(data1$block) # existing levels
+nlevels(data1$block) # predefined levels
+```
+
+Factors are challenging to work with. They are required for linear modelling and hence that is we teach them. Nevertheless, they are tricky beasts with funny conventions (run `typeof(data1$block)` to see what we mean). We don't have any additional lesson to refer to, but if find yourselve working with factors, take some time to read the documentation for the function `factor()` (run `?factor` in the console), and if you must really get serious about factors, see the packge **[forcats](https://forcats.tidyverse.org/)** for further resources. 
+
 ::: {.callout-question .callout collapse="true"}
 ## Practice Problem
 
-Rerun the previous command and quote `NA`. What happened? 
+Here is some code from earlier: `data1[1, 8] <- NA`
 
+1. What happens if we replace `NA` with `"NA"`? 
+
+2. How do we fix this? 
 :::
+
+
+More information on different data types in R and how to convert between them can be found
+[here](../lessons/data-types.qmd).
 
 
 ## Base Plotting
@@ -375,37 +426,33 @@ Pairwise plots are also useful ways to visualize information:
 ```{r}
 plot(data1$ears, data1$yield)  
 ```
+
+Point plots can also be done a single variable:
+
+```{r}
+plot(data1$yield)
+```
+
+The x-axis, "Index", is the row index, i.e. the indexed position along the vector. 
+
+Barplots are also handy. `data1` is suited for a barplot, but we can make a data set better for a barplot:
+
+```{r}
+data1$yield_categories <- cut(data1$yield, 5) # break yield into 5 groups
+totes <- as.data.frame(table(data1$yield_categories)) # count how many observations are in each group and convert to a data frame
+totes # print object
+```
+```{r}
+barplot(Freq ~ Var1, data = totes)
+```
+
+
 ::: {.callout note}
-Often, base plotting is only used for quick visualizations and it is not worth the effort to make them look pretty. However, they can be made publication quality. Search `?par` to learn more about how to adjust and improve upon these plots. 
+Often, base plotting is only used for quick visualizations and it is not worth the effort to make them look pretty. However, they can be made publication quality. Search `?par` to learn more about how to adjust and improve upon these plots.
+
+later in this workshop, we will absolutely be covering how to make publication quality plots with ggplot2 and related extensions. 
 :::
 
-## Calculate Some Values
-
-Firstly, extract a vector from data1 using `dataframe$column_name` code. 
-
-```{r}
-yield <- data1$yield
-head(yield)
-```
-
-Now, create a new vector (M) by adding 5 to each element of yield value using the code below:
-
-```{r}
-M <- yield + 5
-head(M)
-```
-
-You can also add/multiply/subtract two columns of same data type and of same length. Let's create a new vector named 'var2' as a product of 'yield' and 'ears' from data1.
-
-```{r}
-var2 <- data1$yield * data1$ears
-```
-
-The code below shows how to update data1 with 'var2'
-
-```{r}
-data1$var2 <- var2
-```
 
 
 More information mathematical operators and order of operations in R can be found [here](../lessons/data-types.qmd).
@@ -413,11 +460,13 @@ More information mathematical operators and order of operations in R can be foun
 ::: {.callout-question .callout collapse="true"}
 ## Practice Problem
 
-(@) Extract the values located in the first 2 rows and third column of data1.
+(@) Calculate the inverse of yield from data1.
 
-(@) Create a boxplot with 'site' and 'ears' variables from data1. 
+(@) Make a histogram of inverse yield
 
-(@) Create a new vector (M1) as a sum of of 100 to 'ears'. 
+(@) Calculate reliave percent yield by dividing all yield values by the mean yield and multipling it by 100. Do the equivalent action for ears. 
+
+(@) Make a pairwise plot between relative percent ears and relative percent yield. 
 
 :::
 
