@@ -170,7 +170,7 @@ But also, the community keeps R humming and current by writing packages that ext
 These packages are often made available on [CRAN](https://cran.r-project.org/web/packages/available_packages_by_name.html), the comprehensive R archive network, as well [Bioconductor](https://www.bioconductor.org/) or via GitHub, GitLab, independent websites.
 
 
-::: {callout-tip collapse = FALSE}
+::: callout-tip 
 ## Putting it all together
 
 When you search for something in the Help pane, several types of help files will result: vignettes and function documentation. Function documentation is what we have just reviewed (detailed information on how to use a function). Vignettes are examples of how to use a collection of function in a package. They provide more context and a programmatic flow for using a package or accomplishing a particular goal. They are package tutorials. Vignettes are not provided for every function or every package; they are an extra feature that package authors choose to create for users.
