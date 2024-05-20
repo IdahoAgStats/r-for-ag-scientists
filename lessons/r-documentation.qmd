@@ -2,21 +2,21 @@
 title: "R Functions & R Help"
 ---
 
-::: {.callout-caution collapse="true"}
+::: {.callout-caution collapse="false"}
 ## Learning Goals
 
 At the end of this lesson, you should:
 
--   Be able to install R packages
--   Understand how to call functions using named and positional arguments
--   Be able to access help files for an R function and know how to use the information provided in a help file
+-   be able to install R packages
+-   understand how to call functions using named and positional arguments
+-   be able to access help files for an R function and know how to use the information provided in a help file
 :::
 
-### R Package Installation
+## R Package Installation
 
-2 options for installing packages on [CRAN](https://cran.r-project.org/web/packages/available_packages_by_name.html) (Comprehensive R Archive Network).
+There are 2 options for installing packages available on [CRAN](https://cran.r-project.org/web/packages/available_packages_by_name.html) (Comprehensive R Archive Network).
 
-#### Option 1: the command line
+### Option 1: the command line
 
 ```{r, eval=FALSE}
 # one package
@@ -31,21 +31,28 @@ Spelling and case must be *exact*. Otherwise you get an error:
 install.packages("matrx")
 ```
 
-#### Option 2: The RStutio 'Packages' window:
+### Option 2: The RStutio 'Packages' window:
 
 A point-and-click interface.
 
-```{r}
-knitr::include_graphics("images/package_pane.png")
+```{r echo=FALSE}
+knitr::include_graphics("../images/package_pane.png")
 ```
 
-```{r fig.width="60%", fig.height="60%"}
-knitr::include_graphics("images/package_installation.png")
+Click "Install" and then type your package. Close matches will start to appear in the dropdown: 
+
+```{r echo=FALSE, out.width="60%",out.height = "60%"}
+knitr::include_graphics("../images/package_installation.png")
 ```
 
 This will automatically resolve spelling and case issues. 
 
-### The Mechanics of R Functions
+::: {callout-note collapse = FALSE}
+Note that multiple packages can be listed in the `install.packages()` command, but not `library()`. Also, packages only need to be installed once, not repeatedly (unless a package needs to be a updated to the latest version). However, packages must be loaded in every R session or their functionality (including the help files) will not be available.
+:::
+
+
+## The Mechanics of R Functions
 
 We have thus far used a few R functions without explicitly stating how to call them properly.
 
@@ -111,7 +118,7 @@ All help files follow this format
 -   **Details** an optional section providing various computational details
 -   **Value** what is returned after the function is run
 -   **References** any technical, scientific or peer-reviewed lit references supporting the computational procedures implemented in the function
--   **See Also** similar functions (usually not very useful)
+-   **See Also** similar functions (sometimes helpful)
 -   **Examples** actual examples of the function in the wild! These are hit-or-miss on their overall utility, but when I'm desperate to understand how to properly call a function, this has helped me.
 
 At the very bottom is the package the function came from and a link to an index of all functions associated with that package. This can come in handy when you want to browse all functions available in a package.
@@ -144,15 +151,15 @@ new <- function_name(value1, arg3 = value3)
 
 If the output from a function is not assigned, it will be sent to the console instead (we've done this plenty during this workshop). Sometimes, this is fine! Maybe it is a small amount of output we are running to check data integrity. Or maybe it's a giant data frame we deeply regret printing in the console.
 
-### Base R and Contributed Libraries
+## Base R and Contributed Libraries
 
-This is the last section with a major focus on 'base R', that is the set of functions that come automatically loaded when you install and open R.
+This is the only lesson with a major focus on 'base R', that is the set of functions that come automatically loaded when you install and open R.
 
 Take a look at this [long-ish cheat sheet](https://cran.r-project.org/doc/contrib/Short-refcard.pdf) (4 pages long!) of the many useful commands in base R. Skim through this and see if there is anything useful for you. It is meant to periodically skimmed, not studied in great detail (you'll put yourself to sleep if you try to read it beginning to end).
 
-Additionally, here is the [ultimate guide](https://cran.r-project.org/doc/manuals/r-release/R-lang.html) to working with the R language. This is a long, highly technical document, but it is also incredibly detailed and informative. Reading this is like reading an encyclopedia - only read a a small section at a time. I do not recommend reading this beginning to end.
+Additionally, here is the [ultimate guide](https://cran.r-project.org/doc/manuals/r-release/R-lang.html) to working with the R language. This is a long, highly technical document, but it is also incredibly detailed and informative. Reading this is like reading an encyclopedia - only read a a small section at a time and focus on topics that interest you. 
 
-#### Libraries
+### Libraries
 
 ```{r,  echo=FALSE, fig.alt="Sokka shouting 'At the library!'"}
 knitr::include_graphics(here::here("images", "sokka_library.gif"))
@@ -162,17 +169,8 @@ But also, the community keeps R humming and current by writing packages that ext
 
 These packages are often made available on [CRAN](https://cran.r-project.org/web/packages/available_packages_by_name.html), the comprehensive R archive network, as well [Bioconductor](https://www.bioconductor.org/) or via GitHub, GitLab, independent websites.
 
-You can access packages on CRAN by first installing them with `install.packages("package_name")` and then loading the package into an R session, `library(package_name)`. Here's an example using **readr** and \*readxl\*\*, packages we will use for data importation.
 
-```{r, eval=FALSE}
-install.packages(c("readr", "readxl"))
-library(readr)
-library(readxl)
-```
-
-Note that multiple packages can be listed in the `install.packages()` command, but not `library()`. Also, packages only need to be installed once, not repeatedly (unless a package needs to be a updated to the latest version). However, packages must be loaded in every R session or their functionality (including the help files) is not available.
-
-::: callout-tip
+::: {callout-tip collapse = FALSE}
 ## Putting it all together
 
 When you search for something in the Help pane, several types of help files will result: vignettes and function documentation. Function documentation is what we have just reviewed (detailed information on how to use a function). Vignettes are examples of how to use a collection of function in a package. They provide more context and a programmatic flow for using a package or accomplishing a particular goal. They are package tutorials. Vignettes are not provided for every function or every package; they are an extra feature that package authors choose to create for users.

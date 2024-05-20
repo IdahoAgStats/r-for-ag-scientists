@@ -7,7 +7,7 @@ title: "Aggregating & Summarising Data"
 
 At the end of this lesson, you should:
 
--   be able to aggregate data and perform actions on those aggregated data using `group_by()` + `summarise()`
+-   be able to aggregate data and perform actions on those aggregated data using `group_by()` and `summarise()`
 -   understand when to use `rowwise()` for operations
 :::
 
