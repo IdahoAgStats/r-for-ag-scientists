@@ -220,6 +220,24 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
  <span class="menu-text">Lesson Zero</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lessons/rstudio-tour.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Quick tour of R studio</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lessons/getting-to-know-data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Getting to know data in R</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lessons/r-documentation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">R documentation</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -276,7 +294,7 @@ Learning Goals
 <p>At the end of this lesson, you should:</p>
 <ul>
 <li>understand how to assign variables and collections of numbers to an object name</li>
-<li>known the rules for how to name objects</li>
+<li>know the rules for how to name objects</li>
 <li>understand reserved words in R and how to find them</li>
 <li>understand how white space functions in R</li>
 </ul>
@@ -285,31 +303,39 @@ Learning Goals
 </div>
 <section id="object-assignment" class="level3">
 <h3 class="anchored" data-anchor-id="object-assignment">Object assignment</h3>
-<p>It is rather cumbersome to continually retype numbers, even while using a shortcut. There’s a general rule of “DRY” when coding, which means “Don’t repeat yourself”. We can avoid this by assigning these numbers to an R object.</p>
-<p>Traditionally, the left arrow is used for object assignment, <code>&lt;-</code> (less than symbol + a dash), but the standard equals sign, <code>=</code> also works. These are equivalent:</p>
+<p>It is rather cumbersome to continually retype or paste information. We can avoid this by assigning information to an R object.</p>
+<p>Traditionally in R, the left arrow is used for object assignment, <code>&lt;-</code> (the less-than symbol and a dash), but the standard equals sign, <code>=</code> also works.</p>
+<p>These are equivalent:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1</code></pre>
 </div>
-<p>We can assign multiple numbers to an object</p>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="dv">1</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1</code></pre>
+</div>
+</div>
+<p>We can assign multiple numbers to an object:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>x_vector <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>y_vector <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">8</span>, <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>x_vector <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>y_vector <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">8</span>, <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The left arrow assignment <code>&lt;-</code> takes everything on the right side of the arrow and assigns it the object name on the left.</p>
 </section>
 <section id="object-naming" class="level3">
 <h3 class="anchored" data-anchor-id="object-naming">Object naming</h3>
-<p>It is your choice (mostly) about what to name R objects. There are a few rules to follow:</p>
+<p>It is your choice (mostly) about what to name R objects. There are a few rules and conventions to follow:</p>
 <ul>
-<li>spaces are generally not allowed and a huge pain - avoid at all costs!</li>
-<li>Don’t start with a number or symbol! (this is technically possible, but a huge pain)</li>
-<li>choose a name that is short, yet descriptive</li>
-<li>R is case sensitive, so <code>test</code> is different from <code>Test</code> and <code>TEST</code>. Be mindful of this! It trips many folks up.<br>
-</li>
-<li>It’s possible that you will thank yourself for using lowercase and avoiding special symbols (aside from <code>.</code> and <code>_</code>)</li>
-<li>if you start a function name with a “.” (e.g.&nbsp;<code>.variable</code>), you won’t see it listed in the global environment (which can be frustrating), this is not recommended for newer R users</li>
-<li>you cannot use “reserved words” from the R language (terms set aside for very specific purposes in R). When typing these in an R console, they usually light up in a special colors.</li>
+<li>Choose a name that is short, yet descriptive.</li>
+<li>Spaces are generally not allowed and a huge pain - so avoid doing this.</li>
+<li>Don’t start an object name with a number or symbol (this is technically possible, but also a pain).</li>
+<li>R is case sensitive, so <code>test</code> is different from <code>Test</code> and <code>TEST</code>. Be mindful of this! It trips many folks up.</li>
+<li>It is possible that future you will thank your past self for using lowercase and avoiding special symbols (aside from <code>.</code> and <code>_</code>)</li>
+<li>If you start a function name with a “.” (e.g.&nbsp;<code>.variable</code>), you won’t see it listed in the global environment (which can be frustrating). This is not recommended for newer R users.</li>
+<li>You cannot use “reserved words” from the R language (terms set aside for very specific purposes in R). When typing these in an R console, they usually light up in a special colors.</li>
 </ul>
 <p>Here is <a href="https://intro2r.com/objects-in-r.html">some discussion</a> on object naming in R.</p>
 </section>
@@ -364,15 +390,15 @@ Learning Goals
 <p>It’s easy to forgot these. Run <code>?reserved</code> in an R console or <a href="https://stat.ethz.ch/R-manual/R-devel/library/base/html/Reserved.html">check here</a> to remind yourself if need be.</p>
 <p>Some examples of reserved words in the wild:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">log</span>(<span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">log</span>(<span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -Inf</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="dv">0</span><span class="sc">/</span><span class="dv">0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="dv">0</span><span class="sc">/</span><span class="dv">0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] NaN</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">/</span><span class="dv">0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">/</span><span class="dv">0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] Inf</code></pre>
 </div>
@@ -385,30 +411,30 @@ Learning Goals
 </ul>
 <p>These are the same:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span><span class="sc">/</span><span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span><span class="sc">/</span><span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1.333333</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span><span class="sc">/</span>    <span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span><span class="sc">/</span>    <span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1.333333</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span>    <span class="sc">/</span>  <span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span>    <span class="sc">/</span>  <span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1.333333</code></pre>
 </div>
 </div>
 <p>These are also the same:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">log</span>(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">log</span>(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2.302585</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">log</span>( <span class="dv">10</span> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">log</span>( <span class="dv">10</span> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2.302585</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">log</span> ( <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">log</span> ( <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2.302585</code></pre>
 </div>
@@ -416,9 +442,9 @@ Learning Goals
 <ul>
 <li><p>R expects certain things to be paired or completed before it will send it to the interpreter</p></li>
 <li><p>As mentioned, earlier a hard return is sufficient to send a command to the R interpreter.</p></li>
-<li><p>Exceptions: binary operators (= those expecting 2 numbers): <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>^</code>, <code>==</code>, etc</p></li>
+<li><p>Exceptions: binary operators (= those expecting 2 numbers): <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>^</code>, <code>==</code>, etc. R is waiting for these to be ‘completed’.</p></li>
 <li><p>Exceptions: unclosed parentheses <code>()</code>, brackets <code>[]</code> <code>{}</code>, or quotes <code>' '</code> <code>" "</code>. R will wait for these to be completed. A single quote must always be complemented by a second single quote, and a double quote likewise must always have a second quote to complete it. Left parentheses, curly braces, or brackets much also be accompanying by their right-sided complement.</p></li>
-<li><p>good examples</p></li>
+<li><p>Examples</p></li>
 </ul>
 <!-- -->
 <pre><code>1 + 2
@@ -429,7 +455,7 @@ Learning Goals
 ' '
 ` `</code></pre>
 <ul>
-<li>bad examples</li>
+<li>Errors</li>
 </ul>
 <!-- -->
 <pre><code>1 + 
@@ -438,8 +464,16 @@ Learning Goals
 "
 ' "</code></pre>
 <ul>
-<li>there is no difference between double and single quotes on a practical level, but R will interpret them as different commands (so a single quote cannot close a double quote). This is useful when there is nested levels of quoting (rare), and yet, it happens now and then.</li>
+<li>There is no difference between double and single quotes on a practical level, but R will interpret them as different commands (so a single quote cannot close a double quote). This is useful when there is nested levels of quoting. This is uncommon, but, it does happens now and then.</li>
 </ul>
+<p>Example:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="st">"r `format(Sys.Date(), '%b %d, %Y')`"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "r `format(Sys.Date(), '%b %d, %Y')`"</code></pre>
+</div>
+</div>
+<p>If this particular piece of code makes no sense to you, do not worry. The point of presenting this code at this stage in your journey of learning R is to demonstrate how single quotes, double quotes and the backtick ` can be used together in single statement.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -450,7 +484,8 @@ Putting it all together
 </div>
 </div>
 <div class="callout-body-container callout-body">
-
+<p>Matching parentheses, quotes, and other paired structures is important in R. The R interpreter may stop if it is waiting for a statement to be ‘closed’. As a result, RStudio will often automatically append a pair while you type. Try typing a single quote, double quote, square bracket, curly bracket, parentheses or backtick and notice how this happens.</p>
+<p>Rstudio furthers this practice when you highlight text. In RStudio, highlight some text and then type the key for double quotes. What happened? Try the same with parentheses and the other keys/symbols mentioned. Once you get used to this, it will save you some time!</p>
 </div>
 </div>
 

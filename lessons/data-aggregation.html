@@ -220,6 +220,24 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
  <span class="menu-text">Lesson Zero</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lessons/rstudio-tour.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Quick tour of R studio</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lessons/getting-to-know-data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Getting to know data in R</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lessons/r-documentation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">R documentation</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -276,7 +294,7 @@ Learning Goals
 <div class="callout-body-container callout-body">
 <p>At the end of this lesson, you should:</p>
 <ul>
-<li>be able to aggregate data and perform actions on those aggregated data using <code>group_by()</code> + <code>summarise()</code></li>
+<li>be able to aggregate data and perform actions on those aggregated data using <code>group_by()</code> and <code>summarise()</code></li>
 <li>understand when to use <code>rowwise()</code> for operations</li>
 </ul>
 </div>
@@ -480,16 +498,16 @@ FYI
 <span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>disease_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   plot score1 score5 score3 score4 score2
-1     a     40     70     50     60     30
-2     b     80     50     10    100     30
-3     c     80     70     30     10     20
-4     d     80     10     10     80     90
-5     e     80      0     40     20     50
-6     f     80     20     10     20    100
-7     g     90     70     70      0     20
-8     h     60     90     60      0     40
-9     i     20     30     20     80     10
-10    j     90     90     80     20     60</code></pre>
+1     a     80    100     90     70     40
+2     b     60     60     90     60     70
+3     c     70     40     20     50     90
+4     d      0     50     80     10    100
+5     e     30     60     80     60     80
+6     f     90     20     70     70     30
+7     g     40     80     70     30      0
+8     h     30      0     30     60     50
+9     i     20     20     40     10     40
+10    j     30    100     30     10      0</code></pre>
 </div>
 </div>
 <p>Data sets exist like this. A person might have a set of 10 experimental plots to evaluate for some trait. The trait assay protocol may require that multiple observations be gathered per plot (from a statistical standpoint, this is a technical replicate, not a true replicate) and then reduced to a single number per plot using a simple mean. Row-wise functions can accomplish this.</p>
@@ -503,16 +521,16 @@ FYI
 # Rowwise: 
    plot  score1 score5 score3 score4 score2 score_final max_score
    &lt;chr&gt;  &lt;int&gt;  &lt;int&gt;  &lt;int&gt;  &lt;int&gt;  &lt;int&gt;       &lt;dbl&gt;     &lt;int&gt;
- 1 a         40     70     50     60     30          35        40
- 2 b         80     50     10    100     30          55        80
- 3 c         80     70     30     10     20          50        80
- 4 d         80     10     10     80     90          85        90
- 5 e         80      0     40     20     50          65        80
- 6 f         80     20     10     20    100          90       100
- 7 g         90     70     70      0     20          55        90
- 8 h         60     90     60      0     40          50        60
- 9 i         20     30     20     80     10          15        20
-10 j         90     90     80     20     60          75        90</code></pre>
+ 1 a         80    100     90     70     40          60        80
+ 2 b         60     60     90     60     70          65        70
+ 3 c         70     40     20     50     90          80        90
+ 4 d          0     50     80     10    100          50       100
+ 5 e         30     60     80     60     80          55        80
+ 6 f         90     20     70     70     30          60        90
+ 7 g         40     80     70     30      0          20        40
+ 8 h         30      0     30     60     50          40        50
+ 9 i         20     20     40     10     40          30        40
+10 j         30    100     30     10      0          15        30</code></pre>
 </div>
 </div>
 <div class="callout callout-style-default callout-question no-icon callout-titled">

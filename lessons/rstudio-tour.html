@@ -30,6 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<link href="../lessons/getting-to-know-data.html" rel="next">
+<link href="../lessons/lesson-zero.html" rel="prev">
 <link href="../images/logo_transparent.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -100,7 +102,7 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Introduction to RStudio</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../lessons/lesson-zero.html">Lessons</a></li><li class="breadcrumb-item"><a href="../lessons/rstudio-tour.html">Quick tour of R studio</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -186,6 +188,24 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
  <span class="menu-text">Lesson Zero</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lessons/rstudio-tour.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Quick tour of R studio</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lessons/getting-to-know-data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Getting to know data in R</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lessons/r-documentation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">R documentation</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -226,7 +246,7 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../lessons/lesson-zero.html">Lessons</a></li><li class="breadcrumb-item"><a href="../lessons/rstudio-tour.html">Quick tour of R studio</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Introduction to RStudio</h1>
 </div>
@@ -259,8 +279,8 @@ Learning Recap
 <div class="callout-body-container callout-body">
 <p>At the end of this lesson, you should understand:</p>
 <ul>
-<li>What the different tabs in each of the panes of RStudio do</li>
-<li>What is in each menu item in Rstudio and have a general sense of functionality available</li>
+<li>what the different tabs in each of the panes of RStudio do</li>
+<li>what is in each menu item in Rstudio and have a general sense of functionality available</li>
 </ul>
 </div>
 </div>
@@ -274,8 +294,25 @@ Learning Recap
 </div>
 </div>
 </div>
-<p>RStudio is more than a graphical user interface for R. It is an integrated development environment (IDE), that is a full service application for supporting software development. It can perform multitudes, so more than most people need. It is the supermarket of R functionality. Like a supermarket, there are parts of RStudio you will visit frequently and parts you will rarely if ever use. After 10+ years of using RStudio on a near daily basis, there are several parts of it that I continue to be unfamiliar with! Ths is okay - clearly, I have not needed those parts. You will come to find what sections youn will need most over time and practice.</p>
+<p>RStudio is more than a graphical user interface for R. It is an integrated development environment (IDE), that is a full service application for supporting software development. It can perform multitudes, so much more than what most R users need.</p>
+<p>It is the supermarket of R functionality. Like a supermarket, there are parts of RStudio you will visit frequently and parts you will rarely if ever use. After 12+ years of using RStudio on a near daily basis, there are several parts of it that I continue to be unfamiliar with! Ths is okay - clearly, I have not needed those parts. You will come to find what sections you will need most over time and practice.</p>
 <p>Still, it helps to have a guided tour. Let’s dive into this.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<p>Recall that R is separate from RStudio. R is the actual interpreter that does all the amazing stuff. RStudio is a user interface (that is also amazing for different reasons). I have seen many papers reference RStudio (“We used R version 1.0.2…”) like it was R, an embarassing error. Don’t fall into this trap.</p>
+</div>
+</div>
+</div>
 <section id="the-panes" class="level2">
 <h2 class="anchored" data-anchor-id="the-panes">The Panes</h2>
 <p>Here is a simplified schematic:</p>
@@ -300,7 +337,7 @@ Learning Recap
 <thead>
 <tr class="header">
 <th>Tab</th>
-<th>Function</th>
+<th>Purpose</th>
 </tr>
 </thead>
 <tbody>
@@ -337,7 +374,7 @@ Learning Recap
 <thead>
 <tr class="header">
 <th>Tab</th>
-<th>Function</th>
+<th>Purpose</th>
 </tr>
 </thead>
 <tbody>
@@ -387,7 +424,7 @@ Learning Recap
 <thead>
 <tr class="header">
 <th>Tab</th>
-<th>Function</th>
+<th>Purpose</th>
 </tr>
 </thead>
 <tbody>
@@ -431,8 +468,7 @@ Learning Recap
 </div>
 </div>
 <p>default location: upper left</p>
-<p>These are all the files we create and edit: <code>.R</code>, <code>.Rmd</code>, <code>.txt</code>, …</p>
-<p>when we open files from the “Files” pane, this is where it shows up</p>
+<p>These are all the files we create and edit: <code>.R</code>, <code>.Rmd</code>, <code>.txt</code>, etc. When we open files from the “Files” pane, this is where it shows up.</p>
 </section>
 </section>
 <section id="the-upper-menu-items" class="level2">
@@ -449,79 +485,78 @@ Learning Recap
 <section id="file" class="level3">
 <h3 class="anchored" data-anchor-id="file">File</h3>
 <ul>
-<li>opening and/or creating files<br>
+<li>Opening and/or creating files<br>
 </li>
-<li>opening and/or creating projects<br>
+<li>Opening and/or creating projects<br>
 </li>
-<li>recent files, recent project<br>
-</li>
-<li>(standard file functionality)</li>
+<li>Recent files, recent project</li>
+<li>…standard file functionality</li>
 </ul>
 </section>
 <section id="edit" class="level3">
 <h3 class="anchored" data-anchor-id="edit">Edit</h3>
 <ul>
-<li>copy, paste, find</li>
-<li>very handy “find in files” feature!</li>
+<li>Copy, paste, find</li>
+<li>Very handy “find in files” feature!</li>
 </ul>
 </section>
 <section id="code" class="level3">
 <h3 class="anchored" data-anchor-id="code">Code</h3>
 <ul>
-<li>incredible useful set of commands</li>
-<li>some are very simple (e.g.&nbsp;“comment lines”), others are complex (e.g.&nbsp;“rename in scope”)</li>
-<li>over time, you will learn what these mean and perhaps make use of them (if you don’t, that is okay)</li>
+<li>Incredible useful set of commands</li>
+<li>Some are very simple (e.g.&nbsp;“comment lines”), others are complex (e.g.&nbsp;“rename in scope”)</li>
+<li>Over time, you will learn what these mean and perhaps make use of them (if you don’t, that is okay)</li>
 </ul>
 </section>
 <section id="view" class="level3">
 <h3 class="anchored" data-anchor-id="view">View</h3>
 <ul>
-<li>rearrange panes</li>
-<li>zoom in/out</li>
-<li>overall not that useful, except for the shortcuts</li>
+<li>Rearrange panes</li>
+<li>Zoom in/out</li>
+<li>Overall not that useful, except for the shortcuts</li>
 </ul>
 </section>
 <section id="plots" class="level3">
 <h3 class="anchored" data-anchor-id="plots">Plots</h3>
 <ul>
-<li>meh</li>
+<li>(self explanatory)</li>
 </ul>
 </section>
 <section id="session" class="level3">
 <h3 class="anchored" data-anchor-id="session">Session</h3>
 <ul>
-<li>very handy for restarting your R session</li>
-<li>manually set the working directory (we will do this in a few weeks)</li>
+<li>Very handy for restarting your R session</li>
+<li>Manually set the working directory</li>
 </ul>
 </section>
 <section id="build" class="level3">
 <h3 class="anchored" data-anchor-id="build">Build</h3>
 <ul>
-<li>advanced tools for building packages, websites, et cetera. I’ve never visited this part of the supermarket.</li>
+<li>Advanced tools for building packages, websites, et cetera. I’ve never visited this part of the supermarket.</li>
 </ul>
 </section>
 <section id="debug" class="level3">
 <h3 class="anchored" data-anchor-id="debug">Debug</h3>
 <ul>
-<li>tools for debugging code (removing scripting errors). We will not use this in the workshop! But you can learn more about it <a href="https://support.posit.co/hc/en-us/articles/205612627-Debugging-with-the-RStudio-IDE">here</a>.</li>
+<li>Tools for debugging code (removing scripting errors). We will not use this in the workshop! But you can learn more about it <a href="https://support.posit.co/hc/en-us/articles/205612627-Debugging-with-the-RStudio-IDE">here</a>.</li>
 </ul>
 </section>
 <section id="profile" class="level3">
 <h3 class="anchored" data-anchor-id="profile">Profile</h3>
 <ul>
-<li>for code profiling (checking how long it takes your code to run). We will also not be using this in the workshop. This is part of the supermarket I rarely visit.</li>
+<li>For code profiling (checking how long it takes your code to run). We will also not be using this in the workshop. This is part of the supermarket I rarely visit.</li>
 </ul>
 </section>
 <section id="tools" class="level3">
 <h3 class="anchored" data-anchor-id="tools">Tools</h3>
 <ul>
-<li>some handy utility function. I mostly use this menu item to set preferences via “Global Options”.</li>
+<li>Some handy utility function. I mostly use this menu item to set preferences via “Global Options”.</li>
 </ul>
 </section>
 <section id="help" class="level3">
 <h3 class="anchored" data-anchor-id="help">Help</h3>
 <ul>
-<li>more utility functions. You can check for RStudio updates here, access community help forum, and other forms of documentation in addition to standard help files.</li>
+<li>Mmore utility functions. You can check for RStudio updates here, access community help forum, and other forms of documentation in addition to standard help files.</li>
 </ul>
 </section>
 <section id="more" class="level3">
@@ -1086,6 +1121,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../lessons/lesson-zero.html" class="pagination-link" aria-label="Lesson Zero">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Lesson Zero</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../lessons/getting-to-know-data.html" class="pagination-link" aria-label="Getting to know data in R">
+        <span class="nav-page-text">Getting to know data in R</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">

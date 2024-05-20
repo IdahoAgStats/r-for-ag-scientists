@@ -64,6 +64,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<link href="../lessons/getting-to-know-data.html" rel="prev">
 <link href="../images/logo_transparent.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -134,7 +135,7 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">R Functions &amp; R Help</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../lessons/lesson-zero.html">Lessons</a></li><li class="breadcrumb-item"><a href="../lessons/r-documentation.html">R documentation</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -220,6 +221,24 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
  <span class="menu-text">Lesson Zero</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lessons/rstudio-tour.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Quick tour of R studio</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lessons/getting-to-know-data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Getting to know data in R</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lessons/r-documentation.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">R documentation</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -232,17 +251,27 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#the-mechanics-of-r-functions" id="toc-the-mechanics-of-r-functions" class="nav-link active" data-scroll-target="#the-mechanics-of-r-functions">The Mechanics of R Functions</a></li>
+  <li><a href="#r-package-installation" id="toc-r-package-installation" class="nav-link active" data-scroll-target="#r-package-installation">R Package Installation</a>
+  <ul class="collapse">
+  <li><a href="#option-1-the-command-line" id="toc-option-1-the-command-line" class="nav-link" data-scroll-target="#option-1-the-command-line">Option 1: the command line</a></li>
+  <li><a href="#option-2-the-rstutio-packages-window" id="toc-option-2-the-rstutio-packages-window" class="nav-link" data-scroll-target="#option-2-the-rstutio-packages-window">Option 2: The RStutio ‘Packages’ window:</a></li>
+  </ul></li>
+  <li><a href="#the-mechanics-of-r-functions" id="toc-the-mechanics-of-r-functions" class="nav-link" data-scroll-target="#the-mechanics-of-r-functions">The Mechanics of R Functions</a>
+  <ul class="collapse">
   <li><a href="#using-r-help" id="toc-using-r-help" class="nav-link" data-scroll-target="#using-r-help">Using R Help</a></li>
   <li><a href="#back-to-functions" id="toc-back-to-functions" class="nav-link" data-scroll-target="#back-to-functions">Back to functions</a></li>
-  <li><a href="#base-r-and-contributed-libraries" id="toc-base-r-and-contributed-libraries" class="nav-link" data-scroll-target="#base-r-and-contributed-libraries">Base R and Contributed Libraries</a></li>
+  </ul></li>
+  <li><a href="#base-r-and-contributed-libraries" id="toc-base-r-and-contributed-libraries" class="nav-link" data-scroll-target="#base-r-and-contributed-libraries">Base R and Contributed Libraries</a>
+  <ul class="collapse">
+  <li><a href="#libraries" id="toc-libraries" class="nav-link" data-scroll-target="#libraries">Libraries</a></li>
+  </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/IdahoAgStats/r-for-ag-scientists/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../lessons/lesson-zero.html">Lessons</a></li><li class="breadcrumb-item"><a href="../lessons/r-documentation.html">R documentation</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">R Functions &amp; R Help</h1>
 </div>
@@ -262,7 +291,7 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
 
 
 <div class="callout callout-style-default callout-caution callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -271,50 +300,95 @@ Learning Goals
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div id="callout-1" class="callout-1-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
 <p>At the end of this lesson, you should:</p>
 <ul>
-<li>Understand how to call functions using named and positional arguments</li>
-<li>Be able to access help files for an R function and know how to use the information provided in a help file</li>
+<li>be able to install R packages</li>
+<li>understand how to call functions using named and positional arguments</li>
+<li>be able to access help files for an R function and know how to use the information provided in a help file</li>
 </ul>
 </div>
 </div>
 </div>
-<section id="the-mechanics-of-r-functions" class="level3">
-<h3 class="anchored" data-anchor-id="the-mechanics-of-r-functions">The Mechanics of R Functions</h3>
+<section id="r-package-installation" class="level2">
+<h2 class="anchored" data-anchor-id="r-package-installation">R Package Installation</h2>
+<p>There are 2 options for installing packages available on <a href="https://cran.r-project.org/web/packages/available_packages_by_name.html">CRAN</a> (Comprehensive R Archive Network).</p>
+<section id="option-1-the-command-line" class="level3">
+<h3 class="anchored" data-anchor-id="option-1-the-command-line">Option 1: the command line</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># one package</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"package_name"</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># multiple packages</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">"package_1"</span>, <span class="st">"package_2"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Spelling and case must be <em>exact</em>. Otherwise you get an error:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"matrx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error: package 'matrx' is not available</code></pre>
+</div>
+</div>
+</section>
+<section id="option-2-the-rstutio-packages-window" class="level3">
+<h3 class="anchored" data-anchor-id="option-2-the-rstutio-packages-window">Option 2: The RStutio ‘Packages’ window:</h3>
+<p>A point-and-click interface.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="../images/package_pane.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Click “Install” and then type your package. Close matches will start to appear in the dropdown:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="../images/package_installation.png" style="width:60.0%;height:60.0%" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>This will automatically resolve spelling and case issues.</p>
+<p>::: {callout-note collapse = FALSE} Note that multiple packages can be listed in the <code>install.packages()</code> command, but not <code>library()</code>. Also, packages only need to be installed once, not repeatedly (unless a package needs to be a updated to the latest version). However, packages must be loaded in every R session or their functionality (including the help files) will not be available. :::</p>
+</section>
+</section>
+<section id="the-mechanics-of-r-functions" class="level2">
+<h2 class="anchored" data-anchor-id="the-mechanics-of-r-functions">The Mechanics of R Functions</h2>
 <p>We have thus far used a few R functions without explicitly stating how to call them properly.</p>
 <p>The majority of functions in R follow this format:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">function_name</span>(arg1, arg2, arg3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">function_name</span>(arg1, arg2, arg3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Where “arg” refers to a function argument (that is, a piece of information the function can use).</p>
 <p>A function has a name, and can take several arguments within the parentheses. These argument values can be provided by providing each argument in the expected order:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">function_name</span>(value1, value2, value3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">function_name</span>(value1, value2, value3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Note that each <strong>positional argument</strong> is not being explicitly referenced. However, we can specify each argument when calling a function:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">function_name</span>(<span class="at">arg1 =</span> value1, <span class="at">arg2 =</span> value2, <span class="at">arg3 =</span> value3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">function_name</span>(<span class="at">arg1 =</span> value1, <span class="at">arg2 =</span> value2, <span class="at">arg3 =</span> value3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>When specifying the argument explicitly, we don’t have to follow the order of arguments:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">function_name</span>(<span class="at">arg1 =</span> value1, <span class="at">arg3 =</span> value3, <span class="at">arg2 =</span> value3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">function_name</span>(<span class="at">arg1 =</span> value1, <span class="at">arg3 =</span> value3, <span class="at">arg2 =</span> value3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>This approach of using <strong>named arguments</strong> is very helpful when there is a very long list of potential argument and you only plan to specify a small portion of them.</p>
 <p>We can also combined positional argument and named arguments:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">function_name</span>(value1, <span class="at">arg3 =</span> value3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">function_name</span>(value1, <span class="at">arg3 =</span> value3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>In this case, arg2 has been completed omitted. When an argument is not specified, that implies the default arguments for that function will be used instead. In order to find out the default argument values for a function, we need to consult the R help files.</p>
-</section>
 <section id="using-r-help" class="level3">
 <h3 class="anchored" data-anchor-id="using-r-help">Using R Help</h3>
 <p>You can search for a function directly using the search windows in the upper right of the “Help” pane.</p>
 <p>You can also search using this notation: <code>?function_name</code>.</p>
 <p>Let’s check out the help file for <code>sample()</code>, a function designed to randomly sample items and return that random sample to us.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>?sample</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>?sample</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Here is a screenshot of the window that hopefully popped up in your RStudio help pane:</p>
 <div class="cell" alt="screenshot of an R help file for the function 'sample'">
@@ -334,7 +408,7 @@ Learning Goals
 <li><strong>Details</strong> an optional section providing various computational details</li>
 <li><strong>Value</strong> what is returned after the function is run</li>
 <li><strong>References</strong> any technical, scientific or peer-reviewed lit references supporting the computational procedures implemented in the function</li>
-<li><strong>See Also</strong> similar functions (usually not very useful)</li>
+<li><strong>See Also</strong> similar functions (sometimes helpful)</li>
 <li><strong>Examples</strong> actual examples of the function in the wild! These are hit-or-miss on their overall utility, but when I’m desperate to understand how to properly call a function, this has helped me.</li>
 </ul>
 <p>At the very bottom is the package the function came from and a link to an index of all functions associated with that package. This can come in handy when you want to browse all functions available in a package.</p>
@@ -347,8 +421,8 @@ Learning Goals
 <li>It will return a vector of the item sampled</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  [1]   1   2   3   4   5   6   7   8   9  10  11  12  13  14  15  16  17  18
  [19]  19  20  21  22  23  24  25  26  27  28  29  30  31  32  33  34  35  36
@@ -357,9 +431,9 @@ Learning Goals
  [73]  73  74  75  76  77  78  79  80  81  82  83  84  85  86  87  88  89  90
  [91]  91  92  93  94  95  96  97  98  99 100</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(x, <span class="dv">10</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(x, <span class="dv">10</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] 72 96 79 79  3 88 88 44 35 86</code></pre>
+<pre><code> [1] 91 39 26 70 23  2 67 77 21 18</code></pre>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -380,17 +454,18 @@ Note
 <h3 class="anchored" data-anchor-id="back-to-functions">Back to functions</h3>
 <p>Functions can return exactly one object (or none at all). If it does return an object, that can be assigned to a new object:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>new <span class="ot">&lt;-</span> <span class="fu">function_name</span>(value1, <span class="at">arg3 =</span> value3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>new <span class="ot">&lt;-</span> <span class="fu">function_name</span>(value1, <span class="at">arg3 =</span> value3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>If the output from a function is not assigned, it will be sent to the console instead (we’ve done this plenty during this workshop). Sometimes, this is fine! Maybe it is a small amount of output we are running to check data integrity. Or maybe it’s a giant data frame we deeply regret printing in the console.</p>
 </section>
-<section id="base-r-and-contributed-libraries" class="level3">
-<h3 class="anchored" data-anchor-id="base-r-and-contributed-libraries">Base R and Contributed Libraries</h3>
-<p>This is the last section with a major focus on ‘base R’, that is the set of functions that come automatically loaded when you install and open R.</p>
+</section>
+<section id="base-r-and-contributed-libraries" class="level2">
+<h2 class="anchored" data-anchor-id="base-r-and-contributed-libraries">Base R and Contributed Libraries</h2>
+<p>This is the only lesson with a major focus on ‘base R’, that is the set of functions that come automatically loaded when you install and open R.</p>
 <p>Take a look at this <a href="https://cran.r-project.org/doc/contrib/Short-refcard.pdf">long-ish cheat sheet</a> (4 pages long!) of the many useful commands in base R. Skim through this and see if there is anything useful for you. It is meant to periodically skimmed, not studied in great detail (you’ll put yourself to sleep if you try to read it beginning to end).</p>
-<p>Additionally, here is the <a href="https://cran.r-project.org/doc/manuals/r-release/R-lang.html">ultimate guide</a> to working with the R language. This is a long, highly technical document, but it is also incredibly detailed and informative. Reading this is like reading an encyclopedia - only read a a small section at a time. I do not recommend reading this beginning to end.</p>
-<section id="libraries" class="level4">
-<h4 class="anchored" data-anchor-id="libraries">Libraries</h4>
+<p>Additionally, here is the <a href="https://cran.r-project.org/doc/manuals/r-release/R-lang.html">ultimate guide</a> to working with the R language. This is a long, highly technical document, but it is also incredibly detailed and informative. Reading this is like reading an encyclopedia - only read a a small section at a time and focus on topics that interest you.</p>
+<section id="libraries" class="level3">
+<h3 class="anchored" data-anchor-id="libraries">Libraries</h3>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -402,27 +477,9 @@ Note
 </div>
 <p>But also, the community keeps R humming and current by writing packages that extend R’s functionality. This is both awesome (the latest greatest tool is now enabled!) and bad (quality of implementation is not guaranteed and these packages are often not maintained over the long haul).</p>
 <p>These packages are often made available on <a href="https://cran.r-project.org/web/packages/available_packages_by_name.html">CRAN</a>, the comprehensive R archive network, as well <a href="https://www.bioconductor.org/">Bioconductor</a> or via GitHub, GitLab, independent websites.</p>
-<p>You can access packages on CRAN by first installing them with <code>install.packages("package_name")</code> and then loading the package into an R session, <code>library(package_name)</code>. Here’s an example using <strong>readr</strong> and *readxl**, packages we will use for data importation.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">"readr"</span>, <span class="st">"readxl"</span>))</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Note that multiple packages can be listed in the <code>install.packages()</code> command, but not <code>library()</code>. Also, packages only need to be installed once, not repeatedly (unless a package needs to be a updated to the latest version). However, packages must be loaded in every R session or their functionality (including the help files) is not available.</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Putting it all together
-</div>
-</div>
-<div class="callout-body-container callout-body">
+<p>::: {callout-tip collapse = FALSE} ## Putting it all together</p>
 <p>When you search for something in the Help pane, several types of help files will result: vignettes and function documentation. Function documentation is what we have just reviewed (detailed information on how to use a function). Vignettes are examples of how to use a collection of function in a package. They provide more context and a programmatic flow for using a package or accomplishing a particular goal. They are package tutorials. Vignettes are not provided for every function or every package; they are an extra feature that package authors choose to create for users.</p>
-<p>There is an enormous number of R packages available! There are a few options for finding packages relevant to your work: * <a href="https://cran.r-project.org/web/views/">CRAN Task Views</a> * <a href="https://www.bioconductor.org/packages/release/BiocViews.html#___Workflow">Bioconductor Workflows</a></p>
-</div>
-</div>
+<p>There is an enormous number of R packages available! There are a few options for finding packages relevant to your work: * <a href="https://cran.r-project.org/web/views/">CRAN Task Views</a> * <a href="https://www.bioconductor.org/packages/release/BiocViews.html#___Workflow">Bioconductor Workflows</a> :::</p>
 
 
 </section>
@@ -982,6 +1039,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../lessons/getting-to-know-data.html" class="pagination-link" aria-label="Getting to know data in R">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Getting to know data in R</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
