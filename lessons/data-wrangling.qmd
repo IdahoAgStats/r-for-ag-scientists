@@ -116,7 +116,7 @@ While selecting by numeric position works, it is an unreliable choice because it
 ::: {.callout-question .callout collapse="true"}
 ## Practice Problem
 
-(@) Import "trial_metadata.csv" with the [***readr***](https://readr.tidyverse.org/) function `read_csv()`. 
+(@) Import "trial_data.csv" with the [***readr***](https://readr.tidyverse.org/) function `read_csv()`. 
 
 (@) Select columns that contain "i" in the column name and assign it a name "select_colm".
 
