@@ -553,7 +553,7 @@ Practice Problems
 <div class="cell-output cell-output-stdout">
 <pre><code>new_var
   0   1 
-937 945 </code></pre>
+938 944 </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mutate1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -565,12 +565,12 @@ Practice Problems
 5 SWIdahoCereals_H_S_PAR_2018   1 Jefferson  65.26589       10.2350        62.8
 6 SWIdahoCereals_H_S_PAR_2018   2 Jefferson 104.37355       11.0400        65.2
   dataset row_position                    trial_id random_yield binom_var
-1 example            1 SWIdahoCereals_H_S_PAR_2018     70.92996         1
-2 example            2 SWIdahoCereals_H_S_PAR_2018    108.94213         0
-3 example            3 SWIdahoCereals_H_S_PAR_2018     80.33771         0
-4 example            4 SWIdahoCereals_H_S_PAR_2018    103.49024         0
-5 example            5 SWIdahoCereals_H_S_PAR_2018     63.69997         0
-6 example            6 SWIdahoCereals_H_S_PAR_2018    104.66336         0
+1 example            1 SWIdahoCereals_H_S_PAR_2018     72.86368         0
+2 example            2 SWIdahoCereals_H_S_PAR_2018    109.71268         0
+3 example            3 SWIdahoCereals_H_S_PAR_2018     81.59469         1
+4 example            4 SWIdahoCereals_H_S_PAR_2018    103.55080         0
+5 example            5 SWIdahoCereals_H_S_PAR_2018     65.33786         0
+6 example            6 SWIdahoCereals_H_S_PAR_2018    103.91893         0
   yield_protein
 1      81.52583
 2     118.20551
@@ -772,6 +772,38 @@ Practice Problems
 </div>
 </div>
 </div>
+<p>Sometimes, data sets have clear indications when a values is intended to be filled:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>data1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">experiment =</span> <span class="fu">c</span>(<span class="st">"exp1"</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="st">"exp2"</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="cn">NA</span>),</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">observation =</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">8</span>, <span class="at">mean =</span> <span class="dv">50</span>, <span class="at">sd =</span> <span class="dv">1</span>))</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>data1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  experiment observation
+1       exp1    48.05267
+2       &lt;NA&gt;    49.24364
+3       &lt;NA&gt;    52.60862
+4       &lt;NA&gt;    51.89871
+5       exp2    48.85096
+6       &lt;NA&gt;    51.48803
+7       &lt;NA&gt;    50.41081
+8       &lt;NA&gt;    48.30946</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>data2 <span class="ot">&lt;-</span> <span class="fu">fill</span>(data1, experiment, <span class="at">.direction =</span> <span class="st">"down"</span>)</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>data2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  experiment observation
+1       exp1    48.05267
+2       exp1    49.24364
+3       exp1    52.60862
+4       exp1    51.89871
+5       exp2    48.85096
+6       exp2    51.48803
+7       exp2    50.41081
+8       exp2    48.30946</code></pre>
+</div>
+</div>
 </section>
 </section>
 <section id="sorting-a-data-set" class="level3">
@@ -781,13 +813,13 @@ Practice Problems
 <p>You can sort on as many variables as you like! It will sort on the first variables listed and within that, the second variable listed, and so on.</p>
 <p>Example;</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>arrange1 <span class="ot">&lt;-</span> <span class="fu">arrange</span>(variety_trials, variety, yield)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>arrange1 <span class="ot">&lt;-</span> <span class="fu">arrange</span>(variety_trials, variety, yield)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="output-file" class="level4">
 <h4 class="anchored" data-anchor-id="output-file">Output file</h4>
 <p>Let’s output this object to file so we can use it later.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(variety_trials, here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"outputs"</span>, <span class="st">"variety_trials_clean.csv"</span>), <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(variety_trials, here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"outputs"</span>, <span class="st">"variety_trials_clean.csv"</span>), <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
@@ -799,12 +831,12 @@ Practice Problems
 <p>One operation can be performed (e.g.&nbsp;a <code>select()</code> command), and that resulting data frame is passed on to the next operation (e.g.&nbsp;<code>filter()</code>).</p>
 <p>Example: filter then sort</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>pipe1 <span class="ot">&lt;-</span> <span class="fu">filter</span>(variety_trials, yield <span class="sc">&lt;</span> <span class="dv">75</span>) <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(variety)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>pipe1 <span class="ot">&lt;-</span> <span class="fu">filter</span>(variety_trials, yield <span class="sc">&lt;</span> <span class="dv">75</span>) <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(variety)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The data set is not named in the second operation because it is assumed to be dataset provided in the first operation. Whatever is being output directly left of the pipe operator is in the input data set.</p>
 <p>We can take this even further by making the first operation our addition of the data set to the pipes:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>pipe2 <span class="ot">&lt;-</span> variety_trials <span class="sc">%&gt;%</span> <span class="fu">filter</span>(yield <span class="sc">&lt;</span> <span class="dv">75</span>) <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(variety)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>pipe2 <span class="ot">&lt;-</span> variety_trials <span class="sc">%&gt;%</span> <span class="fu">filter</span>(yield <span class="sc">&lt;</span> <span class="dv">75</span>) <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(variety)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The pipe has made data wrangling so much easier! Before the pipe, each of these operations can be specified separately with its own object. So when you were done, you had roughly 50 objects in your environment, 48 of which were not needed anymore.</p>
 <p>It also saved us from the “parentheses cascade” where one function is nested inside another function, which is nested within another, and so forth. It can be difficult to ascertain what parentheses belong to what operation, which often leads to coding errors. In a set of nestd functions, the inner functions are first executed and the outer functions are executed last. no longer had any sense of which set of parentheses belong to which operation.</p>
