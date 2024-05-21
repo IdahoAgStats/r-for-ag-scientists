@@ -305,6 +305,7 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
   <li><a href="#creating-new-variables" id="toc-creating-new-variables" class="nav-link" data-scroll-target="#creating-new-variables">Creating new variables</a></li>
   <li><a href="#renaming-variables" id="toc-renaming-variables" class="nav-link" data-scroll-target="#renaming-variables">Renaming Variables</a></li>
   <li><a href="#split-up-variables" id="toc-split-up-variables" class="nav-link" data-scroll-target="#split-up-variables">Split up variables</a></li>
+  <li><a href="#functions-for-missing-data" id="toc-functions-for-missing-data" class="nav-link" data-scroll-target="#functions-for-missing-data">Functions for Missing Data</a></li>
   <li><a href="#sorting-a-data-set" id="toc-sorting-a-data-set" class="nav-link" data-scroll-target="#sorting-a-data-set">Sorting a data set</a></li>
   <li><a href="#the-pipe" id="toc-the-pipe" class="nav-link" data-scroll-target="#the-pipe">The pipe</a></li>
   </ul>
@@ -352,6 +353,7 @@ Learning Goals
 <li>know to create new variables using <code>mutate()</code></li>
 <li>be able to rename variables using <code>rename()</code></li>
 <li>be able to sort a data set using <code>arrange()</code></li>
+<li>understand how to handle missing values with <code>drop_na()</code>, <code>na_if()</code> and <code>replace_na()</code></li>
 <li>be table to use <code>separate()</code> to split up single variables into multiple variables</li>
 </ul>
 </div>
@@ -516,7 +518,7 @@ Note
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Practice Problem
+Practice Problems
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -525,7 +527,7 @@ Practice Problem
 <ol class="example" type="1">
 <li><p>Import “trial_data.csv” with the <a href="https://readr.tidyverse.org/"><strong><em>readr</em></strong></a> function <code>read_csv()</code>.</p></li>
 <li><p>Select columns that contain “i” in the column name and assign it a name “select_colm”.</p></li>
-<li><p>Filter “select_colm” and filter when variety is “Jefferson” and “Dayn”, and yield greater than or equal to 70. Assign these results to a new object.</p></li>
+<li><p>Using the object from importing “trial_data.csv”, filter when variety is “Jefferson” and “Dayn”, and yield greater than or equal to 70. Assign these results to a new object.</p></li>
 </ol>
 </div>
 </div>
@@ -551,7 +553,7 @@ Practice Problem
 <div class="cell-output cell-output-stdout">
 <pre><code>new_var
   0   1 
-961 921 </code></pre>
+937 945 </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mutate1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -563,12 +565,12 @@ Practice Problem
 5 SWIdahoCereals_H_S_PAR_2018   1 Jefferson  65.26589       10.2350        62.8
 6 SWIdahoCereals_H_S_PAR_2018   2 Jefferson 104.37355       11.0400        65.2
   dataset row_position                    trial_id random_yield binom_var
-1 example            1 SWIdahoCereals_H_S_PAR_2018     72.26073         0
-2 example            2 SWIdahoCereals_H_S_PAR_2018    109.42958         0
-3 example            3 SWIdahoCereals_H_S_PAR_2018     80.56626         0
-4 example            4 SWIdahoCereals_H_S_PAR_2018    104.70758         1
-5 example            5 SWIdahoCereals_H_S_PAR_2018     64.86118         1
-6 example            6 SWIdahoCereals_H_S_PAR_2018    103.71746         1
+1 example            1 SWIdahoCereals_H_S_PAR_2018     70.92996         1
+2 example            2 SWIdahoCereals_H_S_PAR_2018    108.94213         0
+3 example            3 SWIdahoCereals_H_S_PAR_2018     80.33771         0
+4 example            4 SWIdahoCereals_H_S_PAR_2018    103.49024         0
+5 example            5 SWIdahoCereals_H_S_PAR_2018     63.69997         0
+6 example            6 SWIdahoCereals_H_S_PAR_2018    104.66336         0
   yield_protein
 1      81.52583
 2     118.20551
@@ -697,6 +699,80 @@ Practice Problem
 </div>
 <p>The argument <code>remove = FALSE</code> indicates that we want to keep the input variable (“trial”). By default, it would be removed.</p>
 <p>The opposite function is <code>tidyr::unite()</code> which will paste these variable together, separate by any character string you specify. <code>unite()</code> also can ignore missing data when pasting information together, avoiding this unfortunate result: “some.var_NA_NA_another.var”. You would get “some.var_another.var” instead.</p>
+<div class="callout callout-style-default callout-question no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Practice Problems
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ol start="4" class="example" type="1">
+<li><p>Import “weather.csv” with the <code>readr::read_csv()</code>. Filter the weather data set for station “USC00456215”</p></li>
+<li><p>Create a new variable named T_avg as an average of ‘tmin_F’ and ‘tmax_F’ using a <code>mutate()</code> function and name this data frame as ‘weather1’.</p></li>
+<li><p>Select “name” column from the weather1 data set and rename it as “location”.</p></li>
+<li><p>In weather1 data set, select the first five columns and reduce that data set to unique rows (look into using <code>distinct()</code> for extracting the unique observations).</p></li>
+<li><p>Using weather1 data set, create a new variable as combination of station and name variables separated by “_” (e.g.&nbsp;station_name) using the unite() function.</p></li>
+</ol>
+<p><strong>Tip:</strong> search for <code>unite()</code> in help.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="functions-for-missing-data" class="level3">
+<h3 class="anchored" data-anchor-id="functions-for-missing-data">Functions for Missing Data</h3>
+<section id="remove-missing-data" class="level4">
+<h4 class="anchored" data-anchor-id="remove-missing-data">Remove missing data</h4>
+<p><code>dplyr::filter()</code> can be used to filterer missing data, but <strong>tidyr</strong> has a function, <code>drop_na()</code> that makes this easier. You can filter out rows based on missing data in any number of columns, including all columns. Note that this works on observations R has designated as <code>NA</code>. If an observation has white space instead of <code>NA</code> after data import into R, those are not equivalent.</p>
+<p>This will remove all rows with any missing data.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>na_filter_ex1 <span class="ot">&lt;-</span> <span class="fu">drop_na</span>(variety_trials)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This will remove rows with missing data in ‘grain_protein’ and ‘test_weight’.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>na_filter_ex2 <span class="ot">&lt;-</span> <span class="fu">drop_na</span>(variety_trials, grain_protein, test_weight)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="designate-missing-data" class="level4">
+<h4 class="anchored" data-anchor-id="designate-missing-data">Designate missing data</h4>
+<p>Sometimes, you may have some odd observations you would like designated as missing. This can be accomplished with the <code>mutate()</code> function, but sometimes this shortcut is preferred. <code>na_if()</code> works on vectors, within a data frame or by itself.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>trial_data <span class="ot">&lt;-</span> <span class="fu">mutate</span>(variety_trials, <span class="at">var2 =</span> <span class="fu">na_if</span>(variety, <span class="st">"Dayn"</span>))</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="co"># check that it worked as intended:</span></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(trial_data, var2 <span class="sc">==</span> <span class="st">"Dayn"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] trial         program       crop          location      year         
+ [6] rep           variety       yield         grain_protein test_weight  
+[11] var2         
+&lt;0 rows&gt; (or 0-length row.names)</code></pre>
+</div>
+</div>
+<p>This also might be useful if specific columns use ‘-9’ to indicate missing values:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># not that this demonstration code will not change the data frame because we did not use -</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>variety_trial <span class="ot">&lt;-</span> <span class="fu">mutate</span>(variety_trials, <span class="at">yield2 =</span> <span class="fu">na_if</span>(trial, <span class="st">"-9"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="replace-missing-data-with-a-value" class="level4">
+<h4 class="anchored" data-anchor-id="replace-missing-data-with-a-value">Replace missing data with a value</h4>
+<p>There are other moments that you may want to replace missing values with something in particular (perhaps zero, but be cautious when doing so). <code>replace_na()</code> can accomplish this. Like <code>na_if()</code>, this function operates on vectors.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>variety_trials <span class="ot">&lt;-</span> <span class="fu">mutate</span>(variety_trials, <span class="at">protein =</span> <span class="fu">replace_na</span>(grain_protein, <span class="sc">-</span><span class="dv">9</span>))</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="co"># check that it worked as intended:</span></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(variety_trials<span class="sc">$</span>protein)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="data-wrangling_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
 </section>
 <section id="sorting-a-data-set" class="level3">
 <h3 class="anchored" data-anchor-id="sorting-a-data-set">Sorting a data set</h3>
@@ -705,13 +781,13 @@ Practice Problem
 <p>You can sort on as many variables as you like! It will sort on the first variables listed and within that, the second variable listed, and so on.</p>
 <p>Example;</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>arrange1 <span class="ot">&lt;-</span> <span class="fu">arrange</span>(variety_trials, variety, yield)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>arrange1 <span class="ot">&lt;-</span> <span class="fu">arrange</span>(variety_trials, variety, yield)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="output-file" class="level4">
 <h4 class="anchored" data-anchor-id="output-file">Output file</h4>
 <p>Let’s output this object to file so we can use it later.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(variety_trials, here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"outputs"</span>, <span class="st">"variety_trials_clean.csv"</span>), <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(variety_trials, here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"outputs"</span>, <span class="st">"variety_trials_clean.csv"</span>), <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
@@ -723,12 +799,12 @@ Practice Problem
 <p>One operation can be performed (e.g.&nbsp;a <code>select()</code> command), and that resulting data frame is passed on to the next operation (e.g.&nbsp;<code>filter()</code>).</p>
 <p>Example: filter then sort</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>pipe1 <span class="ot">&lt;-</span> <span class="fu">filter</span>(variety_trials, yield <span class="sc">&lt;</span> <span class="dv">75</span>) <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(variety)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>pipe1 <span class="ot">&lt;-</span> <span class="fu">filter</span>(variety_trials, yield <span class="sc">&lt;</span> <span class="dv">75</span>) <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(variety)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The data set is not named in the second operation because it is assumed to be dataset provided in the first operation. Whatever is being output directly left of the pipe operator is in the input data set.</p>
 <p>We can take this even further by making the first operation our addition of the data set to the pipes:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>pipe2 <span class="ot">&lt;-</span> variety_trials <span class="sc">%&gt;%</span> <span class="fu">filter</span>(yield <span class="sc">&lt;</span> <span class="dv">75</span>) <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(variety)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>pipe2 <span class="ot">&lt;-</span> variety_trials <span class="sc">%&gt;%</span> <span class="fu">filter</span>(yield <span class="sc">&lt;</span> <span class="dv">75</span>) <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(variety)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The pipe has made data wrangling so much easier! Before the pipe, each of these operations can be specified separately with its own object. So when you were done, you had roughly 50 objects in your environment, 48 of which were not needed anymore.</p>
 <p>It also saved us from the “parentheses cascade” where one function is nested inside another function, which is nested within another, and so forth. It can be difficult to ascertain what parentheses belong to what operation, which often leads to coding errors. In a set of nestd functions, the inner functions are first executed and the outer functions are executed last. no longer had any sense of which set of parentheses belong to which operation.</p>
@@ -742,25 +818,18 @@ Practice Problem
 </div>
 </div>
 <div class="callout callout-style-default callout-question no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Practice Problem
+Practice Problems
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<ol start="4" class="example" type="1">
-<li><p>Import “weather.csv” with the <a href="https://readr.tidyverse.org/"><strong><em>readr</em></strong></a> function <code>read_csv()</code>. Filter the weather data set for when the station is “USC00456215”</p></li>
-<li><p>Create a new variable named T_avg as an average of tmin_F and tmax_F using a <code>mutate</code> function and name this data frame as ‘weather1’.</p></li>
-<li><p>Select “name” column from the weather1 data set and rename it as “location”.</p></li>
-<li><p>In weather1 data set, select the first five columns and reduce that data set to unique rows (look into using <code>distinct()</code> for extracting the unique observations).</p></li>
-<li><p>Using weather1 data set, create a new variable as combination of station and name variables separated by “_” (e.g.&nbsp;station_name) using the unite() function.</p></li>
-</ol>
-<p>tip: search for unite() in help.</p>
+<p>Using piping, import “trial_metadata.csv”, f ilterby 2 nurseries of your choosing, then sort by year and planting date</p>
 </div>
 </div>
 </div>
