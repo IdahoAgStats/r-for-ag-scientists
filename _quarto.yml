@@ -82,22 +82,24 @@ website:
       #           text: "solutions to A"
           - href: lessons/r-documentation.qmd
             text: R documentation
-      #     - href: lessons/data-import.qmd
-      #       text: Importing tabular file
+          - href: lessons/data-import.qmd
+            text: Importing tabular file
       #       contents: 
       #         - href: practice/practice-B.qmd
       #           text: "practice set B"
       #         - href: practice/solution-B.qmd
       #           text: "solutions to B"
-      #     - href: lessons/data-wrangling.qmd
-      #       text: Data transformation and wrangling
+          - href: lessons/data-wrangling.qmd
+            text: Data transformation and wrangling
       #       contents: 
       #         - href: practice/practice-C.qmd
       #           text: "practice set C"
       #         - href: practice/solution-C.qmd
       #           text: "solutions to C"
-      #     - href: lessons/data-export.qmd
-      #       text: Exporting R objects to file
+          - href: lessons/data-export.qmd
+            text: Exporting R objects to file
+          - href: lessons/r-style-conventions.qmd
+            text: "R style conventions"
       #     - href: lessons/data-aggregation.qmd
       #       text: Data aggregation
       #       contents: 

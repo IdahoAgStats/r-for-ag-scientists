@@ -12,9 +12,9 @@ title: "Course Schedule"
            [Quick tour of R Studio](lessons/rstudio-tour.qmd)\
            [Getting to know data in R](lessons/getting-to-know-data.qmd) | 
 | May 21 |  [R documentation](lessons/r-documentation.qmd) \
-            Importing tabular files\
-           Data transformation & wrangling\
-           Exporting R objects to file |  
+            [Importing tabular files](lessons/data-import.qmd)\
+           [Data transformation & wrangling](lessons/data-wrangling.qmd)\
+           [Exporting R objects to file](lessons/data-export.qmd) |  
 | May 22 | Data aggregation + summary \
             Reshaping data\
             Combining data sets|   

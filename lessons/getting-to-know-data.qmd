@@ -15,34 +15,17 @@ At the end of this lesson, you should know:
 
 ## Import a CSV file
 
-<<<<<<< HEAD
-This code `read.csv()` reads a CSV file named "caribbean_maize.csv" and
-assigns it to an object named "data1".
-=======
 This code `read_csv()` reads a CSV file named "caribbean_maize.csv" and assigns it to an object named "data1".
->>>>>>> 7efb028e01b003d1285ee8c19373bb8ef4ce224c
 
 The second line of code uses the "head" function to display the first 5 rows of the "data1" data frame. The `View()` will open the data set in new RStudio video where you can look up at the rows and columns.
 
 ```{r, echo=FALSE}
-<<<<<<< HEAD
-data1 <- read.csv(here::here("data/caribbean_maize.csv"))
-#head(data1, 5)
-#View(data1)
-```
-
-```{r}
-data1 <- read.csv("caribbean_maize.csv")
-
-head(data1, 5)
-=======
 data1 <- read.csv(here::here("data", "caribbean_maize.csv"))
 head(data1, 5)
 ```
 
 ```{r, eval=FALSE}
 data1 <- read.csv("data/caribbean_maize.csv")
->>>>>>> 7efb028e01b003d1285ee8c19373bb8ef4ce224c
 View(data1)
 ```
 
@@ -493,9 +476,9 @@ later in this workshop, we will absolutely be covering how to make publication q
 
 (@) Make a histogram of inverse yield
 
-(@) Calculate reliave percent yield by dividing all yield values by the mean yield and multipling it by 100. Do the equivalent action for ears. 
+(@) Calculate relative percent yield by dividing all yield values by the mean yield and multipling it by 100. Do the equivalent action for ears. 
 
-(@) Make a pairwise plot between relative percent ears and relative percent yield. 
+(@) Make a pairwise plot (x-y plot) between relative percent ears and relative percent yield. 
 
 :::
 
