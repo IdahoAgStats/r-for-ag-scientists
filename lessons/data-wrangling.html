@@ -551,7 +551,7 @@ Practice Problem
 <div class="cell-output cell-output-stdout">
 <pre><code>new_var
   0   1 
-951 931 </code></pre>
+929 953 </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mutate1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -563,12 +563,12 @@ Practice Problem
 5 SWIdahoCereals_H_S_PAR_2018   1 Jefferson  65.26589       10.2350        62.8
 6 SWIdahoCereals_H_S_PAR_2018   2 Jefferson 104.37355       11.0400        65.2
   dataset row_position                    trial_id random_yield binom_var
-1 example            1 SWIdahoCereals_H_S_PAR_2018     70.39957         0
-2 example            2 SWIdahoCereals_H_S_PAR_2018    109.91524         0
-3 example            3 SWIdahoCereals_H_S_PAR_2018     82.16519         1
-4 example            4 SWIdahoCereals_H_S_PAR_2018    102.21863         0
-5 example            5 SWIdahoCereals_H_S_PAR_2018     65.89849         0
-6 example            6 SWIdahoCereals_H_S_PAR_2018    105.52036         0
+1 example            1 SWIdahoCereals_H_S_PAR_2018     71.74522         1
+2 example            2 SWIdahoCereals_H_S_PAR_2018    106.96016         1
+3 example            3 SWIdahoCereals_H_S_PAR_2018     79.87881         1
+4 example            4 SWIdahoCereals_H_S_PAR_2018    104.46133         1
+5 example            5 SWIdahoCereals_H_S_PAR_2018     65.97084         0
+6 example            6 SWIdahoCereals_H_S_PAR_2018    103.63579         0
   yield_protein
 1      81.52583
 2     118.20551
@@ -601,11 +601,13 @@ Practice Problem
 <p>This can be a bit longer and cumbersome compared to <code>mutate</code> statements, but it does work.</p>
 <section id="case_when-a-special-addition-to-mutate-statements" class="level4">
 <h4 class="anchored" data-anchor-id="case_when-a-special-addition-to-mutate-statements"><code>case_when(),</code> a special addition to <code>mutate</code> statements</h4>
-<p>Occasionally, you will need a define a variable conditionally, based on information from other variables. Here is an example for weather data. Here, a special minimum value is created where all data for “tmin_F” less than 50°F are set at 50:</p>
+<p>Occasionally, you will need a define a variable conditionally, based on information from other variables. Here is an example for variety trial data. Here, a special minimum value is created where all data for “yield” less than 100 are set at 100:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>weather <span class="ot">&lt;-</span> <span class="fu">mutate</span>(weather, <span class="at">new_min =</span> <span class="fu">case_when</span>(</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  tmin_F <span class="sc">&lt;=</span> <span class="dv">50</span> <span class="sc">~</span> <span class="dv">50</span>,</span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="cn">TRUE</span> <span class="sc">~</span> tmin_F))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>Var1 <span class="ot">&lt;-</span> <span class="fu">mutate</span>(variety_trials, <span class="at">new_min =</span> <span class="fu">case_when</span>(</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  yield <span class="sc">&lt;=</span> <span class="dv">100</span> <span class="sc">~</span> <span class="dv">100</span>,</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="cn">TRUE</span> <span class="sc">~</span> yield))</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(Var1)</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>Var1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Everything to the left of the tilde <code>~</code> is a logical expression to evaluate. Everything to the right of the tilde is the value to put if the logical expression evaluates to TRUE.</p>
 <p>This can easily become more complex with the addition of other logical expressions and categorical levels to create.</p>
