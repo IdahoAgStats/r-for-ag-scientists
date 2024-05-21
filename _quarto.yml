@@ -98,6 +98,8 @@ website:
       #           text: "solutions to C"
           - href: lessons/data-export.qmd
             text: Exporting R objects to file
+          - href: lessons/r-style-conventions.qmd
+            text: "R style conventions"
       #     - href: lessons/data-aggregation.qmd
       #       text: Data aggregation
       #       contents: 
