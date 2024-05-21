@@ -13,6 +13,7 @@ At the end of this lesson, you should:
 -   know to create new variables using `mutate()`
 -   be able to rename variables using `rename()`
 -   be able to sort a data set using `arrange()`
+-   understand how to handle missing values with `drop_na()`, `na_if()` and `replace_na()`
 -   be table to use `separate()` to split up single variables into multiple variables
 :::
 
@@ -114,13 +115,13 @@ While selecting by numeric position works, it is an unreliable choice because it
 
 
 ::: {.callout-question .callout collapse="true"}
-## Practice Problem
+## Practice Problems
 
 (@) Import "trial_data.csv" with the [***readr***](https://readr.tidyverse.org/) function `read_csv()`. 
 
 (@) Select columns that contain "i" in the column name and assign it a name "select_colm".
 
-(@) Filter  "select_colm" and filter when variety is "Jefferson" and "Dayn", and yield greater than or equal to 70. Assign these results to a new object. 
+(@) Using the object from importing "trial_data.csv", filter when variety is "Jefferson" and "Dayn", and yield greater than or equal to 70. Assign these results to a new object. 
 
 :::
 
@@ -257,6 +258,68 @@ The argument `remove = FALSE` indicates that we want to keep the input variable 
 
 The opposite function is `tidyr::unite()` which will paste these variable together, separate by any character string you specify. `unite()` also can ignore missing data when pasting information together, avoiding this unfortunate result: "some.var_NA_NA_another.var". You would get "some.var_another.var" instead.
 
+::: {.callout-question .callout collapse="true"}
+## Practice Problems
+
+(@) Import "weather.csv" with the `readr::read_csv()`. Filter the weather data set for station "USC00456215"
+
+(@) Create a new variable named T_avg as an average of 'tmin_F' and 'tmax_F' using a `mutate()` function and name this data frame as 'weather1'.
+
+(@) Select "name" column from the weather1 data set and rename it as "location".
+
+(@) In weather1 data set, select the first five columns and reduce that data set to unique rows (look into using `distinct()` for extracting the unique observations). 
+
+(@) Using weather1 data set, create a new variable as combination of station and name variables separated by "_" (e.g. station_name) using the unite() function. 
+
+**Tip:** search for `unite()` in help. 
+
+:::
+
+### Functions for Missing Data
+
+#### Remove missing data
+
+`dplyr::filter()` can be used to filterer missing data, but **tidyr** has a function, `drop_na()` that makes this easier. You can filter out rows based on missing data in any number of columns, including all columns. Note that this works on observations R has designated as `NA`. If an observation has white space instead of `NA` after data import into R, those are not equivalent. 
+
+This will remove all rows with any missing data.
+```{r}
+na_filter_ex1 <- drop_na(variety_trials)
+```
+
+This will remove rows with missing data in 'grain_protein' and 'test_weight'.
+
+```{r}
+na_filter_ex2 <- drop_na(variety_trials, grain_protein, test_weight)
+```
+
+
+#### Designate missing data
+
+Sometimes, you may have some odd observations you would like designated as missing. This can be accomplished with the `mutate()` function, but sometimes this shortcut is preferred. `na_if()` works on vectors, within a data frame or by itself. 
+
+```{r}
+trial_data <- mutate(variety_trials, var2 = na_if(variety, "Dayn"))
+# check that it worked as intended:
+filter(trial_data, var2 == "Dayn")
+```
+
+This also might be useful if specific columns use '-9' to indicate missing values:
+
+```{r eval=FALSE}
+# not that this demonstration code will not change the data frame because we did not use -
+variety_trial <- mutate(variety_trials, yield2 = na_if(trial, "-9"))
+```
+
+#### Replace missing data with a value
+
+There are other moments that you may want to replace missing values with something in particular (perhaps zero, but be cautious when doing so). `replace_na()` can accomplish this. Like `na_if()`, this function operates on vectors. 
+
+```{r}
+variety_trials <- mutate(variety_trials, protein = replace_na(grain_protein, -9))
+# check that it worked as intended:
+hist(variety_trials$protein)
+```
+
 ### Sorting a data set
 
 Prior to dplyr, sorting in R was a nightmare. Excel makes this so easy! Why was R torturing us??? But, dplyr has made this much easier:
@@ -312,21 +375,10 @@ knitr::include_graphics(here::here("images", "nest_vs_pipe.jpg"))
 
 ```
 
-
 ::: {.callout-question .callout collapse="true"}
-## Practice Problem
+## Practice Problems
 
-(@) Import "weather.csv" with the [***readr***](https://readr.tidyverse.org/) function `read_csv()`. Filter the weather data set for when the station is "USC00456215"
-
-(@) Create a new variable named T_avg as an average of tmin_F and tmax_F using a `mutate` function and name this data frame as 'weather1'.
-
-(@) Select "name" column from the weather1 data set and rename it as "location".
-
-(@) In weather1 data set, select the first five columns and reduce that data set to unique rows (look into using `distinct()` for extracting the unique observations). 
-
-(@) Using weather1 data set, create a new variable as combination of station and name variables separated by "_" (e.g. station_name) using the unite() function. 
-
-tip: search for unite() in help. 
+Using piping, import "trial_metadata.csv", f ilterby 2 nurseries of your choosing, then sort by year and planting date
 
 :::
 
