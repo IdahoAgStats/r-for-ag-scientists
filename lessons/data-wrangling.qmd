@@ -320,6 +320,21 @@ variety_trials <- mutate(variety_trials, protein = replace_na(grain_protein, -9)
 hist(variety_trials$protein)
 ```
 
+Sometimes, data sets have clear indications when a values is intended to be filled:
+
+```{r}
+data1 <- data.frame(experiment = c("exp1", NA, NA, NA, "exp2", NA, NA, NA),
+                    observation = rnorm(n = 8, mean = 50, sd = 1))
+data1
+```
+
+```{r}
+data2 <- fill(data1, experiment, .direction = "down")
+data2
+```
+
+
+
 ### Sorting a data set
 
 Prior to dplyr, sorting in R was a nightmare. Excel makes this so easy! Why was R torturing us??? But, dplyr has made this much easier:
