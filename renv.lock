@@ -509,6 +509,21 @@
       ],
       "Hash": "04291cc45198225444a397606810ac37"
     },
+    "httpuv": {
+      "Package": "httpuv",
+      "Version": "1.6.15",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "R6",
+        "Rcpp",
+        "later",
+        "promises",
+        "utils"
+      ],
+      "Hash": "d55aa087c47a63ead0f6fc10f8fa1ee0"
+    },
     "httr": {
       "Package": "httr",
       "Version": "1.4.7",
@@ -1022,6 +1037,20 @@
       ],
       "Hash": "c19df082ba346b0ffa6f833e92de34d1"
     },
+    "servr": {
+      "Package": "servr",
+      "Version": "0.30",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "httpuv",
+        "jsonlite",
+        "mime",
+        "xfun"
+      ],
+      "Hash": "562294886e51319dfad3f3e6e61fb0b8"
+    },
     "stringi": {
       "Package": "stringi",
       "Version": "1.8.3",
@@ -1229,6 +1258,21 @@
       "Source": "Repository",
       "Repository": "CRAN",
       "Hash": "856a075aec895ea1bea3055fa54e356c"
+    },
+    "xaringan": {
+      "Package": "xaringan",
+      "Version": "0.30",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "htmltools",
+        "knitr",
+        "rmarkdown",
+        "servr",
+        "xfun"
+      ],
+      "Hash": "40a1e30d3fb323f249a5e2fbec50c3b1"
     },
     "xfun": {
       "Package": "xfun",

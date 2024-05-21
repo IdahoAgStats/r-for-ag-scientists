@@ -5,25 +5,24 @@ title: "Course Schedule"
 *This schedule is best understood as a draft that will be adjusted as needed.* 
 
 
-| Date            |   Topics              | practice problems |
-|-----------------|-----------------------|-------------------|
-| Before first day of class | [Lesson Zero](lessons/lesson-zero.qmd) |    |
+| Date            |  Main Topics              |   
+|-----------------|-----------------------|
+| Before first day of class | [Lesson Zero](lessons/lesson-zero.qmd) |  
 | May 20 | Workshop orientation \
-           Quick tour of R Studio\
-           Getting to know data in R\
-           Installing R packages |   |
-| May 21 |  R documentation \
+           [Quick tour of R Studio](lessons/rstudio-tour.qmd)\
+           [Getting to know data in R](lessons/getting-to-know-data.qmd) | 
+| May 21 |  [R documentation](lessons/r-documentation.qmd) \
             Importing tabular files\
            Data transformation & wrangling\
-           Exporting R objects to file |  |
+           Exporting R objects to file |  
 | May 22 | Data aggregation + summary \
             Reshaping data\
-            Combining data sets|   |
+            Combining data sets|   
 | May 23   | Combining data sets (part 2)\
-              Visualizing data in R with ggplot |    |
+              Visualizing data in R with ggplot |    
 | May 24    |  Finding help\
                Reproducible research in R \
-               Open time for questions |   |
-| Extra  | How to do repeating actions |   |
+               Open time for questions |   
+| Extra  | How to do repeating actions |   
 
 
