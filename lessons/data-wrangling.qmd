@@ -182,7 +182,6 @@ Var1 <- mutate(variety_trials, new_min = case_when(
   yield <= 100 ~ 100,
   TRUE ~ yield))
 head(Var1)
-Var1
 ```
 
 Everything to the left of the tilde `~` is a logical expression to evaluate. Everything to the right of the tilde is the value to put if the logical expression evaluates to TRUE.
