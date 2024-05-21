@@ -279,7 +279,7 @@ The opposite function is `tidyr::unite()` which will paste these variable togeth
 
 #### Remove missing data
 
-`dplyr::filter()` can be used to filterer missing data, but **tidyr** has a function, `drop_na()` that makes this easier. You can filter out rows based on missing data in any number of columns, including all columns. Note that this works on observations R has designated as `NA`. If an observation has white space instead of `NA` after data import into R, those are not equivalent. 
+`dplyr::filter()` can be used to filter missing data, but **tidyr** has a function, `drop_na()` that makes this easier. You can filter out rows based on missing data in any number of columns, including all columns. Note that this works on observations R has designated as `NA`. If an observation has white space instead of `NA` after data import into R, those are not equivalent. 
 
 This will remove all rows with any missing data.
 ```{r}
