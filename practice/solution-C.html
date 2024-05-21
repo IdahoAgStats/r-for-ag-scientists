@@ -267,6 +267,18 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
  <span class="menu-text">Importing tabular file</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lessons/data-wrangling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data transformation and wrangling</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lessons/data-export.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exporting R objects to file</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -388,17 +400,17 @@ FYI
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>new_df <span class="ot">&lt;-</span> df[,<span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">3</span>)]</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>new_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>          five one four        two      three
-1        apple   1    B -1.4108187 -1.7124495
-2  huckleberry   2    B  1.1542318  0.8103278
-3  huckleberry   3    A  0.0793698 -0.2662190
-4        apple   4    A -0.6149802  0.8159001
-5        apple   5    B  0.2437713 -0.1100198
-6        apple   6    B -0.5470075 -0.4075793
-7  huckleberry   7    A  1.2402984  3.2845396
-8  huckleberry   8    B  0.8320596  0.3014250
-9  huckleberry   9    A -0.8016759 -1.1519303
-10 huckleberry  10    A  0.7681410  1.1272066</code></pre>
+<pre><code>          five one four         two      three
+1        apple   1    A  1.43275627  1.3481740
+2        apple   2    A -0.06724013 -2.2149786
+3        apple   3    A  0.42392731 -0.8295350
+4  huckleberry   4    A  0.72999638  0.9492599
+5  huckleberry   5    A -0.59220359 -1.1223383
+6        apple   6    A  0.98821755  0.5952284
+7  huckleberry   7    B  0.15375922  1.1007667
+8  huckleberry   8    B -0.11649088 -0.4846897
+9  huckleberry   9    A -2.10772723 -1.8532616
+10 huckleberry  10    A -0.69708914  0.7179206</code></pre>
 </div>
 </div>
 </section>
