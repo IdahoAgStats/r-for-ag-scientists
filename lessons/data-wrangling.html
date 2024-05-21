@@ -523,7 +523,7 @@ Practice Problem
 <div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ol class="example" type="1">
-<li><p>Import “trial_metadata.csv” with the <a href="https://readr.tidyverse.org/"><strong><em>readr</em></strong></a> function <code>read_csv()</code>.</p></li>
+<li><p>Import “trial_data.csv” with the <a href="https://readr.tidyverse.org/"><strong><em>readr</em></strong></a> function <code>read_csv()</code>.</p></li>
 <li><p>Select columns that contain “i” in the column name and assign it a name “select_colm”.</p></li>
 <li><p>Filter “select_colm” and filter when variety is “Jefferson” and “Dayn”, and yield greater than or equal to 70. Assign these results to a new object.</p></li>
 </ol>
@@ -551,7 +551,7 @@ Practice Problem
 <div class="cell-output cell-output-stdout">
 <pre><code>new_var
   0   1 
-926 956 </code></pre>
+961 921 </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mutate1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -563,12 +563,12 @@ Practice Problem
 5 SWIdahoCereals_H_S_PAR_2018   1 Jefferson  65.26589       10.2350        62.8
 6 SWIdahoCereals_H_S_PAR_2018   2 Jefferson 104.37355       11.0400        65.2
   dataset row_position                    trial_id random_yield binom_var
-1 example            1 SWIdahoCereals_H_S_PAR_2018     71.36471         1
-2 example            2 SWIdahoCereals_H_S_PAR_2018    108.06583         1
-3 example            3 SWIdahoCereals_H_S_PAR_2018     81.37922         0
-4 example            4 SWIdahoCereals_H_S_PAR_2018    105.39361         1
-5 example            5 SWIdahoCereals_H_S_PAR_2018     64.53421         1
-6 example            6 SWIdahoCereals_H_S_PAR_2018    104.15391         0
+1 example            1 SWIdahoCereals_H_S_PAR_2018     72.26073         0
+2 example            2 SWIdahoCereals_H_S_PAR_2018    109.42958         0
+3 example            3 SWIdahoCereals_H_S_PAR_2018     80.56626         0
+4 example            4 SWIdahoCereals_H_S_PAR_2018    104.70758         1
+5 example            5 SWIdahoCereals_H_S_PAR_2018     64.86118         1
+6 example            6 SWIdahoCereals_H_S_PAR_2018    103.71746         1
   yield_protein
 1      81.52583
 2     118.20551
