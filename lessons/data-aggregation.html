@@ -64,8 +64,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../lessons/reshaping.html" rel="next">
-<link href="../lessons/r-style-conventions.html" rel="prev">
+<link href="../lessons/data-merging.html" rel="prev">
 <link href="../images/logo_transparent.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -289,12 +288,6 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../lessons/data-aggregation.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Data aggregation</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="../lessons/reshaping.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Reshaping data</span></a>
   </div>
@@ -303,6 +296,12 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
   <div class="sidebar-item-container"> 
   <a href="../lessons/data-merging.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Combining data sets</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lessons/data-aggregation.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Data aggregation</span></a>
   </div>
 </li>
       </ul>
@@ -607,16 +606,16 @@ Practice Problems
 <span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>disease_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   plot score1 score5 score3 score4 score2
-1     a     20     90      0     40     80
-2     b     60     60     40      0     90
-3     c     60     40    100    100     50
-4     d      0     80     50     50     70
-5     e      0     50     50     10     10
-6     f     20     60     60     80     80
-7     g     10     50     90      0     80
-8     h     20     40     50     80      0
-9     i     20     10     80     30     20
-10    j    100     40     40     20     10</code></pre>
+1     a     70     60     40    100     80
+2     b    100     30    100     60     70
+3     c    100      0    100     90     80
+4     d      0     30     20     80     80
+5     e     80     30     30      0     30
+6     f    100     10     10     20     70
+7     g     60     40     10     10      0
+8     h     40     60     20     20     70
+9     i     80     50    100     70     90
+10    j     90    100      0     40    100</code></pre>
 </div>
 </div>
 <p>Data sets exist like this. A person might have a set of 10 experimental plots to evaluate for some trait. The trait assay protocol may require that multiple observations be gathered per plot (from a statistical standpoint, this is a technical replicate, not a true replicate) and then reduced to a single number per plot using a simple mean. Row-wise functions can accomplish this.</p>
@@ -630,16 +629,16 @@ Practice Problems
 # Rowwise: 
    plot  score1 score5 score3 score4 score2 score_final max_score
    &lt;chr&gt;  &lt;int&gt;  &lt;int&gt;  &lt;int&gt;  &lt;int&gt;  &lt;int&gt;       &lt;dbl&gt;     &lt;int&gt;
- 1 a         20     90      0     40     80          50        80
- 2 b         60     60     40      0     90          75        90
- 3 c         60     40    100    100     50          55        60
- 4 d          0     80     50     50     70          35        70
- 5 e          0     50     50     10     10           5        10
- 6 f         20     60     60     80     80          50        80
- 7 g         10     50     90      0     80          45        80
- 8 h         20     40     50     80      0          10        20
- 9 i         20     10     80     30     20          20        20
-10 j        100     40     40     20     10          55       100</code></pre>
+ 1 a         70     60     40    100     80          75        80
+ 2 b        100     30    100     60     70          85       100
+ 3 c        100      0    100     90     80          90       100
+ 4 d          0     30     20     80     80          40        80
+ 5 e         80     30     30      0     30          55        80
+ 6 f        100     10     10     20     70          85       100
+ 7 g         60     40     10     10      0          30        60
+ 8 h         40     60     20     20     70          55        70
+ 9 i         80     50    100     70     90          85        90
+10 j         90    100      0     40    100          95       100</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -653,16 +652,16 @@ Practice Problems
 # Rowwise: 
    score1 score4 score5 score_final median_score
     &lt;int&gt;  &lt;int&gt;  &lt;int&gt;       &lt;dbl&gt;        &lt;dbl&gt;
- 1     20     40     90          30           30
- 2     60      0     60          30           30
- 3     60    100     40          80           80
- 4      0     50     80          25           25
- 5      0     10     50           5            5
- 6     20     80     60          50           50
- 7     10      0     50           5            5
- 8     20     80     40          50           50
- 9     20     30     10          25           25
-10    100     20     40          60           60</code></pre>
+ 1     70    100     60          85           85
+ 2    100     60     30          80           80
+ 3    100     90      0          95           95
+ 4      0     80     30          40           40
+ 5     80      0     30          40           40
+ 6    100     20     10          60           60
+ 7     60     10     40          35           35
+ 8     40     20     60          30           30
+ 9     80     70     50          75           75
+10     90     40    100          65           65</code></pre>
 </div>
 </div>
 <div class="callout callout-style-default callout-question no-icon callout-titled">
@@ -1284,14 +1283,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../lessons/r-style-conventions.html" class="pagination-link" aria-label="R style conventions">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">R style conventions</span>
+      <a href="../lessons/data-merging.html" class="pagination-link" aria-label="Combining data sets">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Combining data sets</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../lessons/reshaping.html" class="pagination-link" aria-label="Reshaping data">
-        <span class="nav-page-text">Reshaping data</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->

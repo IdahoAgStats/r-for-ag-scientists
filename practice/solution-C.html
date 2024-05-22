@@ -287,12 +287,6 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../lessons/data-aggregation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Data aggregation</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="../lessons/reshaping.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Reshaping data</span></a>
   </div>
@@ -301,6 +295,12 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
   <div class="sidebar-item-container"> 
   <a href="../lessons/data-merging.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Combining data sets</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lessons/data-aggregation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data aggregation</span></a>
   </div>
 </li>
       </ul>
@@ -424,17 +424,17 @@ FYI
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>new_df <span class="ot">&lt;-</span> df[,<span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">3</span>)]</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>new_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>          five one four         two        three
-1        apple   1    A  0.80384480  0.508446868
-2        apple   2    A -0.18909507 -0.003606352
-3        apple   3    B  0.21326690  0.496253983
-4        apple   4    A -0.60041568 -0.797644723
-5  huckleberry   5    B  0.36361247 -1.900992069
-6  huckleberry   6    A -0.13953946  1.505380238
-7        apple   7    B  1.90023686  2.726589574
-8  huckleberry   8    A  0.09647295  0.140269500
-9        apple   9    A  0.33298829 -0.007595899
-10 huckleberry  10    B  1.89340885  2.114726925</code></pre>
+<pre><code>          five one four         two       three
+1  huckleberry   1    B -0.07696405  0.01958414
+2        apple   2    B -0.70381199  0.02709043
+3  huckleberry   3    A  0.71423272  0.34208997
+4        apple   4    A  0.76730726  0.69132983
+5  huckleberry   5    A  0.46557089  0.84690440
+6        apple   6    B  0.46458762  0.65683510
+7        apple   7    B  0.62223364  1.34291384
+8        apple   8    A -0.29891101 -0.79577553
+9  huckleberry   9    A  0.45474314 -0.27718981
+10 huckleberry  10    A  2.23544549  1.28040395</code></pre>
 </div>
 </div>
 </section>
