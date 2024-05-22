@@ -607,16 +607,16 @@ Practice Problems
 <span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>disease_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   plot score1 score5 score3 score4 score2
-1     a     10     50    100     80     40
-2     b     40     60     10     10     70
-3     c     60     60     20      0     70
-4     d     20     30    100     30     80
-5     e     40     20     30     40     90
-6     f     10     70    100     20     10
-7     g      0     50     50     60     20
-8     h     90     60     50     20    100
-9     i     80      0     10     90     20
-10    j      0     40     10     20     60</code></pre>
+1     a    100     60     90    100     50
+2     b     20     10     20     30     30
+3     c     30     40     30     20     60
+4     d     30     50     60     10     20
+5     e     70     60     80     90     50
+6     f     40     90     60    100     40
+7     g     10    100     30     60    100
+8     h     90     10     30     90     30
+9     i     90     30     30     70      0
+10    j      0     40     60     70    100</code></pre>
 </div>
 </div>
 <p>Data sets exist like this. A person might have a set of 10 experimental plots to evaluate for some trait. The trait assay protocol may require that multiple observations be gathered per plot (from a statistical standpoint, this is a technical replicate, not a true replicate) and then reduced to a single number per plot using a simple mean. Row-wise functions can accomplish this.</p>
@@ -630,16 +630,16 @@ Practice Problems
 # Rowwise: 
    plot  score1 score5 score3 score4 score2 score_final max_score
    &lt;chr&gt;  &lt;int&gt;  &lt;int&gt;  &lt;int&gt;  &lt;int&gt;  &lt;int&gt;       &lt;dbl&gt;     &lt;int&gt;
- 1 a         10     50    100     80     40          25        40
- 2 b         40     60     10     10     70          55        70
- 3 c         60     60     20      0     70          65        70
- 4 d         20     30    100     30     80          50        80
- 5 e         40     20     30     40     90          65        90
- 6 f         10     70    100     20     10          10        10
- 7 g          0     50     50     60     20          10        20
- 8 h         90     60     50     20    100          95       100
- 9 i         80      0     10     90     20          50        80
-10 j          0     40     10     20     60          30        60</code></pre>
+ 1 a        100     60     90    100     50          75       100
+ 2 b         20     10     20     30     30          25        30
+ 3 c         30     40     30     20     60          45        60
+ 4 d         30     50     60     10     20          25        30
+ 5 e         70     60     80     90     50          60        70
+ 6 f         40     90     60    100     40          40        40
+ 7 g         10    100     30     60    100          55       100
+ 8 h         90     10     30     90     30          60        90
+ 9 i         90     30     30     70      0          45        90
+10 j          0     40     60     70    100          50       100</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -653,16 +653,16 @@ Practice Problems
 # Rowwise: 
    score1 score4 score5 score_final median_score
     &lt;int&gt;  &lt;int&gt;  &lt;int&gt;       &lt;dbl&gt;        &lt;dbl&gt;
- 1     10     80     50          45           45
- 2     40     10     60          25           25
- 3     60      0     60          30           30
- 4     20     30     30          25           25
- 5     40     40     20          40           40
- 6     10     20     70          15           15
- 7      0     60     50          30           30
- 8     90     20     60          55           55
- 9     80     90      0          85           85
-10      0     20     40          10           10</code></pre>
+ 1    100    100     60         100          100
+ 2     20     30     10          25           25
+ 3     30     20     40          25           25
+ 4     30     10     50          20           20
+ 5     70     90     60          80           80
+ 6     40    100     90          70           70
+ 7     10     60    100          35           35
+ 8     90     90     10          90           90
+ 9     90     70     30          80           80
+10      0     70     40          35           35</code></pre>
 </div>
 </div>
 <div class="callout callout-style-default callout-question no-icon callout-titled">
@@ -1298,7 +1298,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p>© 2023 by Julia Piaskowski</p>
+<p>© 2024</p>
 </div>   
     <div class="nav-footer-center">
 <p><a href="https://www.uidaho.edu"><img src="https://github.com/IdahoAgStats/r-for-ag-scientists/raw/main/images/UI_Main_horizontal_4c.png" class="img-fluid" alt="Uidaho Logo" width="200"></a></p>
