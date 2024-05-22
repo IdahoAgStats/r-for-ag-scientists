@@ -287,24 +287,6 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
  <span class="menu-text">R style conventions</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../lessons/data-aggregation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Data aggregation</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../lessons/reshaping.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Reshaping data</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../lessons/data-merging.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Combining data sets</span></a>
-  </div>
-</li>
       </ul>
   </li>
     </ul>
@@ -571,7 +553,7 @@ Practice Problems
 <div class="cell-output cell-output-stdout">
 <pre><code>new_var
   0   1 
-960 922 </code></pre>
+983 899 </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mutate1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -583,12 +565,12 @@ Practice Problems
 5 SWIdahoCereals_H_S_PAR_2018   1 Jefferson  65.26589       10.2350        62.8
 6 SWIdahoCereals_H_S_PAR_2018   2 Jefferson 104.37355       11.0400        65.2
   dataset row_position                    trial_id random_yield binom_var
-1 example            1 SWIdahoCereals_H_S_PAR_2018     71.35767         1
-2 example            2 SWIdahoCereals_H_S_PAR_2018    109.37797         1
-3 example            3 SWIdahoCereals_H_S_PAR_2018     80.98133         1
-4 example            4 SWIdahoCereals_H_S_PAR_2018    103.62666         0
-5 example            5 SWIdahoCereals_H_S_PAR_2018     65.29672         1
-6 example            6 SWIdahoCereals_H_S_PAR_2018    104.62263         0
+1 example            1 SWIdahoCereals_H_S_PAR_2018     71.70729         0
+2 example            2 SWIdahoCereals_H_S_PAR_2018    108.40985         0
+3 example            3 SWIdahoCereals_H_S_PAR_2018     81.08480         1
+4 example            4 SWIdahoCereals_H_S_PAR_2018    103.93119         0
+5 example            5 SWIdahoCereals_H_S_PAR_2018     66.30263         0
+6 example            6 SWIdahoCereals_H_S_PAR_2018    105.61961         1
   yield_protein
 1      81.52583
 2     118.20551
@@ -745,7 +727,7 @@ Practice Problems
 <h3 class="anchored" data-anchor-id="functions-for-missing-data">Functions for Missing Data</h3>
 <section id="remove-missing-data" class="level4">
 <h4 class="anchored" data-anchor-id="remove-missing-data">Remove missing data</h4>
-<p><code>dplyr::filter()</code> can be used to filter missing data, but <strong>tidyr</strong> has a function, <code>drop_na()</code> that makes this easier. You can filter out rows based on missing data in any number of columns, including all columns. Note that this works on observations R has designated as <code>NA</code>. If an observation has white space instead of <code>NA</code> after data import into R, those are not equivalent.</p>
+<p><code>dplyr::filter()</code> can be used to filterer missing data, but <strong>tidyr</strong> has a function, <code>drop_na()</code> that makes this easier. You can filter out rows based on missing data in any number of columns, including all columns. Note that this works on observations R has designated as <code>NA</code>. If an observation has white space instead of <code>NA</code> after data import into R, those are not equivalent.</p>
 <p>This will remove all rows with any missing data.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>na_filter_ex1 <span class="ot">&lt;-</span> <span class="fu">drop_na</span>(variety_trials)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -797,14 +779,14 @@ Practice Problems
 <span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>data1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  experiment observation
-1       exp1    50.32795
-2       &lt;NA&gt;    50.41610
-3       &lt;NA&gt;    51.97400
-4       &lt;NA&gt;    51.25132
-5       exp2    50.09216
-6       &lt;NA&gt;    50.84649
-7       &lt;NA&gt;    49.52341
-8       &lt;NA&gt;    51.59819</code></pre>
+1       exp1    49.76959
+2       &lt;NA&gt;    49.97470
+3       &lt;NA&gt;    49.90080
+4       &lt;NA&gt;    50.26100
+5       exp2    49.60546
+6       &lt;NA&gt;    49.65982
+7       &lt;NA&gt;    48.02559
+8       &lt;NA&gt;    49.75753</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -812,14 +794,14 @@ Practice Problems
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>data2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  experiment observation
-1       exp1    50.32795
-2       exp1    50.41610
-3       exp1    51.97400
-4       exp1    51.25132
-5       exp2    50.09216
-6       exp2    50.84649
-7       exp2    49.52341
-8       exp2    51.59819</code></pre>
+1       exp1    49.76959
+2       exp1    49.97470
+3       exp1    49.90080
+4       exp1    50.26100
+5       exp2    49.60546
+6       exp2    49.65982
+7       exp2    48.02559
+8       exp2    49.75753</code></pre>
 </div>
 </div>
 </section>
@@ -879,7 +861,7 @@ Practice Problems
 </div>
 <div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Using piping, import “trial_metadata.csv”, f ilterby 2 nurseries of your choosing, then sort by year and planting date</p>
+<p>Using piping, import “trial_metadata.csv”, filter by 2 nurseries of your choosing, then sort by year and planting date</p>
 </div>
 </div>
 </div>

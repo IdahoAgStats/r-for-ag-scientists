@@ -64,7 +64,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../lessons/reshaping.html" rel="prev">
 <link href="../images/logo_transparent.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -135,7 +134,7 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../lessons/lesson-zero.html">Lessons</a></li><li class="breadcrumb-item"><a href="../lessons/data-merging.html">Combining data sets</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Combining Data Sets</li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -286,24 +285,6 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
  <span class="menu-text">R style conventions</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../lessons/data-aggregation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Data aggregation</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../lessons/reshaping.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Reshaping data</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../lessons/data-merging.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Combining data sets</span></a>
-  </div>
-</li>
       </ul>
   </li>
     </ul>
@@ -332,7 +313,7 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../lessons/lesson-zero.html">Lessons</a></li><li class="breadcrumb-item"><a href="../lessons/data-merging.html">Combining data sets</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">Combining Data Sets</h1>
 </div>
@@ -373,19 +354,13 @@ Learning Goals
 </div>
 </div>
 <p>As usual, let’s start by importing data</p>
-<p>Another data set to import:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">download.file</span>(<span class="at">url =</span> <span class="st">"https://github.com/IdahoAgStats/r-for-ag-scientists/raw/main/data/genotypic_data_rotated.csv"</span>,</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>              <span class="at">destfile =</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"genotypic_data_rotated.csv"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><em>This will take a minute</em></p>
 <p>For merging, it is done in groups of two; that is, two tables at a time are merged together.</p>
 <section id="bind-rows" class="level2">
 <h2 class="anchored" data-anchor-id="bind-rows">Bind rows</h2>
 <p>If you have two data sets of different observations (the keys do not match) but similar or identical column headers, these rows can be stacked togther using a row bind.</p>
 <p>Example syntax of a <code>row_bind</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>new1 <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(x, y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>new1 <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(x, y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>In this function, the column names are matched and ordered according to the first data frame listed (“x” in this example). The default behavior is to return all unique columns from both data sets and fill in with missing data as needed.</p>
 <div class="cell">
@@ -399,12 +374,12 @@ Learning Goals
 </div>
 <p>We can manufacture a version of this with our data sets by filtering to a single trial and selecting a few columns. This is a silly toy example, but most of the time you will not be handed these data sets that are already merged. You will be given two or more data sets that need to be combined. Perhaps these are field experiments from different years or lab results from two different runs.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>trial_1 <span class="ot">&lt;-</span> variety_trial <span class="sc">%&gt;%</span> <span class="fu">filter</span>(trial <span class="sc">==</span> <span class="st">"SWIdahoCereals_HRS_PAR_2016"</span>) <span class="sc">%&gt;%</span> <span class="fu">select</span>(trial, rep, variety, yield)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>trial_2 <span class="ot">&lt;-</span> variety_trial <span class="sc">%&gt;%</span> <span class="fu">filter</span>(trial <span class="sc">==</span> <span class="st">"SWIdahoCereals_SWS_PAR_2018"</span>) <span class="sc">%&gt;%</span> <span class="fu">select</span>(trial, variety, rep, grain_protein)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>trial_1 <span class="ot">&lt;-</span> variety_trial <span class="sc">%&gt;%</span> <span class="fu">filter</span>(trial <span class="sc">==</span> <span class="st">"SWIdahoCereals_HRS_PAR_2016"</span>) <span class="sc">%&gt;%</span> <span class="fu">select</span>(trial, rep, variety, yield)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>trial_2 <span class="ot">&lt;-</span> variety_trial <span class="sc">%&gt;%</span> <span class="fu">filter</span>(trial <span class="sc">==</span> <span class="st">"SWIdahoCereals_SWS_PAR_2018"</span>) <span class="sc">%&gt;%</span> <span class="fu">select</span>(trial, variety, rep, grain_protein)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Compare data sets:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(trial_1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(trial_1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                        trial rep    variety     yield
 1 SWIdahoCereals_HRS_PAR_2016   1   LCS Iron  78.27131
@@ -414,7 +389,7 @@ Learning Goals
 5 SWIdahoCereals_HRS_PAR_2016   1 10SB0087-B  94.18977
 6 SWIdahoCereals_HRS_PAR_2016   2 10SB0087-B 121.59047</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(trial_2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(trial_2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                        trial     variety rep grain_protein
 1 SWIdahoCereals_SWS_PAR_2018       Melba   1        8.4525
@@ -427,8 +402,8 @@ Learning Goals
 </div>
 <p>Bind the rows together:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>together <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(trial_2, trial_1)</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(together)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>together <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(trial_2, trial_1)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(together)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                        trial     variety rep grain_protein yield
 1 SWIdahoCereals_SWS_PAR_2018       Melba   1        8.4525    NA
@@ -446,7 +421,7 @@ Learning Goals
 <p>Merging two data sets when it goes beyond a row bind can take an effort.</p>
 <p>All joins follow this syntax:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">xxx_join</span>(left_dataset, right_dataset)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">xxx_join</span>(left_dataset, right_dataset)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Where “left_dataset” and “right_dataset” correspond to the left and right data sets in this diagram:</p>
 <div class="cell">
@@ -477,78 +452,76 @@ The importance of ‘keys’
 <section id="full-join" class="level3">
 <h3 class="anchored" data-anchor-id="full-join">Full join</h3>
 <p>All observations are returned, regardless if matched.</p>
-<p>Let’s match “variety_trial” and “metadata”</p>
+<p>Let’s match “variety_trial” and “metadata”:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>ex_fulljoin <span class="ot">&lt;-</span> <span class="fu">full_join</span>(metadata, variety_trial, <span class="at">by =</span> <span class="st">"trial"</span>)</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(ex_fulljoin)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>ex_fulljoin <span class="ot">&lt;-</span> <span class="fu">full_join</span>(metadata, variety_trial, <span class="at">by =</span> <span class="st">"trial"</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(ex_fulljoin)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="inner-join" class="level3">
 <h3 class="anchored" data-anchor-id="inner-join">inner join</h3>
 <p>Returns only the rows with matching information. Non-matches are filtered out of the data set.</p>
 <p>Let’s match “genotypes” and “variety_trial” (this will be big!).</p>
-<p>How many of these match (where the key is “variety”, which matches “individual” in “genotype”)?</p>
+<p>How to check homany of these match (where the key is “variety” that matches “individual” in the object “genotypes”)?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">intersect</span>(variety_trial<span class="sc">$</span>variety, genotypes<span class="sc">$</span>individual)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>base<span class="sc">::</span><span class="fu">intersect</span>(variety_trial<span class="sc">$</span>variety, genotypes<span class="sc">$</span>individual)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Jefferson"   "UI Platinum" "LCS Star"    "UI Stone"   </code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>ex_innerjoin <span class="ot">&lt;-</span> <span class="fu">inner_join</span>(variety_trial, genotypes, <span class="at">by =</span> <span class="fu">join_by</span>(<span class="st">"variety"</span> <span class="sc">==</span> <span class="st">"individual"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>ex_innerjoin <span class="ot">&lt;-</span> <span class="fu">inner_join</span>(variety_trial, genotypes, <span class="at">by =</span> <span class="fu">join_by</span>(<span class="st">"variety"</span> <span class="sc">==</span> <span class="st">"individual"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Check results</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(ex_innerjoin)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(ex_innerjoin)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]    76 10107</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(<span class="fu">unique</span>(ex_innerjoin<span class="sc">$</span>variety))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(<span class="fu">unique</span>(ex_innerjoin<span class="sc">$</span>variety))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Jefferson"   "LCS Star"    "UI Platinum" "UI Stone"   </code></pre>
 </div>
 </div>
-<p>Complete this expression:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>test <span class="ot">&lt;-</span> <span class="fu">inner_join</span>(genotypes, trial_1, <span class="at">by =</span> <span class="fu">join_by</span>(         ))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="left-join-and-right-join" class="level3">
-<h3 class="anchored" data-anchor-id="left-join-and-right-join">Left join and right join</h3>
-<p>Preserves all the rows in one data set and matches to that dataset in the other. In the left join, it is the first data set (the one on the left) where all the rows are kep. In the right join, it’s the data set to the right that is full preserved.</p>
-<p>Let’s compare the different when merging ‘trial_2’ with ‘metadata’.</p>
-<section id="left-join" class="level4">
-<h4 class="anchored" data-anchor-id="left-join">Left join</h4>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>ex_leftjoin_1 <span class="ot">&lt;-</span> <span class="fu">left_join</span>(trial_2, metadata, <span class="at">by =</span> <span class="st">"trial"</span>)</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>ex_leftjoin_2 <span class="ot">&lt;-</span> <span class="fu">left_join</span>(metadata, trial_2, <span class="at">by =</span> <span class="st">"trial"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="right-join-equivalent" class="level4">
-<h4 class="anchored" data-anchor-id="right-join-equivalent">right join equivalent</h4>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co">#ex_rightjoin_1 &lt;- right_join(metadata, trial_2, by = "trial")</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>ex_rightjoin_2 <span class="ot">&lt;-</span> <span class="fu">right_join</span>(trial_2, metadata, <span class="at">by =</span> <span class="st">"trial"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><strong>Why did this error message result?</strong></p>
-<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout callout-style-default callout-question no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
-<i class="callout-icon"></i>
+<i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Answer
+Practice Problems
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>When metadata is listed first, it is expecting on one match per key. In this case, there are many matches for the column “trial” in the object “trial_2”.</p>
+<p>Complete this expression:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>test <span class="ot">&lt;-</span> <span class="fu">inner_join</span>(genotypes, trial_1, <span class="at">by =</span> <span class="fu">join_by</span>(         ))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
-<p><strong>What are some relationships between these 4 joins?</strong></p>
+</div>
+</section>
+<section id="left-join-and-right-join" class="level3">
+<h3 class="anchored" data-anchor-id="left-join-and-right-join">Left join and right join</h3>
+<p>These preserves all the rows in one data set and matches to that dataset in the other. In the left join, it is the first data set (the one on the left) where all the rows are kep. In the right join, it’s the data set to the right that is full preserved.</p>
+<p>Let’s compare the different when merging ‘trial_2’ with ‘metadata’.</p>
+<section id="left-join" class="level4">
+<h4 class="anchored" data-anchor-id="left-join">Left join</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>ex_leftjoin_1 <span class="ot">&lt;-</span> <span class="fu">left_join</span>(trial_2, metadata, <span class="at">by =</span> <span class="st">"trial"</span>)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>ex_leftjoin_2 <span class="ot">&lt;-</span> <span class="fu">left_join</span>(metadata, trial_2, <span class="at">by =</span> <span class="st">"trial"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="right-join-equivalent" class="level4">
+<h4 class="anchored" data-anchor-id="right-join-equivalent">right join equivalent</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co">#ex_rightjoin_1 &lt;- right_join(metadata, trial_2, by = "trial")</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>ex_rightjoin_2 <span class="ot">&lt;-</span> <span class="fu">right_join</span>(trial_2, metadata, <span class="at">by =</span> <span class="st">"trial"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>Why did this message result?</strong></p>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -560,6 +533,23 @@ Answer
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>When “metadata” is listed first, it is expecting on one match per key. In this case, there are many matches for the column “trial” in the object “trial_2”.</p>
+</div>
+</div>
+</div>
+<p><strong>What are some relationships between these 4 joins?</strong></p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
 <li>ex_leftjoin_1 is the exact equivalent of ex_rightjoin_1, but the columns are in a different order.<br>
@@ -576,7 +566,7 @@ Answer
 <p>One of my favorite joins! It does an inner join, but only return the columns for the first data set listed. It’s handy when you don’t want to generate gigantic objects.</p>
 <p>Let’s revisit matching “genotypes” and “variety_trial” like in the <code>inner_join()</code> example above.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>ex_semijoin <span class="ot">&lt;-</span> <span class="fu">semi_join</span>(variety_trial, genotypes, <span class="at">by =</span> <span class="fu">join_by</span>(<span class="st">"variety"</span> <span class="sc">==</span> <span class="st">"individual"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>ex_semijoin <span class="ot">&lt;-</span> <span class="fu">semi_join</span>(variety_trial, genotypes, <span class="at">by =</span> <span class="fu">join_by</span>(<span class="st">"variety"</span> <span class="sc">==</span> <span class="st">"individual"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>How do the dimensions of this object compare to the dimensions of ‘ex_innerjoin’?</p>
 </section>
@@ -584,11 +574,11 @@ Answer
 <h3 class="anchored" data-anchor-id="anti-join">Anti-join</h3>
 <p>This is similar to <code>semi_join()</code>. It will return all the rows that do <em>not</em> match, and only the columns from the first data set mentioned.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>ex_antijoin <span class="ot">&lt;-</span> <span class="fu">anti_join</span>(variety_trial, genotypes, <span class="at">by =</span> <span class="fu">join_by</span>(<span class="st">"variety"</span> <span class="sc">==</span> <span class="st">"individual"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>ex_antijoin <span class="ot">&lt;-</span> <span class="fu">anti_join</span>(variety_trial, genotypes, <span class="at">by =</span> <span class="fu">join_by</span>(<span class="st">"variety"</span> <span class="sc">==</span> <span class="st">"individual"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Do any of the variety names match?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(ex_antijoin<span class="sc">$</span>variety <span class="sc">%in%</span> genotypes<span class="sc">$</span>individual)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(ex_antijoin<span class="sc">$</span>variety <span class="sc">%in%</span> genotypes<span class="sc">$</span>individual)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 FALSE 
@@ -605,8 +595,8 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong><em>dplyr</em></strong> <a href="https://dplyr.tidyverse.org/news/index.html?q=join#joins-0-7-0">updated</a>!</p>
-<p>One of the biggest changes is how it handles joins. It can now do some very flexible matching by numeric values, dates and other factors. More on this can be found in the documentation for <a href="https://dplyr.tidyverse.org/reference/join_by.html">join_by</a>.</p>
+<p><strong><em>dplyr</em></strong> <a href="https://dplyr.tidyverse.org/news/index.html?q=join#joins-0-7-0">can do complex joins.</a>!</p>
+<p>It can do some very flexible matching by numeric values, dates and other factors. More on this can be found in the documentation for <a href="https://dplyr.tidyverse.org/reference/join_by.html">join_by</a>. This topic is complext and beyond the scope of this introductory workshop.</p>
 </div>
 </div>
 </section>
@@ -655,7 +645,7 @@ Note
 <p>Complete list of <a href="https://dplyr.tidyverse.org/reference/index.html">dplyr functions</a> and <a href="https://tidyr.tidyverse.org/reference/index.html">tidyr functions</a>.</p>
 <p><a href="https://r4ds.had.co.nz/">R 4 Data Science</a> by Hadley Wickam and Garret Grolemund provides comprehensive guide to data wrangling.</p>
 <div class="callout callout-style-default callout-question no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -664,14 +654,14 @@ Practice Problem
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ol class="example" type="1">
 <li>Download <a href="https://github.com/IdahoAgStats/r-for-ag-scientists/raw/main/data/genotypic_data_rotated.csv">genotypic_data_rotated.csv</a> (see script below), Import that file, along with, “trial_data.csv”, and “trial_metadata.csv”.</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">download.file</span>(<span class="at">url =</span> <span class="st">"https://github.com/IdahoAgStats/r-for-ag-scientists/raw/main/data/genotypic_data_rotated.csv"</span>,</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>              <span class="at">destfile =</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"genotypic_data_rotated.csv"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">download.file</span>(<span class="at">url =</span> <span class="st">"https://github.com/IdahoAgStats/r-for-ag-scientists/raw/main/data/genotypic_data_rotated.csv"</span>,</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>              <span class="at">destfile =</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"genotypic_data_rotated.csv"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ol start="2" class="example" type="1">
 <li><p>Do an inner join between “genotypic_data_rotated.csv” and “trial_data.csv” using variety names.</p></li>
@@ -695,12 +685,12 @@ Putting it all together
 <div class="callout-body-container callout-body">
 <p>Although this lesson did not demonstrate the use of the pipe, <code>%&gt;%</code>, it can be used with pipes:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>obj <span class="ot">&lt;-</span> <span class="fu">left_join</span>(x, y) <span class="sc">%&gt;%</span> <span class="fu">right_join</span>(z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>obj <span class="ot">&lt;-</span> <span class="fu">left_join</span>(x, y) <span class="sc">%&gt;%</span> <span class="fu">right_join</span>(z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The first join is a left join like any other. The second join presumes that the first argument is what was passed to it through the pipe. An equivalent:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>temp <span class="ot">&lt;-</span> <span class="fu">left_join</span>(x, y)</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>obj <span class="ot">&lt;-</span>  <span class="fu">right_join</span>(temp, z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>temp <span class="ot">&lt;-</span> <span class="fu">left_join</span>(x, y)</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>obj <span class="ot">&lt;-</span>  <span class="fu">right_join</span>(temp, z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -1262,15 +1252,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="../lessons/reshaping.html" class="pagination-link" aria-label="Reshaping data">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Reshaping data</span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-  </div>
-</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">

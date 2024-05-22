@@ -287,24 +287,6 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
  <span class="menu-text">R style conventions</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../lessons/data-aggregation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Data aggregation</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../lessons/reshaping.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Reshaping data</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../lessons/data-merging.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Combining data sets</span></a>
-  </div>
-</li>
       </ul>
   </li>
     </ul>
@@ -466,15 +448,24 @@ Note
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Practice Problem
+Practice Problems
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ol type="1">
-<li>Repeat the <a href="../pratice/practice-D.qmd">import practice problems</a>. Export those files under a new file name. Make sure you use a new file name or a different output directory so you do not write over the original files.</li>
-<li>Examine the output files to make sure they look as expected? Where any row names accidentally introduced? Were missing cells converted to “NA”? Did any data become unexpectedly quoted?</li>
+<li>Import one of your data sets using two of the functions taught:</li>
+</ol>
+<p>(save your data in different format to enable this)</p>
+<ul>
+<li><code>read.csv()</code></li>
+<li><code>read_csv()</code></li>
+<li><code>read_excel()</code></li>
+<li><code>read.delim()</code></li>
+</ul>
+<ol type="1">
+<li>Examine the data imported using <code>View(imported_data)</code>. Did everything import as expected? Are your variables coded as they should be? Are numeric variables numeric? Are missing data detected as thus? Where any row names accidentally introduced? Were missing cells converted to “NA”? Did any data become unexpectedly quoted?</li>
 </ol>
 </div>
 </div>

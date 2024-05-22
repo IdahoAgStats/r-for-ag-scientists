@@ -64,8 +64,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../lessons/data-merging.html" rel="next">
-<link href="../lessons/data-aggregation.html" rel="prev">
 <link href="../images/logo_transparent.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -136,7 +134,7 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../lessons/lesson-zero.html">Lessons</a></li><li class="breadcrumb-item"><a href="../lessons/reshaping.html">Reshaping data</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Reshaping Data Sets</li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -287,24 +285,6 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
  <span class="menu-text">R style conventions</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../lessons/data-aggregation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Data aggregation</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../lessons/reshaping.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Reshaping data</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../lessons/data-merging.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Combining data sets</span></a>
-  </div>
-</li>
       </ul>
   </li>
     </ul>
@@ -326,7 +306,7 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../lessons/lesson-zero.html">Lessons</a></li><li class="breadcrumb-item"><a href="../lessons/reshaping.html">Reshaping data</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">Reshaping Data Sets</h1>
 </div>
@@ -386,7 +366,7 @@ Learning Goals
 <p>Let’s run some examples with trial data set.</p>
 <p>Load the libraries and trial data:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr); <span class="fu">library</span>(dplyr); <span class="fu">library</span>(tidyr)</span>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr); <span class="fu">library</span>(tidyr)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>variety_trials <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"trial_data.csv"</span>)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -530,6 +510,22 @@ Learning Goals
 # ℹ 2 more variables: grain_protein_3 &lt;dbl&gt;, grain_protein_4 &lt;dbl&gt;</code></pre>
 </div>
 </div>
+<div class="callout callout-style-default callout-question no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Practice Problems
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Import “weather_data.csv”. Filter to any single year and reshape the data from long to wide so that the levels in “station’ form the new column headers, ‘julian_day’ is the identifying column and the cells are filled with data from ‘tmax_F’.</p>
+</div>
+</div>
+</div>
 </section>
 <section id="pivot-with-multiple-observations-per-identifier" class="level4">
 <h4 class="anchored" data-anchor-id="pivot-with-multiple-observations-per-identifier">Pivot with multiple observations per identifier</h4>
@@ -584,29 +580,38 @@ Learning Goals
 </div>
 </div>
 <div class="callout callout-style-default callout-question no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Practice Problem
+Practice Problems
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<ul>
-<li>As always, consider how these reshaping functions can support your own research and data analysis.</li>
-</ul>
-<ol class="example" type="1">
-<li><p>Import “genotypic_data.txt” and remove columns 2 through 5 (‘CHROM’, ‘POS(cM)’, ‘Major_allele’, ‘Minor_allele’). What is left is genetic marker names and the marker scores for the individual lines (each column is an genetically distinct wheat line). Using <code>pivot_longer()</code>, reshape this object to long so there is one column for the marker name, one column for the wheat name, and the one column for the marker score. How many rows long is this object? Can you image trying to do this by hand??</p></li>
-<li><p>Import “weather_data.csv”. Filter to any single year and reshape the data from long to wide so that the levels in “station’ form the new column headers, ‘julian_day’ is the identifying column and the cells are filled with data from ‘tmax_F’.</p></li>
-<li><p>Here is a crazy extra exercise that utilizes transpose instead of pivoting. It’s not strictly related to reshaping. Only try this if you are in the mood for a challenge.</p></li>
-</ol>
+<p><em>As always, consider how these reshaping functions can support your own research and data analysis.</em></p>
+<p>Import “genotypic_data.txt” and remove columns 2 through 5 (‘CHROM’, ‘POS(cM)’, ‘Major_allele’, ‘Minor_allele’). What is left is genetic marker names and the marker scores for the individual lines (each column is an genetically distinct wheat line). Using <code>pivot_longer()</code>, reshape this object from wide to long so there is one column for the marker name, one column for the wheat name, and the one column for the marker score. How many rows long is this object? Can you image trying to do this by hand??</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-question no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Extra Hard Practice Problem
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Here is a crazy extra exercise that utilizes transpose instead of pivoting. It’s not strictly related to reshaping. Only try this if you are in the mood for a challenge.</p>
 <p>This problem is indicative of a data wrangling you can experience out in the wild. You are given a data set in one format, but a package requires your data be in another format.</p>
 <p>The file “genotypic_data.txt” is a transposed version of “genotypic_data_rotated.csv”. Import “genotypic_data.txt” into R and use R commands to recreate “genotypic_data_rotated.csv”.</p>
 <p>The column “individual” no longer has periods in the listed names, but the original file had periods in those names since they were column headers. Write code to remove those periods from the column “individual” in your transformed column (hint: look at the documentation for <code>gsub()</code>).</p>
-<p><a href="../practice/solution-H.html"><strong><em>Solution</em></strong></a></p>
 </div>
 </div>
 </div>
@@ -1183,18 +1188,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="../lessons/data-aggregation.html" class="pagination-link" aria-label="Data aggregation">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Data aggregation</span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="../lessons/data-merging.html" class="pagination-link" aria-label="Combining data sets">
-        <span class="nav-page-text">Combining data sets</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
