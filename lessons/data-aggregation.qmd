@@ -149,19 +149,20 @@ disease_df_sum <- disease_df %>% rowwise() %>%
 disease_df_sum
 ```
 
+```{r}
+disease_df_sum1 <- disease_df %>% select(score1, score4, score5) %>% 
+rowwise() %>% 
+  mutate(score_final = mean(c(score1, score4)),
+        median_score = median(c(score1, score4)))
+disease_df_sum1
+```
+
+
 ::: {.callout-question .callout collapse="true"}
-## Practice Problems
-* As usual, consider how these data aggregation functions can support your own work.
+## Practice Problem
 
-For some of these exercises, you may need to use other [***dplyr***](https://dplyr.tidyverse.org/reference/index.html) functions.
+(@) Import "weather_data.csv", select 'station, 'tmin_F' and 'tmax_F' using a select() function. Calculate the sum, mean, and median for 'tmin_F' and 'tmax_F' using rowwise() function.
 
-(@) Import "weather_data.csv". Group the data by station and year and count the number of missing data points for 'tmax', 'tmin' and 'tavg'.  
-
-(@) Import "weather_data.csv", group the data by 'station' and 'julian_day' and calculate the average minimum and maximum temperatures for the groups from 'tmin' and 'tmax'. If you already imported the data set from the previous problem, you don't need to import it again if you did not change the data set. 
-
-(@) Import "weather_data.csv", calculate the difference between the 'tmin' and 'tmax' for each day. Group the data by year and return the smallest and largest differences for each year. Consider how to handle missing data. If you already imported the data set from the previous problem, you don't need to import it again if you did not change the data set.
-
-[***Solution***](../practice/solution-G.qmd)
 :::
 
 
