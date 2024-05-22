@@ -607,16 +607,16 @@ Practice Problems
 <span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>disease_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   plot score1 score5 score3 score4 score2
-1     a     60     70    100     80     90
-2     b      0     90     30     50     70
-3     c     30     90     70     80     30
-4     d     90     30     70     60     40
-5     e     20     70      0     50     40
-6     f     60    100     80     50     20
-7     g      0     20      0     80     20
-8     h     90     80     30     60     20
-9     i    100    100     40     80     10
-10    j     20     50     30      0     10</code></pre>
+1     a     10     50    100     80     40
+2     b     40     60     10     10     70
+3     c     60     60     20      0     70
+4     d     20     30    100     30     80
+5     e     40     20     30     40     90
+6     f     10     70    100     20     10
+7     g      0     50     50     60     20
+8     h     90     60     50     20    100
+9     i     80      0     10     90     20
+10    j      0     40     10     20     60</code></pre>
 </div>
 </div>
 <p>Data sets exist like this. A person might have a set of 10 experimental plots to evaluate for some trait. The trait assay protocol may require that multiple observations be gathered per plot (from a statistical standpoint, this is a technical replicate, not a true replicate) and then reduced to a single number per plot using a simple mean. Row-wise functions can accomplish this.</p>
@@ -630,16 +630,39 @@ Practice Problems
 # Rowwise: 
    plot  score1 score5 score3 score4 score2 score_final max_score
    &lt;chr&gt;  &lt;int&gt;  &lt;int&gt;  &lt;int&gt;  &lt;int&gt;  &lt;int&gt;       &lt;dbl&gt;     &lt;int&gt;
- 1 a         60     70    100     80     90          75        90
- 2 b          0     90     30     50     70          35        70
- 3 c         30     90     70     80     30          30        30
- 4 d         90     30     70     60     40          65        90
- 5 e         20     70      0     50     40          30        40
- 6 f         60    100     80     50     20          40        60
- 7 g          0     20      0     80     20          10        20
- 8 h         90     80     30     60     20          55        90
- 9 i        100    100     40     80     10          55       100
-10 j         20     50     30      0     10          15        20</code></pre>
+ 1 a         10     50    100     80     40          25        40
+ 2 b         40     60     10     10     70          55        70
+ 3 c         60     60     20      0     70          65        70
+ 4 d         20     30    100     30     80          50        80
+ 5 e         40     20     30     40     90          65        90
+ 6 f         10     70    100     20     10          10        10
+ 7 g          0     50     50     60     20          10        20
+ 8 h         90     60     50     20    100          95       100
+ 9 i         80      0     10     90     20          50        80
+10 j          0     40     10     20     60          30        60</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>disease_df_sum1 <span class="ot">&lt;-</span> disease_df <span class="sc">%&gt;%</span> <span class="fu">select</span>(score1, score4, score5) <span class="sc">%&gt;%</span> </span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rowwise</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">score_final =</span> <span class="fu">mean</span>(<span class="fu">c</span>(score1, score4)),</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">median_score =</span> <span class="fu">median</span>(<span class="fu">c</span>(score1, score4)))</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>disease_df_sum1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 10 × 5
+# Rowwise: 
+   score1 score4 score5 score_final median_score
+    &lt;int&gt;  &lt;int&gt;  &lt;int&gt;       &lt;dbl&gt;        &lt;dbl&gt;
+ 1     10     80     50          45           45
+ 2     40     10     60          25           25
+ 3     60      0     60          30           30
+ 4     20     30     30          25           25
+ 5     40     40     20          40           40
+ 6     10     20     70          15           15
+ 7      0     60     50          30           30
+ 8     90     20     60          55           55
+ 9     80     90      0          85           85
+10      0     20     40          10           10</code></pre>
 </div>
 </div>
 <div class="callout callout-style-default callout-question no-icon callout-titled">
@@ -648,22 +671,15 @@ Practice Problems
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Practice Problems
+Practice Problem
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<ul>
-<li>As usual, consider how these data aggregation functions can support your own work.</li>
-</ul>
-<p>For some of these exercises, you may need to use other <a href="https://dplyr.tidyverse.org/reference/index.html"><strong><em>dplyr</em></strong></a> functions.</p>
 <ol class="example" type="1">
-<li><p>Import “weather_data.csv”. Group the data by station and year and count the number of missing data points for ‘tmax’, ‘tmin’ and ‘tavg’.</p></li>
-<li><p>Import “weather_data.csv”, group the data by ‘station’ and ‘julian_day’ and calculate the average minimum and maximum temperatures for the groups from ‘tmin’ and ‘tmax’. If you already imported the data set from the previous problem, you don’t need to import it again if you did not change the data set.</p></li>
-<li><p>Import “weather_data.csv”, calculate the difference between the ‘tmin’ and ‘tmax’ for each day. Group the data by year and return the smallest and largest differences for each year. Consider how to handle missing data. If you already imported the data set from the previous problem, you don’t need to import it again if you did not change the data set.</p></li>
+<li>Import “weather_data.csv”, select ‘station, ’tmin_F’ and ‘tmax_F’ using a select() function. Calculate the sum, mean, and median for ‘tmin_F’ and ‘tmax_F’ using rowwise() function.</li>
 </ol>
-<p><a href="../practice/solution-G.html"><strong><em>Solution</em></strong></a></p>
 </div>
 </div>
 </div>
@@ -679,10 +695,10 @@ Putting it all together
 <div class="callout-body-container callout-body">
 <p>It is possible use <code>mutate()</code> or <code>summary()</code> commands on a grouped data frame. A <code>summary()</code> call will return one value per group + summary function (e.g.&nbsp;<code>mean</code>). A <code>mutate()</code> call will return one value per row + summary function. All the previous examples in this lesson used <code>summary()</code>. Here is one example using <code>mutate()</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>variety_trials <span class="sc">%&gt;%</span> </span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(trial, rep, variety, crop, yield) <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(crop) <span class="sc">%&gt;%</span></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">relative_yield =</span> yield<span class="sc">/</span><span class="fu">mean</span>(yield, <span class="at">na.rm=</span><span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(yield)) <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">15</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>variety_trials <span class="sc">%&gt;%</span> </span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(trial, rep, variety, crop, yield) <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(crop) <span class="sc">%&gt;%</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">relative_yield =</span> yield<span class="sc">/</span><span class="fu">mean</span>(yield, <span class="at">na.rm=</span><span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(yield)) <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">15</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 15 × 6
 # Groups:   crop [6]
