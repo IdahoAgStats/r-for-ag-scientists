@@ -20,7 +20,7 @@ A .qmd document can simply exist as is (and is highly useful), or you can choose
 +-----------------------------------+-------------------------------+
 | Markdown Syntax                   | Output                        |
 +===================================+===============================+
-|     *italics* and **bold**        | *italics* and bold            |
+|     *italics* and **bold**        | *italics* and **bold**        |
 +-----------------------------------+-------------------------------+
 |     superscript^2^ / subscript~2~ | superscript^2^ / subscript~2~ |
 +-----------------------------------+-------------------------------+
