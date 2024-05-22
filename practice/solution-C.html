@@ -285,6 +285,24 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
  <span class="menu-text">R style conventions</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lessons/data-aggregation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data aggregation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lessons/reshaping.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Reshaping data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lessons/data-merging.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Combining data sets</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -406,17 +424,17 @@ FYI
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>new_df <span class="ot">&lt;-</span> df[,<span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">3</span>)]</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>new_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>          five one four        two      three
-1        apple   1    A  0.4650894  1.8396025
-2        apple   2    B  1.0439424  1.6001256
-3  huckleberry   3    B -0.8030624 -1.6023112
-4        apple   4    B  0.3436419  1.1532834
-5  huckleberry   5    A -0.2545946 -0.5456788
-6        apple   6    B -0.5407512 -0.3337445
-7        apple   7    B  0.6286165  0.7894661
-8  huckleberry   8    A -1.0691364 -0.6545021
-9  huckleberry   9    B  0.3679438  0.7547414
-10       apple  10    B -2.0430915 -2.4316007</code></pre>
+<pre><code>          five one four           two       three
+1  huckleberry   1    A -0.6664212704  0.53160699
+2        apple   2    B -2.2375503984 -2.90193009
+3  huckleberry   3    A -0.0007417675  1.27117685
+4  huckleberry   4    A -0.7138699944 -3.02546503
+5        apple   5    A  1.4398756270  2.25587241
+6  huckleberry   6    B -0.0951768471 -0.19753609
+7        apple   7    B  1.1381452873 -0.42066083
+8        apple   8    B  0.4275281695 -0.01061794
+9        apple   9    A -0.0717428411  0.95589865
+10       apple  10    A  0.5969978147 -2.30800003</code></pre>
 </div>
 </div>
 </section>
