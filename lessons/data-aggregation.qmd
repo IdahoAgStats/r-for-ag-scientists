@@ -59,6 +59,7 @@ yield_crop <- variety_trials %>% group_by(crop) %>%
             total = n())
 
 yield_crop
+
 ```
 
 ::: callout-note
@@ -94,8 +95,27 @@ Use `across()` to conduct the same summary action(s) across multiple columns.
 
 ```{r}
 variety_trials %>% group_by(trial) %>% 
-  summarise(across(c(yield, grain_protein), ~ mean(.x, na.rm = T)))
+  summarise(across(c(yield, grain_protein), ~ mean(.x, na.rm = TRUE)))
+
+variety_trials %>% group_by(trial) %>% 
+  summarise(across(c(yield, grain_protein), ~ sd(.x, na.rm = TRUE)))
+
 ```
+
+::: {.callout-question .callout collapse="true"}
+## Practice Problems
+* As usual, consider how these data aggregation functions can support your own work.
+
+* For some of these exercises, you may need to use other [***dplyr***](https://dplyr.tidyverse.org/reference/index.html) functions.
+
+1. Count the number of observations for each variety in the 'variety_trials' data set.
+
+1. Use 'variety-trials' data, group data by 'variety' and calculate the summary statistics (mean, sd, min, and max) for 'grain_protein'.
+
+1. Use 'variety-trials' data, group data by 'crop' and 'year' variables and calculate the mean and standard deviation across 'test_weight' and 'grain_protein'.
+
+:::
+
 
 ### Row-wise summaries
 
@@ -130,7 +150,7 @@ disease_df_sum
 ```
 
 ::: {.callout-question .callout collapse="true"}
-## Practice Problem
+## Practice Problems
 * As usual, consider how these data aggregation functions can support your own work.
 
 For some of these exercises, you may need to use other [***dplyr***](https://dplyr.tidyverse.org/reference/index.html) functions.
