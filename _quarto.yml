@@ -100,11 +100,6 @@ website:
             text: Exporting R objects to file
           - href: lessons/r-style-conventions.qmd
             text: "R style conventions"
-          - href: lessons/data-aggregation.qmd
-            text: Data aggregation
-      #       contents: 
-      #         - href: practice/practice-D.qmd
-      #           text: "practice set D"
           - href: lessons/reshaping.qmd
             text: Reshaping data
       #       contents: 
@@ -117,6 +112,11 @@ website:
       #           text: "practice set F"
       #         - href: practice/solution-F.qmd
       #           text: "solution to F"
+          - href: lessons/data-aggregation.qmd
+            text: Data aggregation
+      #       contents: 
+      #         - href: practice/practice-D.qmd
+      #           text: "practice set D"
       #     - href: lessons/ggplotting.qmd
       #       text: Visualizing data in R with ggplot
       #       contents:
