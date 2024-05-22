@@ -149,32 +149,22 @@ ex_leftjoin_1 <- left_join(trial_2, metadata, by = "trial")
 ex_leftjoin_2 <- left_join(metadata, trial_2, by = "trial")
 ```
 
-#### right join equivalent
+#### Right join
 
 ```{r}
 #ex_rightjoin_1 <- right_join(metadata, trial_2, by = "trial")
 ex_rightjoin_2 <- right_join(trial_2, metadata, by = "trial")
 ```
-**Why did this message result?**
 
-::: {.callout-important collapse="true"}
-## Answer
-
-When "metadata" is listed first, it is expecting on one match per key. In this case, there are many matches for the column "trial" in the object "trial_2". 
-
-:::
-
-
-**What are some relationships between these 4 joins?**
+**How are these 4 joins similar?**
 
 ::: {.callout-important collapse="true"}
 ## Answer
 
 * ex_leftjoin_1 is the exact equivalent of ex_rightjoin_1, but the columns are in a different order.   
-* ex_leftjoin_2 is the exact equivalent of ex_rightjoin_2, but the columsna are in a different order. 
+* ex_leftjoin_2 is the exact equivalent of ex_rightjoin_2, but the columsn are in a different order. 
 
 :::
-
 
 ### Semi-join
 
@@ -197,10 +187,10 @@ ex_antijoin <- anti_join(variety_trial, genotypes, by = join_by("variety" == "in
 ```
 
 Do any of the variety names match?
+
 ```{r}
 table(ex_antijoin$variety %in% genotypes$individual)
 ```
-
 
 ::: {.callout-note}
 
@@ -211,48 +201,30 @@ It can do some very flexible matching by numeric values, dates and other factors
 
 ## Final Notes
 
-This is the end of lessons on data wrangling. There is additional functionality that we have not touched on that you may find useful to know. 
+This is near the end of lessons on data wrangling. There is additional functionality that we have not touched on that you may find useful to know.
 
-| function name | what it does |
-|---------------|--------------|
-| `tidyr::drop_na()`     | remove rows with missing data |
-| `dplyr::pull()`        | extracts a single column and converts it to a vector | 
-| `dplyr::distinct()`   | return rows with distinct observations (removes duplicates) |
-| `dplyr::na_if()`      | converts a specificed value to NA |
-| `dplyr::relocate()`     | move columns to another position |
-| `tidyr::fill()`       | fill is missing data based on surrounding data |
-
-Complete list of [dplyr functions](https://dplyr.tidyverse.org/reference/index.html) and [tidyr functions](https://tidyr.tidyverse.org/reference/index.html).
+Here is the complete list of [dplyr functions](https://dplyr.tidyverse.org/reference/index.html) and [tidyr functions](https://tidyr.tidyverse.org/reference/index.html).
 
 [R 4 Data Science](https://r4ds.had.co.nz/) by Hadley Wickam and Garret Grolemund provides comprehensive guide to data wrangling. 
 
-
-
 ::: {.callout-question .callout collapse="true"}
-## Practice Problem
-(@) Download [genotypic_data_rotated.csv](https://github.com/IdahoAgStats/r-for-ag-scientists/raw/main/data/genotypic_data_rotated.csv) (see script below), Import that file, along with, "trial_data.csv", and "trial_metadata.csv". 
+## Practice Problems
 
-```{r, eval=FALSE}
-download.file(url = "https://github.com/IdahoAgStats/r-for-ag-scientists/raw/main/data/genotypic_data_rotated.csv",
-              destfile = here::here("data", "genotypic_data_rotated.csv"))
-```
+1. Import "genotypic_data_rotated.csv" (see script below), along with "trial_data.csv", and "trial_metadata.csv". 
 
-(@) Do an inner join between "genotypic_data_rotated.csv" and "trial_data.csv" using variety names. 
+1. Do an inner join between "genotypic_data_rotated.csv" and "trial_data.csv" using variety names. 
 
-(@) Do a semi-join of "genotypic_data_rotated.csv" with "trial_data.csv" and do the reverse. How does this compare with the inner join from the previous problem? 
+1. Do a semi-join of "genotypic_data_rotated.csv" with "trial_data.csv" and do the reverse. How does this compare with the inner join from the previous problem? 
 
-(@) Do an anti-join between "genotypic_data_rotated.csv" and "trial_data.csv". 
+1. Do an anti-join between "genotypic_data_rotated.csv" and "trial_data.csv". 
 
-(@) Join together all common observations between the 3 files (your choice on join). 
-
-
-[***Solution***](../practice/solution-I.qmd)
+1.  Join together all common observations between the 3 files (your choice on join). 
 :::
 
 ::: {.callout-tip}
 ## Putting it all together
 
-Although this lesson did not demonstrate the use of the pipe, `%>%`, it can be used with pipes:
+Although this lesson did not demonstrate the use of the pipe, `%>%`, it can be used with joins: 
 
 ```{r, eval=FALSE}
 obj <- left_join(x, y) %>% right_join(z)
