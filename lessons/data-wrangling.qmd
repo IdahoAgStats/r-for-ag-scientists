@@ -393,7 +393,7 @@ knitr::include_graphics(here::here("images", "nest_vs_pipe.jpg"))
 ::: {.callout-question .callout collapse="true"}
 ## Practice Problems
 
-Using piping, import "trial_metadata.csv", f ilterby 2 nurseries of your choosing, then sort by year and planting date
+Using piping, import "trial_metadata.csv", filter by 2 nurseries of your choosing, then sort by year and planting date
 
 :::
 

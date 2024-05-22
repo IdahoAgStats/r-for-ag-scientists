@@ -43,9 +43,8 @@ head(weather_wide)
 geno <- read.delim(here::here("data", "genotypic_data.txt"))
 geno2 <- dplyr::select(geno, -(1:5))
 geno3 <- as.data.frame(t(geno2)) %>% mutate(individual = colnames(geno2)) %>% relocate(individual)
-### Next line is updated!!! 2023/02/06
+
 colnames(geno3)[2:ncol(geno3)] <- geno$Markers
-### end updates
 geno3$individual <- gsub("[.]", " ", geno3$individual) 
 
 # check that things look okay: 

@@ -15,10 +15,11 @@ title: "Course Schedule"
             [Importing tabular files](lessons/data-import.qmd)\
            [Data transformation & wrangling](lessons/data-wrangling.qmd)\
            [Exporting R objects to file](lessons/data-export.qmd) |  
-| May 22 | [Data aggregation + summary](lessons/data-aggregation.qmd) \
-            [Reshaping data](lessons/reshaping.qmd)\
-            [Combining data sets](lessons/data-merging.qmd)|   
-| May 23   | Visualizing data in R with ggplot |    
+| May 22 |   [Reshaping data](lessons/reshaping.qmd)\
+            [Combining data sets](lessons/data-merging.qmd) \
+            [Data aggregation + summary](lessons/data-aggregation.qmd) |   
+| May 23   | Combining data sets (part 2)\
+              Visualizing data in R with ggplot |    
 | May 24    |  Finding help\
                Reproducible research in R \
                Open time for questions |   

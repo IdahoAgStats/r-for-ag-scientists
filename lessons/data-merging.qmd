@@ -17,17 +17,9 @@ As usual, let's start by importing data
 library(dplyr); library(readr); library(tidyr)
 
 metadata <-  read_csv(here::here("data", "trial_metadata.csv"), show_col_types = FALSE)
+
 variety_trial <- read.csv(here::here("data", "trial_data.csv"))
-```
 
-Another data set to import: 
-```{r, eval=FALSE}
-download.file(url = "https://github.com/IdahoAgStats/r-for-ag-scientists/raw/main/data/genotypic_data_rotated.csv",
-              destfile = here::here("data", "genotypic_data_rotated.csv"))
-```
-
-*This will take a minute*
-```{r, include=FALSE}
 genotypes <- read_csv(here::here("data", "genotypic_data_rotated.csv"), show_col_types = FALSE)
 ```
 
@@ -71,6 +63,8 @@ head(together)
 
 If you have ever used `rbind()`, this is an improvement. It will match column names across data sets and order them appropriately. 
 
+
+
 ## Joins
 
 Merging two data sets when it goes beyond a row bind can take an effort. 
@@ -104,7 +98,7 @@ The file "genotype" is from a wholly different study. The extent of matches is c
 
 All observations are returned, regardless if matched. 
 
-Let's match "variety_trial" and "metadata"
+Let's match "variety_trial" and "metadata": 
 ```{r, eval=FALSE}
 ex_fulljoin <- full_join(metadata, variety_trial, by = "trial")
 
@@ -117,9 +111,9 @@ Returns only the rows with matching information. Non-matches are filtered out of
 
 Let's match "genotypes" and "variety_trial" (this will be big!). 
 
-How many of these match (where the key is "variety", which matches "individual" in "genotype")?
+How to check homany of these match (where the key is "variety" that matches "individual" in the object "genotypes")?
 ```{r}
-intersect(variety_trial$variety, genotypes$individual)
+base::intersect(variety_trial$variety, genotypes$individual)
 ```
 
 
@@ -133,16 +127,18 @@ dim(ex_innerjoin)
 sort(unique(ex_innerjoin$variety))
 ```
 
+::: {.callout-question .callout collapse="true"}
+## Practice Problems
 
 Complete this expression: 
 ```{r, eval=FALSE}
 test <- inner_join(genotypes, trial_1, by = join_by(         ))
 ```
-
+:::
  
 ### Left join and right join
  
-Preserves all the rows in one data set and matches to that dataset in the other. In the left join, it is the first data set (the one on the left) where all the rows are kep. In the right join, it's the data set to the right that is full preserved. 
+These preserves all the rows in one data set and matches to that dataset in the other. In the left join, it is the first data set (the one on the left) where all the rows are kep. In the right join, it's the data set to the right that is full preserved. 
 
 Let's compare the different when merging 'trial_2' with 'metadata'. 
 
@@ -159,12 +155,12 @@ ex_leftjoin_2 <- left_join(metadata, trial_2, by = "trial")
 #ex_rightjoin_1 <- right_join(metadata, trial_2, by = "trial")
 ex_rightjoin_2 <- right_join(trial_2, metadata, by = "trial")
 ```
-**Why did this error message result?**
+**Why did this message result?**
 
 ::: {.callout-important collapse="true"}
 ## Answer
 
-When metadata is listed first, it is expecting on one match per key. In this case, there are many matches for the column "trial" in the object "trial_2". 
+When "metadata" is listed first, it is expecting on one match per key. In this case, there are many matches for the column "trial" in the object "trial_2". 
 
 :::
 
@@ -208,9 +204,9 @@ table(ex_antijoin$variety %in% genotypes$individual)
 
 ::: {.callout-note}
 
-***dplyr*** [updated](https://dplyr.tidyverse.org/news/index.html?q=join#joins-0-7-0)! 
+***dplyr*** [can do complex joins.](https://dplyr.tidyverse.org/news/index.html?q=join#joins-0-7-0)! 
 
-One of the biggest changes is how it handles joins. It can now do some very flexible matching by numeric values, dates and other factors. More on this can be found in the documentation for [join_by](https://dplyr.tidyverse.org/reference/join_by.html). 
+It can do some very flexible matching by numeric values, dates and other factors. More on this can be found in the documentation for [join_by](https://dplyr.tidyverse.org/reference/join_by.html). This topic is complext and beyond the scope of this introductory workshop. 
 :::
 
 ## Final Notes
