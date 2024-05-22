@@ -108,7 +108,7 @@ variety_trials %>% group_by(trial) %>%
 
 * For some of these exercises, you may need to use other [***dplyr***](https://dplyr.tidyverse.org/reference/index.html) functions.
 
-1. Count the number of observations for each variety in the 'variety_trials' data set.
+1. Count the number of observations for each 'variety' in the 'variety_trials' data set.
 
 1. Use 'variety-trials' data, group data by 'variety' and calculate the summary statistics (mean, sd, min, and max) for 'grain_protein'.
 
