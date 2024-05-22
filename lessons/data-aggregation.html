@@ -579,7 +579,7 @@ Practice Problems
 <li><p>For some of these exercises, you may need to use other <a href="https://dplyr.tidyverse.org/reference/index.html"><strong><em>dplyr</em></strong></a> functions.</p></li>
 </ul>
 <ol type="1">
-<li><p>Count the number of observations for each variety in the ‘variety_trials’ data set.</p></li>
+<li><p>Count the number of observations for each ‘variety’ in the ‘variety_trials’ data set.</p></li>
 <li><p>Use ‘variety-trials’ data, group data by ‘variety’ and calculate the summary statistics (mean, sd, min, and max) for ‘grain_protein’.</p></li>
 <li><p>Use ‘variety-trials’ data, group data by ‘crop’ and ‘year’ variables and calculate the mean and standard deviation across ‘test_weight’ and ‘grain_protein’.</p></li>
 </ol>
@@ -607,16 +607,16 @@ Practice Problems
 <span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>disease_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   plot score1 score5 score3 score4 score2
-1     a     70     40     10     60     90
-2     b     20     20     90     80     10
-3     c     70     10     20     40     10
-4     d    100     10     10     10     50
-5     e    100     30      0     90     20
-6     f     10     60     90     60     60
-7     g     20     20    100     10     20
-8     h     30     90     80    100      0
-9     i     40     40      0     20     30
-10    j     80     70     10     20     30</code></pre>
+1     a     20     90      0     40     80
+2     b     60     60     40      0     90
+3     c     60     40    100    100     50
+4     d      0     80     50     50     70
+5     e      0     50     50     10     10
+6     f     20     60     60     80     80
+7     g     10     50     90      0     80
+8     h     20     40     50     80      0
+9     i     20     10     80     30     20
+10    j    100     40     40     20     10</code></pre>
 </div>
 </div>
 <p>Data sets exist like this. A person might have a set of 10 experimental plots to evaluate for some trait. The trait assay protocol may require that multiple observations be gathered per plot (from a statistical standpoint, this is a technical replicate, not a true replicate) and then reduced to a single number per plot using a simple mean. Row-wise functions can accomplish this.</p>
@@ -630,16 +630,16 @@ Practice Problems
 # Rowwise: 
    plot  score1 score5 score3 score4 score2 score_final max_score
    &lt;chr&gt;  &lt;int&gt;  &lt;int&gt;  &lt;int&gt;  &lt;int&gt;  &lt;int&gt;       &lt;dbl&gt;     &lt;int&gt;
- 1 a         70     40     10     60     90          80        90
- 2 b         20     20     90     80     10          15        20
- 3 c         70     10     20     40     10          40        70
- 4 d        100     10     10     10     50          75       100
- 5 e        100     30      0     90     20          60       100
- 6 f         10     60     90     60     60          35        60
- 7 g         20     20    100     10     20          20        20
- 8 h         30     90     80    100      0          15        30
- 9 i         40     40      0     20     30          35        40
-10 j         80     70     10     20     30          55        80</code></pre>
+ 1 a         20     90      0     40     80          50        80
+ 2 b         60     60     40      0     90          75        90
+ 3 c         60     40    100    100     50          55        60
+ 4 d          0     80     50     50     70          35        70
+ 5 e          0     50     50     10     10           5        10
+ 6 f         20     60     60     80     80          50        80
+ 7 g         10     50     90      0     80          45        80
+ 8 h         20     40     50     80      0          10        20
+ 9 i         20     10     80     30     20          20        20
+10 j        100     40     40     20     10          55       100</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -653,16 +653,16 @@ Practice Problems
 # Rowwise: 
    score1 score4 score5 score_final median_score
     &lt;int&gt;  &lt;int&gt;  &lt;int&gt;       &lt;dbl&gt;        &lt;dbl&gt;
- 1     70     60     40          65           65
- 2     20     80     20          50           50
- 3     70     40     10          55           55
- 4    100     10     10          55           55
- 5    100     90     30          95           95
- 6     10     60     60          35           35
- 7     20     10     20          15           15
- 8     30    100     90          65           65
- 9     40     20     40          30           30
-10     80     20     70          50           50</code></pre>
+ 1     20     40     90          30           30
+ 2     60      0     60          30           30
+ 3     60    100     40          80           80
+ 4      0     50     80          25           25
+ 5      0     10     50           5            5
+ 6     20     80     60          50           50
+ 7     10      0     50           5            5
+ 8     20     80     40          50           50
+ 9     20     30     10          25           25
+10    100     20     40          60           60</code></pre>
 </div>
 </div>
 <div class="callout callout-style-default callout-question no-icon callout-titled">
