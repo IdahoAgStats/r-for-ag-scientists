@@ -513,7 +513,7 @@ ggplot(hay_pnw) +
   * Change the angle of text on x-axis to 90 degrees.
   * Assign this graph name plot1.
 
-1. In plot1, modify legend by: changing text size to 11, changing legend position to "top.
+2. In plot1, modify legend by: changing text size to 11, changing legend position to "top.
 
 :::
 
