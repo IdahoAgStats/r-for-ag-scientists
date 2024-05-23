@@ -555,7 +555,7 @@ Practice Problems
 </section>
 <section id="pivot-with-multiple-observations-per-identifier" class="level4">
 <h4 class="anchored" data-anchor-id="pivot-with-multiple-observations-per-identifier">Pivot with multiple observations per identifier</h4>
-<p>Sometimes, there may be multiple observations per identifier and new column header. *<strong>tidyr</strong> will attempt to resolve this automatically, sometimes by inserting a list inside a data frame to capture the additional information. This is messy and hard to access. Sometimes this is an unintentional; you expected only one observation and learn through tidyr warning messages that there is an more observations than expected.</p>
+<p>Sometimes, there may be multiple observations per identifier and new column header. <strong>tidyr</strong> will attempt to resolve this automatically, sometimes by inserting a list inside a data frame to capture the additional information. This is messy and hard to access. Sometimes this is an unintentional; you expected only one observation and learn through tidyr warning messages that there is an more observations than expected.</p>
 <p>However, you can also introduce a function in a <code>pivot_wider</code> such as <code>mean</code> or <code>sum</code> to summarise these replicate observations.</p>
 <p>Here is an example using “variety”, which is has replicate values.</p>
 <div class="cell">
@@ -618,7 +618,10 @@ Practice Problems
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><em>As always, consider how these reshaping functions can support your own research and data analysis.</em></p>
-<p>Import “genotypic_data.txt” and remove columns 2 through 5 (‘CHROM’, ‘POS(cM)’, ‘Major_allele’, ‘Minor_allele’). What is left is genetic marker names and the marker scores for the individual lines (each column is an genetically distinct wheat line). Using <code>pivot_longer()</code>, reshape this object from wide to long so there is one column for the marker name, one column for the wheat name, and the one column for the marker score. How many rows long is this object? Can you image trying to do this by hand??</p>
+<ol type="1">
+<li><p>Import “genotypic_data.txt” and remove columns 2 through 5 (‘CHROM’, ‘POS(cM)’, ‘Major_allele’, ‘Minor_allele’). What is left is genetic marker names and the marker scores for the individual wheat lines (each column is an genetically distinct wheat line). This requires the use of <code>read_delim()</code>. You might want to try using the point-and-click import function that is built into RStudio (use the ‘readr’ option).</p></li>
+<li><p>Using <code>pivot_longer()</code>, reshape this object from wide to long so there is one column for the marker name, one column for the wheat name, and the one column for the marker score. How many rows long is this object? Can you image trying to do this by hand??</p></li>
+</ol>
 </div>
 </div>
 </div>
