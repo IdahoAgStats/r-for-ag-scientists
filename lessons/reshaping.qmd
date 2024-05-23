@@ -126,7 +126,7 @@ Import "weather_data.csv". Filter to any single year and reshape the data from l
 
 #### Pivot with multiple observations per identifier
 
-Sometimes, there may be multiple observations per identifier and new column header. \***tidyr** will attempt to resolve this automatically, sometimes by inserting a list inside a data frame to capture the additional information. This is messy and hard to access. Sometimes this is an unintentional; you expected only one observation and learn through tidyr warning messages that there is an more observations than expected.
+Sometimes, there may be multiple observations per identifier and new column header. **tidyr** will attempt to resolve this automatically, sometimes by inserting a list inside a data frame to capture the additional information. This is messy and hard to access. Sometimes this is an unintentional; you expected only one observation and learn through tidyr warning messages that there is an more observations than expected.
 
 However, you can also introduce a function in a `pivot_wider` such as `mean` or `sum` to summarise these replicate observations.
 
@@ -166,7 +166,9 @@ head(parma2020_long)
 ## Practice Problems
 *As always, consider how these reshaping functions can support your own research and data analysis.*
 
-Import "genotypic_data.txt" and remove columns 2 through 5 ('CHROM', 'POS(cM)', 'Major_allele', 'Minor_allele'). What is left is genetic marker names and the marker scores for the individual lines (each column is an genetically distinct wheat line). Using `pivot_longer()`, reshape this object from wide to long so there is one column for the marker name, one column for the wheat name, and the one column for the marker score. How many rows long is this object? Can you image trying to do this by hand??
+1. Import "genotypic_data.txt" and remove columns 2 through 5 ('CHROM', 'POS(cM)', 'Major_allele', 'Minor_allele'). What is left is genetic marker names and the marker scores for the individual wheat lines (each column is an genetically distinct wheat line). This requires the use of `read_delim()`. You might want to try using the point-and-click import function that is built into RStudio (use the 'readr' option). 
+
+1. Using `pivot_longer()`, reshape this object from wide to long so there is one column for the marker name, one column for the wheat name, and the one column for the marker score. How many rows long is this object? Can you image trying to do this by hand??
 
 :::
 

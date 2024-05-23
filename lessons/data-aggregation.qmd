@@ -126,6 +126,8 @@ Field disease scoring may benefit from this system. Often, several measurements 
 First, simulate a set of disease scores between 0 and 100 (indicating percent infection).
 
 ```{r}
+set.seed(208)
+
 # step 1: generate a set of possible scores: 0, 10, 20,...100
 score_range <- c(0:10 * 10L)
 # sample those possible scores to generate 50 data points
