@@ -117,8 +117,8 @@ website:
       #       contents: 
       #         - href: practice/practice-D.qmd
       #           text: "practice set D"
-      #     - href: lessons/ggplotting.qmd
-      #       text: Visualizing data in R with ggplot
+          - href: lessons/ggplotting.qmd
+            text: Visualizing data in R with ggplot
       #       contents:
       #         - href: practice/practice-G.qmd
       #           text: "practice set G"
