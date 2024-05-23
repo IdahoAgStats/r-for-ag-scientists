@@ -6,7 +6,7 @@ title: "Course Schedule"
 
 
 | Date            |  Main Topics              |   
-|-----------------|-----------------------|
+|-----------------|---------------------------------------|
 | Before first day of class | [Lesson Zero](lessons/lesson-zero.qmd) |  
 | May 20 | Workshop orientation \
            [Quick tour of R Studio](lessons/rstudio-tour.qmd)\
@@ -18,11 +18,11 @@ title: "Course Schedule"
 | May 22 |   [Reshaping data](lessons/reshaping.qmd)\
             [Combining data sets](lessons/data-merging.qmd) \
             [Data aggregation + summary](lessons/data-aggregation.qmd) |   
-| May 23   | [Visualizing data in R with ggplot](lessons/ggplotting.qmd) \   
-             [Finding help](https://agstats.io/post/help-in-r/) \
-             [Reproducible research in R](lessons/reproducible-research.qmd) \
-             [keeping up with R](lessons/final_lesson.qmd)  |
-| May 24    |  Open time for questions  |   
+| May 23 |  [Visualizing data with ggplot](lessons/ggplotting.qmd) \
+            [Finding help](https://agstats.io/post/help-in-r/) \
+            [Reproducible research in R](lessons/reproducible-research.qmd) \
+            [keeping up with R](lessons/final_lesson.qmd)  |
+| May 24  |  Open time for questions  |   
 | Extra  |  [How to repeat actions](repeating-actions.qmd) |
 
 
