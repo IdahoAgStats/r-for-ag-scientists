@@ -19,9 +19,10 @@ title: "Course Schedule"
             [Combining data sets](lessons/data-merging.qmd) \
             [Data aggregation + summary](lessons/data-aggregation.qmd) |   
 | May 23   | [Visualizing data in R with ggplot](lessons/ggplotting.qmd)|   
-| May 24    |  Finding help\
-               Reproducible research in R \
+| May 24    |  [Finding help](https://agstats.io/post/help-in-r/)\
+               [Reproducible research in R](lessons/reproducible-research.qmd) |
+               [keeping up with R](lessons/final_lesson.qmd) \
                Open time for questions |   
-| Extra  | How to do repeating actions |   
+| Extra  |  [How to repeat actions](repeating-actions.qmd) |
 
 

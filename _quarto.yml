@@ -124,8 +124,8 @@ website:
       #           text: "practice set G"
       #         - href: practice/solution-G.qmd
       #           text: "solution to G"
-      #     - href: lessons/reproducible-research.qmd
-      #       text: Reproducible research in R
+          - href: lessons/reproducible-research.qmd
+            text: Reproducible research in R
       #       contents:   
       #         - href: practice/practice-H.qmd
       #           text: "practice set H"
@@ -166,8 +166,8 @@ website:
           #       text: "solution to L"
           # - href: lessons/Lesson16.qmd
           #   text: Repeating Operations
-          # - href: lessons/final_Lesson.qmd
-          #   text: Final thoughts
+        - href: lessons/final_lesson.qmd
+          text: Final thoughts
 
   page-footer:
     right: "[Quarto Website](https://quarto.org/), template by [Mine Çetinkaya-Rundel](https://github.com/sta210-s22/website)"
