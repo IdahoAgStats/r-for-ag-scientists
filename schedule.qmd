@@ -18,8 +18,7 @@ title: "Course Schedule"
 | May 22 |   [Reshaping data](lessons/reshaping.qmd)\
             [Combining data sets](lessons/data-merging.qmd) \
             [Data aggregation + summary](lessons/data-aggregation.qmd) |   
-| May 23   | Combining data sets (part 2)\
-              Visualizing data in R with ggplot |    
+| May 23   | [Visualizing data in R with ggplot](lessons/ggplotting.qmd)|   
 | May 24    |  Finding help\
                Reproducible research in R \
                Open time for questions |   
