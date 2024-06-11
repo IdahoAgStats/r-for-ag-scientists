@@ -5,25 +5,24 @@ title: "Course Schedule"
 *This schedule is best understood as a draft that will be adjusted as needed.* 
 
 
-| Date            |   Topics              | practice problems |
-|-----------------|-----------------------|-------------------|
-| Before first day of class | [Lesson Zero](lessons/lesson-zero.qmd) |    |
+| Date            |  Main Topics              |   
+|-----------------|---------------------------------------|
+| Before first day of class | [Lesson Zero](lessons/lesson-zero.qmd) |  
 | May 20 | Workshop orientation \
-           Quick tour of R Studio\
-           Getting to know data in R\
-           Installing R packages |   |
-| May 21 |  R documentation \
-            Importing tabular files\
-           Data transformation & wrangling\
-           Exporting R objects to file |  |
-| May 22 | Data aggregation + summary \
-            Reshaping data\
-            Combining data sets|   |
-| May 23   | Combining data sets (part 2)\
-              Visualizing data in R with ggplot |    |
-| May 24    |  Finding help\
-               Reproducible research in R \
-               Open time for questions |   |
-| Extra  | How to do repeating actions |   |
+           [Quick tour of R Studio](lessons/rstudio-tour.qmd)\
+           [Getting to know data in R](lessons/getting-to-know-data.qmd) | 
+| May 21 |  [R documentation](lessons/r-documentation.qmd) \
+            [Importing tabular files](lessons/data-import.qmd)\
+           [Data transformation & wrangling](lessons/data-wrangling.qmd)\
+           [Exporting R objects to file](lessons/data-export.qmd) |  
+| May 22 |   [Reshaping data](lessons/reshaping.qmd)\
+            [Combining data sets](lessons/data-merging.qmd) \
+            [Data aggregation + summary](lessons/data-aggregation.qmd) |   
+| May 23 |  [Visualizing data with ggplot](lessons/ggplotting.qmd) \
+            [Finding help](https://agstats.io/post/help-in-r/) \
+            [Reproducible research in R](lessons/reproducible-research.qmd) \
+            [keeping up with R](lessons/final_lesson.qmd)  |
+| May 24  |  Open time for questions  |   
+| Extra  |  [How to repeat actions](repeating-actions.qmd) |
 
 

@@ -17,17 +17,9 @@ As usual, let's start by importing data
 library(dplyr); library(readr); library(tidyr)
 
 metadata <-  read_csv(here::here("data", "trial_metadata.csv"), show_col_types = FALSE)
+
 variety_trial <- read.csv(here::here("data", "trial_data.csv"))
-```
 
-Another data set to import: 
-```{r, eval=FALSE}
-download.file(url = "https://github.com/IdahoAgStats/r-for-ag-scientists/raw/main/data/genotypic_data_rotated.csv",
-              destfile = here::here("data", "genotypic_data_rotated.csv"))
-```
-
-*This will take a minute*
-```{r, include=FALSE}
 genotypes <- read_csv(here::here("data", "genotypic_data_rotated.csv"), show_col_types = FALSE)
 ```
 
@@ -71,6 +63,8 @@ head(together)
 
 If you have ever used `rbind()`, this is an improvement. It will match column names across data sets and order them appropriately. 
 
+
+
 ## Joins
 
 Merging two data sets when it goes beyond a row bind can take an effort. 
@@ -104,7 +98,7 @@ The file "genotype" is from a wholly different study. The extent of matches is c
 
 All observations are returned, regardless if matched. 
 
-Let's match "variety_trial" and "metadata"
+Let's match "variety_trial" and "metadata": 
 ```{r, eval=FALSE}
 ex_fulljoin <- full_join(metadata, variety_trial, by = "trial")
 
@@ -117,9 +111,9 @@ Returns only the rows with matching information. Non-matches are filtered out of
 
 Let's match "genotypes" and "variety_trial" (this will be big!). 
 
-How many of these match (where the key is "variety", which matches "individual" in "genotype")?
+How to check homany of these match (where the key is "variety" that matches "individual" in the object "genotypes")?
 ```{r}
-intersect(variety_trial$variety, genotypes$individual)
+base::intersect(variety_trial$variety, genotypes$individual)
 ```
 
 
@@ -133,16 +127,18 @@ dim(ex_innerjoin)
 sort(unique(ex_innerjoin$variety))
 ```
 
+::: {.callout-question .callout collapse="true"}
+## Practice Problems
 
 Complete this expression: 
 ```{r, eval=FALSE}
 test <- inner_join(genotypes, trial_1, by = join_by(         ))
 ```
-
+:::
  
 ### Left join and right join
  
-Preserves all the rows in one data set and matches to that dataset in the other. In the left join, it is the first data set (the one on the left) where all the rows are kep. In the right join, it's the data set to the right that is full preserved. 
+These preserves all the rows in one data set and matches to that dataset in the other. In the left join, it is the first data set (the one on the left) where all the rows are kep. In the right join, it's the data set to the right that is full preserved. 
 
 Let's compare the different when merging 'trial_2' with 'metadata'. 
 
@@ -153,32 +149,22 @@ ex_leftjoin_1 <- left_join(trial_2, metadata, by = "trial")
 ex_leftjoin_2 <- left_join(metadata, trial_2, by = "trial")
 ```
 
-#### right join equivalent
+#### Right join
 
 ```{r}
 #ex_rightjoin_1 <- right_join(metadata, trial_2, by = "trial")
 ex_rightjoin_2 <- right_join(trial_2, metadata, by = "trial")
 ```
-**Why did this error message result?**
 
-::: {.callout-important collapse="true"}
-## Answer
-
-When metadata is listed first, it is expecting on one match per key. In this case, there are many matches for the column "trial" in the object "trial_2". 
-
-:::
-
-
-**What are some relationships between these 4 joins?**
+**How are these 4 joins similar?**
 
 ::: {.callout-important collapse="true"}
 ## Answer
 
 * ex_leftjoin_1 is the exact equivalent of ex_rightjoin_1, but the columns are in a different order.   
-* ex_leftjoin_2 is the exact equivalent of ex_rightjoin_2, but the columsna are in a different order. 
+* ex_leftjoin_2 is the exact equivalent of ex_rightjoin_2, but the columsn are in a different order. 
 
 :::
-
 
 ### Semi-join
 
@@ -201,79 +187,44 @@ ex_antijoin <- anti_join(variety_trial, genotypes, by = join_by("variety" == "in
 ```
 
 Do any of the variety names match?
+
 ```{r}
 table(ex_antijoin$variety %in% genotypes$individual)
 ```
 
-::: {.callout-tip title="Practice Test" collapse="true"}
-## Practice test
-* As usual, consider how these data aggregation functions can support your own work.
-
-For some of these exercises, you may need to use other [***dplyr***](https://dplyr.tidyverse.org/reference/index.html) functions.
-
-(@) Import "weather_data.csv". Group the data by station and year and count the number of missing data points for 'tmax', 'tmin' and 'tavg'.  
-
-(@) Import "weather_data.csv", group the data by 'station' and 'julian_day' and calculate the average minimum and maximum temperatures for the groups from 'tmin' and 'tmax'. If you already imported the data set from the previous problem, you don't need to import it again if you did not change the data set. 
-
-(@) Import "weather_data.csv", calculate the difference between the 'tmin' and 'tmax' for each day. Group the data by year and return the smallest and largest differences for each year. Consider how to handle missing data. If you already imported the data set from the previous problem, you don't need to import it again if you did not change the data set.
-
-[***Solution***](../practice/solution-G.qmd)
-:::
-
-
-
-
 ::: {.callout-note}
 
-***dplyr*** [updated](https://dplyr.tidyverse.org/news/index.html?q=join#joins-0-7-0)! 
+***dplyr*** [can do complex joins.](https://dplyr.tidyverse.org/news/index.html?q=join#joins-0-7-0)! 
 
-One of the biggest changes is how it handles joins. It can now do some very flexible matching by numeric values, dates and other factors. More on this can be found in the documentation for [join_by](https://dplyr.tidyverse.org/reference/join_by.html). 
+It can do some very flexible matching by numeric values, dates and other factors. More on this can be found in the documentation for [join_by](https://dplyr.tidyverse.org/reference/join_by.html). This topic is complext and beyond the scope of this introductory workshop. 
 :::
 
 ## Final Notes
 
-This is the end of lessons on data wrangling. There is additional functionality that we have not touched on that you may find useful to know. 
+This is near the end of lessons on data wrangling. There is additional functionality that we have not touched on that you may find useful to know.
 
-| function name | what it does |
-|---------------|--------------|
-| `tidyr::drop_na()`     | remove rows with missing data |
-| `dplyr::pull()`        | extracts a single column and converts it to a vector | 
-| `dplyr::distinct()`   | return rows with distinct observations (removes duplicates) |
-| `dplyr::na_if()`      | converts a specificed value to NA |
-| `dplyr::relocate()`     | move columns to another position |
-| `tidyr::fill()`       | fill is missing data based on surrounding data |
-
-Complete list of [dplyr functions](https://dplyr.tidyverse.org/reference/index.html) and [tidyr functions](https://tidyr.tidyverse.org/reference/index.html).
+Here is the complete list of [dplyr functions](https://dplyr.tidyverse.org/reference/index.html) and [tidyr functions](https://tidyr.tidyverse.org/reference/index.html).
 
 [R 4 Data Science](https://r4ds.had.co.nz/) by Hadley Wickam and Garret Grolemund provides comprehensive guide to data wrangling. 
 
+::: {.callout-question .callout collapse="true"}
+## Practice Problems
 
+1. Import "genotypic_data_rotated.csv" (see script below), along with "trial_data.csv", and "trial_metadata.csv". 
 
-::: {.callout-tip title="Practice Test" collapse="true"}
-## Practice test
-(@) Download [genotypic_data_rotated.csv](https://github.com/IdahoAgStats/r-for-ag-scientists/raw/main/data/genotypic_data_rotated.csv) (see script below), Import that file, along with, "trial_data.csv", and "trial_metadata.csv". 
+1. Do an inner join between "genotypic_data_rotated.csv" and "trial_data.csv" using variety names. 
 
-```{r, eval=FALSE}
-download.file(url = "https://github.com/IdahoAgStats/r-for-ag-scientists/raw/main/data/genotypic_data_rotated.csv",
-              destfile = here::here("data", "genotypic_data_rotated.csv"))
-```
+1. Do a semi-join of "genotypic_data_rotated.csv" with "trial_data.csv" and do the reverse. How does this compare with the inner join from the previous problem? 
 
-(@) Do an inner join between "genotypic_data_rotated.csv" and "trial_data.csv" using variety names. 
+1. Do an anti-join between "genotypic_data_rotated.csv" and "trial_data.csv". 
 
-(@) Do a semi-join of "genotypic_data_rotated.csv" with "trial_data.csv" and do the reverse. How does this compare with the inner join from the previous problem? 
-
-(@) Do an anti-join between "genotypic_data_rotated.csv" and "trial_data.csv". 
-
-(@) Join together all common observations between the 3 files (your choice on join). 
-
-
-[***Solution***](../practice/solution-I.qmd)
+1.  Join together all common observations between the 3 files (your choice on join). 
 :::
 
 ::: {.callout-tip}
 ## Putting it all together
 
-Although this lesson did not demonstrate the use of the pipe, `%>%`, it can be used with pipes:
+Although this lesson did not demonstrate the use of the pipe, `%>%`, it can be used with joins: 
 
 ```{r, eval=FALSE}
 obj <- left_join(x, y) %>% right_join(z)

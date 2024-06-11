@@ -214,8 +214,8 @@ You may also be working with data types that are not strictly tabular, at least 
 
 ...and so much more.
 
-::: {.callout-tip title="Practice Test" collapse="true"}
-## Practice test
+::: {.callout-question .callout collapse="true"}
+## Practice Problem
 
 1. Import one of your data sets using two of the functions taught:
 

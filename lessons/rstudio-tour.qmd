@@ -8,17 +8,24 @@ echo: FALSE
 
 At the end of this lesson, you should understand:
 
--   What the different tabs in each of the panes of RStudio do
--   What is in each menu item in Rstudio and have a general sense of functionality available
+-   what the different tabs in each of the panes of RStudio do
+-   what is in each menu item in Rstudio and have a general sense of functionality available
 :::
 
 ```{r}
 knitr::include_graphics(here::here("images", "rstudio.png"))
 ```
 
-RStudio is more than a graphical user interface for R. It is an integrated development environment (IDE), that is a full service application for supporting software development. It can perform multitudes, so more than most people need. It is the supermarket of R functionality. Like a supermarket, there are parts of RStudio you will visit frequently and parts you will rarely if ever use. After 10+ years of using RStudio on a near daily basis, there are several parts of it that I continue to be unfamiliar with! Ths is okay - clearly, I have not needed those parts. You will come to find what sections youn will need most over time and practice.
+RStudio is more than a graphical user interface for R. It is an integrated development environment (IDE), that is a full service application for supporting software development. It can perform multitudes, so much more than what most R users need. 
+
+It is the supermarket of R functionality. Like a supermarket, there are parts of RStudio you will visit frequently and parts you will rarely if ever use. After 12+ years of using RStudio on a near daily basis, there are several parts of it that I continue to be unfamiliar with! Ths is okay - clearly, I have not needed those parts. You will come to find what sections you will need most over time and practice.
 
 Still, it helps to have a guided tour. Let's dive into this.
+
+:::  {.callout-note collapse="false"}
+
+Recall that R is separate from RStudio. R is the actual interpreter that does all the amazing stuff. RStudio is a user interface (that is also amazing for different reasons). I have seen many papers reference RStudio ("We used R version 1.0.2...") like it was R, an embarassing error.  Don't fall into this trap. 
+:::
 
 ## The Panes
 
@@ -38,7 +45,7 @@ knitr::include_graphics(here::here("images", "rstudio_console_pane.png"))
 
 Default location: left or bottom left
 
-| Tab             | Function                                                           |
+| Tab             | Purpose                                                           |
 |-----------------|--------------------------------------------------------------------|
 | Console         | where R commands are actually done                                 |
 | Terminal        | use a terminal language such as bash or the windows command prompt |
@@ -56,7 +63,7 @@ Default location: bottom right
 
 Probably the most useful pane - we will be here frequently!
 
-| Tab          | Function                          |
+| Tab          | Purpose                          |
 |--------------|-----------------------------------|
 | Plots        | view plots                        |
 | Files        | explore your file system          |
@@ -79,7 +86,7 @@ We will talk about package installation and usage later in this course/workshop.
 knitr::include_graphics(here::here("images","rstudio_envir_pane.png"))
 ```
 
-| Tab         | Function                                               |
+| Tab         | Purpose                                               |
 |-------------|--------------------------------------------------------|
 | Environment | objects created and existing in your current R session |
 | History     | previous R command run                                 |
@@ -98,9 +105,7 @@ knitr::include_graphics(here::here("images","rstudio_editor_pane.png"))
 
 default location: upper left
 
-These are all the files we create and edit: `.R`, `.Rmd`, `.txt`, ...
-
-when we open files from the "Files" pane, this is where it shows up
+These are all the files we create and edit: `.R`, `.Rmd`, `.txt`, etc. When we open files from the "Files" pane, this is where it shows up. 
 
 ## The Upper Menu Items
 
@@ -110,57 +115,59 @@ knitr::include_graphics(here::here("images", "rstudio_ribbon.png"))
 
 ### File
 
--   opening and/or creating files\
--   opening and/or creating projects\
--   recent files, recent project\
--   (standard file functionality)
+-   Opening and/or creating files\
+-   Opening and/or creating projects\
+-   Recent files, recent project 
+-   ...standard file functionality
 
 ### Edit
 
--   copy, paste, find
--   very handy "find in files" feature!
+-   Copy, paste, find
+-   Very handy "find in files" feature!
 
 ### Code
 
--   incredible useful set of commands
--   some are very simple (e.g. "comment lines"), others are complex (e.g. "rename in scope")
--   over time, you will learn what these mean and perhaps make use of them (if you don't, that is okay)
+-   Incredible useful set of commands
+-   Some are very simple (e.g. "comment lines"), others are complex (e.g. "rename in scope")
+-   Over time, you will learn what these mean and perhaps make use of them (if you don't, that is okay)
 
 ### View
 
--   rearrange panes
--   zoom in/out
--   overall not that useful, except for the shortcuts
+-   Rearrange panes
+-   Zoom in/out
+-   Overall not that useful, except for the shortcuts
 
 ### Plots
 
--   meh
+-   (self explanatory)
 
 ### Session
 
--   very handy for restarting your R session
--   manually set the working directory (we will do this in a few weeks)
+-   Very handy for restarting your R session
+-   Manually set the working directory
 
 ### Build
 
--   advanced tools for building packages, websites, et cetera. I've never visited this part of the supermarket.
+-   Advanced tools for building packages, websites, et cetera. I've never visited this part of the supermarket.
 
 ### Debug
 
--   tools for debugging code (removing scripting errors). We will not use this in the workshop! But you can learn more about it [here](https://support.posit.co/hc/en-us/articles/205612627-Debugging-with-the-RStudio-IDE).
+-   Tools for debugging code (removing scripting errors). We will not use this in the workshop! But you can learn more about it [here](https://support.posit.co/hc/en-us/articles/205612627-Debugging-with-the-RStudio-IDE).
 
 ### Profile
 
--   for code profiling (checking how long it takes your code to run). We will also not be using this in the workshop. This is part of the supermarket I rarely visit.
+-   For code profiling (checking how long it takes your code to run). We will also not be using this in the workshop. This is part of the supermarket I rarely visit.
 
 ### Tools
 
--   some handy utility function. I mostly use this menu item to set preferences via "Global Options".
+-   Some handy utility function. I mostly use this menu item to set preferences via "Global Options".
 
 ### Help
 
--   more utility functions. You can check for RStudio updates here, access community help forum, and other forms of documentation in addition to standard help files.
+-   Mmore utility functions. You can check for RStudio updates here, access community help forum, and other forms of documentation in addition to standard help files.
 
 ### more
 
 Rstudio has a massive number of keyboard shortcuts. You can find them in the menu (Help --\> Cheat Sheets) and summarized in this [cheat sheet](https://github.com/rstudio/cheatsheets/blob/master/rstudio-ide.pdf)
+
+

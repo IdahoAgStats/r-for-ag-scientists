@@ -35,10 +35,9 @@ Let's run some examples with trial data set.
 Load the libraries and trial data:
 
 ```{r, message=FALSE}
-library(readr); library(dplyr); library(tidyr)
+library(dplyr); library(tidyr)
 
 variety_trials <- read.csv(here::here("data", "trial_data.csv")) 
-
 ```
 
 ### Pivot long to wide
@@ -118,9 +117,16 @@ parma2018_wide_2vars <- parma2018 %>%
 head(parma2018_wide_2vars)
 ```
 
+::: {.callout-question .callout collapse="true"}
+## Practice Problems
+
+Import "weather_data.csv". Filter to any single year and reshape the data from long to wide so that the levels in "station' form the new column headers, 'julian_day' is the identifying column and the cells are filled with data from 'tmax_F'. 
+
+:::
+
 #### Pivot with multiple observations per identifier
 
-Sometimes, there may be multiple observations per identifier and new column header. \***tidyr** will attempt to resolve this automatically, sometimes by inserting a list inside a data frame to capture the additional information. This is messy and hard to access. Sometimes this is an unintentional; you expected only one observation and learn through tidyr warning messages that there is an more observations than expected.
+Sometimes, there may be multiple observations per identifier and new column header. **tidyr** will attempt to resolve this automatically, sometimes by inserting a list inside a data frame to capture the additional information. This is messy and hard to access. Sometimes this is an unintentional; you expected only one observation and learn through tidyr warning messages that there is an more observations than expected.
 
 However, you can also introduce a function in a `pivot_wider` such as `mean` or `sum` to summarise these replicate observations.
 
@@ -156,15 +162,20 @@ parma2020_long <- parma2018 %>%
 head(parma2020_long)
 ```
 
-::: {.callout-tip title="Practice Test" collapse="true"}
-## Practice test
-* As always, consider how these reshaping functions can support your own research and data analysis. 
+::: {.callout-question .callout collapse="true"}
+## Practice Problems
+*As always, consider how these reshaping functions can support your own research and data analysis.*
 
-(@) Import "genotypic_data.txt" and remove columns 2 through 5 ('CHROM', 'POS(cM)', 'Major_allele', 'Minor_allele'). What is left is genetic marker names and the marker scores for the individual lines (each column is an genetically distinct wheat line). Using `pivot_longer()`, reshape this object to long so there is one column for the marker name, one column for the wheat name, and the one column for the marker score. How many rows long is this object? Can you image trying to do this by hand??
+1. Import "genotypic_data.txt" and remove columns 2 through 5 ('CHROM', 'POS(cM)', 'Major_allele', 'Minor_allele'). What is left is genetic marker names and the marker scores for the individual wheat lines (each column is an genetically distinct wheat line). This requires the use of `read_delim()`. You might want to try using the point-and-click import function that is built into RStudio (use the 'readr' option). 
 
-(@) Import "weather_data.csv". Filter to any single year and reshape the data from long to wide so that the levels in "station' form the new column headers, 'julian_day' is the identifying column and the cells are filled with data from 'tmax_F'. 
+1. Using `pivot_longer()`, reshape this object from wide to long so there is one column for the marker name, one column for the wheat name, and the one column for the marker score. How many rows long is this object? Can you image trying to do this by hand??
 
-(@) Here is a crazy extra exercise that utilizes transpose instead of pivoting. It's not strictly related to reshaping. Only try this if you are in the mood for a challenge. 
+:::
+
+::: {.callout-question .callout collapse="true"}
+## Extra Hard Practice Problem
+
+Here is a crazy extra exercise that utilizes transpose instead of pivoting. It's not strictly related to reshaping. Only try this if you are in the mood for a challenge. 
 
 This problem is indicative of a data wrangling you can experience out in the wild. You are given a data set in one format, but a package requires your data be in another format. 
 
@@ -172,12 +183,11 @@ The file "genotypic_data.txt" is a transposed version of "genotypic_data_rotated
 
 The column "individual" no longer has periods in the listed names, but the original file had periods in those names since they were column headers. Write code to remove those periods from the column "individual" in your transformed column (hint: look at the documentation for `gsub()`). 
 
-
-[***Solution***](../practice/solution-H.qmd)
 :::
 
-
-
+```{r, echo=FALSE}
+# fyi, solutions here: [***Solution***](../practice/solution-H.qmd)
+```
 
 ::: callout-tip
 ## Putting it all together

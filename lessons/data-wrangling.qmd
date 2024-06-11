@@ -13,6 +13,7 @@ At the end of this lesson, you should:
 -   know to create new variables using `mutate()`
 -   be able to rename variables using `rename()`
 -   be able to sort a data set using `arrange()`
+-   understand how to handle missing values with `drop_na()`, `na_if()` and `replace_na()`
 -   be table to use `separate()` to split up single variables into multiple variables
 :::
 
@@ -112,6 +113,19 @@ select(variety_trials, c(1:3, 4))
 While selecting by numeric position works, it is an unreliable choice because it depends on column order or row order being exactly as you expect it. This may work the first time you write + run code, but it is likely to fail over time as you sort, augment or change data sets.
 :::
 
+
+::: {.callout-question .callout collapse="true"}
+## Practice Problems
+
+(@) Import "trial_data.csv" with the [***readr***](https://readr.tidyverse.org/) function `read_csv()`. 
+
+(@) Select columns that contain "i" in the column name and assign it a name "select_colm".
+
+(@) Using the object from importing "trial_data.csv", filter when variety is "Jefferson" and "Dayn", and yield greater than or equal to 70. Assign these results to a new object. 
+
+:::
+
+
 ### Creating new variables
 
 You can quite create new variables with a `mutate()` function call:
@@ -162,12 +176,13 @@ This can be a bit longer and cumbersome compared to `mutate` statements, but it 
 
 #### `case_when(),` a special addition to `mutate` statements
 
-Occasionally, you will need a define a variable conditionally, based on information from other variables. Here is an example for weather data. Here, a special minimum value is created where all data for "tmin_F" less than 50°F are set at 50:
+Occasionally, you will need a define a variable conditionally, based on information from other variables. Here is an example for variety trial data. Here, a special minimum value is created where all data for "yield" less than 100 are set at 100:
 
 ```{r, eval= FALSE}
-weather <- mutate(weather, new_min = case_when(
-  tmin_F <= 50 ~ 50,
-  TRUE ~ tmin_F))
+Var1 <- mutate(variety_trials, new_min = case_when(
+  yield <= 100 ~ 100,
+  TRUE ~ yield))
+head(Var1)
 ```
 
 Everything to the left of the tilde `~` is a logical expression to evaluate. Everything to the right of the tilde is the value to put if the logical expression evaluates to TRUE.
@@ -236,11 +251,89 @@ variety_trials <- separate(variety_trials, trial,
                            into = c("program", "crop", "location", "year"),
                            sep = "_", 
                            remove = FALSE)
+
 ```
 
 The argument `remove = FALSE` indicates that we want to keep the input variable ("trial"). By default, it would be removed.
 
 The opposite function is `tidyr::unite()` which will paste these variable together, separate by any character string you specify. `unite()` also can ignore missing data when pasting information together, avoiding this unfortunate result: "some.var_NA_NA_another.var". You would get "some.var_another.var" instead.
+
+::: {.callout-question .callout collapse="true"}
+## Practice Problems
+
+(@) Import "weather.csv" with the `readr::read_csv()`. Filter the weather data set for station "USC00456215"
+
+(@) Create a new variable named T_avg as an average of 'tmin_F' and 'tmax_F' using a `mutate()` function and name this data frame as 'weather1'.
+
+(@) Select "name" column from the weather1 data set and rename it as "location".
+
+(@) In weather1 data set, select the first five columns and reduce that data set to unique rows (look into using `distinct()` for extracting the unique observations). 
+
+(@) Using weather1 data set, create a new variable as combination of station and name variables separated by "_" (e.g. station_name) using the unite() function. 
+
+**Tip:** search for `unite()` in help. 
+
+:::
+
+### Functions for Missing Data
+
+#### Remove missing data
+
+`dplyr::filter()` can be used to filter missing data, but **tidyr** has a function, `drop_na()` that makes this easier. You can filter out rows based on missing data in any number of columns, including all columns. Note that this works on observations R has designated as `NA`. If an observation has white space instead of `NA` after data import into R, those are not equivalent. 
+
+This will remove all rows with any missing data.
+```{r}
+na_filter_ex1 <- drop_na(variety_trials)
+```
+
+This will remove rows with missing data in 'grain_protein' and 'test_weight'.
+
+```{r}
+na_filter_ex2 <- drop_na(variety_trials, grain_protein, test_weight)
+```
+
+
+#### Designate missing data
+
+Sometimes, you may have some odd observations you would like designated as missing. This can be accomplished with the `mutate()` function, but sometimes this shortcut is preferred. `na_if()` works on vectors, within a data frame or by itself. 
+
+```{r}
+trial_data <- mutate(variety_trials, var2 = na_if(variety, "Dayn"))
+# check that it worked as intended:
+filter(trial_data, var2 == "Dayn")
+```
+
+This also might be useful if specific columns use '-9' to indicate missing values:
+
+```{r eval=FALSE}
+# not that this demonstration code will not change the data frame because we did not use -
+variety_trial <- mutate(variety_trials, yield2 = na_if(trial, "-9"))
+```
+
+#### Replace missing data with a value
+
+There are other moments that you may want to replace missing values with something in particular (perhaps zero, but be cautious when doing so). `replace_na()` can accomplish this. Like `na_if()`, this function operates on vectors. 
+
+```{r}
+variety_trials <- mutate(variety_trials, protein = replace_na(grain_protein, -9))
+# check that it worked as intended:
+hist(variety_trials$protein)
+```
+
+Sometimes, data sets have clear indications when a values is intended to be filled:
+
+```{r}
+data1 <- data.frame(experiment = c("exp1", NA, NA, NA, "exp2", NA, NA, NA),
+                    observation = rnorm(n = 8, mean = 50, sd = 1))
+data1
+```
+
+```{r}
+data2 <- fill(data1, experiment, .direction = "down")
+data2
+```
+
+
 
 ### Sorting a data set
 
@@ -294,37 +387,13 @@ It also saved us from the "parentheses cascade" where one function is nested ins
 
 ```{r, echo=FALSE}
 knitr::include_graphics(here::here("images", "nest_vs_pipe.jpg"))
+
 ```
 
+::: {.callout-question .callout collapse="true"}
+## Practice Problems
 
-::: {.callout-tip title="Practice Test" collapse="true"}
-## Practice test
-
-*If you have your own data, import it and consider what sort of data wrangling you might need to do on the data set to ready it for analysis - does something need to be filtered or calculated? This is a good moment to apply skills learned. *
-
-(@) Import "trial_metadata.csv" with the [***readr***](https://readr.tidyverse.org/) function `read_csv()`. Create a new variable that combined information in the 'location' and 'irrigation' columns.
-
-(@) Filter the imported data set for when the location is "Parma" and sort the data set based on planting date. Assign the results to a new object.
-
-
-(@) Select 4 columns from the data set and rename one of them. Assign these results to a new object. 
-
-(@) Import "weather_data.csv", select the first five columns and reduce that data set to unique rows (look into using `distinct()` for extracting the unique observations). 
-
-(@) NEW: Import "trial_data.csv". Split the "trials" column into 4 variables using `separate()` as we did in class (or see the [lesson notes](../lessons/Lesson09.qmd)). Filter the data set to the 2 most recent years and the varieties WA8268, WB4418, WB4311, WB4623CLP, WB4792, and WB7589. 
-
-Here is the prep work to do prior to `separate()`: 
-
-```{r}
-trial_data <- read.csv(here::here("data", "trial_data.csv")) 
-
-trial_data$trial <- gsub(pattern = "_H_", 
-                         replacement = "_H-", 
-                         x = trial_data$trial)
-```
-
-(@) Output the result from any of the previous problems to file. 
-
+Using piping, import "trial_metadata.csv", filter by 2 nurseries of your choosing, then sort by year and planting date
 
 :::
 

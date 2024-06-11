@@ -1,5 +1,5 @@
 ---
-title: Exporting Data"
+title: Exporting Data
 execute:
   eval: false
 ---
@@ -112,11 +112,19 @@ If you are working with a specialized file type that has dedicated libraries for
 :::
 
 
-::: {.callout-tip title="Practice Test" collapse="true"}
-## Practice test
+::: {.callout-question .callout collapse="true"}
+## Practice Problems
 
-1. Repeat the [import practice problems](../pratice/practice-D.qmd). Export those files under a new file name. Make sure you use a new file name or a different output directory so you do not write over the original files. 
-2. Examine the output files to make sure they look as expected? Where any row names accidentally introduced? Were missing cells converted to "NA"? Did any data become unexpectedly quoted? 
+1. Import one of your data sets using two of the functions taught:
+
+(save your data in different format to enable this)
+
+* `read.csv()`
+* `read_csv()`
+* `read_excel()`
+* `read.delim()`
+
+1. Examine the data imported using `View(imported_data)`. Did everything import as expected? Are your variables coded as they should be? Are numeric variables numeric? Are missing data detected as thus? Where any row names accidentally introduced? Were missing cells converted to "NA"? Did any data become unexpectedly quoted? 
 
 :::
 

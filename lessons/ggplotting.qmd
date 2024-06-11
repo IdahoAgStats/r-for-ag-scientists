@@ -32,7 +32,7 @@ if(!require(agridat)) {
   library(agridat)}
 ```
 
-***[agridat](https://kwstat.github.io/agridat/)*** is a package consisting solely of several hundred agricultural data sets, along with example code for data visualiztion or analysis. This is an extraordinary resource! This lesson will use a data set from the National Agricultural Statistics Service (NASS). This is hay yields between 1909 and 2012 for by state (in the US). Some states do not have Ha
+***[agridat](https://kwstat.github.io/agridat/)*** is a package consisting solely of several hundred agricultural data sets, along with example code for data visualiztion or analysis. This is an extraordinary resource! This lesson will use a data set from the National Agricultural Statistics Service (NASS). This is hay yields between 1909 and 2012 for by state (in the US). Some states do not have Hay.
 
 ```{r}
 data("nass.hay")
@@ -161,16 +161,6 @@ There are many options for the type of plotting character ("pch" in base R plott
 
 The default shape is "1" (the circle). Plotting symbols 21 - 25 have outline color *and* fill attributes, while the other symbols only take a single color argument. 
 
-#### area
-```{r}
-ggplot(hay_idaho, aes(x = year, y = yield)) +
-  geom_area(fill = "orange", col = "gray20", na.rm=TRUE) +
-  ggtitle("Total historic hay yields in Idaho") + 
-  xlab("Year") +
-  ylab("yield (1000s of tons)")
-```
-
-
 #### boxplot
 
 ```{r}
@@ -199,10 +189,83 @@ ggplot(hay_pnw, aes(x = state, y = yield, fill = state)) +
   ggtitle("Yearly hay yields in the Pacific Northwest") + 
   xlab("State") +
   ylab("yield (1000s of tons)")
+
 ```
 **Question:** *What happens if we specify "color = state" instead of "fill = state"?*
 
 (Try it and find out). 
+
+
+::: {.callout-question .callout collapse="true"}
+## Practice Problems
+
+1. Using hay_idaho data, create a line plot and point plot for acres (y-axis) over year (x-axis). Try different linetype for line plot and use different point shape for point plot. 
+
+1. Using hay_pnw data, Create a box-plot of number of 'acres' in each 'state'. color the 'state' factor.
+:::
+
+
+#### Combining geoms
+
+Geoms are best thought of as plotting layers. Additional geoms can be added to a single plot, adding additional layers of information. Each geom is added to the plot in the order it is specified in the ggplot statement. 
+
+```{r, echo=FALSE}
+knitr::include_graphics(here::here("images", "ggplot_layers_frame.png"))
+```
+
+Creating point and line plot together is a good way of visulization trend and pattern in the data.
+```{r}
+
+##check for point and line plot if it is added anywhere
+ggplot(hay_idaho, aes(x = year, y = yield)) +
+  geom_point(shape = 2, col = "navy", na.rm=TRUE) + geom_line(color = "turquoise3")+
+  ggtitle("Total historic hay yields in Idaho") + 
+  xlab("Year") +
+  ylab("yield (1000s of tons)")
+
+```
+
+
+Adding an overall of points over boxplots is a good way to summarise the empirical distribution of a large number of data points: 
+
+```{r}
+ggplot(hay_pnw, aes(x = state, y = yield, fill = state)) +
+  geom_boxplot(na.rm = TRUE) +
+  geom_point(na.rm = TRUE) +
+  ggtitle("Yearly hay yields in the Pacific Northwest") + 
+  xlab("State") +
+  ylab("yield (1000s of tons)")
+```
+
+In this example, it is likely there is over-plotting of data since each state has 104 data point associated with it. The geom `geom_jitter()` can be used to jiggle overlapping points. Points can be jittered in the vertical and horizontal direction. In this case, jittering in the horizontal direction will result in no change in the interpretation since the y-axis indicates actual value associated with each point.
+
+```{r}
+ggplot(hay_pnw, aes(x = state, y = yield, fill = state)) +
+  geom_boxplot(na.rm = TRUE) +
+  geom_jitter(width = 0.2, height = 0, na.rm = TRUE, alpha = 0.7) +
+  ggtitle("Yearly hay yields in the Pacific Northwest") + 
+  xlab("State") +
+  ylab("yield (1000s of tons)")
+```
+
+
+::: {.callout-question .callout collapse="true"}
+## Practice Problems
+
+1. Use hay_idaho, create a line and point plot for number of acres over years. Assign a color and shape to line and points of your choice.
+
+1. Import Apple.csv, create a box-plot of 'yield' for 'stock' variable. Add points over boxplots.
+
+:::
+
+#### area
+```{r}
+ggplot(hay_idaho, aes(x = year, y = yield)) +
+  geom_area(fill = "orange", col = "gray20", na.rm=TRUE) +
+  ggtitle("Total historic hay yields in Idaho") + 
+  xlab("Year") +
+  ylab("yield (1000s of tons)")
+```
 
 ::: {.callout-note}
 
@@ -245,36 +308,13 @@ ggplot(hay_pnw, aes(x = yield, fill = state)) +
   geom_density(alpha = 0.5, na.rm=TRUE)
 ```
 
-#### Combining geoms
+::: {.callout-question .callout collapse="true"}
+## Practice Problem
 
-Geoms are best thought of as plotting layers. Additional geoms can be added to a single plot, adding additional layers of information. Each geom is added to the plot in the order it is specified in the ggplot statement. 
+1. Using hay_pnw data, create a density plot of number of 'acres' for each 'state', adjust alpha value.
 
-```{r, echo=FALSE}
-knitr::include_graphics(here::here("images", "ggplot_layers_frame.png"))
-```
+:::
 
-
-Adding an overall of points over boxplots is a good way to summarise the empirical distribution of a large number of data points: 
-
-```{r}
-ggplot(hay_pnw, aes(x = state, y = yield, fill = state)) +
-  geom_boxplot(na.rm = TRUE) +
-  geom_point(na.rm = TRUE) +
-  ggtitle("Yearly hay yields in the Pacific Northwest") + 
-  xlab("State") +
-  ylab("yield (1000s of tons)")
-```
-
-In this example, it is likely there is over-plotting of data since each state has 104 data point associated with it. The geom `geom_jitter()` can be used to jiggle overlapping points. Points can be jittered in the vertical and horizontal direction. In this case, jittering in the horizontal direction will result in no change in the interpretation since the y-axis indicates actual value associated with each point.
-
-```{r}
-ggplot(hay_pnw, aes(x = state, y = yield, fill = state)) +
-  geom_boxplot(na.rm = TRUE) +
-  geom_jitter(width = 0.2, height = 0, na.rm = TRUE, alpha = 0.7) +
-  ggtitle("Yearly hay yields in the Pacific Northwest") + 
-  xlab("State") +
-  ylab("yield (1000s of tons)")
-```
 
 ### Other common plotting options
 
@@ -302,6 +342,13 @@ ggplot(hay_pnw) +
   geom_line(aes(x = year, y = yield), col = "darkcyan", na.rm=TRUE) +
   facet_wrap(. ~ state, nrow = 2, ncol = 2)
 ```
+
+
+::: {.callout-question .callout collapse="true"}
+## Practice Problem
+
+1. Import “Apple.csv” from the data folder. create a point plot for 'yield' (y-axis) and 'spacing' (x-axis), and facet it for the 'stock' variable. Color points with a color of your choice.
+:::
 
 #### Representing error information
 
@@ -332,8 +379,16 @@ ggplot(hay_pnw_summary, aes(y = state)) +
   # set the limits (lower and upper bounds for the x-axis)
   xlim(c(0, 3.7)) +
   ylab("") 
+
 ```
 
+
+::: {.callout-question .callout collapse="true"}
+## Practice Problem
+
+(@) Import the weather_data.csv from data folder, group by 'station' and calculate mean and standard deviation for 'tmin_F'. Create a plot with error bars for 'tmin_F' (x-axis) and 'station'. Feel free to choose the shape, size, and color of your choice.
+
+:::
 
 #### Add regression lines to a plot
 
@@ -365,6 +420,7 @@ facet.plot <- ggplot(hay_pnw) +
   facet_wrap(. ~ state, nrow = 2, ncol = 2)
 
 facet.plot + theme_minimal() 
+
 ```
 
 This is not *exactly* what I want. Larger labels on everything would be helpful, as well as an outline around each plot. And while we are at it, labeling the x-axis for each decade rather than every 25 years would be easier to interpret. 
@@ -416,6 +472,7 @@ ggplot(hay_pnw) +
   # set the scale for x-axis (yer)
   scale_x_continuous(breaks = c(seq(1910, 2015, by = 10)))  +
   theme_bw() 
+
 ```
 
 This looks okay, but it could be better. There is room to put the legend inside the plot and the text should probably be larger. Also, the legend title is not really needed. 
@@ -424,7 +481,7 @@ This looks okay, but it could be better. There is room to put the legend inside 
 ggplot(hay_pnw) +
   geom_line(aes(x = year, y = yield, col = state), na.rm = TRUE) +
   scale_x_continuous(breaks = c(seq(1910, 2015, by = 10)))  +
-  theme_bw() +
+  theme_bw() +  
   theme(
     legend.position = c(0.15, 0.8), # give exact coordinates (ranging from 0 to 1)
     legend.background = element_rect(colour = "black"),
@@ -434,6 +491,32 @@ ggplot(hay_pnw) +
 ```
 
 The legend can also be moved to locations outside the main plotting area with arguments such as `legend.position = "top"`, `legend.position = "left"` and so on. 
+
+```{r}
+ggplot(hay_pnw) +
+  geom_line(aes(x = year, y = yield, col = state), na.rm = TRUE) +
+  scale_x_continuous(breaks = c(seq(1910, 2015, by = 10)))  +
+  theme_bw() +
+  theme(
+    legend.position = "bottom", 
+    legend.background = element_rect(colour = "black"),
+    legend.text = element_text(size = 12),
+    legend.title = element_blank()
+  )
+```
+
+::: {.callout-question .callout collapse="true"}
+## Practice Problem
+
+1. Create a point scatter plot for yield over years and add color & shape effect for the state factor. 
+  * Add theme_light() and change the size of text for axis to '13' and title to '14. 
+  * Change the angle of text on x-axis to 90 degrees.
+  * Assign this graph name plot1.
+
+2. In plot1, modify legend by: changing text size to 11, changing legend position to "top.
+
+:::
+
 
 #### Summary
 
