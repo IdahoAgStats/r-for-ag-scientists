@@ -77,7 +77,7 @@ storms %>% select_if(is.numeric) %>% colMeans(na.rm=TRUE)
 * To do a global replacement of another value with `NA`, this can be handled in the import, or use `dplyr::na_if()`
 
 
-### Repeating operatio across a list
+### Repeating operations across a list
 
 😍😍😍😍😍 `lapply()` 😍😍😍😍😍
 
