@@ -1,0 +1,129 @@
+---
+title: "Solutions to Practice C"
+---
+
+### Vectors
+
+(@) There is no difference. If there is only item in a vector, it does not need to be indexed by position. 
+
+(@) The way to do this shown in class:
+```{r}
+v1 = c("a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z")
+v1
+```
+
+This is rather cumbersome. An easier way is to use the preset vectors `letters` and `LETTERS` which are the english alphabet in lowercase and uppercase, respectively. The index position 1 of each corresponds to the first letter of the alphabet, "a" or "A". 
+
+```{r}
+v1 <- c(letters[1:13], LETTERS[14:26])
+v1
+```
+
+::: {.callout-note}
+## FYI
+
+If something seems tedious and slow in R, there is probably a shortcut.
+:::
+
+(@) The vector:
+
+```{r}
+v2 <- c(1:10, 2:50)
+```
+
+
+### Data Frames
+
+
+(@) A possible data frame: 
+
+```{r}
+d1 <- data.frame(var1 = c(TRUE, TRUE, TRUE, FALSE, FALSE, FALSE),
+                 var2 = 1:6,
+                 var3 = "orange",
+                 var4 = as.factor(c("red", "blue", "blue", "purple", "green", "green")))
+
+str(d1)
+```
+The function `str()` is for checking the structure of an object. For a data frame, it will iterate over every column and give us the data type and some sample values. 
+
+(@) The starting data frame
+
+```{r}
+df <- data.frame(one = 1:10,
+                 two = rnorm(10))
+df$three <- df$two + rnorm(10)
+df$four <- sample(c("A", "B"), 10, replace = TRUE)
+```
+
+```{r}
+df$five <- sample(c("apple", "huckleberry"), 10, replace = TRUE)
+df$six <- as.factor(df$five)
+```
+
+```{r}
+new_df <- df[,c(5, 1, 4, 2, 3)]
+new_df
+```
+
+
+### Lists
+
+(@) The list
+
+```{r}
+mylist = list(x1 = "snow", 
+              x2 = 45:65, 
+              x3 = rep(letters[1:3], each = 3), 
+              x4 = matrix(1:100, nrow = 10, ncol=10))
+mylist
+```
+
+There are two ways to remove x3. The First is to create a new list from the object 'mylist' and don't include x3:
+
+```{r}
+mylist2 <- list(mylist[[1]], mylist[[2]], mylist[[4]])
+mylist2
+```
+
+Lists also let you declare a list item as `NULL` which makes it completely go away!
+
+```{r}
+mylist[[3]] <- NULL
+mylist
+```
+
+
+(@) A possible list:
+
+```{r}
+l1 <- list(v1, v2, d1)
+```
+
+Set the 4th item of vector inside a list to `NA`. The first item is a vector, so we will use that. 
+```{r}
+l1[[1]][4] <- NA
+```
+
+You can index a vector inside of a list by indexing the list first, then the vector. 
+
+(@) Remove list item: 
+```{r}
+l1[[2]] <- NULL
+```
+When an item is set to `NULL` in a list, it disappears. 
+
+
+::: callout-tip       
+## Evergreen lesson
+
+Always always always check your object to make sure it looks like what you expected it to.
+
+Common checks: 
+
+  * the dimensions (row number, column number, length, etc) are what you expect
+  * the data types are what you expect
+  * the values are what you expect
+
+:::
+  

@@ -1,0 +1,184 @@
+---
+title: "Aggregating & Summarising Data"
+---
+
+::: {.callout-caution collapse="false"}
+## Learning Goals
+
+At the end of this lesson, you should:
+
+-   be able to aggregate data and perform actions on those aggregated data using `group_by()` and `summarise()`
+-   understand when to use `rowwise()` for operations
+:::
+
+You may find yourself wanting to calculate summary statistics across a grouping variable. To do this, a data set needs to be split up by that variable, a summary statistic calculated, and the resulting data recombined, or 'split-apply-combine'. There's some nice tools to do this in the **dplyr** package.
+
+### Prep Work
+
+First, load libraries & import data:
+
+```{r, message=FALSE}
+library(dplyr)
+
+variety_trials <- read.csv(here::here("data", "trial_data.csv")) %>% 
+  mutate(trial = gsub("_H_", "_H-", trial)) %>% 
+  tidyr::separate(trial, c("program", "crop", "location", "year"),
+                  sep = "_", remove = FALSE)
+```
+
+### Basic grouping & aggregation
+
+The `group_by` will group data and then any statistic can be calculated or summary action can be done on that grouped data using `summarise()`.
+
+The basic formula:
+
+```{r, eval=FALSE}
+mydata %>% group_by(variable) %>% summarise(new_var = ...)
+```
+
+This data set has several categorical variables that can be used for grouping:
+
+```{r}
+str(variety_trials)
+```
+
+The function `tally()` counts observations:
+
+```{r}
+variety_trials %>% group_by(trial) %>% tally()
+```
+
+Let's group by crop and pull out the mean yield and standard deviation.
+
+```{r}
+yield_crop <- variety_trials %>% group_by(crop) %>% 
+  summarise(yield_mean = mean(yield, na.rm = TRUE),
+            yield_sd = sd(yield, na.rm = TRUE),
+            yield_min = min(yield, na.rm = TRUE),
+            yield_max = max(yield, na.rm = TRUE),
+            total = n())
+
+yield_crop
+
+```
+
+::: callout-note
+`summarise()` only returns a single value back for each group. If you want more than that (e.g. to run a linear model on each group), there are other tools for that. This is intended to be addressed in Lesson 'repeating actions'.
+:::
+
+### Grouping across multiple variables
+
+Let's examine how many crops and years there are using the `table()` command:
+
+```{r}
+table(variety_trials$crop, variety_trials$year)
+```
+
+This tells us how many rows of data occur for each variable combination. This information can help inform us how to group information.
+
+You can group by as many conditions as you want:
+
+```{r}
+variety_trials %>% group_by(crop, year) %>% 
+  summarise(protein_na = sum(is.na(grain_protein))) %>% arrange(desc(protein_na))
+```
+
+::: callout-warning
+## FYI
+
+You can group by a numeric variable. If you do that, ***dplyr*** will look for common values to group observations. This can be successful when there are repeat 'integers' (e.g. year, replicate), but if all values are unique (which is often the case with floating point numbers), then the number of groups is the number of observations.
+:::
+
+### Summarising across multiple variables
+
+Use `across()` to conduct the same summary action(s) across multiple columns.
+
+```{r}
+variety_trials %>% group_by(trial) %>% 
+  summarise(across(c(yield, grain_protein), ~ mean(.x, na.rm = TRUE)))
+
+variety_trials %>% group_by(trial) %>% 
+  summarise(across(c(yield, grain_protein), ~ sd(.x, na.rm = TRUE)))
+
+```
+
+::: {.callout-question .callout collapse="true"}
+## Practice Problems
+* As usual, consider how these data aggregation functions can support your own work.
+
+* For some of these exercises, you may need to use other [***dplyr***](https://dplyr.tidyverse.org/reference/index.html) functions.
+
+1. Count the number of observations for each 'variety' in the 'variety_trials' data set.
+
+1. Use 'variety-trials' data, group data by 'variety' and calculate the summary statistics (mean, sd, min, and max) for 'grain_protein'.
+
+1. Use 'variety-trials' data, group data by 'crop' and 'year' variables and calculate the mean and standard deviation across 'test_weight' and 'grain_protein'.
+
+:::
+
+
+### Row-wise summaries
+
+Many operations in R are already vectorized across rows, but when they are not, you can use `rowwise()` to implement that.
+
+Field disease scoring may benefit from this system. Often, several measurements are made on a single experimental unit (usually a plot), and those measurements are averaged together to create a final disease incidence score. Here is how to do that with `rowwise()`.
+
+First, simulate a set of disease scores between 0 and 100 (indicating percent infection).
+
+```{r}
+set.seed(208)
+
+# step 1: generate a set of possible scores: 0, 10, 20,...100
+score_range <- c(0:10 * 10L)
+# sample those possible scores to generate 50 data points
+scores <- sample(score_range, 50, replace = TRUE)
+# arrange those 50 data points into a datafrmae of 5 columns, each column reflecting 10 observations
+disease_df <- data.frame(plot = letters[1:10],
+                         score1 = scores[1:10],
+                         score5 = scores[11:20],
+                         score3 = scores[21:30],
+                         score4 = scores[31:40],
+                         score2 = scores[41:50])
+disease_df
+```
+
+Data sets exist like this. A person might have a set of 10 experimental plots to evaluate for some trait. The trait assay protocol may require that multiple observations be gathered per plot (from a statistical standpoint, this is a technical replicate, not a true replicate) and then reduced to a single number per plot using a simple mean. Row-wise functions can accomplish this.
+
+```{r}
+disease_df_sum <- disease_df %>% rowwise() %>% 
+  mutate(score_final = mean(score1:score2),
+        max_score = max(score1:score2))
+disease_df_sum
+```
+
+```{r}
+disease_df_sum1 <- disease_df %>% select(score1, score4, score5) %>% 
+rowwise() %>% 
+  mutate(score_final = mean(c(score1, score4)),
+        median_score = median(c(score1, score4)))
+disease_df_sum1
+```
+
+
+::: {.callout-question .callout collapse="true"}
+## Practice Problem
+
+(@) Import "weather_data.csv", select 'station, 'tmin_F' and 'tmax_F' using a select() function. Calculate the sum, mean, and median for 'tmin_F' and 'tmax_F' using rowwise() function.
+
+:::
+
+
+::: callout-tip
+## Putting it all together
+
+It is possible use `mutate()` or `summary()` commands on a grouped data frame. A `summary()` call will return one value per group + summary function (e.g. `mean`). A `mutate()` call will return one value per row + summary function. All the previous examples in this lesson used `summary()`. Here is one example using `mutate()`:
+
+```{r}
+variety_trials %>% 
+  select(trial, rep, variety, crop, yield) %>% group_by(crop) %>%
+  mutate(relative_yield = yield/mean(yield, na.rm=TRUE)) %>% 
+  arrange(desc(yield)) %>% head(15)
+```
+
+In this case, the mean value used for calculating 'relative_yield' is the group mean.
+:::

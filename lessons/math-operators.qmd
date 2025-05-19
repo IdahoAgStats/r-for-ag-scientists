@@ -1,0 +1,215 @@
+---
+title: "Math Operators & Vectorizing"
+---
+
+::: {.callout-caution collapse="false"}
+## Learning Goals
+
+At the end of this lesson, you should:
+
+-   understand sorts of math operators available in R and how to use them
+-   understand logical operators in R
+-   be aware of the order of operations
+-   be aware of how whitespace is interpreted in R
+-   understand how to use parentheses, brackets, braces and quotations in R
+-   be able to repeat a set of operations across a vector
+-   be able to create a sequence of numbers in R using any starting value and any ending value
+:::
+
+### R as a calculator
+
+#### Addition, subtraction, multiplication, division
+
+```{r}
+1 + 3
+10 - 15
+2*8
+60/12
+```
+
+A hard return between lines of code is sufficient to separate the commands.
+
+#### Exponentiation
+
+```{r}
+3^2
+2^4
+9^0
+2^-2
+```
+
+R can also handle scientific notation. This number, `3e2` is equivalent to $3 * 10^2$, or $3000$.
+
+#### Roots (square, cube, ....)
+
+```{r}
+4^(1/2)
+8^(1/3)
+```
+
+#### Logs
+
+```{r}
+log(10)
+```
+
+(base e)
+
+log with base 10
+
+```{r}
+log10(10)
+```
+
+log with base 2
+
+```{r}
+log2(4)
+```
+
+If you have other bases:
+
+```{r}
+log(10, base = 4)
+```
+
+#### Operations with sign
+
+*(positive and negative signs are called "unary operators")*
+
+```{r}
+3*-4
+```
+
+Like in standard math, only negatively signed numbers need to be specified.
+
+#### Integer division (the remainder is discarded)
+
+```{r}
+5 %/% 3
+```
+
+#### Modulus operator (return the remainder after division)
+
+```{r}
+5 %% 3
+```
+
+....and so much [more](https://stat.ethz.ch/R-manual/R-devel/library/base/html/00Index.html)
+
+### Logical Operators
+
+These test for conditions ("is this true?") and return either a `TRUE` or `FALSE`
+
+| syntax   | Function                                            |
+|----------|-----------------------------------------------------|
+| ==       | equal                                               |
+| !=       | does not equal                                      |
+| \<       | less than                                           |
+| \>       | greater than                                        |
+| \<=, \>= | less than and equal to, and greater than equivalent |
+
+**Examples**
+
+```{r}
+1 == 1
+1 == 2
+1 != 2
+1 < 1
+1 > 1
+1 <= 1
+1 >= 1
+```
+
+When testing multiple conditions: use `&` ('and') if two things must be true and `|` ('or') if one of two things must be true:
+
+```{r}
+1 < 2 & 1 != 1 
+1 < 2 | 1 != 1
+```
+
+### Order of operations.
+
+The rules:
+
+1.  operations go left to right
+2.  exponents are first, followed by 'unary operators' (+/- signs)
+3.  multiplication and division before subtraction and/or addition
+4.  logical operators come after all mathematical transformations
+5.  Parentheses overall all other rules!
+
+What results from this?
+
+```{r, eval=FALSE}
+2^3+4+12*7/2 <= -6*9
+```
+
+**When in doubt about the order of operations use parentheses!**
+
+[Here](https://stat.ethz.ch/R-manual/R-devel/library/base/html/Syntax.html) is the official R guide to order of operations (warning: this is complicated and refers to functions beyond mathematical operators).
+
+
+
+::: callout-note
+If you become stuck with an unfinished command, you can use the escape key, `ESC`, to get out of it.
+:::
+
+
+### Vectorizing operations
+
+Using R as a calculator between a few numbers is handy, but typically we
+are hoping to do so much more with it, such as performing a calculations
+across a long list of numbers.
+
+R is naturally vectorized, which means that you can easily perform a
+mathematical operation across a vector of numbers (no need to write
+loops!)
+
+Say we have a collection of numbers from 10 to 20 and we want to
+multiple them all by 12. We can create a sequence of numbers by wrapping
+them all in `c()` command (for "concatenate") and separating each with a
+comma.
+
+```{r}
+c(10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20)
+```
+
+Then those numbers can be operated on by any math operator:
+
+```{r}
+c(10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20) * 10 - 1
+```
+
+There's also a quicker way to specify a sequence of integers using the
+notation `start:end`:
+
+```{r}
+1:10
+```
+
+It also counts down:
+
+```{r}
+20:10
+```
+
+And works with negative integers:
+
+```{r}
+-5:5
+```
+
+These can be operated on:
+
+```{r}
+(-5:5)^2
+```
+
+
+::: callout-tip
+## Putting it all together
+
+Check the "History" tab in the upper right hand pane (this should be to the right of the "Environment" tab). What is there?
+
+If you followed along and coded the above examples, you should see the command you ran previously (including any mistakes). This is your command history. There are several icons directly above your history - explore what those do (hoover before clicking any icon to make sure you are okay with action before performing it).
+:::

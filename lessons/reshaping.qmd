@@ -1,0 +1,200 @@
+---
+title: "Reshaping Data Sets"
+---
+
+::: {.callout-caution collapse="false"}
+## Learning Goals
+
+At the end of this lesson, you should:
+
+-   be able to convert a long data set to wide
+-   be able to convert a wide data set to long
+-   be aware of function used during `pivot_wide()` to compress multiple observations for a variable combination being pivoted.
+:::
+
+### What is pivoting?
+
+There are circumstances when a wide data set are needed and circumstances when a long data set are needed, for analysis, plotting, data wrangling, etc.
+
+Doing this manually in a spreadsheet program is extremely cumbersome and very susceptible to errors! You are much better off doing this in R (or another programming language).
+
+These wide-to-long and long-to-wide conversions are also called 'pivoting'.
+
+```{r, echo=FALSE}
+knitr::include_graphics(here::here("images", "wide_v_long.png"))
+```
+
+When pivoting from long to wide format, we should consider what will be used as the identifying information, what information will be used for column headers and what information will be used to fill the cells/populate the table.
+
+When pivoting from wide to long, the considerations are similar: what will be the name of the new column header and what information (i.e. what columns) will be used to populate the data in the vertical direction, while which columns will be used for record identification.
+
+Pivoting from wide to long can be done with the [***tidyr***](https://tidyr.tidyverse.org/) functions `pivot_wide()` and the reverse function if `pivot_longer()`.
+
+Let's run some examples with trial data set.
+
+Load the libraries and trial data:
+
+```{r, message=FALSE}
+library(dplyr); library(tidyr)
+
+variety_trials <- read.csv(here::here("data", "trial_data.csv")) 
+```
+
+### Pivot long to wide
+
+The first thing we should do is look at the documentation for `pivot_wider`.
+
+```{r, eval=FALSE}
+?pivot_wider
+```
+
+The main arguments to consider (not including the input data) is:
+
+**id_cols** what are the identifying columns that we will keep in the data set to identify and separate records. This can be multiple columns.
+
+**names_from** is the variable that will be used to make the new column header. This is the column that we are seeking to change from long to wide. This should be a categorical variable or one that can be coerced to one. Usually it contains repeating values.
+
+**values_from** is the variable that will be used to fill the cells under the column header.
+
+*There is long list of other arguments, but these are the most important.*
+
+#### Pivot single variable
+
+The loaded data set includes many different field trials. Let's look at the information for one trial and pivot the data across replicates for a single variable, using entry as an ID variable.
+
+First, find out the different levels for "trial":
+
+```{r}
+unique(variety_trials$trial)
+```
+
+This example will use the last trial listed (SWIdahoCereals_SWW_PAR_2020), but any of these options will work. Let's filter the data and check that there is one observation per rep and entry.
+
+```{r}
+parma2018 <- variety_trials %>% filter(trial == "SWIdahoCereals_H_S_PAR_2018") 
+table(parma2018$variety, parma2018$rep)
+```
+
+The table produces all "1" indicating 1 observation per variable combination, which is what we want.
+
+```{r}
+parma2018_wide <- parma2018 %>% 
+  pivot_wider(id_cols = variety,
+              names_from = rep,
+              values_from = yield)
+
+head(parma2018_wide)
+```
+
+If you try to index that column with `parma2018_wide$1`, an error is thrown:
+
+```{r, error=TRUE}
+parma2018_wide$1
+```
+
+We can give it better column names (not starting with a number) using the `names_prefix` argument.
+
+```{r}
+parma2018_wide <- parma2018 %>% 
+  pivot_wider(id_cols = variety,
+              names_from = rep,
+              values_from = yield,
+              names_prefix = "rep_")
+
+head(parma2018_wide)
+```
+
+#### Pivot multiple variables
+
+Perhaps we want to pivot 2 variables.
+
+```{r}
+parma2018_wide_2vars <- parma2018 %>%
+  pivot_wider(id_cols = variety,
+              names_from = rep,
+              values_from = c(yield, grain_protein))
+
+head(parma2018_wide_2vars)
+```
+
+::: {.callout-question .callout collapse="true"}
+## Practice Problems
+
+Import "weather_data.csv". Filter to any single year and reshape the data from long to wide so that the levels in "station' form the new column headers, 'julian_day' is the identifying column and the cells are filled with data from 'tmax_F'. 
+
+:::
+
+#### Pivot with multiple observations per identifier
+
+Sometimes, there may be multiple observations per identifier and new column header. **tidyr** will attempt to resolve this automatically, sometimes by inserting a list inside a data frame to capture the additional information. This is messy and hard to access. Sometimes this is an unintentional; you expected only one observation and learn through tidyr warning messages that there is an more observations than expected.
+
+However, you can also introduce a function in a `pivot_wider` such as `mean` or `sum` to summarise these replicate observations.
+
+Here is an example using "variety", which is has replicate values.
+
+```{r}
+parma2018_wide_var <- parma2018 %>%
+  pivot_wider(id_cols = variety,
+              names_from = rep, 
+              values_from = yield,
+              values_fn = mean)
+
+head(parma2018_wide_var)
+```
+
+### Wide to Long
+
+Let's put all the traits in one column (and filter out the missing data).
+
+Main arguments in `pivot_longer()` (besides the data set):
+
+**cols** the columns to stack/pivot
+
+**names_to** name of the new categorial variable that is composed of the names of the columns being pivoted
+
+**values_to** name of new value column (will be named "value" by default if not specified)
+
+```{r}
+parma2020_long <- parma2018 %>% 
+  pivot_longer(cols = c(yield, grain_protein, test_weight),
+               names_to = "trait")
+
+head(parma2020_long)
+```
+
+::: {.callout-question .callout collapse="true"}
+## Practice Problems
+*As always, consider how these reshaping functions can support your own research and data analysis.*
+
+1. Import "genotypic_data.txt" and remove columns 2 through 5 ('CHROM', 'POS(cM)', 'Major_allele', 'Minor_allele'). What is left is genetic marker names and the marker scores for the individual wheat lines (each column is an genetically distinct wheat line). This requires the use of `read_delim()`. You might want to try using the point-and-click import function that is built into RStudio (use the 'readr' option). 
+
+1. Using `pivot_longer()`, reshape this object from wide to long so there is one column for the marker name, one column for the wheat name, and the one column for the marker score. How many rows long is this object? Can you image trying to do this by hand??
+
+:::
+
+::: {.callout-question .callout collapse="true"}
+## Extra Hard Practice Problem
+
+Here is a crazy extra exercise that utilizes transpose instead of pivoting. It's not strictly related to reshaping. Only try this if you are in the mood for a challenge. 
+
+This problem is indicative of a data wrangling you can experience out in the wild. You are given a data set in one format, but a package requires your data be in another format. 
+
+The file "genotypic_data.txt" is a transposed version of "genotypic_data_rotated.csv". Import  "genotypic_data.txt" into R and use R commands to recreate "genotypic_data_rotated.csv".
+
+The column "individual" no longer has periods in the listed names, but the original file had periods in those names since they were column headers. Write code to remove those periods from the column "individual" in your transformed column (hint: look at the documentation for `gsub()`). 
+
+:::
+
+```{r, echo=FALSE}
+# fyi, solutions here: [***Solution***](../practice/solution-H.qmd)
+```
+
+::: callout-tip
+## Putting it all together
+
+When to use these function depends on the desired output. If you want to do a multi-year analysis of field trial data, stacking the years in the long format makes sense. If you want to compute correlations across two variables, the wide format makes sense for those variables.
+
+As part of the tidyverse, anything pivoting can be preceded by or can be followed by any other data wrangling step such as filtering, data aggregation and so on.
+
+You can use any of the [tidy select](https://tidyselect.r-lib.org/reference/starts_with.html) methods for indicating which values to pivot. This is particularly useful when there is a very large number of columns to pivot that share similarities in their name.
+:::

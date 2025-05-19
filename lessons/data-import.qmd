@@ -1,0 +1,239 @@
+---
+title: "Importing Data into R" 
+---
+
+::: {.callout-caution collapse="false"}
+## Learning Goals
+
+At the end of this lesson, you should:
+
+-   know how to set your working directory
+-   know how to specify a file path
+-   Be able to import CSV and Excel files into R
+-   understand the main arguments for importing .xlsx, .xls and .csv files
+:::
+
+## Working directory and file paths
+
+While you can simulate data or load existing data sets associated with packages for your research, most of you will need to load pre-existing data sets from you computer, or a cloud server, some other external device.
+
+The first thing you need to understand is the working directory and file paths. When an R session is initiated, it ascertains what the root working directory is based on the default settings for your R installation and any other.
+
+You can check this with `getwd()`. You can set the file path relative to the current working directory or set an absolute path (that is, independent of your current directory). You can read more about absolute and relative paths [here](https://networkencyclopedia.com/absolute-path/).
+
+When opening an R project (an .Rproj file), the working directory is automatically set to the directory where the .Rproj is located. Otherise, you can set the working directory using `setwd()` or under "Session" in the RStudio Ribbon.
+
+### Quarto files and the {Here} package
+
+When working with an R notebook like a Quarto document or an Rmarkdown document, the working directory within code chunks is automatically set to where the quarto document is located on your file system. This is the case regardless of whether you set the working directory or where the .Rproj file is located.
+
+To import a data set located in another directory from where the quarto document is located, you can use bash strategies for navigating up and down directory structures (e.g. "../data/somefile.csv"). Another solution is to use the [***here***](https://here.r-lib.org/).
+
+The function `here()` in the ***here*** package will reconstruct a path based on the system you are using (Windows, Mac, Linux, etc). Each directory must be specified and the final item specified is the file to import.
+
+```{r}
+library(here)
+here("directory1", "subdirectory", "my_file.txt")
+```
+
+If you don't want to load an entire package, but use the function from it, you can use the notation `package_name::function()`. The code below uses that when calling the `here()` function: `here::here()`.
+
+## How to Import
+
+There are several ways to import data into R.
+
+1.  Use the "Import Dataset" tool in the Environment pane.
+
+```{r, echo=FALSE, ,out.height="80%",out.width="80%"}
+knitr::include_graphics(here::here("images", "import_dataset_enviro.png"))
+```
+
+2.  Use the Files pane in RStudio
+
+```{r, echo=FALSE, ,out.height="80%",out.width="80%"}
+knitr::include_graphics(here::here("images", "import_dataset_file.png"))
+```
+
+Both of them open a new window that looks like this:
+
+```{r, echo=FALSE, ,out.height="80%",out.width="80%"}
+knitr::include_graphics(here::here("images", "import_dataset_window.png"))
+```
+
+::: callout-warning
+While these point-and-click interfaces are very convenient, they don't automatically leave a trail of breadcrumbs to help you repeat the process in the future. *But*, they do generate R code that we can capture and reuse. They are handy shortcuts that I have found especially helpful when trying to import file formats I work with rarely.
+:::
+
+3.  Manual command line import
+
+Ultimately, this is how anything is imported into R. As mentioned, first two options listed above are actually tools for generating code that will import a data set through the command-line!
+
+There's 4 common approaches for importing data into R:
+
+-   `read.csv()`
+-   `read_csv()`
+-   `read_excel()`
+-   `read_delim()`
+
+### `read.csv()`
+
+A very commonly used function for reading in "comma separated values" (CSV) files. I personally like this format because it is not proprietary and is compatible across many operating systems. It also limits all sorts of extraneous formatting that itself is a barrier to reproducible research (e.g. highlighting is discarded once a CSV file is closed).
+
+**Example usage:**
+
+```{r}
+mycsv1 <- read.csv(here::here("data", "trial_metadata.csv"))
+```
+
+**Result:**
+
+```{r}
+str(mycsv1)
+```
+
+**Details:**
+
+`read.csv()` is actually a "wrapper" for another function, `read.table()`. It has taken `read.table()` and set the default arguments to work with CSV files. `read.table()` is a more generalized form providing more flexibility.
+
+The default arguments include:
+
+-   `colnames = TRUE`: the first row of data is assumed to be the column names \* nothing in the data set will be used for row names unless we explicitly indicate so
+
+-   `sep = ","`: each data point is separated from another by a comma \* a newline indicator is used to separate rows of data
+
+-   `na.strings = c("NA", "")`: cells with a either no data ("") or an"NA" will be treated as missing.
+
+-   if a column of data consists of non-numeric characters, that column vector will be treated as character and not a factor
+
+### `read_csv()`
+
+This function is part of ***readr***. It has very similar functionality to `read.csv()`, but it parses the data a wee bit different.
+
+**Example Usage:**
+
+First, load the package ***readr*** that contains the function `read_csv()`.
+
+```{r}
+library(readr)
+mycsv2 <- read_csv(here::here("data", "trial_metadata.csv"))
+```
+
+**Result:**
+
+```{r}
+str(mycsv2)
+```
+
+**Details:**
+
+This function takes similar arguments to `read.csv()`, although the output is more extensive.
+
+-   Like in `read.csv()`, the default separator is ",", missing data are coded as empty string `""` or `NA` and the first line is assumed to be the column header
+-   it does not bother with a row names attribute
+-   the argument `trim_ws` will remove leading and trailing whitespace for data entries. So the column header " soil pH" will become "soil pH".
+-   Column are preserved more clearly than `read.csv()` (including spaces and special characters). I'm honestly not fond of this behavior and usually clean up weird column names with `janitor::clean_names()`.
+
+The output is largely similar, although `read_csv()` actually parses dates, unlike `read.csv()`.
+
+### `read_excel()`
+
+This function will read in MS Excel files (reliably)! It is truly amazing. For many many years, it was cumbersome and/or impossible to read Excel files direclty into R.
+
+**Example Usage:**
+
+Load the package that contains the function `read_excel()`, [***readxl***](https://readxl.tidyverse.org/).
+
+```{r}
+library(readxl)
+myxl <- read_excel(here::here("data", "field_trial_2009.xlsx"), 
+                   sheet = "site_02", 
+                   trim_ws = TRUE, 
+                   na = c("", "NA"))
+```
+
+**Results:**
+
+```{r}
+str(myxl)
+```
+
+**Details**
+
+-   By default, `read_excel()` will import the first sheet unless it named by position (e.g. 1, 2, 3) or name (like in the previous example).
+-   The default argument for missing values is only an empty string `""`
+-   It returns results very similar to `read_csv()`.
+-   There is also an argument, `range` for setting a custom range of cells to read in.
+
+### `read_delim()`
+
+For reading in text files! It's pretty simple. Text files are not used terribly frequently, but I see them now and then with really huge files, such as genotyping data.
+
+```{r, eval=FALSE}
+mytxt <- read.delim(here::here("data", "genotypic_data.txt"))
+```
+
+**Details**
+
+This function is a more extensive version of `read.csv()`. It has a longer list of argument and slight different default values for those arguments that `read.csv`. Run `?write.delim` in the console for more details.
+
+::: callout-note
+It's useful to understand how R has read a data set into an R session. R has opened a connection to the file that you have specified, read file information into the R session using system memory (your computer's RAM), and then closed the connection.
+
+**This is a one-way process from your file to R**
+
+Once a file is loaded and the connection closed, there is no longer *any link* between the object loaded into memory in R and its origin file (located on on your computer, a cloud server, etc). Any changes made to the object in R will not change the file on your computer unless you explicitly run scripts to overwrite that file. This is good thing; it gives you freedom to experiment with and manipulate an object without worrying about messing up the original file.
+
+We will discuss later how to export R objects to your file system when you want to capture changes made to an object.
+:::
+
+### Troubleshooting Import errors
+
+Things frequently go wrong when importing data. This can sometimes be corrected by changing the import arguments, but often it indicates problems with the incoming data.
+
+Some possible errors and how to fix them:
+
+1.  **Some variables which should be numeric are characters instead.** *At least one item contains an unexpected character that renders that observation - and the rest of the vector - as a character. This might be two decimal points, a comma, or a "O" instead of "0". If possible, manually inspect the data and correct the error.*
+
+2.  **Missing data are not coded as missing.** *Import functions have default values for what is interpreted as missing. Check the documentation and adjust the arguments as needed to capture what code a data sets is using to indicate missing data.*
+
+The best choice is to properly arrange your data set prior to import. [Broman & Woo (2018)](https://www.tandfonline.com/doi/full/10.1080/00031305.2017.1375989) provides some straightforward recommendations on how to manage data in spreadsheets.
+
+### Importing Other Data types
+
+The instructions provided above are for importing tabular data that is generally not "big data".
+
+Big data is a subjective term that is system-dependent (and is rapidly changing as PC computing power and memory increases). Some personal computers can easily handle a 50 Mb file, while others cannot. If you are waiting more than 5 seconds for your data to import, then consider other options. A deep discussion about how to handle large data sets are beyond the scope of this workshop, but at the very minimum, consider the package [**data.table**](https://rdatatable.gitlab.io/data.table/) and its high-performance functions for reading and writing data, `fread()` and `fwrite()`. If your data sets are too big to load directly into R, consider [**arrow**](https://arrow.apache.org/docs/r/).
+
+You may also be working with data types that are not strictly tabular, at least in the form they are stored on a computer. Here are some common non-tabular data types and packages to handle import of those.
+
+-   spatial data: [***sf***](https://r-spatial.github.io/sf/), [***sp***](https://CRAN.R-project.org/package=sp), [***raster***](https://rspatial.github.io/raster/)
+-   SAS data sets: [***haven***](https://haven.tidyverse.org/), `haven::read_sas()`
+-   SPSS data sets: [***haven***](https://haven.tidyverse.org/), `haven::read_sav()`
+-   tabular files on Google drive: [***googledrive***](https://googledrive.tidyverse.org/)
+-   image files: [***magick***](https://docs.ropensci.org/magick/articles/intro.html)
+
+...and so much more.
+
+::: {.callout-question .callout collapse="true"}
+## Practice Problem
+
+1. Import one of your data sets using two of the functions taught:
+
+(save your data in different format to enable this)
+
+* `read.csv()`
+* `read_csv()`
+* `read_excel()`
+* `read.delim()`
+
+1. Examine the data imported using `View(imported_data)`. Did everything import as expected? Are your variables coded as they should be? Are numeric variables numeric? Are missing data detected as thus? 
+
+:::
+
+
+
+::: callout-tip
+## Putting it all together
+
+Note how easy it is to import data from the 'Files' pane; navigate to the file and click on it! It's important that that the code generated is saved so (1) you can reuse the code; and (2) so you can link the data set loaded to a set of R commands you ran should you ever need to rerun them (which is highly likely).
+:::

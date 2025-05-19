@@ -1,0 +1,23 @@
+---
+title: "Practice I"
+---
+
+*(for the data merging lesson)*
+
+(@) Download [genotypic_data_rotated.csv](https://github.com/IdahoAgStats/r-for-ag-scientists/raw/main/data/genotypic_data_rotated.csv) (see script below), Import that file, along with, "trial_data.csv", and "trial_metadata.csv". 
+
+```{r, eval=FALSE}
+download.file(url = "https://github.com/IdahoAgStats/r-for-ag-scientists/raw/main/data/genotypic_data_rotated.csv",
+              destfile = here::here("data", "genotypic_data_rotated.csv"))
+```
+
+(@) Do an inner join between "genotypic_data_rotated.csv" and "trial_data.csv" using variety names. 
+
+(@) Do a semi-join of "genotypic_data_rotated.csv" with "trial_data.csv" and do the reverse. How does this compare with the inner join from the previous problem? 
+
+(@) Do an anti-join between "genotypic_data_rotated.csv" and "trial_data.csv". 
+
+(@) Join together all common observations between the 3 files (your choice on join). 
+
+
+[***Solution***](../practice/solution-I.qmd)

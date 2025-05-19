@@ -1,0 +1,59 @@
+---
+title: "Solutions to Practice I"
+---
+
+First, load all the libraries
+```{r, include=FALSE}
+library(readr); library(dplyr)
+```
+
+(@) Import data sets:
+
+```{r}
+genotypes <- read_csv(here::here("data", "genotypic_data_rotated.csv"), show_col_types = FALSE)
+trials <- read.csv(here::here("data", "trial_data.csv"))
+metadata <- read.csv(here::here("data", "trial_metadata.csv"))
+```
+
+
+(@) The inner join: 
+
+```{r}
+prob_innerjoin <- inner_join(genotypes, trials, by = join_by("individual" == "variety"))
+```
+
+(@) The Semi-join: 
+
+```{r}
+prob_semijoin_1 <- semi_join(genotypes, trials, by = join_by("individual" == "variety"))
+prob_semijoin_2 <- semi_join(trials, genotypes, trials, by = join_by("variety" == "individual"))
+```
+
+```{r}
+dim(prob_innerjoin)
+dim(prob_semijoin_1)
+dim(prob_semijoin_2) 
+```
+
+It is the same group of varieties always returned, but in some cases (prob_innerjoin, prob_semijoin_2) it is all the observations from "trials" and sometimes it is all the observations from genotypes (prob_semijoin_1). 
+
+(@) The anti-join: 
+
+```{r}
+prob_antijoin <- anti_join(genotypes, trials, by = join_by("individual" == "variety"))
+
+dim(prob_antijoin)
+```
+
+
+(@) The mega join:
+
+*here is one option*
+
+```{r}
+megajoin <- full_join(trials, metadata, by = "trial") %>% 
+  semi_join(genotypes, by = join_by("variety" == "individual"))
+```
+
+
+

@@ -1,0 +1,9 @@
+---
+title: "Practice E"
+---
+
+*(for data export lesson)*
+
+1. Repeat the [import practice problems](../pratice/practice-D.qmd). Export those files under a new file name. Make sure you use a new file name or a different output directory so you do not write over the original files. 
+1. Examine the output files to make sure they look as expected? Where any row names accidentally introduced? Were missing cells converted to "NA"? Did any data become unexpectedly quoted? 
+

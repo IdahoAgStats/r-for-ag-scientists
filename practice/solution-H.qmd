@@ -1,0 +1,64 @@
+---
+title: "Solutions to Practice H"
+---
+
+
+```{r, include=FALSE}
+library(dplyr); library(tidyr)
+```
+
+(@) Import data, remove unneeded columns, and pivot all columns but the first to long. 
+
+```{r}
+geno <- read.delim(here::here("data", "genotypic_data.txt")) %>% dplyr::select(-(2:5))
+geno_long <- geno %>% pivot_longer(cols = !1, 
+                                   names_to = "individual",
+                                   values_to = "marker_score")
+```
+
+```{r}
+nrow(geno_long)
+head(geno_long)
+```
+
+
+
+(@) Import weather data and filter to 2000. 
+
+```{r}
+weather <- read.csv(here::here("data", "weather_data.csv")) %>% filter(year == 2000)
+weather_wide <- weather %>% select(station, julian_day, tmax_F) %>% 
+  pivot_wider(id_cols = julian_day, 
+              names_from = station, 
+              values_from = tmax_F)
+
+dim(weather_wide)
+head(weather_wide)
+```
+
+
+(@) Extra problem: transform "genotypic_data.txt" into "genotypic_data_rotated.csv".
+
+```{r, eval=FALSE}
+geno <- read.delim(here::here("data", "genotypic_data.txt"))
+geno2 <- dplyr::select(geno, -(1:5))
+geno3 <- as.data.frame(t(geno2)) %>% mutate(individual = colnames(geno2)) %>% relocate(individual)
+
+colnames(geno3)[2:ncol(geno3)] <- geno$Markers
+geno3$individual <- gsub("[.]", " ", geno3$individual) 
+
+# check that things look okay: 
+geno3[sample(1:nrow(geno3), 5), sample(1:ncol(geno3), 5)]
+```
+
+`gsub()` is relatively straightforward to use, but `.` without any modifiers is actually for wildcard matching (it matches *everything*!!) [Regular expressions](https://www.regular-expressions.info/) are crazy! So use `[.]` instead to specify that you in fact are referring to a period and not simply any character (including whitespace).  
+
+```{r, eval=FALSE}
+readr::write_csv(geno3, here::here("data", "genotypic_data_rotated.csv"))
+```
+
+
+```{r, eval=FALSE, echo=FALSE}
+# test (it works)
+# test <- readr::read_csv(here::here("data", "genotypic_data_rotated.csv"))
+```

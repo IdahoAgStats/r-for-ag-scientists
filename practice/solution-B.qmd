@@ -1,0 +1,19 @@
+---
+title: "Solutions to Practice B"
+---
+
+(@) The variable `x` is a character variable: 
+
+```{r}
+x <- c(-2:3, TRUE, FALSE, 1L, 0L, "zero")
+class(x)
+```
+
+(@) When converted:
+```{r}
+as.logical(x)
+as.character(x)
+as.numeric(x)
+```
+Items which did not the expected object type could not be converted (or "coerced"), so they were set to `NA`. 
+

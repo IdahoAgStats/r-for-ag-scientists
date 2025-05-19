@@ -1,0 +1,173 @@
+---
+title: "Lesson 4: Introduction to R data types"
+---
+
+::: {.callout-caution collapse="false"} 
+
+## Learning Goals
+
+At the end of this lesson, you should:
+
+-   Understand what object class means and how to determine and object's class
+-   Understand the difference between the 5 main object classes: logical, integer, numeric, character and factors.
+-   know how to coerce objects from one class to another
+
+:::
+
+R is a programming language and like all programming languages, it has special conventions for defining how information is classified on your computer and what types of actions can be performed on different data types.
+
+Much of this is related to your computer hardware, how [computer memory is allocated](http://adv-r.had.co.nz/memory.html) for [R objects and processes](https://cran.r-project.org/doc/manuals/R-ints.html) and so forth. You don't need to understand the guts of this to use R (but should you ever want to learn, this is fascinating material).
+
+The most common object types and the rules that govern them are described in this lesson.
+
+### Data types
+
+#### Numeric
+
+Previously, we created an object in R that was a collection or sequence of numbers.
+
+```{r}
+x1 <- 1:10
+```
+
+These numbers are technically integers (sometimes called "long integers"). We can also create "floating point numbers" (e.g. with precision past the decimal point):
+
+```{r}
+x2 <- c(1.25, 2.718, 10.000)
+```
+
+These are also called "double precision numbers" or "double" for short.
+
+#### Character
+
+These can also be created for character variables:
+
+```{r}
+x3 <- "apple"
+x4 <- c("orange", "banana")
+```
+
+Check the type for each R object
+
+```{r}
+ class(x1)
+ class(x2)
+ class(x3)
+ class(x4)
+```
+
+::: callout-note
+You can force a number to be a integer by adding an `L` to a number as long as it does not contain a decimal pont (e.g. `c(0L, 1L, 2L)`)
+:::
+
+There are two other special classes:
+
+#### Logical
+
+-   consisting of TRUE and FALSE values
+
+```{r}
+x5 <- c(TRUE, FALSE, FALSE, TRUE)
+class(x5)
+```
+
+
+### Object type coercion
+
+-   R will automatically an assign an object type based on the items present within object. It will try to assign the simplest type possible. Here are the types from simplest to most complex:
+
+$$logical < integer < numeric < character$$
+
+What classes do you think results from each of these?
+
+```{r}
+x8 <- c(8, 9.2)
+x9 <- c(0, 0, 0, 0)
+x10 <- c(TRUE, FALSE, 1, 0)
+x11 <- c(1, 2, "pear", -6:2, TRUE)
+```
+
+::: {.callout-warning collapse="true"} 
+
+## Answers
+
+```{r}
+class(x8)
+class(x9)
+class(x10)
+class(x11)
+```
+
+:::
+
+When you start importing data, you may notice variables did not come in as expected. This is due to the values in the original data file. For example, there may be a column that is only supposed to contain numeric values, yet it imported as character. The column in the file may contain something like this:
+
+```{r, eval= TRUE}
+c(1.3, 8, 23, "0 (dropped sample)", 100, 84)
+```
+
+This would import as character because of that one single value that is not numeric!
+
+You can check if items are classified as specific types:
+
+```{r}
+is.numeric(x10)
+is.logical(x10)
+is.logical(x5)
+is.character(x4)
+```
+
+Objects can be coerced with these functions:
+
+```{r, eval=FALSE}
+as.character(x8)
+as.logical(x10)
+as.numeric(x11)
+```
+
+### Special object type: The Factor
+
+This is a very unusual data type that is specific to R and its history as a language for statistical analysis. 
+
+::: {.fun}
+### FUN Fact
+
+R's predecessor, "S", was [invented at Bell Labs](https://sas.uwaterloo.ca/~rwoldfor/software/R-code/historyOfS.pdf) for doing data analysis
+::: 
+\n
+
+Factors look like a character variable:
+
+```{r}
+f1 <- factor(c("blue", "blue", "purple", "green", "green", "yellow", "green"))
+f1
+```
+
+It is a character variable, with pre-defined levels that are alphabetized. The text "Levels: ..." are the predefined levels associated with that factor. Let's compare this to a character variable by manually converting it to character.
+
+```{r}
+as.character(f1)
+```
+
+In the character type, all the observations are in quotes and there is no "Level" information. 
+
+Like other data types, you can manually coerce a fabric as thus:
+
+```{r}
+as.factor(x4)
+```
+
+
+Under the hood, deep in the R internals, these are integers. The first factor level is designated `1`, the second level is designated `2` and so forth. This order is set alphanumerically, but it can be manipulated by hand (run `?factor` in the console for more information on how to do this). 
+
+```{r}
+as.integer(f1)
+```
+
+Factors are used in statistical analysis and can be manipulated in several ways. To a large extent, you can ignore factors. However, you will see them referred to in R functions occasionally. It's good to know they exist and the very basics of how they work. 
+
+::: callout-tip
+## Putting it all together
+
+Look at the object created in the lesson in the Global Environment pane. For each object, the object class and the first few values will be listed.
+:::

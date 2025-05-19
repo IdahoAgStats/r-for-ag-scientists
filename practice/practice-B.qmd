@@ -1,0 +1,21 @@
+---
+title: "Practice B"
+---
+
+*(for introduction to R types and objects lesson)*
+
+
+(@) You have this collection of items:
+```{r, eval=FALSE}
+x <- c(-2:3, TRUE, FALSE, 1L, 0L, "zero"). 
+```
+What data type is this? 
+
+(@) Convert this object to these types:
+  * logical
+  * numeric
+  * character
+Inspect the results. What happened? 
+
+
+[***Solution***](../practice/solution-B.qmd)
