@@ -8,21 +8,21 @@ title: "Course Schedule"
 | Date            |  Main Topics              |   
 |-----------------|---------------------------------------|
 | Before first day of class | [Lesson Zero](lessons/lesson-zero.qmd) |  
-| May 20 | Workshop orientation \
-           [Quick tour of R Studio](lessons/rstudio-tour.qmd)\
-           [Getting to know data in R](lessons/getting-to-know-data.qmd) | 
-| May 21 |  [R documentation](lessons/r-documentation.qmd) \
-            [Importing tabular files](lessons/data-import.qmd)\
-           [Data transformation & wrangling](lessons/data-wrangling.qmd)\
-           [Exporting R objects to file](lessons/data-export.qmd) |  
-| May 22 |   [Reshaping data](lessons/reshaping.qmd)\
-            [Combining data sets](lessons/data-merging.qmd) \
-            [Data aggregation + summary](lessons/data-aggregation.qmd) |   
-| May 23 |  [Visualizing data with ggplot](lessons/ggplotting.qmd) \
-            [Finding help](https://agstats.io/post/help-in-r/) \
-            [Reproducible research in R](lessons/reproducible-research.qmd) \
-            [keeping up with R](lessons/final_lesson.qmd)  |
-| May 24  |  Open time for questions  |   
-| Extra  |  [How to repeat actions](repeating-actions.qmd) |
+| Aug 18 | Workshop orientation \
+           Quick tour of R Studio\
+           Getting to know data in R | 
+| Aug 19 |  R documentation \
+            Importing tabular files \
+           Data transformation & wrangling \
+           Exporting R objects to file  |  
+| Aug 20 |   Reshaping data \
+            Combining data sets  \
+            Data aggregation & summary  |   
+| Aug 21 |  Visualizing data with ggplot  \
+            Finding help  \
+            Reproducible research in R  \
+            keeping up with R   |
+| Aug 22  |  Mixed Models & Open time for questions  |   
+| Extra  |  How to repeat actions  |
 
 

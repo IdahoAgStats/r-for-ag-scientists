@@ -4,7 +4,6 @@ title: "Day1"
 
 *(for lessons on getting to know data)*
 
-note: covered practice tests: A, B, C (to be removed from here)
 
 (@) Import "caribbean_maize.csv" with the function `read.csv()` and assigns it to an object named "data2". 
 

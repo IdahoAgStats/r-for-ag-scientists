@@ -6,7 +6,7 @@ You may already have R installed on your computer. However, if the installation 
 
 ## Install R
 
-First, navigate to the Cloud mirror of the R Project for Statistical computing, and download [R](https://cran.rstudio.com/): 
+First, navigate to the Cloud mirror of the R Project for Statistical computing, and download [R](https://cran.rstudio.com/):
 
 
 ```{r, echo=FALSE}
@@ -14,7 +14,7 @@ knitr::include_graphics(here::here("images", "install_R_3.png"))
 ```
 #### Windows
 
-Use the link circled in red regardless if you have R installed or not. It's just easier. 
+Use the link circled in red regardless if you have R installed or not. It's just easier than trying to update an existing installation.  
 
 ```{r, echo=FALSE}
 knitr::include_graphics(here::here("images", "install_R_win.jpg"))

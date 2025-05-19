@@ -12,16 +12,12 @@ We have limited time, so order to conserve class time and have us all ready for 
 
 Follow [these instructions](../r-installation-instructions.qmd) for installing R *and* RStudio. R is the actual programmatic engine that you can do cool things with, and RStudio is an "integrated development environment" (IDE) to help us use R effectively. Some of the screenshots are for an older version of R; please install the latest version of R (4.4 as of May 1, 2024). 
 
-### Join Posit Cloud
-
-You will receive a link via email from us to join our online classroom on [Posit Cloud](https://login.posit.cloud/login), where you will need to sign up for an account using your email, or you can connect it to a Gmail or GitHub account (any of these choices will work fine for the class). If do you not have a Gmail or GitHub account or prefer not to use those, you can use your normal work email instead. Once you receive the invitation and have created an account, follow [these instructions](../posit-instructions.qmd) for accessing the classroom. 
 
 ### Class Structure
 
 For all lessons, please follow along in R + RStudio or Posit Cloud session. In most instances, you will type and run the same code that we will demonstrate. Actually typing out the code rather than cut-and-pasting is how you learn. 
 
-Additionally, all code generated that day will be posted on the Posit Cloud 
-'classroom'. It is important that you read through notes and try to run to do the exercises if (1) you had to miss some or all of a class, or (2) there is material you do not understand. 
+Additionally, all code generated that day will be posted on the class website. It is important that you read through notes and try to run to do the exercises if (1) you had to miss some or all of a class, or (2) there is material you do not understand. 
 
 **It is very important that you use the time between class sessions to ensure you understand the material.**
 

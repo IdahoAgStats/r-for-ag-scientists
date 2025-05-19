@@ -14,9 +14,9 @@ This workshop will take you from zero to hero over the course of 30 hours of ins
 -   understand data types and object types
 -   filter, reshape, merge and manipulate your data
 -   mathematically transform data
--   do repeat actions in R
 -   plot data
 -   navigate R help files
+-   use generative AI tools to assist in coding
 
 ### Who is This workshop for?
 
@@ -24,7 +24,7 @@ This workshop is intended for beginner R users. No previous experience in R or a
 
 ### What this workshop will not cover
 
--   statistical analysis
+-   statistical analysis (although we will briefly introduce our mixed model guide on the last day)
 -   git, GitHub, or any version control
 -   usage of the terminal (e.g. bash)
 
@@ -35,7 +35,7 @@ This workshop is intended for beginner R users. No previous experience in R or a
 
 ### When
 
-May 20-24, 2024\
+August 18-22, 2025\
 Monday - Friday\
 9am - 12pm | 1pm - 4pm Pacific Time
 
