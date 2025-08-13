@@ -63,32 +63,32 @@ website:
           - href: learning-quarto.qmd
             text: Quarto basics
 
-      # - section: "Lessons"
-      #   contents:
-      #     - href: lessons/lesson-zero.qmd
-      #       text: Lesson Zero
-      #     - href: lessons/rstudio-tour.qmd
-      #       text: Quick tour of R studio
-      #     - href: lessons/getting-to-know-data.qmd
-      #       text: Getting to know data in R
-      #       contents:
-      #           - href: lessons/data-types.qmd
-      #             text: Data Types
-      #       contents:
-      #         - href: practice/practice-B.qmd
-      #           text: "practice set B"
-      # - href: lessons/data-structures.qmd
-      #   text: Data Structures
-      #       contents:
-      #         - href: practice/practice-C.qmd
-      #           text: "practice set C"
-      #         - href: practice/solution-C.qmd
-      #           text: "solutions to C"
-      # - href: lessons/math-operators.qmd
-      #   text: Math Operators
-      #       contents:
-      #         - href: practice/practice-A.qmd
-      #           text: "practice set A"
+      - section: "Lessons"
+        contents:
+          - href: lessons/lesson-zero.qmd
+            text: Lesson Zero
+          - href: lessons/rstudio-tour.qmd
+            text: Quick tour of R studio
+          - href: lessons/getting-to-know-data.qmd
+            text: Getting to know data in R
+            # contents:
+            #     - href: lessons/data-types.qmd
+            #       text: Data Types
+            #     - href: practice/practice-B.qmd
+            #       text: "practice set B"
+            #     - href: lessons/data-structures.qmd
+            #       text: Data Structures
+            #       contents:
+            #           - href: practice/practice-C.qmd
+            #             text: "practice set C"
+            #             # - href: practice/solution-C.qmd
+            #             #   text: "solutions to C"
+            #     - href: lessons/math-operators.qmd
+            #       text: Math Operators
+            #       contents:
+            #           - href: practice/practice-A.qmd
+            #             text: "practice set A"
+                        
       #     - href: lessons/r-documentation.qmd
       #       text: R documentation
       #     - href: lessons/data-import.qmd

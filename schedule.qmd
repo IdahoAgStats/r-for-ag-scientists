@@ -9,8 +9,8 @@ title: "Course Schedule"
 |-----------------|---------------------------------------|
 | Before first day of class | [Lesson Zero](lessons/lesson-zero.qmd) |  
 | Aug 18 | Workshop orientation \
-           Quick tour of R Studio\
-           Getting to know data in R | 
+           [Quick tour of R Studio](lessons/rstudio-tour.qmd)\
+           [Getting to know data in R](lessons/getting-to-know-data.qmd) | 
 | Aug 19 |  R documentation \
             Importing tabular files \
            Data transformation & wrangling \
@@ -25,4 +25,4 @@ title: "Course Schedule"
 | Aug 22  |  Mixed Models & Open time for questions  |   
 | Extra  |  How to repeat actions  |
 
-
+Sparring71Funeral33Penalise82Chefs27Essayed01Mozart
