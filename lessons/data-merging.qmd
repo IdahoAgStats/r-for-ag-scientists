@@ -13,7 +13,7 @@ At the end of this lesson, you should:
 :::
 
 As usual, let's start by importing data
-```{r, include=FALSE}
+```{r, include=FALSE, echo=TRUE}
 library(dplyr); library(readr); library(tidyr)
 
 metadata <-  read_csv(here::here("data", "trial_metadata.csv"), show_col_types = FALSE)
