@@ -423,7 +423,7 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
   <li><a href="#read.csv" id="toc-read.csv" class="nav-link" data-scroll-target="#read.csv"><code>read.csv()</code></a></li>
   <li><a href="#read_csv" id="toc-read_csv" class="nav-link" data-scroll-target="#read_csv"><code>read_csv()</code></a></li>
   <li><a href="#read_excel" id="toc-read_excel" class="nav-link" data-scroll-target="#read_excel"><code>read_excel()</code></a></li>
-  <li><a href="#read_delim" id="toc-read_delim" class="nav-link" data-scroll-target="#read_delim"><code>read_delim()</code></a></li>
+  <li><a href="#read.delim" id="toc-read.delim" class="nav-link" data-scroll-target="#read.delim"><code>read.delim()</code></a></li>
   <li><a href="#troubleshooting-import-errors" id="toc-troubleshooting-import-errors" class="nav-link" data-scroll-target="#troubleshooting-import-errors">Troubleshooting Import errors</a></li>
   <li><a href="#importing-other-data-types" id="toc-importing-other-data-types" class="nav-link" data-scroll-target="#importing-other-data-types">Importing Other Data types</a></li>
   </ul></li>
@@ -558,7 +558,7 @@ Warning
 <li><code>read.csv()</code></li>
 <li><code>read_csv()</code></li>
 <li><code>read_excel()</code></li>
-<li><code>read_delim()</code></li>
+<li><code>read.delim()</code></li>
 </ul>
 <section id="read.csv" class="level3">
 <h3 class="anchored" data-anchor-id="read.csv"><code>read.csv()</code></h3>
@@ -720,8 +720,8 @@ dbl  (3): year, latitude, longitude
 <li>There is also an argument, <code>range</code> for setting a custom range of cells to read in.</li>
 </ul>
 </section>
-<section id="read_delim" class="level3">
-<h3 class="anchored" data-anchor-id="read_delim"><code>read_delim()</code></h3>
+<section id="read.delim" class="level3">
+<h3 class="anchored" data-anchor-id="read.delim"><code>read.delim()</code></h3>
 <p>For reading in text files! It’s pretty simple. Text files are not used terribly frequently, but I see them now and then with really huge files, such as genotyping data.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>mytxt <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"genotypic_data.txt"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>

@@ -73,7 +73,7 @@ There's 4 common approaches for importing data into R:
 -   `read.csv()`
 -   `read_csv()`
 -   `read_excel()`
--   `read_delim()`
+-   `read.delim()`
 
 ### `read.csv()`
 
@@ -164,7 +164,7 @@ str(myxl)
 -   It returns results very similar to `read_csv()`.
 -   There is also an argument, `range` for setting a custom range of cells to read in.
 
-### `read_delim()`
+### `read.delim()`
 
 For reading in text files! It's pretty simple. Text files are not used terribly frequently, but I see them now and then with really huge files, such as genotyping data.
 

@@ -15,18 +15,21 @@ At the end of this lesson, you should know:
 
 ## Import a CSV file
 
-This code `read_csv()` reads a CSV file named "caribbean_maize.csv" and assigns it to an object named "data1".
+This code `read.csv()` reads a CSV file named "caribbean_maize.csv" and assigns it to an object named "data1".
 
-The second line of code uses the "head" function to display the first 5 rows of the "data1" data frame. The `View()` will open the data set in new RStudio video where you can look up at the rows and columns.
+The `View()` will open the data set in new RStudio video where you can look up at the rows and columns. The second line of code uses the "head" function to display the first 5 rows of the "data1" data frame. 
 
 ```{r, echo=FALSE}
 data1 <- read.csv(here::here("data", "caribbean_maize.csv"))
-head(data1, 5)
 ```
 
 ```{r, eval=FALSE}
 data1 <- read.csv("data/caribbean_maize.csv")
 View(data1)
+```
+
+```{r}
+head(data1, 5)
 ```
 
 ::: {.callout-note collapse=FALSE}
