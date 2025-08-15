@@ -655,23 +655,29 @@ Practice Problems
 <p><code>mutate(dataset, var_name = variable)</code></p>
 <p>Examples:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>new_var <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(<span class="at">n =</span> <span class="fu">nrow</span>(variety_trials), <span class="at">size =</span> <span class="dv">1</span>, <span class="at">prob =</span> <span class="fl">0.5</span>)</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>mutate1 <span class="ot">&lt;-</span> <span class="fu">mutate</span>(variety_trials, </span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">dataset =</span> <span class="st">"example"</span>,</span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>                    <span class="at">row_position =</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">n</span>(),</span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>                    <span class="at">trial_id =</span> trial,</span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>                    <span class="at">random_yield =</span> yield <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="fu">n</span>()),</span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>                    <span class="at">binom_var =</span> new_var, </span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>                    <span class="at">yield_protein =</span> yield <span class="sc">+</span> grain_protein)</span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(new_var)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>new_var
-  0   1 
-947 935 </code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mutate1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Create a new column </span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>mutate1 <span class="ot">&lt;-</span> <span class="fu">mutate</span>(variety_trials, </span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>                    <span class="at">dataset =</span> <span class="st">"example"</span>)</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>mutate1 <span class="ot">&lt;-</span> <span class="fu">mutate</span>(mutate1, </span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>                     <span class="at">row_position =</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">n</span>())</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="do">## use existing column with different name</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>mutate1 <span class="ot">&lt;-</span> <span class="fu">mutate</span>(mutate1, </span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>                    <span class="at">trial_id =</span> trial)</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a><span class="do">## calculate a new variable</span></span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>mutate1 <span class="ot">&lt;-</span> <span class="fu">mutate</span>(mutate1, </span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>                    <span class="at">yield_new =</span> yield<span class="sc">+</span><span class="dv">50</span>)</span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>mutate1 <span class="ot">&lt;-</span> <span class="fu">mutate</span>(mutate1, </span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>                    <span class="at">yield_protein =</span> yield <span class="sc">+</span> grain_protein)</span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a><span class="do">## change class of existing variable</span></span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>mutate1 <span class="ot">&lt;-</span> <span class="fu">mutate</span>(mutate1, </span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>                    <span class="at">rep_factor =</span> <span class="fu">as.factor</span>(rep))</span>
+<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mutate1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                        trial rep   variety     yield grain_protein test_weight
 1 SWIdahoCereals_H_S_PAR_2018   1  12SB0197  71.69333        9.8325        62.1
@@ -680,51 +686,61 @@ Practice Problems
 4 SWIdahoCereals_H_S_PAR_2018   4  12SB0197 103.84303       10.3500        64.3
 5 SWIdahoCereals_H_S_PAR_2018   1 Jefferson  65.26589       10.2350        62.8
 6 SWIdahoCereals_H_S_PAR_2018   2 Jefferson 104.37355       11.0400        65.2
-  dataset row_position                    trial_id random_yield binom_var
-1 example            1 SWIdahoCereals_H_S_PAR_2018     70.87871         1
-2 example            2 SWIdahoCereals_H_S_PAR_2018    108.83159         1
-3 example            3 SWIdahoCereals_H_S_PAR_2018     83.53851         0
-4 example            4 SWIdahoCereals_H_S_PAR_2018    104.18318         0
-5 example            5 SWIdahoCereals_H_S_PAR_2018     65.38469         0
-6 example            6 SWIdahoCereals_H_S_PAR_2018    105.60851         1
-  yield_protein
-1      81.52583
-2     118.20551
-3      92.98237
-4     114.19303
-5      75.50089
-6     115.41355</code></pre>
+  dataset row_position                    trial_id yield_new yield_protein
+1 example            1 SWIdahoCereals_H_S_PAR_2018  121.6933      81.52583
+2 example            2 SWIdahoCereals_H_S_PAR_2018  158.6030     118.20551
+3 example            3 SWIdahoCereals_H_S_PAR_2018  131.7124      92.98237
+4 example            4 SWIdahoCereals_H_S_PAR_2018  153.8430     114.19303
+5 example            5 SWIdahoCereals_H_S_PAR_2018  115.2659      75.50089
+6 example            6 SWIdahoCereals_H_S_PAR_2018  154.3736     115.41355
+  rep_factor
+1          1
+2          2
+3          3
+4          4
+5          1
+6          2</code></pre>
 </div>
+</div>
+<p>All the above performed tasks can we done in one go.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>mutate2 <span class="ot">&lt;-</span> <span class="fu">mutate</span>(variety_trials, </span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">dataset =</span> <span class="st">"example"</span>,</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>                    <span class="at">row_position =</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">n</span>(),</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">trial_id =</span> trial,</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>                    <span class="at">yield_new =</span> yield<span class="sc">+</span><span class="dv">50</span>,</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>                    <span class="at">yield_protein =</span> yield <span class="sc">+</span> grain_protein,</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>                   <span class="at">rep_factor =</span> <span class="fu">as.factor</span>(rep))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>This created 6 new variables:</p>
 <ul>
 <li><strong>dataset</strong> which is a character with the value “example” for all rows</li>
 <li><strong>row_position</strong> providing the row number, starting at 1 and ending at <code>n()</code>, a function that returns the total nubmer of rows in the data frame</li>
-<li><strong>range_new</strong> which is a copy of the variable “range”</li>
-<li><strong>random_yield</strong> which is the sum of the value for yield plus a random deviation from the function <code>rnorm</code>. This operation is vectorized, using the ‘yield’ measurement for each row and generating a new random deviate for each row.</li>
-<li><strong>binom_var</strong> the binomial outcomes variable created in the <code>new_var ....</code> statement.</li>
+<li><strong>trial_id</strong>, renamed the <strong>trial</strong> column.</li>
+<li><strong>yield_new</strong> which is the sum of the value for yield plus 50.</li>
 <li><strong>yield_protein</strong> the addition of two variables in the data set (this is also vectorized, calculating this for each row)</li>
+<li><strong>rep_factor</strong> which is a new column to represent the <strong>replicate</strong>, but the class of a new variable is ‘factor’ instead of ‘numeric’.</li>
 </ul>
 <p>These example cover the majority of what you are likely to experience: creating a constant, calculating new variables from existing variables, pulling in an external variables, and so forth.</p>
 <p>This is equivalent to what was taught earlier using <code>$</code> notation:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>mutate1 <span class="ot">&lt;-</span> variety_trials <span class="co"># first, copy the data frame</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>mutate1<span class="sc">$</span>dateset <span class="ot">&lt;-</span> <span class="st">"example"</span></span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>mutate1<span class="sc">$</span>row_position <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(mutate1)</span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>mutate1<span class="sc">$</span>trial_new <span class="ot">&lt;-</span> mutate1<span class="sc">$</span>trial <span class="co"># note that NSE cannot be used</span></span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>mutate1<span class="sc">$</span>random_yield <span class="ot">&lt;-</span> mutate1<span class="sc">$</span>yield <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="fu">nrow</span>(mutate1))</span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>mutate1<span class="sc">$</span>binom_var <span class="ot">=</span> new_var</span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>mutate1<span class="sc">$</span>yield_protein <span class="ot">&lt;-</span> mutate1<span class="sc">$</span>yield <span class="sc">+</span> mutate1<span class="sc">$</span>grain_protein</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>mutate1 <span class="ot">&lt;-</span> variety_trials <span class="co"># first, copy the data frame</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>mutate1<span class="sc">$</span>dateset <span class="ot">&lt;-</span> <span class="st">"example"</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>mutate1<span class="sc">$</span>row_position <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(mutate1)</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>mutate1<span class="sc">$</span>trial_new <span class="ot">&lt;-</span> mutate1<span class="sc">$</span>trial <span class="co"># note that NSE cannot be used</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>mutate1<span class="sc">$</span>random_yield <span class="ot">&lt;-</span> mutate1<span class="sc">$</span>yield <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="fu">nrow</span>(mutate1))</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>mutate1<span class="sc">$</span>binom_var <span class="ot">=</span> new_var</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>mutate1<span class="sc">$</span>yield_protein <span class="ot">&lt;-</span> mutate1<span class="sc">$</span>yield <span class="sc">+</span> mutate1<span class="sc">$</span>grain_protein</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>This can be a bit longer and cumbersome compared to <code>mutate</code> statements, but it does work.</p>
 <section id="case_when-a-special-addition-to-mutate-statements" class="level4">
 <h4 class="anchored" data-anchor-id="case_when-a-special-addition-to-mutate-statements"><code>case_when(),</code> a special addition to <code>mutate</code> statements</h4>
 <p>Occasionally, you will need a define a variable conditionally, based on information from other variables. Here is an example for variety trial data. Here, a special minimum value is created where all data for “yield” less than 100 are set at 100:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>Var1 <span class="ot">&lt;-</span> <span class="fu">mutate</span>(variety_trials, <span class="at">new_min =</span> <span class="fu">case_when</span>(</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  yield <span class="sc">&lt;=</span> <span class="dv">100</span> <span class="sc">~</span> <span class="dv">100</span>,</span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="cn">TRUE</span> <span class="sc">~</span> yield))</span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(Var1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>Var1 <span class="ot">&lt;-</span> <span class="fu">mutate</span>(variety_trials, <span class="at">new_min =</span> <span class="fu">case_when</span>(</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  yield <span class="sc">&lt;=</span> <span class="dv">100</span> <span class="sc">~</span> <span class="dv">100</span>,</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="cn">TRUE</span> <span class="sc">~</span> yield))</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(Var1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Everything to the left of the tilde <code>~</code> is a logical expression to evaluate. Everything to the right of the tilde is the value to put if the logical expression evaluates to TRUE.</p>
 <p>This can easily become more complex with the addition of other logical expressions and categorical levels to create.</p>
@@ -740,8 +756,8 @@ Practice Problems
 <p>Except that quotes are always used when specifying the old variable name.</p>
 <p>Example:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>rename1 <span class="ot">&lt;-</span> <span class="fu">rename</span>(variety_trials, <span class="at">cultivar =</span> <span class="st">"variety"</span>)</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(rename1, <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>rename1 <span class="ot">&lt;-</span> <span class="fu">rename</span>(variety_trials, <span class="at">cultivar =</span> <span class="st">"variety"</span>)</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(rename1, <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                        trial rep cultivar     yield grain_protein test_weight
 1 SWIdahoCereals_H_S_PAR_2018   1 12SB0197  71.69333        9.8325        62.1
@@ -751,7 +767,7 @@ Practice Problems
 </div>
 <p>Also, you can use <code>rename</code> notation in <code>select</code> statements:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>rename2 <span class="ot">&lt;-</span> <span class="fu">select</span>(variety_trials, <span class="at">cultivar =</span> <span class="st">"variety"</span>, yield, <span class="at">protein =</span> <span class="st">"grain_protein"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>rename2 <span class="ot">&lt;-</span> <span class="fu">select</span>(variety_trials, <span class="at">cultivar =</span> <span class="st">"variety"</span>, yield, <span class="at">protein =</span> <span class="st">"grain_protein"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>This function selected the columns “variety”, “yield” and “grain_protein”, while renaming “variety to”cultivar” and “grain_protein” to “protein” - a handy shortcut.</p>
 </section>
@@ -760,7 +776,7 @@ Practice Problems
 <p>You may encounter variables with information about multiple things. In agriculture, I see variables with values such as “Moscow_2021”, “Moscow_2022”, “StJohn_2021”, “StJohn_2022”. This variables is indicating multiple things - location and year in this exmample. This is a useful variable by itself, but a researcher might want to separate out location and year for other analytical purposes. The <strong><em>tidyr</em></strong> function <code>separate()</code> can do that.</p>
 <p>The first column of “variety_trials” contains considerable information, all separated by an underscore:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>variety_trials<span class="sc">$</span>trial[<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>variety_trials<span class="sc">$</span>trial[<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "SWIdahoCereals_H_S_PAR_2018"</code></pre>
 </div>
@@ -769,7 +785,7 @@ Practice Problems
 <p>Before running a <code>separate()</code> command, always check the variable to make sure it is structured as you expect.</p>
 <p>Use <code>distinct()</code> to determine the unique observations for the column “trial” in the the object “variety_trials”.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">distinct</span>(variety_trials, trial)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">distinct</span>(variety_trials, trial)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                         trial
 1  SWIdahoCereals_H_S_PAR_2018
@@ -804,14 +820,14 @@ Practice Problems
 </div>
 <p>The variable <code>variety_trials$trial</code> uses an underscore to separate its components. However, one of the terms we mean to keep as one component does have an underscore inside of it, which will interpreted incorrectly as a term separator. The function <code>gsub()</code> can be used to fix this.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>variety_trials<span class="sc">$</span>trial <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="at">pattern =</span> <span class="st">"_H_"</span>, <span class="at">replacement =</span> <span class="st">"_H-"</span>, <span class="at">x =</span> variety_trials<span class="sc">$</span>trial)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>variety_trials<span class="sc">$</span>trial <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="at">pattern =</span> <span class="st">"_H_"</span>, <span class="at">replacement =</span> <span class="st">"_H-"</span>, <span class="at">x =</span> variety_trials<span class="sc">$</span>trial)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now, <code>separate()</code> will split the variable into 4 components:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>variety_trials <span class="ot">&lt;-</span> <span class="fu">separate</span>(variety_trials, trial, </span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>                           <span class="at">into =</span> <span class="fu">c</span>(<span class="st">"program"</span>, <span class="st">"crop"</span>, <span class="st">"location"</span>, <span class="st">"year"</span>),</span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>                           <span class="at">sep =</span> <span class="st">"_"</span>, </span>
-<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>                           <span class="at">remove =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>variety_trials <span class="ot">&lt;-</span> <span class="fu">separate</span>(variety_trials, trial, </span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>                           <span class="at">into =</span> <span class="fu">c</span>(<span class="st">"program"</span>, <span class="st">"crop"</span>, <span class="st">"location"</span>, <span class="st">"year"</span>),</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>                           <span class="at">sep =</span> <span class="st">"_"</span>, </span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>                           <span class="at">remove =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The argument <code>remove = FALSE</code> indicates that we want to keep the input variable (“trial”). By default, it would be removed.</p>
 <p>The opposite function is <code>tidyr::unite()</code> which will paste these variable together, separate by any character string you specify. <code>unite()</code> also can ignore missing data when pasting information together, avoiding this unfortunate result: “some.var_NA_NA_another.var”. You would get “some.var_another.var” instead.</p>
@@ -846,20 +862,20 @@ Practice Problems
 <p><code>dplyr::filter()</code> can be used to filter missing data, but <strong>tidyr</strong> has a function, <code>drop_na()</code> that makes this easier. You can filter out rows based on missing data in any number of columns, including all columns. Note that this works on observations R has designated as <code>NA</code>. If an observation has white space instead of <code>NA</code> after data import into R, those are not equivalent.</p>
 <p>This will remove all rows with any missing data.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>na_filter_ex1 <span class="ot">&lt;-</span> <span class="fu">drop_na</span>(variety_trials)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>na_filter_ex1 <span class="ot">&lt;-</span> <span class="fu">drop_na</span>(variety_trials)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>This will remove rows with missing data in ‘grain_protein’ and ‘test_weight’.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>na_filter_ex2 <span class="ot">&lt;-</span> <span class="fu">drop_na</span>(variety_trials, grain_protein, test_weight)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>na_filter_ex2 <span class="ot">&lt;-</span> <span class="fu">drop_na</span>(variety_trials, grain_protein, test_weight)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="designate-missing-data" class="level4">
 <h4 class="anchored" data-anchor-id="designate-missing-data">Designate missing data</h4>
 <p>Sometimes, you may have some odd observations you would like designated as missing. This can be accomplished with the <code>mutate()</code> function, but sometimes this shortcut is preferred. <code>na_if()</code> works on vectors, within a data frame or by itself.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>trial_data <span class="ot">&lt;-</span> <span class="fu">mutate</span>(variety_trials, <span class="at">var2 =</span> <span class="fu">na_if</span>(variety, <span class="st">"Dayn"</span>))</span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="co"># check that it worked as intended:</span></span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(trial_data, var2 <span class="sc">==</span> <span class="st">"Dayn"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>trial_data <span class="ot">&lt;-</span> <span class="fu">mutate</span>(variety_trials, <span class="at">var2 =</span> <span class="fu">na_if</span>(variety, <span class="st">"Dayn"</span>))</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="co"># check that it worked as intended:</span></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(trial_data, var2 <span class="sc">==</span> <span class="st">"Dayn"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] trial         program       crop          location      year         
  [6] rep           variety       yield         grain_protein test_weight  
@@ -869,55 +885,55 @@ Practice Problems
 </div>
 <p>This also might be useful if specific columns use ‘-9’ to indicate missing values:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># not that this demonstration code will not change the data frame because we did not use -</span></span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>variety_trial <span class="ot">&lt;-</span> <span class="fu">mutate</span>(variety_trials, <span class="at">yield2 =</span> <span class="fu">na_if</span>(trial, <span class="st">"-9"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># not that this demonstration code will not change the data frame because we did not use -</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>variety_trial <span class="ot">&lt;-</span> <span class="fu">mutate</span>(variety_trials, <span class="at">yield2 =</span> <span class="fu">na_if</span>(trial, <span class="st">"-9"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="replace-missing-data-with-a-value" class="level4">
 <h4 class="anchored" data-anchor-id="replace-missing-data-with-a-value">Replace missing data with a value</h4>
 <p>There are other moments that you may want to replace missing values with something in particular (perhaps zero, but be cautious when doing so). <code>replace_na()</code> can accomplish this. Like <code>na_if()</code>, this function operates on vectors.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>variety_trials <span class="ot">&lt;-</span> <span class="fu">mutate</span>(variety_trials, <span class="at">protein =</span> <span class="fu">replace_na</span>(grain_protein, <span class="sc">-</span><span class="dv">9</span>))</span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="co"># check that it worked as intended:</span></span>
-<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(variety_trials<span class="sc">$</span>protein)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>variety_trials <span class="ot">&lt;-</span> <span class="fu">mutate</span>(variety_trials, <span class="at">protein =</span> <span class="fu">replace_na</span>(grain_protein, <span class="sc">-</span><span class="dv">9</span>))</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="co"># check that it worked as intended:</span></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(variety_trials<span class="sc">$</span>protein)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="data-wrangling_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="data-wrangling_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
 <p>Sometimes, data sets have clear indications when a values is intended to be filled:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>data1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">experiment =</span> <span class="fu">c</span>(<span class="st">"exp1"</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="st">"exp2"</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="cn">NA</span>),</span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">observation =</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">8</span>, <span class="at">mean =</span> <span class="dv">50</span>, <span class="at">sd =</span> <span class="dv">1</span>))</span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>data1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>data1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">experiment =</span> <span class="fu">c</span>(<span class="st">"exp1"</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="st">"exp2"</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="cn">NA</span>),</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">observation =</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">8</span>, <span class="at">mean =</span> <span class="dv">50</span>, <span class="at">sd =</span> <span class="dv">1</span>))</span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>data1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  experiment observation
-1       exp1    49.88543
-2       &lt;NA&gt;    50.83530
-3       &lt;NA&gt;    50.49711
-4       &lt;NA&gt;    50.69855
-5       exp2    50.09005
-6       &lt;NA&gt;    51.33468
-7       &lt;NA&gt;    51.86400
-8       &lt;NA&gt;    49.62296</code></pre>
+1       exp1    51.19643
+2       &lt;NA&gt;    47.51638
+3       &lt;NA&gt;    50.24754
+4       &lt;NA&gt;    51.61751
+5       exp2    49.57635
+6       &lt;NA&gt;    51.00981
+7       &lt;NA&gt;    50.36469
+8       &lt;NA&gt;    50.19831</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>data2 <span class="ot">&lt;-</span> <span class="fu">fill</span>(data1, experiment, <span class="at">.direction =</span> <span class="st">"down"</span>)</span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>data2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>data2 <span class="ot">&lt;-</span> <span class="fu">fill</span>(data1, experiment, <span class="at">.direction =</span> <span class="st">"down"</span>)</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>data2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  experiment observation
-1       exp1    49.88543
-2       exp1    50.83530
-3       exp1    50.49711
-4       exp1    50.69855
-5       exp2    50.09005
-6       exp2    51.33468
-7       exp2    51.86400
-8       exp2    49.62296</code></pre>
+1       exp1    51.19643
+2       exp1    47.51638
+3       exp1    50.24754
+4       exp1    51.61751
+5       exp2    49.57635
+6       exp2    51.00981
+7       exp2    50.36469
+8       exp2    50.19831</code></pre>
 </div>
 </div>
 </section>
@@ -929,13 +945,13 @@ Practice Problems
 <p>You can sort on as many variables as you like! It will sort on the first variables listed and within that, the second variable listed, and so on.</p>
 <p>Example;</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>arrange1 <span class="ot">&lt;-</span> <span class="fu">arrange</span>(variety_trials, variety, yield)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>arrange1 <span class="ot">&lt;-</span> <span class="fu">arrange</span>(variety_trials, variety, yield)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="output-file" class="level4">
 <h4 class="anchored" data-anchor-id="output-file">Output file</h4>
 <p>Let’s output this object to file so we can use it later.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(variety_trials, here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"outputs"</span>, <span class="st">"variety_trials_clean.csv"</span>), <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(variety_trials, here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"outputs"</span>, <span class="st">"variety_trials_clean.csv"</span>), <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
@@ -947,12 +963,12 @@ Practice Problems
 <p>One operation can be performed (e.g.&nbsp;a <code>select()</code> command), and that resulting data frame is passed on to the next operation (e.g.&nbsp;<code>filter()</code>).</p>
 <p>Example: filter then sort</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>pipe1 <span class="ot">&lt;-</span> <span class="fu">filter</span>(variety_trials, yield <span class="sc">&lt;</span> <span class="dv">75</span>) <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(variety)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>pipe1 <span class="ot">&lt;-</span> <span class="fu">filter</span>(variety_trials, yield <span class="sc">&lt;</span> <span class="dv">75</span>) <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(variety)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The data set is not named in the second operation because it is assumed to be dataset provided in the first operation. Whatever is being output directly left of the pipe operator is in the input data set.</p>
 <p>We can take this even further by making the first operation our addition of the data set to the pipes:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>pipe2 <span class="ot">&lt;-</span> variety_trials <span class="sc">%&gt;%</span> <span class="fu">filter</span>(yield <span class="sc">&lt;</span> <span class="dv">75</span>) <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(variety)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>pipe2 <span class="ot">&lt;-</span> variety_trials <span class="sc">%&gt;%</span> <span class="fu">filter</span>(yield <span class="sc">&lt;</span> <span class="dv">75</span>) <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(variety)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The pipe has made data wrangling so much easier! Before the pipe, each of these operations can be specified separately with its own object. So when you were done, you had roughly 50 objects in your environment, 48 of which were not needed anymore.</p>
 <p>It also saved us from the “parentheses cascade” where one function is nested inside another function, which is nested within another, and so forth. It can be difficult to ascertain what parentheses belong to what operation, which often leads to coding errors. In a set of nestd functions, the inner functions are first executed and the outer functions are executed last. no longer had any sense of which set of parentheses belong to which operation.</p>
