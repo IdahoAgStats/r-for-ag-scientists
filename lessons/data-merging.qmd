@@ -13,8 +13,8 @@ At the end of this lesson, you should:
 :::
 
 As usual, let's start by importing data
-```{r, include=FALSE, echo=TRUE}
-library(dplyr); library(readr); library(tidyr)
+```{r, echo=TRUE}
+library(readr); library(dplyr); library(tidyr)
 
 metadata <-  read_csv(here::here("data", "trial_metadata.csv"), show_col_types = FALSE)
 
@@ -23,11 +23,19 @@ variety_trial <- read.csv(here::here("data", "trial_data.csv"))
 genotypes <- read_csv(here::here("data", "genotypic_data_rotated.csv"), show_col_types = FALSE)
 ```
 
+Before working on merging and binding data sets, let's create two subsets from the "variety_trial" data set. Here, we are using the `filter()` and `select()` functions to create two smaller data sets. We have created two data sets, where each contain a single trial and selected matching columns.
+
+```{r}
+trial_1 <- variety_trial %>% filter(trial == "SWIdahoCereals_HRS_PAR_2016") %>% select(trial, rep, variety, yield)
+trial_2 <- variety_trial %>% filter(trial == "SWIdahoCereals_SWS_PAR_2018") %>% select(trial, variety, rep, grain_protein)
+```
+
+
 For merging, it is done in groups of two; that is, two tables at a time are merged together. 
 
 ## Bind rows
 
-If you have two data sets of different observations (the keys do not match) but similar or identical column headers, these rows can be stacked togther using a row bind. 
+If you have two data sets of different observations (the keys do not match) but similar or identical column headers, these rows can be stacked together using a row bind. 
 
 Example syntax of a `row_bind`: 
 
@@ -41,12 +49,9 @@ In this function, the column names are matched and ordered according to the firs
 knitr::include_graphics(here::here("images", "bind_rows.png"))
 ```
 
-We can manufacture a version of this with our data sets by filtering to a single trial and selecting a few columns. This is a silly toy example, but most of the time you will not be handed these data sets that are already merged. You will be given two or more data sets that need to be combined. Perhaps these are field experiments from different years or lab results from two different runs. 
+We have manufactured a version of this with our data sets by filtering to a single trial and selecting a few columns. This is a silly toy example, but most of the time you will not be handed these data sets that are already merged. You will be given two or more data sets that need to be combined. Perhaps these are field experiments from different years or lab results from two different runs. 
 
-```{r}
-trial_1 <- variety_trial %>% filter(trial == "SWIdahoCereals_HRS_PAR_2016") %>% select(trial, rep, variety, yield)
-trial_2 <- variety_trial %>% filter(trial == "SWIdahoCereals_SWS_PAR_2018") %>% select(trial, variety, rep, grain_protein)
-```
+We will start by looking at the two example data sets we created above, `trial_1` and `trial_2`.
 
 Compare data sets:
 
@@ -62,8 +67,6 @@ head(together)
 ```
 
 If you have ever used `rbind()`, this is an improvement. It will match column names across data sets and order them appropriately. 
-
-
 
 ## Joins
 

@@ -14,7 +14,7 @@ At the end of this lesson, you should:
 -   be able to rename variables using `rename()`
 -   be able to sort a data set using `arrange()`
 -   understand how to handle missing values with `drop_na()`, `na_if()` and `replace_na()`
--   be table to use `separate()` to split up single variables into multiple variables
+-   be able to use `separate()` to split up single variables into multiple variables
 :::
 
 **First, load libraries:**
@@ -48,7 +48,7 @@ Many functions in the Tidyverse follow this structure:
 
 Where "dataset" is the data framed being input and "action" is whatever action is being taken.
 
-### Selection columns
+### Selecting columns
 
 The function `select` is used to specify *column* you want to keep (all rows are returned). Columns can be specified by name or position (i.e. the first two columns in the data set would be `1:2`).
 
