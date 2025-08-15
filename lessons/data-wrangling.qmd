@@ -135,28 +135,51 @@ You can quite create new variables with a `mutate()` function call:
 Examples:
 
 ```{r}
-new_var <- rbinom(n = nrow(variety_trials), size = 1, prob = 0.5)
-
+## Create a new column 
 mutate1 <- mutate(variety_trials, 
+                    dataset = "example")
+
+mutate1 <- mutate(mutate1, 
+                     row_position = 1:n())
+
+## use existing column with different name
+mutate1 <- mutate(mutate1, 
+                    trial_id = trial)
+
+## calculate a new variable
+mutate1 <- mutate(mutate1, 
+                    yield_new = yield+50)
+
+mutate1 <- mutate(mutate1, 
+                    yield_protein = yield + grain_protein)
+
+## change class of existing variable
+mutate1 <- mutate(mutate1, 
+                    rep_factor = as.factor(rep))
+
+head(mutate1)
+```
+
+All the above performed tasks can we done in one go. 
+```{r}
+mutate2 <- mutate(variety_trials, 
                     dataset = "example",
                     row_position = 1:n(),
                     trial_id = trial,
-                    random_yield = yield + rnorm(n = n()),
-                    binom_var = new_var, 
-                    yield_protein = yield + grain_protein)
+                    yield_new = yield+50,
+                    yield_protein = yield + grain_protein,
+                   rep_factor = as.factor(rep))
 
-table(new_var)
-head(mutate1)
 ```
 
 This created 6 new variables:
 
 -   **dataset** which is a character with the value "example" for all rows
 -   **row_position** providing the row number, starting at 1 and ending at `n()`, a function that returns the total nubmer of rows in the data frame
--   **range_new** which is a copy of the variable "range"
--   **random_yield** which is the sum of the value for yield plus a random deviation from the function `rnorm`. This operation is vectorized, using the 'yield' measurement for each row and generating a new random deviate for each row.
--   **binom_var** the binomial outcomes variable created in the `new_var ....` statement.
+-   **trial_id**, renamed the **trial** column.
+-   **yield_new** which is the sum of the value for yield plus 50. 
 -   **yield_protein** the addition of two variables in the data set (this is also vectorized, calculating this for each row)
+-   **rep_factor** which is a new column to represent the **replicate**, but the class of a new variable is 'factor' instead of 'numeric'.
 
 These example cover the majority of what you are likely to experience: creating a constant, calculating new variables from existing variables, pulling in an external variables, and so forth.
 
