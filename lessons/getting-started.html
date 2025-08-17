@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Install R &amp; RStudio – R for Scientists</title>
+<title>Setting up R – R for Scientists</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,30 +23,30 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./learning-quarto.html" rel="next">
-<link href="./CoC.html" rel="prev">
-<link href="./images/logo_transparent.png" rel="icon" type="image/png">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-bc185b5c5bdbcb35c2eb49d8a876ef70.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-fddc76f0572c5bf2214190331b5e1197.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-9a606737eae22e79f8e60fe0fe06717a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-fddc76f0572c5bf2214190331b5e1197.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../lessons/getting-to-know-data.html" rel="next">
+<link href="../lessons/rstudio-tour.html" rel="prev">
+<link href="../images/logo_transparent.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-bc185b5c5bdbcb35c2eb49d8a876ef70.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-fddc76f0572c5bf2214190331b5e1197.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-9a606737eae22e79f8e60fe0fe06717a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-fddc76f0572c5bf2214190331b5e1197.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -85,18 +85,18 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
 </script>
 
 
-<link rel="stylesheet" href="styles.css">
-<meta property="og:title" content="Install R &amp; RStudio – R for Scientists">
+<link rel="stylesheet" href="../styles.css">
+<meta property="og:title" content="Setting up R – R for Scientists">
 <meta property="og:description" content="Homepage for Introduction to R for Scientists, Spring 2023.">
-<meta property="og:image" content="https://idahoagstats.github.io/r-for-ag-scientists/images/install_R_3.png">
+<meta property="og:image" content="https://idahoagstats.github.io/r-for-ag-scientists/images/directory.png">
 <meta property="og:site_name" content="R for Scientists">
-<meta property="og:image:height" content="705">
-<meta property="og:image:width" content="937">
-<meta name="twitter:title" content="Install R &amp; RStudio – R for Scientists">
+<meta property="og:image:height" content="682">
+<meta property="og:image:width" content="1078">
+<meta name="twitter:title" content="Setting up R – R for Scientists">
 <meta name="twitter:description" content="Homepage for Introduction to R for Scientists, Spring 2023.">
-<meta name="twitter:image" content="https://idahoagstats.github.io/r-for-ag-scientists/images/install_R_3.png">
-<meta name="twitter:image-height" content="705">
-<meta name="twitter:image-width" content="937">
+<meta name="twitter:image" content="https://idahoagstats.github.io/r-for-ag-scientists/images/directory.png">
+<meta name="twitter:image-height" content="682">
+<meta name="twitter:image-width" content="1078">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
@@ -271,7 +271,7 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Course Info</a></li><li class="breadcrumb-item"><a href="./r-installation-instructions.html">How to install R</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../lessons/lesson-zero.html">Lessons</a></li><li class="breadcrumb-item"><a href="../lessons/getting-started.html">Setting up R</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -285,8 +285,8 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-center sidebar-header">
-      <a href="./index.html" class="sidebar-logo-link">
-      <img src="./images/R_intro_logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      <a href="index.qmd" class="sidebar-logo-link">
+      <img src="../images/R_intro_logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
       <div class="sidebar-tools-main tools-wide">
     <a href="https://posit.cloud/" title="Posit Cloud" class="quarto-navigation-tool px-1" aria-label="Posit Cloud"><i class="bi bi-code-square"></i></a>
@@ -312,31 +312,31 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Overview</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./schedule.html" class="sidebar-item-text sidebar-link">
+  <a href="../schedule.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Schedule</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./CoC.html" class="sidebar-item-text sidebar-link">
+  <a href="../CoC.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Code of Conduct</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./r-installation-instructions.html" class="sidebar-item-text sidebar-link active">
+  <a href="../r-installation-instructions.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">How to install R</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./learning-quarto.html" class="sidebar-item-text sidebar-link">
+  <a href="../learning-quarto.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Quarto basics</span></a>
   </div>
 </li>
@@ -353,25 +353,25 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./lessons/lesson-zero.html" class="sidebar-item-text sidebar-link">
+  <a href="../lessons/lesson-zero.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Lesson Zero</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./lessons/rstudio-tour.html" class="sidebar-item-text sidebar-link">
+  <a href="../lessons/rstudio-tour.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Quick tour of R studio</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./lessons/getting-started.html" class="sidebar-item-text sidebar-link">
+  <a href="../lessons/getting-started.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Setting up R</span></a>
   </div>
 </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./lessons/getting-to-know-data.html" class="sidebar-item-text sidebar-link">
+            <a href="../lessons/getting-to-know-data.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Getting to know data in R</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -380,19 +380,19 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
       <ul id="" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./lessons/data-types.html" class="sidebar-item-text sidebar-link">
+  <a href="../lessons/data-types.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Data Types</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./lessons/data-structures.html" class="sidebar-item-text sidebar-link">
+  <a href="../lessons/data-structures.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Data Structures</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./lessons/math-operators.html" class="sidebar-item-text sidebar-link">
+  <a href="../lessons/math-operators.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Math Operators</span></a>
   </div>
 </li>
@@ -410,9 +410,9 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#install-r" id="toc-install-r" class="nav-link active" data-scroll-target="#install-r">Install R</a></li>
-  <li><a href="#install-rstudio" id="toc-install-rstudio" class="nav-link" data-scroll-target="#install-rstudio">Install RStudio</a></li>
-  <li><a href="#test-your-installation" id="toc-test-your-installation" class="nav-link" data-scroll-target="#test-your-installation">Test your Installation</a></li>
+  <li><a href="#set-up-your-directory" id="toc-set-up-your-directory" class="nav-link active" data-scroll-target="#set-up-your-directory">Set up your directory</a></li>
+  <li><a href="#set-the-r-working-directory" id="toc-set-the-r-working-directory" class="nav-link" data-scroll-target="#set-the-r-working-directory">Set the R “working directory”</a></li>
+  <li><a href="#set-up-rstudio" id="toc-set-up-rstudio" class="nav-link" data-scroll-target="#set-up-rstudio">Set up RStudio</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/IdahoAgStats/r-for-ag-scientists/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -420,9 +420,9 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Course Info</a></li><li class="breadcrumb-item"><a href="./r-installation-instructions.html">How to install R</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../lessons/lesson-zero.html">Lessons</a></li><li class="breadcrumb-item"><a href="../lessons/getting-started.html">Setting up R</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Install R &amp; RStudio</h1>
+<h1 class="title">Setting up R</h1>
 </div>
 
 
@@ -439,59 +439,82 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
 </header>
 
 
-<p>You may already have R installed on your computer. However, if the installation is one year older or later, you should upgrade it. This the beauty and drawback of R (yay for new functionality, boo to the inconvenience). R is updated frequently, usually several times per year. Not every update is important, but over time, older versions of R will cause you problems because they will work poorly with installed packages. New packages will not work at all with older version of R and older packages will have problems, requiring to also install older package versions. This is a pain to manage; its easiest to keep R updated.</p>
-<section id="install-r" class="level2">
-<h2 class="anchored" data-anchor-id="install-r">Install R</h2>
-<p>First, navigate to the Cloud mirror of the R Project for Statistical computing, and download <a href="https://cran.rstudio.com/">R</a>:</p>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="images/install_R_3.png" class="img-fluid figure-img"></p>
-</figure>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Learning Goals
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<p>At the end of this lesson, you should:</p>
+<ul>
+<li>have established a dedicated directory for this workshop</li>
+<li>understand what a working directory is and how to set it</li>
+<li>turn off automatic saving of .Rdata files</li>
+</ul>
 </div>
 </div>
 </div>
-<section id="windows" class="level4">
-<h4 class="anchored" data-anchor-id="windows">Windows</h4>
-<p>Use the link circled in red regardless if you have R installed or not. It’s just easier than trying to update an existing installation.</p>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="images/install_R_win.jpg" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
+<section id="set-up-your-directory" class="level2">
+<h2 class="anchored" data-anchor-id="set-up-your-directory">Set up your directory</h2>
+<ul>
+<li>Established a dedicated directory for this class somewhere on your computer.</li>
+<li>Create a subdirectory in that folder called “data”</li>
+<li>Download the <a href="https://github.com/IdahoAgStats/r-for-ag-scientists/raw/refs/heads/main/class_data.zip">workshop data</a> (zipped file) After downloading all the workshop data, unzip the file and place all the individual files inside the “data” subdirectory</li>
+</ul>
+<p><img src="../images/directory.png" class="img-fluid" style="width:65.0%"></p>
 </section>
-<section id="mac" class="level4">
-<h4 class="anchored" data-anchor-id="mac">Mac</h4>
-<p>Download the installation bundle. Check that your operating system version is compatible (the text to the right of the download link will indicate this).</p>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="images/install_R_mac.jpg" class="img-fluid figure-img"></p>
-</figure>
+<section id="set-the-r-working-directory" class="level2">
+<h2 class="anchored" data-anchor-id="set-the-r-working-directory">Set the R “working directory”</h2>
+<p>In order to import a file, we first need to set the “<em>working directory</em>”. This is the location on your computer where R will work for files and will also save files to that location. This is similar to a default directory that software look to, like how Microsoft office products often default to OneDrive for where to save or open a file.</p>
+<p>Go to uppper toolbar, select <strong>Session</strong> –&gt; <strong>Set Working Directory</strong> –&gt; <strong>Choose Directory…</strong></p>
+<p>Navigate to where you set up a dedicated directory for the workshop and click “open”.</p>
+</section>
+<section id="set-up-rstudio" class="level2">
+<h2 class="anchored" data-anchor-id="set-up-rstudio">Set up RStudio</h2>
+<p>We need to make some changes to the default settings of RStudio to ensure that our work is reproducible and we do not have problems later on.</p>
+<p>Go to uppper toolbar, select <strong>Tools</strong> –&gt; <strong>Global Options</strong> –&gt; <strong>General</strong> tab</p>
+<ul>
+<li>uncheck “Restore .RData into workspace at startup”</li>
+<li>change “Save workspace to .RData on exit” to <strong>never</strong></li>
+<li>click “okay”</li>
+</ul>
+<p><img src="../images/rdata.png" class="img-fluid" style="width:85.0%"></p>
+<p>This ensure that every time we start R, we are starting with a blank state and no leftover information from a previous session. You only need to do this once and it will persist for all future R sessions.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<p>For more information on the importance of setting blank slate, see this presentation, <a href="https://imci-idaho.github.io/2022-03-01-WhatTheyForgot/slides/basic-best-practices.html#1">Basics of Best Practices</a></p>
 </div>
 </div>
 </div>
-<p>Once the installation file is downloaded, open it and follow the installation instructions, accepting the default installation settings.</p>
-</section>
-</section>
-<section id="install-rstudio" class="level2">
-<h2 class="anchored" data-anchor-id="install-rstudio">Install RStudio</h2>
-<p>You can <a href="https://posit.co/download/rstudio-desktop/">download RStudio</a> from the Posit website. Pick the version appropriate for your operation system and follow the installation instructions.</p>
-<p>You do not need to follow “Step 1: install R” indicated on the Posit site if you already installed R following the directions above.</p>
-</section>
-<section id="test-your-installation" class="level2">
-<h2 class="anchored" data-anchor-id="test-your-installation">Test your Installation</h2>
-<ol type="1">
-<li>Open RStudio on your personal or work computer. It should look very similar to Posit Cloud.</li>
-<li>Run a command in the console to make sure all installed properly.</li>
-<li>Install the Tidyverse packages: <code>install.packages("tidyverse")</code> (this will take a few minutes)</li>
-</ol>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Putting it all together
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>You are now ready to start learning how to program in R.</p>
+</div>
+</div>
 
 
 </section>
@@ -911,13 +934,13 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./CoC.html" class="pagination-link" aria-label="Code of Conduct">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Code of Conduct</span>
+      <a href="../lessons/rstudio-tour.html" class="pagination-link" aria-label="Quick tour of R studio">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Quick tour of R studio</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./learning-quarto.html" class="pagination-link" aria-label="Quarto basics">
-        <span class="nav-page-text">Quarto basics</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../lessons/getting-to-know-data.html" class="pagination-link" aria-label="Getting to know data in R">
+        <span class="nav-page-text">Getting to know data in R</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
