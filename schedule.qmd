@@ -10,6 +10,7 @@ title: "Course Schedule"
 | Before first day of class | [Lesson Zero](lessons/lesson-zero.qmd) |  
 | Aug 18 | Workshop orientation \
            [Quick tour of R Studio](lessons/rstudio-tour.qmd)\
+           [Setting up R](lessons/getting-started.qmd) \
            [Getting to know data in R](lessons/getting-to-know-data.qmd) | 
 | Aug 19 |  R documentation \
             Importing tabular files \
