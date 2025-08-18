@@ -83,8 +83,8 @@ website:
                         
       #     - href: lessons/r-documentation.qmd
       #       text: R documentation
-      #     - href: lessons/data-import.qmd
-      #       text: Importing tabular files
+          - href: lessons/data-import.qmd
+            text: Importing tabular files
       #     - href: lessons/data-wrangling.qmd
       #       text: Data transformation and wrangling
       #     - href: lessons/data-export.qmd

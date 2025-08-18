@@ -13,7 +13,7 @@ title: "Course Schedule"
            [Setting up R](lessons/getting-started.qmd) \
            [Getting to know data in R](lessons/getting-to-know-data.qmd) | 
 | Aug 19 |  R documentation \
-            Importing tabular files \
+            [Importing tabular files](lessons/data-import.qmd) \
            Data transformation & wrangling \
            Exporting R objects to file  |  
 | Aug 20 |   Reproducible research in R  \
