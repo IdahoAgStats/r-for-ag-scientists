@@ -16,12 +16,12 @@ title: "Course Schedule"
             Importing tabular files \
            Data transformation & wrangling \
            Exporting R objects to file  |  
-| Aug 20 |   Reshaping data \
+| Aug 20 |   Reproducible research in R  \
+            Reshaping data \
             Combining data sets  \
             Data aggregation & summary  |   
-| Aug 21 |  Visualizing data with ggplot  \
-            Finding help  \
-            Reproducible research in R  \
+| Aug 21 |  Finding help when you're stuck  \
+            Visualizing data with ggplot  \
             keeping up with R   |
 | Aug 22  |  Mixed Models & Open time for questions  |   
 | Extra  |  How to repeat actions  |

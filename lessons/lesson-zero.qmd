@@ -15,7 +15,7 @@ Follow [these instructions](../r-installation-instructions.qmd) for installing R
 
 ### Class structure
 
-For all lessons, please follow along in R + RStudio or Posit Cloud session. In most instances, you will type and run the same code that we will demonstrate. Actually typing out the code rather than cut-and-pasting is how you learn. 
+For all lessons, please follow along in R + RStudio. In most instances, you will type and run the same code that we will demonstrate. Actually typing out the code rather than cut-and-pasting is how you learn. 
 
 Additionally, all code generated that day will be posted on the class website. It is important that you read through notes and try to run to do the exercises if (1) you had to miss some or all of a class, or (2) there is material you do not understand. 
 

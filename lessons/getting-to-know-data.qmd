@@ -453,13 +453,16 @@ plot(data1$yield)
 
 The x-axis, "Index", is the row index, i.e. the indexed position along the vector. 
 
-Barplots are also handy. `data1` is suited for a barplot, but we can make a data set better for a barplot:
+Barplots are also handy. There is no column `data1` is suited for a barplot, but we can make data that will work well for a barplot:
 
 ```{r}
-data1$yield_categories <- cut(data1$yield, 5) # break yield into 5 groups
+data1$yield_categories <- cut(data1$yield, 5) # break yield into 5 groups, each equidistant
+
 totes <- as.data.frame(table(data1$yield_categories)) # count how many observations are in each group and convert to a data frame
+
 totes # print object
 ```
+
 ```{r}
 barplot(Freq ~ Var1, data = totes)
 ```
