@@ -1204,11 +1204,13 @@ Practice Problems
 </div>
 </div>
 <p>The x-axis, “Index”, is the row index, i.e.&nbsp;the indexed position along the vector.</p>
-<p>Barplots are also handy. <code>data1</code> is suited for a barplot, but we can make a data set better for a barplot:</p>
+<p>Barplots are also handy. There is no column <code>data1</code> is suited for a barplot, but we can make data that will work well for a barplot:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a>data1<span class="sc">$</span>yield_categories <span class="ot">&lt;-</span> <span class="fu">cut</span>(data1<span class="sc">$</span>yield, <span class="dv">5</span>) <span class="co"># break yield into 5 groups</span></span>
-<span id="cb83-2"><a href="#cb83-2" aria-hidden="true" tabindex="-1"></a>totes <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">table</span>(data1<span class="sc">$</span>yield_categories)) <span class="co"># count how many observations are in each group and convert to a data frame</span></span>
-<span id="cb83-3"><a href="#cb83-3" aria-hidden="true" tabindex="-1"></a>totes <span class="co"># print object</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a>data1<span class="sc">$</span>yield_categories <span class="ot">&lt;-</span> <span class="fu">cut</span>(data1<span class="sc">$</span>yield, <span class="dv">5</span>) <span class="co"># break yield into 5 groups, each equidistant</span></span>
+<span id="cb83-2"><a href="#cb83-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb83-3"><a href="#cb83-3" aria-hidden="true" tabindex="-1"></a>totes <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">table</span>(data1<span class="sc">$</span>yield_categories)) <span class="co"># count how many observations are in each group and convert to a data frame</span></span>
+<span id="cb83-4"><a href="#cb83-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb83-5"><a href="#cb83-5" aria-hidden="true" tabindex="-1"></a>totes <span class="co"># print object</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>          Var1 Freq
 1 (0.823,2.24]   60

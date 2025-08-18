@@ -7,7 +7,7 @@ title: "Math Operators & Vectorizing"
 
 At the end of this lesson, you should:
 
--   understand sorts of math operators available in R and how to use them
+-   understand math operators available in R and how to use them
 -   understand logical operators in R
 -   be aware of the order of operations
 -   be aware of how whitespace is interpreted in R
