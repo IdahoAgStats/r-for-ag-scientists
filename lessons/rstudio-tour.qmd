@@ -74,7 +74,7 @@ Probably the most useful pane - we will be here frequently!
 
 We will not be using the Viewer or Presentations tabs in this workshop.
 
-What are Packages?
+**What are Packages?**
 
 These make the world go around in R. All of R consists of packages or libraries that have certain functionality associated with them. Some of are maintained by the R core team, others are maintained by outsiders. All packages are open source and most are a volunteer effort. When you open R, several packages are loaded automatically: base, datasets, graphics, grDevices, methods, stats, utils.
 
@@ -117,7 +117,7 @@ knitr::include_graphics(here::here("images", "rstudio_ribbon.png"))
 
 -   Opening and/or creating files\
 -   Opening and/or creating projects\
--   Recent files, recent project 
+-   Recent files, recent project \
 -   ...standard file functionality
 
 ### Edit

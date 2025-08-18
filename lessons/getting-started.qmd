@@ -16,7 +16,7 @@ At the end of this lesson, you should:
 
 - Established a dedicated directory for this class somewhere on your computer. 
 - Create a subdirectory in that folder called "data" 
-- Download the [workshop data](https://github.com/IdahoAgStats/r-for-ag-scientists/raw/refs/heads/main/class_data.zip) (zipped file)
+- Download the [workshop data](https://github.com/IdahoAgStats/r-for-ag-scientists/raw/refs/heads/main/data.zip) (zipped file)
 After downloading all the workshop data, unzip the file and place all the individual files inside the "data" subdirectory 
 
 ![](/images/directory.png){width="65%"}
