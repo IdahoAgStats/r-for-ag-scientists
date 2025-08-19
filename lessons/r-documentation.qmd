@@ -153,7 +153,7 @@ If the output from a function is not assigned, it will be sent to the console in
 
 ## Base R and Contributed Libraries
 
-This is the only lesson with a major focus on 'base R', that is the set of functions that come automatically loaded when you install and open R.
+This is the last lesson with a major focus on 'base R', that is the set of functions that come automatically loaded when you install and open R.
 
 Take a look at this [long-ish cheat sheet](https://cran.r-project.org/doc/contrib/Short-refcard.pdf) (4 pages long!) of the many useful commands in base R. Skim through this and see if there is anything useful for you. It is meant to periodically skimmed, not studied in great detail (you'll put yourself to sleep if you try to read it beginning to end).
 
@@ -170,7 +170,7 @@ But also, the community keeps R humming and current by writing packages that ext
 These packages are often made available on [CRAN](https://cran.r-project.org/web/packages/available_packages_by_name.html), the comprehensive R archive network, as well [Bioconductor](https://www.bioconductor.org/) or via GitHub, GitLab, independent websites.
 
 
-::: callout-tip 
+::: {.callout-tip collapse="false"}
 ## Putting it all together
 
 When you search for something in the Help pane, several types of help files will result: vignettes and function documentation. Function documentation is what we have just reviewed (detailed information on how to use a function). Vignettes are examples of how to use a collection of function in a package. They provide more context and a programmatic flow for using a package or accomplishing a particular goal. They are package tutorials. Vignettes are not provided for every function or every package; they are an extra feature that package authors choose to create for users.
