@@ -284,15 +284,11 @@ The opposite function is `tidyr::unite()` which will paste these variable togeth
 ::: {.callout-question .callout collapse="true"}
 ## Practice Problems
 
-(@) Import "weather.csv" with the `readr::read_csv()`. Filter the weather data set for station "USC00456215"
-
-(@) Create a new variable named T_avg as an average of 'tmin_F' and 'tmax_F' using a `mutate()` function and name this data frame as 'weather1'.
-
-(@) Select "name" column from the weather1 data set and rename it as "location".
-
-(@) In weather1 data set, select the first five columns and reduce that data set to unique rows (look into using `distinct()` for extracting the unique observations). 
-
-(@) Using weather1 data set, create a new variable as combination of station and name variables separated by "_" (e.g. station_name) using the unite() function. 
+1. Import "weather.csv" with the `readr::read_csv()`. 
+1.  Create a new variable named T_avg as an average of 'tmin_F' and 'tmax_F' using a `mutate()` function and name this data frame as 'weather1'.
+1. Select "name" column from the weather1 data set and rename it as "location".
+1. In weather1 data set, select the first five columns and reduce that data set to unique rows (look into using `distinct()` for extracting the unique observations). 
+1. Using weather1 data set, create a new variable as combination of station and name variables separated by "_" (e.g. station_name) using the unite() function. 
 
 **Tip:** search for `unite()` in help. 
 
