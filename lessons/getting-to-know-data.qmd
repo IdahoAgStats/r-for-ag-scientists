@@ -242,7 +242,7 @@ In general, I do not recommend setting the row names attribute in data frames to
 ::: {.callout-question .callout collapse="true"}
 ## Practice Problems
 
-(@) Import "Apple.csv" from the data/ folder using the function `read.csv()` and assign it to an object named "data2".
+(@) Import "apple.csv" from the data/ folder using the function `read.csv()` and assign it to an object named "data2".
 
 (@) Copy 'data2' to a new object. You pick the new name!
 

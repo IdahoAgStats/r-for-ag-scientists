@@ -65,6 +65,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<link href="../lessons/data-export.html" rel="next">
+<link href="../lessons/data-import.html" rel="prev">
 <link href="../images/logo_transparent.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -304,7 +306,7 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Introduction to Data Wrangling</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../lessons/lesson-zero.html">Lessons</a></li><li class="breadcrumb-item"><a href="../lessons/data-wrangling.html">Data transformation and wrangling</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -429,12 +431,36 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
  <span class="menu-text">Math Operators</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lessons/r-style-conventions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">R style conventions</span></a>
+  </div>
+</li>
       </ul>
   </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../lessons/r-documentation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">R help files</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../lessons/data-import.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Importing tabular files</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lessons/data-wrangling.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Data transformation and wrangling</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lessons/data-export.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exporting data</span></a>
   </div>
 </li>
       </ul>
@@ -465,7 +491,7 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../lessons/lesson-zero.html">Lessons</a></li><li class="breadcrumb-item"><a href="../lessons/data-wrangling.html">Data transformation and wrangling</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Introduction to Data Wrangling</h1>
 </div>
@@ -946,14 +972,14 @@ Practice Problems
 <span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>data1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  experiment observation
-1       exp1    49.26464
-2       &lt;NA&gt;    50.17129
-3       &lt;NA&gt;    49.40581
-4       &lt;NA&gt;    52.74984
-5       exp2    50.75437
-6       &lt;NA&gt;    48.94816
-7       &lt;NA&gt;    50.53583
-8       &lt;NA&gt;    49.53697</code></pre>
+1       exp1    50.73409
+2       &lt;NA&gt;    50.27111
+3       &lt;NA&gt;    51.99863
+4       &lt;NA&gt;    51.09472
+5       exp2    48.22689
+6       &lt;NA&gt;    49.78121
+7       &lt;NA&gt;    49.61529
+8       &lt;NA&gt;    51.86726</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -961,14 +987,14 @@ Practice Problems
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>data2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  experiment observation
-1       exp1    49.26464
-2       exp1    50.17129
-3       exp1    49.40581
-4       exp1    52.74984
-5       exp2    50.75437
-6       exp2    48.94816
-7       exp2    50.53583
-8       exp2    49.53697</code></pre>
+1       exp1    50.73409
+2       exp1    50.27111
+3       exp1    51.99863
+4       exp1    51.09472
+5       exp2    48.22689
+6       exp2    49.78121
+7       exp2    49.61529
+8       exp2    51.86726</code></pre>
 </div>
 </div>
 </section>
@@ -1469,6 +1495,18 @@ Putting it all together
     }
   });
   </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../lessons/data-import.html" class="pagination-link" aria-label="Importing tabular files">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Importing tabular files</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../lessons/data-export.html" class="pagination-link" aria-label="Exporting data">
+        <span class="nav-page-text">Exporting data</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">

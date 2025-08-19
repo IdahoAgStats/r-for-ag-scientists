@@ -65,7 +65,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../lessons/math-operators.html" rel="prev">
+<link href="../lessons/data-wrangling.html" rel="next">
+<link href="../lessons/r-documentation.html" rel="prev">
 <link href="../images/logo_transparent.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -430,12 +431,36 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
  <span class="menu-text">Math Operators</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lessons/r-style-conventions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">R style conventions</span></a>
+  </div>
+</li>
       </ul>
   </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../lessons/r-documentation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">R help files</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../lessons/data-import.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Importing tabular files</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lessons/data-wrangling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data transformation and wrangling</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lessons/data-export.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exporting data</span></a>
   </div>
 </li>
       </ul>
@@ -804,19 +829,21 @@ Note
 <li>image files: <a href="https://docs.ropensci.org/magick/articles/intro.html"><strong><em>magick</em></strong></a></li>
 </ul>
 <p>…and so much more.</p>
-<div class="callout callout-style-default callout-question callout-titled">
+<section id="section" class="level4">
+<h4 class="anchored" data-anchor-id="section"></h4>
+<div id="question-import" class="callout callout-style-default callout-question callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Practice Problem
+Practice Problems
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<ol type="1">
+<ol class="example" type="1">
 <li>Import one of your data sets using two of the functions taught:</li>
 </ol>
 <p>(save your data in different format to enable this)</p>
@@ -826,7 +853,7 @@ Practice Problem
 <li><code>read_excel()</code></li>
 <li><code>read.delim()</code></li>
 </ul>
-<ol type="1">
+<ol start="2" class="example" type="1">
 <li>Examine the data imported using <code>View(imported_data)</code>. Did everything import as expected? Are your variables coded as they should be? Are numeric variables numeric? Are missing data detected as thus?</li>
 </ol>
 </div>
@@ -847,6 +874,7 @@ Putting it all together
 </div>
 
 
+</section>
 </section>
 </section>
 
@@ -1265,11 +1293,14 @@ Putting it all together
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../lessons/math-operators.html" class="pagination-link" aria-label="Math Operators">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Math Operators</span>
+      <a href="../lessons/r-documentation.html" class="pagination-link" aria-label="R help files">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">R help files</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="../lessons/data-wrangling.html" class="pagination-link" aria-label="Data transformation and wrangling">
+        <span class="nav-page-text">Data transformation and wrangling</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->
