@@ -47,7 +47,7 @@ knitr::include_graphics("../images/package_installation.png")
 
 This will automatically resolve spelling and case issues. 
 
-::: {callout-note collapse = FALSE}
+::: {.callout-note collapse = FALSE}
 Note that multiple packages can be listed in the `install.packages()` command, but not `library()`. Also, packages only need to be installed once, not repeatedly (unless a package needs to be a updated to the latest version). However, packages must be loaded in every R session or their functionality (including the help files) will not be available.
 :::
 
