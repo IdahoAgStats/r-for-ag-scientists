@@ -172,6 +172,9 @@ head(parma2020_long)
 
 :::
 
+<br>
+
+
 ::: {.callout-question .callout collapse="true"}
 ## Extra Hard Practice Problem
 
