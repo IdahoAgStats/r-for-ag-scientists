@@ -163,6 +163,7 @@ disease_df_sum1
 
 1. Import "weather_data.csv", select 'station, 'tmin_F' and 'tmax_F' using the `select()` function. Calculate the sum, mean, and median for 'tmin_F' and 'tmax_F' using `rowwise()` function.
 
+
 :::
 
 
@@ -180,3 +181,29 @@ variety_trials %>%
 
 In this case, the mean value used for calculating 'relative_yield' is the group mean.
 :::
+
+## Final Notes
+
+This is near the end of lessons on data wrangling. There is additional functionality that we have not touched on that you may find useful to know.
+
+Here is the table with summary of **dplyr** & **tidyr** functions we have used in this lesson and previous lessons:
+
+| Function       | Package | Description                                |
+|----------------|---------|--------------------------------------------|
+| filter()       | dplyr   | Keep rows that meet a condition            |
+| select()       | dplyr   | Keep or reorder columns                    |
+| mutate()       | dplyr   | Keep or reorder columns                    |
+| arrange()      | dplyr   | Sort rows                                  |
+| group_by()     | dplyr   | Group data for summarizing                 |
+| rename()       | dplyr   | Rename columns                             |
+| case_when()    | dplyr   | Create conditional new columns             |
+| pivot_longer() | tidyr   | Convert wide → long format                 |
+| pivot_wider()  | tidyr   | Convert long → wide format                 |
+| drop_na()      | tidyr   | Remove rows containing missing values (NA) |
+| separate()     | tidyr   | Split a column into multiple columns       |
+| unite()        | tidyr   | Combine multiple columns into one          |
+
+: Summary of functions in dplyr and tidyr packages {#tbl-opt_pkg}
+
+If you would like to explore more functions in these packages, please refer to
+[dplyr functions](https://dplyr.tidyverse.org/reference/index.html) and [tidyr functions](https://tidyr.tidyverse.org/reference/index.html) documentation.
