@@ -21,8 +21,8 @@ title: "Course Schedule"
             [Combining data sets](lessons/data-merging.qmd)  \
             [Reshaping data](lessons/reshaping.qmd) |   
 | Aug 21 |  Using LMMs for Coding \
-            Visualizing data with ggplot  \
-            keeping up with R   |
-| Aug 22  |  Mixed models guide & Open time for questions  |   
+            [Visualizing data with ggplot](lessons/ggplotting)  \
+            [keeping up with R](lessons/final-lesson)  |
+| Aug 22  |  Mixed models guide & open time for questions  |   
 | Extra  |  [How to repeat actions](lessons/repeating-actions.qmd)  |
 

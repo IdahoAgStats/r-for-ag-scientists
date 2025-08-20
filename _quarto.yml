@@ -95,8 +95,8 @@ website:
           - href: lessons/reshaping.qmd
             text: Reshaping data
 
-      #     - href: lessons/ggplotting.qmd
-      #       text: Visualizing data with ggplot
+          - href: lessons/ggplotting.qmd
+            text: Visualizing data with ggplot
 
       #     - href: lessons/repeating-actions.qmd
       #       text: How to repeat operations
@@ -109,10 +109,10 @@ website:
             text: R help files
           - href: https://imci-idaho.github.io/2022-03-01-WhatTheyForgot/slides/finding-help.html#1
             text: Finding extra help
-          # - href: lessons/reproducible-research.qmd
-          #   text: Reproducible research in R
-          # - href: lessons/final_lesson.qmd
-          #   text: Keeping up with R
+          - href: lessons/reproducible-research.qmd
+            text: Reproducible research in R
+          - href: lessons/final_lesson.qmd
+            text: Keeping up with R
         
   page-footer:
     right: "[Quarto Website](https://quarto.org/), template by [Mine Çetinkaya-Rundel](https://github.com/sta210-s22/website)"
