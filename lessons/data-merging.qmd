@@ -83,8 +83,16 @@ xxxx_join(left_dataset, right_dataset)
 Where "left_dataset" and "right_dataset" correspond to the left and right data sets in this diagram:
 
 ```{r, echo=FALSE}
-knitr::include_graphics(here::here("images", "dplyr_joins.png"))
+knitr::include_graphics(here::here("images", "dplyr_joins_diagram.png"))
 ```
+
+In practice, this is what it is doing:
+
+```{r, echo=FALSE}
+knitr::include_graphics(here::here("images", "dplyr_joins_all.png"))
+```
+
+Joins are concerned with matching rows by a identifying key, deciding what to return (based on what we asked for) and returning *all* columns (semijoin and antijoin are exceptions to that).
 
 ::: callout-note
 ## The importance of 'keys'
@@ -208,9 +216,9 @@ It can do some very flexible matching by numeric values, dates and other factors
 ::: {.callout-question .callout collapse="true"}
 ## Practice Problems
 
-1.  Import "genotypic_data_rotated.csv" (see script below), along with "trial_data.csv", and "trial_metadata.csv".
-1.  Do an inner join between "genotypic_data_rotated.csv" and "trial_data.csv" using variety names.
-1.  Do a semi-join of "genotypic_data_rotated.csv" with "trial_data.csv" and do the reverse. How does this compare with the inner join from the previous problem?
+1.  If not already imported, mport "genotypic_data_rotated.csv", along with "trial_data.csv", and "trial_metadata.csv".
+1.  Merge "genotypic_data_rotated.csv" and "trial_data.csv" that returns only varieties they have in common and columns from both data sets. 
+1.  Merge "genotypic_data_rotated.csv" and "trial_data.csv" that returns only varieties from "genotypic_data_rotated.csv" and the columns from "trial_data.csv". Do the oppositie: varieties only in "trial_data.csv" and the columns from "genotypic_data_rotated.csv".
 1.  Do an anti-join between "genotypic_data_rotated.csv" and "trial_data.csv".
 1.  Join together all common observations between the 3 files (your choice on join).
 :::
