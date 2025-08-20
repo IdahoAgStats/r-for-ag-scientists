@@ -474,6 +474,7 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
   <li><a href="#grouping-across-multiple-variables" id="toc-grouping-across-multiple-variables" class="nav-link" data-scroll-target="#grouping-across-multiple-variables">Grouping across multiple variables</a></li>
   <li><a href="#summarising-across-multiple-variables" id="toc-summarising-across-multiple-variables" class="nav-link" data-scroll-target="#summarising-across-multiple-variables">Summarising across multiple variables</a></li>
   <li><a href="#row-wise-summaries" id="toc-row-wise-summaries" class="nav-link" data-scroll-target="#row-wise-summaries">Row-wise summaries</a></li>
+  <li><a href="#final-notes" id="toc-final-notes" class="nav-link" data-scroll-target="#final-notes">Final Notes</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/IdahoAgStats/r-for-ag-scientists/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -879,6 +880,97 @@ Putting it all together
 <p>In this case, the mean value used for calculating ‘relative_yield’ is the group mean.</p>
 </div>
 </div>
+</section>
+<section id="final-notes" class="level2">
+<h2 class="anchored" data-anchor-id="final-notes">Final Notes</h2>
+<p>This is near the end of lessons on data wrangling. There is additional functionality that we have not touched on that you may find useful to know.</p>
+<p>Here is the table with summary of <strong>dplyr</strong> &amp; <strong>tidyr</strong> functions we have used in this lesson and previous lessons:</p>
+<div id="tbl-opt_pkg" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-opt_pkg-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1: Summary of functions in dplyr and tidyr packages
+</figcaption>
+<div aria-describedby="tbl-opt_pkg-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 23%">
+<col style="width: 13%">
+<col style="width: 63%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Function</th>
+<th>Package</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>filter()</td>
+<td>dplyr</td>
+<td>Keep rows that meet a condition</td>
+</tr>
+<tr class="even">
+<td>select()</td>
+<td>dplyr</td>
+<td>Keep or reorder columns</td>
+</tr>
+<tr class="odd">
+<td>mutate()</td>
+<td>dplyr</td>
+<td>Keep or reorder columns</td>
+</tr>
+<tr class="even">
+<td>arrange()</td>
+<td>dplyr</td>
+<td>Sort rows</td>
+</tr>
+<tr class="odd">
+<td>group_by()</td>
+<td>dplyr</td>
+<td>Group data for summarizing</td>
+</tr>
+<tr class="even">
+<td>rename()</td>
+<td>dplyr</td>
+<td>Rename columns</td>
+</tr>
+<tr class="odd">
+<td>case_when()</td>
+<td>dplyr</td>
+<td>Create conditional new columns</td>
+</tr>
+<tr class="even">
+<td>pivot_longer()</td>
+<td>tidyr</td>
+<td>Convert wide → long format</td>
+</tr>
+<tr class="odd">
+<td>pivot_wider()</td>
+<td>tidyr</td>
+<td>Convert long → wide format</td>
+</tr>
+<tr class="even">
+<td>drop_na()</td>
+<td>tidyr</td>
+<td>Remove rows containing missing values (NA)</td>
+</tr>
+<tr class="odd">
+<td>separate()</td>
+<td>tidyr</td>
+<td>Split a column into multiple columns</td>
+</tr>
+<tr class="even">
+<td>unite()</td>
+<td>tidyr</td>
+<td>Combine multiple columns into one</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>If you would like to explore more functions in these packages, please refer to <a href="https://dplyr.tidyverse.org/reference/index.html">dplyr functions</a> and <a href="https://tidyr.tidyverse.org/reference/index.html">tidyr functions</a> documentation.</p>
 
 
 </section>
