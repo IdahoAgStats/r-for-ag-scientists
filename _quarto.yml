@@ -69,80 +69,45 @@ website:
             text: Lesson Zero
           - href: lessons/rstudio-tour.qmd
             text: Quick tour of R studio
+          - href: lessons/getting-started.qmd
+            text: Setting up R
           - href: lessons/getting-to-know-data.qmd
             text: Getting to know data in R
-            # contents:
-            #     - href: lessons/data-types.qmd
-            #       text: Data Types
-            #     - href: practice/practice-B.qmd
-            #       text: "practice set B"
-            #     - href: lessons/data-structures.qmd
-            #       text: Data Structures
-            #       contents:
-            #           - href: practice/practice-C.qmd
-            #             text: "practice set C"
-            #             # - href: practice/solution-C.qmd
-            #             #   text: "solutions to C"
-            #     - href: lessons/math-operators.qmd
-            #       text: Math Operators
-            #       contents:
-            #           - href: practice/practice-A.qmd
-            #             text: "practice set A"
+            contents:
+                - href: lessons/data-types.qmd
+                  text: Data Types
+                - href: lessons/data-structures.qmd
+                  text: Data Structures
+                - href: lessons/math-operators.qmd
+                  text: Math Operators
+                - href: lessons/r-style-conventions.qmd
+                  text: R style conventions
                         
-      #     - href: lessons/r-documentation.qmd
-      #       text: R documentation
-      #     - href: lessons/data-import.qmd
-      #       text: Importing tabular files
-      #       contents:
-      #         - href: practice/practice-D.qmd
-      #           text: "practice set D"
-      #     - href: lessons/data-wrangling.qmd
-      #       text: Data transformation and wrangling
-      #       contents:
-      #         - href: practice/practice-F.qmd
-      #           text: "practice set F"
-      #         - href: practice/solution-F.qmd
-      #           text: "solution to F"
-      #     - href: lessons/data-export.qmd
-      #       text: Exporting R objects to file
-      #       contents:
-      #         - href: practice/practice-E.qmd
-      #           text: "practice set E"
-      #     - href: lessons/r-style-conventions.qmd
-      #       text: R style conventions
+          - href: lessons/r-documentation.qmd
+            text: R help files
+          - href: lessons/data-import.qmd
+            text: Importing tabular files
+          - href: lessons/data-wrangling.qmd
+            text: Data transformation and wrangling
+          - href: lessons/data-export.qmd
+            text: Exporting data
+              
+      #     - href: lessons/reproducible-research.qmd
+      #       text: Reproducible research in R
       #     - href: lessons/reshaping.qmd
       #       text: Reshaping data
-      #       contents:
-      #         - href: practice/practice-H.qmd
-      #           text: "practice set H"
-      #         - href: practice/solution-H.qmd
-      #           text: "solution to H"
       #     - href: lessons/data-merging.qmd
       #       text: Combining data sets
-      #       contents:
-      #         - href: practice/practice-I.qmd
-      #         - text: "practice set I"
-      #         - href: practice/solution-I.qmd
-      #         - text: "solution to I"
       #     - href: lessons/data-aggregation.qmd
       #       text: Data aggregation
-      #       contents:
-      #         - href: practice/practice-G.qmd
-      #           text: "practice set G"
-      #         - href: practice/solution-G.qmd
-      #           text: "solution to G"
       # 
       #     - href: lessons/ggplotting.qmd
       #       text: Visualizing data with ggplot
+      #     - href: lessons/final_lesson.qmd
+      #       text: Keeping up with R
       #       
       #     - href: lessons/repeating-actions.qmd
       #       text: How to repeat operations
-      # 
-      #     - href: lessons/reproducible-research.qmd
-      #       text: Reproducible research in R
-      # 
-      #     - href: lessons/final_lesson.qmd
-      #       text: Keeping up with R
 
   page-footer:
     right: "[Quarto Website](https://quarto.org/), template by [Mine Çetinkaya-Rundel](https://github.com/sta210-s22/website)"

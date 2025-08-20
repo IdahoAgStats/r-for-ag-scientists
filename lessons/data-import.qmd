@@ -214,10 +214,12 @@ You may also be working with data types that are not strictly tabular, at least 
 
 ...and so much more.
 
-::: {.callout-question .callout collapse="true"}
-## Practice Problem
+####   
 
-1. Import one of your data sets using two of the functions taught:
+::: {#question-import .callout-question .callout collapse="true"} 
+## Practice Problems
+
+(@) Import one of your data sets using two of the functions taught:
 
 (save your data in different format to enable this)
 
@@ -226,7 +228,7 @@ You may also be working with data types that are not strictly tabular, at least 
 * `read_excel()`
 * `read.delim()`
 
-1. Examine the data imported using `View(imported_data)`. Did everything import as expected? Are your variables coded as they should be? Are numeric variables numeric? Are missing data detected as thus? 
+(@) Examine the data imported using `View(imported_data)`. Did everything import as expected? Are your variables coded as they should be? Are numeric variables numeric? Are missing data detected as thus? 
 
 :::
 

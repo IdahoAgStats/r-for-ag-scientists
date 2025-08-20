@@ -10,18 +10,19 @@ title: "Course Schedule"
 | Before first day of class | [Lesson Zero](lessons/lesson-zero.qmd) |  
 | Aug 18 | Workshop orientation \
            [Quick tour of R Studio](lessons/rstudio-tour.qmd)\
+           [Setting up R](lessons/getting-started.qmd) \
            [Getting to know data in R](lessons/getting-to-know-data.qmd) | 
-| Aug 19 |  R documentation \
-            Importing tabular files \
-           Data transformation & wrangling \
-           Exporting R objects to file  |  
-| Aug 20 |   Reshaping data \
-            Combining data sets  \
-            Data aggregation & summary  |   
-| Aug 21 |  Visualizing data with ggplot  \
-            Finding help  \
-            Reproducible research in R  \
+| Aug 19 |  [R help files](lessons/r-documentation.qmd)  \
+            [Importing tabular files](lessons/data-import.qmd) \
+           [Data transformation & wrangling](lessons/data-wrangling.qmd) \
+           [Exporting R objects to file](lessons/data-export.qmd)  |  
+| Aug 20 |  [Finding help when you're stuck]() \
+            [Date aggregation and summary](lessons/data-aggregation.qmd)
+            [Combining data sets](data-merging.qmd)  \
+            [Reshaping data](lessons/reshaping.qmd) |   
+| Aug 21 |  Reproducible research in R  \
+            Visualizing data with ggplot  \
             keeping up with R   |
-| Aug 22  |  Mixed Models & Open time for questions  |   
-| Extra  |  How to repeat actions  |
+| Aug 22  |  Mixed models guide & Open time for questions  |   
+| Extra  |  [How to repeat actions](lessons/repeating-actions.qmd)  |
 
