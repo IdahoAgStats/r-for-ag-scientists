@@ -80,11 +80,7 @@ website:
                   text: Data Structures
                 - href: lessons/math-operators.qmd
                   text: Math Operators
-                - href: lessons/r-style-conventions.qmd
-                  text: R style conventions
-                        
-          - href: lessons/r-documentation.qmd
-            text: R help files
+
           - href: lessons/data-import.qmd
             text: Importing tabular files
           - href: lessons/data-wrangling.qmd
@@ -92,23 +88,32 @@ website:
           - href: lessons/data-export.qmd
             text: Exporting data
               
-      #     - href: lessons/reproducible-research.qmd
-      #       text: Reproducible research in R
-      #     - href: lessons/reshaping.qmd
-      #       text: Reshaping data
-      #     - href: lessons/data-merging.qmd
-      #       text: Combining data sets
-      #     - href: lessons/data-aggregation.qmd
-      #       text: Data aggregation
-      # 
+          - href: lessons/data-aggregation.qmd
+            text: Data aggregation
+          - href: lessons/data-merging.qmd
+            text: Combining data sets
+          - href: lessons/reshaping.qmd
+            text: Reshaping data
+
       #     - href: lessons/ggplotting.qmd
       #       text: Visualizing data with ggplot
-      #     - href: lessons/final_lesson.qmd
-      #       text: Keeping up with R
-      #       
+
       #     - href: lessons/repeating-actions.qmd
       #       text: How to repeat operations
-
+      
+      - section: "Meta"
+        contents:
+          - href: lessons/r-style-conventions.qmd
+            text: R style conventions        
+          - href: lessons/r-documentation.qmd
+            text: R help files
+          - href: https://imci-idaho.github.io/2022-03-01-WhatTheyForgot/slides/finding-help.html#1
+            text: Finding extra help
+          # - href: lessons/reproducible-research.qmd
+          #   text: Reproducible research in R
+          # - href: lessons/final_lesson.qmd
+          #   text: Keeping up with R
+        
   page-footer:
     right: "[Quarto Website](https://quarto.org/), template by [Mine Çetinkaya-Rundel](https://github.com/sta210-s22/website)"
     left: "&copy; 2025"
