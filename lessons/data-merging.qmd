@@ -204,31 +204,6 @@ table(ex_antijoin$variety %in% genotypes$individual)
 It can do some very flexible matching by numeric values, dates and other factors. More on this can be found in the documentation for [join_by](https://dplyr.tidyverse.org/reference/join_by.html). This topic is complext and beyond the scope of this introductory workshop.
 :::
 
-## Final Notes
-
-This is near the end of lessons on data wrangling. There is additional functionality that we have not touched on that you may find useful to know.
-
-Here is the table with summary of **dplyr** & **tidyr** functions we have used in this lesson and previous lessons:
-
-| Function       | Package | Description                                |
-|----------------|---------|--------------------------------------------|
-| filter()       | dplyr   | Keep rows that meet a condition            |
-| select()       | dplyr   | Keep or reorder columns                    |
-| mutate()       | dplyr   | Keep or reorder columns                    |
-| arrange()      | dplyr   | Sort rows                                  |
-| group_by()     | dplyr   | Group data for summarizing                 |
-| rename()       | dplyr   | Rename columns                             |
-| case_when()    | dplyr   | Create conditional new columns             |
-| pivot_longer() | tidyr   | Convert wide → long format                 |
-| pivot_wider()  | tidyr   | Convert long → wide format                 |
-| drop_na()      | tidyr   | Remove rows containing missing values (NA) |
-| separate()     | tidyr   | Split a column into multiple columns       |
-| unite()        | tidyr   | Combine multiple columns into one          |
-
-: Summary of functions in dplyr and tidyr packages {#tbl-opt_pkg}
-
-If you would like to explore more functions in these packages, please refer to
-[dplyr functions](https://dplyr.tidyverse.org/reference/index.html) and [tidyr functions](https://tidyr.tidyverse.org/reference/index.html) documentation.
 
 ::: {.callout-question .callout collapse="true"}
 ## Practice Problems
