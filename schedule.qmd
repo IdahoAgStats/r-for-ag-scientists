@@ -17,7 +17,7 @@ title: "Course Schedule"
            [Data transformation & wrangling](lessons/data-wrangling.qmd) \
            [Exporting R objects to file](lessons/data-export.qmd)  |  
 | Aug 20 |  [Finding help when you're stuck](https://imci-idaho.github.io/2022-03-01-WhatTheyForgot/slides/finding-help.html#1) \
-            [Date aggregation and summary](lessons/data-aggregation.qmd)
+            [Date aggregation and summary](lessons/data-aggregation.qmd) \
             [Combining data sets](lessons/data-merging.qmd)  \
             [Reshaping data](lessons/reshaping.qmd) |   
 | Aug 21 |  Using LMMs for Coding \
