@@ -65,6 +65,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<link href="../lessons/r-style-conventions.html" rel="next">
+<link href="../lessons/data-merging.html" rel="prev">
 <link href="../images/logo_transparent.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -304,7 +306,7 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Reshaping Data Sets</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../lessons/lesson-zero.html">Lessons</a></li><li class="breadcrumb-item"><a href="../lessons/reshaping.html">Reshaping data</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -429,20 +431,8 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
  <span class="menu-text">Math Operators</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../lessons/r-style-conventions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">R style conventions</span></a>
-  </div>
-</li>
       </ul>
   </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../lessons/r-documentation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">R help files</span></a>
-  </div>
-</li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../lessons/data-import.html" class="sidebar-item-text sidebar-link">
@@ -461,6 +451,53 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
  <span class="menu-text">Exporting data</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lessons/data-aggregation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data aggregation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lessons/data-merging.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Combining data sets</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lessons/reshaping.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Reshaping data</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Meta</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lessons/r-style-conventions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">R style conventions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lessons/r-documentation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">R help files</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://imci-idaho.github.io/2022-03-01-WhatTheyForgot/slides/finding-help.html#1" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Finding extra help</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -476,6 +513,7 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
   <li><a href="#what-is-pivoting" id="toc-what-is-pivoting" class="nav-link active" data-scroll-target="#what-is-pivoting">What is pivoting?</a></li>
   <li><a href="#pivot-long-to-wide" id="toc-pivot-long-to-wide" class="nav-link" data-scroll-target="#pivot-long-to-wide">Pivot long to wide</a></li>
   <li><a href="#wide-to-long" id="toc-wide-to-long" class="nav-link" data-scroll-target="#wide-to-long">Wide to Long</a></li>
+  <li><a href="#final-notes-on-the-tidyverse" id="toc-final-notes-on-the-tidyverse" class="nav-link" data-scroll-target="#final-notes-on-the-tidyverse">Final notes on the Tidyverse</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/IdahoAgStats/r-for-ag-scientists/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -483,7 +521,7 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../lessons/lesson-zero.html">Lessons</a></li><li class="breadcrumb-item"><a href="../lessons/reshaping.html">Reshaping data</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Reshaping Data Sets</h1>
 </div>
@@ -795,6 +833,107 @@ Extra Hard Practice Problem
 </div>
 </div>
 </div>
+</section>
+<section id="final-notes-on-the-tidyverse" class="level2">
+<h2 class="anchored" data-anchor-id="final-notes-on-the-tidyverse">Final notes on the Tidyverse</h2>
+<p>This is near the end of lessons on data wrangling. There is additional functionality that we have not touched on that you may find useful to know.</p>
+<p>Here is the table with summary of <strong>dplyr</strong> &amp; <strong>tidyr</strong> functions we have used in this lesson and previous lessons:</p>
+<div id="tbl-opt_pkg" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-opt_pkg-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1: Summary of functions in dplyr and tidyr packages
+</figcaption>
+<div aria-describedby="tbl-opt_pkg-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 23%">
+<col style="width: 13%">
+<col style="width: 63%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Function</th>
+<th>Package</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>filter()</td>
+<td>dplyr</td>
+<td>Keep rows that meet a condition</td>
+</tr>
+<tr class="even">
+<td>select()</td>
+<td>dplyr</td>
+<td>Keep or reorder columns</td>
+</tr>
+<tr class="odd">
+<td>mutate()</td>
+<td>dplyr</td>
+<td>Keep or reorder columns</td>
+</tr>
+<tr class="even">
+<td>arrange()</td>
+<td>dplyr</td>
+<td>Sort rows</td>
+</tr>
+<tr class="odd">
+<td>group_by()</td>
+<td>dplyr</td>
+<td>Group data for summarizing</td>
+</tr>
+<tr class="even">
+<td>rename()</td>
+<td>dplyr</td>
+<td>Rename columns</td>
+</tr>
+<tr class="odd">
+<td>case_when()</td>
+<td>dplyr</td>
+<td>Create conditional new columns</td>
+</tr>
+<tr class="even">
+<td>pivot_longer()</td>
+<td>tidyr</td>
+<td>Convert wide → long format</td>
+</tr>
+<tr class="odd">
+<td>pivot_wider()</td>
+<td>tidyr</td>
+<td>Convert long → wide format</td>
+</tr>
+<tr class="even">
+<td>drop_na()</td>
+<td>tidyr</td>
+<td>Remove rows containing missing values (NA)</td>
+</tr>
+<tr class="odd">
+<td>na_if()</td>
+<td>dplyr</td>
+<td>convert specific values to missing</td>
+</tr>
+<tr class="even">
+<td>replace_na()</td>
+<td>tidyr</td>
+<td>replace missing values with a specific value</td>
+</tr>
+<tr class="odd">
+<td>separate()</td>
+<td>tidyr</td>
+<td>Split a column into multiple columns</td>
+</tr>
+<tr class="even">
+<td>unite()</td>
+<td>tidyr</td>
+<td>Combine multiple columns into one</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>If you would like to explore more functions in these packages, please refer to <a href="https://dplyr.tidyverse.org/reference/index.html">dplyr functions</a> and <a href="https://tidyr.tidyverse.org/reference/index.html">tidyr functions</a> documentation.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1227,6 +1366,18 @@ Putting it all together
     }
   });
   </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../lessons/data-merging.html" class="pagination-link" aria-label="Combining data sets">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Combining data sets</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../lessons/r-style-conventions.html" class="pagination-link" aria-label="R style conventions">
+        <span class="nav-page-text">R style conventions</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">

@@ -66,7 +66,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
 <link href="../lessons/r-documentation.html" rel="next">
-<link href="../lessons/math-operators.html" rel="prev">
+<link href="../lessons/reshaping.html" rel="prev">
 <link href="../images/logo_transparent.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -302,7 +302,7 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../lessons/lesson-zero.html">Lessons</a></li><li class="breadcrumb-item"><a href="../lessons/getting-to-know-data.html">Getting to know data in R</a></li><li class="breadcrumb-item"><a href="../lessons/r-style-conventions.html">R style conventions</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../lessons/r-style-conventions.html">Meta</a></li><li class="breadcrumb-item"><a href="../lessons/r-style-conventions.html">R style conventions</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -404,11 +404,11 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
       <div class="sidebar-item-container"> 
             <a href="../lessons/getting-to-know-data.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Getting to know data in R</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="" class="collapse list-unstyled sidebar-section depth2 show">  
+      <ul id="" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../lessons/data-types.html" class="sidebar-item-text sidebar-link">
@@ -427,20 +427,8 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
  <span class="menu-text">Math Operators</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../lessons/r-style-conventions.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">R style conventions</span></a>
-  </div>
-</li>
       </ul>
   </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../lessons/r-documentation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">R help files</span></a>
-  </div>
-</li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../lessons/data-import.html" class="sidebar-item-text sidebar-link">
@@ -457,6 +445,53 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
   <div class="sidebar-item-container"> 
   <a href="../lessons/data-export.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Exporting data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lessons/data-aggregation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data aggregation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lessons/data-merging.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Combining data sets</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lessons/reshaping.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Reshaping data</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Meta</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lessons/r-style-conventions.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">R style conventions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lessons/r-documentation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">R help files</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://imci-idaho.github.io/2022-03-01-WhatTheyForgot/slides/finding-help.html#1" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Finding extra help</span></a>
   </div>
 </li>
       </ul>
@@ -482,7 +517,7 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../lessons/lesson-zero.html">Lessons</a></li><li class="breadcrumb-item"><a href="../lessons/getting-to-know-data.html">Getting to know data in R</a></li><li class="breadcrumb-item"><a href="../lessons/r-style-conventions.html">R style conventions</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../lessons/r-style-conventions.html">Meta</a></li><li class="breadcrumb-item"><a href="../lessons/r-style-conventions.html">R style conventions</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Object Naming and Other Style Concerns</h1>
 </div>
@@ -1129,8 +1164,8 @@ Putting it all together
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../lessons/math-operators.html" class="pagination-link" aria-label="Math Operators">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Math Operators</span>
+      <a href="../lessons/reshaping.html" class="pagination-link" aria-label="Reshaping data">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Reshaping data</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

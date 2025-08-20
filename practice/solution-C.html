@@ -425,20 +425,8 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
  <span class="menu-text">Math Operators</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../lessons/r-style-conventions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">R style conventions</span></a>
-  </div>
-</li>
       </ul>
   </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../lessons/r-documentation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">R help files</span></a>
-  </div>
-</li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../lessons/data-import.html" class="sidebar-item-text sidebar-link">
@@ -455,6 +443,53 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
   <div class="sidebar-item-container"> 
   <a href="../lessons/data-export.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Exporting data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lessons/data-aggregation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data aggregation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lessons/data-merging.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Combining data sets</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lessons/reshaping.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Reshaping data</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Meta</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lessons/r-style-conventions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">R style conventions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lessons/r-documentation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">R help files</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://imci-idaho.github.io/2022-03-01-WhatTheyForgot/slides/finding-help.html#1" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Finding extra help</span></a>
   </div>
 </li>
       </ul>
@@ -579,17 +614,17 @@ FYI
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>new_df <span class="ot">&lt;-</span> df[,<span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">3</span>)]</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>new_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>          five one four         two      three
-1  huckleberry   1    A  2.06890263  2.4398549
-2        apple   2    B  0.03809719 -0.6996568
-3        apple   3    B  0.84265373 -1.0084933
-4        apple   4    A  0.10721369 -0.5811770
-5  huckleberry   5    B -0.88044242 -1.5373659
-6  huckleberry   6    B  0.04156087  0.7230585
-7        apple   7    A  0.07930015 -0.8355809
-8        apple   8    A  0.68643793  1.9229197
-9  huckleberry   9    A -0.18529108 -1.6423259
-10       apple  10    B -0.26607187 -0.9086143</code></pre>
+<pre><code>          five one four         two       three
+1  huckleberry   1    B -0.52863401 -0.52400062
+2        apple   2    B  0.51437572 -0.14621230
+3  huckleberry   3    B  0.38418961 -0.29674625
+4        apple   4    B -0.31523947 -0.42716854
+5        apple   5    A -0.00986259  1.03686913
+6  huckleberry   6    B  0.78186019 -0.43978964
+7  huckleberry   7    A -0.05428900 -0.06470298
+8        apple   8    B  0.85097472 -0.08865035
+9        apple   9    A -1.25528655 -0.87239235
+10       apple  10    A -0.07753405 -0.83041643</code></pre>
 </div>
 </div>
 </section>

@@ -38,7 +38,7 @@ For merging, it is done in groups of two; that is, two tables at a time are merg
 
 If you have two data sets of different observations (the keys do not match) but similar or identical column headers, these rows can be stacked together using a row bind.
 
-Example syntax of a `row_bind`:
+Example syntax of a `row_bind()`:
 
 ```{r, eval=FALSE}
 new1 <- bind_rows(x, y)
@@ -77,7 +77,7 @@ Merging two data sets when it goes beyond a row bind can take an effort.
 All joins follow this syntax:
 
 ```{r, eval=FALSE}
-xxx_join(left_dataset, right_dataset)
+xxxx_join(left_dataset, right_dataset)
 ```
 
 Where "left_dataset" and "right_dataset" correspond to the left and right data sets in this diagram:
@@ -209,14 +209,10 @@ It can do some very flexible matching by numeric values, dates and other factors
 ## Practice Problems
 
 1.  Import "genotypic_data_rotated.csv" (see script below), along with "trial_data.csv", and "trial_metadata.csv".
-
-2.  Do an inner join between "genotypic_data_rotated.csv" and "trial_data.csv" using variety names.
-
-3.  Do a semi-join of "genotypic_data_rotated.csv" with "trial_data.csv" and do the reverse. How does this compare with the inner join from the previous problem?
-
-4.  Do an anti-join between "genotypic_data_rotated.csv" and "trial_data.csv".
-
-5.  Join together all common observations between the 3 files (your choice on join).
+1.  Do an inner join between "genotypic_data_rotated.csv" and "trial_data.csv" using variety names.
+1.  Do a semi-join of "genotypic_data_rotated.csv" with "trial_data.csv" and do the reverse. How does this compare with the inner join from the previous problem?
+1.  Do an anti-join between "genotypic_data_rotated.csv" and "trial_data.csv".
+1.  Join together all common observations between the 3 files (your choice on join).
 :::
 
 ::: callout-tip

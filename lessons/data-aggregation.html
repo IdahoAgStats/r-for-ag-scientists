@@ -65,6 +65,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<link href="../lessons/data-merging.html" rel="next">
+<link href="../lessons/data-export.html" rel="prev">
 <link href="../images/logo_transparent.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -300,7 +302,7 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Aggregating &amp; Summarising Data</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../lessons/lesson-zero.html">Lessons</a></li><li class="breadcrumb-item"><a href="../lessons/data-aggregation.html">Data aggregation</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -425,20 +427,8 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
  <span class="menu-text">Math Operators</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../lessons/r-style-conventions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">R style conventions</span></a>
-  </div>
-</li>
       </ul>
   </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../lessons/r-documentation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">R help files</span></a>
-  </div>
-</li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../lessons/data-import.html" class="sidebar-item-text sidebar-link">
@@ -455,6 +445,53 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
   <div class="sidebar-item-container"> 
   <a href="../lessons/data-export.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Exporting data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lessons/data-aggregation.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Data aggregation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lessons/data-merging.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Combining data sets</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lessons/reshaping.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Reshaping data</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Meta</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lessons/r-style-conventions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">R style conventions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lessons/r-documentation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">R help files</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://imci-idaho.github.io/2022-03-01-WhatTheyForgot/slides/finding-help.html#1" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Finding extra help</span></a>
   </div>
 </li>
       </ul>
@@ -482,7 +519,7 @@ gtag('config', 'G-ZZST40VXE1', { 'anonymize_ip': true});
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../lessons/lesson-zero.html">Lessons</a></li><li class="breadcrumb-item"><a href="../lessons/data-aggregation.html">Data aggregation</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Aggregating &amp; Summarising Data</h1>
 </div>
@@ -612,7 +649,7 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><code>summarise()</code> only returns a single value back for each group. If you want more than that (e.g.&nbsp;to run a linear model on each group), there are other tools for that. This is intended to be addressed in Lesson ‘repeating actions’.</p>
+<p><code>summarise()</code> only returns a single value back for each group. If you want that single value applied to each observation, use <code>mutate()</code> within a <code>group_by()</code> statement.</p>
 </div>
 </div>
 </section>
@@ -733,9 +770,9 @@ Practice Problems
 <li><p>For some of these exercises, you may need to use other <a href="https://dplyr.tidyverse.org/reference/index.html"><strong><em>dplyr</em></strong></a> functions.</p></li>
 </ul>
 <ol type="1">
-<li><p>Count the number of observations for each ‘variety’ in the ‘variety_trials’ data set.</p></li>
-<li><p>Use ‘variety-trials’ data, group data by ‘variety’ and calculate the summary statistics (mean, sd, min, and max) for ‘grain_protein’.</p></li>
-<li><p>Use ‘variety-trials’ data, group data by ‘crop’ and ‘year’ variables and calculate the mean and standard deviation across ‘test_weight’ and ‘grain_protein’.</p></li>
+<li>Count the number of observations for each ‘variety’ in the ‘variety_trials’ data set.</li>
+<li>Use ‘variety-trials’ data, group data by ‘variety’ and calculate the summary statistics (mean, sd, min, and max) for ‘grain_protein’.</li>
+<li>Use ‘variety-trials’ data, group data by ‘crop’ and ‘year’ variables and calculate the mean and standard deviation across ‘test_weight’ and ‘grain_protein’.</li>
 </ol>
 </div>
 </div>
@@ -753,7 +790,7 @@ Practice Problems
 <span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>score_range <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">10</span> <span class="sc">*</span> <span class="dv">10</span>L)</span>
 <span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="co"># sample those possible scores to generate 50 data points</span></span>
 <span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>scores <span class="ot">&lt;-</span> <span class="fu">sample</span>(score_range, <span class="dv">50</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="co"># arrange those 50 data points into a datafrmae of 5 columns, each column reflecting 10 observations</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="co"># arrange those 50 data points into a data frame of 5 columns, each column reflecting 10 observations</span></span>
 <span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>disease_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">plot =</span> letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>],</span>
 <span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>                         <span class="at">score1 =</span> scores[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>],</span>
 <span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>                         <span class="at">score5 =</span> scores[<span class="dv">11</span><span class="sc">:</span><span class="dv">20</span>],</span>
@@ -833,8 +870,8 @@ Practice Problem
 </div>
 <div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<ol class="example" type="1">
-<li>Import “weather_data.csv”, select ‘station, ’tmin_F’ and ‘tmax_F’ using a select() function. Calculate the sum, mean, and median for ‘tmin_F’ and ‘tmax_F’ using rowwise() function.</li>
+<ol type="1">
+<li>Import “weather_data.csv”, select ‘station, ’tmin_F’ and ‘tmax_F’ using the <code>select()</code> function. Calculate the sum, mean, and median for ‘tmin_F’ and ‘tmax_F’ using <code>rowwise()</code> function.</li>
 </ol>
 </div>
 </div>
@@ -1388,6 +1425,18 @@ Table&nbsp;1: Summary of functions in dplyr and tidyr packages
     }
   });
   </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../lessons/data-export.html" class="pagination-link" aria-label="Exporting data">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Exporting data</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../lessons/data-merging.html" class="pagination-link" aria-label="Combining data sets">
+        <span class="nav-page-text">Combining data sets</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
