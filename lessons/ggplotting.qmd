@@ -252,9 +252,9 @@ ggplot(hay_pnw, aes(x = state, y = yield, fill = state)) +
 ::: {.callout-question .callout collapse="true"}
 ## Practice Problems
 
-1. Use hay_idaho, create a line and point plot for number of acres over years. Assign a color and shape to line and points of your choice.
+1. Using hay_idaho, create a line and point plot for number of acres over years. Assign a color and shape to line and points of your choice.
 
-1. Import Apple.csv, create a box-plot of 'yield' for 'stock' variable. Add points over boxplots.
+1. Import Apple.csv, create a box-plot of 'yield' for 'stock' variable. Add points over the boxplots.
 
 :::
 
@@ -347,7 +347,7 @@ ggplot(hay_pnw) +
 ::: {.callout-question .callout collapse="true"}
 ## Practice Problem
 
-1. Import “Apple.csv” from the data folder. create a point plot for 'yield' (y-axis) and 'spacing' (x-axis), and facet it for the 'stock' variable. Color points with a color of your choice.
+1. Import “Apple.csv” from the data folder. Create a point plot for 'yield' (y-axis) and 'spacing' (x-axis), and facet it for the 'stock' variable. Color points with a color of your choice.
 :::
 
 #### Representing error information
@@ -386,7 +386,7 @@ ggplot(hay_pnw_summary, aes(y = state)) +
 ::: {.callout-question .callout collapse="true"}
 ## Practice Problem
 
-(@) Import the weather_data.csv from data folder, group by 'station' and calculate mean and standard deviation for 'tmin_F'. Create a plot with error bars for 'tmin_F' (x-axis) and 'station'. Feel free to choose the shape, size, and color of your choice.
+(@) Import the "weather_data.csv" from the data folder, group by 'station' and calculate mean and standard deviation for 'tmin_F'. Create a point plot with error bars for 'tmin_F' (x-axis) and 'station'. Specify the shape, size, and color of the points (your choice).
 
 :::
 
@@ -508,10 +508,10 @@ ggplot(hay_pnw) +
 ::: {.callout-question .callout collapse="true"}
 ## Practice Problem
 
-1. Create a point scatter plot for yield over years and add color & shape effect for the state factor. 
+1. Using hay_pnw, ceate a point scatter plot for yield over years and add color & shape effect for the state factor. 
   * Add theme_light() and change the size of text for axis to '13' and title to '14. 
   * Change the angle of text on x-axis to 90 degrees.
-  * Assign this graph name plot1.
+  * Assign this graph to an object named 'plot1'.
 
 2. In plot1, modify legend by: changing text size to 11, changing legend position to "top.
 
