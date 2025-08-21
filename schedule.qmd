@@ -20,7 +20,7 @@ title: "Course Schedule"
             [Date aggregation and summary](lessons/data-aggregation.qmd)   \
             [Combining data sets](lessons/data-merging.qmd)  \
             [Reshaping data](lessons/reshaping.qmd) |   
-| Aug 21 |  Using LMMs for Coding \
+| Aug 21 |  [Using LMMs for Coding](https://agstats.io/posts/lmm-programming/) \
             [Visualizing data with ggplot](lessons/ggplotting)  \
             [keeping up with R](lessons/final-lesson)  |
 | Aug 22  |  Mixed models guide & open time for questions  |   
