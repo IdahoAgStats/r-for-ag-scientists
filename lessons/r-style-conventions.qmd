@@ -13,7 +13,7 @@ At the end of this lesson, you should:
 -   understand how to assign variables and collections of numbers to an object name
 -   know the rules for how to name objects
 -   understand reserved words in R and how to find them
--   understand how white space functions in R
+-   understand how white space is treated in R
 
 :::
 
